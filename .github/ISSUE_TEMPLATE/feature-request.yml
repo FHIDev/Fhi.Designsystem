@@ -1,0 +1,38 @@
+name: 💡 Feature request
+description: Request a new feature, or improvements to existing features
+labels: ["Status: Unconfirmed"]
+projects: ["FHIDev/4"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        ## Thanks for taking the time to add a feature request!
+
+        > [!TIP]
+        >  You may choose between writing in English or Norwegian.
+        > _Du kan velge mellom å skrive på engelsk eller norsk._
+
+  - type: textarea
+    id: description
+    attributes:
+      label: Description
+      description: Describe the feature or improvement in as much detail possible, including the experience that led to its need and how you would use the new feature.
+    validations:
+      required: true
+
+  - type: textarea
+    id: acceptance-criteria
+    attributes:
+      label: Acceptance Criteria
+      description: A list of criteria that should be satisfied before the issue can be marked as complete.
+
+  - type: textarea
+    id: additional-information
+    attributes:
+      label: Additional information
+      description: Here you can add any examples of other, similar features for inspiration, alternatives or workarounds you have considered that could be used instead or any other information that could make this feature even better.
+
+  - type: markdown
+    attributes:
+      value: |
+        By submitting this issue, you agree to follow our [Code of Conduct](https://github.com/folkehelseinstituttet/Fhi.Frontend.Demo/blob/dev/CODE_OF_CONDUCT.md)
