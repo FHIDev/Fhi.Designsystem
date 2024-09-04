@@ -1,0 +1,74 @@
+name: 🐛 Bug report
+description: File a bug report
+labels: ["Status: Unconfirmed", "Bug"]
+projects: ["FHIDev/4"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        ## Thanks for taking the time to fill out this bug report!
+
+        Please fill out the sections below to help us reproduce and fix the bug you are encountering.
+
+        > [!TIP]
+        >  You may choose between writing in English or Norwegian.
+        > _Du kan velge mellom å skrive på engelsk eller norsk._
+
+  - type: textarea
+    id: description
+    attributes:
+      label: Description
+      description: Explain, in as much detail as possible, the bug you've met. Is this something that used to work and now doesn't?
+      placeholder: When I click the accordion header the site freezes...
+    validations:
+      required: true
+
+  - type: textarea
+    id: expected-result
+    attributes:
+      label: What was the expected result?
+      placeholder: I expected the accordion to toggle open/closed...
+    validations:
+      required: true
+
+  - type: input
+    id: browsers
+    attributes:
+      label: What browsers are you seeing the problem on?
+      placeholder: Firefox, Edge, Chrome, etc...
+
+  - type: input
+    id: framework
+    attributes:
+      label: What framework are you using?
+      placeholder: Angular, React, Blazor, etc...
+
+  - type: textarea
+    id: steps-to-reproduce
+    attributes:
+      label: Steps to reproduce
+      description: Please add a list of steps we can follow to reproduce the bug.
+      placeholder: |
+        1. Open www.example.com/booking
+        2. Click the header of the first accordion in the information section
+        3. ...
+    validations:
+      required: true
+
+  - type: textarea
+    id: logs
+    attributes:
+      label: Relevant log output (e.g web browser console logs)
+      description: Please copy and paste any relevant log output. This will be automatically formatted into code, so no need for backticks.
+      render: shell
+
+  - type: textarea
+    id: additional-information
+    attributes:
+      label: Additional information
+      description: Please add any other comments or pieces of information you think are useful. For example, if you've found a workaround, share it with us to help others while we're swatting this bug.
+
+  - type: markdown
+    attributes:
+      value: |
+        By submitting this issue, you agree to follow our [Code of Conduct](https://github.com/folkehelseinstituttet/Fhi.Frontend.Demo/blob/dev/CODE_OF_CONDUCT.md)
