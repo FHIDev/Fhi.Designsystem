@@ -1,0 +1,45 @@
+{
+  "title": "FHI Designsystem",
+  "author": "FHI Designsystem team",
+  "name": "@folkehelseinstituttet/designsystem",
+  "version": "0.0.0",
+  "description": "The official design system for the Norwegian Institute of Public Health implemented as web components",
+  "keywords": [
+    "fhi",
+    "folkehelseinstituttet",
+    "components",
+    "design",
+    "system",
+    "framework",
+    "frontend",
+    "web-component",
+    "web component",
+    "ui"
+  ],
+  "homepage": "https://github.com/FHIDev/Fhi.Designsystem",
+  "bugs": {
+    "url": "https://github.com/FHIDev/Fhi.Designsystem/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/FHIDev/Fhi.Designsystem"
+  },
+  "license": "Apache-2.0",
+  "browserslist": [
+    "> 0.5%",
+    "last 2 versions"
+  ],
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc && vite build",
+    "preview": "vite preview"
+  },
+  "dependencies": {
+    "lit": "^3.2.0"
+  },
+  "devDependencies": {
+    "typescript": "^5.5.3",
+    "vite": "^5.4.1"
+  }
+}
