@@ -17,6 +17,7 @@ export default defineConfig(({ mode }) => {
                         name: "fhi-designsystem",
                         fileName: "fhi-designsystem",
                     },
+                    sourcemap: true,
                     rollupOptions: {
                         external: ["lit"],
                         output: {
@@ -33,10 +34,15 @@ export default defineConfig(({ mode }) => {
                 build: {
                     lib: {
                         entry: {
+                            /*
+                                If you create a new component you need to add a reference to it here, e.g:
+                                "new-component": "./src/components/new-component/new-component.ts",
+                             */
                             "index": "./src/entry.ts",
                             "my-element": "./src/components/my-element/my-element.ts",
                         },
                     },
+                    sourcemap: true,
                     rollupOptions: {
                         external: ["lit"],
                         output: {

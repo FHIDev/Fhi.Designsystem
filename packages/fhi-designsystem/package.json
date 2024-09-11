@@ -32,6 +32,7 @@
   "files": [
     "dist/npm"
   ],
+  "main": "index.js",
   "type": "module",
   "scripts": {
     "dev": "vite",
