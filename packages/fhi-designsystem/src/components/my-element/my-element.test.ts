@@ -2,21 +2,21 @@ import { html, fixture, expect } from "@open-wc/testing";
 
 import { MyElement } from "./my-element.ts";
 
-window.customElements.define('my-element', MyElement);
+window.customElements.define("my-element", MyElement);
 
 describe("MyElement", () => {
   it('has a default title "Hey there" and counter 5', async () => {
     const el: MyElement = await fixture(html` <my-element></my-element> `);
 
     expect(el.title).to.equal("Hey there");
-    expect(el.counter).to.equal(5);
+    expect(el.value).to.equal(5);
   });
 
   it("increases the counter on button click", async () => {
     const el: MyElement = await fixture(html` <my-element></my-element> `);
     el.shadowRoot!.querySelector("button")!.click();
 
-    expect(el.counter).to.equal(6);
+    expect(el.value).to.equal(6);
   });
 
   it("can override the title via attribute", async () => {
