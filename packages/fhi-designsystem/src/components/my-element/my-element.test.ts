@@ -20,9 +20,9 @@ describe("MyElement", () => {
   });
 
   it("can override the title via attribute", async () => {
-    const el: MyElement = await fixture(
-      html` <my-element title="attribute title"></my-element> `
-    );
+    const el: MyElement = await fixture(html`
+      <my-element title="attribute title"></my-element>
+    `);
 
     expect(el.title).to.equal("attribute title");
   });
