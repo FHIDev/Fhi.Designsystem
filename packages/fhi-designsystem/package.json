@@ -47,7 +47,8 @@
     "lint:prettier": "prettier \"**/*.js\" --check --ignore-path .gitignore",
     "format": "pnpm format:eslint && pnpm format:prettier",
     "format:eslint": "eslint \"**/*.{js,ts}\" --fix",
-    "format:prettier": "prettier \"**/*.js\" --write --ignore-path .gitignore"
+    "format:prettier": "prettier \"**/*.js\" --write --ignore-path .gitignore",
+    "prepare": "husky"
   },
   "dependencies": {
     "lit": "^3.2.0"
@@ -73,6 +74,7 @@
     "eslint": "^9.10.0",
     "eslint-config-prettier": "^9.1.0",
     "eslint-plugin-lit": "^1.15.0",
+    "husky": "^9.1.6",
     "mocha": "^10.7.0",
     "prettier": "^3.3.3",
     "storybook": "^8.3.0",
