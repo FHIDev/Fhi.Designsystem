@@ -5,6 +5,7 @@
 ### Intallation
 
 1. run `pnpm i`
+2. run `pnpm prepare`
 2. navigate to `packages/fhi-designsystem`
 3. run `pnpm exec playwright install`
 
