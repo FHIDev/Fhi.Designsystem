@@ -19,14 +19,6 @@ export default defineConfig(({ mode }) => {
             fileName: 'fhi-designsystem',
           },
           sourcemap: true,
-          rollupOptions: {
-            external: ['lit'],
-            output: {
-              globals: {
-                lit: 'lit',
-              },
-            },
-          },
           outDir: 'dist/cdn',
         },
       };
@@ -37,6 +29,10 @@ export default defineConfig(({ mode }) => {
             targets: [
               {
                 src: 'package.json',
+                dest: './',
+              },
+              {
+                src: 'README.md',
                 dest: './',
               },
             ],
