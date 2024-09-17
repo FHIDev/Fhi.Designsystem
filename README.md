@@ -1,6 +1,6 @@
 # Fhi.Designsystem
 
-## Contributing (wip)
+## Contributing Guide (wip)
 
 ### Intallation
 

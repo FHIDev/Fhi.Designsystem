@@ -3,7 +3,6 @@
   "version": "1.0.0",
   "description": "monorepo for packages related to the FHI design system",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
     "prepare": "husky"
   },
   "type": "module",
