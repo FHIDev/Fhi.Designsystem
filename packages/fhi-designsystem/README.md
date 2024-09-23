@@ -6,7 +6,7 @@
 1. kjør `pnpm i`
 2. kjør `pnpm exec playwright install`
 
-- #### Utvikling
+#### Utvikling
 1. kjør `pnpm storybook`
 
 #### Testing
