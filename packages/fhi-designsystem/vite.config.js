@@ -62,9 +62,7 @@ export default defineConfig(({ mode }) => {
       };
     default:
       throw Error(
-        'Unknown DEPLOY_TARGET: ' +
-          env.DEPLOY_TARGET +
-          '. DEPLOY_TARGET should be one of these: npm, cdn',
+        `Unknown DEPLOY_TARGET: ${env.DEPLOY_TARGET}. DEPLOY_TARGET should be one of these: npm, cdn`,
       );
   }
 });
