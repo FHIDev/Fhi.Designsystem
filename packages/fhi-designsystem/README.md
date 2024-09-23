@@ -9,7 +9,7 @@
 - #### Utvikling
 1. kjør `pnpm storybook`
 
-- #### Testing
+#### Testing
 1. kjør `pnpm test`
 
 - #### Bygg
