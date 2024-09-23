@@ -10,7 +10,7 @@
 1. kjør `pnpm storybook`
 
 - #### Testing
-  2. kjør `pnpm test`
+1. kjør `pnpm test`
 
 - #### Bygg
   2. kjør `pnpm build`
