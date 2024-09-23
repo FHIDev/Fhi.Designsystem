@@ -2,7 +2,7 @@
 
 ## Bidragsguide (under arbeid)
 
-### installasjon
+### Installering
 1. kjør `pnpm i`
 3. kjør `pnpm exec playwright install`
 
