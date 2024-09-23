@@ -1,19 +1,19 @@
 # Fhi.Designsystem
 
-## Contributing Guide (wip)
+## Bidragsguide (under arbeid)
 
-### Intallation
-1. run `pnpm i`
-3. run `pnpm exec playwright install`
+### installasjon
+1. kjør `pnpm i`
+3. kjør `pnpm exec playwright install`
 
-- #### Development
-  2. run `pnpm storybook`
+- #### Utvikling
+  2. kjør `pnpm storybook`
 
 - #### Testing
-  2. run `pnpm test`
+  2. kjør `pnpm test`
 
-- #### Build
-  2. run `pnpm build`
-     - if you have added a new component;
-       - make sure it is listed in the `build.lib.entry` object in the `npm` case in `vite.config.js`.
-       - make sure it is exported in the `entry.ts` files.
+- #### Bygg
+  2. kjør `pnpm build`
+     - Om du har lagt til en ny komponent;
+       - pass på at komponenten er referert i `build.lib.entry` objektet inni `npm` case-et i `vite.config.js`.
+       - pass på at den blir eksportert i `entry.ts` filen.
