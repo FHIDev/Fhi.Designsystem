@@ -1,6 +1,6 @@
 # Fhi.Designsystem
 
-## Bidragsguide (under arbeid)
+## Bidragsguide
 
 ### Installering
 1. kjør `pnpm i`
