@@ -3,8 +3,9 @@
 ## Bidragsguide
 
 ### Installering
-1. kjør `pnpm i`
-2. kjør `pnpm exec playwright install`
+1. Last ned og installer [Node LTS](https://nodejs.org/en) og [pnpm](https://pnpm.io/installation) om ikke du har de installert fra før
+2. kjør `pnpm i`
+3. kjør `pnpm exec playwright install`
 
 #### Utvikling
 1. kjør `pnpm storybook`
