@@ -1,0 +1,28 @@
+{
+  "name": "fhi-designsystem-team",
+  "version": "1.0.0",
+  "description": "monorepo for packages related to the FHI design system",
+  "scripts": {
+    "prepare": "husky"
+  },
+  "type": "module",
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "lint-staged": {
+    "*.{js,ts}": [
+      "eslint --fix",
+      "prettier --write"
+    ]
+  },
+  "devDependencies": {
+    "@folkehelseinstituttet/designsystem": "workspace:*",
+    "eslint": "^9.10.0",
+    "eslint-config-prettier": "^9.1.0",
+    "eslint-plugin-lit": "^1.15.0",
+    "husky": "^9.1.6",
+    "lint-staged": "^15.2.10",
+    "prettier": "^3.3.3",
+    "typescript-eslint": "^8.5.0"
+  }
+}
