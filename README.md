@@ -16,5 +16,5 @@
 <br>
 
 <p align="center">
-  [KONTAKT INFORMASJON KOMMER]
+  [KONTAKTINFORMASJON KOMMER]
 </p>

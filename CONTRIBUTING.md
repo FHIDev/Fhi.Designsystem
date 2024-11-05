@@ -17,7 +17,7 @@ Vi har [et sett med etiske retningslinjer](CODE_OF_CONDUCT.md). Vennligst følg 
 
 ## Spørsmål eller problemer
 
-Har du generelle spørsmål, eller tilbakemeldinger kan du kontakte [KONTAKT INFORMASJON KOMMER].
+Har du generelle spørsmål, eller tilbakemeldinger kan du kontakte [KONTAKTINFORMASJON KOMMER].
 
 Har du konkrete forslag til ny funksjonalitet, eller ønsker å rapportere en bug kan du [opprette et issue](https://github.com/FHIDev/Fhi.Designsystem/issues).
 
