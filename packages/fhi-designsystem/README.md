@@ -1,20 +1,38 @@
-# Fhi.Designsystem
+# FHI Designsystem
 
-## Bidragsguide
+## Kom i gang
 
-### Installering
-1. Last ned og installer [Node LTS](https://nodejs.org/en) og [pnpm](https://pnpm.io/installation) om ikke du har de installert fra før
-2. kjør `pnpm i`
-3. kjør `pnpm exec playwright install`
+### Installering av Node og pnpm
+
+Om du mangler begge, eller en av dem på din maskin:
+
+- Last ned og installer [Node](https://nodejs.org/en)
+- Last ned og installer [pnpm](https://pnpm.io/installation)
+
+### Jobbe i lokalt miljø
+
+*Alle kommandoer kjøres fra samme folder som denne README-en.*
+
+#### Installering
+
+1. Kjør `pnpm i`
+2. Kjør `pnpm exec playwright install`
 
 #### Utvikling
-1. kjør `pnpm storybook`
+
+Kjør `pnpm storybook`
 
 #### Testing
-1. kjør `pnpm test`
+
+Kjør `pnpm test`
 
 #### Bygg
-1. kjør `pnpm build`
-   - Om du har lagt til en ny komponent;
-     - pass på at komponenten er referert i `build.lib.entry` objektet inni `npm` caset i `vite.config.js`.
-     - pass på at den blir eksportert i `entry.ts` filen.
+
+Kjør `pnpm build`
+
+#### Nye komponenter
+
+Om du har lagt til en ny komponent, pass på at den:
+
+- er referert i `build.lib.entry` objektet inne i "switch case"-en `npm`, i filen `./vite.config.js`
+- blir eksportert i filen `./library.ts`
