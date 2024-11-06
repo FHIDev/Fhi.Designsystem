@@ -17,7 +17,7 @@ Det er mange måter å bidra på, og vi har mange ulike behov som skal ivaretas.
 
 ## Spørsmål eller problemer
 
-Har du generelle spørsmål, eller tilbakemeldinger kan du kontakte [KONTAKT INFORMASJON KOMMER].
+Er du ansatt i Folkehelseinstituttet og har generelle spørsmål, eller tilbakemeldinger kan du [kontakte oss på Teams](https://teams.microsoft.com/l/channel/19%3Aa0d23e5a6954497d9e378d3367e7f458%40thread.skype/General?groupId=571dd359-777d-4c02-85ea-d56854d03ef7).
 
 Har du konkrete forslag til ny funksjonalitet, eller ønsker å rapportere en bug kan du [opprette et issue](https://github.com/FHIDev/Fhi.Designsystem/issues).
 
