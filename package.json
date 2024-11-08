@@ -16,7 +16,6 @@
     ]
   },
   "devDependencies": {
-    "@folkehelseinstituttet/designsystem": "workspace:*",
     "eslint": "^9.10.0",
     "eslint-config-prettier": "^9.1.0",
     "eslint-plugin-lit": "^1.15.0",
