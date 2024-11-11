@@ -8,7 +8,7 @@ on:
   workflow_dispatch:
   push:
     branches:
-      - 60-add-release-pipeline
+      - main
 
 jobs:
   build:
