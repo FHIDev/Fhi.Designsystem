@@ -17,4 +17,3 @@ Dette er FHIs felles verktøykasse for å bygge gode, digitale løsninger og tje
 ## Kontakt
 
 Ansatte i Folkehelseinstituttet kan [kontakte oss på Teams](https://teams.microsoft.com/l/channel/19%3Aa0d23e5a6954497d9e378d3367e7f458%40thread.skype/General?groupId=571dd359-777d-4c02-85ea-d56854d03ef7).
-
