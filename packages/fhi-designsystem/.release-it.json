@@ -1,0 +1,36 @@
+{
+  "$schema": "https://unpkg.com/release-it@17.6.0/schema/release-it.json",
+  "git": {
+    "commitMessage": "chore: release v${version}",
+    "requireCleanWorkingDir": true,
+    "tagAnnotation": "Release v${version}",
+    "tagName": "v${version}"
+  },
+  "github": {
+    "draft": false,
+    "release": true,
+    "releaseName": "v${version}",
+    "assets": ["dist/cdn/fhi-designsystem.js"]
+  },
+  "npm": {
+    "publish": false
+  },
+  "hooks": {
+    "after:release": "echo Successfully created a release v${version} for ${repo.repository}!"
+  },
+  "plugins": {
+    "@release-it/conventional-changelog": {
+      "header": "# Changelog",
+      "preset": {
+        "name": "conventionalcommits",
+        "types": [
+          { "type": "feat", "section": "🚀 Features" },
+          { "type": "fix", "section": "🛠️ Bug Fixes" },
+          { "type": "docs", "section": "📑 Documentation" },
+          { "type": "chore", "section": "Other" }
+        ]
+      },
+      "infile": "CHANGELOG.md"
+    }
+  }
+}
