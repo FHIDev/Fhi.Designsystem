@@ -13,6 +13,8 @@ Det er mange måter å bidra på, og vi har mange ulike behov som skal ivaretas.
   - [Kodestandard](#kodestandard)
   - [Testdekning](#testdekning)
 - [Hvordan utvikle en ny komponent](#hvordan-utvikle-en-ny-komponent)
+  - [Før du setter i gang](#før-du-setter-i-gang)
+  - [Utvikle en ny komponent](#utvikle-en-ny-komponent)
 - [Etiske retningslinjer](#etiske-retningslinjer)
 
 ## Spørsmål eller problemer
@@ -51,19 +53,27 @@ Hvis du ønsker å bidra med kode, eller bare er nysgjerrig; vår ["Kom i gang"]
 
 ## Hvordan utvikle en ny komponent
 
-1. Opp
+### Før du setter i gang
 
-1. Implement the component in code following design and spesifications from UX. This implementation should always use design tokens and be fully inline with accessibility guidelines and the web standard. Do not diverge from the web standard unless necessary.
-    - Manually test the component and create automated tests as well.
-2. Create a storybook for the component with full API coverage, including dynamic actions when appropriate.
-    - Add written documentation including the components purpose and example use cases.
-3. Review the implementation with UX designer and make adjustments when needed.
-4. Create PR, have it reviewed by a developer and UX
-5. Squash & Merge the PR.
-    - Make sure the squashed commit message follows the correct format for the CD
+For å få opprettet PR og godkjent en ny komponent må den basere seg på en ferdig UX-/designspesifikasjon. Har du et forslag til en komponent som det ikke finnes UX-/designspesifikasjon til, så
 
+1. Forsikre deg om at komponenten, eller en tilsvarende komponent som kan brukes i stede, ikke alt ligger i [listen over komponenter](https://github.com/FHIDev/Fhi.Designsystem/milestone/1) som allerede er spesifisert, eller som er i ferd med å bli det.
+2. Hvis du ikke fant noe under punkt 1. så ta [kontakt på Teams](https://teams.microsoft.com/l/channel/19%3Aa0d23e5a6954497d9e378d3367e7f458%40thread.skype/General?groupId=571dd359-777d-4c02-85ea-d56854d03ef7) for å avklare prosessen videre.
+
+### Utvikle en ny komponent
+
+1. Implementer komponenten i kode etter design og spesifikasjoner fra UX. Denne implementeringen bør alltid bruke designtokens, og være helt i tråd med retningslinjer for tilgjengelighet og nettstandarden. Ikke avvik fra nettstandarden med mindre det er nødvendig. Følg disse punktene:
+   1. Plumbing...
+   2. ...
+   3. Lage automatiserte tester...
+   4. Sørg for at alle tester går i grønt, og test også komponenten manuelt.
+2. Legg komponenten til i Storybook med full API-dekning, inkludert dynamiske handlinger når det er aktuelt. Følg disse punktene:
+   1. Plumbing...
+   2. ...
+   3. Legg til skriftlig dokumentasjon, inkludert komponentenes formål og eksempler på brukstilfeller.
+3. Gjennomgå implementeringen med UX-designer og foreta justeringer ved behov.
+4. Opprett PR og be om review fra [Designsystem-team-developers](https://github.com/orgs/FHIDev/teams/designsystem-team-developers)
 
 ## Etiske retningslinjer
 
 Vi har [et sett med etiske retningslinjer](CODE_OF_CONDUCT.md). Vennligst følg dem i all interaksjon med teammedlemmer, andre bidragsytere og brukere av FHI Designsystem.
-
