@@ -1,10 +1,13 @@
 import { defineConfig, loadEnv } from 'vite';
 import { viteStaticCopy } from 'vite-plugin-static-copy';
+import generateFile from 'vite-plugin-generate-file';
+
+const OUTPUT_DIRECTORY = 'dist';
 
 export default defineConfig(({ mode }) => {
   const env = loadEnv(mode, process.cwd(), '');
 
-  if (!env?.DEPLOY_TARGET) {
+  if (!env.DEPLOY_TARGET) {
     console.log("No DEPLOY_TARGET specified, defaulting to 'npm'");
     env.DEPLOY_TARGET = 'npm';
   }
@@ -12,6 +15,11 @@ export default defineConfig(({ mode }) => {
   switch (env.DEPLOY_TARGET) {
     case 'cdn':
       return {
+        plugins: [
+          generateFile({
+            output: './index.html',
+          }),
+        ],
         build: {
           lib: {
             entry: './src/library.ts',
@@ -19,7 +27,7 @@ export default defineConfig(({ mode }) => {
             fileName: 'fhi-designsystem',
           },
           sourcemap: true,
-          outDir: 'dist/cdn',
+          outDir: `${OUTPUT_DIRECTORY}/cdn`,
         },
       };
     case 'npm':
@@ -57,7 +65,7 @@ export default defineConfig(({ mode }) => {
               },
             },
           },
-          outDir: 'dist/npm',
+          outDir: `${OUTPUT_DIRECTORY}/npm`,
         },
       };
     default:
