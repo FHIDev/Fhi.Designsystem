@@ -10,11 +10,14 @@ Det er mange måter å bidra på, og vi har mange ulike behov som skal ivaretas.
   - [Godkjenning av issues](#godkjenning-av-issues)
 - [Teste utviklingsmiljøet](#teste-utviklingsmiljøet)
 - [Hvordan opprette en "pull request"](#hvordan-opprette-en-pull-request)
-  - [Kodestandard](#kodestandard)
-  - [Testdekning](#testdekning)
+- [Kodestandard](#kodestandard)
+- [Testdekning](#testdekning)
 - [Hvordan utvikle en ny komponent](#hvordan-utvikle-en-ny-komponent)
   - [Før du setter i gang](#før-du-setter-i-gang)
+  - [Opprette ny komponent](#opprette-ny-komponent)
   - [Utvikle en ny komponent](#utvikle-en-ny-komponent)
+  - [Eksponere en ny komponent](#eksponere-en-ny-komponent)
+  - [Når du er ferdig](#når-du-er-ferdig)
 - [Etiske retningslinjer](#etiske-retningslinjer)
 
 ## Spørsmål eller problemer
@@ -46,33 +49,55 @@ Hvis du ønsker å bidra med kode, eller bare er nysgjerrig; vår ["Kom i gang"]
 2. I høyrekolonnen på issuet, under *Development*, klikk på lenken *Create a branch*. På denne måten vil vår brance-navnestandard automatisk bli fulgt.
 3. Følg vår [kodestandard](#kodestandard), og våre krav til [testdekning](#testdekning)
 4. Opprett PR med en god beskrivelse av koden du ønsker å få med i `main`
+5. Be om review fra [Designsystem-team-developers](https://github.com/orgs/FHIDev/teams/designsystem-team-developers)
 
-### Kodestandard
+## Kodestandard
 
-### Testdekning
+Kommer...
+
+## Testdekning
+
+Kommer...
 
 ## Hvordan utvikle en ny komponent
 
 ### Før du setter i gang
 
-For å få opprettet PR og godkjent en ny komponent må den basere seg på en ferdig UX-/designspesifikasjon. Har du et forslag til en komponent som det ikke finnes UX-/designspesifikasjon til, så
+For å få opprettet PR og godkjent en ny komponent må den basere seg på en ferdig UX-/designspesifikasjon. Har du et forslag til en komponent som det ikke finnes UX-/designspesifikasjon til, så må du:
 
-1. Forsikre deg om at komponenten, eller en tilsvarende komponent som kan brukes i stede, ikke alt ligger i [listen over komponenter](https://github.com/FHIDev/Fhi.Designsystem/milestone/1) som allerede er spesifisert, eller som er i ferd med å bli det.
+1. Forsikre deg om at komponenten, eller en tilsvarende komponent som kan brukes i stede, ikke ligger i [listen over komponenter](https://github.com/FHIDev/Fhi.Designsystem/milestone/1) som allerede er spesifisert, eller som er i ferd med å bli det.
 2. Hvis du ikke fant noe under punkt 1. så ta [kontakt på Teams](https://teams.microsoft.com/l/channel/19%3Aa0d23e5a6954497d9e378d3367e7f458%40thread.skype/General?groupId=571dd359-777d-4c02-85ea-d56854d03ef7) for å avklare prosessen videre.
+
+### Opprette ny komponent
+
+1. Opprett en ny mappe under `./packages/fhi-designsystem/src/components` som komponenten skal ligge i.
+2. Opprett følgende filer i den nye mappen:
+   - `[new-component].stories.ts`
+   - `[new-component].test.ts`
+   - `[new-component].ts`
+   - `index.ts`
+3. Bruk en eksisterende kompononent som eksempel for å få på plass boilerplate i de ulike filene.
+4. For å teste at alt fungerer, kjør `pnpm storybook`
 
 ### Utvikle en ny komponent
 
-1. Implementer komponenten i kode etter design og spesifikasjoner fra UX. Denne implementeringen bør alltid bruke designtokens, og være helt i tråd med retningslinjer for tilgjengelighet og nettstandarden. Ikke avvik fra nettstandarden med mindre det er nødvendig. Følg disse punktene:
-   1. Plumbing...
-   2. ...
-   3. Lage automatiserte tester...
-   4. Sørg for at alle tester går i grønt, og test også komponenten manuelt.
-2. Legg komponenten til i Storybook med full API-dekning, inkludert dynamiske handlinger når det er aktuelt. Følg disse punktene:
-   1. Plumbing...
-   2. ...
-   3. Legg til skriftlig dokumentasjon, inkludert komponentenes formål og eksempler på brukstilfeller.
-3. Gjennomgå implementeringen med UX-designer og foreta justeringer ved behov.
-4. Opprett PR og be om review fra [Designsystem-team-developers](https://github.com/orgs/FHIDev/teams/designsystem-team-developers)
+1. Implementer komponenten i kode i `[new-component].ts` etter design og spesifikasjoner fra UX. Denne implementeringen bør alltid bruke designtokens, og være helt i tråd med retningslinjer for tilgjengelighet og nettstandarden. Ikke avvik fra nettstandarden med mindre det er nødvendig. Følg også vår [kodestandard](#kodestandard).
+2. Legg til automatiserte tester i `[new-component].test.ts`. Se våre krav til [testdekning](#testdekning).
+3. Legg til skriftlig dokumentasjon i `[new-component].stories.ts`, inkludert komponentenes formål og eksempler på brukstilfeller.
+4. Sørg for at alle tester går i grønt, og test også komponenten manuelt.
+
+### Eksponere en ny komponent
+
+1. Legg den til i `./packages/fhi-designsystem/src/libray.ts`
+2. Legg til en ny "entry" i `./packages/fhi-designsystem/vite.config.js`
+   - Key: `"new-component"`
+   - Value: `"./src/components/new-component/new-component.ts"`
+
+### Når du er ferdig
+
+1. Gjennomgå implementeringen med UX-designer og foreta justeringer ved behov.
+2. Opprett PR med en god beskrivelse av koden du ønsker å få med i `main`
+3. Be om review fra [Designsystem-team-developers](https://github.com/orgs/FHIDev/teams/designsystem-team-developers)
 
 ## Etiske retningslinjer
 
