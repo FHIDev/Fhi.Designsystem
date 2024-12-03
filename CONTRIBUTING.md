@@ -90,8 +90,8 @@ For å få opprettet PR og godkjent en ny komponent må den basere seg på en fe
 
 1. Legg den til i `./packages/fhi-designsystem/src/libray.ts`
 2. Legg til en ny "entry" i `./packages/fhi-designsystem/vite.config.js`
-   - Key: `"new-component"`
-   - Value: `"./src/components/new-component/new-component.ts"`
+   - Key: `"[new-component]"`
+   - Value: `"./src/components/[new-component]/[new-component].ts"`
 
 ### Når du er ferdig
 
