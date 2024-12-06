@@ -57,7 +57,7 @@
   --green-800: #2d4f35;
   --green-900: #203323;
 
-  --bluegray-050: #fdfdfd;
+  --bluegray-050: ##fdfeff;
   --bluegray-100: #f4f8fa;
   --bluegray-200: #edf4f7;
   --bluegray-300: #dbe6ec;
@@ -142,7 +142,7 @@
   --color-info-base: var(--blue-600);
   --color-info-base-hover: var(--blue-700);
   --color-info-base-active: var(--blue-800);
-  --color-info-text-subtle: var(--blue-700);
+  --color-info-text-subtle: var(--blue-800);
   --color-info-text: var(--blue-900);
   --color-info-text-inverted: var(--blue-100);
 
