@@ -19,6 +19,14 @@ export default defineConfig(({ mode }) => {
           generateFile({
             output: './index.html',
           }),
+          viteStaticCopy({
+            targets: [
+              {
+                src: 'src/theme',
+                dest: './',
+              },
+            ],
+          }),
         ],
         build: {
           lib: {
@@ -41,6 +49,10 @@ export default defineConfig(({ mode }) => {
               },
               {
                 src: 'README.md',
+                dest: './',
+              },
+              {
+                src: 'src/theme',
                 dest: './',
               },
             ],
