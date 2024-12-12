@@ -57,16 +57,16 @@
   --green-800: #2d4f35;
   --green-900: #203323;
 
-  --bluegray-050: ##fdfeff;
-  --bluegray-100: #f4f8fa;
-  --bluegray-200: #edf4f7;
-  --bluegray-300: #dbe6ec;
-  --bluegray-400: #cbd9df;
-  --bluegray-500: #acc7d5;
-  --bluegray-600: #879ba5;
-  --bluegray-700: #435c68;
-  --bluegray-800: #142f3b;
-  --bluegray-900: #031a24;
+  --greyblue-050: #fdfeff;
+  --greyblue-100: #f8fcfe;
+  --greyblue-200: #e5eff3;
+  --greyblue-300: #d1e1e9;
+  --greyblue-400: #acc7d5;
+  --greyblue-500: #789eb0;
+  --greyblue-600: #678999;
+  --greyblue-700: #3d5d6c;
+  --greyblue-800: #334c57;
+  --greyblue-900: #1f2f37;
 
   --teal-050: #fafdff;
   --teal-100: #f2fafe;
@@ -102,18 +102,18 @@
   --blue-900: #001c40;
 
   --color-neutral-background: var(--white);
-  --color-neutral-background-subtle: var(--bluegray-100);
-  --color-neutral-surface: var(--bluegray-200);
-  --color-neutral-surface-hover: var(--bluegray-300);
-  --color-neutral-surface-active: var(--bluegray-400);
-  --color-neutral-border-subtle: var(--bluegray-300);
-  --color-neutral-border: var(--bluegray-500);
-  --color-neutral-border-strong: var(--bluegray-700);
-  --color-neutral-base: var(--bluegray-600);
-  --color-neutral-base-hover: var(--bluegray-700);
-  --color-neutral-base-active: var(--bluegray-800);
-  --color-neutral-text-subtle: var(--bluegray-700);
-  --color-neutral-text: var(--bluegray-900);
+  --color-neutral-background-subtle: var(--greyblue-100);
+  --color-neutral-surface: var(--greyblue-200);
+  --color-neutral-surface-hover: var(--greyblue-300);
+  --color-neutral-surface-active: var(--greyblue-400);
+  --color-neutral-border-subtle: var(--greyblue-300);
+  --color-neutral-border: var(--greyblue-500);
+  --color-neutral-border-strong: var(--greyblue-700);
+  --color-neutral-base: var(--greyblue-600);
+  --color-neutral-base-hover: var(--greyblue-700);
+  --color-neutral-base-active: var(--greyblue-800);
+  --color-neutral-text-subtle: var(--greyblue-700);
+  --color-neutral-text: var(--greyblue-900);
   --color-neutral-text-inverted: var(--white);
 
   --color-accent-background: var(--blue-050);
