@@ -189,5 +189,5 @@
   --color-danger-base-active: var(--red-800);
   --color-danger-text-subtle: var(--red-700);
   --color-danger-text: var(--red-900);
-  --color-danger-text-inverted: var(--red-050);
+  --color-danger-text-inverted: var(--red-100);
 }
