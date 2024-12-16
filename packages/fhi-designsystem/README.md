@@ -36,3 +36,5 @@ Om du har lagt til en ny komponent, pass på at den:
 
 - er referert i `build.lib.entry` objektet inne i "switch case"-en `npm`, i filen `./vite.config.js`
 - blir eksportert i filen `./library.ts`
+
+Mer informasjon om hvordan opprette nye komponenter finnes i vår ["Hvordan hjelpe til"](../../CONTRIBUTING.md#hvordan-utvikle-en-ny-komponent)-guide.
