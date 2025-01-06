@@ -25,24 +25,16 @@ jobs:
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
 
-      - name: Guard - Check if a release should be made
+      - name: Guard - Decide if Janitor should run
         id: guard_job
         run: |
           LAST_COMMIT_MESSAGE="${{ github.event.head_commit.message }}"
           echo "Commit message: \"$LAST_COMMIT_MESSAGE\""
-          if [[ "$LAST_COMMIT_MESSAGE" == chore:\ * ]]; then
-              echo "Commit message includes 'chore: ', no release will be made."
-              echo "should_release=false" >> "$GITHUB_OUTPUT"
-          else
-              echo "chore=true" >> "$GITHUB_OUTPUT"
+          if [[ "$LAST_COMMIT_MESSAGE" != chore:\ * ]]; then
+            echo "Will not run Janitor on this commit."
+            exit 0
           fi
           shell: bash
-
-      - name: Deside if Janitor should run
-        if: steps.guard_job.outputs.guard_chore == 'false'
-        run: |
-          echo "Will not run Janitor on this commit."
-          exit 0
 
       - name: Install pnpm
         uses: pnpm/action-setup@v4
