@@ -1,4 +1,4 @@
-name: Janitor
+name: Docs
 
 permissions:
   contents: write
@@ -25,13 +25,13 @@ jobs:
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
 
-      - name: Guard - Decide if Janitor should run
+      - name: Guard - Decide if Docs should run
         id: guard_job
         run: |
           LAST_COMMIT_MESSAGE="${{ github.event.head_commit.message }}"
           echo "Commit message: \"$LAST_COMMIT_MESSAGE\""
-          if [[ "$LAST_COMMIT_MESSAGE" != chore:\ * ]]; then
-              echo "Commit message does not include 'chore: '. Janitor will not run."
+          if [[ "$LAST_COMMIT_MESSAGE" != docs:\ * ]]; then
+              echo "Commit message does not include 'docs: '. Docs pipeline will not run."
               echo "should_run=false" >> "$GITHUB_OUTPUT"
           else
               echo "should_run=true" >> "$GITHUB_OUTPUT"
@@ -73,3 +73,16 @@ jobs:
       - name: Test
         if: steps.guard_job.outputs.should_run == 'true'
         run: cd packages/fhi-designsystem; pnpm test
+
+      - name: Build Storybook
+        if: steps.guard_job.outputs.should_run == 'true'
+        run: cd packages/fhi-designsystem; pnpm storybook:build
+
+      - name: Deploy Storybook
+        if: steps.guard_job.outputs.should_run == 'true'
+        uses: Azure/static-web-apps-deploy@v1
+        with:
+          azure_static_web_apps_api_token: ${{ secrets.AZURE_STORYBOOK_API_TOKEN }}
+          action: 'upload'
+          app_location: 'packages/fhi-designsystem/storybook-static'
+          skip_app_build: true
