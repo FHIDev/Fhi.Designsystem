@@ -53,7 +53,7 @@ Hvis du ønsker å bidra med kode, eller bare er nysgjerrig; vår ["Kom i gang"]
 
 ## Kodestandard
 
-Linting og prettier tar hånd om det meste, men en ting er vikig å merke seg: all kode skal være på engelsk, bortsett fra domene-ord som det ikke er naturlig å oversette til engelsk.
+Linting og prettier tar hånd om det meste, men en ting er vikig å merke seg: all kode skal være på engelsk, bortsett fra domene-ord. For mer informasjon, se [Kodestandard Systemutvikling FHI](https://fhi.visualstudio.com/Fhi.Felles/_wiki/wikis/Fhi.Guidelines.Wiki/4892/kodestandard)  (krever tilgang til FHIs Azure DevOps).
 
 ## Testdekning
 
