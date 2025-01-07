@@ -1,6 +1,6 @@
 # Hvordan hjelpe til <!-- omit from toc -->
 
-Takk for at du er interessert i å helpe til med å utvikle FHI Designsystem!
+Takk for at du er interessert i å hjelpe til med å utvikle FHI Designsystem!
 
 Det er mange måter å bidra på, og vi har mange ulike behov som skal ivaretas. Alle bidrag er verdifulle! For å gjøre det enklere har vi noen retningslinjer vi ønsker at du følger, og tips vi håper kan være nyttige.
 
@@ -46,14 +46,14 @@ Hvis du ønsker å bidra med kode, eller bare er nysgjerrig; vår ["Kom i gang"]
 ## Hvordan opprette en "pull request"
 
 1. Før du oppretter en PR, sørg for at det finnes et issue som omhandler det du skal jobbe med.
-2. I høyrekolonnen på issuet, under *Development*, klikk på lenken *Create a branch*. På denne måten vil vår brance-navnestandard automatisk bli fulgt.
+2. I høyrekolonnen på issuet, under *Development*, klikk på lenken *Create a branch*. På denne måten vil vår branch-navnestandard automatisk bli fulgt.
 3. Følg vår [kodestandard](#kodestandard), og våre krav til [testdekning](#testdekning)
 4. Opprett PR med en god beskrivelse av koden du ønsker å få med i `main`
 5. Be om review fra [Designsystem-team-developers](https://github.com/orgs/FHIDev/teams/designsystem-team-developers)
 
 ## Kodestandard
 
-Linting og prettier tar hånd om det meste, men en ting er vikig å merke seg: all kode skal være på engelsk, bortsett fra domene-ord. For mer informasjon, se [Kodestandard Systemutvikling FHI](https://fhi.visualstudio.com/Fhi.Felles/_wiki/wikis/Fhi.Guidelines.Wiki/4892/kodestandard)  (krever tilgang til FHIs Azure DevOps).
+Linting og prettier tar hånd om det meste, men en ting er viktig å merke seg: all kode skal være på engelsk, bortsett fra domene-ord. For mer informasjon, se [Kodestandard Systemutvikling FHI](https://fhi.visualstudio.com/Fhi.Felles/_wiki/wikis/Fhi.Guidelines.Wiki/4892/kodestandard)  (krever tilgang til FHIs Azure DevOps).
 
 ## Testdekning
 
