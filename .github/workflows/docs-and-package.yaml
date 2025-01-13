@@ -25,6 +25,17 @@ jobs:
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
 
+      - name: Guard - BREAKING CHANGE should not be in body
+        id: guard_breaking_change
+        run: |
+          LAST_COMMIT_MESSAGE="${{ github.event.head_commit.message }}"
+          echo "Commit message: \"$LAST_COMMIT_MESSAGE\""
+          if [[ "$LAST_COMMIT_MESSAGE" == *"BREAKING CHANGE"* ]]; then
+              echo "ERROR: Commit message should not include 'BREAKING CHANGE'."
+              exit 1
+          fi
+        shell: bash
+
       - name: Guard - Decide if Package & Docs should run
         id: guard_job
         run: |
