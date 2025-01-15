@@ -42,7 +42,7 @@ jobs:
           LAST_COMMIT_MESSAGE="${{ github.event.head_commit.message }}"
           echo "Commit message: \"$LAST_COMMIT_MESSAGE\""
           if [[ "$LAST_COMMIT_MESSAGE" != feat:\ * && "$LAST_COMMIT_MESSAGE" != fix:\ * ]]; then
-              echo "Commit message does not include 'feat: ' not 'fix: '. Package & Docs pipeline will not run."
+              echo "Commit message does not include 'feat: ' nor 'fix: '. Package & Docs pipeline will not run."
               echo "should_run=false" >> "$GITHUB_OUTPUT"
           else
               echo "should_run=true" >> "$GITHUB_OUTPUT"
