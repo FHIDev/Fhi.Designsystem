@@ -221,45 +221,33 @@
   --font-size-14: 3.75rem;
 
   /* Semantic */
-  --label-large: {
-    font-size: var(--font-size-4);
-    font-weight: var(--font-weight-medium);
-    line-height: 24px;
-    letter-spacing: 0.11%;
-  };
+  --typography-label-large-font-size: var(--font-size-4);
+  --typography-label-large-font-weight: var(--font-weight-medium);
+  --typography-label-large-line-height: 24px;
+  --typography-label-large-letter-spacing: 0.11%;
 
-  --label-medium: {
-    font-size: var(--font-size-3);
-    font-weight: var(--font-weight-medium);
-    line-height: 24px;
-    letter-spacing: 0.5%;
-  };
+  --typography-label-medium-font-size: var(--font-size-3);
+  --typography-label-medium-font-weight: var(--font-weight-medium);
+  --typography-label-medium-line-height: 24px;
+  --typography-label-medium-letter-spacing: 0.5%;
 
-  --label-small: {
-    font-size: var(--font-size-2);
-    font-weight: var(--font-weight-medium);
-    line-height: 20px;
-    letter-spacing: 1%;
-  };
+  --typography-label-small-font-size: var(--font-size-2);
+  --typography-label-small-font-weight: var(--font-weight-medium);
+  --typography-label-small-line-height: 20px;
+  --typography-label-small-letter-spacing: 1%;
 
-  --body-large: {
-    font-size: var(--font-size-4);
-    font-weight: var(--font-weight-regular);
-    line-height: 24px;
-    letter-spacing: 0.11%;
-  };
+  --typography-body-large-font-size: var(--font-size-4);
+  --typography-body-large-font-weight: var(--font-weight-regular);
+  --typography-body-large-line-height: 24px;
+  --typography-body-large-letter-spacing: 0.11%;
 
-  --body-medium: {
-    font-size: var(--font-size-3);
-    font-weight: var(--font-weight-regular);
-    line-height: 24px;
-    letter-spacing: 0.5%;
-  };
+  --typography-body-medium-font-size: var(--font-size-3);
+  --typography-body-medium-font-weight: var(--font-weight-regular);
+  --typography-body-medium-line-height: 24px;
+  --typography-body-medium-letter-spacing: 0.5%;
 
-  --body-small: {
-    font-size: var(--font-size-2);
-    font-weight: var(--font-weight-regular);
-    line-height: 20px;
-    letter-spacing: 1%;
-  };
+  --typography-body-small-font-size: var(--font-size-2);
+  --typography-body-small-font-weight: var(--font-weight-regular);
+  --typography-body-small-line-height: 20px;
+  --typography-body-small-letter-spacing: 1%;
 }
