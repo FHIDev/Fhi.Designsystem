@@ -220,32 +220,32 @@
   --font-size-14: 3.75rem;
 
   /* Semantic */
-  --typography-label-large-font-size: var(--font-size-4);
+  --typography-label-large-font-size: var(--font-size-5);
   --typography-label-large-font-weight: var(--font-weight-medium);
   --typography-label-large-line-height: 1.5rem;
   --typography-label-large-letter-spacing: 0.11%;
 
-  --typography-label-medium-font-size: var(--font-size-3);
+  --typography-label-medium-font-size: var(--font-size-4);
   --typography-label-medium-font-weight: var(--font-weight-medium);
   --typography-label-medium-line-height: 1.5rem;
   --typography-label-medium-letter-spacing: 0.5%;
 
-  --typography-label-small-font-size: var(--font-size-2);
+  --typography-label-small-font-size: var(--font-size-3);
   --typography-label-small-font-weight: var(--font-weight-medium);
   --typography-label-small-line-height: 1.25rem;
   --typography-label-small-letter-spacing: 1%;
 
-  --typography-body-large-font-size: var(--font-size-4);
+  --typography-body-large-font-size: var(--font-size-5);
   --typography-body-large-font-weight: var(--font-weight-regular);
   --typography-body-large-line-height: 1.5rem;
   --typography-body-large-letter-spacing: 0.11%;
 
-  --typography-body-medium-font-size: var(--font-size-3);
+  --typography-body-medium-font-size: var(--font-size-4);
   --typography-body-medium-font-weight: var(--font-weight-regular);
   --typography-body-medium-line-height: 1.5rem;
   --typography-body-medium-letter-spacing: 0.5%;
 
-  --typography-body-small-font-size: var(--font-size-2);
+  --typography-body-small-font-size: var(--font-size-3);
   --typography-body-small-font-weight: var(--font-weight-regular);
   --typography-body-small-line-height: 1.25rem;
   --typography-body-small-letter-spacing: 1%;
