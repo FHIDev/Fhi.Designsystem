@@ -1,4 +1,8 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Flex:opsz,wght,XOPQ@8..144,100..1000,88&display=swap');
+
 :root {
+  /* Color */
+  /* Primitive */
   --black: #000000;
   --white: #ffffff;
 
@@ -101,6 +105,7 @@
   --blue-800: #003e82;
   --blue-900: #001c40;
 
+  /* Semantic */
   --color-neutral-background: var(--white);
   --color-neutral-background-subtle: var(--greyblue-100);
   --color-neutral-surface: var(--greyblue-200);
@@ -190,4 +195,58 @@
   --color-danger-text-subtle: var(--red-700);
   --color-danger-text: var(--red-900);
   --color-danger-text-inverted: var(--red-100);
+
+  /* Typography */
+  /* Primitive */
+  --font-family-roboto-flex: 'Roboto Flex';
+  --font-weight-light: 300;
+  --font-weight-regular: 400;
+  --font-weight-medium: 500;
+  --font-weight-bold: 700;
+
+  --font-size-1: 0.625rem;
+  --font-size-2: 0.75rem;
+  --font-size-3: 0.875rem;
+  --font-size-4: 1rem;
+  --font-size-5: 1.125rem;
+  --font-size-6: 1.25rem;
+  --font-size-7: 1.5rem;
+  --font-size-8: 1.75rem;
+  --font-size-9: 2rem;
+  --font-size-10: 2.25rem;
+  --font-size-11: 2.625rem;
+  --font-size-12: 3rem;
+  --font-size-13: 3.375rem;
+  --font-size-14: 3.75rem;
+
+  /* Semantic */
+  --typography-label-large-font-size: var(--font-size-5);
+  --typography-label-large-font-weight: var(--font-weight-medium);
+  --typography-label-large-line-height: 1.5rem;
+  --typography-label-large-letter-spacing: 0.11%;
+
+  --typography-label-medium-font-size: var(--font-size-4);
+  --typography-label-medium-font-weight: var(--font-weight-medium);
+  --typography-label-medium-line-height: 1.5rem;
+  --typography-label-medium-letter-spacing: 0.5%;
+
+  --typography-label-small-font-size: var(--font-size-3);
+  --typography-label-small-font-weight: var(--font-weight-medium);
+  --typography-label-small-line-height: 1.25rem;
+  --typography-label-small-letter-spacing: 1%;
+
+  --typography-body-large-font-size: var(--font-size-5);
+  --typography-body-large-font-weight: var(--font-weight-regular);
+  --typography-body-large-line-height: 1.5rem;
+  --typography-body-large-letter-spacing: 0.11%;
+
+  --typography-body-medium-font-size: var(--font-size-4);
+  --typography-body-medium-font-weight: var(--font-weight-regular);
+  --typography-body-medium-line-height: 1.5rem;
+  --typography-body-medium-letter-spacing: 0.5%;
+
+  --typography-body-small-font-size: var(--font-size-3);
+  --typography-body-small-font-weight: var(--font-weight-regular);
+  --typography-body-small-line-height: 1.25rem;
+  --typography-body-small-letter-spacing: 1%;
 }
