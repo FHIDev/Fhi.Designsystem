@@ -1,0 +1,99 @@
+name: Docs
+
+permissions:
+  contents: write
+  id-token: write
+
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - main
+
+jobs:
+  run:
+    runs-on: ubuntu-latest
+    environment: production
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Configure Git
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+
+      - name: Guard - BREAKING CHANGE should not be in body
+        id: guard_breaking_change
+        run: |
+          LAST_COMMIT_MESSAGE="${{ github.event.head_commit.message }}"
+          echo "Commit message: \"$LAST_COMMIT_MESSAGE\""
+          if [[ "$LAST_COMMIT_MESSAGE" == *"BREAKING CHANGE"* ]]; then
+              echo "ERROR: Commit message should not include 'BREAKING CHANGE'."
+              exit 1
+          fi
+        shell: bash
+
+      - name: Guard - Decide if Docs should run
+        id: guard_job
+        run: |
+          LAST_COMMIT_MESSAGE="${{ github.event.head_commit.message }}"
+          echo "Commit message: \"$LAST_COMMIT_MESSAGE\""
+          if [[ "$LAST_COMMIT_MESSAGE" != docs:\ * ]]; then
+              echo "Commit message does not include 'docs: '. Docs pipeline will not run."
+              echo "should_run=false" >> "$GITHUB_OUTPUT"
+          else
+              echo "should_run=true" >> "$GITHUB_OUTPUT"
+          fi
+        shell: bash
+
+      - name: Install pnpm
+        if: steps.guard_job.outputs.should_run == 'true'
+        uses: pnpm/action-setup@v4
+        with:
+          version: 9
+          run_install: false
+
+      - name: Install Node.js
+        if: steps.guard_job.outputs.should_run == 'true'
+        uses: actions/setup-node@v4
+        with:
+          node-version: lts/*
+          registry-url: 'https://registry.npmjs.org/'
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_AUTH_TOKEN }}
+
+      - name: Install dependencies
+        if: steps.guard_job.outputs.should_run == 'true'
+        run: pnpm i
+
+      - name: Lint
+        if: steps.guard_job.outputs.should_run == 'true'
+        run: cd packages/fhi-designsystem; pnpm lint
+
+      - name: Build
+        if: steps.guard_job.outputs.should_run == 'true'
+        run: cd packages/fhi-designsystem; pnpm build
+
+      - name: Prepare Testing Environment
+        if: steps.guard_job.outputs.should_run == 'true'
+        run: cd packages/fhi-designsystem; pnpm exec playwright install --with-deps
+
+      - name: Test
+        if: steps.guard_job.outputs.should_run == 'true'
+        run: cd packages/fhi-designsystem; pnpm test
+
+      - name: Build Storybook
+        if: steps.guard_job.outputs.should_run == 'true'
+        run: cd packages/fhi-designsystem; pnpm storybook:build
+
+      - name: Deploy Storybook
+        if: steps.guard_job.outputs.should_run == 'true'
+        uses: Azure/static-web-apps-deploy@v1
+        with:
+          azure_static_web_apps_api_token: ${{ secrets.AZURE_STORYBOOK_API_TOKEN }}
+          action: 'upload'
+          app_location: 'packages/fhi-designsystem/storybook-static'
+          skip_app_build: true
