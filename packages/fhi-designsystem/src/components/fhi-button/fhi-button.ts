@@ -111,7 +111,6 @@ export class FhiButton extends LitElement {
       }
     }
 
-    // Color=neutral
     :host([color='neutral'][variant='strong']) {
       button {
         background-color: var(--color-neutral-base);
@@ -198,10 +197,11 @@ export class FhiButton extends LitElement {
       }
     }
 
-    // danger
     :host([color='danger'][variant='strong']) {
       button {
         background-color: var(--color-danger-base);
+        color: var(--color-danger-text-inverted);
+        border-color: transparent;
         &:hover {
           background-color: var(--color-danger-base-hover);
         }
@@ -210,6 +210,7 @@ export class FhiButton extends LitElement {
         }
         &:disabled {
           background-color: var(--color-danger-base);
+          opacity: 0.6;
         }
       }
     }
