@@ -22,7 +22,7 @@ const meta: Meta = {
     html`<fhi-button
       color=${ifDefined(args.color)}
       variant=${ifDefined(args.variant)}
-      inactive=${ifDefined(args.inactive)}
+      disabled=${ifDefined(args.disabled)}
     >
       Handling
     </fhi-button>`,
@@ -65,7 +65,7 @@ export const Disabled: Story = {
   args: {
     color: 'accent',
     variant: 'strong',
-    inactive: true,
+    disabled: true,
   } satisfies FhiButtonProps,
 };
 

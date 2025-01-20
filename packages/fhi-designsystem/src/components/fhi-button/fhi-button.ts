@@ -5,7 +5,7 @@ export const FhiButtonSelector = 'fhi-button';
 
 export type FhiButtonProps = Pick<
   FhiButton,
-  'color' | 'variant' | 'inactive' | 'size'
+  'color' | 'variant' | 'disabled' | 'size'
 >;
 
 @customElement(FhiButtonSelector)
@@ -16,11 +16,11 @@ export class FhiButton extends LitElement {
     | 'subtle'
     | 'outlined'
     | 'text';
-  @property({ type: Boolean }) inactive?: boolean;
+  @property({ type: Boolean }) disabled?: boolean;
   @property({ type: String }) size?: 'large' | 'medium' | 'small';
 
   render() {
-    return html`<button ?disabled=${this.inactive}><slot></slot></button>`;
+    return html`<button ?disabled=${this.disabled}><slot></slot></button>`;
   }
 
   static styles = css`
@@ -28,6 +28,7 @@ export class FhiButton extends LitElement {
       button {
         border-radius: 12px;
         padding: 10px;
+        border-style: inset;
       }
     }
 
@@ -43,7 +44,8 @@ export class FhiButton extends LitElement {
           background-color: var(--color-accent-base-active);
         }
         &:disabled {
-          //change opacity to token
+          background-color: var(--color-accent-base);
+          color: var(--color-accent-text-inverted);
           opacity: 0.6;
         }
       }
@@ -62,15 +64,14 @@ export class FhiButton extends LitElement {
         }
         &:disabled {
           background-color: var(--color-accent-surface);
-          // change opacity
-          opacity: 60%;
+          opacity: 0.6;
         }
       }
     }
 
     :host([color='accent'][variant='outlined']) {
       button {
-        border-color: var(--color-accent-border);
+        border: 1px solid var(--color-accent-border);
         color: var(--color-accent-text-subtle);
         background-color: transparent;
         &:hover {
@@ -82,9 +83,9 @@ export class FhiButton extends LitElement {
           border-color: transparent;
         }
         &:disabled {
-          border-color: var(--color-accent-border);
-          // add opacity
-          opacity: 60%;
+          border-color: 1px solid var(--color-accent-border);
+          background-color: transparent;
+          opacity: 0.6;
         }
       }
     }
@@ -96,12 +97,16 @@ export class FhiButton extends LitElement {
         border-color: transparent;
         &:hover {
           background-color: var(--color-accent-surface);
+          color: var(--color-accent-text);
         }
         &:active {
           background-color: var(--color-accent-surface-hover);
+          color: var(--color-accent-text);
         }
         &:disabled {
-          opacity: 60%;
+          background-color: transparent;
+          color: var(--color-accent-text-subtle);
+          opacity: 0.6;
         }
       }
     }
@@ -110,20 +115,19 @@ export class FhiButton extends LitElement {
     :host([color='neutral'][variant='strong']) {
       button {
         background-color: var(--color-neutral-base);
-        color: var(--color-neutral-text-subtle);
+        color: var(--color-neutral-text-inverted);
         border-color: transparent;
         &:hover {
           background-color: var(--color-neutral-base-hover);
-          color: var(--color-neutral-text);
+          color: var(--color-neutral-text-inverted);
         }
         &:active {
           background-color: var(--color-neutral-base-active);
-          color: var(--color-neutral-text);
+          color: var(--color-neutral-text-inverted);
         }
         &:disabled {
           background-color: var(--color-neutral-base);
-          color: var(--color-neutral-text);
-          // opacity
+          color: var(--color-neutral-text-inverted);
           opacity: 0.6;
         }
       }
@@ -145,13 +149,14 @@ export class FhiButton extends LitElement {
         &:disabled {
           background-color: var(--color-neutral-surface);
           color: var(--color-neutral-text);
+          opacity: 0.6;
         }
       }
     }
 
     :host([color='neutral'][variant='outlined']) {
       button {
-        border-color: var(--color-neutral-border);
+        border: 1px solid var(--color-neutral-border);
         color: var(--color-neutral-text-subtle);
         background-color: transparent;
         &:hover {
@@ -165,7 +170,10 @@ export class FhiButton extends LitElement {
           border-color: transparent;
         }
         &:disabled {
-          opacity: 60%;
+          border: 1px solid var(--color-neutral-border);
+          color: var(--color-neutral-text-subtle);
+          background-color: transparent;
+          opacity: 0.6;
         }
       }
     }
@@ -183,7 +191,9 @@ export class FhiButton extends LitElement {
           color: var(--color-neutral-text);
         }
         &:disabled {
-          opacity: 60%;
+          background-color: transparent;
+          color: var(--color-neutral-text-subtle);
+          opacity: 0.6;
         }
       }
     }
@@ -200,7 +210,6 @@ export class FhiButton extends LitElement {
         }
         &:disabled {
           background-color: var(--color-danger-base);
-          // opacity
         }
       }
     }
@@ -228,7 +237,7 @@ export class FhiButton extends LitElement {
 
     :host([color='danger'][variant='outlined']) {
       button {
-        border-color: var(--color-danger-border);
+        border: 1px solid var(--color-danger-border);
         color: var(--color-danger-text-subtle);
         background-color: transparent;
         &:hover {
@@ -244,7 +253,7 @@ export class FhiButton extends LitElement {
         &:disabled {
           border-color: var(--color-danger-border);
           color: var(--color-danger-text);
-          // opacity
+          background-color: transparent;
           opacity: 0.6;
         }
       }
