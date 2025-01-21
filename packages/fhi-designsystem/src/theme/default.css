@@ -249,4 +249,32 @@
   --typography-body-small-font-weight: var(--font-weight-regular);
   --typography-body-small-line-height: 1.25rem;
   --typography-body-small-letter-spacing: 1%;
+
+  /* Dimensions */
+  /* Primitive */
+  --spacing-0: 0rem;
+  --spacing-050: 0.25rem;
+  --spacing-100: 0.5rem;
+  --spacing-150: 0.75rem;
+  --spacing-200: 1rem;
+  --spacing-250: 1.25rem;
+  --spacing-300: 1.5rem;
+  --spacing-400: 2rem;
+  --spacing-500: 2.5rem;
+  --spacing-600: 3rem;
+  --spacing-800: 4rem;
+  --spacing-1000: 5rem;
+
+  --border-radius-050: 0.25rem;
+  --border-radius-100: 0.5rem;
+  --border-radius-150: 0.75rem;
+  --border-radius-200: 1rem;
+  --border-radius-250: 1.25rem;
+  --border-radius-300: 1.5rem;
+  --border-radius-full: 100%;
+
+  /* Semantic */
+  --border-width: 0.0625rem;
+  --border-width-active: 0.125rem;
+  --border-width-focus: 0.25rem;
 }
