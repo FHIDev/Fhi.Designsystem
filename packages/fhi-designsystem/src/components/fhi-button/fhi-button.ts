@@ -26,27 +26,34 @@ export class FhiButton extends LitElement {
   static styles = css`
     :host {
       button {
-        border-radius: 12px;
+        border-radius: 20px;
         padding: 10px;
         border-style: inset;
+        border: 1px solid;
+        cursor: pointer;
+        &:hover {
+          opacity: 0.6;
+        }
       }
     }
 
     :host([color='accent'][variant='strong']) {
       button {
         background-color: var(--color-accent-base);
+        border-color: var(--color-accent-base);
         color: var(--color-accent-text-inverted);
-        border-color: transparent;
         &:hover {
           background-color: var(--color-accent-base-hover);
+          border-color: var(--color-accent-base-hover);
         }
         &:active {
           background-color: var(--color-accent-base-active);
+          border-color: var(--color-accent-base-active);
         }
         &:disabled {
           background-color: var(--color-accent-base);
+          border-color: var(--color-accent-base);
           color: var(--color-accent-text-inverted);
-          opacity: 0.6;
         }
       }
     }
@@ -54,38 +61,39 @@ export class FhiButton extends LitElement {
     :host([color='accent'][variant='subtle']) {
       button {
         background-color: var(--color-accent-surface);
+        border-color: var(--color-accent-surface);
         color: var(--color-accent-text-subtle);
-        border-color: transparent;
         &:hover {
           background-color: var(--color-accent-surface-hover);
+          border-color: var(--color-accent-surface-hover);
         }
         &:active {
           background-color: var(--color-accent-surface-active);
+          border-color: var(--color-accent-surface-active);
         }
         &:disabled {
           background-color: var(--color-accent-surface);
-          opacity: 0.6;
+          border-color: var(--color-accent-surface);
         }
       }
     }
 
     :host([color='accent'][variant='outlined']) {
       button {
-        border: 1px solid var(--color-accent-border);
+        border-color: var(--color-accent-border);
         color: var(--color-accent-text-subtle);
         background-color: transparent;
         &:hover {
           background-color: var(--color-accent-surface);
-          border-color: transparent;
+          border-color: var(--color-accent-surface);
         }
         &:active {
           background-color: var(--color-accent-surface-active);
-          border-color: transparent;
+          border-color: var(--color-accent-surface-active);
         }
         &:disabled {
-          border-color: 1px solid var(--color-accent-border);
+          border-color: var(--color-accent-border);
           background-color: transparent;
-          opacity: 0.6;
         }
       }
     }
@@ -93,20 +101,21 @@ export class FhiButton extends LitElement {
     :host([color='accent'][variant='text']) {
       button {
         background-color: transparent;
-        color: var(--color-accent-text-subtle);
         border-color: transparent;
+        color: var(--color-accent-text-subtle);
         &:hover {
           background-color: var(--color-accent-surface);
+          border-color: var(--color-accent-surface);
           color: var(--color-accent-text);
         }
         &:active {
           background-color: var(--color-accent-surface-hover);
+          border-color: var(--color-accent-surface-hover);
           color: var(--color-accent-text);
         }
         &:disabled {
           background-color: transparent;
           color: var(--color-accent-text-subtle);
-          opacity: 0.6;
         }
       }
     }
@@ -114,20 +123,22 @@ export class FhiButton extends LitElement {
     :host([color='neutral'][variant='strong']) {
       button {
         background-color: var(--color-neutral-base);
+        border-color: var(--color-neutral-base);
         color: var(--color-neutral-text-inverted);
-        border-color: transparent;
         &:hover {
           background-color: var(--color-neutral-base-hover);
+          border-color: var(--color-neutral-base-hover);
           color: var(--color-neutral-text-inverted);
         }
         &:active {
           background-color: var(--color-neutral-base-active);
+          border-color: var(--color-neutral-base-active);
           color: var(--color-neutral-text-inverted);
         }
         &:disabled {
           background-color: var(--color-neutral-base);
+          border-color: var(--color-neutral-base);
           color: var(--color-neutral-text-inverted);
-          opacity: 0.6;
         }
       }
     }
@@ -135,44 +146,45 @@ export class FhiButton extends LitElement {
     :host([color='neutral'][variant='subtle']) {
       button {
         background-color: var(--color-neutral-surface);
+        border-color: var(--color-neutral-surface);
         color: var(--color-neutral-text-subtle);
-        border-color: transparent;
         &:hover {
           background-color: var(--color-neutral-surface-hover);
+          border-color: var(--color-neutral-surface-hover);
           color: var(--color-neutral-text);
         }
         &:active {
           background-color: var(--color-neutral-surface-active);
+          border-color: var(--color-neutral-surface-active);
           color: var(--color-neutral-text);
         }
         &:disabled {
           background-color: var(--color-neutral-surface);
+          border-color: var(--color-neutral-surface);
           color: var(--color-neutral-text);
-          opacity: 0.6;
         }
       }
     }
 
     :host([color='neutral'][variant='outlined']) {
       button {
-        border: 1px solid var(--color-neutral-border);
+        border-color: var(--color-neutral-border);
         color: var(--color-neutral-text-subtle);
         background-color: transparent;
         &:hover {
           background-color: var(--color-neutral-surface);
+          border-color: var(--color-neutral-surface);
           color: var(--color-neutral-text);
-          border-color: transparent;
         }
         &:active {
           background-color: var(--color-neutral-surface-hover);
+          border-color: var(--color-neutral-surface-hover);
           color: var(--color-neutral-text);
-          border-color: transparent;
         }
         &:disabled {
-          border: 1px solid var(--color-neutral-border);
+          border-color: var(--color-neutral-border);
           color: var(--color-neutral-text-subtle);
           background-color: transparent;
-          opacity: 0.6;
         }
       }
     }
@@ -183,16 +195,18 @@ export class FhiButton extends LitElement {
         color: var(--color-neutral-text-subtle);
         &:hover {
           background-color: var(--color-neutral-surface);
+          border-color: var(--color-neutral-surface);
           color: var(--color-neutral-text);
         }
         &:active {
           background-color: var(--color-neutral-surface-hover);
+          border-color: var(--color-neutral-surface-hover);
           color: var(--color-neutral-text);
         }
         &:disabled {
           background-color: transparent;
+          border-color: transparent;
           color: var(--color-neutral-text-subtle);
-          opacity: 0.6;
         }
       }
     }
@@ -200,17 +214,19 @@ export class FhiButton extends LitElement {
     :host([color='danger'][variant='strong']) {
       button {
         background-color: var(--color-danger-base);
+        border-color: var(--color-danger-base);
         color: var(--color-danger-text-inverted);
-        border-color: transparent;
         &:hover {
           background-color: var(--color-danger-base-hover);
+          border-color: var(--color-danger-base-hover);
         }
         &:active {
           background-color: var(--color-danger-base-active);
+          border-color: var(--color-danger-base-active);
         }
         &:disabled {
           background-color: var(--color-danger-base);
-          opacity: 0.6;
+          border-color: var(--color-danger-base);
         }
       }
     }
@@ -218,83 +234,69 @@ export class FhiButton extends LitElement {
     :host([color='danger'][variant='subtle']) {
       button {
         background-color: var(--color-danger-surface);
+        border-color: var(--color-danger-surface);
         color: var(--color-danger-text-subtle);
-        border-color: transparent;
         &:hover {
           background-color: var(--color-danger-surface-hover);
+          border-color: var(--color-danger-surface-hover);
           color: var(--color-danger-text);
         }
         &:active {
           background-color: var(--color-danger-surface-active);
+          border-color: var(--color-danger-surface-active);
           color: var(--color-danger-text);
         }
         &:disabled {
           background-color: var(--color-danger-surface);
+          border-color: var(--color-danger-surface);
           color: var(--color-danger-text);
-          opacity: 0.6;
         }
       }
     }
 
     :host([color='danger'][variant='outlined']) {
       button {
-        border: 1px solid var(--color-danger-border);
+        border-color: var(--color-danger-border);
         color: var(--color-danger-text-subtle);
         background-color: transparent;
         &:hover {
           background-color: var(--color-danger-surface);
+          border-color: var(--color-danger-surface);
           color: var(--color-danger-text);
-          border-color: transparent;
         }
         &:active {
           background-color: var(--color-danger-surface-hover);
+          border-color: var(--color-danger-surface-hover);
           color: var(--color-danger-text);
-          border-color: transparent;
         }
         &:disabled {
           border-color: var(--color-danger-border);
           color: var(--color-danger-text);
           background-color: transparent;
-          opacity: 0.6;
         }
       }
     }
     :host([color='danger'][variant='text']) {
       button {
         background-color: transparent;
-        color: var(--color-danger-text-subtle);
         border-color: transparent;
+        color: var(--color-danger-text-subtle);
         &:hover {
           background-color: var(--color-danger-surface);
+          border-color: var(--color-danger-surface);
           color: var(--color-danger-text);
         }
         &:active {
           background-color: var(--color-danger-surface-active);
+          border-color: var(--color-danger-surface-active);
           color: var(--color-danger-text);
         }
         &:disabled {
           background-color: transparent;
+          border-color: transparent;
           color: var(--color-danger-text-subtle);
-          opacity: 0.6;
         }
       }
     }
   `;
 }
-
-/* 
-:host([color=''][variant='']) {
-button {
-
-&:hover {
-  background-color: var();
-}
-&:active {
-  background-color: var();
-}
-&:disabled {
-  background-color: var();
-}
-}
-}
- */
