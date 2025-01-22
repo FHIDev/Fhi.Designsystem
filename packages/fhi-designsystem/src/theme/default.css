@@ -271,7 +271,7 @@
   --border-radius-200: 1rem;
   --border-radius-250: 1.25rem;
   --border-radius-300: 1.5rem;
-  --border-radius-full: 100%;
+  --border-radius-full: 999rem;
 
   /* Semantic */
   --border-width: 0.0625rem;
