@@ -30,10 +30,38 @@ export class FhiButton extends LitElement {
         padding: 10px;
         border-style: inset;
         border: 1px solid;
+        font-family: var(--font-family-roboto-flex);
         cursor: pointer;
         &:hover {
           opacity: 0.6;
         }
+      }
+    }
+
+    :host([size='large']) {
+      button {
+        font-size: var(--typography-label-large-font-size);
+        font-weight: var(--typography-label-large-font-weight);
+        line-height: var(--typography-label-large-line-height);
+        letter-spacing: var(--typography-label-large-letter-spacing);
+      }
+    }
+
+    :host([size='medium']) {
+      button {
+        font-size: var(--typography-label-medium-font-size);
+        font-weight: var(--typography-label-medium-font-weight);
+        line-height: var(--typography-label-medium-line-height);
+        letter-spacing: var(--typography-label-medium-letter-spacing);
+      }
+    }
+
+    :host([size='small']) {
+      button {
+        font-size: var(--tyopgraphy-label-medium-font-size);
+        font-weight: var(--typography-label-medium-font-weight);
+        line-height: var(--typography-label-medium-line-height);
+        letter-spacing: var(--typography-label-medium-letter-spacing);
       }
     }
 
