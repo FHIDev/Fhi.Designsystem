@@ -23,7 +23,7 @@ const meta: Meta = {
       color=${ifDefined(args.color)}
       variant=${ifDefined(args.variant)}
       size=${ifDefined(args.size)}
-      disabled=${ifDefined(args.disabled)}
+      ?disabled=${args.disabled}
     >
       Handling
     </fhi-button>`,
@@ -50,6 +50,7 @@ export const Accent: Story = {
     color: 'accent',
     variant: 'strong',
     size: 'medium',
+    disabled: false,
   } satisfies FhiButtonProps,
 };
 
@@ -58,6 +59,7 @@ export const Neutral: Story = {
     color: 'neutral',
     variant: 'strong',
     size: 'medium',
+    disabled: false,
   } satisfies FhiButtonProps,
 };
 
@@ -66,6 +68,7 @@ export const Danger: Story = {
     color: 'danger',
     variant: 'strong',
     size: 'medium',
+    disabled: false,
   } satisfies FhiButtonProps,
 };
 

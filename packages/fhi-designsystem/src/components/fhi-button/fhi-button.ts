@@ -16,8 +16,8 @@ export class FhiButton extends LitElement {
     | 'subtle'
     | 'outlined'
     | 'text';
-  @property({ type: Boolean }) disabled?: boolean;
   @property({ type: String }) size?: 'large' | 'medium' | 'small';
+  @property({ type: Boolean, reflect: true }) disabled = false;
 
   render() {
     return html`<button ?disabled=${this.disabled}><slot></slot></button>`;
@@ -27,7 +27,6 @@ export class FhiButton extends LitElement {
     :host {
       button {
         border-radius: var(--border-radius-full);
-        padding: 10px;
         border-style: inset;
         border: 1px solid;
         font-family: var(--font-family-roboto-flex);
@@ -37,7 +36,7 @@ export class FhiButton extends LitElement {
         align-items: center;
 
         cursor: pointer;
-        &:hover {
+        &:disabled {
           opacity: 0.6;
         }
       }
