@@ -50,8 +50,11 @@ export class FhiButton extends LitElement {
         line-height: var(--typography-label-large-line-height);
         letter-spacing: var(--typography-label-large-letter-spacing);
 
-        //padding: var();
-        //gap: var();
+        padding-top: var(--spacing-200);
+        padding-right: var(--spacing-300);
+        padding-bottom: var(--spacing-200);
+        padding-left: var(--spacing-300);
+        gap: var(--spacing-100);
       }
     }
 
@@ -62,8 +65,11 @@ export class FhiButton extends LitElement {
         line-height: var(--typography-label-medium-line-height);
         letter-spacing: var(--typography-label-medium-letter-spacing);
 
-        //padding: var();
-        //gap: var();
+        padding-top: var(--spacing-100);
+        padding-right: var(--spacing-200);
+        padding-bottom: var(--spacing-100);
+        padding-left: var(--spacing-200);
+        gap: var(--spacing-050);
       }
     }
 
@@ -74,8 +80,10 @@ export class FhiButton extends LitElement {
         line-height: var(--typography-label-medium-line-height);
         letter-spacing: var(--typography-label-medium-letter-spacing);
 
-        //padding: var();
-        //gap: var();
+        padding-top: var(--spacing-050);
+        padding-right: var(--spacing-150);
+        padding-bottom: var(--spacing-050);
+        padding-left: var(--spacing-150);
       }
     }
 
