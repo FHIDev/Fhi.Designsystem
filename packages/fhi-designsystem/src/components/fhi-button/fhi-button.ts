@@ -26,11 +26,16 @@ export class FhiButton extends LitElement {
   static styles = css`
     :host {
       button {
-        border-radius: 20px;
+        border-radius: var(--border-radius-full);
         padding: 10px;
         border-style: inset;
         border: 1px solid;
         font-family: var(--font-family-roboto-flex);
+
+        display: inline-flex;
+        justify-content: center;
+        align-items: center;
+
         cursor: pointer;
         &:hover {
           opacity: 0.6;
@@ -44,6 +49,9 @@ export class FhiButton extends LitElement {
         font-weight: var(--typography-label-large-font-weight);
         line-height: var(--typography-label-large-line-height);
         letter-spacing: var(--typography-label-large-letter-spacing);
+
+        //padding: var();
+        //gap: var();
       }
     }
 
@@ -53,6 +61,9 @@ export class FhiButton extends LitElement {
         font-weight: var(--typography-label-medium-font-weight);
         line-height: var(--typography-label-medium-line-height);
         letter-spacing: var(--typography-label-medium-letter-spacing);
+
+        //padding: var();
+        //gap: var();
       }
     }
 
@@ -62,6 +73,9 @@ export class FhiButton extends LitElement {
         font-weight: var(--typography-label-medium-font-weight);
         line-height: var(--typography-label-medium-line-height);
         letter-spacing: var(--typography-label-medium-letter-spacing);
+
+        //padding: var();
+        //gap: var();
       }
     }
 
