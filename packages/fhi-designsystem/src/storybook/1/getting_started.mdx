@@ -1,0 +1,123 @@
+import { Meta } from '@storybook/blocks';
+
+<Meta title="FHI Designsystem/Getting Started" />
+ 
+# Velkommen til FHI Designsystem!
+
+<div style={{padding: ".25rem 1rem", background: "#D3E3F5", borderRadius: "2px", borderBottom: "4px solid #3283CE", marginBottom: "2rem"}} >
+Denne siden beskriver FHI Designsystem, med komponenter bygd som Web Components.
+Dokumentasjonen for det gamle designsystemet med komponenter for Angular, samt tilhørende CSS-bibliotek, finner du <a href="https://old.designsystem.fhi.no" target="_blank" rel="noopener" >her</a>.
+</div>
+
+
+## Table of Contents
+ 
+- [Installation](#installation)
+  - [Component library](#component-library)
+- [Usage](#usage)
+  - [Standard HTML/JS](#standard-htmljs)
+  - [Angular](#angular)
+  - [Blazor](#blazor)
+  - [React](#react)
+- [Design Resources](#design-resources)
+  - [Figma](#figma)
+  - [UI/UX Design Guidelines](#uiux-design-guidelines)
+  - [Design Assets](#design-assets)
+
+---
+
+## Installation
+
+### Component library
+ 
+Run the following command to add the component library to your project:
+```zsh
+npm install @folkehelseinstituttet/designsystem
+```
+**or,** if npm is not an option, you may use our CDN. Add the following script tag to your HTML file:
+```html
+<link
+  rel="stylesheet"
+  href="https://zealous-field-027caf703.5.azurestaticapps.net/"
+/>
+```
+
+<div style={{padding: ".25rem 1rem", background: "#FEE9E6", borderRadius: "2px", borderBottom: "4px solid #EC7C73", marginBottom: "2rem"}} >
+<p>
+We do not recommend using this approach in production.
+It requires the client to download the entire library—regardless of
+which components are actually used—which negatively impacts performance and bandwidth utilization.
+</p>
+Only use the CDN if installing the package with npm is not an option.
+</div>
+
+<br />
+
+## Usage
+
+### Angular
+Angular has built-in support for Web Components, so you can use the components directly in your Angular project.
+This is an axample of how to use the FHI Button component in an Angular project:
+
+First we need to tell angular that we are using web components.
+We do this by adding the  <a href="https://angular.dev/api/core/CUSTOM_ELEMENTS_SCHEMA">CUSTOM_ELEMENTS_SCHEMA</a> to the module decorator.
+```ts
+import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
+
+@NgModule({
+  declarations: [AppComponent],
+  imports: [BrowserModule],
+  schemas: [CUSTOM_ELEMENTS_SCHEMA],
+  bootstrap: [AppComponent],
+})
+
+```
+Then, in your angular component typescript file, import the component you want to use. In this case we want to use `fhi-button`:
+```ts
+import '@folkehelseinstituttet/designsystem/fhi-button';
+```
+
+Now, use the component as if it was a normal html element in your angular component template file.
+```html
+<fhi-button (click)="console.log('you clicked me!')">Click me!</fhi-button>
+```
+
+### React
+
+<div style={{padding: ".25rem 1rem", background: "#FFE7BA", borderRadius: "2px", borderBottom: "4px solid #F1A541", marginBottom: "2rem"}} >
+FHI Designsystem supports React version 19 and above. We do not offer support for older versions of React.
+</div>
+
+In version 19 and above, React has seamless support for web components.
+You can use them directly in your JSX code as if they were standard html elements.
+
+This is an axample of how to use the FHI Button component in a React project:
+
+First, in your React component file, import the component you want to use. In this case we want to use `fhi-button`:
+```jsx
+import '@folkehelseinstituttet/designsystem/fhi-button';
+```
+
+Now, use the component as if it was a normal html element in your React component:
+```jsx
+<fhi-button onClick={() => console.log('you clicked me!')}>Click me!</fhi-button>
+```
+<br />
+
+## Design Resources
+
+### Figma
+
+[Figma](https://www.figma.com/) is a collaborative design and prototyping tool. It's the heart of the design process, allowing designers to work together seamlessly.
+ 
+- **Get Access**: If you're not already part of the Figma project, request access from the project lead or manager.
+ 
+### UI/UX Design Guidelines
+ 
+Before you dive into designing, familiarize yourself with our UI/UX design guidelines. They provide valuable insights into our design philosophy and standards.
+
+- [UI/UX Guidelines Document](https://okidoki.com)
+
+### Design Assets
+ 
+All the essential design assets like logos, icons, and brand guidelines can be found in the Figma project. Ensure you have access and familiarize yourself with these assets for consistency.
