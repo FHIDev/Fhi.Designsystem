@@ -1,20 +1,19 @@
 import { Meta } from '@storybook/blocks';
 
-<Meta title="FHI Designsystem/Getting Started" />
+<Meta title="FHI Designsystem/Kom i gang" />
  
 # Velkommen til FHI Designsystem!
 
-<div style={{padding: ".25rem 1rem", background: "#D3E3F5", borderRadius: "2px", borderBottom: "4px solid #3283CE", marginBottom: "2rem"}} >
-Denne siden beskriver FHI Designsystem, med komponenter bygd som Web Components.
+<div style={{padding: ".25rem 1rem", background: "#D3E3F5", borderRadius: "2px", borderBottom: "4px solid #3283CE", marginBottom: "3rem"}} >
+Denne siden beskriver FHI Designsystem, med komponenter bygd som webkomponenter.
 Dokumentasjonen for det gamle designsystemet med komponenter for Angular, samt tilhørende CSS-bibliotek, finner du <a href="https://old.designsystem.fhi.no" target="_blank" rel="noopener" >her</a>.
 </div>
 
-
-## Table of Contents
+## Innholdsfortegnelse
  
-- [Installation](#installation)
-  - [Component library](#component-library)
-- [Usage](#usage)
+- [Installasjon](#installasjon)
+  - [Komponentbibliotek](#komponentbibliotek)
+- [Bruk](#bruk)
   - [Standard HTML/JS](#standard-htmljs)
   - [Angular](#angular)
   - [Blazor](#blazor)
@@ -25,42 +24,43 @@ Dokumentasjonen for det gamle designsystemet med komponenter for Angular, samt t
   - [Design Assets](#design-assets)
 
 ---
+<br />
 
-## Installation
+## Installasjon
 
-### Component library
+### Komponentbibliotek
  
-Run the following command to add the component library to your project:
+Kjør følgende kommando for å legge til komponentbiblioteket i prosjektet ditt:
 ```zsh
 npm install @folkehelseinstituttet/designsystem
 ```
-**or,** if npm is not an option, you may use our CDN. Add the following script tag to your HTML file:
+**eller**, om npm ikke er et alternativ, kan du bruke vår CDN. Legg til følgende script-tag i HTML-filen din:
 ```html
-<link
-  rel="stylesheet"
-  href="https://zealous-field-027caf703.5.azurestaticapps.net/"
-/>
+<script
+  src="https://zealous-field-027caf703.5.azurestaticapps.net/fhi-designsystem.js"
+  crossorigin="anonymous">
+</script>
 ```
 
 <div style={{padding: ".25rem 1rem", background: "#FEE9E6", borderRadius: "2px", borderBottom: "4px solid #EC7C73", marginBottom: "2rem"}} >
 <p>
-We do not recommend using this approach in production.
-It requires the client to download the entire library—regardless of
-which components are actually used—which negatively impacts performance and bandwidth utilization.
+Vi anbefaler ikke å bruke CDN i produksjon.
+Det krever at klienten laster ned hele biblioteket, uavhengig av hvilke komponenter som faktisk brukes. Dette påvirker ytelsen og båndbreddebruken negativt.
 </p>
-Only use the CDN if installing the package with npm is not an option.
+Bruk bare CDN hvis installasjon av pakken med npm ikke er et alternativ.
 </div>
 
 <br />
 
-## Usage
+## Bruk
 
 ### Angular
-Angular has built-in support for Web Components, so you can use the components directly in your Angular project.
-This is an axample of how to use the FHI Button component in an Angular project:
+Angular har innebygd støtte for webkomponenter. Du kan derfor bruke komponentene direkte i Angular-prosjektet ditt.
+Dette er et eksempel på hvordan du bruker `fhi-button`-komponenten i et Angular-prosjekt:
 
-First we need to tell angular that we are using web components.
-We do this by adding the  <a href="https://angular.dev/api/core/CUSTOM_ELEMENTS_SCHEMA">CUSTOM_ELEMENTS_SCHEMA</a> to the module decorator.
+Først må vi fortelle Angular at vi bruker webkomponenter.
+Vi gjør dette ved å legge til <a href="https://angular.dev/api/core/CUSTOM_ELEMENTS_SCHEMA">CUSTOM_ELEMENTS_SCHEMA</a>
+i angular komponent-filen sin moduldekoratør.
 ```ts
 import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 
@@ -72,35 +72,37 @@ import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 })
 
 ```
-Then, in your angular component typescript file, import the component you want to use. In this case we want to use `fhi-button`:
+Husk å importere komponenten i Angular-komponentens typescript-fil. I dette tilfellet importerer vi  `fhi-button`:
 ```ts
 import '@folkehelseinstituttet/designsystem/fhi-button';
 ```
 
-Now, use the component as if it was a normal html element in your angular component template file.
-```html
-<fhi-button (click)="console.log('you clicked me!')">Click me!</fhi-button>
-```
+Nå kan du bruke komponenten som om det var et vanlig html-element i din Angular-komponents HTML-fil:
 
+_obs: `handleClick` er brukt her som et eksempel. Du må selv lage en metode i Angular-komponenten som håndterer klikk-eventet._
+```html
+<fhi-button (click)="handleClick($event)">Click me!</fhi-button>
+```
 ### React
 
 <div style={{padding: ".25rem 1rem", background: "#FFE7BA", borderRadius: "2px", borderBottom: "4px solid #F1A541", marginBottom: "2rem"}} >
 FHI Designsystem supports React version 19 and above. We do not offer support for older versions of React.
 </div>
 
-In version 19 and above, React has seamless support for web components.
-You can use them directly in your JSX code as if they were standard html elements.
+I React 19 og over kan du bruke webkomponenter direkte i JSX-koden din som om de var standard html-elementer.
 
-This is an axample of how to use the FHI Button component in a React project:
+Dette er et eksempel på hvordan du bruker `fhi-button`-komponenten i et React-prosjekt:
 
-First, in your React component file, import the component you want to use. In this case we want to use `fhi-button`:
+Først, i din React-komponentfil, importer komponenten du vil bruke. I dette tilfellet vil vi bruke `fhi-button`:
 ```jsx
 import '@folkehelseinstituttet/designsystem/fhi-button';
 ```
 
-Now, use the component as if it was a normal html element in your React component:
+Nå kan du bruke komponenten som om det var et vanlig html-element i din React-komponents JSX-fil:
+
+_obs: `handleClick` er brukt her som et eksempel. Du må selv lage en metode i Angular-komponenten som håndterer klikk-eventet._
 ```jsx
-<fhi-button onClick={() => console.log('you clicked me!')}>Click me!</fhi-button>
+<fhi-button onClick={handleClick(event)}>Click me!</fhi-button>
 ```
 <br />
 
