@@ -31,7 +31,6 @@ const meta: Meta = {
     color: {
       options: ['accent', 'neutral', 'danger'],
       control: { type: 'radio' },
-      description: 'Bestemmer fargen på knappen',
     },
     variant: {
       options: ['strong', 'subtle', 'outlined', 'text'],
@@ -40,7 +39,6 @@ const meta: Meta = {
     size: {
       options: ['large', 'medium', 'small'],
       control: { type: 'radio' },
-      description: 'Bestemmer størrelsen på knappen',
     },
   },
 };
@@ -72,6 +70,39 @@ export const Danger: Story = {
     size: 'medium',
     disabled: false,
   } satisfies FhiButtonProps,
+};
+
+export const showVariants: Story = {
+  tags: ['!dev'],
+  render: () => html`
+    <fhi-button color="accent" variant="strong" size="medium"
+      >Handling</fhi-button
+    >
+    <fhi-button color="accent" variant="subtle" size="medium"
+      >Handling</fhi-button
+    >
+    <fhi-button color="accent" variant="outlined" size="medium"
+      >Handling</fhi-button
+    >
+    <fhi-button color="accent" variant="text" size="medium"
+      >Handling</fhi-button
+    >
+  `,
+};
+
+export const showSizes: Story = {
+  tags: ['!dev'],
+  render: () => html`
+    <fhi-button color="accent" variant="strong" size="large"
+      >Handling</fhi-button
+    >
+    <fhi-button color="accent" variant="strong" size="medium"
+      >Handling</fhi-button
+    >
+    <fhi-button color="accent" variant="strong" size="small"
+      >Handling</fhi-button
+    >
+  `,
 };
 
 export default meta;
