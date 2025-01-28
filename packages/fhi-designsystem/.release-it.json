@@ -10,7 +10,7 @@
     "draft": false,
     "release": true,
     "releaseName": "v${version}",
-    "assets": ["dist/cdn/fhi-designsystem.js"]
+    "assets": ["dist/cdn/fhi-designsystem.js", "dist/cdn/theme/default.css"]
   },
   "npm": {
     "publish": false
