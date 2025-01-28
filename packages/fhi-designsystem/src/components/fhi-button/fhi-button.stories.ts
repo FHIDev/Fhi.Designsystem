@@ -11,7 +11,6 @@ FhiButton;
 
 const meta: Meta = {
   title: 'Components/fhi-button',
-  tags: ['autodocs'],
   parameters: {
     actions: {
       handles: ['click'],
@@ -31,14 +30,17 @@ const meta: Meta = {
     color: {
       options: ['accent', 'neutral', 'danger'],
       control: { type: 'radio' },
+      description: 'Bestemmer fargen til knappen',
     },
     variant: {
       options: ['strong', 'subtle', 'outlined', 'text'],
       control: { type: 'radio' },
+      description: 'Bestemmer variant',
     },
     size: {
       options: ['large', 'medium', 'small'],
       control: { type: 'radio' },
+      description: 'Bestemmer størrelsen',
     },
   },
 };
