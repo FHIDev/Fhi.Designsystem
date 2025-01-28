@@ -1,0 +1,29 @@
+import { FhiButton } from './fhi-button.ts';
+import * as FhiButtonStories from './fhi-button.stories.ts';
+import { Meta, Title, Description, Story, Canvas } from '@storybook/blocks';
+
+<Meta of={FhiButtonStories} />
+
+<Title />
+
+Knapper lar brukere sette i gang handlinger, som å lagre, sende inn skjemaer, navigere seg videre og andre spesifikke oppgaver
+
+# Passer til
+
+- Å utføre spesifikke handling, slik som å sende inn et skjemasvar eller åpne en meny
+
+- Å starte, navigere seg gjennom og avslutte en flyt eller prosess, for eksempel med “Neste” eller «Gå videre»
+
+# Valg
+
+Ulike varianter og størrelser kan gi knappen ulike vekter av fremheving, for å skape hierarki og veilede oppmerksomheten til brukeren.
+
+- `accent` er default. Knapper som skal ta oppmerksomhet og stå ut. Brukes gjerne for å gå videre eller avslutte en flyt.
+
+<Canvas of={FhiButtonStories.Accent} />
+
+- `neutral` Brukes på handlinger som ikke trenger mye oppmerksomhet. Mye bruk av 'neutral' forsterker bruk av `accent`, når du trenger det.
+
+<Canvas of={FhiButtonStories.Neutral} />
+
+- `danger` Signaliserer destruktive handlinger, for eksempel der data slettes eller handlinger ikke kan reverseres.

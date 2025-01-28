@@ -10,13 +10,18 @@ export type FhiButtonProps = Pick<
 
 @customElement(FhiButtonSelector)
 export class FhiButton extends LitElement {
-  @property({ type: String }) color?: 'accent' | 'neutral' | 'danger';
+  /**
+   * Bestemmer fargen på knappen
+   */
+  @property({ type: String }) color?: 'accent' | 'neutral' | 'danger' =
+    'neutral';
+
   @property({ type: String }) variant?:
     | 'strong'
     | 'subtle'
     | 'outlined'
-    | 'text';
-  @property({ type: String }) size?: 'large' | 'medium' | 'small';
+    | 'text' = 'strong';
+  @property({ type: String }) size?: 'large' | 'medium' | 'small' = 'medium';
   @property({ type: Boolean, reflect: true }) disabled = false;
 
   render() {

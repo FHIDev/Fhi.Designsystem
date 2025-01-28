@@ -31,6 +31,7 @@ const meta: Meta = {
     color: {
       options: ['accent', 'neutral', 'danger'],
       control: { type: 'radio' },
+      description: 'Bestemmer fargen på knappen',
     },
     variant: {
       options: ['strong', 'subtle', 'outlined', 'text'],
@@ -39,6 +40,7 @@ const meta: Meta = {
     size: {
       options: ['large', 'medium', 'small'],
       control: { type: 'radio' },
+      description: 'Bestemmer størrelsen på knappen',
     },
   },
 };
@@ -69,15 +71,6 @@ export const Danger: Story = {
     variant: 'strong',
     size: 'medium',
     disabled: false,
-  } satisfies FhiButtonProps,
-};
-
-export const Disabled: Story = {
-  args: {
-    color: 'accent',
-    variant: 'strong',
-    size: 'medium',
-    disabled: true,
   } satisfies FhiButtonProps,
 };
 
