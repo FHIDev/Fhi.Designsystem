@@ -8,24 +8,54 @@ export type FhiButtonProps = Pick<
   'color' | 'variant' | 'disabled' | 'size'
 >;
 
+/**
+ * Button component
+ *
+ * @tag fhi-button
+ *
+ * @slot contains the content of the button
+ *
+ */
 @customElement(FhiButtonSelector)
 export class FhiButton extends LitElement {
   /**
-   * Bestemmer fargen på knappen
+   * Bestemmer fargen på knappen.
+   * @default 'accent'
    */
-  @property({ type: String }) color?: 'accent' | 'neutral' | 'danger' =
-    'neutral';
+  @property({ type: String, reflect: true }) color:
+    | 'accent'
+    | 'neutral'
+    | 'danger' = 'accent';
 
-  @property({ type: String }) variant?:
+  /**
+   * Bestemmer varianten av knappen.
+   * @default 'strong'
+   */
+  @property({ type: String, reflect: true }) variant:
     | 'strong'
     | 'subtle'
     | 'outlined'
     | 'text' = 'strong';
-  @property({ type: String }) size?: 'large' | 'medium' | 'small' = 'medium';
+
+  /**
+   * Bestemmer størrelsen på knappen.
+   * @default 'medium'
+   */
+  @property({ type: String, reflect: true }) size?:
+    | 'large'
+    | 'medium'
+    | 'small' = 'medium';
+
+  /**
+   * Bestemmer om knappen er tilgjengelig.
+   * @deafult false
+   */
   @property({ type: Boolean, reflect: true }) disabled = false;
 
   render() {
-    return html`<button ?disabled=${this.disabled}><slot></slot></button>`;
+    return html`<button ?disabled=${this.disabled}>
+      <slot></slot>
+    </button>`;
   }
 
   static styles = css`
@@ -242,6 +272,7 @@ export class FhiButton extends LitElement {
         }
       }
     }
+
     :host([color='neutral'][variant='text']) {
       button {
         background-color: transparent;

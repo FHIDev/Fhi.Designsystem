@@ -10,7 +10,7 @@ import { FhiButton, FhiButtonProps } from './fhi-button';
 FhiButton;
 
 const meta: Meta = {
-  title: 'Components/fhi-button',
+  title: 'Components/Button',
   parameters: {
     actions: {
       handles: ['click'],
@@ -29,23 +29,30 @@ const meta: Meta = {
   argTypes: {
     color: {
       options: ['accent', 'neutral', 'danger'],
-      control: { type: 'radio' },
-      description: 'Bestemmer fargen til knappen',
+      control: { type: 'select' },
     },
     variant: {
       options: ['strong', 'subtle', 'outlined', 'text'],
-      control: { type: 'radio' },
-      description: 'Bestemmer variant',
+      control: { type: 'select' },
     },
     size: {
       options: ['large', 'medium', 'small'],
-      control: { type: 'radio' },
-      description: 'Bestemmer størrelsen',
+      control: { type: 'select' },
     },
   },
 };
 
 type Story = StoryObj<FhiButtonProps>;
+
+export const Preview: Story = {
+  tags: ['!dev'],
+  args: {
+    color: 'accent',
+    variant: 'strong',
+    size: 'medium',
+    disabled: false,
+  } satisfies FhiButtonProps,
+};
 
 export const Accent: Story = {
   args: {
