@@ -277,4 +277,15 @@
   --fhi-border-width: 0.0625rem;
   --fhi-border-width-active: 0.125rem;
   --fhi-border-width-focus: 0.25rem;
+
+  /* Motion */
+  /* Semantic */
+  --fhi-ease-default: cubic-bezier(0.4, 0, 0.2, 1);
+  --fhi-duration-quick: 150ms;
+  --fhi-duration-medium: 250ms;
+  --fhi-duration-slow: 350ms;
+
+  /* Opacity */
+  /* Semantic */
+  --fhi-opacity-disabled: 0; 
 }
