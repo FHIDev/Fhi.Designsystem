@@ -81,19 +81,34 @@ export const Danger: Story = {
   } satisfies FhiButtonProps,
 };
 
-export const showVariants: Story = {
+export const showColors: Story = {
   tags: ['!dev'],
   render: () => html`
     <fhi-button color="accent" variant="strong" size="medium"
       >Handling</fhi-button
     >
-    <fhi-button color="accent" variant="subtle" size="medium"
+    <fhi-button color="neutral" variant="strong" size="medium"
       >Handling</fhi-button
     >
-    <fhi-button color="accent" variant="outlined" size="medium"
+    <fhi-button color="danger" variant="strong" size="medium"
       >Handling</fhi-button
     >
-    <fhi-button color="accent" variant="text" size="medium"
+  `,
+};
+
+export const showVariants: Story = {
+  tags: ['!dev'],
+  render: () => html`
+    <fhi-button color="neutral" variant="strong" size="medium"
+      >Handling</fhi-button
+    >
+    <fhi-button color="neutral" variant="subtle" size="medium"
+      >Handling</fhi-button
+    >
+    <fhi-button color="neutral" variant="outlined" size="medium"
+      >Handling</fhi-button
+    >
+    <fhi-button color="neutral" variant="text" size="medium"
       >Handling</fhi-button
     >
   `,
@@ -102,13 +117,13 @@ export const showVariants: Story = {
 export const showSizes: Story = {
   tags: ['!dev'],
   render: () => html`
-    <fhi-button color="accent" variant="strong" size="large"
+    <fhi-button color="neutral" variant="strong" size="large"
       >Handling</fhi-button
     >
-    <fhi-button color="accent" variant="strong" size="medium"
+    <fhi-button color="neutral" variant="strong" size="medium"
       >Handling</fhi-button
     >
-    <fhi-button color="accent" variant="strong" size="small"
+    <fhi-button color="neutral" variant="strong" size="small"
       >Handling</fhi-button
     >
   `,
