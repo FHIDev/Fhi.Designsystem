@@ -73,7 +73,7 @@ export class FhiButton extends LitElement {
 
         cursor: pointer;
         &:disabled {
-          opacity: var(--fhi-fhi-opacity-disabled);
+          opacity: var(--fhi-opacity-disabled);
         }
       }
     }
