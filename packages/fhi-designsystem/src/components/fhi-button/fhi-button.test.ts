@@ -31,6 +31,19 @@ describe('fhi-button', () => {
   });
 
   describe('User interaction', () => {
+    it('should not call onClick when disabled', async () => {
+      let count = 0;
+      const onClick = (): void => {
+        count++;
+      };
+
+      component = await fixture(html`
+        <fhi-button disabled @click=${onClick}>Not clickable</fhi-button>
+      `);
+
+      expect(count).to.equal(0);
+    });
+
     it('should handle onClick event', async () => {
       let count = 0;
       const onClick = (): void => {
@@ -44,19 +57,5 @@ describe('fhi-button', () => {
       component.click();
       await expect(count).to.equal(1);
     });
-
-    /* it('should not call onClick when disabled', async () => {
-      let count = 0;
-      const onClick = (): void => {
-        count++;
-      };
-
-      component = await fixture(html`
-        <fhi-button disabled @click=${onClick}>Not clickable</fhi-button>
-      `);
-
-      component.click();
-      await expect(count).to.equal(0);
-    }); */
   });
 });
