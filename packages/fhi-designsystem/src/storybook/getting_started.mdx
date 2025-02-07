@@ -18,6 +18,7 @@ Dokumentasjonen for det gamle designsystemet med komponenter for Angular, samt t
 - [Installasjon](#installasjon)
   - [Komponentbibliotek](#komponentbibliotek)
 - [Bruk](#bruk)
+  - [Standard HTML/JS](#standard-htmljs)
   - [Angular](#angular)
   - [React](#react)
   - [Blazor](#blazor)
@@ -63,6 +64,20 @@ Bruk bare CDN hvis installasjon av pakken med npm ikke er et alternativ.
 <br />
 
 ## Bruk
+
+### Standard HTML/JS
+
+Nettleseren har innebygd støtte for web komponenter. Du kan derfor bruke komponentene direkte i HTML-filen din uten ekstra konfigurasjon. 
+
+Under er et eksempel på hvordan du bruker en `fhi-button` i standard HTML/JS. Vi tar henhold i at du har brukt cdn da du installerte designsystem pakken.
+
+Alle komponenter i Designsystemet er globalt tilgjengelige i applikasjonen uten ekstra konfigurasjon.
+Du kan nå fritt bruke `fhi-button` hvor som helst i HTML-filen.
+
+e.g:
+```html
+<fhi-button onclick="console.log('Hello World')">Click me!</fhi-button>
+```
 
 ### Angular
 Angular har innebygd støtte for webkomponenter. Du kan derfor bruke komponentene direkte i Angular-prosjektet ditt.
