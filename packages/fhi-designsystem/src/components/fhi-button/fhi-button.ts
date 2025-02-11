@@ -1,5 +1,6 @@
 import { html, css, LitElement } from 'lit';
 import { customElement, property } from 'lit/decorators.js';
+import { ifDefined } from 'lit/directives/if-defined.js';
 
 export const FhiButtonSelector = 'fhi-button';
 
@@ -52,8 +53,13 @@ export class FhiButton extends LitElement {
    */
   @property({ type: Boolean, reflect: true }) disabled = false;
 
+  @property({ type: String, reflect: true }) type?:
+    | 'button'
+    | 'submit'
+    | 'reset';
+
   render() {
-    return html`<button ?disabled=${this.disabled}>
+    return html`<button ?disabled=${this.disabled} type=${ifDefined(this.type)}>
       <slot></slot>
     </button>`;
   }
