@@ -38,7 +38,7 @@ Kjør følgende kommando for å legge til komponentbiblioteket i prosjektet ditt
 ```zsh
 npm install @folkehelseinstituttet/designsystem
 ```
-**eller**, om npm ikke er et alternativ, kan du bruke vår CDN. Legg til følgende script og link tag under `<head>` i hoved HTML-filen for appen:
+**eller**, om `npm` ikke er et alternativ, kan du bruke vår CDN. Legg til følgende script og link tag under `<head>` i hoved-HTML-filen for appen:
 
 _obs: Bruker du Blazor er hoved HTML-filen typisk `app.razor`._
 ```html
@@ -58,7 +58,7 @@ _obs: Bruker du Blazor er hoved HTML-filen typisk `app.razor`._
 Vi anbefaler ikke å bruke CDN i produksjon.
 Det krever at klienten laster ned hele biblioteket, uavhengig av hvilke komponenter som faktisk brukes. Dette påvirker ytelsen og båndbreddebruken negativt.
 </p>
-Bruk bare CDN hvis installasjon av pakken med npm ikke er et alternativ.
+Bruk bare CDN hvis `npm` ikke er et alternativ.
 </div>
 
 <br />
@@ -67,9 +67,9 @@ Bruk bare CDN hvis installasjon av pakken med npm ikke er et alternativ.
 
 ### Standard HTML/JS
 
-Nettleseren har innebygd støtte for web komponenter. Du kan derfor bruke komponentene direkte i HTML-filen din uten ekstra konfigurasjon. 
+Nettleseren har innebygd støtte for webkomponenter. Du kan derfor bruke komponentene direkte i HTML-filen din uten ekstra konfigurasjon. 
 
-Under er et eksempel på hvordan du bruker en `fhi-button` i standard HTML/JS. Vi tar henhold i at du har brukt cdn da du installerte designsystem pakken.
+Under er et eksempel på hvordan du bruker `fhi-button` i standard HTML/JS. Vi tar utgangspunkt i at du har brukt CDN da du installerte pakken.
 
 Alle komponenter i Designsystemet er globalt tilgjengelige i applikasjonen uten ekstra konfigurasjon.
 Du kan nå fritt bruke `fhi-button` hvor som helst i HTML-filen.
@@ -82,10 +82,10 @@ e.g:
 ### Angular
 Angular har innebygd støtte for webkomponenter. Du kan derfor bruke komponentene direkte i Angular-prosjektet ditt.
 
-Under er et eksempel på hvordan du bruker `fhi-button`-komponenten i et Angular-prosjekt. Her tar vi henhold i at du har brukt `npm` da du installerte pakken.
+Under er et eksempel på hvordan du bruker `fhi-button`-komponenten i et Angular-prosjekt. Her tar vi utgangspunkt i at du har brukt `npm` da du installerte pakken.
 
 Først importerer vi _design tokens_-filen. Denne filen inneholder alle primitive og semantiske _tokens_ brukt av komponentbiblioteket.
-Denne filen må importeres før du tar i bruk komponentbiblioteket. Prefererbart helt i starten av app-en din.
+Denne filen må importeres før du tar i bruk komponentbiblioteket, helst helt i starten av appen din.
 ```ts
 import '@folkehelseinstituttet/designsystem/theme/default.css';
 ```
@@ -115,12 +115,12 @@ import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 })
 
 ```
-Før du bruker komponenten må du først importere den. Importer komponenten i Angular-komponentens typescript-fil. I dette tilfellet importerer vi  `fhi-button`:
+Før du bruker komponenten må du først importere den. Importér komponenten i Angular-komponentens Typescript-fil. I dette tilfellet importerer vi `fhi-button`:
 ```ts
 import '@folkehelseinstituttet/designsystem/fhi-button';
 ```
 
-Nå kan du bruke komponenten som om det var et vanlig html-element i din Angular-komponents HTML-fil:
+Nå kan du bruke komponenten som om det var et vanlig HTML-element i din Angular-komponents HTML-fil:
 
 _obs: `handleClick` er brukt her som et eksempel. Du må selv lage en metode i Angular-komponenten som håndterer klikk-eventet._
 ```html
@@ -132,18 +132,18 @@ _obs: `handleClick` er brukt her som et eksempel. Du må selv lage en metode i A
 FHI Designsystem støtter React versjon 19 og over. Vi støtter ikke eldre versjoner av React.
 </div>
 
-I React 19 og over kan du bruke webkomponenter direkte i JSX-koden din _nesten_ som om de var standard html-elementer.
-Det er noen mindre forskjeller fra standard html-elementer, [se React sin offisielle dokumentsjon](https://react.dev/reference/react-dom/components#custom-html-elements) for mer info.
+I React 19 og over kan du bruke webkomponenter direkte i JSX-koden din _nesten_ som om de var standard HTML-elementer.
+Det er noen mindre forskjeller fra standard HTML-elementer, [se React sin offisielle dokumentasjon](https://react.dev/reference/react-dom/components#custom-html-elements) for mer info.
 
-Under er et eksempel på hvordan du bruker `fhi-button`-komponenten i et React-prosjekt. Her tar vi henhold i at du har brukt npm da du installerte pakken.
+Under er et eksempel på hvordan du bruker `fhi-button`-komponenten i et React-prosjekt. Her tar vi utgangspunkt i at du har brukt `npm` da du installerte pakken.
 
 Først importerer vi _design tokens_-filen. Denne filen inneholder alle primitive og semantiske _tokens_ brukt av komponentbiblioteket.
-Denne filen må importeres før du tar i bruk komponentbiblioteket. Prefererbart helt i starten av app-en din.
+Denne filen må importeres før du tar i bruk komponentbiblioteket, helst helt i starten av appen din.
 ```ts
 import '@folkehelseinstituttet/designsystem/theme/default.css';
 ```
 
-I din React-komponentfil, importer komponenten du vil bruke. I dette tilfellet vil vi bruke `fhi-button`:
+I din React-komponentfil, importér komponenten du vil bruke. I dette tilfellet vil vi bruke `fhi-button`:
 ```jsx
 import '@folkehelseinstituttet/designsystem/fhi-button';
 ```
@@ -155,12 +155,12 @@ Nå kan du bruke komponenten i JSX:
 ```
 ### Blazor
 
-Blazor støtter web komponenter på like måte som vanlig html elementer.
+Blazor støtter webkomponenter på samme måte som vanlige HTML-elementer.
 
-Under er et eksempel på hvordan du bruker en `fhi-button` i blazor. Vi tar henhold i at du har brukt cdn da du installerte designsystem pakken.
+Under er et eksempel på hvordan du bruker `fhi-button` i Blazor. Vi tar utgangspunkt i at du har brukt CDN da du installerte pakken.
 
 Alle komponenter i Designsystemet er globalt tilgjengelige i applikasjonen uten ekstra konfigurasjon.
-Du kan nå fritt bruke `fhi-button` hvor som helst i Blazor appen.
+Du kan nå fritt bruke `fhi-button` hvor som helst i Blazor-appen.
 
 e.g:
 ```html
