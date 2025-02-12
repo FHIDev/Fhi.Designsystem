@@ -92,15 +92,26 @@ import '@folkehelseinstituttet/designsystem/theme/default.css';
 
 Så må vi fortelle Angular at vi bruker webkomponenter.
 Vi gjør dette ved å legge til <a href="https://angular.dev/api/core/CUSTOM_ELEMENTS_SCHEMA">CUSTOM_ELEMENTS_SCHEMA</a>
-i angular komponent-filen sin moduldekoratør.
+i angular komponent-filen sin komponentdekoratør.
+
+```ts
+import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
+
+@Component({
+  ...
+  schemas: [CUSTOM_ELEMENTS_SCHEMA],
+})
+
+```
+
+**Eller**, Om du bruker Angular sitt gamle modulsystem, skal du legge til `CUSTOM_ELEMENTS_SCHEMA` i modulen din.
+
 ```ts
 import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 
 @NgModule({
-  declarations: [AppComponent],
-  imports: [BrowserModule],
-  schemas: [CUSTOM_ELEMENTS_SCHEMA], // <- Her forteller vi Angular at vi skal bruke webkomponenter
-  bootstrap: [AppComponent],
+  ...
+  schemas: [CUSTOM_ELEMENTS_SCHEMA],
 })
 
 ```
