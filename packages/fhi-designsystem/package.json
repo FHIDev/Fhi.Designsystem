@@ -48,7 +48,8 @@
     "format": "pnpm format:eslint && pnpm format:prettier",
     "format:eslint": "eslint \"**/*.{js,ts}\" --fix",
     "format:prettier": "prettier \"**/*.js\" --write --ignore-path .gitignore",
-    "publish:npm": "pnpm build && cd dist/npm && npm publish"
+    "publish:npm": "pnpm build && cd dist/npm && npm publish",
+    "changelog:ci": "release-it --ci"
   },
   "peerDependencies": {
     "lit": "~3.2.0"
