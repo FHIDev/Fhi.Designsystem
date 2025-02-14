@@ -1,0 +1,187 @@
+import { Meta } from '@storybook/blocks';
+
+<Meta title="FHI Designsystem/Kom i gang" />
+ 
+# Velkommen til FHI Designsystem!
+
+<div style={{padding: ".25rem 1rem", background: "#D3E3F5", borderRadius: "2px", borderBottom: "4px solid #3283CE", marginBottom: "1rem"}} >
+Denne siden beskriver FHI Designsystem, med komponenter bygd som webkomponenter.
+Dokumentasjonen for det gamle designsystemet med komponenter for Angular, samt tilhørende CSS-bibliotek, finner du <a href="https://old.designsystem.fhi.no" target="_blank" rel="noopener" >her</a>.
+</div>
+
+<div style={{padding: ".25rem 1rem", background: "#FFE7BA", borderRadius: "2px", borderBottom: "4px solid #F1A541", marginBottom: "2rem"}} >
+**Typescript:** FHI Designsystem er fullt kompatibelt med typescript, men det er ikke enda typesatt. Det betyr at intellisense for importering og bruk, samt typesjekking, er foreløpig begrenset.
+</div>
+
+## Innholdsfortegnelse
+ 
+- [Installasjon](#installasjon)
+  - [Komponentbibliotek](#komponentbibliotek)
+- [Bruk](#bruk)
+  - [Standard HTML/JS](#standard-htmljs)
+  - [Angular](#angular)
+  - [React](#react)
+  - [Blazor](#blazor)
+- [Design ressurser](#design-ressurser)
+  - [Figma](#figma)
+  - [UI/UX Design rettningslinjer](#uiux-design-rettningslinjer)
+  - [Ressurser](#ressurser)
+
+---
+<br />
+
+## Installasjon
+
+### Komponentbibliotek
+ 
+Kjør følgende kommando for å legge til komponentbiblioteket i prosjektet ditt:
+```zsh
+npm install @folkehelseinstituttet/designsystem
+```
+**eller**, om `npm` ikke er et alternativ, kan du bruke vår CDN. Legg til følgende script og link tag under `<head>` i hoved-HTML-filen for appen:
+
+```html
+<link
+  rel="stylesheet"
+  href="https://cdn.designsystem.fhi.no/theme/default.css"
+>
+
+<script
+  src="https://cdn.designsystem.fhi.no/fhi-designsystem.js"
+  crossorigin="anonymous">
+</script>
+```
+
+_obs: Bruker du Blazor er hoved HTML-filen typisk `app.razor`._
+
+<div style={{padding: ".25rem 1rem", background: "#FEE9E6", borderRadius: "2px", borderBottom: "4px solid #EC7C73", marginBottom: "2rem"}} >
+<p>
+Vi anbefaler ikke å bruke CDN i produksjon.
+Det krever at klienten laster ned hele biblioteket, uavhengig av hvilke komponenter som faktisk brukes. Dette påvirker ytelsen og båndbreddebruken negativt.
+</p>
+Bruk bare CDN hvis `npm` ikke er et alternativ.
+</div>
+
+<br />
+
+## Bruk
+
+### Standard HTML/JS
+
+Nettleseren har innebygd støtte for webkomponenter. Du kan derfor bruke komponentene direkte i HTML-filen din uten ekstra konfigurasjon. 
+
+Under er et eksempel på hvordan du bruker `fhi-button` i standard HTML/JS. Vi tar utgangspunkt i at du har brukt CDN da du installerte pakken.
+
+Alle komponenter i Designsystemet er globalt tilgjengelige i applikasjonen uten ekstra konfigurasjon.
+Du kan nå fritt bruke `fhi-button` hvor som helst i HTML-filen.
+
+e.g:
+```html
+<fhi-button onclick="console.log('Hello World')">Click me!</fhi-button>
+```
+
+### Angular
+Angular har innebygd støtte for webkomponenter. Du kan derfor bruke komponentene direkte i Angular-prosjektet ditt.
+
+Under er et eksempel på hvordan du bruker `fhi-button`-komponenten i et Angular-prosjekt. Her tar vi utgangspunkt i at du har brukt `npm` da du installerte pakken.
+
+Først importerer vi _design tokens_-filen. Denne filen inneholder alle primitive og semantiske _tokens_ brukt av komponentbiblioteket.
+Denne filen må importeres før du tar i bruk komponentbiblioteket, helst helt i starten av appen din.
+```ts
+import '@folkehelseinstituttet/designsystem/theme/default.css';
+```
+
+Så må vi fortelle Angular at vi bruker webkomponenter.
+Vi gjør dette ved å legge til <a href="https://angular.dev/api/core/CUSTOM_ELEMENTS_SCHEMA">CUSTOM_ELEMENTS_SCHEMA</a>
+i Angular komponent-filen sin komponentdekoratør.
+
+```ts
+import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
+
+@Component({
+  ...
+  schemas: [CUSTOM_ELEMENTS_SCHEMA],
+})
+
+```
+
+**Eller**, Om du bruker Angular sitt gamle modulsystem, skal du legge til `CUSTOM_ELEMENTS_SCHEMA` i modulen din.
+
+```ts
+import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
+
+@NgModule({
+  ...
+  schemas: [CUSTOM_ELEMENTS_SCHEMA],
+})
+
+```
+Før du bruker komponenten må du først importere den. Importér komponenten i Angular-komponentens Typescript-fil. I dette tilfellet importerer vi `fhi-button`:
+```ts
+import '@folkehelseinstituttet/designsystem/fhi-button';
+```
+
+Nå kan du bruke komponenten som om det var et vanlig HTML-element i din Angular-komponents HTML-fil:
+
+```html
+<fhi-button (click)="handleClick($event)">Click me!</fhi-button>
+```
+_obs: `handleClick` er brukt her som et eksempel. Du må selv lage en metode i Angular-komponenten som håndterer klikk-eventet._
+### React
+
+<div style={{padding: ".25rem 1rem", background: "#FFE7BA", borderRadius: "2px", borderBottom: "4px solid #F1A541", marginBottom: "2rem"}} >
+FHI Designsystem støtter React versjon 19 og over. Vi støtter ikke eldre versjoner av React.
+</div>
+
+I React 19 og over kan du bruke webkomponenter direkte i JSX-koden din _nesten_ som om de var standard HTML-elementer.
+Det er noen mindre forskjeller fra standard HTML-elementer, [se React sin offisielle dokumentasjon](https://react.dev/reference/react-dom/components#custom-html-elements) for mer info.
+
+Under er et eksempel på hvordan du bruker `fhi-button`-komponenten i et React-prosjekt. Her tar vi utgangspunkt i at du har brukt `npm` da du installerte pakken.
+
+Først importerer vi _design tokens_-filen. Denne filen inneholder alle primitive og semantiske _tokens_ brukt av komponentbiblioteket.
+Denne filen må importeres før du tar i bruk komponentbiblioteket, helst helt i starten av appen din.
+```ts
+import '@folkehelseinstituttet/designsystem/theme/default.css';
+```
+
+I din React-komponentfil, importér komponenten du vil bruke. I dette tilfellet vil vi bruke `fhi-button`:
+```jsx
+import '@folkehelseinstituttet/designsystem/fhi-button';
+```
+
+Nå kan du bruke komponenten i JSX:
+
+```jsx
+<fhi-button onClick={(event) => console.log("hello world", event)}>Click me!</fhi-button>
+```
+### Blazor
+
+Blazor støtter webkomponenter på samme måte som vanlige HTML-elementer.
+
+Under er et eksempel på hvordan du bruker `fhi-button` i Blazor. Vi tar utgangspunkt i at du har brukt CDN da du installerte pakken.
+
+Alle komponenter i Designsystemet er globalt tilgjengelige i applikasjonen uten ekstra konfigurasjon.
+Du kan nå fritt bruke `fhi-button` hvor som helst i Blazor-appen.
+
+e.g:
+```html
+<fhi-button @onclick="@(e => { Console.WriteLine($"Hello World! {e}"); })">Click me!</fhi-button>
+```
+
+## Design ressurser
+
+### Figma
+
+Vi bruker Figma som primærverktøy for UX. Alt av design og spesifikasjoner ligger der.
+
+- [Figma: FHI Designsystem](https://www.figma.com/design/VgQG6XeEbFOmHIrxyAOACR/FHI-Designsystem?node-id=0-1&p=f&t=XhXBP8JLJ0J7IPSj-0)
+
+### UI/UX Design rettningslinjer
+ 
+Før du starter å designe bør du sette deg inn i våre UI/UX designretningslinjer. De gir verdifull innsikt i vår designfilosofi.
+
+- _Dokument for UI/UX rettningslinjer kommer snart_
+
+### Ressurser
+ 
+Alle viktige ressurser som logoer, ikoner og merkevareveiledninger finner du i Figma-prosjektet.
