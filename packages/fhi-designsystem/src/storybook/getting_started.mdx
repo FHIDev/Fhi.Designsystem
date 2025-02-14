@@ -40,7 +40,6 @@ npm install @folkehelseinstituttet/designsystem
 ```
 **eller**, om `npm` ikke er et alternativ, kan du bruke vår CDN. Legg til følgende script og link tag under `<head>` i hoved-HTML-filen for appen:
 
-_obs: Bruker du Blazor er hoved HTML-filen typisk `app.razor`._
 ```html
 <link
   rel="stylesheet"
@@ -52,6 +51,8 @@ _obs: Bruker du Blazor er hoved HTML-filen typisk `app.razor`._
   crossorigin="anonymous">
 </script>
 ```
+
+_obs: Bruker du Blazor er hoved HTML-filen typisk `app.razor`._
 
 <div style={{padding: ".25rem 1rem", background: "#FEE9E6", borderRadius: "2px", borderBottom: "4px solid #EC7C73", marginBottom: "2rem"}} >
 <p>
@@ -122,10 +123,10 @@ import '@folkehelseinstituttet/designsystem/fhi-button';
 
 Nå kan du bruke komponenten som om det var et vanlig HTML-element i din Angular-komponents HTML-fil:
 
-_obs: `handleClick` er brukt her som et eksempel. Du må selv lage en metode i Angular-komponenten som håndterer klikk-eventet._
 ```html
 <fhi-button (click)="handleClick($event)">Click me!</fhi-button>
 ```
+_obs: `handleClick` er brukt her som et eksempel. Du må selv lage en metode i Angular-komponenten som håndterer klikk-eventet._
 ### React
 
 <div style={{padding: ".25rem 1rem", background: "#FFE7BA", borderRadius: "2px", borderBottom: "4px solid #F1A541", marginBottom: "2rem"}} >
