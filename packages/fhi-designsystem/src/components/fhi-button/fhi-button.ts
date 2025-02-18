@@ -58,6 +58,27 @@ export class FhiButton extends LitElement {
     | 'submit'
     | 'reset';
 
+  /*  private _formButton!: HTMLButtonElement;
+  private _form!: HTMLFormElement | null;
+
+  private _handleClick(event: MouseEvent): void {
+    if (
+      (this.type === 'submit' || this.type === 'reset') &&
+      this._form &&
+      !event.defaultPrevented
+    ) {
+      this._formButton.type = this.type;
+      this._form?.appendChild(this._formButton);
+      this._formButton.click();
+      this._form?.removeChild(this._formButton);
+    }
+  }
+
+  protected override firstUpdated(): void {
+    this._formButton = document.createElement('button');
+    this.addEventListener('click', this._handleClick);
+  } */
+
   render() {
     return html`<button ?disabled=${this.disabled} type=${ifDefined(this.type)}>
       <slot></slot>

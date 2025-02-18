@@ -9,11 +9,36 @@
     <title>FHI Designsystem – development</title>
 
     <!-- Import your web component here using a script tag -->
-    <!-- <script type="module" src="src/components/..."></script> -->
+    <script
+      type="module"
+      src="src/components/fhi-button/fhi-button.ts"
+    ></script>
   </head>
 
   <body>
     <!-- Add you web component here for development purposes -->
     <!-- <fhi-my-component></fhi-my-component> -->
+    <form id="form">
+      <label>Test field: <input type="text" /></label>
+      <br /><br />
+      <fhi-button id="button" type="submit">Submit form</fhi-button>
+    </form>
+    <p id="log"></p>
   </body>
 </html>
+
+<script>
+  function logSubmit(event) {
+    log.textContent = `Form Submitted! Timestamp: ${event.timeStamp}`;
+    event.preventDefault();
+  }
+  function onClick() {
+    console.log('clicked');
+  }
+
+  const form = document.getElementById('form');
+  const log = document.getElementById('log');
+  const button = document.getElementById('button');
+  form.addEventListener('submit', logSubmit);
+  button.addEventListener('click', onClick);
+</script>
