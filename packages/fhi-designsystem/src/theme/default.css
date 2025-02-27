@@ -292,16 +292,16 @@
   --fhi-border-radius-full: 999rem;
 
   /* Semantic */
-  --fhi-border-width: 0.0625rem;
-  --fhi-border-width-active: 0.125rem;
-  --fhi-border-width-focus: 0.25rem;
+  --fhi-dimension-border-width: 0.0625rem;
+  --fhi-dimension-border-width-active: 0.125rem;
+  --fhi-dimension-border-width-focus: 0.25rem;
 
   /* Motion */
   /* Semantic */
-  --fhi-ease-default: cubic-bezier(0.4, 0, 0.2, 1);
-  --fhi-duration-quick: 150ms;
-  --fhi-duration-medium: 250ms;
-  --fhi-duration-slow: 350ms;
+  --fhi-motion-ease-default: cubic-bezier(0.4, 0, 0.2, 1);
+  --fhi-motion-duration-quick: 150ms;
+  --fhi-motion-duration-medium: 250ms;
+  --fhi-motion-duration-slow: 350ms;
 
   /* Opacity */
   /* Semantic */
