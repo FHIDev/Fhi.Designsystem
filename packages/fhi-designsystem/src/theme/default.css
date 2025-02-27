@@ -266,7 +266,7 @@
   --fhi-typography-body-small-font-size: var(--fhi-font-size-3);
   --fhi-typography-body-small-font-weight: var(--fhi-font-weight-regular);
   --fhi-typography-body-small-line-height: 1.25rem;
-  --fhi-typography-body-small-letter-spacing: 0.01;
+  --fhi-typography-body-small-letter-spacing: 0.01em;
 
   /* Dimensions */
   /* Primitive */
