@@ -241,32 +241,32 @@
   --fhi-typography-label-large-font-size: var(--fhi-font-size-5);
   --fhi-typography-label-large-font-weight: var(--fhi-font-weight-medium);
   --fhi-typography-label-large-line-height: 1.5rem;
-  --fhi-typography-label-large-letter-spacing: 0.11%;
+  --fhi-typography-label-large-letter-spacing: 0.00125rem;
 
   --fhi-typography-label-medium-font-size: var(--fhi-font-size-4);
   --fhi-typography-label-medium-font-weight: var(--fhi-font-weight-medium);
   --fhi-typography-label-medium-line-height: 1.5rem;
-  --fhi-typography-label-medium-letter-spacing: 0.5%;
+  --fhi-typography-label-medium-letter-spacing: 0.005rem;
 
   --fhi-typography-label-small-font-size: var(--fhi-font-size-3);
   --fhi-typography-label-small-font-weight: var(--fhi-font-weight-medium);
   --fhi-typography-label-small-line-height: 1.25rem;
-  --fhi-typography-label-small-letter-spacing: 1%;
+  --fhi-typography-label-small-letter-spacing: 0.00875rem;
 
   --fhi-typography-body-large-font-size: var(--fhi-font-size-5);
   --fhi-typography-body-large-font-weight: var(--fhi-font-weight-regular);
   --fhi-typography-body-large-line-height: 1.5rem;
-  --fhi-typography-body-large-letter-spacing: 0.11%;
+  --fhi-typography-body-large-letter-spacing: 0.00125rem;
 
   --fhi-typography-body-medium-font-size: var(--fhi-font-size-4);
   --fhi-typography-body-medium-font-weight: var(--fhi-font-weight-regular);
   --fhi-typography-body-medium-line-height: 1.5rem;
-  --fhi-typography-body-medium-letter-spacing: 0.5%;
+  --fhi-typography-body-medium-letter-spacing: 0.005rem;
 
   --fhi-typography-body-small-font-size: var(--fhi-font-size-3);
   --fhi-typography-body-small-font-weight: var(--fhi-font-weight-regular);
   --fhi-typography-body-small-line-height: 1.25rem;
-  --fhi-typography-body-small-letter-spacing: 1%;
+  --fhi-typography-body-small-letter-spacing: 0.00875rem;
 
   /* Dimensions */
   /* Primitive */
