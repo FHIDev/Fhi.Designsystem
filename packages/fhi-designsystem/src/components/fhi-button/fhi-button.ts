@@ -85,7 +85,172 @@ export class FhiButton extends LitElement {
     </button>`;
   }
 
+  // An alternative compnent aarchitecture: two extra files.
+  // I don't have a strong opinion on this, but I coulden't figure out how to collaps ":host {}" ;)
+  //
+  // static styles = [ComponentTokens, ComponentStyles];
+
   static styles = css`
+    :host {
+      /**
+       * Color
+       */
+
+      /* Accent: strong */
+      --background-color-accent-strong-default: var(--fhi-color-accent-base);
+      --background-color-accent-strong-hover: var(
+        --fhi-color-accent-base-hover
+      );
+      --background-color-accent-strong-active: var(
+        --fhi-color-accent-base-active
+      );
+      --border-color-accent-strong-default: var(--fhi-color-accent-base);
+      --border-color-accent-strong-hover: var(--fhi-color-accent-base-hover);
+      --border-color-accent-strong-active: var(--fhi-color-accent-base-active);
+      --color-accent-strong: var(--fhi-color-accent-text-inverted);
+
+      /* Accent: subtle */
+      /* Accent: outlined */
+      /* Accent: text */
+
+      /* Neutral: strong */
+      --background-color-neutral-strong-default: var(--fhi-color-neutral-base);
+      --background-color-neutral-strong-hover: var(
+        --fhi-color-neutral-base-hover
+      );
+      --background-color-neutral-strong-active: var(
+        --fhi-color-neutral-base-active
+      );
+      --border-color-neutral-strong-default: var(--fhi-color-neutral-base);
+      --border-color-neutral-strong-hover: var(--fhi-color-neutral-base-hover);
+      --border-color-neutral-strong-active: var(
+        --fhi-color-neutral-base-active
+      );
+      --color-neutral-strong: var(--fhi-color-neutral-text-inverted);
+
+      /* Neutral: subtle */
+      /* Neutral: outlined */
+      /* Neutral: text */
+
+      /* Danger: strong */
+      /* Danger: subtle */
+      /* Danger: outlined */
+      /* Danger: text */
+
+      /**
+       * Typography
+       */
+
+      /* Size small & medium */
+      --font-family: var(--fhi-font-family-roboto-flex);
+      --font-size: var(--fhi-typography-label-medium-font-size);
+      --font-weight: var(--fhi-typography-label-medium-font-weight);
+      --line-height: var(--fhi-typography-label-medium-line-height);
+      --letter-spacing: var(--fhi-typography-label-medium-letter-spacing);
+
+      /* Size large */
+      --font-size-large: var(--fhi-typography-label-large-font-size);
+      --font-weight-large: var(--fhi-typography-label-large-font-weight);
+      --line-height-large: var(--fhi-typography-label-large-line-height);
+      --letter-spacing-large: var(--fhi-typography-label-large-letter-spacing);
+
+      /**
+       * Dimensions
+       */
+
+      --border-radius: var(--fhi-border-radius-full);
+      --border-width: var(--fhi-border-width);
+
+      /* Size small */
+      --padding-small: calc(var(--fhi-spacing-050) - var(--fhi-border-width))
+        var(--fhi-spacing-150);
+
+      /* Size medium */
+      --padding-medium: calc(var(--fhi-spacing-100) - var(--fhi-border-width))
+        var(--fhi-spacing-200);
+
+      /* Size large */
+      --padding-large: calc(var(--fhi-spacing-200) - var(--fhi-border-width))
+        var(--fhi-spacing-300);
+
+      /**
+       * Motion
+       */
+
+      --transition: all var(--fhi-duration-quick) var(--fhi-ease-default);
+
+      /**
+       * Opacity
+       */
+
+      --opacity-disabled: var(--fhi-opacity-disabled);
+    }
+
+    /* Default button styling (accent - strong - medium) */
+    :host button {
+      background-color: var(--background-color-accent-strong-default);
+      border-radius: var(--border-radius);
+      border: var(--border-width) solid
+        var(--border-color-accent-strong-default);
+      color: var(--color-accent-strong);
+      cursor: pointer;
+      font-family: var(--font-family);
+      font-size: var(--font-size);
+      font-weight: var(--font-weight);
+      letter-spacing: var(--letter-spacing);
+      line-height: var(--line-height);
+      padding: var(--padding-medium);
+      transition: var(--transition);
+
+      &:active:not(:disabled) {
+        background-color: var(--background-color-accent-strong-active);
+        border-color: var(--border-color-accent-active);
+      }
+
+      &:hover:not(:disabled) {
+        background-color: var(--background-color-accent-strong-hover);
+        border-color: var(--border-color-accent-strong-hover);
+      }
+
+      &:disabled {
+        cursor: not-allowed;
+        opacity: var(--opacity-disabled);
+      }
+    }
+
+    /* Sizes */
+
+    :host([size='small']) button {
+      padding: var(--padding-small);
+    }
+
+    :host([size='large']) button {
+      font-size: var(--font-size-large);
+      font-weight: var(--font-weight-large);
+      letter-spacing: var(--letter-spacing-large);
+      line-height: var(--line-height-large);
+      padding: var(--padding-large);
+    }
+
+    /* Colors */
+
+    :host([color='neutral'][variant='strong']) button {
+      background-color: var(--background-color-neutral-strong-default);
+      border-color: var(--border-color-neutral-strong-default);
+      color: var(--color-neutral-strong);
+
+      &:hover:not(:disabled) {
+        background-color: var(--background-color-neutral-strong-hover);
+        border-color: var(--border-color-neutral-strong-hover);
+      }
+
+      &:active:not(:disabled) {
+        background-color: var(--background-color-neutral-strong-hover);
+        border-color: var(--border-color-neutral-strong-hover);
+      }
+    }
+
+    /* 
     :host {
       --component-border-radius: var(--fhi-border-radius-full);
       --component-font-family: var(--fhi-font-family-roboto-flex);
@@ -707,5 +872,6 @@ export class FhiButton extends LitElement {
         color: var(--component-danger-text-color-disabled);
       }
     }
+ */
   `;
 }
