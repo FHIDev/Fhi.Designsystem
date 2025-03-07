@@ -2,14 +2,18 @@ import { css } from 'lit';
 
 export const ComponentStyles = css`
   :host button {
+    align-items: center;
     background-color: var(--background-color-accent-strong-default);
     border-radius: var(--border-radius);
     border: var(--border-width) solid var(--border-color-accent-strong-default);
     color: var(--color-accent-strong);
     cursor: pointer;
+    display: inline-flex;
     font-family: var(--font-family);
     font-size: var(--font-size);
     font-weight: var(--font-weight);
+    gap: var(--gap-medium);
+    justify-content: center;
     letter-spacing: var(--letter-spacing);
     line-height: var(--line-height);
     padding: var(--padding-medium);
@@ -34,12 +38,14 @@ export const ComponentStyles = css`
   /* Sizes */
 
   :host([size='small']) button {
+    gap: var(--gap-small);
     padding: var(--padding-small);
   }
 
   :host([size='large']) button {
     font-size: var(--font-size-large);
     font-weight: var(--font-weight-large);
+    gap: var(--gap-large);
     letter-spacing: var(--letter-spacing-large);
     line-height: var(--line-height-large);
     padding: var(--padding-large);

@@ -68,14 +68,17 @@ export const ComponentTokens = css`
     --border-width: var(--fhi-border-width);
 
     /* Size small */
+    --gap-small: var(--fhi-spacing-0);
     --padding-small: calc(var(--fhi-spacing-050) - var(--fhi-border-width))
       var(--fhi-spacing-150);
 
     /* Size medium */
+    --gap-medium: var(--fhi-spacing-050);
     --padding-medium: calc(var(--fhi-spacing-100) - var(--fhi-border-width))
       var(--fhi-spacing-200);
 
     /* Size large */
+    --gap-large: var(--fhi-spacing-100);
     --padding-large: calc(var(--fhi-spacing-200) - var(--fhi-border-width))
       var(--fhi-spacing-300);
 

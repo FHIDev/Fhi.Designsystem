@@ -162,14 +162,17 @@ export class FhiButton extends LitElement {
       --border-width: var(--fhi-border-width);
 
       /* Size small */
+      --gap-small: var(--fhi-spacing-0);
       --padding-small: calc(var(--fhi-spacing-050) - var(--fhi-border-width))
         var(--fhi-spacing-150);
 
       /* Size medium */
+      --gap-medium: var(--fhi-spacing-050);
       --padding-medium: calc(var(--fhi-spacing-100) - var(--fhi-border-width))
         var(--fhi-spacing-200);
 
       /* Size large */
+      --gap-large: var(--fhi-spacing-100);
       --padding-large: calc(var(--fhi-spacing-200) - var(--fhi-border-width))
         var(--fhi-spacing-300);
 
@@ -188,15 +191,19 @@ export class FhiButton extends LitElement {
 
     /* Default button styling (accent - strong - medium) */
     :host button {
+      align-items: center;
       background-color: var(--background-color-accent-strong-default);
       border-radius: var(--border-radius);
       border: var(--border-width) solid
         var(--border-color-accent-strong-default);
       color: var(--color-accent-strong);
       cursor: pointer;
+      display: inline-flex;
       font-family: var(--font-family);
       font-size: var(--font-size);
       font-weight: var(--font-weight);
+      gap: var(--gap-medium);
+      justify-content: center;
       letter-spacing: var(--letter-spacing);
       line-height: var(--line-height);
       padding: var(--padding-medium);
@@ -221,12 +228,14 @@ export class FhiButton extends LitElement {
     /* Sizes */
 
     :host([size='small']) button {
+      gap: var(--gap-small);
       padding: var(--padding-small);
     }
 
     :host([size='large']) button {
       font-size: var(--font-size-large);
       font-weight: var(--font-weight-large);
+      gap: var(--gap-large);
       letter-spacing: var(--letter-spacing-large);
       line-height: var(--line-height-large);
       padding: var(--padding-large);
