@@ -9,13 +9,10 @@ export const ComponentStyles = css`
     color: var(--color-accent-strong);
     cursor: pointer;
     display: inline-flex;
-    font-family: var(--font-family);
-    font-size: var(--font-size);
-    font-weight: var(--font-weight);
+    font: var(--font);
     gap: var(--gap-medium);
     justify-content: center;
     letter-spacing: var(--letter-spacing);
-    line-height: var(--line-height);
     padding: var(--padding-medium);
     transition: var(--transition);
 
@@ -43,11 +40,9 @@ export const ComponentStyles = css`
   }
 
   :host([size='large']) button {
-    font-size: var(--font-size-large);
-    font-weight: var(--font-weight-large);
+    font: var(--font-large);
     gap: var(--gap-large);
     letter-spacing: var(--letter-spacing-large);
-    line-height: var(--line-height-large);
     padding: var(--padding-large);
   }
 

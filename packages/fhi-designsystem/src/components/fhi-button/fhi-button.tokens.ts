@@ -48,16 +48,17 @@ export const ComponentTokens = css`
      */
 
     /* Size small & medium */
-    --font-family: var(--fhi-font-family-roboto-flex);
-    --font-size: var(--fhi-typography-label-medium-font-size);
-    --font-weight: var(--fhi-typography-label-medium-font-weight);
-    --line-height: var(--fhi-typography-label-medium-line-height);
+    --font: var(--fhi-typography-label-medium-font-weight)
+      var(--fhi-typography-label-medium-font-size) /
+      var(--fhi-typography-label-medium-line-height)
+      var(--fhi-font-family-roboto-flex);
     --letter-spacing: var(--fhi-typography-label-medium-letter-spacing);
 
     /* Size large */
-    --font-size-large: var(--fhi-typography-label-large-font-size);
-    --font-weight-large: var(--fhi-typography-label-large-font-weight);
-    --line-height-large: var(--fhi-typography-label-large-line-height);
+    --font-large: var(--fhi-typography-label-large-font-weight)
+      var(--fhi-typography-label-large-font-size) /
+      var(--fhi-typography-label-large-line-height)
+      var(--fhi-font-family-roboto-flex);
     --letter-spacing-large: var(--fhi-typography-label-large-letter-spacing);
 
     /**
