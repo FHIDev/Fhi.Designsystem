@@ -302,6 +302,7 @@ export class FhiButton extends LitElement {
         display: inline-flex;
         justify-content: center;
         align-items: center;
+
         transition: var(--transition);
 
         cursor: pointer;
