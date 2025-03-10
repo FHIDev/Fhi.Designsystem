@@ -28,20 +28,31 @@ const meta: Meta<FhiButton> = {
     color: {
       options: ['accent', 'neutral', 'danger'],
       control: { type: 'select' },
+      description: 'Bestemmer farge.',
+      defaultValue: { summary: 'accent' },
     },
     variant: {
       options: ['strong', 'subtle', 'outlined', 'text'],
       control: { type: 'select' },
+      description: 'Bestemmer variant.',
+      defaultValue: { summary: 'strong' },
     },
     size: {
       options: ['large', 'medium', 'small'],
       control: { type: 'select' },
+      description: 'Bestemmer størrelse.',
+      defaultValue: { summary: 'medium' },
     },
     type: {
       options: ['submit', 'button', 'reset'],
       control: { type: 'select' },
+      description: 'Bestemmer type.',
     },
-    disabled: { control: { type: 'boolean' } },
+    disabled: {
+      control: { type: 'boolean' },
+      description: 'Bestemmer om knappen kan trykkes på.',
+      defaultValue: { summary: 'false' },
+    },
   },
 };
 
