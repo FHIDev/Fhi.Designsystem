@@ -210,8 +210,8 @@
   --fhi-color-danger-base: var(--fhi-red-500);
   --fhi-color-danger-base-hover: var(--fhi-red-600);
   --fhi-color-danger-base-active: var(--fhi-red-700);
-  --fhi-color-danger-text-subtle: var(--fhi-red-600);
   --fhi-color-danger-text: var(--fhi-red-800);
+  --fhi-color-danger-text-subtle: var(--fhi-red-600);
   --fhi-color-danger-text-inverted: var(--fhi-red-010);
 
   /* Typography */
