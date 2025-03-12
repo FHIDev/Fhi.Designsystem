@@ -85,11 +85,11 @@ export class FhiTextInput extends LitElement {
       --color-input-background: var(--fhi-color-neutral-background);
       --color-input-background-hover: var(--fhi-color-accent-background-subtle);
       --color-input-background-error: var(--fhi-color-danger-background);
-      --color-input-outline: var(--fhi-color-neutral-border);
-      --color-input-outline-hover: var(--fhi-color-accent-border);
-      --color-input-outline-active: var(--fhi-color-accent-border-strong);
-      --color-input-outline-error: var(--fhi-color-danger-border-strong);
-      --color-input-outline-disabled: var(--fhi-color-neutral-border);
+      --color-input-border: var(--fhi-color-neutral-border);
+      --color-input-border-hover: var(--fhi-color-accent-border);
+      --color-input-border-active: var(--fhi-color-accent-border-strong);
+      --color-input-border-error: var(--fhi-color-danger-border-strong);
+      --color-input-border-disabled: var(--fhi-color-neutral-border);
 
       --typography-input-font-weight: var(
         --fhi-typography-body-medium-font-weight
@@ -102,12 +102,12 @@ export class FhiTextInput extends LitElement {
         --fhi-typography-body-medium-letter-spacing
       );
 
-      --dimension-outline-width: var(--fhi-dimension-border-width);
-      --dimension-outline-width-active: var(
-        --fhi-dimension-border-width-active
-      );
+      --dimension-border-width: var(--fhi-dimension-border-width);
+
+      --dimension-input-height: var(--fhi-spacing-500);
       --dimension-input-border-radius: var(--fhi-border-radius-050);
-      --dimension-input-padding: var(--fhi-spacing-100) var(--fhi-spacing-150);
+      --dimension-input-padding-left: var(--fhi-spacing-150);
+      --dimension-input-padding-right: var(--fhi-spacing-150);
 
       /* message */
       --color-message-text: var(--fhi-color-neutral-text);
@@ -141,12 +141,14 @@ export class FhiTextInput extends LitElement {
       }
 
       input {
-        border: none;
-        outline: var(--dimension-outline-width) solid var(--color-input-outline);
-        outline-offset: calc(-1 * var(--fhi-dimension-border-width));
+        box-sizing: border-box;
+        height: var(--dimension-input-height);
+        border: var(--dimension-border-width) solid var(--color-input-border);
         border-radius: var(--dimension-input-border-radius);
-        padding: var(--dimension-input-padding);
+        padding: 0 var(--dimension-input-padding-right) 0
+          var(--dimension-input-padding-left);
         color: var(--color-input-text);
+        outline-offset: calc(-1 * var(--fhi-dimension-border-width));
         background-color: var(--color-input-background);
         font-weight: var(--typography-input-font-weight);
         font-size: var(--typography-input-font-size);
@@ -155,12 +157,12 @@ export class FhiTextInput extends LitElement {
         transition: all var(--fhi-motion-ease-default)
           var(--fhi-motion-duration-quick);
         &:hover {
-          outline-color: var(--color-input-outline-hover);
+          border-color: var(--color-input-border-hover);
           background-color: var(--color-input-background-hover);
         }
         &:focus-visible {
-          outline: var(--dimension-outline-width-active) solid
-            var(--color-input-outline-active);
+          outline: var(--fhi-dimension-border-width-active) solid
+            var(--color-input-border-active);
           outline-offset: calc(-1 * var(--fhi-dimension-border-width-active));
         }
       }
@@ -183,7 +185,7 @@ export class FhiTextInput extends LitElement {
       }
       input {
         &:hover {
-          outline-color: var(--color-input-outline);
+          border-color: var(--color-input-border);
           background-color: var(--color-input-background);
         }
       }
@@ -191,12 +193,12 @@ export class FhiTextInput extends LitElement {
 
     :host([readonly]:not([disabled])) {
       input {
-        outline: unset;
+        border: unset;
         border-radius: unset;
         background-color: transparent;
         background-image: linear-gradient(
           90deg,
-          var(--color-input-outline) var(--dimension-outline-width),
+          var(--color-input-border) var(--dimension-border-width),
           transparent 1px
         );
         &:hover {
@@ -210,9 +212,12 @@ export class FhiTextInput extends LitElement {
         color: var(--color-label-text-error);
       }
       input {
-        outline-color: var(--color-input-outline-error);
+        border-color: var(--color-input-border-error);
         background-color: var(--color-input-background-error);
         color: var(--color-input-text-error);
+        &:focus-visible {
+          outline-color: var(--color-input-border-error);
+        }
       }
       p {
         color: var(--color-message-text-error);
