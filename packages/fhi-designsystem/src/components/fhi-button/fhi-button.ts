@@ -76,228 +76,289 @@ export class FhiButton extends LitElement {
   static styles = css`
     :host {
       --border-radius: var(--fhi-border-radius-full);
-      --font-family: var(--fhi-font-family-roboto-flex);
+      --typography-font-family: var(--fhi-font-family-roboto-flex);
       --transition: var(--fhi-duration-quick)
         cubic-bezier(var(--fhi-ease-default));
 
-      --typography-label-large-letter-spacing: var(
+      --opacity-disabled: var(--fhi-opacity-disabled);
+
+      --typography-label-font-size-large: var(
+        --fhi-typography-label-large-font-size
+      );
+      --typography-label-font-size-medium: var(
+        --fhi-typography-label-medium-font-size
+      );
+      --typography-label-font-size-small: var(
+        --fhi-typography-label-small-font-size
+      );
+      --typography-label-font-weight-large: var(
+        --fhi-typography-label-font-weight-large
+      );
+      --typography-label-font-weight-medium: var(
+        --fhi-typography-label-medium-font-weight
+      );
+      --typography-label-font-weight-small: var(
+        --fhi-typography-label-small-font-weight
+      );
+      --typography-label-line-height-large: var();
+
+      --typography-label-letter-spacing-large: var(
         --fhi-typography-label-large-letter-spacing
       );
-      --typography-label-medium-letter-spacing: var(
+      --typography-label-letter-spacing-medium: var(
         --fhi-typography-label-medium-letter-spacing
       );
-      --typography-label-small-letter-spacing: var(
+      --typography-label-letter-spacing-small: var(
         --fhi-typography-label-small-letter-spacing
       );
-      --typography-label-large-line-height: var(
+      --typography-label-line-height-large: var(
         --fhi-typography-label-large-line-height
       );
-      --typography-label-medium-line-height: var(
+      --typography-label-line-height-medium: var(
         --fhi-typography-label-medium-line-height
       );
-      --typography-label-small-line-height: var(
+      --typography-label-line-height-small: var(
         --fhi-typography-label-medium-line-height
       );
 
-      --padding-large: var(--fhi-spacing-200) var(--fhi-spacing-300)
-        var(--fhi-spacing-200) var(--fhi-spacing-300);
-      --padding-medium: var(--fhi-spacing-100) var(--fhi-spacing-200)
-        var(--fhi-spacing-100) var(--fhi-spacing-200);
-      --padding-small: var(--fhi-spacing-050) var(--fhi-spacing-150)
-        var(--fhi-spacing-050) var(--fhi-spacing-150);
+      --dimension-gap-large: var(--fhi-spacing-100);
+      --dimension-gap-medium: var(--fhi-spacing-050);
+      --dimension-gap-small: var(--fhi-spacing-0);
 
-      --accent-strong-background-color: var(--fhi-color-accent-base);
-      --accent-strong-border-color: var(--fhi-color-accent-base);
-      --accent-strong-color: var(--fhi-color-accent-text-inverted);
-      --accent-strong-background-color-hover: var(
+      --border-width: var(--fhi-border-width);
+
+      --dimension-padding-small: calc(
+          var(--fhi-spacing-050) - var(--fhi-border-width)
+        )
+        var(--fhi-spacing-150);
+      --dimension-padding-medium: calc(
+          var(--fhi-spacing-100) - var(--fhi-border-width)
+        )
+        var(--fhi-spacing-200);
+      --dimension-padding-large: calc(
+          var(--fhi-spacing-200) - var(--fhi-border-width)
+        )
+        var(--fhi-spacing-300);
+      --color-accent-strong-background: var(--fhi-color-accent-base);
+      --color-accent-strong-border: var(--fhi-color-accent-base);
+      --color-accent-strong: var(--fhi-color-accent-text-inverted);
+      --color-accent-strong-background-hover: var(
         --fhi-color-accent-base-hover
       );
-      --accent-strong-border-color-hover: var(--fhi-color-accent-base-hover);
-      --accent-strong-background-color-active: var(
+      --color-accent-strong-border-hover: var(--fhi-color-accent-base-hover);
+      --color-accent-strong-hover: var(--fhi-color-accent-text-inverted);
+      --color-accent-strong-background-active: var(
         --fhi-color-accent-base-active
       );
+      --color-accent-strong-border-active: var(--fhi-color-accent-base-hover);
+      --color-accent-strong-active: var(--fhi-color-accent-text-inverted);
+      --color-accent-strong-background-disabled: var(--fhi-color-accent-base);
+      --color-accent-strong-border-disabled: var(--fhi-color-accent-base);
+      --color-accent-strong-disabled: var(--fhi-color-accent-text-inverted);
 
-      --accent-strong-border-color-active: var(--fhi-color-accent-base-hover);
-      --accent-strong-background-color-disabled: var(--fhi-color-accent-base);
-      --accent-strong-border-color-disabled: var(--fhi-color-accent-base);
-
-      --accent-subtle-background-color: var(--fhi-color-accent-surface);
-      --accent-subtle-border-color: var(--fhi-color-accent-surface);
-      --accent-subtle-color: var(--fhi-color-accent-text-subtle);
-      --accent-subtle-background-color-hover: var(
+      --color-accent-subtle-background: var(--fhi-color-accent-surface);
+      --color-accent-subtle-border: var(--fhi-color-accent-surface);
+      --color-accent-subtle: var(--fhi-color-accent-text-subtle);
+      --color-accent-subtle-background-hover: var(
         --fhi-color-accent-surface-hover
       );
-      --accent-subtle-border-color-hover: var(--fhi-color-accent-surface-hover);
-      --accent-subtle-background-color-active: var(
+      --color-accent-subtle-border-hover: var(--fhi-color-accent-surface-hover);
+      --color-accent-subtle-hover: var(--fhi-color-accent-text);
+      --color-accent-subtle-background-active: var(
         --fhi-color-accent-surface-active
       );
-      --accent-subtle-border-color-active: var(
+      --color-accent-subtle-border-active: var(
         --fhi-color-accent-surface-active
       );
-      --accent-subtle-background-color-disabled: var(
+      --color-accent-subtle-active: var(--fhi-color-accent-text);
+      --color-accent-subtle-background-disabled: var(
         --fhi-color-accent-surface
       );
-      --accent-subtle-border-color-disabled: var(--fhi-color-accent-surface);
+      --color-accent-subtle-border-disabled: var(--fhi-color-accent-surface);
+      --color-accent-subtle-disabled: var(--fhi-color-accent-text-subtle);
 
-      --accent-outlined-background-color: transparent;
-      --accent-outlined-border-color: var(--fhi-color-accent-border);
-      --accent-outlined-color: var(--fhi-color-accent-text-subtle);
-      --accent-outlined-background-color-hover: var(--fhi-color-accent-surface);
-      --accent-outlined-border-color-hover: var(--fhi-color-accent-surface);
-      --accent-outlined-background-color-active: var(
+      --color-accent-outlined-background: transparent;
+      --color-accent-outlined-border: var(--fhi-color-accent-border);
+      --color-accent-outlined: var(--fhi-color-accent-text-subtle);
+      --color-accent-outlined-background-hover: var(--fhi-color-accent-surface);
+      --color-accent-outlined-border-hover: var(--fhi-color-accent-surface);
+      --color-accent-outlined-hover: var(--fhi-color-accent-text);
+      --color-accent-outlined-background-active: var(
         --fhi-color-accent-surface-hover
       );
-      --accent-outlined-border-color-active: var(
+      --color-accent-outlined-border-active: var(
         --fhi-color-accent-surface-hover
       );
-      --accent-outlined-background-color-disabled: transparent;
-      --accent-outlined-border-color-disabled: var(--fhi-color-surface-base);
+      --color-accent-outlined-active: var(--fhi-color-accent-text);
+      --color-accent-outlined-background-disabled: transparent;
+      --color-accent-outlined-border-disabled: var(--fhi-color-surface-base);
+      --color-accent-outlined-disabled: var(--fhi-color-accent-text-subtle);
 
-      --accent-text-background-color: transparent;
-      --accent-text-border-color: transparent;
-      --accent-text-color: var(--fhi-color-accent-text-subtle);
-      --accent-text-background-color-hover: var(--fhi-color-accent-surface);
-      --accent-text-border-color-hover: var(--fhi-color-accent-surface);
-      --accent-text-color-hover: var(--fhi-color-accent-text);
-      --accent-text-background-color-active: var(
+      --color-accent-text-background: transparent;
+      --color-accent-text-border: transparent;
+      --color-accent-text: var(--fhi-color-accent-text-subtle);
+      --color-accent-text-background-hover: var(--fhi-color-accent-surface);
+      --color-accent-text-border-hover: var(--fhi-color-accent-surface);
+      --color-accent-text-hover: var(--fhi-color-accent-text);
+      --color-accent-text-background-active: var(
         --fhi-color-accent-surface-hover
       );
-      --accent-text-border-color-active: var(--fhi-color-accent-surface-hover);
-      --accent-text-background-color-disabled: transparent;
-      --accent-text-border-color-disabled: transparent;
-      --accent-text-color-disabled: var(--fhi-color-accent-text);
+      --color-accent-text-border-active: var(--fhi-color-accent-surface-hover);
+      --color-accent-text-active: var(--fhi-color-accent-text);
+      --color-accent-text-background-disabled: transparent;
+      --color-accent-text-border-disabled: transparent;
+      --color-accent-text-disabled: var(--fhi-color-accent-text);
 
-      --neutral-strong-background-color: var(--fhi-color-neutral-base);
-      --neutral-strong-border-color: var(--fhi-color-neutral-base);
-      --neutral-strong-color: var(--fhi-color-neutral-text-inverted);
-      --neutral-strong-background-color-hover: var(
+      --color-neutral-strong-background: var(--fhi-color-neutral-base);
+      --color-neutral-strong-border: var(--fhi-color-neutral-base);
+      --color-neutral-strong: var(--fhi-color-neutral-text-inverted);
+      --color-neutral-strong-background-hover: var(
         --fhi-color-neutral-base-hover
       );
-      --neutral-strong-border-color-hover: var(--fhi-color-neutral-base-hover);
-      --neutral-strong-background-color-active: var(
+      --color-neutral-strong-border-hover: var(--fhi-color-neutral-base-hover);
+      --color-neutral-strong-hover: var(--fhi-color-neutral-text-inverted);
+      --color-neutral-strong-background-active: var(
         --fhi-color-neutral-base-active
       );
-      --neutral-strong-border-color-active: var(--fhi-color-neutral-base-hover);
-      --neutral-strong-background-color-disabled: var(--fhi-color-neutral-base);
-      --neutral-strong-border-color-disabled: var(--fhi-color-neutral-base);
+      --color-neutral-strong-border-active: var(--fhi-color-neutral-base-hover);
+      --color-neutral-strong-active: var(--fhi-color-neutral-text-inverted);
+      --color-neutral-strong-background-disabled: var(--fhi-color-neutral-base);
+      --color-neutral-strong-border-disabled: var(--fhi-color-neutral-base);
+      --color-neutral-strong-disabled: var(--fhi-color-neutral-text-inverted);
 
-      --neutral-subtle-background-color: var(--fhi-color-neutral-surface);
-      --neutral-subtle-border-color: var(--fhi-color-neutral-surface);
-      --neutral-subtle-color: var(--fhi-color-neutral-text-subtle);
-      --neutral-subtle-background-color-hover: var(
+      --color-neutral-subtle-background: var(--fhi-color-neutral-surface);
+      --color-neutral-subtle-border: var(--fhi-color-neutral-surface);
+      --color-neutral-subtle: var(--fhi-color-neutral-text-subtle);
+      --color-neutral-subtle-background-hover: var(
         --fhi-color-neutral-surface-hover
       );
-      --neutral-subtle-border-color-hover: var(
+      --color-neutral-subtle-border-hover: var(
         --fhi-color-neutral-surface-hover
       );
-      --neutral-subtle-background-color-active: var(
+      --color-neutral-subtle-hover: var(--fhi-color-neutral-text);
+      --color-neutral-subtle-background-active: var(
         --fhi-color-neutral-surface-active
       );
-      --neutral-subtle-border-color-active: var(
+      --color-neutral-subtle-border-active: var(
         --fhi-color-neutral-surface-active
       );
-      --neutral-subtle-background-color-disabled: var(
+      --color-neutral-subtle-active: var(--fhi-color-neutral-text);
+      --color-neutral-subtle-background-disabled: var(
         --fhi-color-neutral-surface
       );
-      --neutral-subtle-border-color-disabled: var(--fhi-color-neutral-surface);
+      --color-neutral-subtle-border-disabled: var(--fhi-color-neutral-surface);
+      --color-neutral-subtle-disabled: var(--fhi-color-neutral-text);
 
-      --neutral-outlined-background-color: transparent;
-      --neutral-outlined-border-color: var(--fhi-color-neutral-border);
-      --neutral-outlined-color: var(--fhi-color-neutral-text-subtle);
-      --neutral-outlined-background-color-hover: var(
+      --color-neutral-outlined-background: transparent;
+      --color-neutral-outlined-border: var(--fhi-color-neutral-border);
+      --color-neutral-outlined: var(--fhi-color-neutral-text-subtle);
+      --color-neutral-outlined-background-hover: var(
         --fhi-color-neutral-surface
       );
-      --neutral-outlined-border-color-hover: var(--fhi-color-neutral-surface);
-      --neutral-outlined-background-color-active: var(
+      --color-neutral-outlined-border-hover: var(--fhi-color-neutral-surface);
+      --color-neutral-outlined-hover: var(--fhi-color-neutral-text);
+      --color-neutral-outlined-background-active: var(
         --fhi-color-neutral-surface-hover
       );
-      --neutral-outlined-border-color-active: var(
+      --color-neutral-outlined-border-active: var(
         --fhi-color-neutral-surface-hover
       );
-      --neutral-outlined-background-color-disabled: transparent;
-      --neutral-outlined-border-color-disabled: var(--fhi-color-surface-base);
+      --color-neutral-outlined-active: var(--fhi-color-neutral-text);
+      --color-neutral-outlined-background-disabled: transparent;
+      --color-neutral-outlined-border-disabled: var(--fhi-color-surface-base);
+      --color-neutral-outlined-disabled: var(--fhi-color-neutral-text-subtle);
 
-      --neutral-text-background-color: transparent;
-      --neutral-text-border-color: transparent;
-      --neutral-text-color: var(--fhi-color-neutral-text-subtle);
-      --neutral-text-background-color-hover: var(--fhi-color-neutral-surface);
-      --neutral-text-border-color-hover: var(--fhi-color-neutral-surface);
-      --neutral-text-color-hover: var(--fhi-color-neutral-text);
-      --neutral-text-background-color-active: var(
+      --color-neutral-text-background: transparent;
+      --color-neutral-text-border: transparent;
+      --color-neutral-text: var(--fhi-color-neutral-text-subtle);
+      --color-neutral-text-background-hover: var(--fhi-color-neutral-surface);
+      --color-neutral-text-border-hover: var(--fhi-color-neutral-surface);
+      --color-neutral-text-hover: var(--fhi-color-neutral-text);
+      --color-neutral-text-background-active: var(
         --fhi-color-neutral-surface-hover
       );
-      --neutral-text-border-color-active: var(
+      --color-neutral-text-border-active: var(
         --fhi-color-neutral-surface-hover
       );
-      --neutral-text-color-active: var(--fhi-color-neutral-text);
-      --neutral-text-background-color-disabled: transparent;
-      --neutral-text-border-color-disabled: transparent;
+      --color-neutral-text-active: var(--fhi-color-neutral-text);
+      --color-neutral-text-background-disabled: transparent;
+      --color-neutral-text-border-disabled: transparent;
+      --color-neutral-text-disaabled: var(--fhi-color-neutral-text-subtle);
 
-      --danger-strong-background-color: var(--fhi-color-danger-base);
-      --danger-strong-border-color: var(--fhi-color-danger-base);
-      --danger-strong-color: var(--fhi-color-danger-text-inverted);
-      --danger-strong-background-color-hover: var(
+      --color-danger-strong-background: var(--fhi-color-danger-base);
+      --color-danger-strong-border: var(--fhi-color-danger-base);
+      --color-danger-strong: var(--fhi-color-danger-text-inverted);
+      --color-danger-strong-background-hover: var(
         --fhi-color-danger-base-hover
       );
-      --danger-strong-border-color-hover: var(--fhi-color-danger-base-hover);
-      --danger-strong-background-color-active: var(
+      --color-danger-strong-border-hover: var(--fhi-color-danger-base-hover);
+      --color-danger-strong-hover: var(--fhi-color-danger-text-inverted);
+      --color-danger-strong-background-active: var(
         --fhi-color-danger-base-active
       );
-      --danger-strong-border-color-active: var(--fhi-color-danger-base-hover);
-      --danger-strong-background-color-disabled: var(--fhi-color-danger-base);
-      --danger-strong-border-color-disabled: var(--fhi-color-danger-base);
+      --color-danger-strong-border-active: var(--fhi-color-danger-base-hover);
+      --color-danger-strong-active: var(--fhi-color-danger-text-inverted);
+      --color-danger-strong-background-disabled: var(--fhi-color-danger-base);
+      --color-danger-strong-border-disabled: var(--fhi-color-danger-base);
+      --color-danger-strong-disabled: var(--fhi-color-danger-text-inverted);
 
-      --danger-subtle-background-color: var(--fhi-color-danger-surface);
-      --danger-subtle-border-color: var(--fhi-color-danger-surface);
-      --danger-subtle-color: var(--fhi-color-danger-text-subtle);
-      --danger-subtle-background-color-hover: var(
+      --color-danger-subtle-background: var(--fhi-color-danger-surface);
+      --color-danger-subtle-border: var(--fhi-color-danger-surface);
+      --color-danger-subtle: var(--fhi-color-danger-text-subtle);
+      --color-danger-subtle-background-hover: var(
         --fhi-color-danger-surface-hover
       );
-      --danger-subtle-border-color-hover: var(--fhi-color-danger-surface-hover);
-      --danger-subtle-background-color-active: var(
+      --color-danger-subtle-border-hover: var(--fhi-color-danger-surface-hover);
+      --color-danger-subtle-hover: var(--fhi-color-danger-text);
+      --color-danger-subtle-background-active: var(
         --fhi-color-danger-surface-active
       );
-      --danger-subtle-border-color-active: var(
+      --color-danger-subtle-border-active: var(
         --fhi-color-danger-surface-active
       );
-      --danger-subtle-background-color-disabled: var(
+      --color-danger-subtle-active: var(--fhi-color-danger-text);
+      --color-danger-subtle-background-disabled: var(
         --fhi-color-danger-surface
       );
-      --danger-subtle-border-color-disabled: var(--fhi-color-danger-surface);
+      --color-danger-subtle-border-disabled: var(--fhi-color-danger-surface);
+      --color-danger-subtle-disabled: var(--fhi-color-danger-text-subtle);
 
-      --danger-outlined-background-color: transparent;
-      --danger-outlined-border-color: var(--fhi-color-danger-border);
-      --danger-outlined-color: var(--fhi-color-danger-text-subtle);
-      --danger-outlined-background-color-hover: var(--fhi-color-danger-surface);
-      --danger-outlined-border-color-hover: var(--fhi-color-danger-surface);
-      --danger-outlined-background-color-active: var(
+      --color-danger-outlined-background-color: transparent;
+      --color-danger-outlined-border: var(--fhi-color-danger-border);
+      --color-danger-outlined: var(--fhi-color-danger-text-subtle);
+      --color-danger-outlined-background-hover: var(--fhi-color-danger-surface);
+      --color-danger-outlined-border-hover: var(--fhi-color-danger-surface);
+      --color-danger-outlined-hover: var(--fhi-color-danger-text);
+      --color-danger-outlined-background-active: var(
         --fhi-color-danger-surface-hover
       );
-      --danger-outlined-border-color-active: var(
+      --color-danger-outlined-border-active: var(
         --fhi-color-danger-surface-hover
       );
-      --danger-outlined-background-color-disabled: transparent;
-      --danger-outlined-border-color-disabled: var(--fhi-color-surface-base);
+      --color-danger-outlined-active: var(--fhi-color-danger-text);
+      --color-danger-outlined-background-disabled: transparent;
+      --color-danger-outlined-border-disabled: var(--fhi-color-danger-border);
+      --color-danger-outlined-disabled: var(--fhi-color-danger-text-subtle);
 
-      --danger-text-background-color: transparent;
-      --danger-text-border-color: transparent;
-      --danger-text-color: var(--fhi-color-danger-text-subtle);
-      --danger-text-background-color-hover: var(--fhi-color-danger-surface);
-      --danger-text-border-color-hover: var(--fhi-color-danger-surface);
-      --danger-text-color-hover: var(--fhi-color-danger-text);
-      --danger-text-background-color-active: var(
+      --color-danger-text-background: transparent;
+      --color-danger-text-border: transparent;
+      --color-danger-text: var(--fhi-color-danger-text-subtle);
+      --color-danger-text-background-hover: var(--fhi-color-danger-surface);
+      --color-danger-text-border-hover: var(--fhi-color-danger-surface);
+      --color-danger-text-hover: var(--fhi-color-danger-text);
+      --color-danger-text-background-active: var(
         --fhi-color-danger-surface-hover
       );
-      --danger-text-border-color-active: var(--fhi-color-danger-surface-hover);
-      --danger-text-color-active: var(--fhi-color-danger-text);
-      --danger-text-background-color-disabled: transparent;
-      --danger-text-border-color-disabled: transparent;
-      --danger-text-color-disabled: var(--fhi-color-danger-text-subtle);
+      --color-danger-text-border-active: var(--fhi-color-danger-surface-hover);
+      --color-danger-text-active: var(--fhi-color-danger-text);
+      --color-danger-text-background-disabled: transparent;
+      --color-danger-text-border-disabled: transparent;
+      --color-danger-text-disabled: var(--fhi-color-danger-text-subtle);
 
       button {
         border-radius: var(--border-radius);
         border: solid var(--fhi-border-width);
-        font-family: var(--font-family);
+        font-family: var(--typography-font-family);
 
         display: inline-flex;
         justify-content: center;
@@ -307,263 +368,291 @@ export class FhiButton extends LitElement {
 
         cursor: pointer;
         &:disabled {
-          opacity: var(--fhi-opacity-disabled);
+          opacity: var(--opacity-disabled);
           cursor: not-allowed;
         }
       }
     }
 
     :host([size='large']) button {
-      font-size: var(--label-large-font-size);
-      font-weight: var(--label-large-font-weight);
-      line-height: var(--typography-label-large-line-height);
-      letter-spacing: var(--typography-label-large-letter-spacing);
+      font-size: var(--typography-label-font-size-large);
+      font-weight: var(--typography-font-weight-large-label);
+      line-height: var(--typography-label-line-height-large);
+      letter-spacing: var(--typography-label-letter-spacing-large);
 
-      padding: var(--padding-large);
-      gap: var(--fhi-spacing-100);
+      padding: var(--dimension-padding-large);
+      gap: var(--dimension-gap-large);
     }
 
     :host([size='medium']) button {
-      font-size: var(--label-medium-font-size);
-      font-weight: var(--label-medium-font-weight);
-      line-height: var(--typography-label-medium-line-height);
-      letter-spacing: var(--typography-label-medium-letter-spacing);
+      font-size: var(--typography-label-font-size-medium);
+      font-weight: var(--typography-label-font-weight-medium);
+      line-height: var(--typography-label-line-height-medium);
+      letter-spacing: var(--typographyl-label-letter-spacing-medium);
 
-      padding: var(--padding-medium);
-      gap: var(--fhi-spacing-050);
+      padding: var(--dimension-padding-medium);
+      gap: var(--dimension-gap-medium);
     }
 
     :host([size='small']) button {
-      font-size: var(--label-small-font-size);
-      font-weight: var(--label-small-font-weight);
-      line-height: var(--typography-label-small-line-height);
-      letter-spacing: var(--typography-label-small-letter-spacing);
-      padding: var(--padding-small);
-      gap: var(--fhi-spacing-0);
+      font-size: var(--typography-small-label-font-size);
+      font-weight: var(--typography-label-font-weight-small);
+      line-height: var(--typography-small-label--line-height);
+      letter-spacing: var(--typography-small-label-letter-spacing);
+
+      padding: var(--dimension-padding-small);
+      gap: var(--dimension-gap-small);
     }
 
     :host([color='accent'][variant='strong']) button {
-      background-color: var(--accent-strong-background-color);
-      border-color: var(--accent-strong-border-color);
-      color: var(--accent-strong-color);
+      background-color: var(--color-accent-strong-background);
+      border-color: var(--color-accent-strong-border);
+      color: var(--color-accent-strong);
       &:hover {
-        background-color: var(--accent-strong-background-color-hover);
-        border-color: var(--accent-strong-border-color-hover);
+        background-color: var(--color-accent-strong-background-hover);
+        border-color: var(--color-accent-strong-border-hover);
+        color: var(--color-accent-strong-hover);
       }
       &:active {
-        background-color: var(--accent-strong-background-color-active);
-        border-color: var(--accent-strong-border-color-active);
+        background-color: var(--color-accent-strong-background-active);
+        border-color: var(--color-accent-strong-border-active);
+        color: var(--color-accent-strong-active);
       }
       &:disabled {
-        background-color: var(--accent-strong-background-color-disabled);
-        border-color: var(--accent-strong-border-color-disabled);
+        background-color: var(--color-accent-strong-background-disabled);
+        border-color: var(--color-accent-strong-border-disabled);
+        color: var(--color-accent-strong-disabled);
       }
     }
 
     :host([color='accent'][variant='subtle']) button {
-      background-color: var(--accent-subtle-background-color);
-      border-color: var(--accent-subtle-border-color);
-      color: var(--accent-subtle-color);
+      background-color: var(--color-accent-subtle-background);
+      border-color: var(--color-accent-subtle-border);
+      color: var(--color-accent-subtle);
       &:hover {
-        background-color: var(--accent-subtle-background-color-hover);
-        border-color: var(--accent-subtle-border-color-hover);
+        background-color: var(--color-accent-subtle-background-hover);
+        border-color: var(--color-accent-subtle-border-hover);
+        color: var(--color-accent-subtle-hover);
       }
       &:active {
-        background-color: var(--accent-subtle-background-color-active);
-        border-color: var(--accent-subtle-border-color-active);
+        background-color: var(--color-accent-subtle-background-active);
+        border-color: var(--color-accent-subtle-border-active);
+        color: var(--color-accent-subtle-active);
       }
       &:disabled {
-        background-color: var(--accent-subtle-background-color-disabled);
-        border-color: var(--accent-subtle-border-color-disabled);
+        background-color: var(--color-accent-subtle-background-disabled);
+        border-color: var(--color-accent-subtle-border-disabled);
+        color: var(--color-accent-subtle-disabled);
       }
     }
 
     :host([color='accent'][variant='outlined']) button {
-      background-color: var(--accent-outlined-background-colort);
-      border-color: var(--accent-outlined-border-color);
-      color: var(--accent-outlined-color);
+      background-color: var(--color-accent-outlined-background);
+      border-color: var(--color-accent-outlined-border);
+      color: var(--color-accent-outlined);
       &:hover {
-        background-color: var(--accent-outlined-background-color-hover);
-        border-color: var(--accent-outlined-border-color-hover);
+        background-color: var(--color-accent-outlined-background-hover);
+        border-color: var(--color-accent-outlined-border-hover);
+        color: var(--color-accent-outlined-hover);
       }
       &:active {
-        background-color: var(--accent-outlined-background-color-active);
-        border-color: var(--accent-outlined-border-color-active);
+        background-color: var(--color-accent-outlined-background-active);
+        border-color: var(--color-accent-outlined-border-active);
+        color: var(--color-accent-outlined-active);
       }
       &:disabled {
-        background-color: var(--accent-outlined-background-color-disabled);
-        border-color: var(--accent-outlined-border-color-disabled);
+        background-color: var(--color-accent-outlined-background-disabled);
+        border-color: var(--color-accent-outlined-border-disabled);
+        color: var(--color-accent-outlined-disabled);
       }
     }
 
     :host([color='accent'][variant='text']) button {
-      background-color: var(--accent-text-background-color);
-      border-color: var(--accent-text-border-color);
-      color: var(--accent-text-color);
+      background-color: var(--color-accent-text-background);
+      border-color: var(--color-accent-text-border);
+      color: var(--color-accent-text);
       &:hover {
-        background-color: var(--accent-text-background-color-hover);
-        border-color: var(--accent-text-border-color-hover);
-        color: var(--accent-text-color-hover);
+        background-color: var(--color-accent-text-background-hover);
+        border-color: var(--color-accent-text-border-hover);
+        color: var(--color-accent-text-hover);
       }
       &:active {
-        background-color: var(--accent-text-background-color-active);
-        border-color: var(--accent-text-border-color-active);
-        color: var(--accent-text-color-active);
+        background-color: var(--color-accent-text-background-active);
+        border-color: var(--color-accent-text-border-active);
+        color: var(--color-accent-text-active);
       }
       &:disabled {
-        background-color: var(--accent-text-background-color-disabled);
-        border-color: var(--accent-text-border-color-disabled);
-        color: var(--accent-text-color-disabled);
+        background-color: var(--color-accent-text-background-disabled);
+        border-color: var(--color-accent-text-border-disabled);
+        color: var(--color-accent-text-disabled);
       }
     }
 
     :host([color='neutral'][variant='strong']) button {
-      background-color: var(--neutral-strong-background-color);
-      border-color: var(--neutral-strong-border-color);
-      color: var(--neutral-strong-color);
+      background-color: var(--color-neutral-strong-background);
+      border-color: var(--color-neutral-strong-border);
+      color: var(--color-neutral-strong);
       &:hover {
-        background-color: var(--neutral-strong-background-color-hover);
-        border-color: var(--neutral-strong-border-color-hover);
+        background-color: var(--color-neutral-strong-background-hover);
+        border-color: var(--color-neutral-strong-border-hover);
+        color: var(--color-neutral-strong-hover);
       }
       &:active {
-        background-color: var(--neutral-strong-background-color-active);
-        border-color: var(--neutral-strong-border-color-active);
+        background-color: var(--color-neutral-strong-background-active);
+        border-color: var(--color-neutral-strong-border-active);
+        color: var(--color-neutral-strong-active);
       }
       &:disabled {
-        background-color: var(--neutral-strong-background-color-disabled);
-        border-color: var(--neutral-strong-border-color-disabled);
+        background-color: var(--color-neutral-strong-background-disabled);
+        border-color: var(--color-neutral-strong-border-disabled);
+        color: var(--color-neutral-strong-disabled);
       }
     }
 
     :host([color='neutral'][variant='subtle']) button {
-      background-color: var(--neutral-subtle-background-color);
-      border-color: var(--neutral-subtle-border-color);
-      color: var(--neutral-subtle-color);
+      background-color: var(--color-neutral-subtle-background);
+      border-color: var(--color-neutral-subtle-border);
+      color: var(--color-neutral-subtle);
       &:hover {
-        background-color: var(--neutral-subtle-background-color-hover);
-        border-color: var(--neutral-subtle-border-color-hover);
+        background-color: var(--color-neutral-subtle-background-hover);
+        border-color: var(--color-neutral-subtle-border-hover);
+        color: var(--color-neutral-subtle-hover);
       }
       &:active {
-        background-color: var(--neutral-subtle-background-color-active);
-        border-color: var(--neutral-subtle-border-color-active);
+        background-color: var(--color-neutral-subtle-background-active);
+        border-color: var(--color-neutral-subtle-border-active);
+        color: var(--color-neutral-subtle-active);
       }
       &:disabled {
-        background-color: var(--neutral-subtle-background-color-disabled);
-        border-color: var(--neutral-subtle-border-color-disabled);
+        background-color: var(--color-neutral-subtle-background-disabled);
+        border-color: var(--color-neutral-subtle-border-disabled);
+        color: var(--color-neutral-subtle-disabled);
       }
     }
 
     :host([color='neutral'][variant='outlined']) button {
-      background-color: var(--neutral-outlined-background-colort);
-      border-color: var(--neutral-outlined-border-color);
-      color: var(--neutral-outlined-color);
+      background-color: var(--color-neutral-outlined-backgroundt);
+      border-color: var(--color-neutral-outlined-border);
+      color: var(--color-neutral-outlined);
       &:hover {
-        background-color: var(--neutral-outlined-background-color-hover);
-        border-color: var(--neutral-outlined-border-color-hover);
+        background-color: var(--color-neutral-outlined-background-hover);
+        border-color: var(--color-neutral-outlined-border-hover);
+        color: var(--color-neutral-outlined-hover);
       }
       &:active {
-        background-color: var(--neutral-outlined-background-color-active);
-        border-color: var(--neutral-outlined-border-color-active);
+        background-color: var(--color-neutral-outlined-background-active);
+        border-color: var(--color-neutral-outlined-border-active);
+        color: var(--color-neutral-outlined-active);
       }
       &:disabled {
-        background-color: var(--neutral-outlined-background-color-disabled);
-        border-color: var(--neutral-outlined-border-color-disabled);
+        background-color: var(--color-neutral-outlined-background-disabled);
+        border-color: var(--color-neutral-outlined-border-disabled);
+        color: var(--color-neutral-outlined-diaabled);
       }
     }
 
     :host([color='neutral'][variant='text']) button {
-      background-color: var(--neutral-text-background-color);
-      border-color: var(--neutral-text-border-color);
-      color: var(--neutral-text-color);
+      background-color: var(--color-neutral-text-background);
+      border-color: var(--color-neutral-text-border);
+      color: var(--color-neutral-text);
       &:hover {
-        background-color: var(--neutral-text-background-color-hover);
-        border-color: var(--neutral-text-border-color-hover);
-        color: var(--neutral-text-color-hover);
+        background-color: var(--color-neutral-text-background-hover);
+        border-color: var(--color-neutral-text-border-hover);
+        color: var(--color-neutral-text-hover);
       }
       &:active {
-        background-color: var(--neutral-text-background-color-active);
-        border-color: var(--neutral-text-border-color-active);
-        color: var(--neutral-text-color-active);
+        background-color: var(--color-neutral-text-background-active);
+        border-color: var(--color-neutral-text-border-active);
+        color: var(--color-neutral-text-active);
       }
       &:disabled {
-        background-color: var(--neutral-text-background-color-disabled);
-        border-color: var(--neutral-text-border-color-disabled);
-        color: var(--neutral-text-color-disabled);
+        background-color: var(--color-neutral-text-background-disabled);
+        border-color: var(--color-neutral-text-border-disabled);
+        color: var(--color-neutral-text-disabled);
       }
     }
 
     :host([color='danger'][variant='strong']) button {
-      background-color: var(--danger-strong-background-color);
-      border-color: var(--danger-strong-border-color);
-      color: var(--danger-strong-color);
+      background-color: var(--color-danger-strong-background);
+      border-color: var(--color-danger-strong-border);
+      color: var(--color-danger-strong);
       &:hover {
-        background-color: var(--danger-strong-background-color-hover);
-        border-color: var(--danger-strong-border-color-hover);
+        background-color: var(--color-danger-strong-background-hover);
+        border-color: var(--color-danger-strong-border-hover);
+        color: var(--color-danger-strong-hover);
       }
       &:active {
-        background-color: var(--danger-strong-background-color-active);
-        border-color: var(--danger-strong-border-color-active);
+        background-color: var(--color-danger-strong-background-active);
+        border-color: var(--color-danger-strong-border-active);
+        color: var(--color-danger-strong-active);
       }
       &:disabled {
-        background-color: var(--danger-strong-background-color-disabled);
-        border-color: var(--danger-strong-border-color-disabled);
+        background-color: var(--color-danger-strong-background-disabled);
+        border-color: var(--color-danger-strong-border-disabled);
+        color: var(--color-danger-strong-disabled);
       }
     }
 
     :host([color='danger'][variant='subtle']) button {
-      background-color: var(--danger-subtle-background-color);
-      border-color: var(--danger-subtle-border-color);
-      color: var(--danger-subtle-color);
+      background-color: var(--color-danger-subtle-background);
+      border-color: var(--color-danger-subtle-border);
+      color: var(--color-danger-subtle);
       &:hover {
-        background-color: var(--danger-subtle-background-color-hover);
-        border-color: var(--danger-subtle-border-color-hover);
+        background-color: var(--color-danger-subtle-background-hover);
+        border-color: var(--color-danger-subtle-border-hover);
+        color: var(--color-danger-subtle-hover);
       }
       &:active {
-        background-color: var(--danger-subtle-background-color-active);
-        border-color: var(--danger-subtle-border-color-active);
+        background-color: var(--color-danger-subtle-background-active);
+        border-color: var(--color-danger-subtle-border-active);
+        color: var(--color-danger-subtle-active);
       }
       &:disabled {
-        background-color: var(--danger-subtle-background-color-disabled);
-        border-color: var(--danger-subtle-border-color-disabled);
+        background-color: var(--color-danger-subtle-background-disabled);
+        border-color: var(--color-danger-subtle-border-disabled);
+        color: var(--color-danger-subtle-disabled);
       }
     }
 
     :host([color='danger'][variant='outlined']) button {
-      background-color: var(--danger-outlined-background-colort);
-      border-color: var(--danger-outlined-border-color);
-      color: var(--danger-outlined-color);
+      background-color: var(--color-danger-outlined-background);
+      border-color: var(--color-danger-outlined-border);
+      color: var(--color-danger-outlined);
       &:hover {
-        background-color: var(--danger-outlined-background-color-hover);
-        border-color: var(--danger-outlined-border-color-hover);
+        background-color: var(--color-danger-outlined-background-hover);
+        border-color: var(--color-danger-outlined-border-hover);
+        color: var(--color-danger-outlined-hover);
       }
       &:active {
-        background-color: var(--danger-outlined-background-color-active);
-        border-color: var(--danger-outlined-border-color-active);
+        background-color: var(--color-danger-outlined-background-active);
+        border-color: var(--color-danger-outlined-border-active);
+        color: var(--color-danger-outlined-active);
       }
       &:disabled {
-        background-color: var(--danger-outlined-background-color-disabled);
-        border-color: var(--danger-outlined-border-color-disabled);
+        background-color: var(--color-danger-outlined-background-disabled);
+        border-color: var(--color-danger-outlined-border-disabled);
+        color: var(--color-danger-outlined-disabled);
       }
     }
 
     :host([color='danger'][variant='text']) button {
-      background-color: var(--danger-text-background-color);
-      border-color: var(--danger-text-border-color);
-      color: var(--danger-text-color);
+      background-color: var(--color-danger-text-background);
+      border-color: var(--color-danger-text-border);
+      color: var(--color-danger-text);
       &:hover {
-        background-color: var(--danger-text-background-color-hover);
-        border-color: var(--danger-text-border-color-hover);
-        color: var(--danger-text-color-hover);
+        background-color: var(--color-danger-text-background-hover);
+        border-color: var(--color-danger-text-border-hover);
+        color: var(--color-danger-text-hover);
       }
       &:active {
-        background-color: var(--danger-text-background-color-active);
-        border-color: var(--danger-text-border-color-active);
-        color: var(--danger-text-color-active);
+        background-color: var(--color-danger-text-background-active);
+        border-color: var(--color-danger-text-border-active);
+        color: var(--color-danger-text-active);
       }
       &:disabled {
-        background-color: var(--danger-text-background-color-disabled);
-        border-color: var(--danger-text-border-color-disabled);
-        color: var(--danger-text-color-disabled);
+        background-color: var(--color-danger-text-background-disabled);
+        border-color: var(--color-danger-text-border-disabled);
+        color: var(--color-danger-text-disabled);
       }
     }
   `;
