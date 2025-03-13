@@ -80,9 +80,11 @@ export class FhiTextInput extends LitElement {
       );
 
       /* input */
+      --color-input-placeholder: var(--fhi-color-neutral-base);
       --color-input-text: var(--fhi-color-neutral-text);
       --color-input-text-error: var(--fhi-color-danger-text);
       --color-input-background: var(--fhi-color-neutral-background);
+      --color-input-background-active: var(--fhi-color-accent-background);
       --color-input-background-hover: var(--fhi-color-accent-background-subtle);
       --color-input-background-error: var(--fhi-color-danger-background);
       --color-input-border: var(--fhi-color-neutral-border);
@@ -148,7 +150,6 @@ export class FhiTextInput extends LitElement {
         padding: 0 var(--dimension-input-padding-right) 0
           var(--dimension-input-padding-left);
         color: var(--color-input-text);
-        outline-offset: calc(-1 * var(--fhi-dimension-border-width));
         background-color: var(--color-input-background);
         font-weight: var(--typography-input-font-weight);
         font-size: var(--typography-input-font-size);
@@ -160,10 +161,12 @@ export class FhiTextInput extends LitElement {
           border-color: var(--color-input-border-hover);
           background-color: var(--color-input-background-hover);
         }
-        &:focus-visible {
-          outline: var(--fhi-dimension-border-width-active) solid
-            var(--color-input-border-active);
-          outline-offset: calc(-1 * var(--fhi-dimension-border-width-active));
+        &:focus {
+          border-color: var(--color-input-border-active);
+          background-color: var(--color-input-background-active);
+        }
+        &::placeholder {
+          color: var(--color-input-placeholder);
         }
       }
 
@@ -201,9 +204,6 @@ export class FhiTextInput extends LitElement {
           var(--color-input-border) var(--dimension-border-width),
           transparent 1px
         );
-        &:hover {
-          background-color: transparent;
-        }
       }
     }
 
@@ -215,9 +215,6 @@ export class FhiTextInput extends LitElement {
         border-color: var(--color-input-border-error);
         background-color: var(--color-input-background-error);
         color: var(--color-input-text-error);
-        &:focus-visible {
-          outline-color: var(--color-input-border-error);
-        }
       }
       p {
         color: var(--color-message-text-error);
