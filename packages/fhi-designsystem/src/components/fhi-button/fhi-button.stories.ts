@@ -20,6 +20,7 @@ const meta: Meta<FhiButton> = {
       color=${ifDefined(args.color)}
       variant=${ifDefined(args.variant)}
       size=${ifDefined(args.size)}
+      type=${ifDefined(args.type)}
       ?disabled=${args.disabled}
     >
       Handling
@@ -47,6 +48,7 @@ const meta: Meta<FhiButton> = {
       options: ['submit', 'button', 'reset'],
       control: { type: 'select' },
       description: 'Bestemmer type.',
+      defaultValue: { summary: 'submit' },
     },
     disabled: {
       control: { type: 'boolean' },
