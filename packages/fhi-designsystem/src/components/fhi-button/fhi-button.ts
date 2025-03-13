@@ -1,6 +1,5 @@
 import { html, css, LitElement } from 'lit';
 import { customElement, property } from 'lit/decorators.js';
-import { ifDefined } from 'lit/directives/if-defined.js';
 
 export const FhiButtonSelector = 'fhi-button';
 
@@ -17,14 +16,14 @@ export class FhiButton extends LitElement {
     | 'outlined'
     | 'text' = 'strong';
 
-  @property({ type: String, reflect: true }) size?:
+  @property({ type: String, reflect: true }) size:
     | 'large'
     | 'medium'
     | 'small' = 'medium';
 
   @property({ type: Boolean, reflect: true }) disabled = false;
 
-  @property({ type: String }) type?: 'button' | 'submit' | 'reset';
+  @property({ type: String }) type: 'button' | 'submit' | 'reset' = 'submit';
 
   private _formButton!: HTMLButtonElement;
   private _form!: HTMLFormElement | null;
@@ -68,7 +67,7 @@ export class FhiButton extends LitElement {
   }
 
   render() {
-    return html`<button ?disabled=${this.disabled} type=${ifDefined(this.type)}>
+    return html`<button ?disabled=${this.disabled} type=${this.type}>
       <slot></slot>
     </button>`;
   }
@@ -77,8 +76,7 @@ export class FhiButton extends LitElement {
     :host {
       --border-radius: var(--fhi-border-radius-full);
       --typography-font-family: var(--fhi-font-family-roboto-flex);
-      --transition: var(--fhi-duration-quick)
-        cubic-bezier(var(--fhi-ease-default));
+      --transition: var(--fhi-duration-quick) var(--fhi-ease-default);
 
       --opacity-disabled: var(--fhi-opacity-disabled);
 
@@ -100,8 +98,6 @@ export class FhiButton extends LitElement {
       --typography-label-font-weight-small: var(
         --fhi-typography-label-small-font-weight
       );
-      --typography-label-line-height-large: var();
-
       --typography-label-letter-spacing-large: var(
         --fhi-typography-label-large-letter-spacing
       );
@@ -120,10 +116,6 @@ export class FhiButton extends LitElement {
       --typography-label-line-height-small: var(
         --fhi-typography-label-medium-line-height
       );
-
-      --dimension-gap-large: var(--fhi-spacing-100);
-      --dimension-gap-medium: var(--fhi-spacing-050);
-      --dimension-gap-small: var(--fhi-spacing-0);
 
       --border-width: var(--fhi-border-width);
 
@@ -357,13 +349,8 @@ export class FhiButton extends LitElement {
 
       button {
         border-radius: var(--border-radius);
-        border: solid var(--fhi-border-width);
+        border: solid var(--border-width);
         font-family: var(--typography-font-family);
-
-        display: inline-flex;
-        justify-content: center;
-        align-items: center;
-
         transition: var(--transition);
 
         cursor: pointer;
@@ -376,32 +363,29 @@ export class FhiButton extends LitElement {
 
     :host([size='large']) button {
       font-size: var(--typography-label-font-size-large);
-      font-weight: var(--typography-font-weight-large-label);
+      font-weight: var(--typography-label-font-weight-large);
       line-height: var(--typography-label-line-height-large);
       letter-spacing: var(--typography-label-letter-spacing-large);
 
       padding: var(--dimension-padding-large);
-      gap: var(--dimension-gap-large);
     }
 
     :host([size='medium']) button {
       font-size: var(--typography-label-font-size-medium);
       font-weight: var(--typography-label-font-weight-medium);
       line-height: var(--typography-label-line-height-medium);
-      letter-spacing: var(--typographyl-label-letter-spacing-medium);
+      letter-spacing: var(--typography-label-letter-spacing-medium);
 
       padding: var(--dimension-padding-medium);
-      gap: var(--dimension-gap-medium);
     }
 
     :host([size='small']) button {
-      font-size: var(--typography-small-label-font-size);
+      font-size: var(--typography-label-font-size-small);
       font-weight: var(--typography-label-font-weight-small);
-      line-height: var(--typography-small-label--line-height);
-      letter-spacing: var(--typography-small-label-letter-spacing);
+      line-height: var(--typography-label-line-height-small);
+      letter-spacing: var(--typography-label-letter-spacing-small);
 
       padding: var(--dimension-padding-small);
-      gap: var(--dimension-gap-small);
     }
 
     :host([color='accent'][variant='strong']) button {
