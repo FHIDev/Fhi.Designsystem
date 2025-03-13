@@ -25,6 +25,10 @@ export default defineConfig(({ mode }) => {
                 src: 'src/theme',
                 dest: './',
               },
+              {
+                src: 'staticwebapp.config.json',
+                dest: './',
+              },
             ],
           }),
         ],
