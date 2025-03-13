@@ -60,7 +60,6 @@ export class FhiTextInput extends LitElement {
   static styles = css`
     :host {
       --typography-font-family: var(--fhi-font-family-roboto-flex);
-      --dimension-gap: var(--fhi-spacing-100);
 
       --opacity-disabled: var(--fhi-opacity-disabled);
 
@@ -78,6 +77,8 @@ export class FhiTextInput extends LitElement {
       --typography-label-letter-spacing: var(
         --fhi-typography-label-small-letter-spacing
       );
+
+      --dimension-label-padding-bottom: var(--fhi-spacing-100);
 
       /* input */
       --color-input-placeholder: var(--fhi-color-neutral-base);
@@ -127,11 +128,13 @@ export class FhiTextInput extends LitElement {
       --typography-message-letter-spacing: var(
         --fhi-typography-body-small-letter-spacing
       );
+
+      --dimension-message-margin-top: var(--fhi-spacing-100);
     }
 
     :host {
-      display: grid;
-      gap: var(--dimension-gap);
+      display: flex;
+      flex-direction: column;
       font-family: var(--typography-font-family);
 
       label {
@@ -140,6 +143,7 @@ export class FhiTextInput extends LitElement {
         line-height: var(--typography-label-line-height);
         letter-spacing: var(--typography-label-letter-spacing);
         color: var(--color-label-text);
+        padding-bottom: var(--dimension-label-padding-bottom);
       }
 
       input {
@@ -171,7 +175,7 @@ export class FhiTextInput extends LitElement {
       }
 
       p {
-        margin: unset;
+        margin: var(--dimension-message-margin-top) 0 0 0;
         color: var(--color-message-text);
         font-weight: var(--typography-message-font-weight);
         font-size: var(--typography-message-font-size);
