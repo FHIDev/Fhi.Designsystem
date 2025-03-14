@@ -105,7 +105,7 @@ export class FhiTextInput extends LitElement {
         --fhi-typography-body-medium-letter-spacing
       );
 
-      --dimension-border-width: var(--fhi-dimension-border-width);
+      --dimension-input-border-width: var(--fhi-dimension-border-width);
 
       --dimension-input-height: var(--fhi-spacing-500);
       --dimension-input-border-radius: var(--fhi-border-radius-050);
@@ -149,7 +149,8 @@ export class FhiTextInput extends LitElement {
       input {
         box-sizing: border-box;
         height: var(--dimension-input-height);
-        border: var(--dimension-border-width) solid var(--color-input-border);
+        border: var(--dimension-input-border-width) solid
+          var(--color-input-border);
         border-radius: var(--dimension-input-border-radius);
         padding: 0 var(--dimension-input-padding-right) 0
           var(--dimension-input-padding-left);
@@ -205,7 +206,7 @@ export class FhiTextInput extends LitElement {
         background-color: transparent;
         background-image: linear-gradient(
           90deg,
-          var(--color-input-border) var(--dimension-border-width),
+          var(--color-input-border) var(--dimension-input-border-width),
           transparent 1px
         );
       }
