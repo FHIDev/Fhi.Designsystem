@@ -74,9 +74,10 @@ export class FhiButton extends LitElement {
 
   static styles = css`
     :host {
-      --border-radius: var(--fhi-border-radius-full);
+      --dimension-border-radius: var(--fhi-border-radius-full);
+      --dimension-border-width: var(--fhi-dimension-border-width);
       --typography-font-family: var(--fhi-font-family-roboto-flex);
-      --transition: var(--fhi-motion-duration-quick)
+      --motion-transition: var(--fhi-motion-duration-quick)
         var(--fhi-motion-ease-default);
 
       --opacity-disabled: var(--fhi-opacity-disabled);
@@ -117,8 +118,6 @@ export class FhiButton extends LitElement {
       --typography-label-line-height-small: var(
         --fhi-typography-label-medium-line-height
       );
-
-      --border-width: var(--fhi-border-width);
 
       --dimension-padding-small: calc(
           var(--fhi-spacing-050) - var(--fhi-dimension-border-width)
@@ -349,10 +348,10 @@ export class FhiButton extends LitElement {
       --color-danger-text-disabled: var(--fhi-color-danger-text-subtle);
 
       button {
-        border-radius: var(--border-radius);
-        border: solid var(--border-width);
+        border-radius: var(--dimension-border-radius);
+        border: solid var(--dimension-border-width);
         font-family: var(--typography-font-family);
-        transition: var(--transition);
+        transition: var(--motion-transition);
 
         cursor: pointer;
         &:disabled {
