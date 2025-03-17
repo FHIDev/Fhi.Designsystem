@@ -71,6 +71,8 @@ export default defineConfig(({ mode }) => {
                 "new-component": "./src/components/new-component/new-component.ts",
             */
               index: './src/library.ts',
+              'fhi-text-input':
+                './src/components/fhi-text-input/fhi-text-input.ts',
             },
           },
           sourcemap: true,

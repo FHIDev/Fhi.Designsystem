@@ -1,5 +1,5 @@
-import { html, css, LitElement } from 'lit';
-import { customElement, property } from 'lit/decorators.js';
+import { html, css, LitElement, PropertyValues } from 'lit';
+import { customElement, property, query } from 'lit/decorators.js';
 import { ifDefined } from 'lit/directives/if-defined.js';
 
 export const FhiTextInputSelector = 'fhi-text-input';
@@ -19,6 +19,10 @@ export type FhiTextInputProps = Pick<
 
 @customElement(FhiTextInputSelector)
 export class FhiTextInput extends LitElement {
+  static formAssociated = true;
+
+  @query('#input-element') _input!: HTMLInputElement;
+
   @property({ type: String }) name = undefined;
 
   @property({ type: String }) label? = undefined;
@@ -38,7 +42,34 @@ export class FhiTextInput extends LitElement {
 
   @property({ type: String }) placeholder? = null;
 
-  @property({ type: String, reflect: true }) value? = null;
+  @property({ type: String, reflect: true }) value: string | null = null;
+
+  private _internals: ElementInternals;
+
+  constructor() {
+    super();
+    this._internals = this.attachInternals();
+  }
+
+  protected firstUpdated(_changedProperties: PropertyValues): void {
+    super.firstUpdated(_changedProperties);
+    this._internals.setFormValue(this._input.value);
+  }
+
+  public onChange(): void {
+    this.dispatchEvent(
+      new Event('change', {
+        bubbles: true,
+        composed: true,
+      }),
+    );
+
+    this._internals.setFormValue(this._input.value);
+  }
+
+  public onInput(): void {
+    this.value = this._input.value;
+  }
 
   render() {
     return html`
@@ -51,7 +82,8 @@ export class FhiTextInput extends LitElement {
         ?required=${this.required}
         ?readonly=${this.readonly}
         ?disabled=${this.disabled}
-        fhi-status=${ifDefined(this.status)}
+        @change=${this.onChange}
+        @input=${this.onInput}
       />
       ${this.message ? html`<p>${this.message}</p>` : ''}
     `;
