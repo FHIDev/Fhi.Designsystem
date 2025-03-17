@@ -63,12 +63,17 @@ export class FhiTextInput extends LitElement {
         composed: true,
       }),
     );
-
-    this._internals.setFormValue(this._input.value);
   }
 
   public onInput(): void {
     this.value = this._input.value;
+    this._internals.setFormValue(this._input.value);
+  }
+
+  public onKeyDown(event: KeyboardEvent): void {
+    if (event.key === 'Enter' && this._internals.form) {
+      this._internals.form!.requestSubmit();
+    }
   }
 
   render() {
@@ -84,6 +89,7 @@ export class FhiTextInput extends LitElement {
         ?disabled=${this.disabled}
         @change=${this.onChange}
         @input=${this.onInput}
+        @keydown=${this.onKeyDown}
       />
       ${this.message ? html`<p>${this.message}</p>` : ''}
     `;
