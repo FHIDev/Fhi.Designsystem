@@ -1,4 +1,4 @@
-import { html, css, LitElement, PropertyValues } from 'lit';
+import { html, css, LitElement } from 'lit';
 import { customElement, property, query } from 'lit/decorators.js';
 import { ifDefined } from 'lit/directives/if-defined.js';
 
@@ -42,7 +42,7 @@ export class FhiTextInput extends LitElement {
 
   @property({ type: String }) placeholder? = null;
 
-  @property({ type: String, reflect: true }) value: string | null = null;
+  @property({ type: String, reflect: true }) value: string = '';
 
   private _internals: ElementInternals;
 
@@ -51,9 +51,9 @@ export class FhiTextInput extends LitElement {
     this._internals = this.attachInternals();
   }
 
-  protected firstUpdated(_changedProperties: PropertyValues): void {
-    super.firstUpdated(_changedProperties);
-    this._internals.setFormValue(this._input.value);
+  public connectedCallback(): void {
+    super.connectedCallback();
+    this._internals.setFormValue(this.value);
   }
 
   public onChange(): void {
@@ -67,7 +67,7 @@ export class FhiTextInput extends LitElement {
 
   public onInput(): void {
     this.value = this._input.value;
-    this._internals.setFormValue(this._input.value);
+    this._internals.setFormValue(this.value);
   }
 
   public onKeyDown(event: KeyboardEvent): void {
