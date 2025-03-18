@@ -23,11 +23,11 @@ export class FhiTextInput extends LitElement {
 
   @query('#input-element') _input!: HTMLInputElement;
 
-  @property({ type: String }) name = undefined;
+  @property({ type: String }) label?: string = undefined;
 
-  @property({ type: String }) label? = undefined;
+  @property({ type: String }) message?: string = undefined;
 
-  @property({ type: String }) message? = undefined;
+  @property({ type: String }) placeholder?: string | null = null;
 
   @property({ type: String, reflect: true }) status?: 'error' = undefined;
 
@@ -37,11 +37,22 @@ export class FhiTextInput extends LitElement {
 
   @property({ type: Boolean }) disabled? = false;
 
-  @property({ type: String }) placeholder? = null;
+  private _name?: string = undefined;
+
+  @property({ type: String, reflect: true })
+  get name(): string | undefined {
+    return this._name;
+  }
+  set name(newName: string) {
+    const oldName = this._name;
+    this._name = newName;
+    this.requestUpdate('name', oldName);
+    this._internals.setFormValue(this._value);
+  }
 
   private _value: string = '';
 
-  @property({ type: String, reflect: true })
+  @property({ type: String })
   get value(): string {
     return this._value;
   }
@@ -83,6 +94,11 @@ export class FhiTextInput extends LitElement {
     if (event.key === 'Enter' && this._internals.form) {
       this._internals.form!.requestSubmit();
     }
+  }
+
+  public formResetCallback(): void {
+    this.value = this.getAttribute('value') || '';
+    this._internals.setFormValue(this.getAttribute('value'));
   }
 
   render() {

@@ -58,15 +58,7 @@ describe('fhi-text-input', () => {
   });
 
   describe('setting attributes', () => {
-    it('it sets its default attributes', async () => {
-      component = await fixture(html`<fhi-text-input></fhi-text-input>`);
-
-      expect(component).dom.to.equal(
-        `<fhi-text-input value=""></fhi-text-input>`,
-      );
-    });
-
-    it('it has an attribute to set the placeholder', async () => {
+    it('has an attribute to set the placeholder', async () => {
       component = await fixture(
         html`<fhi-text-input placeholder="my placeholder"></fhi-text-input>`,
       );
@@ -75,7 +67,7 @@ describe('fhi-text-input', () => {
       expect(component.placeholder).to.equal('my placeholder');
     });
 
-    it('it has an attribute to set the value', async () => {
+    it('has an attribute to set the value', async () => {
       component = await fixture(
         html`<fhi-text-input value="my value"></fhi-text-input>`,
       );
@@ -84,7 +76,7 @@ describe('fhi-text-input', () => {
       expect(component.value).to.equal('my value');
     });
 
-    it('it has an attribute to set the name', async () => {
+    it('has an attribute to set the name', async () => {
       component = await fixture(
         html`<fhi-text-input name="my name"></fhi-text-input>`,
       );
@@ -93,7 +85,7 @@ describe('fhi-text-input', () => {
       expect(component.name).to.equal('my name');
     });
 
-    it('it has an attribute to set the label', async () => {
+    it('has an attribute to set the label', async () => {
       component = await fixture(
         html`<fhi-text-input label="my label"></fhi-text-input>`,
       );
@@ -102,7 +94,7 @@ describe('fhi-text-input', () => {
       expect(component.label).to.equal('my label');
     });
 
-    it('it has an attribute to set the message', async () => {
+    it('has an attribute to set the message', async () => {
       component = await fixture(
         html`<fhi-text-input message="my message"></fhi-text-input>`,
       );
@@ -111,7 +103,7 @@ describe('fhi-text-input', () => {
       expect(component.message).to.equal('my message');
     });
 
-    it('it has an attribute to set the status', async () => {
+    it('has an attribute to set the status', async () => {
       component = await fixture(
         html`<fhi-text-input status="error"></fhi-text-input>`,
       );
@@ -120,7 +112,7 @@ describe('fhi-text-input', () => {
       expect(component.status).to.equal('error');
     });
 
-    it('it has an attribute to set the required', async () => {
+    it('has an attribute to set the required', async () => {
       component = await fixture(
         html`<fhi-text-input required></fhi-text-input>`,
       );
@@ -129,7 +121,7 @@ describe('fhi-text-input', () => {
       expect(component.required).to.equal(true);
     });
 
-    it('it has an attribute to set the readonly', async () => {
+    it('has an attribute to set the readonly', async () => {
       component = await fixture(
         html`<fhi-text-input readonly></fhi-text-input>`,
       );
@@ -138,7 +130,7 @@ describe('fhi-text-input', () => {
       expect(component.readonly).to.equal(true);
     });
 
-    it('it has an attribute to set the disabled', async () => {
+    it('has an attribute to set the disabled', async () => {
       component = await fixture(
         html`<fhi-text-input disabled></fhi-text-input>`,
       );
@@ -149,26 +141,26 @@ describe('fhi-text-input', () => {
   });
 
   describe('property-attribute mirror', () => {
-    it('it mirrors the "value" property with the "value" attribute', async () => {
+    it('mirrors the "name" property with the "name" attribute', async () => {
       component = await fixture(
-        html`<fhi-text-input value="hello"></fhi-text-input>`,
+        html`<fhi-text-input name="hello"></fhi-text-input>`,
       );
 
-      expect(component.getAttribute('value')).to.equal('hello');
-      expect(component.value).to.equal('hello');
+      expect(component.getAttribute('name')).to.equal('hello');
+      expect(component.name).to.equal('hello');
 
-      component.value = 'world';
+      component.name = 'world';
       await component.updateComplete;
 
-      expect(component.getAttribute('value')).to.equal('world');
-      expect(component.value).to.equal('world');
+      expect(component.getAttribute('name')).to.equal('world');
+      expect(component.name).to.equal('world');
     });
   });
 
   describe('form association', () => {
-    it('it assosiated to its parent form', async () => {
+    it('is associated to its parent form', async () => {
       component = await fixture(
-        html`<fhi-text-input name="my-input"></fhi-text-input>`,
+        html`<fhi-text-input name="myInput"></fhi-text-input>`,
         { parentNode: document.createElement('form') },
       );
 
@@ -176,13 +168,13 @@ describe('fhi-text-input', () => {
         document.querySelector('form') as HTMLFormElement,
       );
 
-      expect(form.get('my-input')).to.not.equal(null);
-      expect(form.get('my-input')).to.not.equal(undefined);
+      expect(form.get('myInput')).to.not.equal(null);
+      expect(form.get('myInput')).to.not.equal(undefined);
     });
 
-    it('it updates its assosiated form when its value changes', async () => {
+    it('updates its associated form when its value changes', async () => {
       component = await fixture(
-        html`<fhi-text-input name="my-input" value="hello"></fhi-text-input>`,
+        html`<fhi-text-input name="myInput" value="hello"></fhi-text-input>`,
         { parentNode: document.createElement('form') },
       );
 
@@ -190,14 +182,155 @@ describe('fhi-text-input', () => {
         document.querySelector('form') as HTMLFormElement,
       );
 
-      expect(form.get('my-input')).to.equal('hello');
+      expect(form.get('myInput')).to.equal('hello');
 
       component.value = 'world';
       await component.updateComplete;
 
       form = new FormData(document.querySelector('form') as HTMLFormElement);
 
-      expect(form.get('my-input')).to.equal('world');
+      expect(form.get('myInput')).to.equal('world');
+    });
+
+    it('updates its associated form when its name changes', async () => {
+      component = await fixture(
+        html`<fhi-text-input name="myInput" value="hello"></fhi-text-input>`,
+        { parentNode: document.createElement('form') },
+      );
+
+      let form = new FormData(
+        document.querySelector('form') as HTMLFormElement,
+      );
+
+      expect(form.get('myInput')).to.equal('hello');
+
+      component.name = 'my-new-input';
+      await component.updateComplete;
+
+      form = new FormData(document.querySelector('form') as HTMLFormElement);
+
+      expect(form.get('my-new-input')).to.equal('hello');
+    });
+
+    it('updates its value when there is a value change from the associated form', async () => {
+      component = await fixture(
+        html`<fhi-text-input name="myInput" value="hello"></fhi-text-input>`,
+        { parentNode: document.createElement('form') },
+      );
+
+      const form = document.querySelector('form') as HTMLFormElement;
+
+      form.myInput.value = 'world';
+
+      expect(component.value).to.equal('world');
+    });
+
+    it('updates its value when there is a value change from the associated form and the input is readonly', async () => {
+      component = await fixture(
+        html`<fhi-text-input
+          name="myInput"
+          value="hello"
+          readonly
+        ></fhi-text-input>`,
+        { parentNode: document.createElement('form') },
+      );
+
+      const form = document.querySelector('form') as HTMLFormElement;
+
+      form.myInput.value = 'world';
+
+      expect(component.value).to.equal('world');
+    });
+
+    it('updates its value when there is a value change from the associated form and the input is disabled', async () => {
+      component = await fixture(
+        html`<fhi-text-input
+          name="myInput"
+          value="hello"
+          disabled
+        ></fhi-text-input>`,
+        { parentNode: document.createElement('form') },
+      );
+
+      const form = document.querySelector('form') as HTMLFormElement;
+
+      form.myInput.value = 'world';
+
+      expect(component.value).to.equal('world');
+    });
+
+    it('is not included in the associated forms formData when disabled', async () => {
+      component = await fixture(
+        html`<fhi-text-input
+          name="myInput"
+          value="hello"
+          disabled
+        ></fhi-text-input>`,
+        { parentNode: document.createElement('form') },
+      );
+
+      const form = new FormData(
+        document.querySelector('form') as HTMLFormElement,
+      );
+
+      expect(form.get('myInput')).to.equal(null);
+    });
+
+    it('is not included in the associated forms formData when disabled', async () => {
+      component = await fixture(
+        html`<fhi-text-input
+          name="myInput"
+          value="hello"
+          disabled
+        ></fhi-text-input>`,
+        { parentNode: document.createElement('form') },
+      );
+
+      const form = new FormData(
+        document.querySelector('form') as HTMLFormElement,
+      );
+
+      expect(form.get('myInput')).to.equal(null);
+    });
+
+    it('implicitly submits the form when the Enter key is pressed', async () => {
+      let count = 0;
+
+      const form = document.createElement('form');
+      form.addEventListener('submit', function (event) {
+        event.preventDefault();
+        count++;
+      });
+
+      component = await fixture(
+        html`<fhi-text-input name="myInput" value="hello"></fhi-text-input>`,
+        { parentNode: form },
+      );
+
+      component._input.dispatchEvent(
+        new KeyboardEvent('keydown', { key: 'Enter' }),
+      );
+
+      expect(count).to.equal(1);
+    });
+
+    it('resets its value when the form is reset', async () => {
+      component = await fixture(
+        html`<fhi-text-input name="myInput" value="hello"></fhi-text-input>`,
+        { parentNode: document.createElement('form') },
+      );
+
+      component.value = 'world';
+      await component.updateComplete;
+
+      expect(component.value).to.equal('world');
+
+      const form = document.querySelector('form') as HTMLFormElement;
+
+      form.reset();
+      await component.updateComplete;
+
+      expect(component.value).to.equal('hello');
     });
   });
 });
