@@ -98,7 +98,7 @@ export class FhiTextInput extends LitElement {
 
   public formResetCallback(): void {
     this.value = this.getAttribute('value') || '';
-    this._internals.setFormValue(this.getAttribute('value'));
+    this._internals.setFormValue(this.value);
   }
 
   render() {
@@ -116,7 +116,7 @@ export class FhiTextInput extends LitElement {
         @input=${this.onInput}
         @keydown=${this.onKeyDown}
       />
-      ${this.message ? html`<p>${this.message}</p>` : ''}
+      ${this.message ? html`<p class="message">${this.message}</p>` : ''}
     `;
   }
 
@@ -238,7 +238,7 @@ export class FhiTextInput extends LitElement {
         }
       }
 
-      p {
+      .message {
         margin: var(--dimension-message-margin-top) 0 0 0;
         color: var(--color-message-text);
         font-weight: var(--typography-message-font-weight);
@@ -284,7 +284,7 @@ export class FhiTextInput extends LitElement {
         background-color: var(--color-input-background-error);
         color: var(--color-input-text-error);
       }
-      p {
+      .message {
         color: var(--color-message-text-error);
       }
     }

@@ -333,4 +333,28 @@ describe('fhi-text-input', () => {
       expect(component.value).to.equal('hello');
     });
   });
+
+  describe('label & message', async () => {
+    it('displays a label', async () => {
+      component = await fixture(
+        html`<fhi-text-input label="my label"></fhi-text-input>`,
+      );
+
+      const label = component.shadowRoot!.querySelector('label');
+
+      expect(label).to.not.equal(null);
+      expect(label!.textContent).to.equal('my label');
+    });
+
+    it('displays a message', async () => {
+      component = await fixture(
+        html`<fhi-text-input message="my message"></fhi-text-input>`,
+      );
+
+      const message = component.shadowRoot!.querySelector('.message');
+
+      expect(message).to.not.equal(null);
+      expect(message!.textContent).to.equal('my message');
+    });
+  });
 });
