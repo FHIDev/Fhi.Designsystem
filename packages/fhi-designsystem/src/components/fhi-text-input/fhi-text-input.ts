@@ -29,10 +29,7 @@ export class FhiTextInput extends LitElement {
 
   @property({ type: String }) message? = undefined;
 
-  @property({ type: String, reflect: true }) status?:
-    | 'error'
-    | 'disabled'
-    | 'read-only' = undefined;
+  @property({ type: String, reflect: true }) status?: 'error' = undefined;
 
   @property({ type: Boolean }) required? = false;
 
@@ -42,7 +39,19 @@ export class FhiTextInput extends LitElement {
 
   @property({ type: String }) placeholder? = null;
 
-  @property({ type: String, reflect: true }) value: string = '';
+  private _value: string = '';
+
+  @property({ type: String, reflect: true })
+  get value(): string {
+    return this._value;
+  }
+
+  set value(newValue: string) {
+    const oldValue = this._value;
+    this._value = newValue;
+    this.requestUpdate('value', oldValue);
+    this._internals.setFormValue(this._value);
+  }
 
   private _internals: ElementInternals;
 
