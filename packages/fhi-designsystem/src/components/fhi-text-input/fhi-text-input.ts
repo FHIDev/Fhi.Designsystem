@@ -10,7 +10,6 @@ export type FhiTextInputProps = Pick<
   | 'label'
   | 'message'
   | 'status'
-  | 'required'
   | 'readonly'
   | 'disabled'
   | 'placeholder'
@@ -21,8 +20,6 @@ export type FhiTextInputProps = Pick<
 export class FhiTextInput extends LitElement {
   static formAssociated = true;
 
-  @query('#input-element') _input!: HTMLInputElement;
-
   @property({ type: String }) label?: string = undefined;
 
   @property({ type: String }) message?: string = undefined;
@@ -31,11 +28,11 @@ export class FhiTextInput extends LitElement {
 
   @property({ type: String, reflect: true }) status?: 'error' = undefined;
 
-  @property({ type: Boolean }) required? = false;
-
   @property({ type: Boolean }) readonly? = false;
 
   @property({ type: Boolean }) disabled? = false;
+
+  @query('#input-element') _input!: HTMLInputElement;
 
   private _name?: string = undefined;
 
@@ -109,7 +106,6 @@ export class FhiTextInput extends LitElement {
         name=${ifDefined(this.name)}
         placeholder=${ifDefined(this.placeholder)}
         .value=${this.value}
-        ?required=${this.required}
         ?readonly=${this.readonly}
         ?disabled=${this.disabled}
         @change=${this.onChange}
