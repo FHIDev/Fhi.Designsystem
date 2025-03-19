@@ -140,8 +140,8 @@ describe('fhi-text-input', () => {
     });
   });
 
-  describe('property-attribute mirror', () => {
-    it('mirrors the "name" property with the "name" attribute', async () => {
+  describe('property-attribute reflection', () => {
+    it('reflects the "name" property with the "name" attribute', async () => {
       component = await fixture(
         html`<fhi-text-input name="hello"></fhi-text-input>`,
       );

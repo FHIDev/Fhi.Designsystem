@@ -261,13 +261,10 @@ export class FhiTextInput extends LitElement {
     :host([readonly]:not([disabled])) {
       input {
         border: unset;
+        border-left: var(--dimension-input-border-width) solid
+          var(--color-input-border);
         border-radius: unset;
         background-color: transparent;
-        background-image: linear-gradient(
-          90deg,
-          var(--color-input-border) var(--dimension-input-border-width),
-          transparent 1px
-        );
       }
     }
 
