@@ -2,24 +2,22 @@ import { Meta } from '@storybook/blocks';
 
 <Meta title="Design Tokens" />
 
-# Design tokens
+# Design tokens i FHI Designsystem
 
-## Hva er design tokens?
-
-## Tokens i FHI Designsystem
+## Farger
 
 Våre farger er delt opp i to lag med design tokens:
 
 - Primitive farger er globale skalaer av ulike fargetoner, slik som `green-200`, `red-150` eller `blue-900`.
 - Semantiske farger er tokene vi forholder oss til når vi bygger komponenter, med navn som gjenspeiler tiltenkt bruk, slik som `background-default` eller `text-subtle`.
 
-# Semantiske farger
+### Semantiske farger
 
 Fargene er samlet i noen grupper:
 
-- `neutral` for den generelle tonen. Den lar andre farger stikke ut og signalisere det de skal.
-- `accent` for å vekke handling.
-- `info` brukes om informasjon som må tekke litt oppmerksomhet, uten å drive for mye handling.
+- `neutral` setter den generelle tonen. Den lar andre farger stikke seg ut og signalisere det de skal.
+- `accent` brukes for å vekke handling.
+- `info` brukes til informative beskjeder som må trekke litt oppmerksomhet, uten å drive for mye handling.
 - `success` signaliserer vellykkede handlinger, hvor bruker skal vite at alt har ordnet seg som det skal.
 - `warning` signaliserer varsomhet og at bruker må nå være litt på vakt.
 - `danger` signaliserer fare, feil eller destruktive handlinger bruker ikke kan angre.
@@ -32,5 +30,15 @@ De forskjellige fargegruppene har igjen hver sine undergrupper:
 - `text` til tekst, samt ikoner i tilfeller hvor ikoner erstatter tekst.
 - `base` der vi trenger tydelige fargetoner som står ut. Brukes på handlingsdrivende elementer og der man vil formidle en bestemt mening.
 
-Alle har en deginer `deafult`, i tillegg til undergrupper, slik som for grader (`subtle` eller `strong`) eller interaksjon (`hover`og `active`).
-Merk selv om fargene er navngitt etter interaksjon kan det være riktig å bruke andre. For eksemplel kan det gi mening å bruke `surface-deafult` ved hover, enn å gå hele veien opp til `surface-hover` hvbis elementet ikke har bakgrunnsfarge fra før.
+Alle har en definert `deafult`, i tillegg til undergrupper, slik som grader (`subtle` eller `strong`) eller interaksjon (`hover`og `active`).
+Merk at selv om fargene er navngitt etter interaksjon kan det oppstå behov som lar oss ta i bruk en annen grad. For eksemplel kan en knapp uten bakgrunnsfarge ta i bruk `surface-deafult` ved hover, i steden for gå hele veien opp til `surface-hover`.
+
+## Dimensions
+
+Designsystemet bruker primitive tokens for spacing, for eksempel `spacing-0`, `spacing-100` og `spacing-250`. De minste avstandene brukes som regel inni komponenter, mens de større brukes mellom komponenter eller seksjoner.
+
+Det er også tokens for border radius, hvor rund en kant skal være, for eksempel `border-radius-050` eller `border-radius-300`, i tillegg til én token for border width, `border-width-defualt`.
+
+## Typography
+
+FHI tar i bruk to skriftfamilier: Brandon Text og Roboto Flex.
