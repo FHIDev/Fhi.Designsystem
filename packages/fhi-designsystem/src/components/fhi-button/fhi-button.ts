@@ -122,15 +122,24 @@ export class FhiButton extends LitElement {
       --dimension-padding-small: calc(
           var(--fhi-spacing-050) - var(--fhi-dimension-border-width)
         )
-        var(--fhi-spacing-150);
+        calc(
+          var(--fhi-spacing-150) +
+            var(--fhi-spacing-050) - var(--fhi-dimension-border-width)
+        );
       --dimension-padding-medium: calc(
           var(--fhi-spacing-100) - var(--fhi-dimension-border-width)
         )
-        var(--fhi-spacing-200);
+        calc(
+          var(--fhi-spacing-200) +
+            var(--fhi-spacing-050) - var(--fhi-dimension-border-width)
+        );
       --dimension-padding-large: calc(
           var(--fhi-spacing-200) - var(--fhi-dimension-border-width)
         )
-        var(--fhi-spacing-300);
+        calc(
+          var(--fhi-spacing-300) +
+            var(--fhi-spacing-050) - var(--fhi-dimension-border-width)
+        );
       --color-accent-strong-background: var(--fhi-color-accent-base);
       --color-accent-strong-border: var(--fhi-color-accent-base);
       --color-accent-strong: var(--fhi-color-accent-text-inverted);
@@ -366,7 +375,6 @@ export class FhiButton extends LitElement {
       font-weight: var(--typography-label-font-weight-large);
       line-height: var(--typography-label-line-height-large);
       letter-spacing: var(--typography-label-letter-spacing-large);
-
       padding: var(--dimension-padding-large);
     }
 
@@ -375,7 +383,6 @@ export class FhiButton extends LitElement {
       font-weight: var(--typography-label-font-weight-medium);
       line-height: var(--typography-label-line-height-medium);
       letter-spacing: var(--typography-label-letter-spacing-medium);
-
       padding: var(--dimension-padding-medium);
     }
 
@@ -384,7 +391,6 @@ export class FhiButton extends LitElement {
       font-weight: var(--typography-label-font-weight-small);
       line-height: var(--typography-label-line-height-small);
       letter-spacing: var(--typography-label-letter-spacing-small);
-
       padding: var(--dimension-padding-small);
     }
 
