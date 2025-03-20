@@ -112,15 +112,6 @@ describe('fhi-text-input', () => {
       expect(component.status).to.equal('error');
     });
 
-    it('has an attribute to set the required', async () => {
-      component = await fixture(
-        html`<fhi-text-input required></fhi-text-input>`,
-      );
-
-      expect(component.hasAttribute('required')).to.equal(true);
-      expect(component.required).to.equal(true);
-    });
-
     it('has an attribute to set the readonly', async () => {
       component = await fixture(
         html`<fhi-text-input readonly></fhi-text-input>`,
@@ -276,7 +267,7 @@ describe('fhi-text-input', () => {
       expect(form.get('myInput')).to.equal(null);
     });
 
-    it('is not included in the associated forms formData when disabled', async () => {
+    it('is included in the associated forms formData when previously disabled, but now enabled', async () => {
       component = await fixture(
         html`<fhi-text-input
           name="myInput"
@@ -286,11 +277,18 @@ describe('fhi-text-input', () => {
         { parentNode: document.createElement('form') },
       );
 
-      const form = new FormData(
+      let form = new FormData(
         document.querySelector('form') as HTMLFormElement,
       );
 
       expect(form.get('myInput')).to.equal(null);
+
+      component.disabled = false;
+      await component.updateComplete;
+
+      form = new FormData(document.querySelector('form') as HTMLFormElement);
+
+      expect(form.get('myInput')).to.equal('hello');
     });
 
     it('implicitly submits the form when the Enter key is pressed', async () => {

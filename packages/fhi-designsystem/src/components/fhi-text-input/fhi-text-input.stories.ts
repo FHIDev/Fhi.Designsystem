@@ -32,45 +32,52 @@ const meta: Meta<FhiTextInput> = {
   argTypes: {
     name: {
       control: 'text',
-      description: 'Setter navn på inputfeltet',
+      description:
+        'Setter navn på inputfeltet. Fungerer likt som standard HTML name-attributten for inputfelt',
       defaultValue: { summary: 'undefined' },
     },
     value: {
       control: 'text',
-      description: 'Setter verdi på inputfeltet',
+      description:
+        'Setter verdi på inputfeltet. Dette vil være synlig i feltet og automatisk bli med i FormData. Fungerer likt som standard HTML value-attributten for inputfelt',
       defaultValue: { summary: 'undefined' },
     },
     label: {
       control: 'text',
-      description: 'Setter label. Dette vises over inputfeltet',
+      description:
+        'Setter label. Dette assosieres med inputfelted og vises over. Om dette er satt trenger du ikke å deklarere eget label-element',
       defaultValue: { summary: 'undefined' },
     },
     message: {
       control: 'text',
-      description: 'Setter melding. Dette vises under inputfeltet',
+      description:
+        'Setter melding som vises til brukeren. Dette vises under inputfeltet og er ment for å gi veiledning til brukeren',
       defaultValue: { summary: 'undefined' },
     },
     placeholder: {
       control: 'text',
       description:
-        'Setter placeholder for inputfiltet. Denne vil ikke være synlig om feltet har verdi',
+        'Setter placeholder for inputfiltet. Denne vil ikke være synlig om feltet har verdi. Fungerer likt som standard HTML placeholder-attributten for inputfelt',
       defaultValue: { summary: 'undefined' },
     },
     readonly: {
       control: 'boolean',
-      description: 'Bestemmer om feltet kan redigeres',
+      description:
+        'Bestemmer om feltet kan redigeres. Fungerer likt som standard HTML readonly-attributten for inputfelt',
       defaultValue: { summary: false },
     },
     disabled: {
       control: 'boolean',
-      description: 'Bestemmer om bruker kan samhandle med feltet.',
+      description:
+        'Bestemmer om bruker kan samhandle med feltet. Fungerer likt som standard HTML disabled-attributten for inputfelt',
       defaultValue: { summary: false },
     },
     status: {
       control: 'select',
-      description: 'Bestemmer om feltet har en status',
+      description:
+        'Bestemmer om feltet har en status. Dette vil endre utseende på feltet',
       defaultValue: { summary: 'undefined' },
-      options: ['undefined', 'error'],
+      options: ['error'],
     },
   },
 };

@@ -28,9 +28,9 @@ export class FhiTextInput extends LitElement {
 
   @property({ type: String, reflect: true }) status?: 'error' = undefined;
 
-  @property({ type: Boolean }) readonly? = false;
+  @property({ type: Boolean, reflect: true }) readonly? = false;
 
-  @property({ type: Boolean }) disabled? = false;
+  @property({ type: Boolean, reflect: true }) disabled? = false;
 
   @query('#input-element') _input!: HTMLInputElement;
 
@@ -137,7 +137,7 @@ export class FhiTextInput extends LitElement {
         --fhi-typography-label-small-letter-spacing
       );
 
-      --dimension-label-padding-bottom: var(--fhi-spacing-100);
+      --dimension-label-padding-bottom: var(--fhi-spacing-050);
 
       /* input */
       --color-input-placeholder: var(--fhi-color-neutral-base);
@@ -188,7 +188,7 @@ export class FhiTextInput extends LitElement {
         --fhi-typography-body-small-letter-spacing
       );
 
-      --dimension-message-margin-top: var(--fhi-spacing-100);
+      --dimension-message-margin-top: var(--fhi-spacing-050);
     }
 
     :host {
