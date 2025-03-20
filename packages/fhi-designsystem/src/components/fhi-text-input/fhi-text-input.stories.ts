@@ -33,49 +33,47 @@ const meta: Meta<FhiTextInput> = {
     name: {
       control: 'text',
       description:
-        'Setter navn på inputfeltet. Fungerer likt som standard HTML name-attributten for inputfelt',
+        'Setter navn på inputfeltet. Dette brukes typisk av assosierte form-elementer for å identifisere feltet i FormData.',
       defaultValue: { summary: 'undefined' },
     },
     value: {
       control: 'text',
       description:
-        'Setter verdi på inputfeltet. Dette vil være synlig i feltet og automatisk bli med i FormData. Fungerer likt som standard HTML value-attributten for inputfelt',
+        'Setter verdi på inputfeltet. Dette vil være synlig i feltet og automatisk bli med i FormData.',
       defaultValue: { summary: 'undefined' },
     },
     label: {
       control: 'text',
       description:
-        'Setter label. Dette assosieres med inputfelted og vises over. Om dette er satt trenger du ikke å deklarere eget label-element',
+        'Setter label. Dette assosieres med inputfelted og vises over. Om dette er satt trenger du ikke å deklarere eget label-element.',
       defaultValue: { summary: 'undefined' },
     },
     message: {
       control: 'text',
       description:
-        'Setter melding som vises til brukeren. Dette vises under inputfeltet og er ment for å gi veiledning til brukeren',
+        'Setter melding som vises til brukeren. Dette vises under inputfeltet og er ment for å gi veiledning til brukeren.',
       defaultValue: { summary: 'undefined' },
     },
     placeholder: {
       control: 'text',
       description:
-        'Setter placeholder for inputfiltet. Denne vil ikke være synlig om feltet har verdi. Fungerer likt som standard HTML placeholder-attributten for inputfelt',
+        'Setter placeholder for inputfeltet. Denne vil ikke være synlig om feltet har verdi.',
       defaultValue: { summary: 'undefined' },
     },
     readonly: {
       control: 'boolean',
-      description:
-        'Bestemmer om feltet kan redigeres. Fungerer likt som standard HTML readonly-attributten for inputfelt',
+      description: 'Bestemmer om feltet kan redigeres.',
       defaultValue: { summary: false },
     },
     disabled: {
       control: 'boolean',
-      description:
-        'Bestemmer om bruker kan samhandle med feltet. Fungerer likt som standard HTML disabled-attributten for inputfelt',
+      description: 'Bestemmer om bruker kan samhandle med feltet.',
       defaultValue: { summary: false },
     },
     status: {
       control: 'select',
       description:
-        'Bestemmer om feltet har en status. Dette vil endre utseende på feltet',
+        'Bestemmer om feltet har en status. Dette vil endre utseende på feltet.',
       defaultValue: { summary: 'undefined' },
       options: ['error'],
     },
@@ -126,7 +124,7 @@ export const WithLabelMessagePlaceholder: Story = {
   name: 'Label and message',
   args: {
     label: 'Adresse',
-    message: 'Venligst skriv inn bostedsadresse',
+    message: 'Vennligst skriv inn bostedsadresse',
   },
 };
 
@@ -136,7 +134,7 @@ export const WithLabelMessageValueError: Story = {
     label: 'E-postadresse',
     message:
       'Ufullstendig adresse, sjekk at alfakrøll (@) og domene er med og riktig skrevet (f.eks: designsystemet@fhi.no)',
-    value: 'daniel.fhi.no',
+    value: 'designsystemet.fhi.no',
     status: 'error',
   },
 };
@@ -146,7 +144,7 @@ export const WithReadonlyValueLabelMessage: Story = {
   args: {
     label: 'Navn',
     message: 'Navn må være minst 2 bokstaver og kan ikke inneholde spesialtegn',
-    value: 'Daniel',
+    value: 'Ola Nordmann',
     readonly: true,
   },
 };
