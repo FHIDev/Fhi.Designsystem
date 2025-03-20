@@ -171,6 +171,9 @@ export class FhiTextInput extends LitElement {
       --dimension-input-padding-left: var(--fhi-spacing-150);
       --dimension-input-padding-right: var(--fhi-spacing-150);
 
+      --motion-input-transition: all var(--fhi-motion-ease-default)
+        var(--fhi-motion-duration-quick);
+
       /* message */
       --color-message-text: var(--fhi-color-neutral-text);
       --color-message-text-error: var(--fhi-color-danger-text-subtle);
@@ -219,8 +222,7 @@ export class FhiTextInput extends LitElement {
         font-size: var(--typography-input-font-size);
         line-height: var(--typography-input-line-height);
         letter-spacing: var(--typography-input-letter-spacing);
-        transition: all var(--fhi-motion-ease-default)
-          var(--fhi-motion-duration-quick);
+        transition: var(--motion-input-transition);
         &:hover {
           border-color: var(--color-input-border-hover);
           background-color: var(--color-input-background-hover);
@@ -245,7 +247,7 @@ export class FhiTextInput extends LitElement {
     }
 
     :host([disabled]) {
-      opacity: var(--fhi-opacity-disabled);
+      opacity: var(--opacity-disabled);
       cursor: not-allowed;
       * {
         cursor: not-allowed;
@@ -261,10 +263,10 @@ export class FhiTextInput extends LitElement {
     :host([readonly]:not([disabled])) {
       input {
         border: unset;
+        border-radius: unset;
+        background-color: unset;
         border-left: var(--dimension-input-border-width) solid
           var(--color-input-border);
-        border-radius: unset;
-        background-color: transparent;
       }
     }
 
