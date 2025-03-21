@@ -40,7 +40,7 @@ const meta: Meta<FhiTextInput> = {
       control: 'text',
       description:
         'Setter verdi på inputfeltet. Dette vil være synlig i feltet og automatisk bli med i FormData.',
-      defaultValue: { summary: 'undefined' },
+      defaultValue: { summary: '' },
     },
     label: {
       control: 'text',
