@@ -16,8 +16,16 @@ const meta: Meta<FhiTextInput> = {
       handles: ['change', 'input'],
     },
     options: { selectedPanel: 'addon-controls' },
+    docs: {
+      source: {
+        excludeDecorators: true,
+      },
+    },
   },
-  decorators: [withActions],
+  decorators: [
+    withActions,
+    story => html`<div style="max-width: 400px;">${story()}</div>`,
+  ],
   render: args =>
     html`<fhi-text-input
       label=${ifDefined(args.label)}
