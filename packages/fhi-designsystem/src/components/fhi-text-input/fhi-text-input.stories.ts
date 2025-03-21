@@ -94,6 +94,8 @@ export const Preview: Story = {
 export const Error: Story = {
   tags: ['!dev'],
   args: {
+    label: 'Label',
+    message: 'Informative error message',
     status: 'error',
     value: 'This field has an error',
   },
@@ -102,6 +104,7 @@ export const Error: Story = {
 export const Disabled: Story = {
   tags: ['!dev'],
   args: {
+    label: 'Label',
     value: 'This field is disabled',
     disabled: true,
   },
@@ -110,6 +113,7 @@ export const Disabled: Story = {
 export const Readonly: Story = {
   tags: ['!dev'],
   args: {
+    label: 'Label',
     value: 'This field is readonly',
     readonly: true,
   },
