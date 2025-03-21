@@ -218,6 +218,7 @@ export class FhiTextInput extends LitElement {
           var(--dimension-input-padding-left);
         color: var(--color-input-text);
         background-color: var(--color-input-background);
+        font-family: var(--typography-font-family);
         font-weight: var(--typography-input-font-weight);
         font-size: var(--typography-input-font-size);
         line-height: var(--typography-input-line-height);
