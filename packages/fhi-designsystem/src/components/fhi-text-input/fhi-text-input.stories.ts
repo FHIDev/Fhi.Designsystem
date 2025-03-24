@@ -5,8 +5,7 @@ import { html } from 'lit';
 import { FhiTextInput } from './fhi-text-input';
 import { ifDefined } from 'lit/directives/if-defined.js';
 
-// eslint-disable-next-line @typescript-eslint/no-unused-expressions
-FhiTextInput;
+new FhiTextInput();
 
 const meta: Meta<FhiTextInput> = {
   title: 'Komponenter/Text Input',
@@ -121,8 +120,8 @@ export const Disabled: Story = {
 export const Readonly: Story = {
   tags: ['!dev'],
   args: {
-    label: 'Label',
-    value: 'This field is readonly',
+    label: 'Navn',
+    value: 'Ola Nordmann',
     readonly: true,
   },
 };
@@ -155,7 +154,7 @@ export const WithReadonlyValueLabelMessage: Story = {
   name: 'Readonly',
   args: {
     label: 'Navn',
-    message: 'Navn må være minst 2 bokstaver og kan ikke inneholde spesialtegn',
+    message: 'Hentet fra folkeregisteret',
     value: 'Ola Nordmann',
     readonly: true,
   },
