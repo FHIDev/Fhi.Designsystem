@@ -5,6 +5,8 @@ import { html } from 'lit';
 import { ifDefined } from 'lit/directives/if-defined.js';
 import { FhiButton } from './fhi-button';
 
+new FhiButton();
+
 const meta: Meta<FhiButton> = {
   title: 'Komponenter/Button',
   component: 'fhi-button',
@@ -62,21 +64,26 @@ type Story = StoryObj<FhiButton>;
 
 export const Preview: Story = {
   tags: ['!dev'],
+  args: { color: 'accent', variant: 'strong', size: 'medium' },
 };
 
 export const Accent: Story = {
-  args: { color: 'accent' },
+  args: { color: 'accent', variant: 'strong', size: 'medium' },
 };
 
 export const Neutral: Story = {
   args: {
     color: 'neutral',
+    variant: 'strong',
+    size: 'medium',
   },
 };
 
 export const Danger: Story = {
   args: {
     color: 'danger',
+    variant: 'strong',
+    size: 'medium',
   },
 };
 
