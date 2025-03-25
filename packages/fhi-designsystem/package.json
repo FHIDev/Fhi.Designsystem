@@ -58,7 +58,7 @@
     "@chromatic-com/storybook": "~1.9.0",
     "@esm-bundle/chai": "~4.3.4-fix.0",
     "@open-wc/testing": "~4.0.0",
-    "@playwright/test": "~1.47.0",
+    "@playwright/test": "^1.51.1",
     "@storybook/addon-essentials": "~8.3.0",
     "@storybook/addon-links": "~8.3.0",
     "@storybook/blocks": "~8.3.0",
