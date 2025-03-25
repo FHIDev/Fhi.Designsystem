@@ -44,3 +44,9 @@ jobs:
 
       - name: Build
         run: cd packages/fhi-designsystem; pnpm build
+
+      - name: Prepare Testing Environment
+        run: cd packages/fhi-designsystem; pnpm exec playwright install --with-deps
+
+      - name: Test
+        run: cd packages/fhi-designsystem; pnpm test
