@@ -288,7 +288,7 @@ export class FhiButton extends LitElement {
       --color-neutral-text-active: var(--fhi-color-neutral-text);
       --color-neutral-text-background-disabled: transparent;
       --color-neutral-text-border-disabled: transparent;
-      --color-neutral-text-disaabled: var(--fhi-color-neutral-text-subtle);
+      --color-neutral-text-disabled: var(--fhi-color-neutral-text-subtle);
 
       --color-danger-strong-background: var(--fhi-color-danger-base);
       --color-danger-strong-border: var(--fhi-color-danger-base);
@@ -527,7 +527,7 @@ export class FhiButton extends LitElement {
     }
 
     :host([color='neutral'][variant='outlined']) button {
-      background-color: var(--color-neutral-outlined-backgroundt);
+      background-color: var(--color-neutral-outlined-background);
       border-color: var(--color-neutral-outlined-border);
       color: var(--color-neutral-outlined);
       &:hover {
