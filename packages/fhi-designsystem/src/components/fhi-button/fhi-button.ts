@@ -543,7 +543,7 @@ export class FhiButton extends LitElement {
       &:disabled {
         background-color: var(--color-neutral-outlined-background-disabled);
         border-color: var(--color-neutral-outlined-border-disabled);
-        color: var(--color-neutral-outlined-diaabled);
+        color: var(--color-neutral-outlined-disabled);
       }
     }
 
