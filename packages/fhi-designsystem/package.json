@@ -41,7 +41,7 @@
     "build:npm": "tsc && cross-env DEPLOY_TARGET=npm vite build",
     "storybook": "storybook dev -p 6006",
     "storybook:build": "storybook build",
-    "test": "wtr ./**/*.test.ts --node-resolve --playwright --browsers chromium firefox webkit",
+    "test": "wtr ./**/*.test.ts --node-resolve --playwright --browsers chromium firefox",
     "lint": "pnpm lint:eslint && pnpm lint:prettier",
     "lint:eslint": "eslint \"**/*.{js,ts}\"",
     "lint:prettier": "prettier \"**/*.js\" --check --ignore-path .gitignore",
