@@ -1,0 +1,83 @@
+import { FhiButton } from './fhi-button.ts';
+import * as FhiButtonStories from './fhi-button.stories.ts';
+import {
+  Meta,
+  Title,
+  Primary,
+  Canvas,
+  Story,
+  Controls,
+} from '@storybook/blocks';
+
+<Meta of={FhiButtonStories} />
+
+# Button
+
+Knapper lar brukere sette i gang handlinger, som å lagre, sende inn skjemaer,
+navigere seg videre og andre spesifikke oppgaver.
+
+## Passer til
+
+- Å utføre spesifikke handlinger, slik som å sende inn et skjemasvar eller åpne en meny.
+
+- Å starte, navigere seg gjennom og avslutte en flyt eller prosess, for eksempel med «Neste» eller «Gå videre».
+
+<Canvas of={FhiButtonStories.Preview} />
+
+<Controls />
+
+## Valg
+
+Ulike varianter og størrelser kan gi knappen ulike vekter av fremheving, for å skape hierarki og veilede oppmerksomheten til brukeren.
+
+### Color (Farge)
+
+<Canvas of={FhiButtonStories.showColors} />
+
+#### `accent`
+
+Default. Knapper som skal ta oppmerksomhet og stå ut. Brukes gjerne for å gå videre eller avslutte en flyt.
+
+#### `neutral`
+
+Brukes på handlinger som ikke trenger mye oppmerksomhet. Mye bruk av `neutral` forsterker bruk av `accent`, når du trenger det.
+
+#### `danger`
+
+Signaliserer destruktive handlinger, for eksempel der data slettes eller handlinger ikke kan angres.
+
+### Variant
+
+<Canvas of={FhiButtonStories.showVariants} />
+
+#### `strong`
+
+Default. Brukes for å guide brukeren til hovedhandlingen i en kontekst. Sikt på å kun ha én synlig på skjermen til enhver tid.
+
+#### `subtle`
+
+Et mellomnivå mellom `strong` og `outlined`. Brukes for handlinger som trenger mer tyngde enn det `outline` gir, men der bruk av `strong` kan resultere i flere på samme skjerm eller blir støyende og slitsomt for brukeren.
+
+#### `outlined`
+
+Brukes til handlinger som ikke er hovedhandlinger. Kan trygt brukes mange ganger på én og samme skjerm.
+
+#### `text`
+
+Brukes på handlinger av laveste prioritet. Ofte brukt sammen med handlinger satt med andre typer knapper (f.eks. «Lagre» satt som `strong` og «Avbryt» satt i `text`).
+
+### Size (størrelse)
+
+<Canvas of={FhiButtonStories.showSizes} />
+
+#### `large`
+
+Brukes for å trekke oppmerksomhet eller som en fin avslutning etter en lengre flyt.
+
+#### `medium`
+
+Default. Brukes trygt i de fleste kontekster.
+
+#### `small`
+
+Brukes når det er lite plass til knappen eller der det er flere knapper sammen på siden og det kan bli overveldende med `medium` på alle.

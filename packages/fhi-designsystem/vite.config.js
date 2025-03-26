@@ -71,6 +71,7 @@ export default defineConfig(({ mode }) => {
                 "new-component": "./src/components/new-component/new-component.ts",
             */
               index: './src/library.ts',
+              'fhi-button': './src/components/fhi-button/fhi-button.ts',
               'fhi-text-input': './src/components/fhi-text-input',
             },
           },
