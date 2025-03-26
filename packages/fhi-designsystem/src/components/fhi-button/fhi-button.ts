@@ -115,7 +115,7 @@ export class FhiButton extends LitElement {
       --typography-label-small-line-height: var(
         --fhi-typography-label-medium-line-height
       );
-      --typography-label-medium-line-height-small: var(
+      --typography-label-medium-line-height: var(
         --fhi-typography-label-medium-line-height
       );
 
@@ -328,7 +328,7 @@ export class FhiButton extends LitElement {
       --color-danger-subtle-border-disabled: var(--fhi-color-danger-surface);
       --color-danger-subtle-disabled: var(--fhi-color-danger-text-subtle);
 
-      --color-danger-outlined-background-color: transparent;
+      --color-danger-outlined-background: transparent;
       --color-danger-outlined-border: var(--fhi-color-danger-border-subtle);
       --color-danger-outlined: var(--fhi-color-danger-text-subtle);
       --color-danger-outlined-background-hover: var(--fhi-color-danger-surface);
