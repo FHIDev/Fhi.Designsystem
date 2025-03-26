@@ -94,7 +94,6 @@ export const Preview: Story = {
   args: {
     label: 'Label',
     message: 'Message',
-    placeholder: 'Placeholder',
   },
 };
 
