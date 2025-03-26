@@ -269,7 +269,7 @@ export class FhiButton extends LitElement {
       --color-neutral-outlined-active: var(--fhi-color-neutral-text);
       --color-neutral-outlined-background-disabled: transparent;
       --color-neutral-outlined-border-disabled: var(
-        --fhi-color-surface-base-subtle
+        --fhi-color-neutral-border-subtle
       );
       --color-neutral-outlined-disabled: var(--fhi-color-neutral-text-subtle);
 
