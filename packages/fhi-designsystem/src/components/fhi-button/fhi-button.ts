@@ -89,7 +89,7 @@ export class FhiButton extends LitElement {
         --fhi-typography-label-medium-font-size
       );
       --typography-label-small-font-size: var(
-        --fhi-typography-label-small-font-size
+        --fhi-typography-label-medium-font-size
       );
       --typography-label-large-font-weight: var(
         --fhi-typography-label-large-font-weight
@@ -98,7 +98,7 @@ export class FhiButton extends LitElement {
         --fhi-typography-label-medium-font-weight
       );
       --typography-label-small-font-weight: var(
-        --fhi-typography-label-small-font-weight
+        --fhi-typography-label-medium-font-weight
       );
       --typography-label-large-letter-spacing: var(
         --fhi-typography-label-large-letter-spacing
@@ -107,7 +107,7 @@ export class FhiButton extends LitElement {
         --fhi-typography-label-medium-letter-spacing
       );
       --typography-label-small-letter-spacing: var(
-        --fhi-typography-label-small-letter-spacing
+        --fhi-typography-label-medium-letter-spacing
       );
       --typography-label-large-line-height: var(
         --fhi-typography-label-large-line-height
