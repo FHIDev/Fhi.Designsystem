@@ -377,7 +377,7 @@ export class FhiButton extends LitElement {
     }
 
     :host([size='large']) button {
-      font-size: var(--typography-large-label-font-size);
+      font-size: var(--typography-label-large-font-size);
       font-weight: var(--typography-label-large-font-weight);
       line-height: var(--typography-label-large-line-height);
       letter-spacing: var(--typography-label-large-letter-spacing);
