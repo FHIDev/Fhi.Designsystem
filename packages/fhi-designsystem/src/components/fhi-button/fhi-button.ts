@@ -82,40 +82,40 @@ export class FhiButton extends LitElement {
 
       --opacity-disabled: var(--fhi-opacity-disabled);
 
-      --typography-label-font-size-large: var(
+      --typography-label-large-font-size: var(
         --fhi-typography-label-large-font-size
       );
-      --typography-label-font-size-medium: var(
+      --typography-label-medium-font-size: var(
         --fhi-typography-label-medium-font-size
       );
-      --typography-label-font-size-small: var(
+      --typography-label-small-font-size: var(
         --fhi-typography-label-small-font-size
       );
-      --typography-label-font-weight-large: var(
-        --fhi-typography-label-font-weight-large
+      --typography-label-large-font-weight: var(
+        --fhi-typography-label-large-font-weight
       );
-      --typography-label-font-weight-medium: var(
+      --typography-label-medium-font-weight: var(
         --fhi-typography-label-medium-font-weight
       );
-      --typography-label-font-weight-small: var(
+      --typography-label-small-font-weight: var(
         --fhi-typography-label-small-font-weight
       );
-      --typography-label-letter-spacing-large: var(
+      --typography-label-large-letter-spacing: var(
         --fhi-typography-label-large-letter-spacing
       );
-      --typography-label-letter-spacing-medium: var(
+      --typography-label-medium-letter-spacing: var(
         --fhi-typography-label-medium-letter-spacing
       );
-      --typography-label-letter-spacing-small: var(
+      --typography-label-small-letter-spacing: var(
         --fhi-typography-label-small-letter-spacing
       );
-      --typography-label-line-height-large: var(
+      --typography-label-large-line-height: var(
         --fhi-typography-label-large-line-height
       );
-      --typography-label-line-height-medium: var(
+      --typography-label-small-line-height: var(
         --fhi-typography-label-medium-line-height
       );
-      --typography-label-line-height-small: var(
+      --typography-label-medium-line-height-small: var(
         --fhi-typography-label-medium-line-height
       );
 
@@ -193,7 +193,7 @@ export class FhiButton extends LitElement {
       --color-accent-outlined-active: var(--fhi-color-accent-text);
       --color-accent-outlined-background-disabled: transparent;
       --color-accent-outlined-border-disabled: var(
-        --fhi-color-surface-base-subtle
+        --fhi-color-accent-border-subtle
       );
       --color-accent-outlined-disabled: var(--fhi-color-accent-text-subtle);
 
@@ -377,26 +377,26 @@ export class FhiButton extends LitElement {
     }
 
     :host([size='large']) button {
-      font-size: var(--typography-label-font-size-large);
-      font-weight: var(--typography-label-font-weight-large);
-      line-height: var(--typography-label-line-height-large);
-      letter-spacing: var(--typography-label-letter-spacing-large);
+      font-size: var(--typography-large-label-font-size);
+      font-weight: var(--typography-label-large-font-weight);
+      line-height: var(--typography-label-large-line-height);
+      letter-spacing: var(--typography-label-large-letter-spacing);
       padding: var(--dimension-padding-large);
     }
 
     :host([size='medium']) button {
-      font-size: var(--typography-label-font-size-medium);
-      font-weight: var(--typography-label-font-weight-medium);
-      line-height: var(--typography-label-line-height-medium);
-      letter-spacing: var(--typography-label-letter-spacing-medium);
+      font-size: var(--typography-label-medium-font-size);
+      font-weight: var(--typography-label-medium-font-weight);
+      line-height: var(--typography-label-medium-line-height);
+      letter-spacing: var(--typography-label-medium-letter-spacing);
       padding: var(--dimension-padding-medium);
     }
 
     :host([size='small']) button {
-      font-size: var(--typography-label-font-size-small);
-      font-weight: var(--typography-label-font-weight-small);
-      line-height: var(--typography-label-line-height-small);
-      letter-spacing: var(--typography-label-letter-spacing-small);
+      font-size: var(--typography-label-small-font-size);
+      font-weight: var(--typography-label-small-font-weight);
+      line-height: var(--typography-label-small-line-height);
+      letter-spacing: var(--typography-label-small-letter-spacing);
       padding: var(--dimension-padding-small);
     }
 
