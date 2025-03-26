@@ -153,7 +153,7 @@ export const WithReadonlyValueLabelMessage: Story = {
   name: 'Readonly',
   args: {
     label: 'Navn',
-    message: 'Hentet fra folkeregisteret',
+    message: 'Hentet fra Folkeregisteret',
     value: 'Ola Nordmann',
     readonly: true,
   },
