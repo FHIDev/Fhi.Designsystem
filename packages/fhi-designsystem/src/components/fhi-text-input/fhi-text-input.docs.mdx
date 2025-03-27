@@ -1,0 +1,36 @@
+import { FhiTextInput } from '.';
+import * as FhiTextInputStories from './fhi-text-input.stories.ts';
+import {
+    Meta,
+    Title,
+    Primary,
+    Canvas,
+    Story,
+    Controls,
+} from '@storybook/blocks';
+
+<Meta of={FhiTextInputStories} />
+
+# Text input
+
+Text Input lar brukere skrive inn data, slik som navn, telefonnumre og e-postadresser.
+
+## Passer til
+
+- Korte svar på én linje. 
+
+<Canvas of={FhiTextInputStories.Preview} />
+<Controls />
+
+### Status
+#### `error`
+Uttrykker at noe mangler eller er skrevet feil.
+<Canvas of={FhiTextInputStories.Error} />
+
+### Form Controls
+#### `readonly`
+Gjør at feltet ikke kan endres. Feltet vil fortsatt kunne fokuseres og vil automatisk bli inkludert i FormData.
+<Canvas of={FhiTextInputStories.Readonly} />
+#### `disabled`
+Gjør at feltet ikke kan endres, fokuseres eller automatisk inkluderes i FormData. Unngås hvis man kan.
+<Canvas of={FhiTextInputStories.Disabled} />
