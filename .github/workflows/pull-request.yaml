@@ -6,6 +6,7 @@ permissions:
 
 on:
   pull_request:
+    types: [opened, synchronize, reopened, closed]
     branches:
       - main
 
@@ -45,9 +46,26 @@ jobs:
       - name: Build
         run: cd packages/fhi-designsystem; pnpm build
 
-
       - name: Prepare Testing Environment
         run: cd packages/fhi-designsystem; pnpm exec playwright install --with-deps
 
       - name: Test
         run: cd packages/fhi-designsystem; pnpm test
+
+      - name: Build Storybook
+        run: cd packages/fhi-designsystem; pnpm storybook:build
+
+      - name: Deploy Storybook
+        uses: Azure/static-web-apps-deploy@v1
+        with:
+          repo_token: ${{ secrets.REPO_GITHUB_TOKEN }}
+          azure_static_web_apps_api_token: ${{ secrets.AZURE_STORYBOOK_API_TOKEN }}
+          action: 'upload'
+          app_location: 'packages/fhi-designsystem/storybook-static'
+          skip_app_build: true
+
+      - name: Close Pull Request
+        uses: Azure/static-web-apps-deploy@v1
+        with:
+          azure_static_web_apps_api_token: ${{ secrets.AZURE_STORYBOOK_API_TOKEN }}
+          action: 'close'
