@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.1.1](https://github.com/FHIDev/Fhi.Designsystem/compare/v0.1.0...v0.1.1) (2025-03-28)
+
+
+### 🛠️ Bug Fixes
+
+* publish correct filestructure ([#147](https://github.com/FHIDev/Fhi.Designsystem/issues/147)) ([5bbcaf1](https://github.com/FHIDev/Fhi.Designsystem/commit/5bbcaf140ad2e4efc4ad52424811dac6bbf1094a))
+
 ## 0.1.0 (2025-03-28)
 
 
