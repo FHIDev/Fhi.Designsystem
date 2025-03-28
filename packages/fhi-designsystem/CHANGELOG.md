@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.1.2](https://github.com/FHIDev/Fhi.Designsystem/compare/v0.1.1...v0.1.2) (2025-03-28)
+
+
+### 🛠️ Bug Fixes
+
+* include release-it changes in package ([#149](https://github.com/FHIDev/Fhi.Designsystem/issues/149)) ([dfd14c5](https://github.com/FHIDev/Fhi.Designsystem/commit/dfd14c5297239b319d0e08c295d0f8b7550e7061))
+
 ## [0.1.1](https://github.com/FHIDev/Fhi.Designsystem/compare/v0.1.0...v0.1.1) (2025-03-28)
 
 
