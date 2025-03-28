@@ -124,94 +124,94 @@
   --fhi-blue-900: #011633;
 
   /* Semantic */
-  --fhi-color-neutral-background: var(--fhi-greyblue-010);
+  --fhi-color-neutral-background-default: var(--fhi-greyblue-010);
   --fhi-color-neutral-background-subtle: var(--fhi-greyblue-050);
-  --fhi-color-neutral-surface: var(--fhi-greyblue-100);
+  --fhi-color-neutral-surface-default: var(--fhi-greyblue-100);
   --fhi-color-neutral-surface-hover: var(--fhi-greyblue-150);
   --fhi-color-neutral-surface-active: var(--fhi-greyblue-200);
   --fhi-color-neutral-border-subtle: var(--fhi-greyblue-200);
-  --fhi-color-neutral-border: var(--fhi-greyblue-500);
+  --fhi-color-neutral-border-default: var(--fhi-greyblue-500);
   --fhi-color-neutral-border-strong: var(--fhi-greyblue-700);
-  --fhi-color-neutral-base: var(--fhi-greyblue-500);
+  --fhi-color-neutral-base-default: var(--fhi-greyblue-500);
   --fhi-color-neutral-base-hover: var(--fhi-greyblue-600);
   --fhi-color-neutral-base-active: var(--fhi-greyblue-700);
   --fhi-color-neutral-text-subtle: var(--fhi-greyblue-600);
-  --fhi-color-neutral-text: var(--fhi-greyblue-800);
+  --fhi-color-neutral-text-default: var(--fhi-greyblue-800);
   --fhi-color-neutral-text-inverted: var(--fhi-greyblue-010);
 
-  --fhi-color-accent-background: var(--fhi-blue-010);
+  --fhi-color-accent-background-default: var(--fhi-blue-010);
   --fhi-color-accent-background-subtle: var(--fhi-blue-050);
-  --fhi-color-accent-surface: var(--fhi-blue-100);
+  --fhi-color-accent-surface-default: var(--fhi-blue-100);
   --fhi-color-accent-surface-hover: var(--fhi-blue-150);
   --fhi-color-accent-surface-active: var(--fhi-blue-200);
   --fhi-color-accent-border-subtle: var(--fhi-blue-200);
-  --fhi-color-accent-border: var(--fhi-blue-500);
+  --fhi-color-accent-border-default: var(--fhi-blue-500);
   --fhi-color-accent-border-strong: var(--fhi-blue-700);
-  --fhi-color-accent-base: var(--fhi-blue-500);
+  --fhi-color-accent-base-default: var(--fhi-blue-500);
   --fhi-color-accent-base-hover: var(--fhi-blue-600);
   --fhi-color-accent-base-active: var(--fhi-blue-700);
   --fhi-color-accent-text-subtle: var(--fhi-blue-600);
-  --fhi-color-accent-text: var(--fhi-blue-800);
+  --fhi-color-accent-text-default: var(--fhi-blue-800);
   --fhi-color-accent-text-inverted: var(--fhi-blue-010);
 
-  --fhi-color-info-background: var(--fhi-blue-010);
+  --fhi-color-info-background-default: var(--fhi-blue-010);
   --fhi-color-info-background-subtle: var(--fhi-blue-050);
-  --fhi-color-info-surface: var(--fhi-blue-100);
+  --fhi-color-info-surface-default: var(--fhi-blue-100);
   --fhi-color-info-surface-hover: var(--fhi-blue-150);
   --fhi-color-info-surface-active: var(--fhi-blue-200);
   --fhi-color-info-border-subtle: var(--fhi-blue-200);
-  --fhi-color-info-border: var(--fhi-blue-500);
+  --fhi-color-info-border-default: var(--fhi-blue-500);
   --fhi-color-info-border-strong: var(--fhi-blue-700);
-  --fhi-color-info-base: var(--fhi-blue-500);
+  --fhi-color-info-base-default: var(--fhi-blue-500);
   --fhi-color-info-base-hover: var(--fhi-blue-600);
   --fhi-color-info-base-active: var(--fhi-blue-700);
   --fhi-color-info-text-subtle: var(--fhi-blue-600);
-  --fhi-color-info-text: var(--fhi-blue-800);
+  --fhi-color-info-text-default: var(--fhi-blue-800);
   --fhi-color-info-text-inverted: var(--fhi-blue-010);
 
-  --fhi-color-success-background: var(--fhi-green-010);
+  --fhi-color-success-background-default: var(--fhi-green-010);
   --fhi-color-success-background-subtle: var(--fhi-green-050);
-  --fhi-color-success-surface: var(--fhi-green-100);
+  --fhi-color-success-surface-default: var(--fhi-green-100);
   --fhi-color-success-surface-hover: var(--fhi-green-150);
   --fhi-color-success-surface-active: var(--fhi-green-200);
   --fhi-color-success-border-subtle: var(--fhi-green-200);
-  --fhi-color-success-border: var(--fhi-green-500);
+  --fhi-color-success-border-default: var(--fhi-green-500);
   --fhi-color-success-border-strong: var(--fhi-green-700);
-  --fhi-color-success-base: var(--fhi-green-500);
+  --fhi-color-success-base-default: var(--fhi-green-500);
   --fhi-color-success-base-hover: var(--fhi-green-600);
   --fhi-color-success-base-active: var(--fhi-green-700);
   --fhi-color-success-text-subtle: var(--fhi-green-600);
-  --fhi-color-success-text: var(--fhi-green-800);
+  --fhi-color-success-text-default: var(--fhi-green-800);
   --fhi-color-success-text-inverted: var(--fhi-green-010);
 
-  --fhi-color-warning-background: var(--fhi-yellow-010);
+  --fhi-color-warning-background-default: var(--fhi-yellow-010);
   --fhi-color-warning-background-subtle: var(--fhi-yellow-050);
-  --fhi-color-warning-surface: var(--fhi-yellow-100);
+  --fhi-color-warning-surface-default: var(--fhi-yellow-100);
   --fhi-color-warning-surface-hover: var(--fhi-yellow-150);
   --fhi-color-warning-surface-active: var(--fhi-yellow-200);
   --fhi-color-warning-border-subtle: var(--fhi-yellow-200);
-  --fhi-color-warning-border: var(--fhi-orange-500);
+  --fhi-color-warning-border-default: var(--fhi-orange-500);
   --fhi-color-warning-border-strong: var(--fhi-orange-700);
-  --fhi-color-warning-base: var(--fhi-orange-200);
+  --fhi-color-warning-base-default: var(--fhi-orange-200);
   --fhi-color-warning-base-hover: var(--fhi-orange-300);
   --fhi-color-warning-base-active: var(--fhi-orange-400);
   --fhi-color-warning-text-subtle: var(--fhi-orange-600);
-  --fhi-color-warning-text: var(--fhi-orange-800);
+  --fhi-color-warning-text-default: var(--fhi-orange-800);
   --fhi-color-warning-text-inverted: var(--fhi-orange-900);
 
-  --fhi-color-danger-background: var(--fhi-red-010);
+  --fhi-color-danger-background-default: var(--fhi-red-010);
   --fhi-color-danger-background-subtle: var(--fhi-red-050);
-  --fhi-color-danger-surface: var(--fhi-red-100);
+  --fhi-color-danger-surface-default: var(--fhi-red-100);
   --fhi-color-danger-surface-hover: var(--fhi-red-150);
   --fhi-color-danger-surface-active: var(--fhi-red-200);
   --fhi-color-danger-border-subtle: var(--fhi-red-200);
-  --fhi-color-danger-border: var(--fhi-red-500);
+  --fhi-color-danger-border-default: var(--fhi-red-500);
   --fhi-color-danger-border-strong: var(--fhi-red-700);
-  --fhi-color-danger-base: var(--fhi-red-500);
+  --fhi-color-danger-base-default: var(--fhi-red-500);
   --fhi-color-danger-base-hover: var(--fhi-red-600);
   --fhi-color-danger-base-active: var(--fhi-red-700);
   --fhi-color-danger-text-subtle: var(--fhi-red-600);
-  --fhi-color-danger-text: var(--fhi-red-800);
+  --fhi-color-danger-text-default: var(--fhi-red-800);
   --fhi-color-danger-text-inverted: var(--fhi-red-010);
 
   /* Typography */
@@ -305,5 +305,5 @@
 
   /* Opacity */
   /* Semantic */
-  --fhi-opacity-disabled: 60%; 
+  --fhi-opacity-disabled: 60%;
 }
