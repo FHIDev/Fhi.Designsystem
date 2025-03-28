@@ -30,14 +30,20 @@ De forskjellige fargegruppene har igjen hver sine undergrupper:
 - `text` til tekst, samt ikoner i tilfeller hvor ikoner erstatter tekst.
 - `base` der vi trenger tydelige fargetoner som står ut. Brukes på handlingsdrivende elementer og der man vil formidle en bestemt mening.
 
-Alle har en definert `deafult`, i tillegg til undergrupper, slik som grader (`subtle` eller `strong`) eller interaksjon (`hover`og `active`).
-Merk at selv om fargene er navngitt etter interaksjon kan det oppstå behov som lar oss ta i bruk en annen grad. For eksemplel kan en knapp uten bakgrunnsfarge ta i bruk `surface-deafult` ved hover, i steden for gå hele veien opp til `surface-hover`.
+Alle undergruppene har en definert `default`, i tillegg til undergrupper, slik som grader (`subtle` eller `strong`) eller interaksjon (`hover`og `active`).
+Merk at selv om fargene er navngitt etter interaksjon kan det oppstå behov som lar oss ta i bruk en annen grad. For eksemplel kan en knapp uten bakgrunnsfarge ta i bruk `surface-default` ved hover, i steden for gå hele veien opp til `surface-hover`.
+
+Et set med semantiske farge token vil da for eksempel være:
+
+`--fhi-color-warning-base-default` <br/>
+`--fhi-color-warning-base-hover` <br/>
+`--fhi-color-warning-base-active`
 
 ## Dimensions
 
 Designsystemet bruker primitive tokens for spacing, for eksempel `spacing-0`, `spacing-100` og `spacing-250`. De minste avstandene brukes som regel inni komponenter, mens de større brukes mellom komponenter eller seksjoner.
 
-Det er også tokens for border radius, hvor rund en kant skal være, for eksempel `border-radius-050` eller `border-radius-300`, i tillegg til én token for border width, `border-width-defualt`.
+Det er også tokens for border radius, hvor rund en kant skal være, for eksempel `border-radius-050` eller `border-radius-300`, i tillegg til én token for border width, `border-width-default`.
 
 ## Typography
 
