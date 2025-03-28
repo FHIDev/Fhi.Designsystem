@@ -98,7 +98,7 @@ jobs:
 
       - name: Publish package to NPM
         if: steps.guard_job.outputs.should_run == 'true'
-        run: cd packages/fhi-designsystem; npm publish --provenance --access public
+        run: cd packages/fhi-designsystem/dist/npm; npm publish --provenance --access public
 
       - name: Build Storybook
         if: steps.guard_job.outputs.should_run == 'true'
