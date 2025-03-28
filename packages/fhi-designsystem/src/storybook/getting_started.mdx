@@ -18,10 +18,10 @@ Dokumentasjon for det gamle designsystemet med komponenter for Angular, samt til
 - [Installering](#installering)
   - [Komponentbibliotek](#komponentbibliotek)
 - [Bruk](#bruk)
-  - [Standard HTML/JS](#standard-htmljs)
   - [Angular](#angular)
-  - [React](#react)
   - [Blazor](#blazor)
+  - [React](#react)
+  - [Standard HTML/JS](#standard-htmljs)
 - [Design ressurser](#design-ressurser)
   - [Figma](#figma)
   - [UI/UX Design rettningslinjer](#uiux-design-rettningslinjer)
@@ -65,20 +65,6 @@ Bruk bare CDN hvis `npm` ikke er et alternativ.
 <br />
 
 ## Bruk
-
-### Standard HTML/JS
-
-Nettleseren har innebygd støtte for webkomponenter. Du kan derfor bruke komponentene direkte i HTML-filen din uten ekstra konfigurasjon. 
-
-Under er et eksempel på hvordan du bruker `fhi-button` i standard HTML/JS. Vi tar utgangspunkt i at du brukte CDN da du installerte pakken.
-
-Alle komponenter i FHI Designsystem er globalt tilgjengelige i applikasjonen uten ekstra konfigurasjon.
-Du kan nå fritt bruke `fhi-button` hvor som helst i HTML-filen.
-
-F.eks:
-```html
-<fhi-button onclick="console.log('Hello World')">Click me!</fhi-button>
-```
 
 ### Angular
 Angular har innebygd støtte for webkomponenter. Du kan derfor bruke komponentene direkte i Angular-prosjektet ditt.
@@ -127,6 +113,21 @@ Nå kan du bruke komponenten som om det var et vanlig HTML-element i din Angular
 <fhi-button (click)="handleClick($event)">Click me!</fhi-button>
 ```
 _Obs: `handleClick` er brukt her som et eksempel. Du må selv lage en metode i Angular-komponenten som håndterer klikk-eventet._
+
+### Blazor
+
+Blazor støtter webkomponenter på samme måte som vanlige HTML-elementer.
+
+Under er et eksempel på hvordan du bruker `fhi-button` i Blazor. Vi tar utgangspunkt i at du har brukt [CDN](#komponentbibliotek) da du installerte pakken.
+
+Alle komponenter i FHI Designsystem er globalt tilgjengelige i applikasjonen uten ekstra konfigurasjon.
+Du kan nå fritt bruke `fhi-button` hvor som helst i Blazor-appen.
+
+F.eks:
+```html
+<fhi-button @onclick="@(e => { Console.WriteLine($"Hello World! {e}"); })">Click me!</fhi-button>
+```
+
 ### React
 
 <div style={{padding: ".25rem 1rem", background: "#FFE7BA", borderRadius: "2px", borderBottom: "4px solid #F1A541", marginBottom: "2rem"}} >
@@ -154,18 +155,19 @@ Nå kan du bruke komponenten i JSX:
 ```jsx
 <fhi-button onClick={(event) => console.log("hello world", event)}>Click me!</fhi-button>
 ```
-### Blazor
 
-Blazor støtter webkomponenter på samme måte som vanlige HTML-elementer.
+### Standard HTML/JS
 
-Under er et eksempel på hvordan du bruker `fhi-button` i Blazor. Vi tar utgangspunkt i at du har brukt CDN da du installerte pakken.
+Nettleseren har innebygd støtte for webkomponenter. Du kan derfor bruke komponentene direkte i HTML-filen din uten ekstra konfigurasjon. 
+
+Under er et eksempel på hvordan du bruker `fhi-button` i standard HTML/JS. Vi tar utgangspunkt i at du brukte CDN da du installerte pakken.
 
 Alle komponenter i FHI Designsystem er globalt tilgjengelige i applikasjonen uten ekstra konfigurasjon.
-Du kan nå fritt bruke `fhi-button` hvor som helst i Blazor-appen.
+Du kan nå fritt bruke `fhi-button` hvor som helst i HTML-filen.
 
 F.eks:
 ```html
-<fhi-button @onclick="@(e => { Console.WriteLine($"Hello World! {e}"); })">Click me!</fhi-button>
+<fhi-button onclick="console.log('Hello World')">Click me!</fhi-button>
 ```
 
 ## Designressurser
