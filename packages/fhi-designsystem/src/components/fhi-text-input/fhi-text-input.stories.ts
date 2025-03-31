@@ -143,7 +143,7 @@ export const WithLabelMessageValueError: Story = {
   args: {
     label: 'E-postadresse',
     message:
-      'Ufullstendig adresse, sjekk at alfakrøll (@) og domene er med og riktig skrevet (f.eks: designsystemet@fhi.no)',
+      'Ufullstendig adresse, sjekk at krøllalfa (@) og domene er med og riktig skrevet (f.eks: designsystemet@fhi.no)',
     value: 'designsystemet.fhi.no',
     status: 'error',
   },
