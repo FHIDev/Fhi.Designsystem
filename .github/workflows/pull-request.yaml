@@ -13,7 +13,7 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
-    environment: production
+    environment: development
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -64,3 +64,9 @@ jobs:
           app_location: 'packages/fhi-designsystem/storybook-static'
           skip_app_build: true
 
+      - name: Close Pull Request
+        uses: Azure/static-web-apps-deploy@v1
+        if: github.event_name == 'pull_request' && github.event.action == 'closed'
+        with:
+          azure_static_web_apps_api_token: ${{ secrets.AZURE_STORYBOOK_API_TOKEN }}
+          action: 'close'
