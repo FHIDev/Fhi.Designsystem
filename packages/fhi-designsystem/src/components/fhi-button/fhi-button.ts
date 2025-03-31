@@ -143,8 +143,8 @@ export class FhiButton extends LitElement {
               --fhi-dimension-border-width
             )
         );
-      --color-accent-strong-background: var(--fhi-color-accent-base);
-      --color-accent-strong-border: var(--fhi-color-accent-base);
+      --color-accent-strong-background: var(--fhi-color-accent-base-default);
+      --color-accent-strong-border: var(--fhi-color-accent-base-default);
       --color-accent-strong: var(--fhi-color-accent-text-inverted);
       --color-accent-strong-background-hover: var(
         --fhi-color-accent-base-hover
@@ -156,44 +156,54 @@ export class FhiButton extends LitElement {
       );
       --color-accent-strong-border-active: var(--fhi-color-accent-base-hover);
       --color-accent-strong-active: var(--fhi-color-accent-text-inverted);
-      --color-accent-strong-background-disabled: var(--fhi-color-accent-base);
-      --color-accent-strong-border-disabled: var(--fhi-color-accent-base);
+      --color-accent-strong-background-disabled: var(
+        --fhi-color-accent-base-default
+      );
+      --color-accent-strong-border-disabled: var(
+        --fhi-color-accent-base-default
+      );
       --color-accent-strong-disabled: var(--fhi-color-accent-text-inverted);
 
-      --color-accent-subtle-background: var(--fhi-color-accent-surface);
-      --color-accent-subtle-border: var(--fhi-color-accent-surface);
+      --color-accent-subtle-background: var(--fhi-color-accent-surface-default);
+      --color-accent-subtle-border: var(--fhi-color-accent-surface-default);
       --color-accent-subtle: var(--fhi-color-accent-text-subtle);
       --color-accent-subtle-background-hover: var(
         --fhi-color-accent-surface-hover
       );
       --color-accent-subtle-border-hover: var(--fhi-color-accent-surface-hover);
-      --color-accent-subtle-hover: var(--fhi-color-accent-text);
+      --color-accent-subtle-hover: var(--fhi-color-accent-text-default);
       --color-accent-subtle-background-active: var(
         --fhi-color-accent-surface-active
       );
       --color-accent-subtle-border-active: var(
         --fhi-color-accent-surface-active
       );
-      --color-accent-subtle-active: var(--fhi-color-accent-text);
+      --color-accent-subtle-active: var(--fhi-color-accent-text-default);
       --color-accent-subtle-background-disabled: var(
-        --fhi-color-accent-surface
+        --fhi-color-accent-surface-default
       );
-      --color-accent-subtle-border-disabled: var(--fhi-color-accent-surface);
+      --color-accent-subtle-border-disabled: var(
+        --fhi-color-accent-surface-default
+      );
       --color-accent-subtle-disabled: var(--fhi-color-accent-text-subtle);
 
       --color-accent-outlined-background: transparent;
       --color-accent-outlined-border: var(--fhi-color-accent-border-subtle);
       --color-accent-outlined: var(--fhi-color-accent-text-subtle);
-      --color-accent-outlined-background-hover: var(--fhi-color-accent-surface);
-      --color-accent-outlined-border-hover: var(--fhi-color-accent-surface);
-      --color-accent-outlined-hover: var(--fhi-color-accent-text);
+      --color-accent-outlined-background-hover: var(
+        --fhi-color-accent-surface-default
+      );
+      --color-accent-outlined-border-hover: var(
+        --fhi-color-accent-surface-default
+      );
+      --color-accent-outlined-hover: var(--fhi-color-accent-text-default);
       --color-accent-outlined-background-active: var(
         --fhi-color-accent-surface-hover
       );
       --color-accent-outlined-border-active: var(
         --fhi-color-accent-surface-hover
       );
-      --color-accent-outlined-active: var(--fhi-color-accent-text);
+      --color-accent-outlined-active: var(--fhi-color-accent-text-default);
       --color-accent-outlined-background-disabled: transparent;
       --color-accent-outlined-border-disabled: var(
         --fhi-color-accent-border-subtle
@@ -203,20 +213,22 @@ export class FhiButton extends LitElement {
       --color-accent-text-background: transparent;
       --color-accent-text-border: transparent;
       --color-accent-text: var(--fhi-color-accent-text-subtle);
-      --color-accent-text-background-hover: var(--fhi-color-accent-surface);
-      --color-accent-text-border-hover: var(--fhi-color-accent-surface);
-      --color-accent-text-hover: var(--fhi-color-accent-text);
+      --color-accent-text-background-hover: var(
+        --fhi-color-accent-surface-default
+      );
+      --color-accent-text-border-hover: var(--fhi-color-accent-surface-default);
+      --color-accent-text-hover: var(--fhi-color-accent-text-default);
       --color-accent-text-background-active: var(
         --fhi-color-accent-surface-hover
       );
       --color-accent-text-border-active: var(--fhi-color-accent-surface-hover);
-      --color-accent-text-active: var(--fhi-color-accent-text);
+      --color-accent-text-active: var(--fhi-color-accent-text-default);
       --color-accent-text-background-disabled: transparent;
       --color-accent-text-border-disabled: transparent;
-      --color-accent-text-disabled: var(--fhi-color-accent-text);
+      --color-accent-text-disabled: var(--fhi-color-accent-text-default);
 
-      --color-neutral-strong-background: var(--fhi-color-neutral-base);
-      --color-neutral-strong-border: var(--fhi-color-neutral-base);
+      --color-neutral-strong-background: var(--fhi-color-neutral-base-default);
+      --color-neutral-strong-border: var(--fhi-color-neutral-base-default);
       --color-neutral-strong: var(--fhi-color-neutral-text-inverted);
       --color-neutral-strong-background-hover: var(
         --fhi-color-neutral-base-hover
@@ -228,12 +240,18 @@ export class FhiButton extends LitElement {
       );
       --color-neutral-strong-border-active: var(--fhi-color-neutral-base-hover);
       --color-neutral-strong-active: var(--fhi-color-neutral-text-inverted);
-      --color-neutral-strong-background-disabled: var(--fhi-color-neutral-base);
-      --color-neutral-strong-border-disabled: var(--fhi-color-neutral-base);
+      --color-neutral-strong-background-disabled: var(
+        --fhi-color-neutral-base-default
+      );
+      --color-neutral-strong-border-disabled: var(
+        --fhi-color-neutral-base-default
+      );
       --color-neutral-strong-disabled: var(--fhi-color-neutral-text-inverted);
 
-      --color-neutral-subtle-background: var(--fhi-color-neutral-surface);
-      --color-neutral-subtle-border: var(--fhi-color-neutral-surface);
+      --color-neutral-subtle-background: var(
+        --fhi-color-neutral-surface-default
+      );
+      --color-neutral-subtle-border: var(--fhi-color-neutral-surface-default);
       --color-neutral-subtle: var(--fhi-color-neutral-text-subtle);
       --color-neutral-subtle-background-hover: var(
         --fhi-color-neutral-surface-hover
@@ -241,35 +259,39 @@ export class FhiButton extends LitElement {
       --color-neutral-subtle-border-hover: var(
         --fhi-color-neutral-surface-hover
       );
-      --color-neutral-subtle-hover: var(--fhi-color-neutral-text);
+      --color-neutral-subtle-hover: var(--fhi-color-neutral-text-default);
       --color-neutral-subtle-background-active: var(
         --fhi-color-neutral-surface-active
       );
       --color-neutral-subtle-border-active: var(
         --fhi-color-neutral-surface-active
       );
-      --color-neutral-subtle-active: var(--fhi-color-neutral-text);
+      --color-neutral-subtle-active: var(--fhi-color-neutral-text-default);
       --color-neutral-subtle-background-disabled: var(
-        --fhi-color-neutral-surface
+        --fhi-color-neutral-surface-default
       );
-      --color-neutral-subtle-border-disabled: var(--fhi-color-neutral-surface);
-      --color-neutral-subtle-disabled: var(--fhi-color-neutral-text);
+      --color-neutral-subtle-border-disabled: var(
+        --fhi-color-neutral-surface-default
+      );
+      --color-neutral-subtle-disabled: var(--fhi-color-neutral-text-default);
 
       --color-neutral-outlined-background: transparent;
       --color-neutral-outlined-border: var(--fhi-color-neutral-border-subtle);
       --color-neutral-outlined: var(--fhi-color-neutral-text-subtle);
       --color-neutral-outlined-background-hover: var(
-        --fhi-color-neutral-surface
+        --fhi-color-neutral-surface-default
       );
-      --color-neutral-outlined-border-hover: var(--fhi-color-neutral-surface);
-      --color-neutral-outlined-hover: var(--fhi-color-neutral-text);
+      --color-neutral-outlined-border-hover: var(
+        --fhi-color-neutral-surface-default
+      );
+      --color-neutral-outlined-hover: var(--fhi-color-neutral-text-default);
       --color-neutral-outlined-background-active: var(
         --fhi-color-neutral-surface-hover
       );
       --color-neutral-outlined-border-active: var(
         --fhi-color-neutral-surface-hover
       );
-      --color-neutral-outlined-active: var(--fhi-color-neutral-text);
+      --color-neutral-outlined-active: var(--fhi-color-neutral-text-default);
       --color-neutral-outlined-background-disabled: transparent;
       --color-neutral-outlined-border-disabled: var(
         --fhi-color-neutral-border-subtle
@@ -279,22 +301,26 @@ export class FhiButton extends LitElement {
       --color-neutral-text-background: transparent;
       --color-neutral-text-border: transparent;
       --color-neutral-text: var(--fhi-color-neutral-text-subtle);
-      --color-neutral-text-background-hover: var(--fhi-color-neutral-surface);
-      --color-neutral-text-border-hover: var(--fhi-color-neutral-surface);
-      --color-neutral-text-hover: var(--fhi-color-neutral-text);
+      --color-neutral-text-background-hover: var(
+        --fhi-color-neutral-surface-default
+      );
+      --color-neutral-text-border-hover: var(
+        --fhi-color-neutral-surface-default
+      );
+      --color-neutral-text-hover: var(--fhi-color-neutral-text-default);
       --color-neutral-text-background-active: var(
         --fhi-color-neutral-surface-hover
       );
       --color-neutral-text-border-active: var(
         --fhi-color-neutral-surface-hover
       );
-      --color-neutral-text-active: var(--fhi-color-neutral-text);
+      --color-neutral-text-active: var(--fhi-color-neutral-text-default);
       --color-neutral-text-background-disabled: transparent;
       --color-neutral-text-border-disabled: transparent;
       --color-neutral-text-disabled: var(--fhi-color-neutral-text-subtle);
 
-      --color-danger-strong-background: var(--fhi-color-danger-base);
-      --color-danger-strong-border: var(--fhi-color-danger-base);
+      --color-danger-strong-background: var(--fhi-color-danger-base-default);
+      --color-danger-strong-border: var(--fhi-color-danger-base-default);
       --color-danger-strong: var(--fhi-color-danger-text-inverted);
       --color-danger-strong-background-hover: var(
         --fhi-color-danger-base-hover
@@ -306,44 +332,54 @@ export class FhiButton extends LitElement {
       );
       --color-danger-strong-border-active: var(--fhi-color-danger-base-hover);
       --color-danger-strong-active: var(--fhi-color-danger-text-inverted);
-      --color-danger-strong-background-disabled: var(--fhi-color-danger-base);
-      --color-danger-strong-border-disabled: var(--fhi-color-danger-base);
+      --color-danger-strong-background-disabled: var(
+        --fhi-color-danger-base-default
+      );
+      --color-danger-strong-border-disabled: var(
+        --fhi-color-danger-base-default
+      );
       --color-danger-strong-disabled: var(--fhi-color-danger-text-inverted);
 
-      --color-danger-subtle-background: var(--fhi-color-danger-surface);
-      --color-danger-subtle-border: var(--fhi-color-danger-surface);
+      --color-danger-subtle-background: var(--fhi-color-danger-surface-default);
+      --color-danger-subtle-border: var(--fhi-color-danger-surface-default);
       --color-danger-subtle: var(--fhi-color-danger-text-subtle);
       --color-danger-subtle-background-hover: var(
         --fhi-color-danger-surface-hover
       );
       --color-danger-subtle-border-hover: var(--fhi-color-danger-surface-hover);
-      --color-danger-subtle-hover: var(--fhi-color-danger-text);
+      --color-danger-subtle-hover: var(--fhi-color-danger-text-default);
       --color-danger-subtle-background-active: var(
         --fhi-color-danger-surface-active
       );
       --color-danger-subtle-border-active: var(
         --fhi-color-danger-surface-active
       );
-      --color-danger-subtle-active: var(--fhi-color-danger-text);
+      --color-danger-subtle-active: var(--fhi-color-danger-text-default);
       --color-danger-subtle-background-disabled: var(
-        --fhi-color-danger-surface
+        --fhi-color-danger-surface-default
       );
-      --color-danger-subtle-border-disabled: var(--fhi-color-danger-surface);
+      --color-danger-subtle-border-disabled: var(
+        --fhi-color-danger-surface-default
+      );
       --color-danger-subtle-disabled: var(--fhi-color-danger-text-subtle);
 
       --color-danger-outlined-background: transparent;
       --color-danger-outlined-border: var(--fhi-color-danger-border-subtle);
       --color-danger-outlined: var(--fhi-color-danger-text-subtle);
-      --color-danger-outlined-background-hover: var(--fhi-color-danger-surface);
-      --color-danger-outlined-border-hover: var(--fhi-color-danger-surface);
-      --color-danger-outlined-hover: var(--fhi-color-danger-text);
+      --color-danger-outlined-background-hover: var(
+        --fhi-color-danger-surface-default
+      );
+      --color-danger-outlined-border-hover: var(
+        --fhi-color-danger-surface-default
+      );
+      --color-danger-outlined-hover: var(--fhi-color-danger-text-default);
       --color-danger-outlined-background-active: var(
         --fhi-color-danger-surface-hover
       );
       --color-danger-outlined-border-active: var(
         --fhi-color-danger-surface-hover
       );
-      --color-danger-outlined-active: var(--fhi-color-danger-text);
+      --color-danger-outlined-active: var(--fhi-color-danger-text-default);
       --color-danger-outlined-background-disabled: transparent;
       --color-danger-outlined-border-disabled: var(
         --fhi-color-danger-border-subtle
@@ -353,14 +389,16 @@ export class FhiButton extends LitElement {
       --color-danger-text-background: transparent;
       --color-danger-text-border: transparent;
       --color-danger-text: var(--fhi-color-danger-text-subtle);
-      --color-danger-text-background-hover: var(--fhi-color-danger-surface);
-      --color-danger-text-border-hover: var(--fhi-color-danger-surface);
-      --color-danger-text-hover: var(--fhi-color-danger-text);
+      --color-danger-text-background-hover: var(
+        --fhi-color-danger-surface-default
+      );
+      --color-danger-text-border-hover: var(--fhi-color-danger-surface-default);
+      --color-danger-text-hover: var(--fhi-color-danger-text-default);
       --color-danger-text-background-active: var(
         --fhi-color-danger-surface-hover
       );
       --color-danger-text-border-active: var(--fhi-color-danger-surface-hover);
-      --color-danger-text-active: var(--fhi-color-danger-text);
+      --color-danger-text-active: var(--fhi-color-danger-text-default);
       --color-danger-text-background-disabled: transparent;
       --color-danger-text-border-disabled: transparent;
       --color-danger-text-disabled: var(--fhi-color-danger-text-subtle);
