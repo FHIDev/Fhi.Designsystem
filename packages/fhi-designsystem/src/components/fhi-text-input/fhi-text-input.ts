@@ -123,8 +123,8 @@ export class FhiTextInput extends LitElement {
       --opacity-disabled: var(--fhi-opacity-disabled);
 
       /* label */
-      --color-label-text: var(--fhi-color-neutral-text);
-      --color-label-text-error: var(--fhi-color-danger-text);
+      --color-label-text: var(--fhi-color-neutral-text-default);
+      --color-label-text-error: var(--fhi-color-danger-text-default);
 
       --typography-label-font-weight: var(
         --fhi-typography-label-small-font-weight
@@ -140,18 +140,22 @@ export class FhiTextInput extends LitElement {
       --dimension-label-padding-bottom: var(--fhi-spacing-050);
 
       /* input */
-      --color-input-placeholder: var(--fhi-color-neutral-base);
-      --color-input-text: var(--fhi-color-neutral-text);
-      --color-input-text-error: var(--fhi-color-danger-text);
-      --color-input-background: var(--fhi-color-neutral-background);
-      --color-input-background-active: var(--fhi-color-accent-background);
+      --color-input-placeholder: var(--fhi-color-neutral-base-default);
+      --color-input-text: var(--fhi-color-neutral-text-default);
+      --color-input-text-error: var(--fhi-color-danger-text-default);
+      --color-input-background: var(--fhi-color-neutral-background-default);
+      --color-input-background-active: var(
+        --fhi-color-accent-background-default
+      );
       --color-input-background-hover: var(--fhi-color-accent-background-subtle);
-      --color-input-background-error: var(--fhi-color-danger-background);
-      --color-input-border: var(--fhi-color-neutral-border);
-      --color-input-border-hover: var(--fhi-color-accent-border);
+      --color-input-background-error: var(
+        --fhi-color-danger-background-default
+      );
+      --color-input-border: var(--fhi-color-neutral-border-default);
+      --color-input-border-hover: var(--fhi-color-accent-border-default);
       --color-input-border-active: var(--fhi-color-accent-border-strong);
       --color-input-border-error: var(--fhi-color-danger-border-strong);
-      --color-input-border-disabled: var(--fhi-color-neutral-border);
+      --color-input-border-disabled: var(--fhi-color-neutral-border-default);
 
       --typography-input-font-weight: var(
         --fhi-typography-body-medium-font-weight
@@ -175,7 +179,7 @@ export class FhiTextInput extends LitElement {
         var(--fhi-motion-duration-quick);
 
       /* message */
-      --color-message-text: var(--fhi-color-neutral-text);
+      --color-message-text: var(--fhi-color-neutral-text-default);
       --color-message-text-error: var(--fhi-color-danger-text-subtle);
 
       --typography-message-font-weight: var(
