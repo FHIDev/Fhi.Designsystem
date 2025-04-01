@@ -4,18 +4,6 @@ import { ifDefined } from 'lit/directives/if-defined.js';
 
 export const FhiTextInputSelector = 'fhi-text-input';
 
-export type FhiTextInputProps = Pick<
-  FhiTextInput,
-  | 'name'
-  | 'label'
-  | 'message'
-  | 'status'
-  | 'readonly'
-  | 'disabled'
-  | 'placeholder'
-  | 'value'
->;
-
 @customElement(FhiTextInputSelector)
 export class FhiTextInput extends LitElement {
   static formAssociated = true;
