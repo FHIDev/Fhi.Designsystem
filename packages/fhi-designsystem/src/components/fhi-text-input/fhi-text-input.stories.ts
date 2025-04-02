@@ -82,7 +82,7 @@ const meta: Meta<FhiTextInput> = {
       description:
         'Bestemmer om feltet har en status. Dette vil endre utseende på feltet.',
       defaultValue: { summary: 'undefined' },
-      options: ['error'],
+      options: [undefined, 'error'],
     },
   },
 };
