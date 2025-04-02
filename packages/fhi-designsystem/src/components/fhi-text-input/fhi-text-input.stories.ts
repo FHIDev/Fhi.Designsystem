@@ -79,10 +79,13 @@ const meta: Meta<FhiTextInput> = {
     },
     status: {
       control: 'select',
+      mapping: {
+        '': undefined,
+      },
       description:
         'Bestemmer om feltet har en status. Dette vil endre utseende på feltet.',
       defaultValue: { summary: 'undefined' },
-      options: [undefined, 'error'],
+      options: ['', 'error'],
     },
   },
 };
