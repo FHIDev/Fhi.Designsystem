@@ -5,6 +5,8 @@ export const FhiButtonSelector = 'fhi-button';
 
 @customElement(FhiButtonSelector)
 export class FhiButton extends LitElement {
+  static formAssociated = true;
+
   @property({ type: String, reflect: true }) color:
     | 'accent'
     | 'neutral'
@@ -25,68 +27,54 @@ export class FhiButton extends LitElement {
 
   @property({ type: String }) type: 'button' | 'submit' | 'reset' = 'submit';
 
-  private _formButton!: HTMLButtonElement;
-  private _form!: HTMLFormElement | null;
+  private _internals: ElementInternals;
 
   constructor() {
     super();
-    this._stopClickLeak = this._stopClickLeak.bind(this);
+    this._internals = this.attachInternals();
   }
 
-  override connectedCallback(): void {
-    if (!!super.connectedCallback) {
-      super.connectedCallback();
-    }
-
-    this._form = this.closest('form');
+  connectedCallback(): void {
+    super.connectedCallback();
 
     this.onkeyup = this._handleKeyup.bind(this);
-    this.onkeydown = this._handleKeyDown.bind(this);
+    this.onkeydown = this._handleKeydown.bind(this);
   }
 
-  protected override firstUpdated(): void {
-    this._formButton = document.createElement('button');
-    this._formButton.addEventListener('click', this._stopClickLeak);
-    this.addEventListener('click', this._handleClick);
+  click(): void {
+    this._handleClick();
   }
 
-  private _handleClick(event: MouseEvent): void {
-    if (
-      (this.type === 'submit' || this.type === 'reset') &&
-      this._form &&
-      !event.defaultPrevented
-    ) {
-      this._formButton.type = this.type;
-      this._form?.appendChild(this._formButton);
-      this._formButton.click();
-      this._form?.removeChild(this._formButton);
+  private _handleClick(event?: MouseEvent | KeyboardEvent): void {
+    event?.preventDefault();
+    event?.stopPropagation();
+
+    if (this.disabled) {
+      return;
     }
-  }
 
-  private _stopClickLeak(event: MouseEvent): void {
-    if (event.target === this._formButton) {
-      event.stopImmediatePropagation();
+    this.dispatchEvent(
+      new MouseEvent('click', { bubbles: true, composed: true }),
+    );
+
+    if (this.type === 'submit') {
+      this._internals.form?.requestSubmit();
+    }
+
+    if (this.type === 'reset') {
+      this._internals.form?.reset();
     }
   }
 
   private _handleKeyup(event: KeyboardEvent): void {
-    switch (event.key) {
-      case ' ':
-      case 'Spacebar':
-        event.preventDefault();
-        event.stopPropagation();
-        this.dispatchEvent(
-          new Event('click', { bubbles: true, composed: true }),
-        );
-        break;
+    if (event.key === ' ' || event.key === 'Spacebar') {
+      this._handleClick(event);
     }
   }
 
-  private _handleKeyDown(event: KeyboardEvent): void {
+  private _handleKeydown(event: KeyboardEvent): void {
     if (event.key === 'Enter') {
-      event.preventDefault();
-      event.stopPropagation();
-      this.dispatchEvent(new Event('click', { bubbles: true, composed: true }));
+      this._handleClick(event);
     }
   }
 
@@ -95,7 +83,8 @@ export class FhiButton extends LitElement {
       ?disabled=${this.disabled}
       type=${this.type}
       @keyup=${this._handleKeyup}
-      @keydown=${this._handleKeyDown}
+      @keydown=${this._handleKeydown}
+      @click=${this._handleClick}
     >
       <slot></slot>
     </button>`;
