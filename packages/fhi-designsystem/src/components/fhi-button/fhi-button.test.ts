@@ -4,6 +4,8 @@ import { html } from 'lit/static-html.js';
 import { FhiButton } from './fhi-button';
 
 describe('fhi-button', () => {
+  new FhiButton();
+
   let component: FhiButton;
 
   beforeEach(async () => {
@@ -31,42 +33,53 @@ describe('fhi-button', () => {
   });
 
   describe('User interaction', () => {
-    it('should not call onClick when disabled', async () => {
-      let count = 0;
-      const onClick = (): void => {
-        count++;
-      };
-
-      component = await fixture(html`
-        <fhi-button disabled @click=${onClick}>Not clickable</fhi-button>
-      `);
-
-      expect(count).to.equal(0);
-    });
-
-    it('should handle onClick event', async () => {
-      let count = 0;
-      const onClick = (): void => {
-        count++;
-      };
-
-      component = await fixture(html`
-        <fhi-button @click=${onClick}>Click me</fhi-button>
-      `);
-
-      component.click();
-      await expect(count).to.equal(1);
-    });
-
-    it('should send click event when clicked', async () => {
+    it('should emit click event when clicked', async () => {
       let clicked = false;
-      component = await fixture(html` <fhi-button>Click me</fhi-button> `);
+
+      component = await fixture(html`<fhi-button>Click me</fhi-button>`);
+
       component.addEventListener('click', () => {
         clicked = true;
       });
 
       component.click();
+
       await expect(clicked).to.equal(true);
+    });
+
+    it('clicks the button when the enter key is pressed', async () => {
+      let clicked = false;
+      component = await fixture(html`<fhi-button>Click me</fhi-button>`);
+
+      component.addEventListener('click', () => {
+        clicked = true;
+      });
+
+      const event = new KeyboardEvent('keydown', { key: 'Enter' });
+
+      component.dispatchEvent(event);
+
+      await component.updateComplete;
+
+      await expect(clicked).to.equal(true);
+    });
+
+    it('clicks the button when the space key is pressed and released', async () => {
+      let count = 0;
+
+      const onClick = (): void => {
+        count++;
+      };
+
+      component = await fixture(html`
+        <fhi-button @click=${onClick}>I am a button link</fhi-button>
+      `);
+
+      component.dispatchEvent(new KeyboardEvent('keyup', { key: ' ' }));
+
+      await component.updateComplete;
+
+      expect(count).to.equal(1);
     });
   });
 

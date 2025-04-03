@@ -39,6 +39,9 @@ export class FhiButton extends LitElement {
     }
 
     this._form = this.closest('form');
+
+    this.onkeyup = this._handleKeyup.bind(this);
+    this.onkeydown = this._handleKeyDown.bind(this);
   }
 
   protected override firstUpdated(): void {
@@ -66,8 +69,34 @@ export class FhiButton extends LitElement {
     }
   }
 
+  private _handleKeyup(event: KeyboardEvent): void {
+    switch (event.key) {
+      case ' ':
+      case 'Spacebar':
+        event.preventDefault();
+        event.stopPropagation();
+        this.dispatchEvent(
+          new Event('click', { bubbles: true, composed: true }),
+        );
+        break;
+    }
+  }
+
+  private _handleKeyDown(event: KeyboardEvent): void {
+    if (event.key === 'Enter') {
+      event.preventDefault();
+      event.stopPropagation();
+      this.dispatchEvent(new Event('click', { bubbles: true, composed: true }));
+    }
+  }
+
   render() {
-    return html`<button ?disabled=${this.disabled} type=${this.type}>
+    return html`<button
+      ?disabled=${this.disabled}
+      type=${this.type}
+      @keyup=${this._handleKeyup}
+      @keydown=${this._handleKeyDown}
+    >
       <slot></slot>
     </button>`;
   }
@@ -123,22 +152,25 @@ export class FhiButton extends LitElement {
           var(--fhi-spacing-050) - var(--fhi-dimension-border-width)
         )
         calc(
-          var(--fhi-spacing-150) +
-            var(--fhi-spacing-050) - var(--fhi-dimension-border-width)
+          var(--fhi-spacing-150) + var(--fhi-spacing-050) - var(
+              --fhi-dimension-border-width
+            )
         );
       --dimension-padding-medium: calc(
           var(--fhi-spacing-100) - var(--fhi-dimension-border-width)
         )
         calc(
-          var(--fhi-spacing-200) +
-            var(--fhi-spacing-050) - var(--fhi-dimension-border-width)
+          var(--fhi-spacing-200) + var(--fhi-spacing-050) - var(
+              --fhi-dimension-border-width
+            )
         );
       --dimension-padding-large: calc(
           var(--fhi-spacing-200) - var(--fhi-dimension-border-width)
         )
         calc(
-          var(--fhi-spacing-300) +
-            var(--fhi-spacing-050) - var(--fhi-dimension-border-width)
+          var(--fhi-spacing-300) + var(--fhi-spacing-050) - var(
+              --fhi-dimension-border-width
+            )
         );
       --color-accent-strong-background: var(--fhi-color-accent-base-default);
       --color-accent-strong-border: var(--fhi-color-accent-base-default);
