@@ -67,7 +67,7 @@
       "new ${1:ComponentName}();",
       "",
       "const meta: Meta<${1:ComponentName}> = {",
-      "  title: '',",
+      "  title: '${3:Komponenter/Component}',",
       "  component: '${2:component-name}',",
       "  parameters: {},",
       "  decorators: [],",
