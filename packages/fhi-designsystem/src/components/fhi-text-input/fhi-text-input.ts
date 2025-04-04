@@ -6,7 +6,7 @@ export const FhiTextInputSelector = 'fhi-text-input';
 
 @customElement(FhiTextInputSelector)
 export class FhiTextInput extends LitElement {
-  static formAssociated = true;
+  static readonly formAssociated = true;
 
   @property({ type: String }) label?: string = undefined;
 
