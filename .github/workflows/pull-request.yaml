@@ -47,7 +47,7 @@ jobs:
 
 
       - name: Prepare Testing Environment
-        run: cd packages/fhi-designsystem; pnpm exec playwright install --with-deps
+        run: cd packages/fhi-designsystem; pnpm exec playwright install --with-deps chromium webkit
 
       - name: Test
         run: cd packages/fhi-designsystem; pnpm test
