@@ -69,6 +69,10 @@ export class FhiButton extends LitElement {
   private _handleKeyup(event: KeyboardEvent): void {
     if (event.key === ' ' || event.key === 'Spacebar') {
       this._handleClick(event);
+
+      const target = event.target as HTMLElement | null;
+      target?.blur();
+      target?.focus();
     }
   }
 
