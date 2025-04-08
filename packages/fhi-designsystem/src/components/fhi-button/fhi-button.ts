@@ -123,22 +123,25 @@ export class FhiButton extends LitElement {
           var(--fhi-spacing-050) - var(--fhi-dimension-border-width)
         )
         calc(
-          var(--fhi-spacing-150) +
-            var(--fhi-spacing-050) - var(--fhi-dimension-border-width)
+          var(--fhi-spacing-150) + var(--fhi-spacing-050) - var(
+              --fhi-dimension-border-width
+            )
         );
       --dimension-padding-medium: calc(
           var(--fhi-spacing-100) - var(--fhi-dimension-border-width)
         )
         calc(
-          var(--fhi-spacing-200) +
-            var(--fhi-spacing-050) - var(--fhi-dimension-border-width)
+          var(--fhi-spacing-200) + var(--fhi-spacing-050) - var(
+              --fhi-dimension-border-width
+            )
         );
       --dimension-padding-large: calc(
           var(--fhi-spacing-200) - var(--fhi-dimension-border-width)
         )
         calc(
-          var(--fhi-spacing-300) +
-            var(--fhi-spacing-050) - var(--fhi-dimension-border-width)
+          var(--fhi-spacing-300) + var(--fhi-spacing-050) - var(
+              --fhi-dimension-border-width
+            )
         );
       --color-accent-strong-background: var(--fhi-color-accent-base-default);
       --color-accent-strong-border: var(--fhi-color-accent-base-default);

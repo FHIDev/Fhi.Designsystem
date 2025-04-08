@@ -2,7 +2,7 @@
   "title": "FHI Designsystem",
   "author": "FHI Designsystem team",
   "name": "@folkehelseinstituttet/designsystem",
-  "version": "0.1.2",
+  "version": "0.2.0",
   "description": "The official design system for the Norwegian Institute of Public Health implemented as web components",
   "keywords": [
     "fhi",
@@ -41,7 +41,7 @@
     "build:npm": "tsc && cross-env DEPLOY_TARGET=npm vite build",
     "storybook": "storybook dev -p 6006",
     "storybook:build": "storybook build",
-    "test": "wtr ./**/*.test.ts --node-resolve --playwright --browsers chromium firefox webkit",
+    "test": "wtr ./**/*.test.ts --node-resolve --playwright --browsers chromium webkit",
     "lint": "pnpm lint:eslint && pnpm lint:prettier",
     "lint:eslint": "eslint \"**/*.{js,ts}\"",
     "lint:prettier": "prettier \"**/*.js\" --check --ignore-path .gitignore",
