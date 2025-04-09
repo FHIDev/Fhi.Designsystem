@@ -4,15 +4,17 @@ import { html } from 'lit/static-html.js';
 import { FhiButton } from './fhi-button';
 
 describe('fhi-button', () => {
+  new FhiButton();
+
   let component: FhiButton;
 
-  beforeEach(async () => {
-    component = await fixture(
-      html`<fhi-button>I am a test button</fhi-button>`,
-    );
-  });
+  describe('accessibility', () => {
+    beforeEach(async () => {
+      component = await fixture(
+        html`<fhi-button>I am a test button</fhi-button>`,
+      );
+    });
 
-  describe('Accessibility', () => {
     it('is accessible', async () => {
       await expect(component).to.be.accessible();
     });
@@ -30,53 +32,258 @@ describe('fhi-button', () => {
     });
   });
 
-  describe('User interaction', () => {
-    it('should not call onClick when disabled', async () => {
-      let count = 0;
-      const onClick = (): void => {
-        count++;
-      };
+  describe('setting attributes', () => {
+    it('has an attribute to set type', async () => {
+      component = await fixture(
+        html`<fhi-button type="button">I am a test button</fhi-button>`,
+      );
 
-      component = await fixture(html`
-        <fhi-button disabled @click=${onClick}>Not clickable</fhi-button>
-      `);
-
-      expect(count).to.equal(0);
+      expect(component.type).to.equal('button');
     });
 
-    it('should handle onClick event', async () => {
-      let count = 0;
-      const onClick = (): void => {
-        count++;
-      };
+    it('has an attribute to set color', async () => {
+      component = await fixture(
+        html`<fhi-button color="neutral">I am a test button</fhi-button>`,
+      );
 
-      component = await fixture(html`
-        <fhi-button @click=${onClick}>Click me</fhi-button>
-      `);
-
-      component.click();
-      await expect(count).to.equal(1);
+      expect(component.color).to.equal('neutral');
     });
 
-    it('should send click event when clicked', async () => {
+    it('has an attribute to set disabled', async () => {
+      component = await fixture(
+        html`<fhi-button disabled>I am a test button</fhi-button>`,
+      );
+
+      expect(component.disabled).to.equal(true);
+    });
+
+    it('has an attribute to set variant', async () => {
+      component = await fixture(
+        html`<fhi-button variant="subtle">I am a test button</fhi-button>`,
+      );
+
+      expect(component.variant).to.equal('subtle');
+    });
+
+    it('has an attribute to set size', async () => {
+      component = await fixture(
+        html`<fhi-button size="small">I am a test button</fhi-button>`,
+      );
+
+      expect(component.size).to.equal('small');
+    });
+  });
+
+  describe('property-attribute reflection', () => {
+    beforeEach(async () => {
+      component = await fixture(
+        html`<fhi-button>I am a test button</fhi-button>`,
+      );
+    });
+
+    it('should reflect the disabled property to the attribute', async () => {
+      component.disabled = true;
+      await component.updateComplete;
+
+      expect(component.hasAttribute('disabled')).to.equal(true);
+    });
+
+    it('should reflect the variant property to the attribute', async () => {
+      component.variant = 'subtle';
+      await component.updateComplete;
+
+      expect(component.getAttribute('variant')).to.equal('subtle');
+    });
+
+    it('should reflect the size property to the attribute', async () => {
+      component.size = 'small';
+      await component.updateComplete;
+
+      expect(component.getAttribute('size')).to.equal('small');
+    });
+
+    it('should reflect the color property to the attribute', async () => {
+      component.color = 'neutral';
+      await component.updateComplete;
+
+      expect(component.getAttribute('color')).to.equal('neutral');
+    });
+  });
+
+  describe('event interactions', () => {
+    beforeEach(async () => {
+      component = await fixture(
+        html`<fhi-button>I am a test button</fhi-button>`,
+      );
+    });
+
+    it('should emit click event when clicked', async () => {
       let clicked = false;
-      component = await fixture(html` <fhi-button>Click me</fhi-button> `);
+
       component.addEventListener('click', () => {
         clicked = true;
       });
 
       component.click();
+
       await expect(clicked).to.equal(true);
+    });
+
+    it('should not emit click event when disabled', async () => {
+      let clicked = false;
+
+      component.addEventListener('click', () => {
+        clicked = true;
+      });
+
+      component.disabled = true;
+      await component.updateComplete;
+
+      component.click();
+
+      await expect(clicked).to.equal(false);
+    });
+
+    it('should emit click event when the enter key is pressed', async () => {
+      let clicked = false;
+
+      component.addEventListener('click', () => {
+        clicked = true;
+      });
+
+      const event = new KeyboardEvent('keydown', { key: 'Enter' });
+
+      component.dispatchEvent(event);
+
+      await component.updateComplete;
+
+      await expect(clicked).to.equal(true);
+    });
+
+    it('should emit click event when the space key is pressed and released', async () => {
+      let clicked = false;
+
+      component.addEventListener('click', () => {
+        clicked = true;
+      });
+
+      component.dispatchEvent(new KeyboardEvent('keyup', { key: ' ' }));
+
+      await component.updateComplete;
+
+      expect(clicked).to.equal(true);
     });
   });
 
-  describe('API', () => {
-    it('should display child', async () => {
+  describe('form interactions', () => {
+    it('should submit from its associated form when clicked', async () => {
+      let submitted = false;
+
+      const form = document.createElement('form');
+      form.addEventListener('submit', function (event) {
+        event.preventDefault();
+        submitted = true;
+      });
+
+      component = await fixture(html`<fhi-button>Click</fhi-button>`, {
+        parentNode: form,
+      });
+
+      component.click();
+
+      expect(submitted).to.equal(true);
+    });
+
+    it('should not submit from its associated form when disabled', async () => {
+      let submitted = false;
+
+      const form = document.createElement('form');
+      form.addEventListener('submit', function (event) {
+        event.preventDefault();
+        submitted = true;
+      });
+
+      component = await fixture(html`<fhi-button disabled>Click</fhi-button>`, {
+        parentNode: form,
+      });
+
+      component.click();
+
+      expect(submitted).to.equal(false);
+    });
+
+    it('should not submit from its associated form when type is not submit', async () => {
+      let submitted = false;
+
+      const form = document.createElement('form');
+      form.addEventListener('submit', function (event) {
+        event.preventDefault();
+        submitted = true;
+      });
+
       component = await fixture(
-        html`<fhi-button>Look at my child</fhi-button>`,
+        html`<fhi-button type="button">Click</fhi-button>`,
+        { parentNode: form },
       );
 
-      expect(component.textContent).to.equal(component.firstChild?.textContent);
+      component.click();
+
+      expect(submitted).to.equal(false);
+    });
+
+    it('should reset its associated form when type is reset', async () => {
+      let reset = false;
+
+      const form = document.createElement('form');
+      form.addEventListener('reset', function (event) {
+        event.preventDefault();
+        reset = true;
+      });
+
+      component = await fixture(
+        html`<fhi-button type="reset">Click</fhi-button>`,
+        { parentNode: form },
+      );
+
+      component.click();
+
+      expect(reset).to.equal(true);
+    });
+
+    it('should not reset its associated form when disabled', async () => {
+      let reset = false;
+
+      const form = document.createElement('form');
+      form.addEventListener('reset', function (event) {
+        event.preventDefault();
+        reset = true;
+      });
+
+      component = await fixture(
+        html`<fhi-button type="reset" disabled>Click</fhi-button>`,
+        { parentNode: form },
+      );
+
+      component.click();
+
+      expect(reset).to.equal(false);
+    });
+  });
+
+  describe('child elements', () => {
+    it('should display child', async () => {
+      component = await fixture(
+        html`<fhi-button><span>Look at my child</span></fhi-button>`,
+      );
+
+      await component.updateComplete;
+
+      const child = component.querySelector('span');
+
+      // eslint-disable-next-line @typescript-eslint/no-unused-expressions
+      expect(child).to.exist;
+      expect(child).to.be.accessible();
+      expect(child!.textContent).to.equal('Look at my child');
     });
   });
 });
