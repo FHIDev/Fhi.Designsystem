@@ -1,21 +1,4 @@
 {
-  // Place your Fhi.Designsystem workspace snippets here. Each snippet is defined under a snippet name and has a scope, prefix, body and
-  // description. Add comma separated ids of the languages where the snippet is applicable in the scope field. If scope
-  // is left empty or omitted, the snippet gets applied to all languages. The prefix is what is
-  // used to trigger the snippet and the body will be expanded and inserted. Possible variables are:
-  // $1, $2 for tab stops, $0 for the final cursor position, and ${1:label}, ${2:another} for placeholders.
-  // Placeholders with the same ids are connected.
-  // Example:
-  // "Print to console": {
-  // 	"scope": "javascript,typescript",
-  // 	"prefix": "log",
-  // 	"body": [
-  // 		"console.log('$1');",
-  // 		"$2"
-  // 	],
-  // 	"description": "Log output to console"
-  // }
-
   "ts-file for new component": {
     "scope": "typescript",
     "prefix": "lit",
@@ -23,10 +6,10 @@
       "import { html, css, LitElement } from 'lit';",
       "import { customElement } from 'lit/decorators.js';",
       "",
-      "export const ${1:ComponentName}Selector = '${2:component-name}';",
+      "export const Fhi${1:ComponentName}Selector = 'fhi-${2:component-name}';",
       "",
-      "@customElement(${1:ComponentName}Selector)",
-      "export class ${1:ComponentName} extends LitElement {",
+      "@customElement(Fhi${1:ComponentName}Selector)",
+      "export class Fhi${1:ComponentName} extends LitElement {",
       "  render() {",
       "    return html``;",
       "  }",
@@ -42,10 +25,10 @@
     "body": [
       "import { fixture, expect } from '@open-wc/testing';",
       "import { html } from 'lit/static-html.js';",
-      "import { ${1:ComponentName} } from './${2:component-name}';",
+      "import { Fhi${1:ComponentName} } from './fhi-${2:component-name}';",
       "",
-      "describe('${2:component-name}', () => {",
-      "  new ${1:ComponentName}();",
+      "describe('fhi-${2:component-name}', () => {",
+      "  new Fhi${1:ComponentName}();",
       "  let component: ${1:ComponentName};",
       "  describe('accessibility', () => {",
       "    it('is accessible', async () => {",
@@ -62,20 +45,20 @@
     "body": [
       "import type { Meta, StoryObj } from '@storybook/web-components';",
       "import { html } from 'lit';",
-      "import { ${1:ComponentName} } from './${2:component-name}';",
+      "import { Fhi${1:ComponentName} } from './fhi-${2:component-name}';",
       "",
-      "new ${1:ComponentName}();",
+      "new Fhi${1:ComponentName}();",
       "",
-      "const meta: Meta<${1:ComponentName}> = {",
-      "  title: '${3:Komponenter/Component}',",
-      "  component: '${2:component-name}',",
+      "const meta: Meta<Fhi${1:ComponentName}> = {",
+      "  title: 'Komponenter/${3:Component}',",
+      "  component: 'fhi-${2:component-name}',",
       "  parameters: {},",
       "  decorators: [],",
-      "  render: () => html`<${2:component-name}></${2:component-name}>`,",
+      "  render: () => html`<fhi-${2:component-name}></fhi-${2:component-name}>`,",
       "  argTypes: {},",
       "};",
       "",
-      "type Story = StoryObj<${1:ComponentName}>;",
+      "type Story = StoryObj<Fhi${1:ComponentName}>;",
       "",
       "export const Preview: Story = {",
       "  tags: [],",
