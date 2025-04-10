@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.2.1](https://github.com/FHIDev/Fhi.Designsystem/compare/v0.2.0...v0.2.1) (2025-04-09)
+
+
+### 🛠️ Bug Fixes
+
+* Add more tests and add form association to the button ([#160](https://github.com/FHIDev/Fhi.Designsystem/issues/160)) ([9fd43e7](https://github.com/FHIDev/Fhi.Designsystem/commit/9fd43e7035dfed4298d2ff33e6521d43eeecf658))
+
 ## [0.2.0](https://github.com/FHIDev/Fhi.Designsystem/compare/v0.1.2...v0.2.0) (2025-04-07)
 
 
