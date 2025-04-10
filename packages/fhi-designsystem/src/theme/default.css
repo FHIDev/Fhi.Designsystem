@@ -124,6 +124,11 @@
   --fhi-blue-900: #011633;
 
   /* Semantic */
+
+  /**
+  * @tokens Colors
+  * @presenter Color
+  */
   --fhi-color-neutral-background-default: var(--fhi-greyblue-010);
   --fhi-color-neutral-background-subtle: var(--fhi-greyblue-050);
   --fhi-color-neutral-surface-default: var(--fhi-greyblue-100);
@@ -213,6 +218,10 @@
   --fhi-color-danger-text-subtle: var(--fhi-red-600);
   --fhi-color-danger-text-default: var(--fhi-red-800);
   --fhi-color-danger-text-inverted: var(--fhi-red-010);
+
+  /**
+  * @tokens-end
+  */
 
   /* Typography */
   /* Primitive */
