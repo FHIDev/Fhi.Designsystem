@@ -69,4 +69,19 @@
     ],
     "description": "template for stories file for new lit component",
   },
+  "Documentation for new component": {
+    "prefix": "docs",
+    "body": [
+      "import { Fhi${1:ComponentName} } from './fhi-${2:component-name}.ts';",
+      "import * as Fhi${1:ComponentName}Stories from './fhi-${2:component-name}.stories.ts';",
+      "import { Meta, Canvas, Controls } from '@storybook/blocks';",
+      "",
+      "<Meta of={Fhi${1:ComponentName}Stories} />",
+      "",
+      "# ${3:Title}",
+      "",
+      "# Passer til",
+    ],
+    "description": "template for documentation in mdx for new lit component",
+  },
 }
