@@ -5,6 +5,23 @@ import { DesignTokenDocBlock } from 'storybook-design-token';
 
 # Design tokens i FHI Designsystem
 
+## Innholdsfortegnelse
+
+- [Farger](#farger)
+  - [Semantiske farger](#semantiske-farger)
+- [Dimensions](#dimensions)
+- [Typography](#typography)
+  - [Font Sizes](#font-Sizes)
+- [Liste over token](#liste-over-token)
+  - [Semantiske farge token](#semantiske-farge-token)
+  - [Primitive spacing token](#primitive-spacing-token)
+  - [Primitive border radius token](#primitive-border-radius-token)
+  - [Semantic border width token](#semantic-border-width-token)
+  - [Font-family token](#font-family-token)
+  - [Font-weight token](#font-weight-token)
+  - [Primitive font size token](#primitive-font-size-token)
+  - [Semantiske font size token](#semantiske-font-size-token)
+
 ## Farger
 
 Våre farger er delt opp i to lag med design tokens:
@@ -34,38 +51,93 @@ De forskjellige fargegruppene har igjen hver sine undergrupper:
 Alle undergruppene har en definert `default`, i tillegg til undergrupper, slik som grader (`subtle` eller `strong`) eller interaksjon (`hover`og `active`).
 Merk at selv om fargene er navngitt etter interaksjon kan det oppstå behov som lar oss ta i bruk en annen grad. For eksemplel kan en knapp uten bakgrunnsfarge ta i bruk `surface-default` ved hover, i steden for gå hele veien opp til `surface-hover`.
 
-Et set med semantiske farge token vil da for eksempel være:
-
-`--fhi-color-warning-base-default` <br/>
-`--fhi-color-warning-base-hover` <br/>
-`--fhi-color-warning-base-active`
-
 ## Dimensions
 
-Designsystemet bruker primitive tokens for spacing, for eksempel `spacing-0`, `spacing-100` og `spacing-250`. De minste avstandene brukes som regel inni komponenter, mens de større brukes mellom komponenter eller seksjoner.
+Designsystemet bruker primitive tokens for spacing. De minste avstandene brukes som regel inni komponenter, mens de større brukes mellom komponenter eller seksjoner.
 
-Det er også tokens for border radius, hvor rund en kant skal være, for eksempel `border-radius-050` eller `border-radius-300`, i tillegg til én token for border width, `border-width-default`.
+Det er også tokens for border radius, hvor rund en kant skal være, i tillegg til én token for border width, `border-width-default`.
 
 ## Typography
 
 FHI tar i bruk to skriftfamilier: Brandon Text og Roboto Flex.
 
-Designsystemet tilbyr følgende tokens for font family:
+Designsystemet tilbyr en font-family token og token for font-weight.
 
-`font-family-main`
-
-og følgende tokens for font-weight:
-
-`font-weight-light`
-`font-weight-regular`
-`font-weight-medium`
-`font-weight-bold`
-
-### Font Sizes/Scale
+### Font sizes
 
 Skriftstørrelsen vi bruker i FHI er regnet ut med [Precise Type](https://precise-type.com/metric-scale.html) med en Metric scale-utrgening.
 Variabler brukt: Base Size: 14px; Letter Spacing 1%; Module Size 4 steps; Step unit 2px; Line Grid 4px; Line Height 20px.
 
 Designsystemet tilbyr semantiske token for font size fra `font-size-1` til `font-size-14`.
 
-<DesignTokenDocBlock categoryName="Colors" maxHeight={600} viewType="card" />
+## Liste over token
+
+### Semantiske farge token
+
+<DesignTokenDocBlock
+  categoryName="SemanticColors"
+  maxHeight={600}
+  viewType="table"
+  showValueColumn={false}
+/>
+
+### Primitive spacing token
+
+<DesignTokenDocBlock
+  categoryName="PrimitiveSpacing"
+  maxHeight={600}
+  viewType="table"
+/>
+
+### Primitive border radius token
+
+<DesignTokenDocBlock
+  categoryName="PrimitiveBorderRadius"
+  maxHeight={600}
+  viewType="table"
+  showSearch={false}
+/>
+
+### Semantic border width token
+
+<DesignTokenDocBlock
+  categoryName="SemanticBorderWidth"
+  maxHeight={600}
+  viewType="table"
+  filterNames={['--fhi-dimension-border-width-default']}
+  showSearch={false}
+/>
+
+### Font-family token
+
+<DesignTokenDocBlock
+  categoryName="FontFamily"
+  maxHeight={600}
+  viewType="table"
+  showSearch={false}
+/>
+
+### Font-weight token
+
+<DesignTokenDocBlock
+  categoryName="FontWeight"
+  maxHeight={600}
+  viewType="table"
+  showSearch={false}
+/>
+
+### Primitive font size token
+
+<DesignTokenDocBlock
+  categoryName="PrimitiveFontSize"
+  maxHeight={600}
+  viewType="table"
+/>
+
+### Semantiske font size token
+
+<DesignTokenDocBlock
+  categoryName="SemanticFontSize"
+  maxHeight={600}
+  viewType="table"
+/>
