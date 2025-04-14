@@ -344,7 +344,7 @@
   * @tokens SemanticBorderWidth
   * @presenter Border
   **/
-  --fhi-dimension-border-width-default: 0.0625rem;
+  --fhi-dimension-border-width: 0.0625rem;
   --fhi-dimension-border-width-active: 0.125rem;
   --fhi-dimension-border-width-focus: 0.25rem;
 
