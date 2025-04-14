@@ -5,6 +5,8 @@ export const FhiButtonSelector = 'fhi-button';
 
 @customElement(FhiButtonSelector)
 export class FhiButton extends LitElement {
+  static readonly formAssociated = true;
+
   @property({ type: String, reflect: true }) color:
     | 'accent'
     | 'neutral'
@@ -25,49 +27,69 @@ export class FhiButton extends LitElement {
 
   @property({ type: String }) type: 'button' | 'submit' | 'reset' = 'submit';
 
-  private _formButton!: HTMLButtonElement;
-  private _form!: HTMLFormElement | null;
+  private _internals: ElementInternals;
 
   constructor() {
     super();
-    this._stopClickLeak = this._stopClickLeak.bind(this);
+    this._internals = this.attachInternals();
   }
 
-  override connectedCallback(): void {
-    if (!!super.connectedCallback) {
-      super.connectedCallback();
+  connectedCallback(): void {
+    super.connectedCallback();
+
+    this.onkeyup = this._handleKeyup.bind(this);
+    this.onkeydown = this._handleKeydown.bind(this);
+  }
+
+  click(): void {
+    this._handleClick();
+  }
+
+  private _handleClick(event?: MouseEvent | KeyboardEvent): void {
+    event?.preventDefault();
+    event?.stopPropagation();
+
+    if (this.disabled) {
+      return;
     }
 
-    this._form = this.closest('form');
-  }
+    this.dispatchEvent(
+      new MouseEvent('click', { bubbles: true, composed: true }),
+    );
 
-  protected override firstUpdated(): void {
-    this._formButton = document.createElement('button');
-    this._formButton.addEventListener('click', this._stopClickLeak);
-    this.addEventListener('click', this._handleClick);
-  }
+    if (this.type === 'submit') {
+      this._internals.form?.requestSubmit();
+    }
 
-  private _handleClick(event: MouseEvent): void {
-    if (
-      (this.type === 'submit' || this.type === 'reset') &&
-      this._form &&
-      !event.defaultPrevented
-    ) {
-      this._formButton.type = this.type;
-      this._form?.appendChild(this._formButton);
-      this._formButton.click();
-      this._form?.removeChild(this._formButton);
+    if (this.type === 'reset') {
+      this._internals.form?.reset();
     }
   }
 
-  private _stopClickLeak(event: MouseEvent): void {
-    if (event.target === this._formButton) {
-      event.stopImmediatePropagation();
+  private _handleKeyup(event: KeyboardEvent): void {
+    if (event.key === ' ' || event.key === 'Spacebar') {
+      this._handleClick(event);
+
+      const target = event.target as HTMLElement | null;
+      target?.blur();
+      target?.focus();
+    }
+  }
+
+  private _handleKeydown(event: KeyboardEvent): void {
+    if (event.key === 'Enter') {
+      this._handleClick(event);
     }
   }
 
   render() {
-    return html`<button ?disabled=${this.disabled} type=${this.type}>
+    return html`<button
+      ?disabled=${this.disabled}
+      type=${this.type}
+      @keyup=${this._handleKeyup}
+      @keydown=${this._handleKeydown}
+      @click=${this._handleClick}
+    >
       <slot></slot>
     </button>`;
   }

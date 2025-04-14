@@ -70,8 +70,9 @@ export default defineConfig(({ mode }) => {
                 If you create a new component you need to add a reference to it here, e.g:
                 "new-component": "./src/components/new-component/new-component.ts",
             */
-              'fhi-button': './src/components/fhi-button/fhi-button.ts',
               index: './src/library.ts',
+              'fhi-button': './src/components/fhi-button/fhi-button.ts',
+              'fhi-text-input': './src/components/fhi-text-input',
             },
           },
           sourcemap: true,
