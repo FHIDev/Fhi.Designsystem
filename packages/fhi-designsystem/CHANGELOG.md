@@ -1,5 +1,29 @@
 # Changelog
 
+## [0.2.1](https://github.com/FHIDev/Fhi.Designsystem/compare/v0.2.0...v0.2.1) (2025-04-09)
+
+
+### 🛠️ Bug Fixes
+
+* Add more tests and add form association to the button ([#160](https://github.com/FHIDev/Fhi.Designsystem/issues/160)) ([9fd43e7](https://github.com/FHIDev/Fhi.Designsystem/commit/9fd43e7035dfed4298d2ff33e6521d43eeecf658))
+
+## [0.2.0](https://github.com/FHIDev/Fhi.Designsystem/compare/v0.1.2...v0.2.0) (2025-04-07)
+
+
+### 🚀 Features
+
+* New Component: Text Field ([#127](https://github.com/FHIDev/Fhi.Designsystem/issues/127)) ([66942a4](https://github.com/FHIDev/Fhi.Designsystem/commit/66942a405bfdb5b33840018b625f14d56d8591ff))
+
+
+### 📑 Documentation
+
+* fix script tag and change app order ([#151](https://github.com/FHIDev/Fhi.Designsystem/issues/151)) ([30ff120](https://github.com/FHIDev/Fhi.Designsystem/commit/30ff12032ff2e667f3770dff683e9efb899f59c8))
+
+
+### Other
+
+* disable firefox ([#157](https://github.com/FHIDev/Fhi.Designsystem/issues/157)) ([746c0a4](https://github.com/FHIDev/Fhi.Designsystem/commit/746c0a406775286f3d0c144b0030b860c88c790b))
+
 ## [0.1.2](https://github.com/FHIDev/Fhi.Designsystem/compare/v0.1.1...v0.1.2) (2025-03-28)
 
 
