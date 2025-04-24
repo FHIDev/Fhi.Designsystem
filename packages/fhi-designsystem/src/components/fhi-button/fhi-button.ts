@@ -176,7 +176,7 @@ export class FhiButton extends LitElement {
       --color-accent-strong-background-active: var(
         --fhi-color-accent-base-active
       );
-      --color-accent-strong-border-active: var(--fhi-color-accent-base-hover);
+      --color-accent-strong-border-active: var(--fhi-color-accent-base-active);
       --color-accent-strong-active: var(--fhi-color-accent-text-inverted);
       --color-accent-strong-background-disabled: var(
         --fhi-color-accent-base-default
@@ -260,7 +260,9 @@ export class FhiButton extends LitElement {
       --color-neutral-strong-background-active: var(
         --fhi-color-neutral-base-active
       );
-      --color-neutral-strong-border-active: var(--fhi-color-neutral-base-hover);
+      --color-neutral-strong-border-active: var(
+        --fhi-color-neutral-base-active
+      );
       --color-neutral-strong-active: var(--fhi-color-neutral-text-inverted);
       --color-neutral-strong-background-disabled: var(
         --fhi-color-neutral-base-default
@@ -352,7 +354,7 @@ export class FhiButton extends LitElement {
       --color-danger-strong-background-active: var(
         --fhi-color-danger-base-active
       );
-      --color-danger-strong-border-active: var(--fhi-color-danger-base-hover);
+      --color-danger-strong-border-active: var(--fhi-color-danger-base-active);
       --color-danger-strong-active: var(--fhi-color-danger-text-inverted);
       --color-danger-strong-background-disabled: var(
         --fhi-color-danger-base-default
