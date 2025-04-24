@@ -1,5 +1,18 @@
 # Changelog
 
+## [0.2.2](https://github.com/FHIDev/Fhi.Designsystem/compare/v0.2.1...v0.2.2) (2025-04-24)
+
+
+### 🛠️ Bug Fixes
+
+* Changed component token value for "strong-border-active". ([#166](https://github.com/FHIDev/Fhi.Designsystem/issues/166)) ([30b6dc5](https://github.com/FHIDev/Fhi.Designsystem/commit/30b6dc5bb97ff48f4be01a28d3b5bb2356176190))
+
+
+### Other
+
+* Opprettet snippets for ts, test og stories filer. ([#155](https://github.com/FHIDev/Fhi.Designsystem/issues/155)) ([3d90997](https://github.com/FHIDev/Fhi.Designsystem/commit/3d90997a9651f57db86af57f5288039a9c7e90a1))
+* update pipeline with storybook deployment to staging ([#145](https://github.com/FHIDev/Fhi.Designsystem/issues/145)) ([385e32b](https://github.com/FHIDev/Fhi.Designsystem/commit/385e32beaa0179e63a119a1279f8c0ed34eafb3f))
+
 ## [0.2.1](https://github.com/FHIDev/Fhi.Designsystem/compare/v0.2.0...v0.2.1) (2025-04-09)
 
 
