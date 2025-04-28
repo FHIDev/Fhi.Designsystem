@@ -11,4 +11,16 @@ import { DesignTokenDocBlock } from 'storybook-design-token';
   viewType="table"
   filterNames={['--fhi-dimension-border-width']}
   showSearch={false}
+  presenters={{ Border: BorderWidthPresenter }}
 />
+
+export function BorderWidthPresenter({ token }) {
+  return (
+    <div
+      style={{
+        border: 'solid var(--fhi-dimension-border-width) var(--fhi-color-accent-border-default)'
+      }}
+    ></div>
+  );
+
+}

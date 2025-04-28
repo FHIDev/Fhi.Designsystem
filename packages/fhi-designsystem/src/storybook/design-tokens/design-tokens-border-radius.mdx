@@ -1,5 +1,6 @@
 import { Meta } from '@storybook/blocks';
 import { DesignTokenDocBlock } from 'storybook-design-token';
+import '../../theme/default.css';
 
 <Meta title="Design Tokens/Border radius" />
 
@@ -10,4 +11,20 @@ import { DesignTokenDocBlock } from 'storybook-design-token';
   maxHeight={600}
   viewType="table"
   showSearch={false}
+  presenters={{ BorderRadius: BorderRadiusPresenter }}
 />
+
+export function BorderRadiusPresenter({ token }) {
+  return (
+    <div
+      style={{
+        background: 'var(--fhi-color-accent-base-default)',
+        borderRadius: token.value,
+        minHeight: `calc(${token.value} * 1.5)`,
+        minWidth: `calc(${token.value} * 2)`,
+        overflow: 'hidden',
+        width: '50%',
+      }}
+    ></div>
+  );
+}

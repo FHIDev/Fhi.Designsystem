@@ -1,5 +1,6 @@
 import { Meta } from '@storybook/blocks';
 import { DesignTokenDocBlock } from 'storybook-design-token';
+import '../../theme/default.css';
 
 <Meta title="Design Tokens/Farger" />
 
@@ -10,4 +11,19 @@ import { DesignTokenDocBlock } from 'storybook-design-token';
   maxHeight={600}
   viewType="table"
   showValueColumn={false}
+  presenters={{ Color: ColorPresenter }}
 />
+
+export function ColorPresenter({ token }) {
+  return (
+    <div
+      style={{
+        background: token.value,
+        borderRadius: 2,
+        height: 32,
+        width: '100%',
+        border: `solid 2px var(--fhi-color-neutral-border-subtle)`,
+      }}
+    ></div>
+  );
+}
