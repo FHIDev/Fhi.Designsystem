@@ -12,6 +12,35 @@ export default defineConfig(({ mode }) => {
     env.DEPLOY_TARGET = 'npm';
   }
 
+  // generate a list of components from the components directory.
+  // this is used to create a library entry for each component
+  const listOfComponents = (function () {
+    const componentsDirectory = './src/components';
+
+    const files = fs.readdirSync(componentsDirectory, {
+      recursive: true,
+    });
+
+    const entries = {};
+
+    files.forEach(file => {
+      let fileName = path.basename(file);
+
+      if (
+        fileName &&
+        fileName.startsWith('fhi-') &&
+        fileName.endsWith('.ts') &&
+        fileName.includes('.component.')
+      ) {
+        let customeElementSelector = path.basename(file, '.component.ts');
+        entries[customeElementSelector] =
+          `./${path.join(componentsDirectory, file)}`;
+      }
+    });
+
+    return entries;
+  })();
+
   switch (env.DEPLOY_TARGET) {
     case 'cdn':
       return {
@@ -66,13 +95,8 @@ export default defineConfig(({ mode }) => {
           lib: {
             formats: ['es'],
             entry: {
-              /*
-                If you create a new component you need to add a reference to it here, e.g:
-                "new-component": "./src/components/new-component/new-component.ts",
-            */
               index: './src/library.ts',
-              'fhi-button': './src/components/fhi-button/fhi-button.ts',
-              'fhi-text-input': './src/components/fhi-text-input',
+              ...listOfComponents,
             },
           },
           sourcemap: true,

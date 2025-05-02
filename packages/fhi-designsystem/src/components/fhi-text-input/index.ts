@@ -1,1 +1,1 @@
-export * from './fhi-text-input';
+export * from './fhi-text-input.component';
