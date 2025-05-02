@@ -1,6 +1,8 @@
 import { defineConfig, loadEnv } from 'vite';
 import { viteStaticCopy } from 'vite-plugin-static-copy';
 import generateFile from 'vite-plugin-generate-file';
+import fs from 'fs';
+import path from 'path';
 
 const OUTPUT_DIRECTORY = 'dist';
 
