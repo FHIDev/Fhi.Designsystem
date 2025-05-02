@@ -11,6 +11,7 @@ Det er mange måter å bidra på, og vi har mange ulike behov som skal ivaretas.
 - [Teste utviklingsmiljøet](#teste-utviklingsmiljøet)
 - [Hvordan opprette en "pull request"](#hvordan-opprette-en-pull-request)
 - [Kodestandard](#kodestandard)
+  - [Navngivning](#navngivning)
 - [Testdekning](#testdekning)
 - [Hvordan utvikle en ny komponent](#hvordan-utvikle-en-ny-komponent)
   - [Før du setter i gang](#før-du-setter-i-gang)
@@ -46,19 +47,30 @@ Hvis du ønsker å bidra med kode, eller bare er nysgjerrig; vår ["Kom i gang"]
 ## Hvordan opprette en "pull request"
 
 1. Før du oppretter en PR, sørg for at det finnes et issue som omhandler det du skal jobbe med.
-2. I høyrekolonnen på issuet, under *Development*, klikk på lenken *Create a branch*. På denne måten vil vår branch-navnestandard automatisk bli fulgt.
+2. I høyrekolonnen på issuet, under _Development_, klikk på lenken _Create a branch_. På denne måten vil vår branch-navnestandard automatisk bli fulgt.
 3. Følg vår [kodestandard](#kodestandard), og våre krav til [testdekning](#testdekning)
 4. Opprett PR med en god beskrivelse av koden du ønsker å få med i `main`
 5. Be om review fra [Designsystem-team-developers](https://github.com/orgs/FHIDev/teams/designsystem-team-developers)
 
 ## Kodestandard
 
-Linting og prettier tar hånd om det meste, men en ting er viktig å merke seg: all kode skal være på engelsk, bortsett fra domene-ord. For mer informasjon, se [Kodestandard Systemutvikling FHI](https://fhi.visualstudio.com/Fhi.Felles/_wiki/wikis/Fhi.Guidelines.Wiki/4892/kodestandard)  (krever tilgang til FHIs Azure DevOps).
+Linting og prettier tar hånd om det meste, men en ting er viktig å merke seg: all kode skal være på engelsk, bortsett fra domene-ord. For mer informasjon, se [Kodestandard Systemutvikling FHI](https://fhi.visualstudio.com/Fhi.Felles/_wiki/wikis/Fhi.Guidelines.Wiki/4892/kodestandard) (krever tilgang til FHIs Azure DevOps).
+
+### Navngivning
+
+- Bruk camelCase for variabler og funksjoner, og PascalCase for klasser.
+- Bruk kebab-case for filnavn og mapper.
+- Bruk `fhi-[component-name].component.ts` for komponentfiler.
+  - Disse blir automatisk plukket opp av bygget og eksponert i npm-pakken.
+- Bruk `fhi-[component-name].stories.ts` for Storybook-filer.
+  - Disse blir automatisk plukket opp av Storybook og vist i dokumentasjonen.
+- Bruk `fhi-[component-name].test.ts` for testfiler.
+  - Disse blir automatisk plukket opp av testverktøyene og kjørt under testing.
 
 ## Testdekning
 
 Som et minimum skal API-et til komponenten testes.  
-*Mer utfyllende informasjon om testdekning kommer.*
+_Mer utfyllende informasjon om testdekning kommer._
 
 ## Hvordan utvikle en ny komponent
 
