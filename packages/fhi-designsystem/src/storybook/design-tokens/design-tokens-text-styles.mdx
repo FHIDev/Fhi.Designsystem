@@ -6,45 +6,107 @@ import '../../theme/default.css';
 
 ### Token for text styles
 
-Her ser du en eksempeltekst som tar i bruk tokene av typen "body-large" fra tabellen under:
+Her ser du en eksempeltekst som tar i bruk tokene av typen «body-large» fra tabellen under:
 
-<div style={{padding: ".25rem 1rem", background: "var(--fhi-color-info-surface-default)", borderRadius: "2px", marginBottom: "1rem"}}>
-<p style={{
-  fontFamily: 'var(--fhi-font-family-roboto-flex)',
-  fontSize: 'var(--fhi-typography-body-large-font-size)',
-  fontWeight: 'var(--fhi-typography-body-large-font-weight)',
-  lineHeight: 'var(--fhi-typography-body-large-line-height)',
-  letterSpacing: 'var(--fhi-typography-body-large-letter-spacing)'
-}}>Folkehelseinstituttet er eit statleg forvaltingsorgan underlagt Helse- og omsorgsdepartementet. Vi har medarbeidarane våre i Oslo, Bergen, Levanger, Tynset og Trondheim.</p>
+{
+
+<div
+  style={{
+    padding: '.25rem 1rem',
+    borderLeft: '4px solid var(--fhi-color-info-surface-default)',
+    marginBottom: '1rem',
+  }}
+>
+  <p
+    style={{
+      fontFamily: 'var(--fhi-font-family-roboto-flex)',
+      fontSize: 'var(--fhi-typography-body-large-font-size)',
+      fontWeight: 'var(--fhi-typography-body-large-font-weight)',
+      lineHeight: 'var(--fhi-typography-body-large-line-height)',
+      letterSpacing: 'var(--fhi-typography-body-large-letter-spacing)',
+    }}
+  >
+    Folkehelseinstituttet er eit statleg forvaltingsorgan underlagt Helse- og
+    omsorgsdepartementet. Vi har medarbeidarane våre i Oslo, Bergen, Levanger,
+    Tynset og Trondheim.
+  </p>
 </div>
-
-Her ser du en eksempeltekst som tar i bruk tokene av typen "body-medium" fra tabellen under:
-
-<div style={{padding: ".25rem 1rem", background: "var(--fhi-color-info-surface-default)", borderRadius: "2px", marginBottom: "1rem"}}>
-<p style={{
-  fontFamily: 'var(--fhi-font-family-roboto-flex)',
-  fontSize: 'var(--fhi-typography-body-medium-font-size)',
-  fontWeight: 'var(--fhi-typography-body-medium-font-weight)',
-  lineHeight: 'var(--fhi-typography-body-medium-line-height)',
-  letterSpacing: 'var(--fhi-typography-body-medium-letter-spacing)'
-}}>Folkehelseinstituttet er eit statleg forvaltingsorgan underlagt Helse- og omsorgsdepartementet. Vi har medarbeidarane våre i Oslo, Bergen, Levanger, Tynset og Trondheim.</p>
-</div>
-
-Her ser du en eksempeltekst som tar i bruk tokene av typen "body-small" fra tabellen under:
-
-<div style={{padding: ".25rem 1rem", background: "var(--fhi-color-info-surface-default)", borderRadius: "2px", marginBottom: "1rem"}}>
-<p style={{
-  fontFamily: 'var(--fhi-font-family-roboto-flex)',
-  fontSize: 'var(--fhi-typography-body-small-font-size)',
-  fontWeight: 'var(--fhi-typography-body-small-font-weight)',
-  lineHeight: 'var(--fhi-typography-body-small-line-height)',
-  letterSpacing: 'var(--fhi-typography-body-small-letter-spacing)'
-}}>Folkehelseinstituttet er eit statleg forvaltingsorgan underlagt Helse- og omsorgsdepartementet. Vi har medarbeidarane våre i Oslo, Bergen, Levanger, Tynset og Trondheim.</p>
-</div>
+}
 
 <DesignTokenDocBlock
-  categoryName="FontSizeWeightHeightSpacing"
+  categoryName="LargeFontSizeWeightHeightSpacing"
   maxHeight={10000}
   viewType="table"
   showValueColumn={false}
+  showSearch={false}
+/>
+
+Her ser du en eksempeltekst som tar i bruk tokene av typen «body-medium» fra tabellen under:
+
+{
+
+<div
+  style={{
+    padding: '.25rem 1rem',
+    borderLeft: '4px solid var(--fhi-color-info-surface-default)',
+    marginBottom: '1rem',
+  }}
+>
+  <p
+    style={{
+      fontFamily: 'var(--fhi-font-family-roboto-flex)',
+      fontSize: 'var(--fhi-typography-body-medium-font-size)',
+      fontWeight: 'var(--fhi-typography-body-medium-font-weight)',
+      lineHeight: 'var(--fhi-typography-body-medium-line-height)',
+      letterSpacing: 'var(--fhi-typography-body-medium-letter-spacing)',
+    }}
+  >
+    Folkehelseinstituttet er eit statleg forvaltingsorgan underlagt Helse- og
+    omsorgsdepartementet. Vi har medarbeidarane våre i Oslo, Bergen, Levanger,
+    Tynset og Trondheim.
+  </p>
+</div>
+}
+
+<DesignTokenDocBlock
+  categoryName="MediumFontSizeWeightHeightSpacing"
+  maxHeight={10000}
+  viewType="table"
+  showValueColumn={false}
+  showSearch={false}
+/>
+
+Her ser du en eksempeltekst som tar i bruk tokene av typen «body-small» fra tabellen under:
+
+{
+
+<div
+  style={{
+    padding: '.25rem 1rem',
+    borderLeft: '4px solid var(--fhi-color-info-surface-default)',
+    marginBottom: '1rem',
+  }}
+>
+  <p
+    style={{
+      fontFamily: 'var(--fhi-font-family-roboto-flex)',
+      fontSize: 'var(--fhi-typography-body-small-font-size)',
+      fontWeight: 'var(--fhi-typography-body-small-font-weight)',
+      lineHeight: 'var(--fhi-typography-body-small-line-height)',
+      letterSpacing: 'var(--fhi-typography-body-small-letter-spacing)',
+    }}
+  >
+    Folkehelseinstituttet er eit statleg forvaltingsorgan underlagt Helse- og
+    omsorgsdepartementet. Vi har medarbeidarane våre i Oslo, Bergen, Levanger,
+    Tynset og Trondheim.
+  </p>
+</div>
+}
+
+<DesignTokenDocBlock
+  categoryName="SmallFontSizeWeightHeightSpacing"
+  maxHeight={10000}
+  viewType="table"
+  showValueColumn={false}
+  showSearch={false}
 />
