@@ -15,6 +15,9 @@ const preview: Preview = {
         order: ['*', 'Design Tokens', ['Introduksjon']],
       },
     },
+    designToken: {
+      disable: true,
+    },
   },
 };
 
