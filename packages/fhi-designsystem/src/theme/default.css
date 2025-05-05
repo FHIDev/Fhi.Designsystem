@@ -265,7 +265,7 @@
   --fhi-font-size-14: 3.75rem;
 
   /**
-  * @tokens LargeFontSizeWeightHeightSpacing
+  * @tokens LabelLargeFontStyle
   * @presenter 
   **/
 
@@ -275,7 +275,7 @@
   --fhi-typography-label-large-letter-spacing: 0.00125rem;
 
   /**
-  * @tokens MediumFontSizeWeightHeightSpacing
+  * @tokens LabelMediumFontStyle
   * @presenter 
   **/
 
@@ -285,7 +285,7 @@
   --fhi-typography-label-medium-letter-spacing: 0.005rem;
 
   /**
-  * @tokens SmallFontSizeWeightHeightSpacing
+  * @tokens LabelSmallFontStyle
   * @presenter 
   **/
 
@@ -295,7 +295,7 @@
   --fhi-typography-label-small-letter-spacing: 0.00875rem;
 
   /**
-  * @tokens LargeFontSizeWeightHeightSpacing
+  * @tokens BodyLargeFontStyle
   * @presenter 
   **/
 
@@ -305,7 +305,7 @@
   --fhi-typography-body-large-letter-spacing: 0.00125rem;
 
   /**
-  * @tokens MediumFontSizeWeightHeightSpacing
+  * @tokens BodyMediumFontStyle
   * @presenter 
   **/
 
@@ -315,7 +315,7 @@
   --fhi-typography-body-medium-letter-spacing: 0.005rem;
 
   /**
-  * @tokens SmallFontSizeWeightHeightSpacing
+  * @tokens BodySmallFontStyle
   * @presenter 
   **/
 
