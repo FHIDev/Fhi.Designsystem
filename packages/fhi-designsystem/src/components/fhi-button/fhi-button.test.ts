@@ -1,7 +1,7 @@
 import { fixture, expect } from '@open-wc/testing';
 import { html } from 'lit/static-html.js';
 
-import { FhiButton } from './fhi-button';
+import { FhiButton } from './fhi-button.component';
 
 describe('fhi-button', () => {
   new FhiButton();
