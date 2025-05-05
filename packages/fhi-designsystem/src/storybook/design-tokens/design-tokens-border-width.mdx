@@ -9,7 +9,11 @@ import { DesignTokenDocBlock } from 'storybook-design-token';
   categoryName="SemanticBorderWidth"
   maxHeight={600}
   viewType="table"
-  filterNames={['--fhi-dimension-border-width']}
+  filterNames={[
+    '--fhi-dimension-border-width',
+    '--fhi-dimension-border-width-active',
+  ]}
+  showValueColumn={false}
   showSearch={false}
   presenters={{ Border: BorderWidthPresenter }}
 />
@@ -18,7 +22,8 @@ export function BorderWidthPresenter({ token }) {
   return (
     <div
       style={{
-        border: 'solid var(--fhi-dimension-border-width) var(--fhi-color-accent-border-default)'
+        border: 'solid var(--fhi-dimension-border-width) var(--fhi-color-accent-border-default)',
+        height: '2rem'
       }}
     ></div>
   );

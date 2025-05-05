@@ -11,6 +11,7 @@ import '../../theme/default.css';
   maxHeight={600}
   viewType="table"
   showSearch={false}
+  showValueColumn={false}
   presenters={{ BorderRadius: BorderRadiusPresenter }}
 />
 
@@ -19,11 +20,11 @@ export function BorderRadiusPresenter({ token }) {
     <div
       style={{
         background: 'var(--fhi-color-accent-base-default)',
-        borderRadius: token.value,
-        minHeight: `calc(${token.value} * 1.5)`,
-        minWidth: `calc(${token.value} * 2)`,
+        minHeight: `2rem`,
+        minWidth: `3rem)`,
         overflow: 'hidden',
         width: '50%',
+        borderTopLeftRadius: token.value,
       }}
     ></div>
   );
