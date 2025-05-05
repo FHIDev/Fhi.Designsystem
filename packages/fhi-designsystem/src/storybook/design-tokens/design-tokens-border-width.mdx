@@ -22,7 +22,9 @@ export function BorderWidthPresenter({ token }) {
   return (
     <div
       style={{
-        border: 'solid var(--fhi-dimension-border-width) var(--fhi-color-accent-border-default)',
+        borderColor: 'var(--fhi-color-accent-border-default)',
+        borderWidth: token.value,
+        borderStyle: 'solid',
         height: '2rem'
       }}
     ></div>
