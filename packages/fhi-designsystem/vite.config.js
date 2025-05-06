@@ -43,10 +43,48 @@ export default defineConfig(({ mode }) => {
     return entries;
   })();
 
+  // create a virtual module that exports all components defined in the listOfComponents
+  const virtualLibraryModule = (function () {
+    let code = '';
+
+    Object.values(listOfComponents).forEach(value => {
+      code += `export * from '${value}';`;
+    });
+
+    return {
+      path: 'virtual:FhiLibrary',
+      code,
+    };
+  })();
+
+  // https://vite.dev/guide/api-plugin.html#virtual-modules-convention
+  function resolveVirtualModule({ moduleId, moduleContent }) {
+    const virtualModuleId = moduleId;
+    const resolvedVirtualModuleId = '\0' + moduleId;
+
+    return {
+      name: 'vite-plugin-fhi-resolve-virtual-module',
+      resolveId(id) {
+        if (id.endsWith(virtualModuleId)) {
+          return resolvedVirtualModuleId;
+        }
+      },
+      load(id) {
+        if (id === resolvedVirtualModuleId) {
+          return moduleContent;
+        }
+      },
+    };
+  }
+
   switch (env.DEPLOY_TARGET) {
     case 'cdn':
       return {
         plugins: [
+          resolveVirtualModule({
+            moduleId: virtualLibraryModule.path,
+            moduleContent: virtualLibraryModule.code,
+          }),
           generateFile({
             output: './index.html',
           }),
@@ -65,7 +103,7 @@ export default defineConfig(({ mode }) => {
         ],
         build: {
           lib: {
-            entry: './src/library.ts',
+            entry: virtualLibraryModule.path,
             name: 'fhi-designsystem',
             fileName: 'fhi-designsystem',
           },
@@ -76,6 +114,10 @@ export default defineConfig(({ mode }) => {
     case 'npm':
       return {
         plugins: [
+          resolveVirtualModule({
+            moduleId: virtualLibraryModule.path,
+            moduleContent: virtualLibraryModule.code,
+          }),
           viteStaticCopy({
             targets: [
               {
@@ -97,7 +139,7 @@ export default defineConfig(({ mode }) => {
           lib: {
             formats: ['es'],
             entry: {
-              index: './src/library.ts',
+              index: virtualLibraryModule.path,
               ...listOfComponents,
             },
           },
