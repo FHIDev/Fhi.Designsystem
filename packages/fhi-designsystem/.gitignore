@@ -29,3 +29,4 @@ dist-ssr
 
 *storybook.log
 index.html
+design-tokens.source.json

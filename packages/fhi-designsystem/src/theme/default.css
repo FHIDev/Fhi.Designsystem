@@ -3,6 +3,11 @@
 :root {
   /* Color */
   /* Primitive */
+
+  /**
+  * @tokens PrimitiveColors
+  * @presenter Color
+  */
   --fhi-black: #000000;
   --fhi-white: #ffffff;
 
@@ -124,6 +129,11 @@
   --fhi-blue-900: #011633;
 
   /* Semantic */
+
+  /**
+  * @tokens SemanticColors
+  * @presenter Color
+  */
   --fhi-color-neutral-background-default: var(--fhi-greyblue-010);
   --fhi-color-neutral-background-subtle: var(--fhi-greyblue-050);
   --fhi-color-neutral-surface-default: var(--fhi-greyblue-100);
@@ -216,11 +226,28 @@
 
   /* Typography */
   /* Primitive */
+
+  /**
+  * @tokens FontFamily
+  * @presenter FontFamily
+  **/
+
   --fhi-font-family-roboto-flex: 'Roboto Flex';
+
+  /**
+  * @tokens FontWeight
+  * @presenter FontWeight
+  **/
+
   --fhi-font-weight-light: 300;
   --fhi-font-weight-regular: 400;
   --fhi-font-weight-medium: 500;
   --fhi-font-weight-bold: 700;
+
+  /**
+  * @tokens PrimitiveFontSize
+  * @presenter FontSize
+  **/
 
   --fhi-font-size-1: 0.625rem;
   --fhi-font-size-2: 0.75rem;
@@ -237,31 +264,60 @@
   --fhi-font-size-13: 3.375rem;
   --fhi-font-size-14: 3.75rem;
 
-  /* Semantic */
+  /**
+  * @tokens LabelLargeFontStyle
+  * @presenter 
+  **/
+
   --fhi-typography-label-large-font-size: var(--fhi-font-size-5);
   --fhi-typography-label-large-font-weight: var(--fhi-font-weight-medium);
   --fhi-typography-label-large-line-height: 1.5rem;
   --fhi-typography-label-large-letter-spacing: 0.00125rem;
+
+  /**
+  * @tokens LabelMediumFontStyle
+  * @presenter 
+  **/
 
   --fhi-typography-label-medium-font-size: var(--fhi-font-size-4);
   --fhi-typography-label-medium-font-weight: var(--fhi-font-weight-medium);
   --fhi-typography-label-medium-line-height: 1.5rem;
   --fhi-typography-label-medium-letter-spacing: 0.005rem;
 
+  /**
+  * @tokens LabelSmallFontStyle
+  * @presenter 
+  **/
+
   --fhi-typography-label-small-font-size: var(--fhi-font-size-3);
   --fhi-typography-label-small-font-weight: var(--fhi-font-weight-medium);
   --fhi-typography-label-small-line-height: 1.25rem;
   --fhi-typography-label-small-letter-spacing: 0.00875rem;
+
+  /**
+  * @tokens BodyLargeFontStyle
+  * @presenter 
+  **/
 
   --fhi-typography-body-large-font-size: var(--fhi-font-size-5);
   --fhi-typography-body-large-font-weight: var(--fhi-font-weight-regular);
   --fhi-typography-body-large-line-height: 1.5rem;
   --fhi-typography-body-large-letter-spacing: 0.00125rem;
 
+  /**
+  * @tokens BodyMediumFontStyle
+  * @presenter 
+  **/
+
   --fhi-typography-body-medium-font-size: var(--fhi-font-size-4);
   --fhi-typography-body-medium-font-weight: var(--fhi-font-weight-regular);
   --fhi-typography-body-medium-line-height: 1.5rem;
   --fhi-typography-body-medium-letter-spacing: 0.005rem;
+
+  /**
+  * @tokens BodySmallFontStyle
+  * @presenter 
+  **/
 
   --fhi-typography-body-small-font-size: var(--fhi-font-size-3);
   --fhi-typography-body-small-font-weight: var(--fhi-font-weight-regular);
@@ -270,6 +326,11 @@
 
   /* Dimension */
   /* Primitive */
+
+  /**
+  * @tokens PrimitiveSpacing
+  * @presenter Spacing
+  **/
   --fhi-spacing-0: 0rem;
   --fhi-spacing-050: 0.25rem;
   --fhi-spacing-100: 0.5rem;
@@ -283,6 +344,10 @@
   --fhi-spacing-800: 4rem;
   --fhi-spacing-1000: 5rem;
 
+  /**
+  * @tokens PrimitiveBorderRadius
+  * @presenter BorderRadius
+  **/
   --fhi-border-radius-050: 0.25rem;
   --fhi-border-radius-100: 0.5rem;
   --fhi-border-radius-150: 0.75rem;
@@ -292,12 +357,22 @@
   --fhi-border-radius-full: 999rem;
 
   /* Semantic */
+
+  /**
+  * @tokens SemanticBorderWidth
+  * @presenter Border
+  **/
   --fhi-dimension-border-width: 0.0625rem;
   --fhi-dimension-border-width-active: 0.125rem;
   --fhi-dimension-border-width-focus: 0.25rem;
 
+  /**
+  * @tokens-end
+  */
+
   /* Motion */
   /* Semantic */
+
   --fhi-motion-ease-default: cubic-bezier(0.4, 0, 0.2, 1);
   --fhi-motion-duration-quick: 150ms;
   --fhi-motion-duration-medium: 250ms;
@@ -305,5 +380,6 @@
 
   /* Opacity */
   /* Semantic */
+
   --fhi-opacity-disabled: 60%;
 }

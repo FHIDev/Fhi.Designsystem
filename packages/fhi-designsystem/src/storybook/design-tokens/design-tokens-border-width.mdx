@@ -1,0 +1,33 @@
+import { Meta } from '@storybook/blocks';
+import { DesignTokenDocBlock } from 'storybook-design-token';
+
+<Meta title="Design Tokens/Border width" />
+
+### Token for border width
+
+<DesignTokenDocBlock
+  categoryName="SemanticBorderWidth"
+  maxHeight={600}
+  viewType="table"
+  filterNames={[
+    '--fhi-dimension-border-width',
+    '--fhi-dimension-border-width-active',
+  ]}
+  showValueColumn={false}
+  showSearch={false}
+  presenters={{ Border: BorderWidthPresenter }}
+/>
+
+export function BorderWidthPresenter({ token }) {
+  return (
+    <div
+      style={{
+        borderColor: 'var(--fhi-color-accent-border-default)',
+        borderWidth: token.value,
+        borderStyle: 'solid',
+        height: '2rem'
+      }}
+    ></div>
+  );
+
+}

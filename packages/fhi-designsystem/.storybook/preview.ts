@@ -10,6 +10,14 @@ const preview: Preview = {
         date: /Date$/i,
       },
     },
+    options: {
+      storySort: {
+        order: ['*', 'Design Tokens', ['Introduksjon']],
+      },
+    },
+    designToken: {
+      disable: true,
+    },
   },
 };
 
