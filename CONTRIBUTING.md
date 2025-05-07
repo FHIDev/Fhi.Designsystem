@@ -89,7 +89,7 @@ For å få opprettet PR og godkjent en ny komponent må den basere seg på en fe
    - `fhi-[new-component].component.ts`
    - `index.ts`
 3. Bruk en eksisterende kompononent som eksempel for å få på plass boilerplate i de ulike filene.
-   - for vs code har vi laget snippets for å gjøre det enklere å opprette nye komponenter. Snippet med navn `lit` genererer en komponent mal.
+   - for VS Code har vi laget snippets for å gjøre det enklere å opprette nye komponenter. Snippet med navn `lit` genererer en komponentmal.
 4. For å teste at alt fungerer i Storybook, kjør `pnpm storybook` (Storybook åpnes automatisk i nettleseren).
 5. Ev. kan du vise/debugge komponenten i en statisk html-side når du utvikler lokalt. For å gjøre det:
    1. Åpne `./packages/fhi-designsystem/index.html`
