@@ -80,6 +80,101 @@ export class ${webComponentName} extends LitElement {
   }
 `;
 
+const generateIconDocs = iconSelectors => `
+import { Meta, IconGallery, IconItem, Controls, Canvas } from '@storybook/blocks';
+
+import * as FhiIconStories from './fhi-icon.stories';
+
+${iconSelectors
+  .map(
+    selector =>
+      `import { ${generateWebComponentName(selector)}Selector } from './${selector}.component';`,
+  )
+  .join('\n')}
+
+<Meta of={FhiIconStories} />
+
+# Icon
+
+_Icon_ er ikke èn komponenet men heller en samling av komponenter som er laget for å vise ikoner i FHI sine applikasjoner.
+
+Hvert ikon er en web-komponent som kan brukes i HTML-koden din på denne måten:
+\`\`\`html
+<${iconSelectors[0]}></${iconSelectors[0]}>
+\`\`\`
+
+### Eksempel
+<Canvas of={FhiIconStories.Preview} />
+<Controls />
+
+<br />
+
+# Alle Ikoner
+
+<br />
+
+<IconGallery>
+${iconSelectors
+  .map(
+    selector =>
+      `<IconItem name="${selector}"><${selector}></${selector}></IconItem>`,
+  )
+  .join('\n')}
+</IconGallery>
+`;
+
+const generateIconStory = iconSelector => {
+  const iconKomponentName = generateWebComponentName(iconSelector);
+
+  return `
+import { html } from 'lit';
+import type { Meta, StoryObj } from '@storybook/web-components';
+
+import { ${iconKomponentName} } from './${iconSelector}.component';
+import { ifDefined } from 'lit/directives/if-defined.js';
+
+new ${iconKomponentName}();
+
+const meta: Meta<${iconKomponentName}> = {
+  title: 'Komponenter/Icons',
+  component: '${iconSelector}',
+  parameters: {},
+  decorators: [],
+  render: args =>
+    html\`<${iconSelector}
+      color=\${ifDefined(args.color)}
+      size=\${ifDefined(args.size)}
+    ></${iconSelector}>\`,
+  argTypes: {
+    color: {
+      control: 'text',
+      description:
+        'Setter farge på ikonet. Skal helst være et farge token. Se [FHI design system: Farge Tokens](https://fhi-designsystem.netlify.app/komponenter/farge/#farge-variabler)',
+      defaultValue: { summary: 'var(--fhi-color-neutral-text-default)' },
+    },
+    size: {
+      control: 'number',
+      description: 'Setter størelsen på ikonet i px.',
+      defaultValue: { summary: 24 },
+    },
+  },
+};
+
+type Story = StoryObj<${iconKomponentName}>;
+
+export const Preview: Story = {
+  tags: ['!dev'],
+  args: {
+    color: 'var(--fhi-color-neutral-text-default)',
+    size: 24,
+  },
+};
+
+export default meta;
+
+`;
+};
+
 const generateWebComponentName = customElementSelector => {
   return toPascalCase(customElementSelector);
 };
@@ -88,7 +183,7 @@ const generateCustomElementSelector = fileName => {
   return 'fhi-icon-' + path.basename(fileName, '.svg');
 };
 
-const writeWebComponentFile = (webComponentCode, filePath) => {
+const writeFile = (webComponentCode, filePath) => {
   const dir = path.dirname(filePath);
   if (!fs.existsSync(dir)) {
     fs.mkdirSync(dir, { recursive: true });
@@ -169,11 +264,27 @@ const main = () => {
       customElementSelector,
     );
 
-    writeWebComponentFile(webComponentCode, outputFilePath);
+    writeFile(webComponentCode, outputFilePath);
   });
+
+  const storyFileDate = generateIconStory(
+    generateCustomElementSelector(iconFileNames[0]),
+  );
+
+  writeFile(storyFileDate, path.join(outputFolder, 'fhi-icon.stories.ts'));
+
+  const documentationFileData = generateIconDocs(
+    iconFileNames.map(generateCustomElementSelector),
+  );
+
+  writeFile(
+    documentationFileData,
+    path.join(outputFolder, 'fhi-icon.docs.mdx'),
+  );
 };
 
 main();
 // This script generates web component files from SVG icons.
 // It reads SVG files from a specified input folder, wrapps them in WebComponents using Lit, and writes the output files to a specified output folder.
+// It also generates a Storybook documentation file for the icons.
 // e.g use in terminal: node generate-icon-components.js ./src/assets/icons ./src/components/icons
