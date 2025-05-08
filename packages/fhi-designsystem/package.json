@@ -41,6 +41,8 @@
     "build:npm": "tsc && cross-env DEPLOY_TARGET=npm vite build",
     "storybook": "storybook dev -p 6006",
     "storybook:build": "storybook build",
+    "generate:icons": "pnpm optimize:svgs && node generate-icon-components.js ./src/assets/icons-optimized/ ./src/components/icons",
+    "optimize:svgs": "svgo --config=svgo.config.js ./src/assets/icons/*.svg -o ./src/assets/icons-optimized/",
     "test": "wtr ./**/*.test.ts --node-resolve --playwright --browsers chromium webkit",
     "lint": "pnpm lint:eslint && pnpm lint:prettier",
     "lint:eslint": "eslint \"**/*.{js,ts}\"",
@@ -59,6 +61,8 @@
     "@esm-bundle/chai": "~4.3.4-fix.0",
     "@open-wc/testing": "~4.0.0",
     "@playwright/test": "^1.51.1",
+    "@release-it/conventional-changelog": "~8.0.2",
+    "@storybook/addon-actions": "~8.3.6",
     "@storybook/addon-essentials": "~8.3.0",
     "@storybook/addon-links": "~8.3.0",
     "@storybook/blocks": "~8.3.0",
@@ -74,12 +78,11 @@
     "cross-env": "7.0.3",
     "lit": "~3.2.0",
     "mocha": "~10.7.0",
+    "release-it": "~17.6.0",
     "storybook": "~8.3.0",
     "vite": "~5.4.0",
     "vite-plugin-generate-file": "~0.2.0",
     "vite-plugin-static-copy": "~1.0.6",
-    "release-it": "~17.6.0",
-    "@release-it/conventional-changelog": "~8.0.2",
-    "@storybook/addon-actions": "~8.3.6"
+    "svgo": "^3.3.2"
   }
 }

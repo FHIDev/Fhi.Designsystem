@@ -1,0 +1,38 @@
+import { html, css, LitElement } from 'lit';
+import { customElement, property } from 'lit/decorators.js';
+
+export const FhiIconSquarePenSelector = 'fhi-icon-square-pen';
+
+@customElement(FhiIconSquarePenSelector)
+export class FhiIconSquarePen extends LitElement {
+  @property({ type: String }) color: string =
+    'var(--fhi-color-neutral-text-default)';
+
+  @property({ type: Number }) size: number = 24;
+
+  render() {
+    return html`
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        viewBox="0 0 24 24"
+        width="${this.size}"
+        height="${this.size}"
+        fill="${this.color}"
+      >
+        <path
+          fill-rule="evenodd"
+          d="M19.025 3.036a1.379 1.379 0 0 1 1.957 1.943l-8.358 8.479-2.605.557.658-2.632zm3.01-1.061a2.88 2.88 0 0 0-4.07 0L9.47 10.47a.75.75 0 0 0-.198.348l-1 4a.75.75 0 0 0 .885.915l4-.856a.75.75 0 0 0 .377-.207l8.516-8.638a2.88 2.88 0 0 0-.014-4.057M5 2.25A2.75 2.75 0 0 0 2.25 5v14A2.75 2.75 0 0 0 5 21.75h14A2.75 2.75 0 0 0 21.75 19v-7a.75.75 0 0 0-1.5 0v7c0 .69-.56 1.25-1.25 1.25H5c-.69 0-1.25-.56-1.25-1.25V5c0-.69.56-1.25 1.25-1.25h7a.75.75 0 0 0 0-1.5z"
+          clip-rule="evenodd"
+        />
+      </svg>
+    `;
+  }
+
+  static styles = css`
+    :host {
+      display: flex;
+      max-height: min-content;
+      max-width: min-content;
+    }
+  `;
+}

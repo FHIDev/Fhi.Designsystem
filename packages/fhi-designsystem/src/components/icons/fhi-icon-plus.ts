@@ -1,0 +1,38 @@
+import { html, css, LitElement } from 'lit';
+import { customElement, property } from 'lit/decorators.js';
+
+export const FhiIconPlusSelector = 'fhi-icon-plus';
+
+@customElement(FhiIconPlusSelector)
+export class FhiIconPlus extends LitElement {
+  @property({ type: String }) color: string =
+    'var(--fhi-color-neutral-text-default)';
+
+  @property({ type: Number }) size: number = 24;
+
+  render() {
+    return html`
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        viewBox="0 0 24 24"
+        width="${this.size}"
+        height="${this.size}"
+        fill="${this.color}"
+      >
+        <path
+          fill-rule="evenodd"
+          d="M12 4.25a.75.75 0 0 1 .75.75v6.25H19a.75.75 0 0 1 0 1.5h-6.25V19a.75.75 0 0 1-1.5 0v-6.25H5a.75.75 0 0 1 0-1.5h6.25V5a.75.75 0 0 1 .75-.75"
+          clip-rule="evenodd"
+        />
+      </svg>
+    `;
+  }
+
+  static styles = css`
+    :host {
+      display: flex;
+      max-height: min-content;
+      max-width: min-content;
+    }
+  `;
+}

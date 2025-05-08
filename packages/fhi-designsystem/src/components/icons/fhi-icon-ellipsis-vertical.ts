@@ -1,0 +1,38 @@
+import { html, css, LitElement } from 'lit';
+import { customElement, property } from 'lit/decorators.js';
+
+export const FhiIconEllipsisVerticalSelector = 'fhi-icon-ellipsis-vertical';
+
+@customElement(FhiIconEllipsisVerticalSelector)
+export class FhiIconEllipsisVertical extends LitElement {
+  @property({ type: String }) color: string =
+    'var(--fhi-color-neutral-text-default)';
+
+  @property({ type: Number }) size: number = 24;
+
+  render() {
+    return html`
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        viewBox="0 0 24 24"
+        width="${this.size}"
+        height="${this.size}"
+        fill="${this.color}"
+      >
+        <path
+          fill-rule="evenodd"
+          d="M12 3.25a1.75 1.75 0 1 0 0 3.5 1.75 1.75 0 0 0 0-3.5m0 7a1.75 1.75 0 1 0 0 3.5 1.75 1.75 0 0 0 0-3.5m0 7a1.75 1.75 0 1 0 0 3.5 1.75 1.75 0 0 0 0-3.5"
+          clip-rule="evenodd"
+        />
+      </svg>
+    `;
+  }
+
+  static styles = css`
+    :host {
+      display: flex;
+      max-height: min-content;
+      max-width: min-content;
+    }
+  `;
+}
