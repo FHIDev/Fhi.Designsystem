@@ -1,6 +1,45 @@
 import * as fs from 'fs';
 import * as path from 'path';
 
+import { optimize } from 'svgo';
+
+const optimizeSvg = svgString => {
+  const result = optimize(svgString, {
+    multipass: true, // all other config fields are available here
+    plugins: [
+      {
+        name: 'preset-default',
+        params: {
+          overrides: {
+            removeViewBox: false,
+          },
+        },
+      },
+      {
+        name: 'removeAttributesBySelector',
+        params: {
+          selector: '*',
+          attributes: ['width', 'height', 'fill'],
+        },
+      },
+      {
+        name: 'addAttributesToSVGElement',
+        params: {
+          attributes: [
+            {
+              width: '${this.size}',
+              height: '${this.size}',
+              fill: '${this.color}',
+            },
+          ],
+        },
+      },
+    ],
+  });
+
+  return result.data;
+};
+
 const toPascalCase = value => {
   return value
     .replace(/([-_][a-z0-9])/g, group =>
@@ -58,8 +97,10 @@ const writeWebComponentFile = (webComponentCode, filePath) => {
   fs.writeFileSync(filePath, webComponentCode, 'utf8');
 };
 
-const getSVGIconNames = inputFolder => {
+const getSVGIconFileNames = inputFolder => {
   const inputFiles = fs.readdirSync(inputFolder);
+
+  console.log('inputFiles: ', inputFiles);
 
   return inputFiles.filter(file => {
     return path.extname(file) === '.svg';
@@ -82,7 +123,7 @@ const getIcon = (inputFolder, file) => {
 };
 
 const generateOutputFilePath = (outputFolder, customElementSelector) => {
-  return path.join(outputFolder, `${customElementSelector}.ts`);
+  return path.join(outputFolder, `${customElementSelector}.component.ts`);
 };
 
 const getInputAndOutputFolders = () => {
@@ -98,25 +139,29 @@ const getInputAndOutputFolders = () => {
     );
   }
 
+  // console.log(path.relative(__dirname, path.join(process.argv[2], file)));
+
+  console.log(process.argv[2], process.argv[3]);
+
   return [process.argv[2], process.argv[3]];
 };
 
 const main = () => {
   const [inputFolder, outputFolder] = getInputAndOutputFolders();
 
-  const iconNames = getSVGIconNames(inputFolder);
+  const iconFileNames = getSVGIconFileNames(inputFolder);
 
-  iconNames.forEach(fileName => {
+  iconFileNames.forEach(fileName => {
+    const optimizedSvg = optimizeSvg(getIcon(inputFolder, fileName));
+
     const customElementSelector = generateCustomElementSelector(fileName);
-
-    const iconData = getIcon(inputFolder, fileName);
 
     const webComponentName = generateWebComponentName(customElementSelector);
 
     const webComponentCode = generateWebComponentCode(
       webComponentName,
       customElementSelector,
-      iconData,
+      optimizedSvg,
     );
 
     const outputFilePath = generateOutputFilePath(
