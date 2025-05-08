@@ -26,7 +26,11 @@ export default defineConfig(({ mode }) => {
     const entries = {};
 
     files.forEach(file => {
-      let fileName = path.basename(file);
+      if (process.platform === 'win32') {
+        file = file.replace(/\\/g, '/');
+      }
+
+      let fileName = path.posix.basename(file);
 
       if (
         fileName &&
@@ -35,8 +39,7 @@ export default defineConfig(({ mode }) => {
         fileName.includes('.component.')
       ) {
         let customeElementSelector = path.basename(file, '.component.ts');
-        entries[customeElementSelector] =
-          `./${path.join(componentsDirectory, file)}`;
+        entries[customeElementSelector] = `${componentsDirectory}/${file}`;
       }
     });
 
