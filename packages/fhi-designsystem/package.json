@@ -41,7 +41,7 @@
     "build:npm": "tsc && cross-env DEPLOY_TARGET=npm vite build",
     "storybook": "storybook dev -p 6006",
     "storybook:build": "storybook build",
-    "generate:icons": "node generate-icon-components.js ./src/assets/icons/ ./src/components/icons",
+    "generate:icons": "node ./scripts/generate-icon-components.js ./src/assets/icons/ ./src/components/icons",
     "test": "wtr ./**/*.test.ts --node-resolve --playwright --browsers chromium webkit",
     "lint": "pnpm lint:eslint && pnpm lint:prettier",
     "lint:eslint": "eslint \"**/*.{js,ts}\"",
