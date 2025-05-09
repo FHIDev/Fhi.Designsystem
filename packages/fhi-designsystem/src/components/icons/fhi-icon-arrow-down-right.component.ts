@@ -23,9 +23,7 @@ export class FhiIconArrowDownRight extends LitElement {
         fill="${this.color}"
       >
         <path
-          fill-rule="evenodd"
-          d="M6.47 6.47a.75.75 0 0 1 1.06 0l8.72 8.72V7a.75.75 0 0 1 1.5 0v10a.75.75 0 0 1-.75.75H7a.75.75 0 0 1 0-1.5h8.19L6.47 7.53a.75.75 0 0 1 0-1.06"
-          clip-rule="evenodd"
+          d="M6.47 6.47a.75.75 0 0 1 1.004-.052l.056.052 8.72 8.72V7a.75.75 0 0 1 1.5 0v10a.75.75 0 0 1-.75.75H7a.75.75 0 0 1 0-1.5h8.19L6.47 7.53l-.052-.056A.75.75 0 0 1 6.47 6.47"
         />
       </svg>
     `;

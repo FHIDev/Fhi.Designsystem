@@ -24,7 +24,7 @@ export class FhiIconExclamation extends LitElement {
       >
         <path
           fill-rule="evenodd"
-          d="M12.75 6a.75.75 0 0 0-1.5 0v8a.75.75 0 0 0 1.5 0zM12 17a1 1 0 1 0 0 2h.01a1 1 0 1 0 0-2z"
+          d="M11.25 6v8a.75.75 0 0 0 1.5 0V6a.75.75 0 0 0-1.5 0m.862 11.005L12.01 17H12a1 1 0 1 0 0 2h.01l.102-.005a1 1 0 0 0 0-1.99"
           clip-rule="evenodd"
         />
       </svg>

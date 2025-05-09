@@ -23,9 +23,7 @@ export class FhiIconPlus extends LitElement {
         fill="${this.color}"
       >
         <path
-          fill-rule="evenodd"
-          d="M12 4.25a.75.75 0 0 1 .75.75v6.25H19a.75.75 0 0 1 0 1.5h-6.25V19a.75.75 0 0 1-1.5 0v-6.25H5a.75.75 0 0 1 0-1.5h6.25V5a.75.75 0 0 1 .75-.75"
-          clip-rule="evenodd"
+          d="M11.25 19v-6.25H5a.75.75 0 0 1 0-1.5h6.25V5a.75.75 0 0 1 1.5 0v6.25H19a.75.75 0 0 1 0 1.5h-6.25V19a.75.75 0 0 1-1.5 0"
         />
       </svg>
     `;

@@ -23,9 +23,7 @@ export class FhiIconChevronDown extends LitElement {
         fill="${this.color}"
       >
         <path
-          fill-rule="evenodd"
-          d="M5.47 8.47a.75.75 0 0 1 1.06 0L12 13.94l5.47-5.47a.75.75 0 1 1 1.06 1.06l-6 6a.75.75 0 0 1-1.06 0l-6-6a.75.75 0 0 1 0-1.06"
-          clip-rule="evenodd"
+          d="M17.47 8.47a.75.75 0 1 1 1.06 1.06l-6 6a.75.75 0 0 1-1.003.052l-.057-.052-6-6-.052-.056a.75.75 0 0 1 1.056-1.056l.056.052L12 13.94z"
         />
       </svg>
     `;
