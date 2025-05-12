@@ -134,7 +134,7 @@ Ikoner er en viktig del av brukeropplevelsen og kan bidra til å gjøre informas
 
 Hvert ikon er en web-komponent som kan brukes i HTML-koden din på denne måten:
 \`\`\`html
-<${iconSelectors[0]}></${iconSelectors[0]}>
+<${iconSelectors[0]} />
 \`\`\`
 
 ### Eksempel
@@ -145,7 +145,11 @@ Hvert ikon er en web-komponent som kan brukes i HTML-koden din på denne måten:
 
 ## Alle Ikoner
 
-<br />
+<div style={{padding: ".25rem 1rem", background: "#D3E3F5", borderRadius: "2px", borderBottom: "4px solid #3283CE", marginBottom: "2rem"}}>
+Du kan gi tilbakemelding via <a href="https://teams.microsoft.com/l/channel/19%3Aa0d23e5a6954497d9e378d3367e7f458%40thread.skype/General?groupId=571dd359-777d-4c02-85ea-d56854d03ef7&tenantId=54475f80-1baa-4ea9-9185-c0de5cc603fe" target="_blank" rel="noopener" style={{ color: "#222", textDecoration: "underline" }}>Designsystem-kanalen på Teams</a> og på  <a href="https://github.com/FHIDev/Fhi.Designsystem/issues" target="_blank" rel="noopener" style={{ color: "#222", textDecoration: "underline" }}>Github</a> på hvilke ikoner som mangler og hvilke som kan forbedres.
+
+Om du ikke finner ikonet du leter etter, og ikke tror ikonet bør inkluderes i designsystemet, kan du bruke ikoner fra <a href="https://lucide.dev/" target="_blank" rel="noopener" style={{ color: "#222", textDecoration: "underline" }}>Lucide</a>.
+</div>
 
 <IconGallery>
 ${iconSelectors
@@ -186,7 +190,7 @@ const meta: Meta<${iconKomponentName}> = {
     color: {
       control: 'text',
       description:
-        'Setter farge på ikonet. Skal helst være et farge token. Se [Farge Tokens](https://https://designsystem.fhi.no/)',
+        'Setter farge på ikonet. Skal helst være et farge token. Se [Farge Tokens](https://designsystem.fhi.no/)',
       defaultValue: { summary: 'var(--fhi-color-neutral-text-default)' },
     },
     size: {
