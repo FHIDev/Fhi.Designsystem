@@ -30,4 +30,4 @@ dist-ssr
 *storybook.log
 index.html
 
-**/*/icons-optimized/*.svg
+design-tokens.source.json
