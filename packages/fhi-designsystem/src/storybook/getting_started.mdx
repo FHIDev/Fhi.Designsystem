@@ -73,9 +73,9 @@ Angular har innebygd støtte for webkomponenter. Du kan derfor bruke komponenten
 Under er et eksempel på hvordan du bruker `fhi-button`-komponenten i et Angular-prosjekt. Her tar vi utgangspunkt i at du har brukt `npm` da du installerte pakken.
 
 Først importerer vi _design tokens_-filen. Denne filen inneholder alle primitive og semantiske _tokens_ brukt av komponentbiblioteket.
-Denne filen må importeres før du tar i bruk komponentbiblioteket, helst helt i starten av appen din.
-```ts
-import '@folkehelseinstituttet/designsystem/theme/default.css';
+Denne filen må importeres før du tar i bruk komponentbiblioteket, helst helt helst via angular.json, der en setter følgende property:
+```json
+projects.[your-project].architect.build.options.styles: ["@folkehelseinstituttet/designsystem/theme/default.css"]
 ```
 
 Så må vi fortelle Angular at vi bruker webkomponenter.
