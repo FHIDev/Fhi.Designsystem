@@ -17,7 +17,6 @@ Det er mange måter å bidra på, og vi har mange ulike behov som skal ivaretas.
   - [Før du setter i gang](#før-du-setter-i-gang)
   - [Opprette ny komponent](#opprette-ny-komponent)
   - [Utvikle en ny komponent](#utvikle-en-ny-komponent)
-  - [Eksponere en ny komponent](#eksponere-en-ny-komponent)
   - [Når du er ferdig](#når-du-er-ferdig)
 - [Etiske retningslinjer](#etiske-retningslinjer)
 
@@ -87,29 +86,23 @@ For å få opprettet PR og godkjent en ny komponent må den basere seg på en fe
 2. Opprett følgende filer i den nye mappen:
    - `fhi-[new-component].stories.ts`
    - `fhi-[new-component].test.ts`
-   - `fhi-[new-component].ts`
+   - `fhi-[new-component].component.ts`
    - `index.ts`
 3. Bruk en eksisterende kompononent som eksempel for å få på plass boilerplate i de ulike filene.
+   - for VS Code har vi laget snippets for å gjøre det enklere å opprette nye komponenter. Snippet med navn `lit` genererer en komponentmal.
 4. For å teste at alt fungerer i Storybook, kjør `pnpm storybook` (Storybook åpnes automatisk i nettleseren).
 5. Ev. kan du vise/debugge komponenten i en statisk html-side når du utvikler lokalt. For å gjøre det:
    1. Åpne `./packages/fhi-designsystem/index.html`
-   2. Legg til `<script type="module" src="src/components/fhi-[new-component]/fhi-[new-component].ts"></script>` i `<head>`.
+   2. Legg til `<script type="module" src="src/components/fhi-[new-component]/fhi-[new-component].component.ts"></script>` i `<head>`.
    3. Legg til din komponent i `<body>` som en vanlig "konsument" av komponenten.
    4. Kjør `pnpm dev` og åpne `http://localhost:5173` i nettleseren.
 
 ### Utvikle en ny komponent
 
-1. Implementer komponenten i kode i `fhi-[new-component].ts` etter design og spesifikasjoner fra UX. Denne implementeringen bør alltid bruke designtokens, og være helt i tråd med retningslinjer for tilgjengelighet og nettstandarden. Ikke avvik fra nettstandarden med mindre det er nødvendig. Følg også vår [kodestandard](#kodestandard).
+1. Implementer komponenten i kode i `fhi-[new-component].component.ts` etter design og spesifikasjoner fra UX. Denne implementeringen bør alltid bruke designtokens, og være helt i tråd med retningslinjer for tilgjengelighet og nettstandarden. Ikke avvik fra nettstandarden med mindre det er nødvendig. Følg også vår [kodestandard](#kodestandard).
 2. Legg til automatiserte tester i `fhi-[new-component].test.ts`. Se våre krav til [testdekning](#testdekning).
 3. Legg til skriftlig dokumentasjon i `fhi-[new-component].stories.ts`, inkludert komponentenes formål og eksempler på brukstilfeller.
 4. Sørg for at alle tester går i grønt, og test også komponenten manuelt.
-
-### Eksponere en ny komponent
-
-1. Legg den til i `./packages/fhi-designsystem/src/libray.ts`
-2. Legg til en ny "entry" i `./packages/fhi-designsystem/vite.config.js`
-   - Key: `"fhi-[new-component]"`
-   - Value: `"./src/components/fhi-[new-component]/fhi-[new-component].ts"`
 
 ### Når du er ferdig
 
