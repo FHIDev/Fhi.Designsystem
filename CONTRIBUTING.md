@@ -110,7 +110,7 @@ For å få opprettet PR og godkjent en ny komponent må den basere seg på en fe
 1. Legg til ikonet i `./packages/fhi-designsystem/src/assets/icons/` med filnavn `[new-icon].svg`.
 2. kjør `pnpm generate:icons`
    - Dette vil generere en `lit` web-komponent for ikonet i `./packages/fhi-designsystem/src/components/icons/` med navn `fhi-[new-icon].component.ts`.
-   - Ikon-komponenten blir behandlet på samme måte som andre komponenter og blir automatisk inkludert i npm og cdn byggene.
+   - Ikon-komponenten blir behandlet på samme måte som andre komponenter og blir automatisk inkludert i npm- og CDN-byggene.
 
 ### Når du er ferdig
 
