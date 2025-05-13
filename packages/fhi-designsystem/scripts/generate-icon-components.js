@@ -134,7 +134,7 @@ Ikoner brukes for å representere eller forsterke handlinger, områder og mer. D
 
 Hvert ikon er en web-komponent som kan brukes i HTML-koden din på denne måten:
 \`\`\`html
-<${iconSelectors[0]} />
+<${iconSelectors[0]}></${iconSelectors[0]}>
 \`\`\`
 
 ### Eksempel
@@ -254,6 +254,8 @@ const guardOutputFolder = outputFolderPath => {
 
 const writeFile = (webComponentCode, filePath) => {
   fs.writeFileSync(filePath, webComponentCode, 'utf8');
+
+  console.log('+ ', filePath);
 };
 
 const getSVGIconFileNames = inputFolder => {
@@ -303,8 +305,6 @@ const main = () => {
     );
 
     writeFile(webComponentCode, componentOutputPath);
-
-    console.log('+ ', componentOutputPath);
   });
 
   const storyFileDate = generateIconStory(
