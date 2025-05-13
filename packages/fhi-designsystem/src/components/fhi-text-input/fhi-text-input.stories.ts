@@ -2,7 +2,7 @@ import type { Meta, StoryObj } from '@storybook/web-components';
 import { withActions } from '@storybook/addon-actions/decorator';
 
 import { html } from 'lit';
-import { FhiTextInput } from './fhi-text-input';
+import { FhiTextInput } from './fhi-text-input.component';
 import { ifDefined } from 'lit/directives/if-defined.js';
 
 new FhiTextInput();

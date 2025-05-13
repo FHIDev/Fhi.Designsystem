@@ -1,0 +1,52 @@
+import { Meta } from '@storybook/blocks';
+import { DesignTokenDocBlock } from 'storybook-design-token';
+
+<Meta title="Design Tokens/Introduksjon" />
+
+# Design tokens i FHI Designsystem
+
+## Farger
+
+Våre farger er delt opp i to lag med design tokens:
+
+- Primitive farger er globale skalaer av ulike fargetoner, slik som `green-200`, `red-150` eller `blue-900`.
+- Semantiske farger er tokene vi forholder oss til når vi bygger komponenter, med navn som gjenspeiler tiltenkt bruk, slik som `background-default` eller `text-subtle`.
+
+### Semantiske farger
+
+Fargene er samlet i noen grupper:
+
+- `neutral` setter den generelle tonen. Den lar andre farger stikke seg ut og signalisere det de skal.
+- `accent` brukes for å vekke handling.
+- `info` brukes til informative beskjeder som må trekke litt oppmerksomhet, uten å drive for mye handling.
+- `success` signaliserer vellykkede handlinger, hvor bruker skal vite at alt har ordnet seg som det skal.
+- `warning` signaliserer varsomhet og at bruker må nå være litt på vakt.
+- `danger` signaliserer fare, feil eller destruktive handlinger bruker ikke kan angre.
+
+De forskjellige fargegruppene har igjen hver sine undergrupper:
+
+- `background` for generelle bakgrunnsfarger som kan brukes på hele flater og skjermer.
+- `surface` for bakgrunnsfarger som oppfordrer noe handling eller oppmerksomhet, for eksempel knapper, meldinger eller paneler.
+- `border` for kanter, streker, rammer og skygger som ligner dem.
+- `text` til tekst, samt ikoner i tilfeller hvor ikoner erstatter tekst.
+- `base` der vi trenger tydelige fargetoner som står ut. Brukes på handlingsdrivende elementer og der man vil formidle en bestemt mening.
+
+Alle undergruppene har en definert `default`, i tillegg til undergrupper, slik som grader (`subtle` eller `strong`) eller interaksjon (`hover`og `active`).
+Merk at selv om fargene er navngitt etter interaksjon kan det oppstå behov som lar oss ta i bruk en annen grad. For eksemplel kan en knapp uten bakgrunnsfarge ta i bruk `surface-default` ved hover, i steden for gå hele veien opp til `surface-hover`.
+
+## Dimensions
+
+Designsystemet bruker primitive tokens for spacing. De minste avstandene brukes som regel inni komponenter, mens de større brukes mellom komponenter eller seksjoner.
+
+Det er også tokens for border radius, hvor rund en kant skal være, og border width, hvor tjukk kantlinjer kan være.
+
+## Typography
+
+FHI tar i bruk to skriftfamilier: Brandon Text og Roboto Flex.
+
+Designsystemet tilbyr en font-family token og token for font-weight.
+
+### Font sizes
+
+Skriftstørrelsen vi bruker i FHI er regnet ut med [Precise Type](https://precise-type.com/metric-scale.html) med en Metric scale-utrgening.
+Variabler brukt: Base Size: 14px; Letter Spacing 1%; Module Size 4 steps; Step unit 2px; Line Grid 4px; Line Height 20px.
