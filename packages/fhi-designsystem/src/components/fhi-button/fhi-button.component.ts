@@ -39,6 +39,7 @@ export class FhiButton extends LitElement {
 
     this.onkeyup = this._handleKeyup.bind(this);
     this.onkeydown = this._handleKeydown.bind(this);
+    this.onselectstart = this._handleSelectStart.bind(this);
   }
 
   click(): void {
@@ -80,6 +81,10 @@ export class FhiButton extends LitElement {
     if (event.key === 'Enter') {
       this._handleClick(event);
     }
+  }
+
+  private _handleSelectStart() {
+    return false;
   }
 
   render() {
