@@ -93,7 +93,7 @@ export const ${webComponentName}Selector = "${customElementSelector}";
 
 @customElement(${webComponentName}Selector)
 export class ${webComponentName} extends LitElement {
-  @property({ type: String }) color: string = "var(--fhi-color-neutral-text-default)";
+  @property({ type: String }) color: string = "currentcolor";
 
   @property({ type: Number }) size: number = 24;
 
@@ -190,8 +190,8 @@ const meta: Meta<${iconKomponentName}> = {
     color: {
       control: 'text',
       description:
-        'Setter farge på ikonet. Skal helst være et farge token. Se [Farge Tokens](https://designsystem.fhi.no/)',
-      defaultValue: { summary: 'var(--fhi-color-neutral-text-default)' },
+        'Setter farge på ikonet. Skal helst være et farge token. Se [Farge Tokens](https://designsystem.fhi.no/?path=/docs/design-tokens-farger--docs)',
+      defaultValue: { summary: 'currentcolor' },
     },
     size: {
       control: 'number',

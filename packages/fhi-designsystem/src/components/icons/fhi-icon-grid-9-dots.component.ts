@@ -9,7 +9,7 @@ export const FhiIconGrid9DotsSelector = "fhi-icon-grid-9-dots";
 
 @customElement(FhiIconGrid9DotsSelector)
 export class FhiIconGrid9Dots extends LitElement {
-  @property({ type: String }) color: string = "var(--fhi-color-neutral-text-default)";
+  @property({ type: String }) color: string = "currentcolor";
 
   @property({ type: Number }) size: number = 24;
 

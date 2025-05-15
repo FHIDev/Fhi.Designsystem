@@ -9,7 +9,7 @@ export const FhiIconUserSelector = "fhi-icon-user";
 
 @customElement(FhiIconUserSelector)
 export class FhiIconUser extends LitElement {
-  @property({ type: String }) color: string = "var(--fhi-color-neutral-text-default)";
+  @property({ type: String }) color: string = "currentcolor";
 
   @property({ type: Number }) size: number = 24;
 

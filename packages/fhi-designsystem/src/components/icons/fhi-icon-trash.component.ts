@@ -9,7 +9,7 @@ export const FhiIconTrashSelector = "fhi-icon-trash";
 
 @customElement(FhiIconTrashSelector)
 export class FhiIconTrash extends LitElement {
-  @property({ type: String }) color: string = "var(--fhi-color-neutral-text-default)";
+  @property({ type: String }) color: string = "currentcolor";
 
   @property({ type: Number }) size: number = 24;
 

@@ -9,7 +9,7 @@ export const FhiIconChevronsLeftSelector = "fhi-icon-chevrons-left";
 
 @customElement(FhiIconChevronsLeftSelector)
 export class FhiIconChevronsLeft extends LitElement {
-  @property({ type: String }) color: string = "var(--fhi-color-neutral-text-default)";
+  @property({ type: String }) color: string = "currentcolor";
 
   @property({ type: Number }) size: number = 24;
 

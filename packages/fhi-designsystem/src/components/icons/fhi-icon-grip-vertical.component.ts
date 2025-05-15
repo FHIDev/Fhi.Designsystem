@@ -9,7 +9,7 @@ export const FhiIconGripVerticalSelector = "fhi-icon-grip-vertical";
 
 @customElement(FhiIconGripVerticalSelector)
 export class FhiIconGripVertical extends LitElement {
-  @property({ type: String }) color: string = "var(--fhi-color-neutral-text-default)";
+  @property({ type: String }) color: string = "currentcolor";
 
   @property({ type: Number }) size: number = 24;
 

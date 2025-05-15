@@ -9,7 +9,7 @@ export const FhiIconCircleArrowLeftSelector = "fhi-icon-circle-arrow-left";
 
 @customElement(FhiIconCircleArrowLeftSelector)
 export class FhiIconCircleArrowLeft extends LitElement {
-  @property({ type: String }) color: string = "var(--fhi-color-neutral-text-default)";
+  @property({ type: String }) color: string = "currentcolor";
 
   @property({ type: Number }) size: number = 24;
 

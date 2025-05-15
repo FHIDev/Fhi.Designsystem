@@ -9,7 +9,7 @@ export const FhiIconArrowRightLeftSelector = "fhi-icon-arrow-right-left";
 
 @customElement(FhiIconArrowRightLeftSelector)
 export class FhiIconArrowRightLeft extends LitElement {
-  @property({ type: String }) color: string = "var(--fhi-color-neutral-text-default)";
+  @property({ type: String }) color: string = "currentcolor";
 
   @property({ type: Number }) size: number = 24;
 

@@ -9,7 +9,7 @@ export const FhiIconGripHorizontalSelector = "fhi-icon-grip-horizontal";
 
 @customElement(FhiIconGripHorizontalSelector)
 export class FhiIconGripHorizontal extends LitElement {
-  @property({ type: String }) color: string = "var(--fhi-color-neutral-text-default)";
+  @property({ type: String }) color: string = "currentcolor";
 
   @property({ type: Number }) size: number = 24;
 

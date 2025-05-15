@@ -9,7 +9,7 @@ export const FhiIconCircleCheckSelector = "fhi-icon-circle-check";
 
 @customElement(FhiIconCircleCheckSelector)
 export class FhiIconCircleCheck extends LitElement {
-  @property({ type: String }) color: string = "var(--fhi-color-neutral-text-default)";
+  @property({ type: String }) color: string = "currentcolor";
 
   @property({ type: Number }) size: number = 24;
 

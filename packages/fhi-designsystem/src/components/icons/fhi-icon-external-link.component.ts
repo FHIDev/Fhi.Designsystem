@@ -9,7 +9,7 @@ export const FhiIconExternalLinkSelector = "fhi-icon-external-link";
 
 @customElement(FhiIconExternalLinkSelector)
 export class FhiIconExternalLink extends LitElement {
-  @property({ type: String }) color: string = "var(--fhi-color-neutral-text-default)";
+  @property({ type: String }) color: string = "currentcolor";
 
   @property({ type: Number }) size: number = 24;
 

@@ -9,7 +9,7 @@ export const FhiIconCheckSelector = "fhi-icon-check";
 
 @customElement(FhiIconCheckSelector)
 export class FhiIconCheck extends LitElement {
-  @property({ type: String }) color: string = "var(--fhi-color-neutral-text-default)";
+  @property({ type: String }) color: string = "currentcolor";
 
   @property({ type: Number }) size: number = 24;
 

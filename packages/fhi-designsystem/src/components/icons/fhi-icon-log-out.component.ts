@@ -9,7 +9,7 @@ export const FhiIconLogOutSelector = "fhi-icon-log-out";
 
 @customElement(FhiIconLogOutSelector)
 export class FhiIconLogOut extends LitElement {
-  @property({ type: String }) color: string = "var(--fhi-color-neutral-text-default)";
+  @property({ type: String }) color: string = "currentcolor";
 
   @property({ type: Number }) size: number = 24;
 

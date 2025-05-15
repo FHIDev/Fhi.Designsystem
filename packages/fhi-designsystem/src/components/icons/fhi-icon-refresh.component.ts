@@ -9,7 +9,7 @@ export const FhiIconRefreshSelector = "fhi-icon-refresh";
 
 @customElement(FhiIconRefreshSelector)
 export class FhiIconRefresh extends LitElement {
-  @property({ type: String }) color: string = "var(--fhi-color-neutral-text-default)";
+  @property({ type: String }) color: string = "currentcolor";
 
   @property({ type: Number }) size: number = 24;
 
