@@ -232,7 +232,7 @@
   * @presenter FontFamily
   **/
 
-  --fhi-font-family-roboto-flex: 'Roboto Flex';
+  --fhi-font-family-default: 'Roboto Flex', system-ui, sans-serif;
 
   /**
   * @tokens FontWeight
