@@ -17,6 +17,7 @@ Det er mange måter å bidra på, og vi har mange ulike behov som skal ivaretas.
   - [Før du setter i gang](#før-du-setter-i-gang)
   - [Opprette ny komponent](#opprette-ny-komponent)
   - [Utvikle en ny komponent](#utvikle-en-ny-komponent)
+  - [Legg til nytt ikon og ikon-komponent](#legg-til-nytt-ikon-og-ikon-komponent)
   - [Når du er ferdig](#når-du-er-ferdig)
 - [Etiske retningslinjer](#etiske-retningslinjer)
 
@@ -103,6 +104,13 @@ For å få opprettet PR og godkjent en ny komponent må den basere seg på en fe
 2. Legg til automatiserte tester i `fhi-[new-component].test.ts`. Se våre krav til [testdekning](#testdekning).
 3. Legg til skriftlig dokumentasjon i `fhi-[new-component].stories.ts`, inkludert komponentenes formål og eksempler på brukstilfeller.
 4. Sørg for at alle tester går i grønt, og test også komponenten manuelt.
+
+### Legg til nytt ikon og ikon-komponent
+
+1. Legg til ikonet i `./packages/fhi-designsystem/src/assets/icons/` med filnavn `[new-icon].svg`.
+2. kjør `pnpm generate:icons`
+   - Dette vil generere en `lit` web-komponent for ikonet i `./packages/fhi-designsystem/src/components/icons/` med navn `fhi-[new-icon].component.ts`.
+   - Ikon-komponenten blir behandlet på samme måte som andre komponenter og blir automatisk inkludert i npm- og CDN-byggene.
 
 ### Når du er ferdig
 
