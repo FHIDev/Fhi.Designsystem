@@ -106,7 +106,7 @@ export class FhiTextInput extends LitElement {
 
   static styles = css`
     :host {
-      --typography-font-family: var(--fhi-font-family-roboto-flex);
+      --typography-font-family: var(--fhi-font-family-default);
 
       --opacity-disabled: var(--fhi-opacity-disabled);
 

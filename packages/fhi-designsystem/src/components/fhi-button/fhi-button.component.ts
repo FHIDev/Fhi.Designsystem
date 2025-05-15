@@ -103,7 +103,7 @@ export class FhiButton extends LitElement {
     :host {
       --dimension-border-radius: var(--fhi-border-radius-full);
       --dimension-border-width: var(--fhi-dimension-border-width);
-      --typography-font-family: var(--fhi-font-family-roboto-flex);
+      --typography-font-family: var(--fhi-font-family-default);
       --motion-transition: var(--fhi-motion-duration-quick)
         var(--fhi-motion-ease-default);
 
