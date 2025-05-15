@@ -1,5 +1,26 @@
 # Changelog
 
+## [0.2.3](https://github.com/FHIDev/Fhi.Designsystem/compare/v0.2.2...v0.2.3) (2025-05-15)
+
+
+### 🛠️ Bug Fixes
+
+* Button text is no longer highlighted by double click ([#192](https://github.com/FHIDev/Fhi.Designsystem/issues/192)) ([7517167](https://github.com/FHIDev/Fhi.Designsystem/commit/751716754dd82fc4f99822298ef5c1387d01cd3a))
+
+
+### 📑 Documentation
+
+* Add documentation for design tokens ([#165](https://github.com/FHIDev/Fhi.Designsystem/issues/165)) ([64e2b14](https://github.com/FHIDev/Fhi.Designsystem/commit/64e2b14809769ac8b3e054089b722d856a8e36f3))
+* add github link ([#191](https://github.com/FHIDev/Fhi.Designsystem/issues/191)) ([e05e786](https://github.com/FHIDev/Fhi.Designsystem/commit/e05e786cce0e2aa0f868893a81b6e40a284a1894))
+* change css instructons for angular ([#190](https://github.com/FHIDev/Fhi.Designsystem/issues/190)) ([5fac394](https://github.com/FHIDev/Fhi.Designsystem/commit/5fac39404bb5a8cd6da9fdf92dcbbb76f19e88cc))
+
+
+### Other
+
+* 169 autogrenerate the entry list for the npm package build step in viteconfig ([#178](https://github.com/FHIDev/Fhi.Designsystem/issues/178)) ([4b95c61](https://github.com/FHIDev/Fhi.Designsystem/commit/4b95c613b03dcfa8e45279683967c1eeebfef050))
+* add add virtual library ([#182](https://github.com/FHIDev/Fhi.Designsystem/issues/182)) ([8e4ac40](https://github.com/FHIDev/Fhi.Designsystem/commit/8e4ac40b7cd9cef042eae3d0c7faab2b1d88a885))
+* add mdx to prettier ignoe ([#181](https://github.com/FHIDev/Fhi.Designsystem/issues/181)) ([27115ff](https://github.com/FHIDev/Fhi.Designsystem/commit/27115ff4887fa08f1858a5d05bc521cfba6c31c1))
+
 ## [0.2.2](https://github.com/FHIDev/Fhi.Designsystem/compare/v0.2.1...v0.2.2) (2025-04-24)
 
 
