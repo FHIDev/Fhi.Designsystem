@@ -94,10 +94,6 @@ export default defineConfig(({ mode }) => {
           viteStaticCopy({
             targets: [
               {
-                src: 'src/theme',
-                dest: './',
-              },
-              {
                 src: 'staticwebapp.config.json',
                 dest: './',
               },
@@ -105,10 +101,13 @@ export default defineConfig(({ mode }) => {
           }),
         ],
         build: {
+          cssCodeSplit: true,
           lib: {
-            entry: virtualLibraryModule.path,
-            name: 'fhi-designsystem',
-            fileName: 'fhi-designsystem',
+            formats: ['es'],
+            entry: {
+              'theme/default.css': './src/theme/default.css',
+              'fhi-designsystem': virtualLibraryModule.path,
+            },
           },
           sourcemap: true,
           outDir: `${OUTPUT_DIRECTORY}/cdn`,
@@ -131,17 +130,15 @@ export default defineConfig(({ mode }) => {
                 src: 'README.md',
                 dest: './',
               },
-              {
-                src: 'src/theme',
-                dest: './',
-              },
             ],
           }),
         ],
         build: {
+          cssCodeSplit: true,
           lib: {
             formats: ['es'],
             entry: {
+              'theme/default.css': './src/theme/default.css',
               index: virtualLibraryModule.path,
               ...listOfComponents,
             },
