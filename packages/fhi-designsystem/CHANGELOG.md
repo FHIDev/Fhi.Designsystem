@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.3.0](https://github.com/FHIDev/Fhi.Designsystem/compare/v0.2.3...v0.3.0) (2025-05-15)
+
+
+### 🚀 Features
+
+* Added Icons ([#185](https://github.com/FHIDev/Fhi.Designsystem/issues/185)) ([7a3947e](https://github.com/FHIDev/Fhi.Designsystem/commit/7a3947e8131c3e3270c609dfb30e58f2b78621a5))
+
 ## [0.2.3](https://github.com/FHIDev/Fhi.Designsystem/compare/v0.2.2...v0.2.3) (2025-05-15)
 
 
