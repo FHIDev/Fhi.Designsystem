@@ -21,7 +21,7 @@ type TooltipPlacement =
 export class FhiTooltip extends LitElement {
   @property({ type: String }) message?: string = undefined;
 
-  @property({ type: String }) placement: TooltipPlacement = 'right';
+  @property({ type: String }) placement: TooltipPlacement = 'leftStart';
 
   @property({ type: String }) width: string = 'max-content';
 
@@ -36,8 +36,8 @@ export class FhiTooltip extends LitElement {
 
   @state()
   protected _position = {
-    top: 0,
-    left: 0,
+    top: -1,
+    left: -1,
   };
 
   private _showTooltip() {
@@ -55,89 +55,102 @@ export class FhiTooltip extends LitElement {
   }
 
   private _positionTooltip(placement: TooltipPlacement, iteration = 0) {
-    console.log(placement, iteration);
+    console.log('Positioning tooltip', placement, iteration);
 
-    // Prevent infinite loop
+    // If the tooltip is out of the viewport, and we could not find a valid position
+    // after 5 iterations, we will just place it on top of the trigger
     if (iteration > 4) {
-      console.log(
-        'Tried to move tooltip in bounds. Could not find a position.',
-      );
+      if (placement !== 'top') {
+        this._positionTooltip('top');
+        return;
+      }
+
       return;
     }
 
     const tooltip = this._tooltip;
     const trigger = this._trigger;
 
-    const triggerRect = trigger.getBoundingClientRect();
-    const tooltipRect = tooltip.getBoundingClientRect();
+    const triggerRectangle = trigger.getBoundingClientRect();
+    const tooltipRectangle = tooltip.getBoundingClientRect();
 
     switch (placement) {
       case 'top':
-        this._position.top = triggerRect.top - tooltipRect.height - 4;
+        this._position.top =
+          triggerRectangle.top + window.scrollY - tooltipRectangle.height - 4;
         this._position.left =
-          triggerRect.left +
+          triggerRectangle.left +
           window.scrollX +
-          triggerRect.width / 2 -
-          tooltipRect.width / 2;
+          triggerRectangle.width / 2 -
+          tooltipRectangle.width / 2;
         break;
       case 'topStart':
-        this._position.top = triggerRect.top - tooltipRect.height - 4;
-        this._position.left = triggerRect.left;
+        this._position.top =
+          triggerRectangle.top + window.scrollY - tooltipRectangle.height - 4;
+        this._position.left = triggerRectangle.left + window.scrollX;
         break;
       case 'topEnd':
-        this._position.top = triggerRect.top - tooltipRect.height - 4;
-        this._position.left = triggerRect.right - tooltipRect.width;
+        this._position.top =
+          triggerRectangle.top + window.scrollY - tooltipRectangle.height - 4;
+        this._position.left =
+          triggerRectangle.right + window.scrollX - tooltipRectangle.width;
         break;
 
       case 'bottom':
-        this._position.top = triggerRect.bottom + 4;
+        this._position.top = triggerRectangle.bottom + window.scrollY + 4;
         this._position.left =
-          triggerRect.left +
+          triggerRectangle.left +
           window.scrollX +
-          triggerRect.width / 2 -
-          tooltipRect.width / 2;
+          triggerRectangle.width / 2 -
+          tooltipRectangle.width / 2;
         break;
       case 'bottomStart':
-        this._position.top = triggerRect.bottom + 4;
-        this._position.left = triggerRect.left;
+        this._position.top = triggerRectangle.bottom + window.scrollY + 4;
+        this._position.left = triggerRectangle.left + window.scrollX;
         break;
       case 'bottomEnd':
-        this._position.top = triggerRect.bottom + 4;
-        this._position.left = triggerRect.right - tooltipRect.width;
+        this._position.top = triggerRectangle.bottom + window.scrollY + 4;
+        this._position.left =
+          triggerRectangle.right + window.scrollX - tooltipRectangle.width;
         break;
 
       case 'left':
         this._position.top =
-          triggerRect.top +
+          triggerRectangle.top +
           window.scrollY +
-          triggerRect.height / 2 -
-          tooltipRect.height / 2;
-        this._position.left = triggerRect.left - tooltipRect.width - 4;
+          triggerRectangle.height / 2 -
+          tooltipRectangle.height / 2;
+        this._position.left =
+          triggerRectangle.left + window.scrollX - tooltipRectangle.width - 4;
         break;
       case 'leftStart':
-        this._position.top = triggerRect.top;
-        this._position.left = triggerRect.left - tooltipRect.width - 4;
+        this._position.top = triggerRectangle.top + window.scrollY;
+        this._position.left =
+          triggerRectangle.left + window.scrollX - tooltipRectangle.width - 4;
         break;
       case 'leftEnd':
-        this._position.top = triggerRect.bottom - tooltipRect.height;
-        this._position.left = triggerRect.left - tooltipRect.width - 4;
+        this._position.top =
+          triggerRectangle.bottom - tooltipRectangle.height + window.scrollY;
+        this._position.left =
+          triggerRectangle.left + window.scrollX - tooltipRectangle.width - 4;
         break;
 
       case 'right':
         this._position.top =
-          triggerRect.top +
+          triggerRectangle.top +
           window.scrollY +
-          triggerRect.height / 2 -
-          tooltipRect.height / 2;
-        this._position.left = triggerRect.right + 4;
+          triggerRectangle.height / 2 -
+          tooltipRectangle.height / 2;
+        this._position.left = triggerRectangle.right + 4;
         break;
       case 'rightStart':
-        this._position.top = triggerRect.top;
-        this._position.left = triggerRect.right + 4;
+        this._position.top = triggerRectangle.top + window.scrollY;
+        this._position.left = triggerRectangle.right + window.scrollX + 4;
         break;
       case 'rightEnd':
-        this._position.top = triggerRect.bottom - tooltipRect.height;
-        this._position.left = triggerRect.right + 4;
+        this._position.top =
+          triggerRectangle.bottom + window.scrollY - tooltipRectangle.height;
+        this._position.left = triggerRectangle.right + window.scrollX + 4;
         break;
 
       default:
@@ -146,110 +159,88 @@ export class FhiTooltip extends LitElement {
     }
 
     if (this._position.top < window.scrollY) {
-      if (placement.startsWith('top')) {
-        this._positionTooltip('bottom', iteration + 1);
-        return;
-      }
-
-      if (placement === 'leftStart') {
-        this._positionTooltip('bottom', iteration + 1);
-        return;
-      }
-
-      if (placement.startsWith('left')) {
-        this._positionTooltip('leftStart', iteration + 1);
-        return;
-      }
-
-      if (placement === 'rightStart') {
-        this._positionTooltip('bottom', iteration + 1);
-        return;
-      }
-
-      if (placement.startsWith('right')) {
-        this._positionTooltip('rightStart', iteration + 1);
-        return;
+      switch (true) {
+        case placement.startsWith('top'):
+          this._positionTooltip('bottom', iteration + 1);
+          return;
+        case placement === 'leftStart':
+          this._positionTooltip('bottom', iteration + 1);
+          return;
+        case placement.startsWith('left'):
+          this._positionTooltip('leftStart', iteration + 1);
+          return;
+        case placement === 'rightStart':
+          this._positionTooltip('bottom', iteration + 1);
+          return;
+        case placement.startsWith('right'):
+          this._positionTooltip('rightStart', iteration + 1);
+          return;
       }
     }
 
     if (this._position.left < window.scrollX) {
-      if (placement.startsWith('left')) {
-        this._positionTooltip('right', iteration + 1);
-        return;
-      }
-
-      if (placement === 'topStart') {
-        this._positionTooltip('right', iteration + 1);
-        return;
-      }
-
-      if (placement.startsWith('top')) {
-        this._positionTooltip('topStart', iteration + 1);
-        return;
-      }
-
-      if (placement === 'bottomStart') {
-        this._positionTooltip('right', iteration + 1);
-        return;
-      }
-
-      if (placement.startsWith('bottom')) {
-        this._positionTooltip('bottomStart', iteration + 1);
-        return;
+      switch (true) {
+        case placement.startsWith('left'):
+          this._positionTooltip('right', iteration + 1);
+          return;
+        case placement === 'topStart':
+          this._positionTooltip('right', iteration + 1);
+          return;
+        case placement.startsWith('top'):
+          this._positionTooltip('topStart', iteration + 1);
+          return;
+        case placement === 'bottomStart':
+          this._positionTooltip('right', iteration + 1);
+          return;
+        case placement.startsWith('bottom'):
+          this._positionTooltip('bottomStart', iteration + 1);
+          return;
       }
     }
 
-    if (this._position.left + tooltipRect.width > window.innerWidth) {
-      if (placement.startsWith('right')) {
-        this._positionTooltip('left', iteration + 1);
-        return;
-      }
-
-      if (placement === 'topEnd') {
-        this._positionTooltip('left', iteration + 1);
-        return;
-      }
-
-      if (placement.startsWith('top')) {
-        this._positionTooltip('topEnd', iteration + 1);
-        return;
-      }
-
-      if (placement === 'bottomEnd') {
-        this._positionTooltip('left', iteration + 1);
-        return;
-      }
-
-      if (placement.startsWith('bottom')) {
-        this._positionTooltip('bottomEnd', iteration + 1);
-        return;
+    if (
+      this._position.left + tooltipRectangle.width >
+      window.scrollX + window.innerWidth
+    ) {
+      switch (true) {
+        case placement.startsWith('right'):
+          this._positionTooltip('left', iteration + 1);
+          return;
+        case placement === 'topEnd':
+          this._positionTooltip('left', iteration + 1);
+          return;
+        case placement.startsWith('top'):
+          this._positionTooltip('topEnd', iteration + 1);
+          return;
+        case placement === 'bottomEnd':
+          this._positionTooltip('left', iteration + 1);
+          return;
+        case placement.startsWith('bottom'):
+          this._positionTooltip('bottomEnd', iteration + 1);
+          return;
       }
     }
 
-    if (this._position.top + tooltipRect.height > window.innerHeight) {
-      if (placement.startsWith('bottom')) {
-        this._positionTooltip('top', iteration + 1);
-        return;
-      }
-
-      if (placement === 'leftEnd') {
-        this._positionTooltip('top', iteration + 1);
-        return;
-      }
-
-      if (placement.startsWith('left')) {
-        this._positionTooltip('leftEnd', iteration + 1);
-        return;
-      }
-
-      if (placement === 'rightEnd') {
-        this._positionTooltip('top', iteration + 1);
-        return;
-      }
-
-      if (placement.startsWith('right')) {
-        this._positionTooltip('rightEnd', iteration + 1);
-        return;
+    if (
+      this._position.top + tooltipRectangle.height >
+      window.scrollX + window.innerHeight
+    ) {
+      switch (true) {
+        case placement.startsWith('bottom'):
+          this._positionTooltip('top', iteration + 1);
+          return;
+        case placement === 'leftEnd':
+          this._positionTooltip('top', iteration + 1);
+          return;
+        case placement.startsWith('left'):
+          this._positionTooltip('leftEnd', iteration + 1);
+          return;
+        case placement === 'rightEnd':
+          this._positionTooltip('top', iteration + 1);
+          return;
+        case placement.startsWith('right'):
+          this._positionTooltip('rightEnd', iteration + 1);
+          return;
       }
     }
   }
