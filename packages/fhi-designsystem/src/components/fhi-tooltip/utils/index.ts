@@ -24,9 +24,9 @@ export const calculateTooltipPosition = ({
   console.log('Positioning tooltip', placement, iteration);
 
   /*
-      If the tooltip is out of the viewport, and we could not find a valid position
-      after 5 iterations, we will just place it on top of the trigger
-    */
+    If the tooltip is out of the viewport, and we could not find a valid position
+    after 5 iterations, we will just place it on top of the trigger
+  */
   if (iteration > 4) {
     console.log('Tooltip out of bounds, placing on top');
 

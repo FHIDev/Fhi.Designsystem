@@ -23,7 +23,7 @@ export type TooltipPlacement =
 export class FhiTooltip extends LitElement {
   @property({ type: String }) message?: string = undefined;
 
-  @property({ type: String }) placement: TooltipPlacement = 'bottom';
+  @property({ type: String }) placement: TooltipPlacement = 'top';
 
   @property({ type: String }) width: string = 'max-content';
 
@@ -36,10 +36,10 @@ export class FhiTooltip extends LitElement {
   protected _timeoutId: number | undefined = undefined;
 
   @state()
-  protected _tooltipVisible = false;
+  protected _isVisible = false;
 
   @state()
-  protected _tooltipHiding = false;
+  protected _isHiding = false;
 
   @state()
   protected _position = {
@@ -51,15 +51,15 @@ export class FhiTooltip extends LitElement {
     this._positionTooltip({
       placement: this.placement,
     });
-    this._tooltipVisible = true;
+    this._isVisible = true;
   }
 
   private _hideTooltip() {
-    this._tooltipHiding = true;
+    this._isHiding = true;
 
     setTimeout(() => {
-      this._tooltipVisible = false;
-      this._tooltipHiding = false;
+      this._isVisible = false;
+      this._isHiding = false;
     }, 150);
   }
 
@@ -99,15 +99,15 @@ export class FhiTooltip extends LitElement {
     return html`
       <div
         id="tooltip-trigger"
-        @mouseenter=${() => this._handleMouseEnter()}
-        @mouseleave=${() => this._handleMouseLeave()}
+        @mouseenter=${this._handleMouseEnter}
+        @mouseleave=${this._handleMouseLeave}
       >
         <slot></slot>
       </div>
       <section
         id="tooltip"
-        ?visible=${this._tooltipVisible}
-        ?hiding=${this._tooltipHiding}
+        ?visible=${this._isVisible}
+        ?hiding=${this._isHiding}
         style="
           top: ${this._position.top ? this._position.top + 'px' : 'auto'};
           left: ${this._position.left ? this._position.left + 'px' : 'auto'};
