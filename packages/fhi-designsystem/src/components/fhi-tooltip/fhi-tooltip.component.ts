@@ -36,8 +36,6 @@ export class FhiTooltip extends LitElement {
   protected _position = {
     top: 0,
     left: 0,
-    right: 0,
-    bottom: 0,
   };
 
   private _showTooltip() {
@@ -69,20 +67,14 @@ export class FhiTooltip extends LitElement {
           window.scrollX +
           triggerRect.width / 2 -
           tooltipRect.width / 2;
-        this._position.right = 0;
-        this._position.bottom = 0;
         break;
       case 'topStart':
         this._position.top = triggerRect.top - tooltipRect.height - 4;
         this._position.left = triggerRect.left;
-        this._position.right = 0;
-        this._position.bottom = 0;
         break;
       case 'topEnd':
         this._position.top = triggerRect.top - tooltipRect.height - 4;
         this._position.left = triggerRect.right - tooltipRect.width;
-        this._position.right = 0;
-        this._position.bottom = 0;
         break;
 
       case 'bottom':
@@ -92,20 +84,14 @@ export class FhiTooltip extends LitElement {
           window.scrollX +
           triggerRect.width / 2 -
           tooltipRect.width / 2;
-        this._position.right = 0;
-        this._position.bottom = 0;
         break;
       case 'bottomStart':
         this._position.top = triggerRect.bottom + 4;
         this._position.left = triggerRect.left;
-        this._position.right = 0;
-        this._position.bottom = 0;
         break;
       case 'bottomEnd':
         this._position.top = triggerRect.bottom + 4;
         this._position.left = triggerRect.right - tooltipRect.width;
-        this._position.right = 0;
-        this._position.bottom = 0;
         break;
 
       case 'left':
@@ -115,20 +101,14 @@ export class FhiTooltip extends LitElement {
           triggerRect.height / 2 -
           tooltipRect.height / 2;
         this._position.left = triggerRect.left - tooltipRect.width - 4;
-        this._position.right = 0;
-        this._position.bottom = 0;
         break;
       case 'leftStart':
         this._position.top = triggerRect.top;
         this._position.left = triggerRect.left - tooltipRect.width - 4;
-        this._position.right = 0;
-        this._position.bottom = 0;
         break;
       case 'leftEnd':
         this._position.top = triggerRect.bottom - tooltipRect.height;
         this._position.left = triggerRect.left - tooltipRect.width - 4;
-        this._position.right = 0;
-        this._position.bottom = 0;
         break;
 
       case 'right':
@@ -138,20 +118,14 @@ export class FhiTooltip extends LitElement {
           triggerRect.height / 2 -
           tooltipRect.height / 2;
         this._position.left = triggerRect.right + 4;
-        this._position.right = 0;
-        this._position.bottom = 0;
         break;
       case 'rightStart':
         this._position.top = triggerRect.top;
         this._position.left = triggerRect.right + 4;
-        this._position.right = 0;
-        this._position.bottom = 0;
         break;
       case 'rightEnd':
         this._position.top = triggerRect.bottom - tooltipRect.height;
         this._position.left = triggerRect.right + 4;
-        this._position.right = 0;
-        this._position.bottom = 0;
         break;
 
       default:
@@ -175,11 +149,7 @@ export class FhiTooltip extends LitElement {
         ?hiding=${this._tooltipHiding}
         style="
           top: ${this._position.top ? this._position.top + 'px' : 'auto'};
-          bottom: ${this._position.bottom
-          ? this._position.bottom + 'px'
-          : 'auto'};
           left: ${this._position.left ? this._position.left + 'px' : 'auto'};
-          right: ${this._position.right ? this._position.right + 'px' : 'auto'};
           "
       >
         <span>${this.message}</span>
