@@ -111,7 +111,7 @@ export const calculateTooltipPosition = ({
         window.scrollY +
         triggerRectangle.height / 2 -
         tooltipRectangle.height / 2;
-      currentPosition.left = triggerRectangle.right + 4;
+      currentPosition.left = triggerRectangle.right + window.scrollX + 4;
       break;
     case 'rightStart':
       currentPosition.top = triggerRectangle.top + window.scrollY;
@@ -124,12 +124,12 @@ export const calculateTooltipPosition = ({
       break;
 
     default:
-      calculateTooltipPosition({
+      return calculateTooltipPosition({
         placement: 'top',
         tooltipReference,
         triggerReference,
+        currentPosition,
       });
-      break;
   }
 
   if (skipOutOfBoundsCheck) {
