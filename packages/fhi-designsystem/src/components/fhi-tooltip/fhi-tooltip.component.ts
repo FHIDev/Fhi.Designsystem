@@ -21,7 +21,9 @@ type TooltipPlacement =
 export class FhiTooltip extends LitElement {
   @property({ type: String }) message?: string = undefined;
 
-  @property({ type: String }) placement: TooltipPlacement = 'rightEnd';
+  @property({ type: String }) placement: TooltipPlacement = 'right';
+
+  @property({ type: String }) width: string = 'max-content';
 
   @query('#tooltip-trigger') _trigger!: HTMLElement;
   @query('#tooltip') _tooltip!: HTMLElement;
@@ -52,7 +54,17 @@ export class FhiTooltip extends LitElement {
     }, 150);
   }
 
-  private _positionTooltip(placement: TooltipPlacement) {
+  private _positionTooltip(placement: TooltipPlacement, iteration = 0) {
+    console.log(placement, iteration);
+
+    // Prevent infinite loop
+    if (iteration > 4) {
+      console.log(
+        'Tried to move tooltip in bounds. Could not find a position.',
+      );
+      return;
+    }
+
     const tooltip = this._tooltip;
     const trigger = this._trigger;
 
@@ -132,6 +144,114 @@ export class FhiTooltip extends LitElement {
         this._positionTooltip('top');
         break;
     }
+
+    if (this._position.top < window.scrollY) {
+      if (placement.startsWith('top')) {
+        this._positionTooltip('bottom', iteration + 1);
+        return;
+      }
+
+      if (placement === 'leftStart') {
+        this._positionTooltip('bottom', iteration + 1);
+        return;
+      }
+
+      if (placement.startsWith('left')) {
+        this._positionTooltip('leftStart', iteration + 1);
+        return;
+      }
+
+      if (placement === 'rightStart') {
+        this._positionTooltip('bottom', iteration + 1);
+        return;
+      }
+
+      if (placement.startsWith('right')) {
+        this._positionTooltip('rightStart', iteration + 1);
+        return;
+      }
+    }
+
+    if (this._position.left < window.scrollX) {
+      if (placement.startsWith('left')) {
+        this._positionTooltip('right', iteration + 1);
+        return;
+      }
+
+      if (placement === 'topStart') {
+        this._positionTooltip('right', iteration + 1);
+        return;
+      }
+
+      if (placement.startsWith('top')) {
+        this._positionTooltip('topStart', iteration + 1);
+        return;
+      }
+
+      if (placement === 'bottomStart') {
+        this._positionTooltip('right', iteration + 1);
+        return;
+      }
+
+      if (placement.startsWith('bottom')) {
+        this._positionTooltip('bottomStart', iteration + 1);
+        return;
+      }
+    }
+
+    if (this._position.left + tooltipRect.width > window.innerWidth) {
+      if (placement.startsWith('right')) {
+        this._positionTooltip('left', iteration + 1);
+        return;
+      }
+
+      if (placement === 'topEnd') {
+        this._positionTooltip('left', iteration + 1);
+        return;
+      }
+
+      if (placement.startsWith('top')) {
+        this._positionTooltip('topEnd', iteration + 1);
+        return;
+      }
+
+      if (placement === 'bottomEnd') {
+        this._positionTooltip('left', iteration + 1);
+        return;
+      }
+
+      if (placement.startsWith('bottom')) {
+        this._positionTooltip('bottomEnd', iteration + 1);
+        return;
+      }
+    }
+
+    if (this._position.top + tooltipRect.height > window.innerHeight) {
+      if (placement.startsWith('bottom')) {
+        this._positionTooltip('top', iteration + 1);
+        return;
+      }
+
+      if (placement === 'leftEnd') {
+        this._positionTooltip('top', iteration + 1);
+        return;
+      }
+
+      if (placement.startsWith('left')) {
+        this._positionTooltip('leftEnd', iteration + 1);
+        return;
+      }
+
+      if (placement === 'rightEnd') {
+        this._positionTooltip('top', iteration + 1);
+        return;
+      }
+
+      if (placement.startsWith('right')) {
+        this._positionTooltip('rightEnd', iteration + 1);
+        return;
+      }
+    }
   }
 
   render() {
@@ -150,6 +270,7 @@ export class FhiTooltip extends LitElement {
         style="
           top: ${this._position.top ? this._position.top + 'px' : 'auto'};
           left: ${this._position.left ? this._position.left + 'px' : 'auto'};
+          width: ${this.width};
           "
       >
         <span>${this.message}</span>
