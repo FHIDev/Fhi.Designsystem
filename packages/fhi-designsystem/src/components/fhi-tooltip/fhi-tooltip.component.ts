@@ -1,7 +1,7 @@
 import { html, css, LitElement } from 'lit';
 import { customElement, property, query, state } from 'lit/decorators.js';
 
-import { calculateTooltipPosition } from './utils';
+import { calculateTooltipPosition, restingPosition } from './utils';
 
 export const FhiTooltipSelector = 'fhi-tooltip';
 
@@ -25,11 +25,11 @@ export class FhiTooltip extends LitElement {
 
   @property({ type: String }) placement: TooltipPlacement = 'top';
 
-  @property({ type: String }) width: string = 'max-content';
-
   @property({ type: String }) delay: number = 500;
 
-  @query('#tooltip-trigger') _trigger!: HTMLElement;
+  @property({ type: String }) trigger: 'click' | 'hover' = 'click';
+
+  @query('#tooltip-anchor') _anchor!: HTMLElement;
   @query('#tooltip') _tooltip!: HTMLElement;
 
   @state()
@@ -39,34 +39,59 @@ export class FhiTooltip extends LitElement {
   protected _isVisible = false;
 
   @state()
-  protected _isHiding = false;
+  protected _isFadingOut = false;
 
   @state()
-  protected _position = {
-    top: -1,
-    left: -1,
+  protected _position = restingPosition;
+
+  constructor() {
+    super();
+
+    window.addEventListener('resize', this.handleWindowResize);
+  }
+
+  private handleWindowResize = () => {
+    if (this._isVisible) {
+      this._positionTooltip({
+        placement: this.placement,
+      });
+    }
   };
 
+  private resetTooltipPosition() {
+    this._position = restingPosition;
+  }
+
   private _showTooltip() {
+    if (this._isVisible) {
+      return;
+    }
+
     this._positionTooltip({
       placement: this.placement,
     });
+
     this._isVisible = true;
   }
 
   private _hideTooltip() {
-    this._isHiding = true;
+    if (!this._isVisible) {
+      return;
+    }
+
+    this._isFadingOut = true;
 
     setTimeout(() => {
       this._isVisible = false;
-      this._isHiding = false;
+      this._isFadingOut = false;
+
+      this.resetTooltipPosition();
     }, 150);
   }
 
   private _positionTooltip({
     placement,
     iteration = 0,
-    currentPosition = { ...this._position },
     skipOutOfBoundsCheck = false,
   }: {
     placement: TooltipPlacement;
@@ -76,42 +101,55 @@ export class FhiTooltip extends LitElement {
   }) {
     this._position = calculateTooltipPosition({
       tooltipReference: this._tooltip,
-      triggerReference: this._trigger,
+      anchorReference: this._anchor,
       placement,
-      currentPosition,
       iteration,
       skipOutOfBoundsCheck,
     });
   }
 
   private _handleMouseEnter() {
+    if (this.trigger !== 'hover') {
+      return;
+    }
+
     this._timeoutId = setTimeout(() => {
       this._showTooltip();
     }, this.delay) as unknown as number;
   }
 
   private _handleMouseLeave() {
+    if (this.trigger !== 'hover') {
+      return;
+    }
+
     clearTimeout(this._timeoutId);
     this._hideTooltip();
+  }
+
+  private _handleClick() {
+    if (this.trigger === 'click') {
+      this._showTooltip();
+    }
   }
 
   render() {
     return html`
       <div
-        id="tooltip-trigger"
+        id="tooltip-anchor"
         @mouseenter=${this._handleMouseEnter}
         @mouseleave=${this._handleMouseLeave}
+        @click=${this._handleClick}
       >
         <slot></slot>
       </div>
       <section
         id="tooltip"
         ?visible=${this._isVisible}
-        ?hiding=${this._isHiding}
+        ?fading-out=${this._isFadingOut}
         style="
-          top: ${this._position.top ? this._position.top + 'px' : 'auto'};
-          left: ${this._position.left ? this._position.left + 'px' : 'auto'};
-          width: ${this.width};
+          top: ${this._position.top + 'px'};
+          left: ${this._position.left + 'px'};
           "
       >
         <span>${this.message}</span>
@@ -138,7 +176,7 @@ export class FhiTooltip extends LitElement {
       --dimension-max-width: 18.75rem;
     }
 
-    #tooltip-trigger {
+    #tooltip-anchor {
       width: min-content;
       height: min-content;
     }
@@ -166,7 +204,7 @@ export class FhiTooltip extends LitElement {
         visibility: visible;
         opacity: 1;
       }
-      &[hiding] {
+      &[fading-out] {
         visibility: visible;
         opacity: 0;
       }
