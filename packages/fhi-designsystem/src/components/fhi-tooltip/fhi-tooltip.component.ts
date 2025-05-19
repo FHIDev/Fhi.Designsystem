@@ -48,6 +48,7 @@ export class FhiTooltip extends LitElement {
     super();
 
     window.addEventListener('resize', this.handleWindowResize);
+    window.addEventListener('scroll', this.handleWindowResize);
   }
 
   private handleWindowResize = () => {
@@ -129,7 +130,11 @@ export class FhiTooltip extends LitElement {
 
   private _handleClick() {
     if (this.trigger === 'click') {
-      this._showTooltip();
+      if (this._isVisible) {
+        this._hideTooltip();
+      } else {
+        this._showTooltip();
+      }
     }
   }
 
@@ -189,6 +194,7 @@ export class FhiTooltip extends LitElement {
         opacity: 0;
         transition: opacity 0.15s ease-in-out;
         max-width: var(--dimension-max-width);
+        width: max-content;
         padding: var(--dimension-padding);
         border-radius: var(--dimension-border-radius);
         background-color: var(--color-background);
