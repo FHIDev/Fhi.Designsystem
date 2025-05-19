@@ -1,27 +1,29 @@
 import { TooltipPlacement } from '../fhi-tooltip.component';
 
+export const restingPosition = {
+  top: -1000,
+  left: -1000,
+};
+
 export const calculateTooltipPosition = ({
   tooltipReference,
-  triggerReference,
+  anchorReference,
   placement,
   iteration = 0,
-  currentPosition = {
-    top: -1,
-    left: -1,
-  },
   skipOutOfBoundsCheck = false,
 }: {
   tooltipReference: HTMLElement;
-  triggerReference: HTMLElement;
+  anchorReference: HTMLElement;
   placement: TooltipPlacement;
   iteration?: number;
-  currentPosition?: { top: number; left: number };
   skipOutOfBoundsCheck?: boolean;
 }): {
   top: number;
   left: number;
 } => {
   console.log('Positioning tooltip', placement, iteration);
+
+  const currentPosition = { ...restingPosition };
 
   /*
     If the tooltip is out of the viewport, and we could not find a valid position
@@ -35,100 +37,99 @@ export const calculateTooltipPosition = ({
         placement: 'top',
         skipOutOfBoundsCheck: true,
         tooltipReference,
-        triggerReference,
+        anchorReference: anchorReference,
       });
     }
   }
 
-  const triggerRectangle = triggerReference.getBoundingClientRect();
+  const anchorRectangle = anchorReference.getBoundingClientRect();
   const tooltipRectangle = tooltipReference.getBoundingClientRect();
 
   // Calculate the position of the tooltip based on the trigger position and the given placement
   switch (placement) {
     case 'top':
       currentPosition.top =
-        triggerRectangle.top + window.scrollY - tooltipRectangle.height - 4;
+        anchorRectangle.top + window.scrollY - tooltipRectangle.height - 4;
       currentPosition.left =
-        triggerRectangle.left +
+        anchorRectangle.left +
         window.scrollX +
-        triggerRectangle.width / 2 -
+        anchorRectangle.width / 2 -
         tooltipRectangle.width / 2;
       break;
     case 'topStart':
       currentPosition.top =
-        triggerRectangle.top + window.scrollY - tooltipRectangle.height - 4;
-      currentPosition.left = triggerRectangle.left + window.scrollX;
+        anchorRectangle.top + window.scrollY - tooltipRectangle.height - 4;
+      currentPosition.left = anchorRectangle.left + window.scrollX;
       break;
     case 'topEnd':
       currentPosition.top =
-        triggerRectangle.top + window.scrollY - tooltipRectangle.height - 4;
+        anchorRectangle.top + window.scrollY - tooltipRectangle.height - 4;
       currentPosition.left =
-        triggerRectangle.right + window.scrollX - tooltipRectangle.width;
+        anchorRectangle.right + window.scrollX - tooltipRectangle.width;
       break;
 
     case 'bottom':
-      currentPosition.top = triggerRectangle.bottom + window.scrollY + 4;
+      currentPosition.top = anchorRectangle.bottom + window.scrollY + 4;
       currentPosition.left =
-        triggerRectangle.left +
+        anchorRectangle.left +
         window.scrollX +
-        triggerRectangle.width / 2 -
+        anchorRectangle.width / 2 -
         tooltipRectangle.width / 2;
       break;
     case 'bottomStart':
-      currentPosition.top = triggerRectangle.bottom + window.scrollY + 4;
-      currentPosition.left = triggerRectangle.left + window.scrollX;
+      currentPosition.top = anchorRectangle.bottom + window.scrollY + 4;
+      currentPosition.left = anchorRectangle.left + window.scrollX;
       break;
     case 'bottomEnd':
-      currentPosition.top = triggerRectangle.bottom + window.scrollY + 4;
+      currentPosition.top = anchorRectangle.bottom + window.scrollY + 4;
       currentPosition.left =
-        triggerRectangle.right + window.scrollX - tooltipRectangle.width;
+        anchorRectangle.right + window.scrollX - tooltipRectangle.width;
       break;
 
     case 'left':
       currentPosition.top =
-        triggerRectangle.top +
+        anchorRectangle.top +
         window.scrollY +
-        triggerRectangle.height / 2 -
+        anchorRectangle.height / 2 -
         tooltipRectangle.height / 2;
       currentPosition.left =
-        triggerRectangle.left + window.scrollX - tooltipRectangle.width - 4;
+        anchorRectangle.left + window.scrollX - tooltipRectangle.width - 4;
       break;
     case 'leftStart':
-      currentPosition.top = triggerRectangle.top + window.scrollY;
+      currentPosition.top = anchorRectangle.top + window.scrollY;
       currentPosition.left =
-        triggerRectangle.left + window.scrollX - tooltipRectangle.width - 4;
+        anchorRectangle.left + window.scrollX - tooltipRectangle.width - 4;
       break;
     case 'leftEnd':
       currentPosition.top =
-        triggerRectangle.bottom - tooltipRectangle.height + window.scrollY;
+        anchorRectangle.bottom - tooltipRectangle.height + window.scrollY;
       currentPosition.left =
-        triggerRectangle.left + window.scrollX - tooltipRectangle.width - 4;
+        anchorRectangle.left + window.scrollX - tooltipRectangle.width - 4;
       break;
 
     case 'right':
       currentPosition.top =
-        triggerRectangle.top +
+        anchorRectangle.top +
         window.scrollY +
-        triggerRectangle.height / 2 -
+        anchorRectangle.height / 2 -
         tooltipRectangle.height / 2;
-      currentPosition.left = triggerRectangle.right + window.scrollX + 4;
+      currentPosition.left = anchorRectangle.right + window.scrollX + 4;
       break;
     case 'rightStart':
-      currentPosition.top = triggerRectangle.top + window.scrollY;
-      currentPosition.left = triggerRectangle.right + window.scrollX + 4;
+      currentPosition.top = anchorRectangle.top + window.scrollY;
+      currentPosition.left = anchorRectangle.right + window.scrollX + 4;
       break;
     case 'rightEnd':
       currentPosition.top =
-        triggerRectangle.bottom + window.scrollY - tooltipRectangle.height;
-      currentPosition.left = triggerRectangle.right + window.scrollX + 4;
+        anchorRectangle.bottom + window.scrollY - tooltipRectangle.height;
+      currentPosition.left = anchorRectangle.right + window.scrollX + 4;
       break;
 
     default:
       return calculateTooltipPosition({
         placement: 'top',
         tooltipReference,
-        triggerReference,
-        currentPosition,
+        anchorReference,
       });
   }
 
@@ -145,41 +146,36 @@ export const calculateTooltipPosition = ({
         return calculateTooltipPosition({
           placement: 'bottom',
           iteration: iteration + 1,
-          currentPosition,
           tooltipReference,
-          triggerReference,
+          anchorReference: anchorReference,
         });
       case placement === 'leftStart':
         return calculateTooltipPosition({
           placement: 'bottom',
           iteration: iteration + 1,
-          currentPosition,
           tooltipReference,
-          triggerReference,
+          anchorReference: anchorReference,
         });
       case placement.startsWith('left'):
         return calculateTooltipPosition({
           placement: 'leftStart',
           iteration: iteration + 1,
-          currentPosition,
           tooltipReference,
-          triggerReference,
+          anchorReference: anchorReference,
         });
       case placement === 'rightStart':
         return calculateTooltipPosition({
           placement: 'bottom',
           iteration: iteration + 1,
-          currentPosition,
           tooltipReference,
-          triggerReference,
+          anchorReference: anchorReference,
         });
       case placement.startsWith('right'):
         return calculateTooltipPosition({
           placement: 'rightStart',
           iteration: iteration + 1,
-          currentPosition,
           tooltipReference,
-          triggerReference,
+          anchorReference: anchorReference,
         });
     }
   }
@@ -194,41 +190,36 @@ export const calculateTooltipPosition = ({
         return calculateTooltipPosition({
           placement: 'left',
           iteration: iteration + 1,
-          currentPosition,
           tooltipReference,
-          triggerReference,
+          anchorReference: anchorReference,
         });
       case placement === 'topEnd':
         return calculateTooltipPosition({
           placement: 'left',
           iteration: iteration + 1,
-          currentPosition,
           tooltipReference,
-          triggerReference,
+          anchorReference: anchorReference,
         });
       case placement.startsWith('top'):
         return calculateTooltipPosition({
           placement: 'topEnd',
           iteration: iteration + 1,
-          currentPosition,
           tooltipReference,
-          triggerReference,
+          anchorReference: anchorReference,
         });
       case placement === 'bottomEnd':
         return calculateTooltipPosition({
           placement: 'left',
           iteration: iteration + 1,
-          currentPosition,
           tooltipReference,
-          triggerReference,
+          anchorReference: anchorReference,
         });
       case placement.startsWith('bottom'):
         return calculateTooltipPosition({
           placement: 'bottomEnd',
           iteration: iteration + 1,
-          currentPosition,
           tooltipReference,
-          triggerReference,
+          anchorReference: anchorReference,
         });
     }
   }
@@ -243,41 +234,36 @@ export const calculateTooltipPosition = ({
         return calculateTooltipPosition({
           placement: 'top',
           iteration: iteration + 1,
-          currentPosition,
           tooltipReference,
-          triggerReference,
+          anchorReference: anchorReference,
         });
       case placement === 'leftEnd':
         return calculateTooltipPosition({
           placement: 'top',
           iteration: iteration + 1,
-          currentPosition,
           tooltipReference,
-          triggerReference,
+          anchorReference: anchorReference,
         });
       case placement.startsWith('left'):
         return calculateTooltipPosition({
           placement: 'leftEnd',
           iteration: iteration + 1,
-          currentPosition,
           tooltipReference,
-          triggerReference,
+          anchorReference: anchorReference,
         });
       case placement === 'rightEnd':
         return calculateTooltipPosition({
           placement: 'top',
           iteration: iteration + 1,
-          currentPosition,
           tooltipReference,
-          triggerReference,
+          anchorReference: anchorReference,
         });
       case placement.startsWith('right'):
         return calculateTooltipPosition({
           placement: 'rightEnd',
           iteration: iteration + 1,
-          currentPosition,
           tooltipReference,
-          triggerReference,
+          anchorReference: anchorReference,
         });
     }
   }
@@ -289,41 +275,36 @@ export const calculateTooltipPosition = ({
         return calculateTooltipPosition({
           placement: 'right',
           iteration: iteration + 1,
-          currentPosition,
           tooltipReference,
-          triggerReference,
+          anchorReference: anchorReference,
         });
       case placement === 'topStart':
         return calculateTooltipPosition({
           placement: 'right',
           iteration: iteration + 1,
-          currentPosition,
           tooltipReference,
-          triggerReference,
+          anchorReference: anchorReference,
         });
       case placement.startsWith('top'):
         return calculateTooltipPosition({
           placement: 'topStart',
           iteration: iteration + 1,
-          currentPosition,
           tooltipReference,
-          triggerReference,
+          anchorReference: anchorReference,
         });
       case placement === 'bottomStart':
         return calculateTooltipPosition({
           placement: 'right',
           iteration: iteration + 1,
-          currentPosition,
           tooltipReference,
-          triggerReference,
+          anchorReference: anchorReference,
         });
       case placement.startsWith('bottom'):
         return calculateTooltipPosition({
           placement: 'bottomStart',
           iteration: iteration + 1,
-          currentPosition,
           tooltipReference,
-          triggerReference,
+          anchorReference: anchorReference,
         });
     }
   }
