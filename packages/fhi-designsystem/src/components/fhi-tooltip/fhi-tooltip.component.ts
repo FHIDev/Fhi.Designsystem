@@ -27,7 +27,7 @@ export class FhiTooltip extends LitElement {
 
   @property({ type: String }) delay: number = 500;
 
-  @property({ type: String }) trigger: 'click' | 'hover' = 'click';
+  @property({ type: String }) trigger: 'click' | 'hover' = 'hover';
 
   @query('#tooltip-anchor') _anchor!: HTMLElement;
   @query('#tooltip') _tooltip!: HTMLElement;
@@ -64,6 +64,8 @@ export class FhiTooltip extends LitElement {
   }
 
   private _showTooltip() {
+    this._tooltip.showPopover();
+
     if (this._isVisible) {
       return;
     }
@@ -85,6 +87,8 @@ export class FhiTooltip extends LitElement {
     setTimeout(() => {
       this._isVisible = false;
       this._isFadingOut = false;
+
+      this._tooltip.hidePopover();
 
       this.resetTooltipPosition();
     }, 150);
@@ -150,11 +154,12 @@ export class FhiTooltip extends LitElement {
       </div>
       <section
         id="tooltip"
+        popover="manual"
         ?visible=${this._isVisible}
         ?fading-out=${this._isFadingOut}
         style="
-          top: ${this._position.top + 'px'};
-          left: ${this._position.left + 'px'};
+          transform: translate3d(${this._position.left}px, ${this._position
+          .top}px, 0);
           "
       >
         <span>${this.message}</span>
@@ -183,13 +188,14 @@ export class FhiTooltip extends LitElement {
 
     :host {
       #tooltip-anchor {
-        width: min-content;
-        height: min-content;
+        width: max-content;
+        height: max-content;
       }
 
       #tooltip {
-        z-index: 1000;
-        position: absolute;
+        margin: 0;
+        border: none;
+        position: fixed;
         visibility: hidden;
         opacity: 0;
         transition: opacity 0.15s ease-in-out;
