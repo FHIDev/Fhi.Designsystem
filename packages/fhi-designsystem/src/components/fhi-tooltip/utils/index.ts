@@ -1,19 +1,20 @@
 import { TooltipPlacement } from '../fhi-tooltip.component';
 
 export const restingPosition = {
-  top: -1000,
-  left: -1000,
+  top: 0,
+  left: 0,
 };
 
+// maybe this whole file can be replaced with https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_anchor_positioning in the future
 export const calculateTooltipPosition = ({
-  tooltipReference,
-  anchorReference,
+  tooltipRect,
+  anchorRect,
   placement,
   iteration = 0,
   skipOutOfBoundsCheck = false,
 }: {
-  tooltipReference: HTMLElement;
-  anchorReference: HTMLElement;
+  tooltipRect: DOMRect;
+  anchorRect: DOMRect;
   placement: TooltipPlacement;
   iteration?: number;
   skipOutOfBoundsCheck?: boolean;
@@ -21,9 +22,9 @@ export const calculateTooltipPosition = ({
   top: number;
   left: number;
 } => {
-  console.log('Positioning tooltip', placement, iteration);
+  const position = { ...restingPosition };
 
-  const currentPosition = { ...restingPosition };
+  console.log('Calculating tooltip position', placement, iteration);
 
   /*
     If the tooltip is out of the viewport, and we could not find a valid position
@@ -36,279 +37,275 @@ export const calculateTooltipPosition = ({
       return calculateTooltipPosition({
         placement: 'top',
         skipOutOfBoundsCheck: true,
-        tooltipReference,
-        anchorReference: anchorReference,
+        tooltipRect,
+        anchorRect,
       });
     }
   }
 
-  const anchorRectangle = anchorReference.getBoundingClientRect();
-  const tooltipRectangle = tooltipReference.getBoundingClientRect();
-
   // Calculate the position of the tooltip based on the trigger position and the given placement
   switch (placement) {
     case 'top':
-      currentPosition.top =
-        anchorRectangle.top + window.scrollY - tooltipRectangle.height - 4;
-      currentPosition.left =
-        anchorRectangle.left +
-        window.scrollX +
-        anchorRectangle.width / 2 -
-        tooltipRectangle.width / 2;
+      position.top = anchorRect.top - tooltipRect.height - 4;
+      position.left =
+        anchorRect.left + anchorRect.width / 2 - tooltipRect.width / 2;
       break;
     case 'topStart':
-      currentPosition.top =
-        anchorRectangle.top + window.scrollY - tooltipRectangle.height - 4;
-      currentPosition.left = anchorRectangle.left + window.scrollX;
+      position.top = anchorRect.top - tooltipRect.height - 4;
+      position.left = anchorRect.left;
       break;
     case 'topEnd':
-      currentPosition.top =
-        anchorRectangle.top + window.scrollY - tooltipRectangle.height - 4;
-      currentPosition.left =
-        anchorRectangle.right + window.scrollX - tooltipRectangle.width;
+      position.top = anchorRect.top - tooltipRect.height - 4;
+      position.left = anchorRect.right - tooltipRect.width;
       break;
 
     case 'bottom':
-      currentPosition.top = anchorRectangle.bottom + window.scrollY + 4;
-      currentPosition.left =
-        anchorRectangle.left +
-        window.scrollX +
-        anchorRectangle.width / 2 -
-        tooltipRectangle.width / 2;
+      position.top = anchorRect.bottom + 4;
+      position.left =
+        anchorRect.left + anchorRect.width / 2 - tooltipRect.width / 2;
       break;
     case 'bottomStart':
-      currentPosition.top = anchorRectangle.bottom + window.scrollY + 4;
-      currentPosition.left = anchorRectangle.left + window.scrollX;
+      position.top = anchorRect.bottom + 4;
+      position.left = anchorRect.left;
       break;
     case 'bottomEnd':
-      currentPosition.top = anchorRectangle.bottom + window.scrollY + 4;
-      currentPosition.left =
-        anchorRectangle.right + window.scrollX - tooltipRectangle.width;
+      position.top = anchorRect.bottom + 4;
+      position.left = anchorRect.right - tooltipRect.width;
       break;
 
     case 'left':
-      currentPosition.top =
-        anchorRectangle.top +
-        window.scrollY +
-        anchorRectangle.height / 2 -
-        tooltipRectangle.height / 2;
-      currentPosition.left =
-        anchorRectangle.left + window.scrollX - tooltipRectangle.width - 4;
+      position.top =
+        anchorRect.top + anchorRect.height / 2 - tooltipRect.height / 2;
+      position.left = anchorRect.left - tooltipRect.width - 4;
       break;
     case 'leftStart':
-      currentPosition.top = anchorRectangle.top + window.scrollY;
-      currentPosition.left =
-        anchorRectangle.left + window.scrollX - tooltipRectangle.width - 4;
+      position.top = anchorRect.top;
+      position.left = anchorRect.left - tooltipRect.width - 4;
       break;
     case 'leftEnd':
-      currentPosition.top =
-        anchorRectangle.bottom - tooltipRectangle.height + window.scrollY;
-      currentPosition.left =
-        anchorRectangle.left + window.scrollX - tooltipRectangle.width - 4;
+      position.top = anchorRect.bottom - tooltipRect.height;
+      position.left = anchorRect.left - tooltipRect.width - 4;
       break;
 
     case 'right':
-      currentPosition.top =
-        anchorRectangle.top +
-        window.scrollY +
-        anchorRectangle.height / 2 -
-        tooltipRectangle.height / 2;
-      currentPosition.left = anchorRectangle.right + window.scrollX + 4;
+      position.top =
+        anchorRect.top + anchorRect.height / 2 - tooltipRect.height / 2;
+      position.left = anchorRect.right + 4;
       break;
     case 'rightStart':
-      currentPosition.top = anchorRectangle.top + window.scrollY;
-      currentPosition.left = anchorRectangle.right + window.scrollX + 4;
+      position.top = anchorRect.top;
+      position.left = anchorRect.right + 4;
       break;
     case 'rightEnd':
-      currentPosition.top =
-        anchorRectangle.bottom + window.scrollY - tooltipRectangle.height;
-      currentPosition.left = anchorRectangle.right + window.scrollX + 4;
+      position.top = anchorRect.bottom - tooltipRect.height;
+      position.left = anchorRect.right + 4;
       break;
 
     default:
       return calculateTooltipPosition({
         placement: 'top',
-        tooltipReference,
-        anchorReference,
+        tooltipRect,
+        anchorRect,
       });
   }
 
   if (skipOutOfBoundsCheck) {
-    return currentPosition;
+    return position;
   }
 
   // Check if the tooltip is out of bounds and recursively find a new position if so.
 
   // Top
-  if (currentPosition.top < window.scrollY) {
+  if (position.top < 0) {
     switch (true) {
       case placement.startsWith('top'):
         return calculateTooltipPosition({
           placement: 'bottom',
           iteration: iteration + 1,
-          tooltipReference,
-          anchorReference: anchorReference,
+          tooltipRect,
+          anchorRect,
         });
       case placement === 'leftStart':
         return calculateTooltipPosition({
           placement: 'bottom',
           iteration: iteration + 1,
-          tooltipReference,
-          anchorReference: anchorReference,
+          tooltipRect,
+          anchorRect,
         });
       case placement.startsWith('left'):
         return calculateTooltipPosition({
           placement: 'leftStart',
           iteration: iteration + 1,
-          tooltipReference,
-          anchorReference: anchorReference,
+          tooltipRect,
+          anchorRect,
         });
       case placement === 'rightStart':
         return calculateTooltipPosition({
           placement: 'bottom',
           iteration: iteration + 1,
-          tooltipReference,
-          anchorReference: anchorReference,
+          tooltipRect,
+          anchorRect,
         });
       case placement.startsWith('right'):
         return calculateTooltipPosition({
           placement: 'rightStart',
           iteration: iteration + 1,
-          tooltipReference,
-          anchorReference: anchorReference,
+          tooltipRect,
+          anchorRect,
         });
     }
   }
 
   // Right
-  if (
-    currentPosition.left + tooltipRectangle.width >
-    window.scrollX + window.innerWidth
-  ) {
+  if (position.left + tooltipRect.width > window.innerWidth) {
     switch (true) {
       case placement.startsWith('right'):
         return calculateTooltipPosition({
           placement: 'left',
           iteration: iteration + 1,
-          tooltipReference,
-          anchorReference: anchorReference,
+          tooltipRect,
+          anchorRect,
         });
       case placement === 'topEnd':
         return calculateTooltipPosition({
           placement: 'left',
           iteration: iteration + 1,
-          tooltipReference,
-          anchorReference: anchorReference,
+          tooltipRect,
+          anchorRect,
         });
       case placement.startsWith('top'):
         return calculateTooltipPosition({
           placement: 'topEnd',
           iteration: iteration + 1,
-          tooltipReference,
-          anchorReference: anchorReference,
+          tooltipRect,
+          anchorRect,
         });
       case placement === 'bottomEnd':
         return calculateTooltipPosition({
           placement: 'left',
           iteration: iteration + 1,
-          tooltipReference,
-          anchorReference: anchorReference,
+          tooltipRect,
+          anchorRect,
         });
       case placement.startsWith('bottom'):
         return calculateTooltipPosition({
           placement: 'bottomEnd',
           iteration: iteration + 1,
-          tooltipReference,
-          anchorReference: anchorReference,
+          tooltipRect,
+          anchorRect,
         });
     }
   }
 
   // Bottom
-  if (
-    currentPosition.top + tooltipRectangle.height >
-    window.scrollY + window.innerHeight
-  ) {
+  if (position.top + tooltipRect.height > window.innerHeight) {
     switch (true) {
       case placement.startsWith('bottom'):
         return calculateTooltipPosition({
           placement: 'top',
           iteration: iteration + 1,
-          tooltipReference,
-          anchorReference: anchorReference,
+          tooltipRect,
+          anchorRect,
         });
       case placement === 'leftEnd':
         return calculateTooltipPosition({
           placement: 'top',
           iteration: iteration + 1,
-          tooltipReference,
-          anchorReference: anchorReference,
+          tooltipRect,
+          anchorRect,
         });
       case placement.startsWith('left'):
         return calculateTooltipPosition({
           placement: 'leftEnd',
           iteration: iteration + 1,
-          tooltipReference,
-          anchorReference: anchorReference,
+          tooltipRect,
+          anchorRect,
         });
       case placement === 'rightEnd':
         return calculateTooltipPosition({
           placement: 'top',
           iteration: iteration + 1,
-          tooltipReference,
-          anchorReference: anchorReference,
+          tooltipRect,
+          anchorRect,
         });
       case placement.startsWith('right'):
         return calculateTooltipPosition({
           placement: 'rightEnd',
           iteration: iteration + 1,
-          tooltipReference,
-          anchorReference: anchorReference,
+          tooltipRect,
+          anchorRect,
         });
     }
   }
 
   // Left
-  if (currentPosition.left < window.scrollX) {
+  if (position.left < 0) {
     switch (true) {
       case placement.startsWith('left'):
         return calculateTooltipPosition({
           placement: 'right',
           iteration: iteration + 1,
-          tooltipReference,
-          anchorReference: anchorReference,
+          tooltipRect,
+          anchorRect,
         });
-      case placement === 'topStart':
+      case placement === 'topEnd':
         return calculateTooltipPosition({
           placement: 'right',
           iteration: iteration + 1,
-          tooltipReference,
-          anchorReference: anchorReference,
+          tooltipRect,
+          anchorRect,
         });
       case placement.startsWith('top'):
         return calculateTooltipPosition({
-          placement: 'topStart',
+          placement: 'topEnd',
           iteration: iteration + 1,
-          tooltipReference,
-          anchorReference: anchorReference,
+          tooltipRect,
+          anchorRect,
         });
       case placement === 'bottomStart':
         return calculateTooltipPosition({
           placement: 'right',
           iteration: iteration + 1,
-          tooltipReference,
-          anchorReference: anchorReference,
+          tooltipRect,
+          anchorRect,
         });
       case placement.startsWith('bottom'):
         return calculateTooltipPosition({
           placement: 'bottomStart',
           iteration: iteration + 1,
-          tooltipReference,
-          anchorReference: anchorReference,
+          tooltipRect,
+          anchorRect,
         });
     }
   }
 
-  // If the tooltip is not out of bounds, return the current position
-  return currentPosition;
+  return position;
 };
+
+export const getOverflowAncestors = (
+  element: HTMLElement,
+): (HTMLElement | Window)[] => {
+  const overflowAncestors: (HTMLElement | Window)[] = [];
+
+  let parent = element.parentElement;
+
+  while (parent) {
+    if (isOverflowElement(parent)) {
+      overflowAncestors.push(parent);
+    }
+    parent = parent.parentElement;
+  }
+
+  overflowAncestors.push(window);
+
+  return overflowAncestors;
+};
+
+function isOverflowElement(element: Element): boolean {
+  const { overflow, overflowX, overflowY, display } =
+    window.getComputedStyle(element);
+  return (
+    /auto|scroll|overlay|hidden|clip/.test(overflow + overflowY + overflowX) &&
+    !['inline', 'contents'].includes(display)
+  );
+}

@@ -1,7 +1,11 @@
 import { html, css, LitElement } from 'lit';
 import { customElement, property, query, state } from 'lit/decorators.js';
 
-import { calculateTooltipPosition, restingPosition } from './utils';
+import {
+  calculateTooltipPosition,
+  getOverflowAncestors,
+  restingPosition,
+} from './utils';
 
 export const FhiTooltipSelector = 'fhi-tooltip';
 
@@ -29,6 +33,8 @@ export class FhiTooltip extends LitElement {
 
   @property({ type: String }) trigger: 'click' | 'hover' = 'hover';
 
+  @property({ type: String, attribute: 'max-width' }) maxWidth? = '18.75rem';
+
   @query('#tooltip-anchor') _anchor!: HTMLElement;
   @query('#tooltip') _tooltip!: HTMLElement;
 
@@ -44,11 +50,33 @@ export class FhiTooltip extends LitElement {
   @state()
   protected _position = restingPosition;
 
+  @state()
+  protected _overflowAncestors: (HTMLElement | Window)[] = [];
+
   constructor() {
     super();
 
     window.addEventListener('resize', this.handleWindowResize);
-    window.addEventListener('scroll', this.handleWindowResize);
+
+    this._listenToAllAncestorScrollEvents();
+  }
+
+  disconnectedCallback() {
+    super.disconnectedCallback();
+
+    this._overflowAncestors.forEach(ancestor => {
+      ancestor.removeEventListener('scroll', this.handleWindowResize);
+      ancestor.removeEventListener('resize', this.handleWindowResize);
+    });
+  }
+
+  private _listenToAllAncestorScrollEvents() {
+    this._overflowAncestors = getOverflowAncestors(this);
+
+    this._overflowAncestors.forEach(ancestor => {
+      ancestor.addEventListener('scroll', this.handleWindowResize);
+      ancestor.addEventListener('resize', this.handleWindowResize);
+    });
   }
 
   private handleWindowResize = () => {
@@ -105,8 +133,8 @@ export class FhiTooltip extends LitElement {
     skipOutOfBoundsCheck?: boolean;
   }) {
     this._position = calculateTooltipPosition({
-      tooltipReference: this._tooltip,
-      anchorReference: this._anchor,
+      tooltipRect: this._tooltip.getBoundingClientRect(),
+      anchorRect: this._anchor.getBoundingClientRect(),
       placement,
       iteration,
       skipOutOfBoundsCheck,
@@ -160,6 +188,7 @@ export class FhiTooltip extends LitElement {
         style="
           transform: translate3d(${this._position.left}px, ${this._position
           .top}px, 0);
+          max-width: ${this.maxWidth};
           "
       >
         <span>${this.message}</span>
@@ -171,6 +200,7 @@ export class FhiTooltip extends LitElement {
     :host {
       --color-background: var(--fhi-color-neutral-base-active);
       --color-text: var(--fhi-color-neutral-text-inverted);
+      --color-border: none;
 
       --typography-font-family: var(--fhi-font-family-roboto-flex);
       --typography-font-size: var(--fhi-typography-body-small-font-size);
@@ -182,8 +212,9 @@ export class FhiTooltip extends LitElement {
       );
 
       --dimension-border-radius: var(--fhi-border-radius-050);
+      --dimension-border-width: none;
+
       --dimension-padding: var(--fhi-spacing-050) var(--fhi-spacing-100);
-      --dimension-max-width: 18.75rem;
     }
 
     :host {
@@ -194,12 +225,11 @@ export class FhiTooltip extends LitElement {
 
       #tooltip {
         margin: 0;
-        border: none;
+        border: var(--dimension-border-width) solid var(--color-border);
         position: fixed;
         visibility: hidden;
         opacity: 0;
         transition: opacity 0.15s ease-in-out;
-        max-width: var(--dimension-max-width);
         width: max-content;
         padding: var(--dimension-padding);
         border-radius: var(--dimension-border-radius);
