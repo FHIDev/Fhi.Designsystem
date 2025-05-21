@@ -34,18 +34,18 @@ export const calculateTooltipPosition = ({
     return null;
   }
 
-  // Calculate the position of the tooltip based on the trigger position and the given placement
+  // Calculate the position of the tooltip based on the anchor position and the given placement
   switch (placement) {
     case 'top':
       position.top = anchorRect.top - tooltipRect.height - 4;
       position.left =
         anchorRect.left + anchorRect.width / 2 - tooltipRect.width / 2;
       break;
-    case 'topStart':
+    case 'top-start':
       position.top = anchorRect.top - tooltipRect.height - 4;
       position.left = anchorRect.left;
       break;
-    case 'topEnd':
+    case 'top-end':
       position.top = anchorRect.top - tooltipRect.height - 4;
       position.left = anchorRect.right - tooltipRect.width;
       break;
@@ -55,11 +55,11 @@ export const calculateTooltipPosition = ({
       position.left =
         anchorRect.left + anchorRect.width / 2 - tooltipRect.width / 2;
       break;
-    case 'bottomStart':
+    case 'bottom-start':
       position.top = anchorRect.bottom + 4;
       position.left = anchorRect.left;
       break;
-    case 'bottomEnd':
+    case 'bottom-end':
       position.top = anchorRect.bottom + 4;
       position.left = anchorRect.right - tooltipRect.width;
       break;
@@ -69,11 +69,11 @@ export const calculateTooltipPosition = ({
         anchorRect.top + anchorRect.height / 2 - tooltipRect.height / 2;
       position.left = anchorRect.left - tooltipRect.width - 4;
       break;
-    case 'leftStart':
+    case 'left-start':
       position.top = anchorRect.top;
       position.left = anchorRect.left - tooltipRect.width - 4;
       break;
-    case 'leftEnd':
+    case 'left-end':
       position.top = anchorRect.bottom - tooltipRect.height;
       position.left = anchorRect.left - tooltipRect.width - 4;
       break;
@@ -83,11 +83,11 @@ export const calculateTooltipPosition = ({
         anchorRect.top + anchorRect.height / 2 - tooltipRect.height / 2;
       position.left = anchorRect.right + 4;
       break;
-    case 'rightStart':
+    case 'right-start':
       position.top = anchorRect.top;
       position.left = anchorRect.right + 4;
       break;
-    case 'rightEnd':
+    case 'right-end':
       position.top = anchorRect.bottom - tooltipRect.height;
       position.left = anchorRect.right + 4;
       break;
@@ -140,87 +140,87 @@ const getNextPlacement = (
     case 'top':
       switch (placement) {
         case 'top':
-        case 'rightEnd':
-        case 'leftEnd':
+        case 'right-end':
+        case 'left-end':
           return 'bottom';
-        case 'topStart':
-          return 'bottomStart';
-        case 'topEnd':
-          return 'bottomEnd';
-        case 'rightStart':
+        case 'top-start':
+          return 'bottom-start';
+        case 'top-end':
+          return 'bottom-end';
+        case 'right-start':
           return 'right';
-        case 'leftStart':
+        case 'left-start':
           return 'left';
         case 'left':
-          return 'leftEnd';
+          return 'left-end';
         case 'right':
-          return 'rightEnd';
+          return 'right-end';
         default:
           return 'bottom';
       }
     case 'right':
       switch (placement) {
         case 'top':
-          return 'topStart';
-        case 'topStart':
+          return 'top-start';
+        case 'top-start':
           return 'left';
-        case 'topEnd':
+        case 'top-end':
           return 'top';
         case 'bottom':
-          return 'bottomStart';
-        case 'bottomStart':
+          return 'bottom-start';
+        case 'bottom-start':
           return 'left';
-        case 'bottomEnd':
+        case 'bottom-end':
           return 'bottom';
         case 'right':
           return 'left';
-        case 'rightStart':
-          return 'leftStart';
-        case 'rightEnd':
-          return 'leftEnd';
+        case 'right-start':
+          return 'left-start';
+        case 'right-end':
+          return 'left-end';
         default:
           return 'left';
       }
     case 'bottom':
       switch (placement) {
-        case 'bottomStart':
-          return 'topStart';
-        case 'bottomEnd':
-          return 'topEnd';
+        case 'bottom-start':
+          return 'top-start';
+        case 'bottom-end':
+          return 'top-end';
         case 'left':
-          return 'leftStart';
-        case 'leftEnd':
+          return 'left-start';
+        case 'left-end':
           return 'left';
         case 'right':
-          return 'rightStart';
-        case 'rightEnd':
+          return 'right-start';
+        case 'right-end':
           return 'right';
         case 'bottom':
-        case 'leftStart':
-        case 'rightStart':
+        case 'left-start':
+        case 'right-start':
         default:
           return 'top';
       }
     case 'left':
       switch (placement) {
         case 'top':
-          return 'topEnd';
-        case 'topStart':
+          return 'top-end';
+        case 'top-start':
           return 'top';
-        case 'topEnd':
+        case 'top-end':
           return 'right';
         case 'bottom':
-          return 'bottomEnd';
-        case 'bottomStart':
+          return 'bottom-end';
+        case 'bottom-start':
           return 'bottom';
-        case 'bottomEnd':
+        case 'bottom-end':
           return 'right';
         case 'left':
           return 'right';
-        case 'leftStart':
-          return 'rightStart';
-        case 'leftEnd':
-          return 'rightEnd';
+        case 'left-start':
+          return 'right-start';
+        case 'left-end':
+          return 'right-end';
         default:
           return 'right';
       }
