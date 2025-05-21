@@ -1,24 +1,28 @@
 import { html, css, LitElement } from 'lit';
 import { customElement, property, query, state } from 'lit/decorators.js';
-import { autoUpdate } from '@floating-ui/dom';
-
-import { calculateTooltipPosition, restingPosition } from './utils';
+import {
+  computePosition,
+  autoUpdate,
+  shift,
+  flip,
+  offset,
+} from '@floating-ui/dom';
 
 export const FhiTooltipSelector = 'fhi-tooltip';
 
 export type TooltipPlacement =
   | 'top'
-  | 'topStart'
-  | 'topEnd'
+  | 'top-start'
+  | 'top-end'
   | 'bottom'
-  | 'bottomStart'
-  | 'bottomEnd'
+  | 'bottom-start'
+  | 'bottom-end'
   | 'left'
-  | 'leftStart'
-  | 'leftEnd'
+  | 'left-start'
+  | 'left-end'
   | 'right'
-  | 'rightStart'
-  | 'rightEnd';
+  | 'right-start'
+  | 'right-end';
 
 @customElement(FhiTooltipSelector)
 export class FhiTooltip extends LitElement {
@@ -35,8 +39,9 @@ export class FhiTooltip extends LitElement {
   @query('#tooltip-anchor') _anchor!: HTMLElement;
   @query('#tooltip') _tooltip!: HTMLElement;
 
-  @state()
   protected _timeoutId: number | undefined = undefined;
+
+  protected _autoPositioningCleanup: () => void = () => {};
 
   @state()
   protected _isVisible = false;
@@ -45,29 +50,19 @@ export class FhiTooltip extends LitElement {
   protected _isFadingOut = false;
 
   @state()
-  protected _position = restingPosition;
-
-  @state()
-  protected _autoPositioningCleanup: () => void = () => {};
-
-  constructor() {
-    super();
-  }
-
-  private resetTooltipPosition() {
-    this._position = restingPosition;
-  }
+  protected _position = {
+    top: 0,
+    left: 0,
+  };
 
   private _showTooltip() {
     if (this._isVisible) {
       return;
     }
 
-    this._tooltip.showPopover();
+    this._positionTooltip(this.placement);
 
-    this._positionTooltip({
-      placement: this.placement,
-    });
+    this._tooltip.showPopover();
 
     this._isVisible = true;
   }
@@ -85,40 +80,32 @@ export class FhiTooltip extends LitElement {
 
       this._tooltip.hidePopover();
 
-      this.resetTooltipPosition();
-
       this._autoPositioningCleanup();
     }, 150);
   }
 
-  private _positionTooltip({
-    placement,
-    iteration = 0,
-    skipOutOfBoundsCheck = false,
-  }: {
-    placement: TooltipPlacement;
-    iteration?: number;
-    currentPosition?: { top: number; left: number };
-    skipOutOfBoundsCheck?: boolean;
-  }) {
+  private _positionTooltip(placement: TooltipPlacement) {
+    // Replace with anchor and fallback positioning when they are out of experimental and adopted by all relevant browsers.
+    // https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_anchor_positioning
+    // https://developer.mozilla.org/en-US/docs/Web/CSS/position-try-fallbacks
     this._autoPositioningCleanup = autoUpdate(
       this._anchor,
       this._tooltip,
       () => {
-        const position = calculateTooltipPosition({
-          tooltipRect: this._tooltip.getBoundingClientRect(),
-          anchorRect: this._anchor.getBoundingClientRect(),
+        computePosition(this._anchor, this._tooltip, {
           placement,
-          iteration,
-          skipOutOfBoundsCheck,
+          strategy: 'fixed',
+          middleware: [
+            flip({ fallbackAxisSideDirection: 'start' }),
+            shift(),
+            offset(4),
+          ],
+        }).then(({ x, y }) => {
+          this._position = {
+            top: y,
+            left: x,
+          };
         });
-
-        if (position) {
-          this._position = position;
-          return;
-        }
-
-        this._hideTooltip();
       },
     );
   }
@@ -206,7 +193,7 @@ export class FhiTooltip extends LitElement {
       }
 
       #tooltip {
-        margin: 0;
+        margin: 0 0 4px 0;
         border: var(--dimension-border-width) solid var(--color-border);
         visibility: hidden;
         opacity: 0;
