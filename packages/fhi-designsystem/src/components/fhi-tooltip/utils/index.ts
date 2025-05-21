@@ -21,26 +21,17 @@ export const calculateTooltipPosition = ({
 }): {
   top: number;
   left: number;
-} => {
+} | null => {
   const position = { ...restingPosition };
 
   console.log('Calculating tooltip position', placement, iteration);
 
   /*
     If the tooltip is out of the viewport, and we could not find a valid position
-    after 5 iterations, we will just place it on top of the trigger
+    after 4 iterations, we return null to indicate that there are no available position.
   */
-  if (iteration > 4) {
-    console.log('Tooltip out of bounds, placing on top');
-
-    if (placement !== 'top') {
-      return calculateTooltipPosition({
-        placement: 'top',
-        skipOutOfBoundsCheck: true,
-        tooltipRect,
-        anchorRect,
-      });
-    }
+  if (iteration > 3) {
+    return null;
   }
 
   // Calculate the position of the tooltip based on the trigger position and the given placement
@@ -102,11 +93,7 @@ export const calculateTooltipPosition = ({
       break;
 
     default:
-      return calculateTooltipPosition({
-        placement: 'top',
-        tooltipRect,
-        anchorRect,
-      });
+      throw new Error(`Invalid placement: ${placement}`);
   }
 
   if (skipOutOfBoundsCheck) {
@@ -115,197 +102,129 @@ export const calculateTooltipPosition = ({
 
   // Check if the tooltip is out of bounds and recursively find a new position if so.
 
-  // Top
+  const calculateNextTooltipPosition = (
+    intersectionDirection: 'top' | 'right' | 'bottom' | 'left',
+  ) => {
+    return calculateTooltipPosition({
+      placement: getNextPlacement(placement, intersectionDirection),
+      iteration: iteration + 1,
+      tooltipRect,
+      anchorRect,
+    });
+  };
+
   if (position.top < 0) {
-    switch (true) {
-      case placement.startsWith('top'):
-        return calculateTooltipPosition({
-          placement: 'bottom',
-          iteration: iteration + 1,
-          tooltipRect,
-          anchorRect,
-        });
-      case placement === 'leftStart':
-        return calculateTooltipPosition({
-          placement: 'bottom',
-          iteration: iteration + 1,
-          tooltipRect,
-          anchorRect,
-        });
-      case placement.startsWith('left'):
-        return calculateTooltipPosition({
-          placement: 'leftStart',
-          iteration: iteration + 1,
-          tooltipRect,
-          anchorRect,
-        });
-      case placement === 'rightStart':
-        return calculateTooltipPosition({
-          placement: 'bottom',
-          iteration: iteration + 1,
-          tooltipRect,
-          anchorRect,
-        });
-      case placement.startsWith('right'):
-        return calculateTooltipPosition({
-          placement: 'rightStart',
-          iteration: iteration + 1,
-          tooltipRect,
-          anchorRect,
-        });
-    }
+    return calculateNextTooltipPosition('top');
   }
 
-  // Right
   if (position.left + tooltipRect.width > window.innerWidth) {
-    switch (true) {
-      case placement.startsWith('right'):
-        return calculateTooltipPosition({
-          placement: 'left',
-          iteration: iteration + 1,
-          tooltipRect,
-          anchorRect,
-        });
-      case placement === 'topEnd':
-        return calculateTooltipPosition({
-          placement: 'left',
-          iteration: iteration + 1,
-          tooltipRect,
-          anchorRect,
-        });
-      case placement.startsWith('top'):
-        return calculateTooltipPosition({
-          placement: 'topEnd',
-          iteration: iteration + 1,
-          tooltipRect,
-          anchorRect,
-        });
-      case placement === 'bottomEnd':
-        return calculateTooltipPosition({
-          placement: 'left',
-          iteration: iteration + 1,
-          tooltipRect,
-          anchorRect,
-        });
-      case placement.startsWith('bottom'):
-        return calculateTooltipPosition({
-          placement: 'bottomEnd',
-          iteration: iteration + 1,
-          tooltipRect,
-          anchorRect,
-        });
-    }
+    return calculateNextTooltipPosition('right');
   }
 
-  // Bottom
   if (position.top + tooltipRect.height > window.innerHeight) {
-    switch (true) {
-      case placement.startsWith('bottom'):
-        return calculateTooltipPosition({
-          placement: 'top',
-          iteration: iteration + 1,
-          tooltipRect,
-          anchorRect,
-        });
-      case placement === 'leftEnd':
-        return calculateTooltipPosition({
-          placement: 'top',
-          iteration: iteration + 1,
-          tooltipRect,
-          anchorRect,
-        });
-      case placement.startsWith('left'):
-        return calculateTooltipPosition({
-          placement: 'leftEnd',
-          iteration: iteration + 1,
-          tooltipRect,
-          anchorRect,
-        });
-      case placement === 'rightEnd':
-        return calculateTooltipPosition({
-          placement: 'top',
-          iteration: iteration + 1,
-          tooltipRect,
-          anchorRect,
-        });
-      case placement.startsWith('right'):
-        return calculateTooltipPosition({
-          placement: 'rightEnd',
-          iteration: iteration + 1,
-          tooltipRect,
-          anchorRect,
-        });
-    }
+    return calculateNextTooltipPosition('bottom');
   }
 
-  // Left
   if (position.left < 0) {
-    switch (true) {
-      case placement.startsWith('left'):
-        return calculateTooltipPosition({
-          placement: 'right',
-          iteration: iteration + 1,
-          tooltipRect,
-          anchorRect,
-        });
-      case placement === 'topEnd':
-        return calculateTooltipPosition({
-          placement: 'right',
-          iteration: iteration + 1,
-          tooltipRect,
-          anchorRect,
-        });
-      case placement.startsWith('top'):
-        return calculateTooltipPosition({
-          placement: 'topEnd',
-          iteration: iteration + 1,
-          tooltipRect,
-          anchorRect,
-        });
-      case placement === 'bottomStart':
-        return calculateTooltipPosition({
-          placement: 'right',
-          iteration: iteration + 1,
-          tooltipRect,
-          anchorRect,
-        });
-      case placement.startsWith('bottom'):
-        return calculateTooltipPosition({
-          placement: 'bottomStart',
-          iteration: iteration + 1,
-          tooltipRect,
-          anchorRect,
-        });
-    }
+    return calculateNextTooltipPosition('left');
   }
 
   return position;
 };
 
-export const getOverflowAncestors = (
-  element: HTMLElement,
-): (HTMLElement | Window)[] => {
-  const overflowAncestors: (HTMLElement | Window)[] = [];
-
-  let parent = element.parentElement;
-
-  while (parent) {
-    if (isOverflowElement(parent)) {
-      overflowAncestors.push(parent);
-    }
-    parent = parent.parentElement;
+const getNextPlacement = (
+  placement: TooltipPlacement,
+  intersectionDirection: 'top' | 'right' | 'bottom' | 'left',
+): TooltipPlacement => {
+  switch (intersectionDirection) {
+    case 'top':
+      switch (placement) {
+        case 'top':
+        case 'rightEnd':
+        case 'leftEnd':
+          return 'bottom';
+        case 'topStart':
+          return 'bottomStart';
+        case 'topEnd':
+          return 'bottomEnd';
+        case 'rightStart':
+          return 'right';
+        case 'leftStart':
+          return 'left';
+        case 'left':
+          return 'leftEnd';
+        case 'right':
+          return 'rightEnd';
+        default:
+          return 'bottom';
+      }
+    case 'right':
+      switch (placement) {
+        case 'top':
+          return 'topStart';
+        case 'topStart':
+          return 'left';
+        case 'topEnd':
+          return 'top';
+        case 'bottom':
+          return 'bottomStart';
+        case 'bottomStart':
+          return 'left';
+        case 'bottomEnd':
+          return 'bottom';
+        case 'right':
+          return 'left';
+        case 'rightStart':
+          return 'leftStart';
+        case 'rightEnd':
+          return 'leftEnd';
+        default:
+          return 'left';
+      }
+    case 'bottom':
+      switch (placement) {
+        case 'bottomStart':
+          return 'topStart';
+        case 'bottomEnd':
+          return 'topEnd';
+        case 'left':
+          return 'leftStart';
+        case 'leftEnd':
+          return 'left';
+        case 'right':
+          return 'rightStart';
+        case 'rightEnd':
+          return 'right';
+        case 'bottom':
+        case 'leftStart':
+        case 'rightStart':
+        default:
+          return 'top';
+      }
+    case 'left':
+      switch (placement) {
+        case 'top':
+          return 'topEnd';
+        case 'topStart':
+          return 'top';
+        case 'topEnd':
+          return 'right';
+        case 'bottom':
+          return 'bottomEnd';
+        case 'bottomStart':
+          return 'bottom';
+        case 'bottomEnd':
+          return 'right';
+        case 'left':
+          return 'right';
+        case 'leftStart':
+          return 'rightStart';
+        case 'leftEnd':
+          return 'rightEnd';
+        default:
+          return 'right';
+      }
+    default:
+      return 'top';
   }
-
-  overflowAncestors.push(window);
-
-  return overflowAncestors;
 };
-
-function isOverflowElement(element: Element): boolean {
-  const { overflow, overflowX, overflowY, display } =
-    window.getComputedStyle(element);
-  return (
-    /auto|scroll|overlay|hidden|clip/.test(overflow + overflowY + overflowX) &&
-    !['inline', 'contents'].includes(display)
-  );
-}

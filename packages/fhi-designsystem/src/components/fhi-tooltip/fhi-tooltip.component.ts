@@ -1,11 +1,8 @@
 import { html, css, LitElement } from 'lit';
 import { customElement, property, query, state } from 'lit/decorators.js';
+import { autoUpdate } from '@floating-ui/dom';
 
-import {
-  calculateTooltipPosition,
-  getOverflowAncestors,
-  restingPosition,
-} from './utils';
+import { calculateTooltipPosition, restingPosition } from './utils';
 
 export const FhiTooltipSelector = 'fhi-tooltip';
 
@@ -51,52 +48,22 @@ export class FhiTooltip extends LitElement {
   protected _position = restingPosition;
 
   @state()
-  protected _overflowAncestors: (HTMLElement | Window)[] = [];
+  protected _autoPositioningCleanup: () => void = () => {};
 
   constructor() {
     super();
-
-    window.addEventListener('resize', this.handleWindowResize);
-
-    this._listenToAllAncestorScrollEvents();
   }
-
-  disconnectedCallback() {
-    super.disconnectedCallback();
-
-    this._overflowAncestors.forEach(ancestor => {
-      ancestor.removeEventListener('scroll', this.handleWindowResize);
-      ancestor.removeEventListener('resize', this.handleWindowResize);
-    });
-  }
-
-  private _listenToAllAncestorScrollEvents() {
-    this._overflowAncestors = getOverflowAncestors(this);
-
-    this._overflowAncestors.forEach(ancestor => {
-      ancestor.addEventListener('scroll', this.handleWindowResize);
-      ancestor.addEventListener('resize', this.handleWindowResize);
-    });
-  }
-
-  private handleWindowResize = () => {
-    if (this._isVisible) {
-      this._positionTooltip({
-        placement: this.placement,
-      });
-    }
-  };
 
   private resetTooltipPosition() {
     this._position = restingPosition;
   }
 
   private _showTooltip() {
-    this._tooltip.showPopover();
-
     if (this._isVisible) {
       return;
     }
+
+    this._tooltip.showPopover();
 
     this._positionTooltip({
       placement: this.placement,
@@ -119,6 +86,8 @@ export class FhiTooltip extends LitElement {
       this._tooltip.hidePopover();
 
       this.resetTooltipPosition();
+
+      this._autoPositioningCleanup();
     }, 150);
   }
 
@@ -132,13 +101,26 @@ export class FhiTooltip extends LitElement {
     currentPosition?: { top: number; left: number };
     skipOutOfBoundsCheck?: boolean;
   }) {
-    this._position = calculateTooltipPosition({
-      tooltipRect: this._tooltip.getBoundingClientRect(),
-      anchorRect: this._anchor.getBoundingClientRect(),
-      placement,
-      iteration,
-      skipOutOfBoundsCheck,
-    });
+    this._autoPositioningCleanup = autoUpdate(
+      this._anchor,
+      this._tooltip,
+      () => {
+        const position = calculateTooltipPosition({
+          tooltipRect: this._tooltip.getBoundingClientRect(),
+          anchorRect: this._anchor.getBoundingClientRect(),
+          placement,
+          iteration,
+          skipOutOfBoundsCheck,
+        });
+
+        if (position) {
+          this._position = position;
+          return;
+        }
+
+        this._hideTooltip();
+      },
+    );
   }
 
   private _handleMouseEnter() {
@@ -226,7 +208,6 @@ export class FhiTooltip extends LitElement {
       #tooltip {
         margin: 0;
         border: var(--dimension-border-width) solid var(--color-border);
-        position: fixed;
         visibility: hidden;
         opacity: 0;
         transition: opacity 0.15s ease-in-out;
