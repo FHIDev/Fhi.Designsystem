@@ -39,17 +39,17 @@ const meta: Meta<FhiTooltip> = {
       control: 'select',
       options: [
         'top',
-        'topStart',
-        'topEnd',
+        'top-start',
+        'top-end',
         'bottom',
-        'bottomStart',
-        'bottomEnd',
+        'bottom-start',
+        'bottom-end',
         'left',
-        'leftStart',
-        'leftEnd',
+        'left-start',
+        'left-end',
         'right',
-        'rightStart',
-        'rightEnd',
+        'right-start',
+        'right-end',
       ],
       description: 'Plassering av tooltip-en i forhold til slot elementet.',
       table: {
@@ -111,10 +111,10 @@ export const Placement: Story = {
         <fhi-tooltip
           message=${args.message}
           delay="150"
-          placement="topStart"
+          placement="top-start"
           max-width="9rem"
         >
-          <fhi-button size="small" variant="outlined">topStart</fhi-button>
+          <fhi-button size="small" variant="outlined">top-start</fhi-button>
         </fhi-tooltip>
 
         <fhi-tooltip
@@ -128,10 +128,10 @@ export const Placement: Story = {
         <fhi-tooltip
           message=${args.message}
           delay="150"
-          placement="topEnd"
+          placement="top-end"
           max-width="9rem"
         >
-          <fhi-button size="small" variant="outlined">topEnd</fhi-button>
+          <fhi-button size="small" variant="outlined">top-end</fhi-button>
         </fhi-tooltip>
       </section>
       <section
@@ -146,10 +146,10 @@ export const Placement: Story = {
         <fhi-tooltip
           message=${args.message}
           delay="150"
-          placement="leftStart"
+          placement="left-start"
           max-width="9rem"
         >
-          <fhi-button size="small" variant="outlined">leftStart</fhi-button>
+          <fhi-button size="small" variant="outlined">left-start</fhi-button>
         </fhi-tooltip>
         <fhi-tooltip
           message=${args.message}
@@ -162,10 +162,10 @@ export const Placement: Story = {
         <fhi-tooltip
           message=${args.message}
           delay="150"
-          placement="leftEnd"
+          placement="left-end"
           max-width="9rem"
         >
-          <fhi-button size="small" variant="outlined">leftEnd</fhi-button>
+          <fhi-button size="small" variant="outlined">left-end</fhi-button>
         </fhi-tooltip>
       </section>
       <section
@@ -180,10 +180,10 @@ export const Placement: Story = {
         <fhi-tooltip
           message=${args.message}
           delay="150"
-          placement="rightStart"
+          placement="right-start"
           max-width="9rem"
         >
-          <fhi-button size="small" variant="outlined">rightStart</fhi-button>
+          <fhi-button size="small" variant="outlined">right-start</fhi-button>
         </fhi-tooltip>
         <fhi-tooltip
           message=${args.message}
@@ -196,10 +196,10 @@ export const Placement: Story = {
         <fhi-tooltip
           message=${args.message}
           delay="150"
-          placement="rightEnd"
+          placement="right-end"
           max-width="9rem"
         >
-          <fhi-button size="small" variant="outlined">rightEnd</fhi-button>
+          <fhi-button size="small" variant="outlined">right-end</fhi-button>
         </fhi-tooltip>
       </section>
       <section
@@ -214,10 +214,10 @@ export const Placement: Story = {
         <fhi-tooltip
           message=${args.message}
           delay="150"
-          placement="bottomStart"
+          placement="bottom-start"
           max-width="9rem"
         >
-          <fhi-button size="small" variant="outlined">bottomStart</fhi-button>
+          <fhi-button size="small" variant="outlined">bottom-start</fhi-button>
         </fhi-tooltip>
         <fhi-tooltip
           message=${args.message}
@@ -230,10 +230,10 @@ export const Placement: Story = {
         <fhi-tooltip
           message=${args.message}
           delay="150"
-          placement="bottomEnd"
+          placement="bottom-end"
           max-width="9rem"
         >
-          <fhi-button size="small" variant="outlined">bottomEnd</fhi-button>
+          <fhi-button size="small" variant="outlined">bottom-end</fhi-button>
         </fhi-tooltip>
       </section>
     </section>
