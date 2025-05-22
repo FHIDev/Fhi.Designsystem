@@ -1,12 +1,10 @@
 import { html, css, LitElement } from 'lit';
 import { customElement, property, query, state } from 'lit/decorators.js';
 import {
-  computePosition,
-  autoUpdate,
-  shift,
-  flip,
-  offset,
-} from '@floating-ui/dom';
+  calculateTooltipPosition,
+  getOverflowAncestors,
+  restingPosition,
+} from './utils/positioning';
 
 export const FhiTooltipSelector = 'fhi-tooltip';
 
@@ -26,7 +24,7 @@ export type TooltipPlacement =
 
 @customElement(FhiTooltipSelector)
 export class FhiTooltip extends LitElement {
-  @property({ type: String }) message?: string = undefined;
+  @property({ type: String }) message: string = '';
 
   @property({ type: String }) placement: TooltipPlacement = 'top';
 
@@ -50,19 +48,20 @@ export class FhiTooltip extends LitElement {
   protected _isFadingOut = false;
 
   @state()
-  protected _position = {
-    top: 0,
-    left: 0,
-  };
+  protected _position = restingPosition;
 
   private _showTooltip() {
     if (this._isVisible) {
       return;
     }
 
-    this._positionTooltip(this.placement);
+    if (!this.message) {
+      return;
+    }
 
     this._tooltip.showPopover();
+
+    this._positionTooltip(this.placement);
 
     this._isVisible = true;
   }
@@ -84,31 +83,40 @@ export class FhiTooltip extends LitElement {
     }, 150);
   }
 
-  private _positionTooltip(placement: TooltipPlacement) {
-    // Replace with anchor and fallback positioning when they are out of experimental and adopted by all relevant browsers.
-    // https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_anchor_positioning
-    // https://developer.mozilla.org/en-US/docs/Web/CSS/position-try-fallbacks
-    this._autoPositioningCleanup = autoUpdate(
-      this._anchor,
-      this._tooltip,
-      () => {
-        computePosition(this._anchor, this._tooltip, {
-          placement,
-          strategy: 'fixed',
-          middleware: [
-            flip({ fallbackAxisSideDirection: 'start' }),
-            shift(),
-            offset(4),
-          ],
-        }).then(({ x, y }) => {
-          this._position = {
-            top: y,
-            left: x,
-          };
-        });
-      },
-    );
-  }
+  private _autoUpdate = (positioningFunction: () => void) => {
+    const overflowAncestors = getOverflowAncestors(this._anchor);
+
+    positioningFunction();
+
+    overflowAncestors.forEach(ancestor => {
+      ancestor.addEventListener('scroll', positioningFunction);
+      ancestor.addEventListener('resize', positioningFunction);
+    });
+
+    return () => {
+      overflowAncestors.forEach(ancestor => {
+        ancestor.removeEventListener('scroll', positioningFunction);
+        ancestor.removeEventListener('resize', positioningFunction);
+      });
+    };
+  };
+
+  private _positionTooltip = (placement: TooltipPlacement) => {
+    this._autoPositioningCleanup = this._autoUpdate(() => {
+      const position = calculateTooltipPosition({
+        tooltipRect: this._tooltip.getBoundingClientRect(),
+        anchorRect: this._anchor.getBoundingClientRect(),
+        placement,
+      });
+
+      if (position) {
+        this._position = position;
+        return;
+      }
+
+      this._hideTooltip();
+    });
+  };
 
   private _handleMouseEnter() {
     if (this.trigger !== 'hover') {
@@ -147,11 +155,12 @@ export class FhiTooltip extends LitElement {
         @mouseleave=${this._handleMouseLeave}
         @click=${this._handleClick}
       >
-        <slot></slot>
+        <slot aria-labelledby="tooltip"></slot>
       </div>
       <section
         id="tooltip"
         popover="manual"
+        role="tooltip"
         ?visible=${this._isVisible}
         ?fading-out=${this._isFadingOut}
         style="
@@ -193,10 +202,10 @@ export class FhiTooltip extends LitElement {
       }
 
       #tooltip {
-        margin: 0 0 4px 0;
         border: var(--dimension-border-width) solid var(--color-border);
         visibility: hidden;
         opacity: 0;
+        margin: 0;
         transition: opacity 0.15s ease-in-out;
         width: max-content;
         padding: var(--dimension-padding);

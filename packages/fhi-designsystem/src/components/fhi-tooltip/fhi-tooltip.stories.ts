@@ -28,10 +28,11 @@ const meta: Meta<FhiTooltip> = {
   argTypes: {
     message: {
       control: 'text',
-      description: 'Tekst som vises i tooltip-en',
+      description:
+        'Tekst som vises i tooltip-en. Uten message wil tooltip-en ikke vises.',
       table: {
         type: { summary: 'string' },
-        defaultValue: { summary: 'undefined' },
+        defaultValue: { summary: '' },
       },
     },
     placement: {
