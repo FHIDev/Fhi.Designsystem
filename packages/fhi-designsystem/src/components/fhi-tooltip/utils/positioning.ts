@@ -48,6 +48,11 @@ export const calculateTooltipPosition = ({
     return null;
   }
 
+  const viewportLeft = window.visualViewport?.offsetLeft || 0;
+  const viewportTop = window.visualViewport?.offsetTop || 0;
+  const viewportWidth = window.visualViewport?.width || window.innerWidth;
+  const viewportHeight = window.visualViewport?.height || window.innerHeight;
+
   // Calculate the position of the tooltip based on the anchor position and the given placement
   switch (placement) {
     case 'top':
@@ -127,19 +132,19 @@ export const calculateTooltipPosition = ({
     });
   };
 
-  if (position.top < 0) {
+  if (position.top < viewportTop) {
     return calculateNextTooltipPosition('top');
   }
 
-  if (position.left + tooltipRect.width > window.innerWidth) {
+  if (position.left + tooltipRect.width > viewportWidth + viewportLeft) {
     return calculateNextTooltipPosition('right');
   }
 
-  if (position.top + tooltipRect.height > window.innerHeight) {
+  if (position.top + tooltipRect.height > viewportHeight + viewportTop) {
     return calculateNextTooltipPosition('bottom');
   }
 
-  if (position.left < 0) {
+  if (position.left < viewportLeft) {
     return calculateNextTooltipPosition('left');
   }
 
@@ -248,7 +253,7 @@ const getNextPlacement = (
 };
 
 /**
- * Returns all scrollable ancestors of an element (including window, but excluding the <body> and documentElement).
+ * Returns all scrollable ancestors of an element (including window and VisualViewport, but excluding the <body> and documentElement).
  * The function traverses through Shadow DOM boundaries.
  *
  * Investigate replacing this with anchor and fallback positioning when they are out of experimental and adopted by all relevant browsers.
@@ -256,7 +261,7 @@ const getNextPlacement = (
  * https://developer.mozilla.org/en-US/docs/Web/CSS/position-try-fallbacks
  */
 export const getOverflowAncestors = (element: Element) => {
-  const ancestors: (Element | typeof window)[] = [];
+  const ancestors: (Element | Window | VisualViewport)[] = [];
 
   if (!window || !element || !(element instanceof Element)) {
     return ancestors;
@@ -292,6 +297,10 @@ export const getOverflowAncestors = (element: Element) => {
   }
 
   ancestors.push(window);
+
+  if (window.visualViewport) {
+    ancestors.push(window.visualViewport);
+  }
 
   return ancestors;
 };
