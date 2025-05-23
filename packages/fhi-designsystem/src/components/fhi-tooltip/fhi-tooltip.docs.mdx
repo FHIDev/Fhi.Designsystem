@@ -2,7 +2,7 @@ import { FhiTooltip } from './fhi-tooltip.component.ts';
 import * as FhiTooltipStories from './fhi-tooltip.stories.ts';
 import { Meta, Primary, Canvas, Controls } from '@storybook/blocks';
 
-<Meta of={FhiTooltipStories} />
+<Meta of={FhiTooltipStories} title='Docs' />
 
 # Tooltip
 
@@ -18,7 +18,6 @@ Vi bruker ikke tooltip for å gi brukeren kritisk informasjon.
 - Gi umiddelbar tilbakemelding på kjente handlinger
 
 <Canvas of={FhiTooltipStories.Preview} />
-
 <Controls />
 
 ### Placement
@@ -33,5 +32,6 @@ Forskjellige skjermstørrelser, særlig de mindre, er et typisk eksempel på det
 Tooltip vil gjøre det den kan for å holde seg på skjermen, og bytter posisjon hvis det ikke er plass i den angitte retningen. 
 
 Hvis den må bytte retning vil den prioritere motsatt retning først. Deretter prøves den andre aksen, med utgangspunkt i leseretning.
+Om det ikke er plass til tooltip på skjermen vil den ikke vises.
 
 <Canvas of={FhiTooltipStories.Placement} />

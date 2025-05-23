@@ -6,7 +6,6 @@ export const restingPosition = {
 };
 
 /**
- * @param options
  * @param options.tooltipRect - The bounding rectangle of the tooltip element.
  * @param options.anchorRect - The bounding rectangle of the anchor element.
  * @param options.placement - The placement of the tooltip relative to the anchor element.
@@ -270,6 +269,7 @@ export const getOverflowAncestors = (element: Element) => {
   const isScrollable = (element: Element) => {
     const style = window.getComputedStyle(element);
 
+    // 23.05.25 - https://github.com/floating-ui/floating-ui/blob/master/packages/utils/src/dom.ts
     return (
       /auto|scroll|overlay|hidden|clip/.test(
         style.overflow + style.overflowY + style.overflowX,

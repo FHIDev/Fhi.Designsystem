@@ -64,6 +64,8 @@ export class FhiTooltip extends LitElement {
     this._positionTooltip(this.placement);
 
     this._isVisible = true;
+
+    window.addEventListener('click', this._handlePotentialClickOutside);
   }
 
   private _hideTooltip() {
@@ -80,6 +82,7 @@ export class FhiTooltip extends LitElement {
       this._tooltip.hidePopover();
 
       this._autoPositioningCleanup();
+      window.removeEventListener('click', this._handlePotentialClickOutside);
     }, 150);
   }
 
@@ -136,6 +139,14 @@ export class FhiTooltip extends LitElement {
     clearTimeout(this._timeoutId);
     this._hideTooltip();
   }
+
+  private _handlePotentialClickOutside = (event: MouseEvent) => {
+    const target = event.target as HTMLElement;
+
+    if (this._isVisible && !this.contains(target)) {
+      this._hideTooltip();
+    }
+  };
 
   private _handleClick() {
     if (this.trigger === 'click') {

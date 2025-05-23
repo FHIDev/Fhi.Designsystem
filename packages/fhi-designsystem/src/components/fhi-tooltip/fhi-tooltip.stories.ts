@@ -12,7 +12,6 @@ const meta: Meta<FhiTooltip> = {
   component: 'fhi-tooltip',
   parameters: {},
   decorators: [],
-
   render: args => html`
     <fhi-tooltip
       message=${ifDefined(args.message)}
@@ -20,16 +19,14 @@ const meta: Meta<FhiTooltip> = {
       trigger=${ifDefined(args.trigger)}
       max-width=${ifDefined(args.maxWidth)}
     >
-      <fhi-button size="small" variant="outlined"
-        >Hover for å åpne tooltip</fhi-button
-      >
+      <fhi-button size="small" variant="outlined">åpne tooltip</fhi-button>
     </fhi-tooltip>
   `,
   argTypes: {
     message: {
       control: 'text',
       description:
-        'Tekst som vises i tooltip-en. Uten message wil tooltip-en ikke vises.',
+        'Tekst som vises i tooltip-en. Uten message vil tooltip-en ikke vises.',
       table: {
         type: { summary: 'string' },
         defaultValue: { summary: '' },
@@ -75,6 +72,15 @@ const meta: Meta<FhiTooltip> = {
         defaultValue: { summary: '18.75rem' },
       },
     },
+    delay: {
+      control: 'number',
+      description:
+        'Hvor lenge, i millisekunder, tooltip-en venter før den vises.',
+      table: {
+        type: { summary: 'number' },
+        defaultValue: { summary: '500' },
+      },
+    },
   },
 };
 
@@ -89,6 +95,9 @@ export const Preview: Story = {
 
 export const Placement: Story = {
   tags: ['!dev'],
+  parameters: {
+    layout: 'centered',
+  },
   render: args => html`
     <section
       style="
@@ -240,6 +249,12 @@ export const Placement: Story = {
   `,
   args: {
     message: 'Dette er en tooltip som går over flere linjer',
+  },
+};
+
+export const Default: Story = {
+  args: {
+    message: 'Liten og informativ tekst',
   },
 };
 
