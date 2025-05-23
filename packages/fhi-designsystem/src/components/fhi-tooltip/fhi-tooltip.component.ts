@@ -236,7 +236,6 @@ export class FhiTooltip extends LitElement {
           opacity: 1;
         }
         &[fading-out] {
-          visibility: visible;
           opacity: 0;
         }
       }

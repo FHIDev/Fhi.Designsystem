@@ -26,7 +26,7 @@ describe('fhi-tooltip', () => {
       });
 
       expect(isVisible).to.equal(false);
-      // await expect(component).to.not.be.accessible();
+      await expect(tooltip).to.not.be.accessible();
     });
 
     it('is has an accessible child', async () => {
@@ -38,7 +38,7 @@ describe('fhi-tooltip', () => {
       });
 
       expect(isVisible).to.equal(true);
-      await expect(component).to.be.accessible();
+      await expect(child).to.be.accessible();
     });
   });
 
