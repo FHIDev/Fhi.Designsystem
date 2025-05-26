@@ -1,5 +1,22 @@
 # Changelog
 
+## [0.4.0](https://github.com/FHIDev/Fhi.Designsystem/compare/v0.3.0...v0.4.0) (2025-05-26)
+
+
+### 🚀 Features
+
+* Rename and change value of font-family token. ([#200](https://github.com/FHIDev/Fhi.Designsystem/issues/200)) ([20e2187](https://github.com/FHIDev/Fhi.Designsystem/commit/20e218713a4fb556562cdab1018978f5d89760fb))
+
+
+### 📑 Documentation
+
+* Made 'Kom i gang' the new landing page. ([#199](https://github.com/FHIDev/Fhi.Designsystem/issues/199)) ([faed3d6](https://github.com/FHIDev/Fhi.Designsystem/commit/faed3d627923e22753981ef130340f4e23283aa1))
+
+
+### Other
+
+* minify the design tokens css file ([#196](https://github.com/FHIDev/Fhi.Designsystem/issues/196)) ([13aaad7](https://github.com/FHIDev/Fhi.Designsystem/commit/13aaad7cd8a409eb1fdc4f5ba1ea0f1501f614fc))
+
 ## [0.3.0](https://github.com/FHIDev/Fhi.Designsystem/compare/v0.2.3...v0.3.0) (2025-05-15)
 
 
