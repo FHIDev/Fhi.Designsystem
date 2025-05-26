@@ -35,79 +35,97 @@ export const calculateTooltipPosition = ({
 } | null => {
   const position = { ...restingPosition };
 
-  console.log('calculateTooltipPosition', placement, recursiveInteration);
-
   /*
     If the tooltip is out of the viewport, and we could not find a valid position
     after 4 iterations, we return null to indicate that there are no available position.
   */
   if (recursiveInteration > 3) {
-    console.log('Too many iterations, returning null');
-
     return null;
   }
 
-  const viewportLeft = window.visualViewport?.offsetLeft || 0;
-  const viewportTop = window.visualViewport?.offsetTop || 0;
+  const viewportOffsetLeft = window.visualViewport?.offsetLeft || 0;
+  const viewportOffsetTop = window.visualViewport?.offsetTop || 0;
   const viewportWidth = window.visualViewport?.width || window.innerWidth;
   const viewportHeight = window.visualViewport?.height || window.innerHeight;
+
+  // Webkit browsers (like Safari) require special handling for the viewport offset.
+  // 26.05.25 - https://github.com/floating-ui/floating-ui/blob/master/packages/dom/src/utils/getVisualOffsets.ts#L10
+  const isWebkit = /AppleWebKit/.test(navigator.userAgent);
+
+  const webkitOffsetLeft = isWebkit ? viewportOffsetLeft : 0;
+  const webkitOffsetTop = isWebkit ? viewportOffsetTop : 0;
 
   // Calculate the position of the tooltip based on the anchor position and the given placement
   switch (placement) {
     case 'top':
-      position.top = anchorRect.top - tooltipRect.height - 4;
+      position.top = anchorRect.top - tooltipRect.height - 4 + webkitOffsetTop;
       position.left =
-        anchorRect.left + anchorRect.width / 2 - tooltipRect.width / 2;
+        anchorRect.left +
+        anchorRect.width / 2 -
+        tooltipRect.width / 2 +
+        webkitOffsetLeft;
       break;
     case 'top-start':
-      position.top = anchorRect.top - tooltipRect.height - 4;
-      position.left = anchorRect.left;
+      position.top = anchorRect.top - tooltipRect.height - 4 + webkitOffsetTop;
+      position.left = anchorRect.left + webkitOffsetLeft;
       break;
     case 'top-end':
-      position.top = anchorRect.top - tooltipRect.height - 4;
-      position.left = anchorRect.right - tooltipRect.width;
+      position.top = anchorRect.top - tooltipRect.height - 4 + webkitOffsetTop;
+      position.left = anchorRect.right - tooltipRect.width + webkitOffsetLeft;
       break;
 
     case 'bottom':
-      position.top = anchorRect.bottom + 4;
+      position.top = anchorRect.bottom + 4 + webkitOffsetTop;
       position.left =
-        anchorRect.left + anchorRect.width / 2 - tooltipRect.width / 2;
+        anchorRect.left +
+        anchorRect.width / 2 -
+        tooltipRect.width / 2 +
+        webkitOffsetLeft;
       break;
     case 'bottom-start':
-      position.top = anchorRect.bottom + 4;
-      position.left = anchorRect.left;
+      position.top = anchorRect.bottom + 4 + webkitOffsetTop;
+      position.left = anchorRect.left + webkitOffsetLeft;
       break;
     case 'bottom-end':
-      position.top = anchorRect.bottom + 4;
-      position.left = anchorRect.right - tooltipRect.width;
+      position.top = anchorRect.bottom + 4 + webkitOffsetTop;
+      position.left = anchorRect.right - tooltipRect.width + webkitOffsetLeft;
       break;
 
     case 'left':
       position.top =
-        anchorRect.top + anchorRect.height / 2 - tooltipRect.height / 2;
-      position.left = anchorRect.left - tooltipRect.width - 4;
+        anchorRect.top +
+        anchorRect.height / 2 -
+        tooltipRect.height / 2 +
+        webkitOffsetTop;
+      position.left =
+        anchorRect.left - tooltipRect.width - 4 + webkitOffsetLeft;
       break;
     case 'left-start':
-      position.top = anchorRect.top;
-      position.left = anchorRect.left - tooltipRect.width - 4;
+      position.top = anchorRect.top + webkitOffsetTop;
+      position.left =
+        anchorRect.left - tooltipRect.width - 4 + webkitOffsetLeft;
       break;
     case 'left-end':
-      position.top = anchorRect.bottom - tooltipRect.height;
-      position.left = anchorRect.left - tooltipRect.width - 4;
+      position.top = anchorRect.bottom - tooltipRect.height + webkitOffsetTop;
+      position.left =
+        anchorRect.left - tooltipRect.width - 4 + webkitOffsetLeft;
       break;
 
     case 'right':
       position.top =
-        anchorRect.top + anchorRect.height / 2 - tooltipRect.height / 2;
-      position.left = anchorRect.right + 4;
+        anchorRect.top +
+        anchorRect.height / 2 -
+        tooltipRect.height / 2 +
+        webkitOffsetTop;
+      position.left = anchorRect.right + 4 + webkitOffsetLeft;
       break;
     case 'right-start':
-      position.top = anchorRect.top;
-      position.left = anchorRect.right + 4;
+      position.top = anchorRect.top + webkitOffsetTop;
+      position.left = anchorRect.right + 4 + webkitOffsetLeft;
       break;
     case 'right-end':
-      position.top = anchorRect.bottom - tooltipRect.height;
-      position.left = anchorRect.right + 4;
+      position.top = anchorRect.bottom - tooltipRect.height + webkitOffsetTop;
+      position.left = anchorRect.right + 4 + webkitOffsetLeft;
       break;
 
     default:
@@ -131,19 +149,19 @@ export const calculateTooltipPosition = ({
     });
   };
 
-  if (position.top < viewportTop) {
+  if (position.top < viewportOffsetTop) {
     return calculateNextTooltipPosition('top');
   }
 
-  if (position.left + tooltipRect.width > viewportWidth + viewportLeft) {
+  if (position.left + tooltipRect.width > viewportWidth + viewportOffsetLeft) {
     return calculateNextTooltipPosition('right');
   }
 
-  if (position.top + tooltipRect.height > viewportHeight + viewportTop) {
+  if (position.top + tooltipRect.height > viewportHeight + viewportOffsetTop) {
     return calculateNextTooltipPosition('bottom');
   }
 
-  if (position.left < viewportLeft) {
+  if (position.left < viewportOffsetLeft) {
     return calculateNextTooltipPosition('left');
   }
 
