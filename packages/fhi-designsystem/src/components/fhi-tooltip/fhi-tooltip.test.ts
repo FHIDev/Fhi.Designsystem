@@ -12,12 +12,12 @@ describe('fhi-tooltip', () => {
     beforeEach(async () => {
       component = await fixture(
         html`<fhi-tooltip message="myTooltip">
-          <span>My Element</span>
+          <span id="child">My Element</span>
         </fhi-tooltip>`,
       );
     });
 
-    it('is not accessable by default', async () => {
+    it('is not visible by default', async () => {
       const tooltip = component.shadowRoot?.querySelector('#tooltip');
 
       const isVisible = tooltip?.checkVisibility({
@@ -26,11 +26,10 @@ describe('fhi-tooltip', () => {
       });
 
       expect(isVisible).to.equal(false);
-      await expect(tooltip).to.not.be.accessible();
     });
 
     it('is has an accessible child', async () => {
-      const child = component.querySelector('span');
+      const child = component.querySelector('#child');
 
       const isVisible = child?.checkVisibility({
         checkOpacity: true,
@@ -39,6 +38,40 @@ describe('fhi-tooltip', () => {
 
       expect(isVisible).to.equal(true);
       await expect(child).to.be.accessible();
+    });
+
+    it('has role "tooltip"', async () => {
+      const tooltip = component.shadowRoot?.querySelector('#tooltip');
+
+      expect(tooltip?.getAttribute('role')).to.equal('tooltip');
+    });
+
+    it('labels the child with aria-labelledby on the slot"', async () => {
+      const tooltip = component.shadowRoot?.querySelector('slot');
+
+      expect(tooltip?.getAttribute('aria-labelledby')).to.equal('tooltip');
+    });
+
+    it('has aria-hidden set to "true" when hidden', async () => {
+      component = await fixture(
+        html`<fhi-tooltip message="myTooltip" trigger="click">
+          <span id="child">My Element</span>
+        </fhi-tooltip>`,
+      );
+
+      const tooltip = component.shadowRoot?.querySelector('#tooltip');
+      const child = component.querySelector('#child') as HTMLElement;
+
+      child?.click();
+      await component.updateComplete;
+
+      expect(tooltip?.getAttribute('aria-hidden')).to.equal('false');
+    });
+
+    it('has aria-hidden set to "false" when visible', async () => {
+      const tooltip = component.shadowRoot?.querySelector('#tooltip');
+
+      expect(tooltip?.getAttribute('aria-hidden')).to.equal('true');
     });
   });
 
