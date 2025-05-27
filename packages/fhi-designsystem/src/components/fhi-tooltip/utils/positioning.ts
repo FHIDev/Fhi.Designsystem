@@ -49,8 +49,7 @@ export const calculateTooltipPosition = ({
   const viewportHeight = window.visualViewport?.height || window.innerHeight;
 
   // Webkit browsers (like Safari) require special handling for the viewport offset.
-  // 26.05.25 - https://github.com/floating-ui/floating-ui/blob/master/packages/dom/src/utils/getVisualOffsets.ts#L10
-  const isWebkit = /AppleWebKit/.test(navigator.userAgent);
+  const isWebkit = isWebKit();
 
   const webkitOffsetLeft = isWebkit ? viewportOffsetLeft : 0;
   const webkitOffsetTop = isWebkit ? viewportOffsetTop : 0;
@@ -268,6 +267,12 @@ const getNextPlacement = (
       return 'top';
   }
 };
+
+// Inspired by Floating UI's solution: 26.05.25 - https://github.com/floating-ui/floating-ui/blob/master/packages/dom/src/utils/getVisualOffsets.ts#L10
+// Check if the browser is WebKit (Safari, iOS Safari, etc.), but not Chrome which is using Blink but is still identified as AppleWebKit.
+const isWebKit = () =>
+  /AppleWebKit/.test(navigator.userAgent) &&
+  !/Chrome/.test(navigator.userAgent);
 
 /**
  * Returns all scrollable ancestors of an element (including window and VisualViewport, but excluding the <body> and documentElement).
