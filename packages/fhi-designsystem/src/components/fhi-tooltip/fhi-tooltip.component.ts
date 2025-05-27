@@ -172,7 +172,7 @@ export class FhiTooltip extends LitElement {
         id="tooltip"
         popover="manual"
         role="tooltip"
-        ?visible=${this._isVisible}
+        aria-hidden=${!this._isVisible}
         ?fading-out=${this._isFadingOut}
         style="
           transform: translate3d(${this._position.left}px, ${this._position
@@ -231,7 +231,7 @@ export class FhiTooltip extends LitElement {
         font-variant-numeric: lining-nums proportional-nums;
         font-style: normal;
         cursor: default;
-        &[visible] {
+        &[aria-hidden='false'] {
           visibility: visible;
           opacity: 1;
         }
