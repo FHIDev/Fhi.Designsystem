@@ -191,7 +191,7 @@ export class FhiTooltip extends LitElement {
       --color-text: var(--fhi-color-neutral-text-inverted);
       --color-border: none;
 
-      --typography-font-family: var(--fhi-font-family-roboto-flex);
+      --typography-font-family: var(--fhi-font-family-default);
       --typography-font-size: var(--fhi-typography-body-small-font-size);
       --typography-font-style: normal;
       --typography-font-weight: var(--fhi-typography-body-small-font-weight);
@@ -202,7 +202,6 @@ export class FhiTooltip extends LitElement {
 
       --dimension-border-radius: var(--fhi-border-radius-050);
       --dimension-border-width: none;
-
       --dimension-padding: var(--fhi-spacing-050) var(--fhi-spacing-100);
     }
 
