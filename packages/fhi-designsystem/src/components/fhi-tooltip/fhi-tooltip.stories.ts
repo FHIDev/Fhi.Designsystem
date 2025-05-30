@@ -18,6 +18,7 @@ const meta: Meta<FhiTooltip> = {
       placement=${ifDefined(args.placement)}
       trigger=${ifDefined(args.trigger)}
       max-width=${ifDefined(args.maxWidth)}
+      delay=${ifDefined(args.delay)}
     >
       <fhi-button size="small" variant="outlined">åpne tooltip</fhi-button>
     </fhi-tooltip>
@@ -104,7 +105,6 @@ export const Placement: Story = {
           display: grid;
           grid-template-columns: repeat(3, 1fr);
           grid-template-rows: repeat(3, 1fr);
-          gap: 1rem;
         "
     >
       <section
@@ -253,6 +253,9 @@ export const Placement: Story = {
 };
 
 export const Default: Story = {
+  parameters: {
+    layout: 'centered',
+  },
   args: {
     message: 'Liten og informativ tekst',
   },
