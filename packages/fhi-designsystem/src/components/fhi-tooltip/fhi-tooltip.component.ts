@@ -164,6 +164,11 @@ export class FhiTooltip extends LitElement {
         id="tooltip-anchor"
         @mouseenter=${this._handleMouseEnter}
         @mouseleave=${this._handleMouseLeave}
+        @focusin=${this._handleMouseEnter}
+        @focusout=${this._handleMouseLeave}
+        @touchstart=${this._handleMouseEnter}
+        @touchend=${this._handleMouseLeave}
+        @touchcancel=${this._handleMouseLeave}
         @click=${this._handleClick}
       >
         <slot aria-labelledby="tooltip"></slot>
