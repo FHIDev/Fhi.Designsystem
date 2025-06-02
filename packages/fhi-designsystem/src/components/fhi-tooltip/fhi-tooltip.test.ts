@@ -78,7 +78,7 @@ describe('fhi-tooltip', () => {
       );
     });
 
-    it('has an attribute to set the attribute', async () => {
+    it('has an attribute to set the message', async () => {
       component = await fixture(
         html`<fhi-tooltip message="myTooltip">
           <span id="child">My Element</span>
@@ -231,7 +231,7 @@ describe('fhi-tooltip', () => {
       child?.click();
 
       // Wait for the tooltip animation to finish
-      await new Promise(resolve => setTimeout(resolve, 100));
+      await new Promise(resolve => setTimeout(resolve, 150));
 
       await component.updateComplete;
 
@@ -242,6 +242,45 @@ describe('fhi-tooltip', () => {
 
       expect(istooltipVisible).to.equal(true);
       expect(tooltip?.getAttribute('aria-hidden')).to.equal('false');
+    });
+
+    it('will close on click outside', async () => {
+      component = await fixture(
+        html`<fhi-tooltip message="myTooltip" trigger="click">
+          <span id="child">My Element</span>
+        </fhi-tooltip>`,
+      );
+
+      const tooltip = component.shadowRoot?.querySelector('#tooltip');
+      const child = component.querySelector('#child') as HTMLElement;
+
+      child?.click();
+
+      // Wait for the tooltip animation to finish
+      await new Promise(resolve => setTimeout(resolve, 150));
+
+      await component.updateComplete;
+
+      const istooltipVisible = tooltip?.checkVisibility({
+        checkOpacity: true,
+        checkVisibilityCSS: true,
+      });
+
+      expect(istooltipVisible).to.equal(true);
+      expect(tooltip?.getAttribute('aria-hidden')).to.equal('false');
+
+      document.body.click();
+
+      // Wait for the tooltip close animation.
+      await new Promise(resolve => setTimeout(resolve, 150));
+
+      const isTooltipHidden = tooltip?.checkVisibility({
+        checkOpacity: true,
+        checkVisibilityCSS: true,
+      });
+
+      expect(isTooltipHidden).to.equal(false);
+      expect(tooltip?.getAttribute('aria-hidden')).to.equal('true');
     });
   });
 });
