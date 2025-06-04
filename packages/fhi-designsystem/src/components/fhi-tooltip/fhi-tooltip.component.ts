@@ -71,6 +71,7 @@ export class FhiTooltip extends LitElement {
     this._isVisible = true;
 
     window.addEventListener('click', this._handlePotentialClickOutside);
+    window.addEventListener('keydown', this.__handlePotentialEscapeKeyPress);
   }
 
   private _hideTooltip() {
@@ -87,7 +88,12 @@ export class FhiTooltip extends LitElement {
       this._tooltip.hidePopover();
 
       this._autoPositioningCleanup();
+
       window.removeEventListener('click', this._handlePotentialClickOutside);
+      window.removeEventListener(
+        'keydown',
+        this.__handlePotentialEscapeKeyPress,
+      );
     }, 150);
   }
 
@@ -142,6 +148,12 @@ export class FhiTooltip extends LitElement {
     const target = event.target as HTMLElement;
 
     if (this._isVisible && !this.contains(target)) {
+      this._hideTooltip();
+    }
+  };
+
+  private __handlePotentialEscapeKeyPress = (event: KeyboardEvent) => {
+    if (event.key === 'Escape' && this._isVisible) {
       this._hideTooltip();
     }
   };
