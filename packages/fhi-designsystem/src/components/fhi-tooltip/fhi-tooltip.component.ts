@@ -1,10 +1,12 @@
 import { html, css, LitElement } from 'lit';
 import { customElement, property, query, state } from 'lit/decorators.js';
 import {
-  calculateTooltipPosition,
-  getOverflowAncestors,
-  restingPosition,
-} from './utils/positioning';
+  computePosition,
+  autoUpdate,
+  shift,
+  flip,
+  offset,
+} from '@floating-ui/dom';
 
 export const FhiTooltipSelector = 'fhi-tooltip';
 
@@ -48,7 +50,10 @@ export class FhiTooltip extends LitElement {
   protected _isFadingOut = false;
 
   @state()
-  protected _position = restingPosition;
+  protected _position = {
+    top: 0,
+    left: 0,
+  };
 
   private _showTooltip() {
     if (this._isVisible) {
@@ -86,40 +91,31 @@ export class FhiTooltip extends LitElement {
     }, 150);
   }
 
-  private _autoUpdate = (positioningFunction: () => void) => {
-    const overflowAncestors = getOverflowAncestors(this._anchor);
-
-    positioningFunction();
-
-    overflowAncestors.forEach(ancestor => {
-      ancestor.addEventListener('scroll', positioningFunction);
-      ancestor.addEventListener('resize', positioningFunction);
-    });
-
-    return () => {
-      overflowAncestors.forEach(ancestor => {
-        ancestor.removeEventListener('scroll', positioningFunction);
-        ancestor.removeEventListener('resize', positioningFunction);
-      });
-    };
-  };
-
-  private _positionTooltip = (placement: TooltipPlacement) => {
-    this._autoPositioningCleanup = this._autoUpdate(() => {
-      const position = calculateTooltipPosition({
-        tooltipRect: this._tooltip.getBoundingClientRect(),
-        anchorRect: this._anchor.getBoundingClientRect(),
-        placement,
-      });
-
-      if (position) {
-        this._position = position;
-        return;
-      }
-
-      this._hideTooltip();
-    });
-  };
+  private _positionTooltip(placement: TooltipPlacement) {
+    // Look into anchor and fallback positioning when they are out of experimental and adopted by all relevant browsers.
+    // https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_anchor_positioning
+    // https://developer.mozilla.org/en-US/docs/Web/CSS/position-try-fallbacks
+    this._autoPositioningCleanup = autoUpdate(
+      this._anchor,
+      this._tooltip,
+      () => {
+        computePosition(this._anchor, this._tooltip, {
+          placement,
+          strategy: 'fixed',
+          middleware: [
+            flip({ fallbackAxisSideDirection: 'start' }),
+            shift(),
+            offset(4),
+          ],
+        }).then(({ x, y }) => {
+          this._position = {
+            top: y,
+            left: x,
+          };
+        });
+      },
+    );
+  }
 
   private _handleMouseEnter() {
     if (this.trigger !== 'hover') {
@@ -183,7 +179,7 @@ export class FhiTooltip extends LitElement {
         ?fading-out=${this._isFadingOut}
         style="
           transform: translate3d(${this._position.left}px, ${this._position
-          .top}px, 0);
+          .top}px, 0); max-width: ${this.maxWidth};
           max-width: ${this.maxWidth};
           "
       >
