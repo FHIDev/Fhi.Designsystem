@@ -181,7 +181,7 @@ export class FhiTooltip extends LitElement {
         @touchcancel=${this._handleMouseLeave}
         @click=${this._handleClick}
       >
-        <slot aria-labelledby="tooltip"></slot>
+        <slot aria-describedby="tooltip"></slot>
       </div>
       <section
         id="tooltip"
