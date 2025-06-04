@@ -20,7 +20,7 @@ const meta: Meta<FhiTooltip> = {
       max-width=${ifDefined(args.maxWidth)}
       delay=${ifDefined(args.delay)}
     >
-      <fhi-button size="small" variant="outlined">åpne tooltip</fhi-button>
+      <fhi-button size="medium" variant="outlined">Åpne tooltip</fhi-button>
     </fhi-tooltip>
   `,
   argTypes: {
