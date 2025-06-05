@@ -161,6 +161,21 @@ Nå kan du bruke komponenten i JSX:
 <fhi-button onClick={(event) => console.log("hello world", event)}>Click me!</fhi-button>
 ```
 
+**Typescript:** Bruker du typescript i React-prosjektet ditt, kan du oppleve at React ikke gjenkjenner webkomponentene. Dette er fordi de ikke enda er typesatt.
+For å løse dette kan du legge til en global deklarasjon i prosjektet ditt. Legg til følgende type deklarasjon i prosjektet ditt:
+
+```ts
+declare module "react" {
+  namespace JSX {
+    interface IntrinsicElements {
+      [key: `fhi-${string}`]: {
+        [attribute: string]: unknown;
+      };
+    }
+  }
+}
+```
+
 ### Standard HTML/JS
 
 Nettleseren har innebygd støtte for webkomponenter. Du kan derfor bruke komponentene direkte i HTML-filen din uten ekstra konfigurasjon. 
