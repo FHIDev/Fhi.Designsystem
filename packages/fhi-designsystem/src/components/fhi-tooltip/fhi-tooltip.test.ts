@@ -46,10 +46,10 @@ describe('fhi-tooltip', () => {
       expect(tooltip?.getAttribute('role')).to.equal('tooltip');
     });
 
-    it('labels the child with aria-labelledby on the slot"', async () => {
+    it('labels the child with aria-describedby on the slot"', async () => {
       const tooltip = component.shadowRoot?.querySelector('slot');
 
-      expect(tooltip?.getAttribute('aria-labelledby')).to.equal('tooltip');
+      expect(tooltip?.getAttribute('aria-describedby')).to.equal('tooltip');
     });
 
     it('has aria-hidden set to "true" when hidden', async () => {
