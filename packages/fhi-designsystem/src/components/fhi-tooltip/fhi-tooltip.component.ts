@@ -64,8 +64,6 @@ export class FhiTooltip extends LitElement {
       return;
     }
 
-    this._tooltip.showPopover();
-
     this._positionTooltip(this.placement);
 
     this._isVisible = true;
@@ -84,8 +82,6 @@ export class FhiTooltip extends LitElement {
     setTimeout(() => {
       this._isVisible = false;
       this._isFadingOut = false;
-
-      this._tooltip.hidePopover();
 
       this._autoPositioningCleanup();
 
@@ -145,9 +141,11 @@ export class FhiTooltip extends LitElement {
   }
 
   private _handlePotentialClickOutside = (event: MouseEvent) => {
-    const target = event.target as HTMLElement;
+    if (this.trigger !== 'click') {
+      return;
+    }
 
-    if (this._isVisible && !this.contains(target)) {
+    if (this._isVisible && !this.contains(event.target as HTMLElement)) {
       this._hideTooltip();
     }
   };
@@ -185,7 +183,6 @@ export class FhiTooltip extends LitElement {
       </div>
       <section
         id="tooltip"
-        popover="manual"
         role="tooltip"
         aria-hidden=${!this._isVisible}
         ?fading-out=${this._isFadingOut}
@@ -227,6 +224,9 @@ export class FhiTooltip extends LitElement {
       }
 
       #tooltip {
+        top: 0;
+        left: 0;
+        position: fixed;
         border: var(--dimension-border-width) solid var(--color-border);
         visibility: hidden;
         opacity: 0;
