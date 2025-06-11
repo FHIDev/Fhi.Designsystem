@@ -246,6 +246,7 @@ export class FhiTooltip extends LitElement {
         font-style: normal;
         cursor: default;
         &[aria-hidden='false'] {
+          z-index: 1000;
           visibility: visible;
           opacity: 1;
         }
