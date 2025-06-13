@@ -1,0 +1,36 @@
+import { FhiTooltip } from './fhi-tooltip.component.ts';
+import * as FhiTooltipStories from './fhi-tooltip.stories.ts';
+import { Meta, Primary, Canvas, Controls } from '@storybook/blocks';
+
+<Meta of={FhiTooltipStories} title='Docs' />
+
+# Tooltip
+
+Tooltip brukes for å gi en kort beskrivelse, oftest ved Hover, Focus eller lange trykk. På mindre skjermer kan det også være bedre å la Tooltip aktiveres ved vanlig trykk, slik som ved infoknapper.
+
+Kun én tooltip kan være synlig om gangen. 
+
+Vi bruker ikke tooltip til å gi brukeren kritisk informasjon.
+
+## Passer til
+
+- Å forklare hva en knapp uten Label gjør
+- Gi umiddelbar tilbakemelding på kjente handlinger
+
+<Canvas of={FhiTooltipStories.Preview} />
+<Controls />
+
+### Placement
+
+Det finnes 12 forskjellige plaseringer for tooltip. Default er over elementet (Top). 
+Under er et eksempel med de forskjellige plasseringene. Hover over de forskjellige knappene for å se hvordan tooltipen plasseres.
+
+Obs: Eksempelet under fungerer best på større skjermer.
+
+#### Hva om det ikke er plass?
+
+Det finnes situasjoner der plassen en hadde planlagt for er mindre enn antatt, eller helt borte.
+Forskjellige skjermstørrelser, særlig de mindre, er et typisk eksempel på dette.
+Tooltip vil gjøre det den kan for å holde seg på skjermen, og bytter posisjon hvis det ikke er plass i den angitte retningen. 
+
+<Canvas of={FhiTooltipStories.Placement} />
