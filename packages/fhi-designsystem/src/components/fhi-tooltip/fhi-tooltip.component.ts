@@ -125,8 +125,6 @@ export class FhiTooltip extends LitElement {
     }
 
     this._timeoutId = setTimeout(() => {
-      console.log('Showing tooltip:', this.delay);
-
       this._showTooltip();
     }, this.delay) as unknown as number;
   }
