@@ -1,5 +1,22 @@
 # Changelog
 
+## [0.5.0](https://github.com/FHIDev/Fhi.Designsystem/compare/v0.4.0...v0.5.0) (2025-06-16)
+
+
+### 🚀 Features
+
+* New Component: Tooltip ([#202](https://github.com/FHIDev/Fhi.Designsystem/issues/202)) ([3ced631](https://github.com/FHIDev/Fhi.Designsystem/commit/3ced63164fe5bf9001f68268e22eedb009fdd427))
+
+
+### 📑 Documentation
+
+* Add documentation for setting up DIY typescript support in React ([bb13ab8](https://github.com/FHIDev/Fhi.Designsystem/commit/bb13ab844207aa8a7c4275b36c90fc494434df25))
+
+
+### Other
+
+* update snippets ([#198](https://github.com/FHIDev/Fhi.Designsystem/issues/198)) ([0cee5a8](https://github.com/FHIDev/Fhi.Designsystem/commit/0cee5a85ee6eea0787e615bb867518ec8191940e))
+
 ## [0.4.0](https://github.com/FHIDev/Fhi.Designsystem/compare/v0.3.0...v0.4.0) (2025-05-26)
 
 
