@@ -52,7 +52,7 @@ export const Preview: Story = {
 };
 
 export const Error: Story = {
-  tags: [],
+  tags: ['!dev'],
   args: {
     label: 'Checkbox',
     status: 'error',
@@ -60,14 +60,14 @@ export const Error: Story = {
 };
 
 export const NoLabel: Story = {
-  tags: [],
+  tags: ['!dev'],
   args: {
     label: '',
   },
 };
 
 export const Disabled: Story = {
-  tags: [],
+  tags: ['!dev'],
   args: {
     label: 'Checkbox',
     disabled: true,
