@@ -30,4 +30,36 @@ describe('fhi-checkbox', () => {
       await expect(component).to.be.accessible();
     });
   });
+
+  describe('setting attributes', () => {
+    it('has an attribute to set label', async () => {
+      component = await fixture(
+        html`<fhi-checkbox label="test"></fhi-checkbox>`,
+      );
+      expect(component.getAttribute('label')).to.equal('test');
+      expect(component.label).to.equal('test');
+    });
+
+    it('has an attribute to set id', async () => {
+      component = await fixture(html`<fhi-checkbox id="test"></fhi-checkbox>`);
+      expect(component.getAttribute('id')).to.equal('test');
+      expect(component.id).to.equal('test');
+    });
+
+    it('has an attribute to set the status', async () => {
+      component = await fixture(
+        html`<fhi-checkbox status="error"></fhi-checkbox>`,
+      );
+
+      expect(component.getAttribute('status')).to.equal('error');
+      expect(component.status).to.equal('error');
+    });
+
+    it('has an attribute to set the disabled', async () => {
+      component = await fixture(html`<fhi-checkbox disabled></fhi-checkbox>`);
+
+      expect(component.hasAttribute('disabled')).to.equal(true);
+      expect(component.disabled).to.equal(true);
+    });
+  });
 });

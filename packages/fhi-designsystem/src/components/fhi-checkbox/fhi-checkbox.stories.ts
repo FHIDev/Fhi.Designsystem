@@ -67,7 +67,7 @@ export const NoLabel: Story = {
 };
 
 export const Disabled: Story = {
-  tags: ['!dev'],
+  tags: [],
   args: {
     label: 'Checkbox',
     disabled: true,
