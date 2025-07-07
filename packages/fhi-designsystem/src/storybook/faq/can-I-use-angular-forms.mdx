@@ -1,0 +1,19 @@
+import { Meta } from '@storybook/blocks';
+import { DesignTokenDocBlock } from 'storybook-design-token';
+
+<Meta title="FAQ/Kan jeg bruke komponentene i Angular Forms?" />
+
+## Kan jeg bruke komponentene i Angular Forms?
+
+**Ja det kan du!**
+
+Bruk angular sitt `ngDefaultControl` direktiv for å koble komponentene til Angular Forms.
+Dette er et standard Angular-direktiv som lar deg bruke web-komponenter som en del av Angular Forms.
+
+e.g
+```html
+<fhi-text-input ngDefaultControl [(ngModel)]="modelValue" />
+```
+
+**Referanser:**
+- [DefaultValueAccessor](https://angular.dev/api/forms/DefaultValueAccessor#usage-notes)
