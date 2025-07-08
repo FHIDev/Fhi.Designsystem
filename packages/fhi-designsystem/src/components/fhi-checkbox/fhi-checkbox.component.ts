@@ -5,10 +5,20 @@ export const FhiCheckboxSelector = 'fhi-checkbox';
 
 @customElement(FhiCheckboxSelector)
 export class FhiCheckbox extends LitElement {
+  static readonly formAssociated = true;
+
   @property({ type: String }) id = '';
   @property({ type: String }) label = '';
   @property({ type: String, reflect: true }) status: 'error' | undefined;
   @property({ type: Boolean, reflect: true }) disabled? = false;
+
+  constructor() {
+    super();
+  }
+
+  connectedCallback() {
+    super.connectedCallback();
+  }
 
   render() {
     return html`
@@ -29,7 +39,7 @@ export class FhiCheckbox extends LitElement {
       --opacity-disabled: var(--fhi-opacity-disabled);
       --color-text: var(--fhi-color-neutral-text-default);
       --typography-font-size: var(--fhi-typography-body-medium-font-size);
-      --typography-font-weight: 400;
+      --typography-font-weight: var(--fhi-typography-body-medium-font-weight);
       --typography-line-height: var(--fhi-typography-body-medium-line-height);
       --typography-letter-spacing: var(
         --fhi-typography-body-medium-letter-spacing
@@ -97,6 +107,7 @@ export class FhiCheckbox extends LitElement {
         aspect-ratio: 1/1;
         display: grid;
         place-content: center;
+        transition: var(--motion-checkbox-transition);
 
         &:hover {
           background-color: var(--color-checkbox-hover);
@@ -106,6 +117,7 @@ export class FhiCheckbox extends LitElement {
         &:active {
           background-color: var(--color-checkbox-active);
           outline: var(--checkbox-outline); // change token name
+          border-color: var(--color-checkbox-border-hover);
         }
 
         &:checked {
@@ -116,17 +128,20 @@ export class FhiCheckbox extends LitElement {
             background-color: var(--color-checkbox-checked-hover);
             border-color: var(--color-checkbox-border-checked-hover);
           }
+          &:active {
+            background-color: var(--color-checkbox-checked-hover);
+            border-color: var(--color-checkbox-border-checked-hover);
+          }
         }
       }
 
       input[type='checkbox']::before {
         content: '';
-        width: 0.65rem;
-        height: 0.65rem;
+        width: 18px;
+        height: 18px;
         transform: scale(0);
-        transition: var(--motion-checkbox-transition);
 
-        background-image: url('data:image/svg+xml;utf-8,%3Csvg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"%3E%3Cpath d="M470.6 105.4c12.5 12.5 12.5 32.8 0 45.3l-256 256c-12.5 12.5-32.8 12.5-45.3 0l-128-128c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0L192 338.7 425.4 105.4c12.5-12.5 32.8-12.5 45.3 0z" fill="white"/%3E%3C/svg%3E');
+        background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 18 18" fill="none"><path d="M12.043 6.04295C12.4335 5.65243 13.0666 5.65243 13.4571 6.04295C13.8476 6.43348 13.8476 7.06649 13.4571 7.45702L8.95708 11.957C8.56655 12.3475 7.93354 12.3475 7.54302 11.957L5.29302 9.70702C4.90249 9.31649 4.90249 8.68348 5.29302 8.29295C5.65913 7.92684 6.23813 7.90424 6.63091 8.22459L6.70708 8.29295L8.25005 9.83592L12.043 6.04295Z" fill="%23FDFEFF"/></svg>');
       }
 
       input[type='checkbox']:checked::before {
@@ -170,6 +185,7 @@ export class FhiCheckbox extends LitElement {
         &:active {
           background-color: var(--color-checkbox-error-active);
           outline: var(--checkbox-outline-error);
+          border-color: var(--color-checkbox-border-error-hover);
         }
 
         &:checked {
