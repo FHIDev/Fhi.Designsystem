@@ -5,15 +5,41 @@ import { DesignTokenDocBlock } from 'storybook-design-token';
 
 ## Kan jeg bruke komponentene i Angular Forms?
 
-Ja det kan du!
+<div style={{padding: ".25rem 1rem", background: "#D3E3F5", borderRadius: "2px", borderBottom: "4px solid #3283CE", marginBottom: "1rem"}}>
+Om du bruker Angular uten Angular Forms, e.g om du bruker komponentene med Javascript/HTML sin standard formControl eller utenfor et form, kan du bruke de uten ekstra konfigurasjon.
+</div>
 
-Bruk angular sitt `ngDefaultControl` direktiv for å koble komponentene til Angular Forms.
-Dette er et standard Angular-direktiv som lar deg bruke web-komponenter som en del av Angular Forms.
+Ja du kan bruke FHI Designsystem sine form-komponenter i Angular Forms! 🚀
 
-e.g
+For form-komponenter med `string` verdier, e.g `<fhi-text-input>` kan du bruke angular sitt `ngDefaultControl` direktiv for å koble komponentene til Angular Forms.
+Dette er et standard Angular-direktiv som lar deg bruke web-komponenter med oppførsel på linje med `<input type="text">` som en del av Angular Forms.
+
 ```html
-<fhi-text-input ngDefaultControl [(ngModel)]="modelValue" />
+<fhi-text-input ngDefaultControl name="myInput" [(ngModel)]="myModel" />
 ```
+
+**eller**, om du ønsker å bruke andre ikke-tekstbeserte form-komponenter anbefaler vi heller å lage direktiver som gjenbruker Angular Forms sine respektive `ValueAccessor` klasser.
+
+<div style={{padding: ".25rem 1rem", background: "#D3E3F5", borderRadius: "2px", borderBottom: "4px solid #3283CE", marginBottom: "1rem"}}>
+Dette er ikke obligatorisk og du kan heller bruke `ngDefaultControl` for alle komponentene om du ønsker. `ngDefaultControl` behandler derimot alle verdier som `string`, så eventuelle `boolean` eller `number` verdier vil da bli konvertert til `string`
+</div>
+
+Kopier disse direktivene inn i prosjektet ditt:
+```typescript
+@Directive({ selector: 'fhi-radio[formControlName],fhi-radio[formControl],fhi-radio[ngModel]', standalone: true, providers: [{ provide: NG_VALUE_ACCESSOR, useExisting: forwardRef(() => FHIRadioValueAccessor), multi: true }] })
+export class FHIRadioValueAccessor extends RadioControlValueAccessor {}
+
+@Directive({ selector: 'fhi-checkbox[formControlName],fhi-checkbox[formControl],fhi-checkbox[ngModel]', standalone: true, providers: [{ provide: NG_VALUE_ACCESSOR, useExisting: forwardRef(() => FHICheckboxValueAccessor), multi: true }] })
+export class FHICheckboxValueAccessor extends CheckboxControlValueAccessor {}
+
+@Directive({ selector: 'fhi-text-input[formControlName],fhi-text-input[formControl],fhi-text-input[ngModel]', standalone: true, providers: [{ provide: NG_VALUE_ACCESSOR, useExisting: forwardRef(() => FHITextInputValueAccessor), multi: true }] })
+export class FHITextInputValueAccessor extends DefaultValueAccessor {}
+```
+
+Om du nå importerer disse direktivene i Angular-komponenten din, kan du bruke alle av FHI Designsystem sin form-komponenter i Angular Forms uten ekstra arbeid.
 
 **Referanser:**
 - [DefaultValueAccessor](https://angular.dev/api/forms/DefaultValueAccessor#usage-notes)
+- [Using Web Components in Angular Forms with Element Internals](https://coryrylan.com/blog/using-web-components-in-angular-forms-with-element-internals)
+- [Angular - Issue 45953](https://github.com/angular/angular/pull/45953)
+- [Missing value accessor](https://angular.dev/errors/NG01203)
