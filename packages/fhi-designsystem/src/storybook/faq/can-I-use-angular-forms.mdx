@@ -11,17 +11,17 @@ Om du bruker Angular uten Angular Forms, e.g om du bruker komponentene med Javas
 
 Ja du kan bruke FHI Designsystem sine form-komponenter i Angular Forms! 🚀
 
-For form-komponenter med `string` verdier, e.g `<fhi-text-input>` kan du bruke angular sitt `ngDefaultControl` direktiv for å koble komponentene til Angular Forms.
+For form-komponenter med `string` verdier, e.g `<fhi-text-input>` kan du bruke Angular sitt `ngDefaultControl` direktiv for å koble komponentene til Angular Forms.
 Dette er et standard Angular-direktiv som lar deg bruke web-komponenter med oppførsel på linje med `<input type="text">` som en del av Angular Forms.
 
 ```html
 <fhi-text-input ngDefaultControl name="myInput" [(ngModel)]="myModel" />
 ```
 
-**eller**, om du ønsker å bruke andre ikke-tekstbeserte form-komponenter anbefaler vi heller å lage direktiver som gjenbruker Angular Forms sine respektive `ValueAccessor` klasser.
+**eller**, om du ønsker å bruke andre ikke-tekstbaserte form-komponenter anbefaler vi heller å lage direktiver som gjenbruker Angular Forms sine respektive `ValueAccessor` klasser.
 
 <div style={{padding: ".25rem 1rem", background: "#D3E3F5", borderRadius: "2px", borderBottom: "4px solid #3283CE", marginBottom: "1rem"}}>
-Dette er ikke obligatorisk og du kan heller bruke `ngDefaultControl` for alle komponentene om du ønsker. `ngDefaultControl` behandler derimot alle verdier som `string`, så eventuelle `boolean` eller `number` verdier vil da bli konvertert til `string`
+Dette er ikke obligatorisk og du kan bruke `ngDefaultControl` for alle komponentene om du ønsker. `ngDefaultControl` behandler derimot alle verdier som `string`, så eventuelle `boolean` eller `number` verdier vil da bli konvertert til `string`
 </div>
 
 Kopier disse direktivene inn i prosjektet ditt:
@@ -36,7 +36,7 @@ export class FHICheckboxValueAccessor extends CheckboxControlValueAccessor {}
 export class FHITextInputValueAccessor extends DefaultValueAccessor {}
 ```
 
-Om du nå importerer disse direktivene i Angular-komponenten din, kan du bruke alle av FHI Designsystem sin form-komponenter i Angular Forms uten ekstra arbeid.
+Om du nå importerer disse direktivene i Angular-komponenten din, kan du bruke alle av FHI Designsystem sine form-komponenter i Angular Forms uten ekstra arbeid.
 
 **Referanser:**
 - [DefaultValueAccessor](https://angular.dev/api/forms/DefaultValueAccessor#usage-notes)
