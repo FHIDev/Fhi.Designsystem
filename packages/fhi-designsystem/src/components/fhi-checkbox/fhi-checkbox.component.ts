@@ -9,15 +9,38 @@ export class FhiCheckbox extends LitElement {
 
   @property({ type: String }) id = '';
   @property({ type: String }) label = '';
+  @property({ type: Boolean, reflect: true }) checked = false;
   @property({ type: String, reflect: true }) status: 'error' | undefined;
   @property({ type: Boolean, reflect: true }) disabled? = false;
 
+  private _internals: ElementInternals;
+
   constructor() {
     super();
+    this._internals = this.attachInternals();
   }
 
-  connectedCallback() {
+  connectedCallback(): void {
     super.connectedCallback();
+    this._updateFormValue();
+  }
+
+  public onChange(): void {
+    this.dispatchEvent(
+      new Event('change', {
+        bubbles: true,
+        composed: true,
+      }),
+    );
+  }
+
+  private _updateFormValue() {
+    this._internals.setFormValue(this.checked ? 'checked' : null);
+  }
+
+  formResetCallback() {
+    this.checked = false;
+    this._updateFormValue();
   }
 
   render() {
@@ -25,9 +48,11 @@ export class FhiCheckbox extends LitElement {
       <label>
         <input
           type="checkbox"
-          name="checkbox"
+          name="input"
           id="${this.id}"
           ?disabled="${this.disabled}"
+          ?checked="${this.checked}"
+          @change=${this.onChange}
         />
         ${this.label}
       </label>
@@ -93,6 +118,7 @@ export class FhiCheckbox extends LitElement {
         letter-spacing: var(--typography-letter-spacing);
         display: grid;
         grid-template-columns: 1rem auto;
+        justify-self: start;
         gap: var(--dimension-gap);
       }
 
