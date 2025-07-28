@@ -9,8 +9,9 @@ export class FhiCheckbox extends LitElement {
 
   @property({ type: String }) id = '';
   @property({ type: String }) label = '';
-  @property({ type: Boolean, reflect: true }) checked = false;
-  @property({ type: String, reflect: true }) status: 'error' | undefined;
+  @property({ type: String }) name = '';
+  @property({ type: String, reflect: true }) status?: 'error' | undefined;
+  @property({ type: Boolean, reflect: true }) checked? = false;
   @property({ type: Boolean, reflect: true }) disabled? = false;
 
   private _internals: ElementInternals;
@@ -43,16 +44,21 @@ export class FhiCheckbox extends LitElement {
     this._updateFormValue();
   }
 
+  public onClick(): void {
+    this.checked = !this.checked;
+  }
+
   render() {
     return html`
       <label>
         <input
           type="checkbox"
-          name="input"
+          name="${this.name}"
           id="${this.id}"
           ?disabled="${this.disabled}"
           ?checked="${this.checked}"
           @change=${this.onChange}
+          @click=${this.onClick}
         />
         ${this.label}
       </label>
