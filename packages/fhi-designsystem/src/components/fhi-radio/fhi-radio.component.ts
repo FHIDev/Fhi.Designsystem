@@ -60,12 +60,6 @@ export class FhiRadio extends LitElement {
   }
 
   render() {
-    if (!this.label) {
-      console.error(
-        `Invalid label attribute! There is an <${FhiRadioSelector}> without an accessable label on this page`,
-      );
-    }
-
     return html`
       <div id="radio-container">
         <input
@@ -86,7 +80,7 @@ export class FhiRadio extends LitElement {
           <circle r="6" cx="9" cy="9" />
         </svg>
       </div>
-      <label for="input-element">${this.label}</label>
+      ${this.label && html`<label for="input-element">${this.label}</label>`}
     `;
   }
 
