@@ -29,27 +29,32 @@ export class FhiRadio extends LitElement {
   public connectedCallback(): void {
     super.connectedCallback();
 
-    this.setFormValue();
+    this._setFormValue();
   }
 
   public updated(changedProps: Map<string, unknown>) {
     super.updated(changedProps);
 
-    // make sure the radio input can be programmatically toggeled
+    // make sure the radio input can be programmatically toggeled. e.g by a form reset
     if (changedProps.has('checked')) {
       this._input.checked = !!this.checked;
-      this.setFormValue();
+      this._setFormValue();
     }
   }
 
-  private setFormValue(): void {
+  public formResetCallback(): void {
+    this.checked = !!this.getAttribute('checked');
+    this._setFormValue();
+  }
+
+  private _setFormValue(): void {
     this._internals.setFormValue(this.checked ? 'on' : null);
   }
 
-  private handleChange(event: Event): void {
+  private _handleChange(event: Event): void {
     this.checked = (event.target as HTMLInputElement).checked;
 
-    this.setFormValue();
+    this._setFormValue();
 
     this.dispatchEvent(new Event('change', { bubbles: true, composed: true }));
   }
@@ -69,7 +74,7 @@ export class FhiRadio extends LitElement {
           name="${this.name}"
           .value="${this.name}"
           ?checked=${this.checked}
-          @change=${this.handleChange}
+          @change=${this._handleChange}
         />
         <svg
           class="radio-dot"
