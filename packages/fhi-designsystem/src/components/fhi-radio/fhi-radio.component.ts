@@ -119,9 +119,10 @@ export class FhiRadio extends LitElement {
       display: flex;
       align-items: center;
       width: max-content;
-      gap: 0.5rem;
+      gap: var(--fhi-spacing-100);
 
       #radio-container {
+        display: flex;
         position: relative;
       }
 
@@ -132,25 +133,26 @@ export class FhiRadio extends LitElement {
       input {
         margin: 0;
         appearance: none;
-        width: 1.25rem;
-        height: 1.25rem;
+        width: var(--fhi-spacing-250);
+        height: var(--fhi-spacing-250);
         background-color: var(--color-radio-background);
-        border: 0.0625rem solid var(--color-radio-border);
-        border-radius: 50%;
+        border: var(--fhi-dimension-border-width) solid
+          var(--color-radio-border);
+        border-radius: var(--fhi-border-radius-full);
         transition: all var(--motion-radio-transition);
       }
 
       .radio-dot {
         visibility: hidden;
         opacity: 0;
+        transition: opacity var(--motion-radio-transition);
         position: absolute;
         top: 1px;
         left: 1px;
-        transition: opacity var(--motion-radio-transition);
       }
 
       input:checked {
-        border-width: 2px;
+        border-width: var(--fhi-dimension-border-width-active);
         ~ .radio-dot {
           circle {
             fill: var(--color-radio-border);
@@ -170,7 +172,8 @@ export class FhiRadio extends LitElement {
 
     :host(:active:not(:disabled)) {
       input:not(:checked) {
-        outline: 0.25rem solid var(--color-radio-outline);
+        outline: var(--fhi-dimension-border-width-focus) solid
+          var(--color-radio-outline);
       }
     }
 
@@ -198,7 +201,7 @@ export class FhiRadio extends LitElement {
 
     :host([status='error']:active:not(:disabled)) {
       input:not(:checked) {
-        outline: 0.25rem solid var(--color-radio-outline-error);
+        outline-color: var(--color-radio-outline-error);
       }
     }
 
