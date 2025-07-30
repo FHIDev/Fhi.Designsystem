@@ -86,12 +86,11 @@ export class FhiRadio extends LitElement {
 
   static styles = css`
     :host {
-      --color-radio-border: var(--fhi-color-neutral-border-default);
       --color-radio-label: var(--fhi-color-neutral-text-default);
+      --color-radio-border: var(--fhi-color-neutral-border-default);
       --color-radio-background: var(--fhi-color-neutral-background-default);
 
       --color-radio-border-hover: var(--fhi-color-accent-border-strong);
-      --color-radio-label-hover: var(--fhi-color-accent-border-strong);
       --color-radio-background-hover: var(--fhi-color-accent-background-subtle);
 
       --color-radio-outline: var(--fhi-color-accent-surface-default);
@@ -100,11 +99,17 @@ export class FhiRadio extends LitElement {
         var(--fhi-motion-duration-quick);
 
       /* Error state */
-      --color-radio-label-error: var(--fhi-color-neutral-text-default);
       --color-radio-border-error: var(--fhi-color-danger-border-default);
       --color-radio-background-error: var(
         --fhi-color-danger-background-default
       );
+
+      --color-radio-border-error-hover: var(--fhi-color-danger-border-strong);
+      --color-radio-background-error-hover: var(
+        --fhi-color-danger-surface-default
+      );
+
+      --color-radio-outline-error: var(--fhi-color-danger-surface-hover);
     }
 
     :host {
@@ -117,6 +122,10 @@ export class FhiRadio extends LitElement {
         position: relative;
       }
 
+      label {
+        color: var(--color-radio-label);
+      }
+
       input {
         margin: 0;
         appearance: none;
@@ -127,6 +136,7 @@ export class FhiRadio extends LitElement {
         border-radius: 50%;
         transition: all var(--motion-radio-transition);
       }
+
       .radio-dot {
         visibility: hidden;
         opacity: 0;
@@ -161,7 +171,32 @@ export class FhiRadio extends LitElement {
       }
     }
 
-    :host[status='error'] {
+    :host([status='error']) {
+      input {
+        border-color: var(--color-radio-border-error);
+        background-color: var(--color-radio-background-error);
+      }
+
+      input:checked {
+        ~ .radio-dot {
+          circle {
+            fill: var(--color-radio-border-error);
+          }
+        }
+      }
+    }
+
+    :host([status='error']:hover) {
+      input:not(:checked) {
+        border-color: var(--color-radio-border-error-hover);
+        background-color: var(--color-radio-background-error-hover);
+      }
+    }
+
+    :host([status='error']:active) {
+      input:not(:checked) {
+        outline: 0.25rem solid var(--color-radio-outline-error);
+      }
     }
 
     :host([disabled]) {
