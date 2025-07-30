@@ -68,6 +68,7 @@ export class FhiRadio extends LitElement {
           name="${this.name}"
           .value="${this.name}"
           ?checked=${this.checked}
+          ?disabled=${this.disabled}
           @change=${this._handleChange}
         />
         <svg
@@ -110,6 +111,8 @@ export class FhiRadio extends LitElement {
       );
 
       --color-radio-outline-error: var(--fhi-color-danger-surface-hover);
+
+      --opacity-disabled: var(--fhi-opacity-disabled);
     }
 
     :host {
@@ -158,14 +161,14 @@ export class FhiRadio extends LitElement {
       }
     }
 
-    :host(:hover) {
+    :host(:hover:not(:disabled)) {
       input:not(:checked) {
         border-color: var(--color-radio-border-hover);
         background-color: var(--color-radio-background-hover);
       }
     }
 
-    :host(:active) {
+    :host(:active:not(:disabled)) {
       input:not(:checked) {
         outline: 0.25rem solid var(--color-radio-outline);
       }
@@ -186,20 +189,21 @@ export class FhiRadio extends LitElement {
       }
     }
 
-    :host([status='error']:hover) {
+    :host([status='error']:hover:not(:disabled)) {
       input:not(:checked) {
         border-color: var(--color-radio-border-error-hover);
         background-color: var(--color-radio-background-error-hover);
       }
     }
 
-    :host([status='error']:active) {
+    :host([status='error']:active:not(:disabled)) {
       input:not(:checked) {
         outline: 0.25rem solid var(--color-radio-outline-error);
       }
     }
 
     :host([disabled]) {
+      opacity: var(--opacity-disabled);
     }
   `;
 }
