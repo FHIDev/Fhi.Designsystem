@@ -24,7 +24,8 @@ const meta: Meta<FhiRadio> = {
     html`<fhi-radio
       name=${ifDefined(args.name)}
       label=${ifDefined(args.label)}
-      checked=${args.checked}
+      .checked=${ifDefined(args.checked)}
+      disabled=${ifDefined(args.disabled)}
     ></fhi-radio>`,
   argTypes: {
     name: {

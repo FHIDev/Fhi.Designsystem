@@ -99,6 +99,22 @@ export class FhiRadio extends LitElement {
       --motion-radio-transition: var(--fhi-motion-ease-default)
         var(--fhi-motion-duration-quick);
 
+      --typography-radio-label-font-family: var(--fhi-font-family-default);
+      --typography-radio-label-font-size: var(
+        --fhi-typography-body-medium-font-size
+      );
+
+      --typography-radio-label-font-weight: var(
+        --fhi-typography-body-medium-font-weight
+      );
+
+      --typography-radio-label-line-height: var(
+        --fhi-typography-body-medium-line-height
+      );
+      --typography-radio-label-letter-spacing: var(
+        --fhi-typography-body-medium-letter-spacing
+      );
+
       /* Error state */
       --color-radio-border-error: var(--fhi-color-danger-border-default);
       --color-radio-background-error: var(
@@ -128,6 +144,11 @@ export class FhiRadio extends LitElement {
 
       label {
         color: var(--color-radio-label);
+        font-family: var(--typography-radio-label-font-family);
+        font-size: var(--typography-radio-label-font-size);
+        font-weight: var(--typography-radio-label-font-weight);
+        line-height: var(--typography-radio-label-line-height);
+        letter-spacing: var(--typography-radio-label-letter-spacing);
       }
 
       input {
