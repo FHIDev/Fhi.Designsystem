@@ -135,7 +135,6 @@ export class FhiRadio extends LitElement {
       display: flex;
       align-items: center;
       width: max-content;
-      gap: var(--fhi-spacing-100);
 
       #radio-container {
         display: flex;
@@ -143,6 +142,7 @@ export class FhiRadio extends LitElement {
       }
 
       label {
+        padding-left: var(--fhi-spacing-100);
         color: var(--color-radio-label);
         font-family: var(--typography-radio-label-font-family);
         font-size: var(--typography-radio-label-font-size);
