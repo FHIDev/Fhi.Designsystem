@@ -46,13 +46,13 @@ describe('fhi-checkbox', () => {
       expect(component.id).to.equal('my id');
     });
 
-    /* it('has an attribute to set name', async () => {
+    it('has an attribute to set name', async () => {
       component = await fixture(
         html`<fhi-checkbox name="my name"></fhi-checkbox>`,
       );
       expect(component.getAttribute('name')).to.equal('my name');
       expect(component.name).to.equal('my name');
-    }); */
+    });
 
     it('has an attribute to set status', async () => {
       component = await fixture(

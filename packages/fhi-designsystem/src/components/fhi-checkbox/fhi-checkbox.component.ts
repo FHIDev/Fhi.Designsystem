@@ -26,9 +26,13 @@ export class FhiCheckbox extends LitElement {
     this._updateFormValue();
   }
 
-  public onChange(): void {
+  public _handleChange(event: Event): void {
+    this.checked = (event.target as HTMLInputElement).checked;
+    this._updateFormValue();
+    this.requestUpdate();
     this.dispatchEvent(
-      new Event('change', {
+      new CustomEvent('change', {
+        detail: { checked: this.checked },
         bubbles: true,
         composed: true,
       }),
@@ -36,16 +40,12 @@ export class FhiCheckbox extends LitElement {
   }
 
   private _updateFormValue() {
-    this._internals.setFormValue(this.checked ? 'checked' : null);
+    this._internals.setFormValue(this.checked ? 'on' : null);
   }
 
   formResetCallback() {
     this.checked = false;
     this._updateFormValue();
-  }
-
-  public onClick(): void {
-    this.checked = !this.checked;
   }
 
   render() {
@@ -57,8 +57,7 @@ export class FhiCheckbox extends LitElement {
           id="${this.id}"
           ?disabled="${this.disabled}"
           ?checked="${this.checked}"
-          @change=${this.onChange}
-          @click=${this.onClick}
+          @change=${this._handleChange}
         />
         ${this.label}
       </label>
