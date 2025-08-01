@@ -7,7 +7,7 @@ export const FhiRadioSelector = 'fhi-radio';
 export class FhiRadio extends LitElement {
   static readonly formAssociated = true;
 
-  @property({ type: String }) label: string = 'label';
+  @property({ type: String }) label?: string = undefined;
 
   @property({ type: String }) name?: string = undefined;
 

@@ -6,8 +6,28 @@ import { Meta, Primary, Canvas, Controls } from '@storybook/blocks';
 
 # Radio
 
+Radioknapp lar brukere velge ett enkelt valg blandt to eller flere motstridende alternativer.
+
 ## Passer til
+
+- Å velge ett - og kun ett - alternativ i en kort liste
 
 <Canvas of={FhiRadioStories.Preview} />
 
 <Controls />
+
+### Status
+
+#### `error`
+
+Brukes for å kommunisere feil, som at man ikke har gjort et valg som er påkrevd.
+
+<Canvas of={FhiRadioStories.Error} />
+
+### Form Controls
+
+#### `disabled`
+
+Radioknapper som ikke kan samhandles med, kan fortsatt vises med noe transparens. Unngås som regel. 
+
+<Canvas of={FhiRadioStories.Disabled} />

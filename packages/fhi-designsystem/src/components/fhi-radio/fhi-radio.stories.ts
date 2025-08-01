@@ -26,6 +26,7 @@ const meta: Meta<FhiRadio> = {
       label=${ifDefined(args.label)}
       .checked=${ifDefined(args.checked)}
       disabled=${ifDefined(args.disabled)}
+      status=${ifDefined(args.status)}
     ></fhi-radio>`,
   argTypes: {
     name: {
@@ -43,8 +44,20 @@ const meta: Meta<FhiRadio> = {
     checked: {
       control: 'boolean',
       description:
-        'Bestemmer om feltet er valgt. Brukeren kan endre dette ved å trykke på radiofeltet.',
+        'Bestemmer om feltet er valgt. Brukeren kan sette feltet til valgt ved å klikke på det.',
       defaultValue: { summary: false },
+    },
+    disabled: {
+      control: 'boolean',
+      description:
+        'Bestemmer om feltet er deaktivert. Brukeren kan ikke endre feltet når det er deaktivert.',
+      defaultValue: { summary: false },
+    },
+    status: {
+      control: 'select',
+      options: [undefined, 'error'],
+      description: 'Bestemmer statusen på feltet.',
+      defaultValue: { summary: undefined },
     },
   },
 };
@@ -52,8 +65,33 @@ const meta: Meta<FhiRadio> = {
 type Story = StoryObj<FhiRadio>;
 
 export const Preview: Story = {
+  tags: ['!dev'],
+  args: {
+    label: 'Label',
+  },
+};
+
+export const Default: Story = {
   tags: [],
-  args: {},
+  args: {
+    label: 'Label',
+  },
+};
+
+export const Error: Story = {
+  tags: [],
+  args: {
+    label: 'Label',
+    status: 'error',
+  },
+};
+
+export const Disabled: Story = {
+  tags: [],
+  args: {
+    label: 'Label',
+    disabled: true,
+  },
 };
 
 export default meta;
