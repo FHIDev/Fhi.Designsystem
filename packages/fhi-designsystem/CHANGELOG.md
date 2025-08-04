@@ -1,5 +1,19 @@
 # Changelog
 
+## [0.7.0](https://github.com/FHIDev/Fhi.Designsystem/compare/v0.6.0...v0.7.0) (2025-07-31)
+
+
+### 🚀 Features
+
+* New icons, such as pencil, folder, pin, alternative link and repeat ([#224](https://github.com/FHIDev/Fhi.Designsystem/issues/224)) ([d476b28](https://github.com/FHIDev/Fhi.Designsystem/commit/d476b285d0a562f758dee318ce8127af9b2da44e))
+
+## [0.6.0](https://github.com/FHIDev/Fhi.Designsystem/compare/v0.5.0...v0.6.0) (2025-07-02)
+
+
+### 🚀 Features
+
+* New Mail icon ([#216](https://github.com/FHIDev/Fhi.Designsystem/issues/216)) ([c6cdd4f](https://github.com/FHIDev/Fhi.Designsystem/commit/c6cdd4f65eb9d720fc352fd0d5c3dcc41c1ea811))
+
 ## [0.5.0](https://github.com/FHIDev/Fhi.Designsystem/compare/v0.4.0...v0.5.0) (2025-06-16)
 
 
