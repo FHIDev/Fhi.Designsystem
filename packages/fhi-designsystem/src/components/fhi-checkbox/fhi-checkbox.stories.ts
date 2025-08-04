@@ -18,6 +18,11 @@ const meta: Meta<FhiCheckbox> = {
       ?disabled=${args.disabled}
     ></fhi-checkbox>`,
   argTypes: {
+    name: {
+      control: { type: 'text' },
+      description: 'Navnet på checkbox-gruppen',
+      defaultValue: { summary: '' },
+    },
     label: {
       control: { type: 'text' },
       description: 'Informerer om hvilket valg avkrysningsboksen tilsvarer.',
@@ -35,7 +40,7 @@ const meta: Meta<FhiCheckbox> = {
       options: [undefined, 'error'],
     },
     disabled: {
-      constrol: { type: 'boolean' },
+      control: { type: 'boolean' },
       description: 'Bestemmer om bruker kan samhandle med avkrysningsboksen',
       defaultValue: { summary: false },
     },
@@ -52,7 +57,7 @@ export const Preview: Story = {
 };
 
 export const Error: Story = {
-  tags: ['!dev'],
+  tags: [],
   args: {
     label: 'Checkbox',
     status: 'error',
@@ -60,7 +65,7 @@ export const Error: Story = {
 };
 
 export const NoLabel: Story = {
-  tags: ['!dev'],
+  tags: [],
   args: {
     label: '',
   },

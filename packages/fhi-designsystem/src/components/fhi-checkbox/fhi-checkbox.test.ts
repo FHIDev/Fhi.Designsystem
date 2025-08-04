@@ -54,6 +54,14 @@ describe('fhi-checkbox', () => {
       expect(component.name).to.equal('my name');
     });
 
+    it('has an attribute to set value', async () => {
+      component = await fixture(
+        html`<fhi-checkbox name="my value"></fhi-checkbox>`,
+      );
+      expect(component.getAttribute('name')).to.equal('my value');
+      expect(component.name).to.equal('my value');
+    });
+
     it('has an attribute to set status', async () => {
       component = await fixture(
         html`<fhi-checkbox status="error"></fhi-checkbox>`,
@@ -89,9 +97,98 @@ describe('fhi-checkbox', () => {
         document.querySelector('form') as HTMLFormElement,
       );
 
-      console.log(form);
       expect(form.get('myCheckbox')).to.not.equal(null);
       expect(form.get('myCheckbox')).to.not.equal(undefined);
+    });
+
+    it('updates its checked state when there is a change from the associated form', async () => {
+      component = await fixture(
+        html`<fhi-checkbox name="myCheckbox"></fhi-checkbox>`,
+        { parentNode: document.createElement('form') },
+      );
+
+      const form = document.querySelector('form') as HTMLFormElement;
+
+      form.myCheckbox.checked = true;
+
+      expect(component.checked).to.equal(true);
+    });
+
+    it('updates its checked state when there is a change from the associated form and the input is disabled', async () => {
+      component = await fixture(
+        html`<fhi-checkbox name="myCheckbox" disabled></fhi-checkbox>`,
+        { parentNode: document.createElement('form') },
+      );
+
+      const form = document.querySelector('form') as HTMLFormElement;
+
+      form.myCheckbox.checked = true;
+
+      expect(component.checked).to.equal(true);
+    });
+
+    it('is not included in the associated forms formData when unchecked', async () => {
+      component = await fixture(
+        html`<fhi-checkbox name="myCheckbox"></fhi-checkbox>`,
+        { parentNode: document.createElement('form') },
+      );
+
+      const form = new FormData(
+        document.querySelector('form') as HTMLFormElement,
+      );
+
+      expect(form.get('myCheckbox')).to.equal(null);
+    });
+
+    it('is not included in the associated forms formData when disabled even if checked', async () => {
+      component = await fixture(
+        html`<fhi-checkbox name="myCheckbox" checked disabled></fhi-checkbox>`,
+        { parentNode: document.createElement('form') },
+      );
+
+      const form = new FormData(
+        document.querySelector('form') as HTMLFormElement,
+      );
+
+      expect(form.get('myCheckbox')).to.equal(null);
+    });
+
+    it('sets form value to "on" if value is not specified', async () => {
+      component = await fixture(
+        html`<fhi-checkbox name="myCheckbox" checked></fhi-checkbox>`,
+        { parentNode: document.createElement('form') },
+      );
+
+      const form = new FormData(
+        document.querySelector('form') as HTMLFormElement,
+      );
+
+      expect(form.get('myCheckbox')).to.equal('on');
+    });
+
+    it('is included in the associated forms formData when previously disabled, but now enabled', async () => {
+      component = await fixture(
+        html`<fhi-checkbox
+          name="myCheckbox"
+          value="hello"
+          checked
+          disabled
+        ></fhi-checkbox>`,
+        { parentNode: document.createElement('form') },
+      );
+
+      let form = new FormData(
+        document.querySelector('form') as HTMLFormElement,
+      );
+
+      expect(form.get('myCheckbox')).to.equal(null);
+
+      component.disabled = false;
+      await component.updateComplete;
+
+      form = new FormData(document.querySelector('form') as HTMLFormElement);
+
+      expect(form.get('myCheckbox')).to.equal('hello');
     });
   });
 });

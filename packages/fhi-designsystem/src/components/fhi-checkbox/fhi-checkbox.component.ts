@@ -10,25 +10,12 @@ export class FhiCheckbox extends LitElement {
   @property({ type: String }) id = '';
   @property({ type: String }) label = '';
   @property({ type: String }) name = '';
+  @property({ type: String }) value = '';
   @property({ type: String, reflect: true }) status?: 'error' | undefined;
   @property({ type: Boolean }) checked? = false;
   @property({ type: Boolean, reflect: true }) disabled? = false;
 
   private _internals: ElementInternals;
-
-  private _value: string = '';
-
-  @property({ type: String })
-  get value(): string {
-    return this._value;
-  }
-
-  set value(newValue: string) {
-    const oldValue = this._value;
-    this._value = newValue;
-    this.requestUpdate('value', oldValue);
-    this._updateFormValue(this._value);
-  }
 
   constructor() {
     super();
@@ -52,11 +39,11 @@ export class FhiCheckbox extends LitElement {
     );
   }
 
-  private _updateFormValue(value: string | undefined) {
-    if (value != undefined) {
-      this._internals.setFormValue(this.checked ? value : null);
-    } else {
+  private _updateFormValue(value: string) {
+    if (value == '') {
       this._internals.setFormValue(this.checked ? 'on' : null);
+    } else {
+      this._internals.setFormValue(this.checked ? value : null);
     }
   }
 
