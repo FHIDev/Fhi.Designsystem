@@ -59,6 +59,7 @@ export class FhiCheckbox extends LitElement {
           type="checkbox"
           name="${this.name}"
           id="${this.id}"
+          value="${this.value}"
           ?disabled="${this.disabled}"
           ?checked="${this.checked}"
           @change=${this._handleChange}
@@ -67,6 +68,7 @@ export class FhiCheckbox extends LitElement {
       </label>
     `;
   }
+
   static styles = css`
     :host {
       --typography-font-family: var(--fhi-font-family-default);
