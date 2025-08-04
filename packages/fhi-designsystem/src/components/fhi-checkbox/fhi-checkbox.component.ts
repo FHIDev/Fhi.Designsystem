@@ -11,10 +11,24 @@ export class FhiCheckbox extends LitElement {
   @property({ type: String }) label = '';
   @property({ type: String }) name = '';
   @property({ type: String, reflect: true }) status?: 'error' | undefined;
-  @property({ type: Boolean, reflect: true }) checked? = false;
+  @property({ type: Boolean }) checked? = false;
   @property({ type: Boolean, reflect: true }) disabled? = false;
 
   private _internals: ElementInternals;
+
+  private _value: string = '';
+
+  @property({ type: String })
+  get value(): string {
+    return this._value;
+  }
+
+  set value(newValue: string) {
+    const oldValue = this._value;
+    this._value = newValue;
+    this.requestUpdate('value', oldValue);
+    this._updateFormValue(this._value);
+  }
 
   constructor() {
     super();
@@ -23,29 +37,32 @@ export class FhiCheckbox extends LitElement {
 
   connectedCallback(): void {
     super.connectedCallback();
-    this._updateFormValue();
+    this._updateFormValue(this.value);
   }
 
   public _handleChange(event: Event): void {
     this.checked = (event.target as HTMLInputElement).checked;
-    this._updateFormValue();
+    this._updateFormValue(this.value);
     this.requestUpdate();
     this.dispatchEvent(
-      new CustomEvent('change', {
-        detail: { checked: this.checked },
+      new Event('change', {
         bubbles: true,
         composed: true,
       }),
     );
   }
 
-  private _updateFormValue() {
-    this._internals.setFormValue(this.checked ? 'on' : null);
+  private _updateFormValue(value: string | undefined) {
+    if (value != undefined) {
+      this._internals.setFormValue(this.checked ? value : null);
+    } else {
+      this._internals.setFormValue(this.checked ? 'on' : null);
+    }
   }
 
   formResetCallback() {
     this.checked = false;
-    this._updateFormValue();
+    this._updateFormValue(this.value);
   }
 
   render() {
@@ -114,6 +131,7 @@ export class FhiCheckbox extends LitElement {
     }
 
     :host {
+      display: block;
       label {
         color: var(--color-text);
         font-family: var(--typography-font-family);

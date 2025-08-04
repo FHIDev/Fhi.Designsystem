@@ -81,7 +81,7 @@ describe('fhi-checkbox', () => {
   describe('form association', () => {
     it('is associated to its parent form', async () => {
       component = await fixture(
-        html`<fhi-checkbox name="myCheckbox"></fhi-checkbox>`,
+        html`<fhi-checkbox name="myCheckbox" checked></fhi-checkbox>`,
         { parentNode: document.createElement('form') },
       );
 
