@@ -17,9 +17,13 @@ export class FhiRadio extends LitElement {
 
   @property({ type: Boolean, reflect: true }) checked? = false;
 
+  @property({ type: String }) value: string = 'on';
+
   @query('#input-element') _input!: HTMLInputElement;
 
   private _internals: ElementInternals;
+
+  public isFormElement = false;
 
   constructor() {
     super();
@@ -28,6 +32,8 @@ export class FhiRadio extends LitElement {
 
   public connectedCallback(): void {
     super.connectedCallback();
+
+    this.isFormElement = !!this._internals.form;
 
     this._setFormValue();
   }
@@ -47,12 +53,38 @@ export class FhiRadio extends LitElement {
     this._setFormValue();
   }
 
+  private uncheckGroupMembers(): void {
+    const root = this._internals.form ? this._internals.form : document;
+
+    const radios = root.querySelectorAll<FhiRadio>(
+      `${FhiRadioSelector}[name="${this.name}"]`,
+    );
+
+    radios.forEach(radio => {
+      if (radio === this) {
+        return;
+      }
+
+      if (radio.isFormElement && root === document) {
+        return;
+      }
+
+      radio.checked = false;
+    });
+  }
+
   private _setFormValue(): void {
-    this._internals.setFormValue(this.checked ? 'on' : null);
+    if (!this.isFormElement) {
+      return;
+    }
+
+    this._internals.setFormValue(this.checked ? this.value : null);
   }
 
   private _handleChange(event: Event): void {
     this.checked = (event.target as HTMLInputElement).checked;
+
+    this.uncheckGroupMembers();
 
     this._setFormValue();
 
@@ -66,7 +98,7 @@ export class FhiRadio extends LitElement {
           type="radio"
           id="input-element"
           name="${this.name}"
-          .value="${this.name}"
+          value="${this.value}"
           ?checked=${this.checked}
           ?disabled=${this.disabled}
           @change=${this._handleChange}
