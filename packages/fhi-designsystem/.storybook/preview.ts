@@ -18,7 +18,7 @@ const preview: Preview = {
           'Ikoner',
           'Design Tokens',
           ['Introduksjon'],
-          'FAQ',
+          'Ofte stilte spørsmål',
         ],
       },
     },
