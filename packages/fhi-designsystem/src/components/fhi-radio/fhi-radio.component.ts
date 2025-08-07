@@ -104,8 +104,8 @@ export class FhiRadio extends LitElement {
 
     this._setFormValue();
 
-    this.dispatchEvent(new Event('change', { bubbles: true, composed: true }));
-    this.dispatchEvent(new Event('input', { bubbles: true }));
+    this.dispatchEvent(new Event('change', { bubbles: true }));
+    this.dispatchEvent(new Event('input', { bubbles: true, composed: true }));
   }
 
   render() {
@@ -177,6 +177,7 @@ export class FhiRadio extends LitElement {
 
       --color-radio-outline-error: var(--fhi-color-danger-surface-hover);
 
+      /* Disabled state */
       --opacity-disabled: var(--fhi-opacity-disabled);
     }
 
