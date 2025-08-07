@@ -242,7 +242,22 @@ describe('fhi-radio', () => {
       expect(form.get('myRadio')).to.not.equal(undefined);
     });
 
-    it('updates its value when there is a value change from the associated form', async () => {
+    it('sets form value to "on" when checked if value is not specified', async () => {
+      component = await fixture(
+        html`<fhi-radio name="myRadio" checked></fhi-radio>`,
+        {
+          parentNode: document.createElement('form'),
+        },
+      );
+
+      const form = new FormData(
+        document.querySelector('form') as HTMLFormElement,
+      );
+
+      expect(form.get('myRadio')).to.equal('on');
+    });
+
+    it('updates its checked state when changed by the associated form', async () => {
       component = await fixture(
         html`<fhi-radio name="myRadio" value="myRadio" checked></fhi-radio>`,
         {
@@ -307,22 +322,6 @@ describe('fhi-radio', () => {
       expect(form.get('newName')).to.equal(value);
     });
 
-    it('is associated to its parent form', async () => {
-      component = await fixture(
-        html`<fhi-radio name="myRadio" value="myRadio" checked></fhi-radio>`,
-        {
-          parentNode: document.createElement('form'),
-        },
-      );
-
-      const form = new FormData(
-        document.querySelector('form') as HTMLFormElement,
-      );
-
-      expect(form.get('myRadio')).to.not.equal(null);
-      expect(form.get('myRadio')).to.not.equal(undefined);
-    });
-
     it('unchecks other radios in the same group when checked', async () => {
       const name = 'myGroup';
 
@@ -377,6 +376,41 @@ describe('fhi-radio', () => {
       expect(component.checked).to.equal(true);
     });
 
+    it('is not included in the associated forms formData when unchecked', async () => {
+      component = await fixture(
+        html`<fhi-radio name="myRadio" value="myRadio"></fhi-radio>`,
+        {
+          parentNode: document.createElement('form'),
+        },
+      );
+
+      const form = new FormData(
+        document.querySelector('form') as HTMLFormElement,
+      );
+
+      expect(form.get('myRadio')).to.equal(null);
+    });
+
+    it('is not included in the associated forms formData when disabled, even if checked', async () => {
+      component = await fixture(
+        html`<fhi-radio
+          name="myRadio"
+          value="myRadio"
+          checked
+          disabled
+        ></fhi-radio>`,
+        {
+          parentNode: document.createElement('form'),
+        },
+      );
+
+      const form = new FormData(
+        document.querySelector('form') as HTMLFormElement,
+      );
+
+      expect(form.get('myRadio')).to.equal(null);
+    });
+
     it('resets its checked state when the form is reset', async () => {
       component = await fixture(
         html`<fhi-radio name="gender" value="male" checked></fhi-radio>`,
@@ -421,6 +455,35 @@ describe('fhi-radio', () => {
       // when multiple radios in a group have the checked attribute, the last one should remain checked after the reset
       expect(radio1.checked).to.equal(false);
       expect(radio2.checked).to.equal(true);
+    });
+
+    it('is included in the associated forms formData when previously disabled, but now enabled', async () => {
+      component = await fixture(
+        html`<fhi-radio
+          name="myRadio"
+          value="myRadio"
+          checked
+          disabled
+        ></fhi-radio>`,
+        {
+          parentNode: document.createElement('form'),
+        },
+      );
+
+      const form = new FormData(
+        document.querySelector('form') as HTMLFormElement,
+      );
+
+      expect(form.get('myRadio')).to.equal(null);
+
+      component.disabled = false;
+      await component.updateComplete;
+
+      const updatedForm = new FormData(
+        document.querySelector('form') as HTMLFormElement,
+      );
+
+      expect(updatedForm.get('myRadio')).to.equal('myRadio');
     });
   });
 });

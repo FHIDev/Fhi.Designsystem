@@ -136,6 +136,9 @@ export class FhiRadio extends LitElement {
 
   static styles = css`
     :host {
+      --motion-radio-transition: var(--fhi-motion-ease-default)
+        var(--fhi-motion-duration-quick);
+
       --color-radio-label: var(--fhi-color-neutral-text-default);
       --color-radio-border: var(--fhi-color-neutral-border-default);
       --color-radio-background: var(--fhi-color-neutral-background-default);
@@ -144,9 +147,6 @@ export class FhiRadio extends LitElement {
       --color-radio-background-hover: var(--fhi-color-accent-background-subtle);
 
       --color-radio-outline: var(--fhi-color-accent-surface-default);
-
-      --motion-radio-transition: var(--fhi-motion-ease-default)
-        var(--fhi-motion-duration-quick);
 
       --typography-radio-label-font-family: var(--fhi-font-family-default);
       --typography-radio-label-font-size: var(
