@@ -242,6 +242,21 @@ describe('fhi-radio', () => {
       expect(form.get('myRadio')).to.not.equal(undefined);
     });
 
+    it('updates its value when there is a value change from the associated form', async () => {
+      component = await fixture(
+        html`<fhi-radio name="myRadio" value="myRadio" checked></fhi-radio>`,
+        {
+          parentNode: document.createElement('form'),
+        },
+      );
+
+      const form = document.querySelector('form') as HTMLFormElement;
+
+      form.myRadio.checked = false;
+
+      expect(component.checked).to.equal(false);
+    });
+
     it('updates its associated form when its checked state changes', async () => {
       const name = 'myName';
       const value = 'myValue';
@@ -386,7 +401,7 @@ describe('fhi-radio', () => {
     it('correctly resets its checked state when multiple radios have the checked attribute and the form is reset', async () => {
       const name = 'myGroup';
 
-      const form6 = document.createElement('form');
+      const form = document.createElement('form');
 
       const radio1 = (await fixture(
         html`<fhi-radio name="${name}" value="radio1" checked></fhi-radio>`,
@@ -396,12 +411,10 @@ describe('fhi-radio', () => {
         html`<fhi-radio name="${name}" value="radio2" checked></fhi-radio>`,
       )) as FhiRadio;
 
-      form6.appendChild(radio1);
-      form6.appendChild(radio2);
+      form.appendChild(radio1);
+      form.appendChild(radio2);
 
-      console.log(form6);
-
-      form6.reset();
+      form.reset();
       await radio1.updateComplete;
       await radio2.updateComplete;
 
