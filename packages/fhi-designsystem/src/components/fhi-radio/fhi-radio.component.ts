@@ -9,13 +9,13 @@ export class FhiRadio extends LitElement {
 
   @property({ type: String }) label?: string = undefined;
 
-  @property({ type: String }) name?: string = undefined;
+  @property({ type: String, reflect: true }) name?: string = undefined;
 
   @property({ type: String, reflect: true }) status?: 'error' = undefined;
 
   @property({ type: Boolean, reflect: true }) disabled? = false;
 
-  @property({ type: Boolean, reflect: true }) checked? = false;
+  @property({ type: Boolean }) checked? = false;
 
   @property({ type: String }) value: string = 'on';
 
@@ -38,19 +38,35 @@ export class FhiRadio extends LitElement {
     this._setFormValue();
   }
 
-  public updated(changedProps: Map<string, unknown>) {
-    super.updated(changedProps);
+  public updated(changedProperties: Map<string, unknown>) {
+    super.updated(changedProperties);
 
     // make sure the radio input can be programmatically toggeled. e.g by a form reset
-    if (changedProps.has('checked')) {
+    if (changedProperties.has('checked')) {
       this._input.checked = !!this.checked;
       this._setFormValue();
+
+      if (this.checked) {
+        this.uncheckGroupMembers();
+      }
+    }
+
+    // update the form value when the value or name input changes and the radio is already checked
+    if (changedProperties.has('value') || changedProperties.has('name')) {
+      if (this._input.checked) {
+        this._setFormValue();
+      }
     }
   }
 
   public formResetCallback(): void {
-    this.checked = !!this.getAttribute('checked');
+    this.checked = typeof this.getAttribute('checked') === 'string';
+
     this._setFormValue();
+
+    if (this.checked) {
+      this.uncheckGroupMembers();
+    }
   }
 
   private uncheckGroupMembers(): void {
@@ -89,6 +105,7 @@ export class FhiRadio extends LitElement {
     this._setFormValue();
 
     this.dispatchEvent(new Event('change', { bubbles: true, composed: true }));
+    this.dispatchEvent(new Event('input', { bubbles: true }));
   }
 
   render() {
