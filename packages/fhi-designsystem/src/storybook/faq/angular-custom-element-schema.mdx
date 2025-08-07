@@ -1,25 +1,25 @@
 import { Meta } from '@storybook/blocks';
 import { DesignTokenDocBlock } from 'storybook-design-token';
 
-<Meta title="FAQ/Hvordan påvirker CUSTOM_ELEMENT_SCHEMA type-sjekking i Angular?" />
+<Meta title="Ofte stilte spørsmål/Hvordan påvirker CUSTOM_ELEMENT_SCHEMA type-sjekking i Angular?" />
 
 ## Hvordan påvirker `CUSTOM_ELEMENT_SCHEMA` type-sjekking i Angular?
 
 `CUSTOM_ELEMENT_SCHEMA` brukes for å fortelle Angular at det er gyldige egendefinerte elementer i malen, og at Angular ikke skal klage på ukjente elementer.
-Dette er nødvendig når du bruker web-komponenter i Angular-applikasjoner, da Angular ikke kjenner til disse komponentene på forhånd.
+Dette er nødvendig når du bruker webkomponenter i Angular-applikasjoner, da Angular ikke kjenner til disse komponentene på forhånd.
 
 Angular vil fortsatt type-sjekke og intellisense-en vil fortsatt fungere som tiltenkt. Men siden Angular nå forventer ukjente elementer, vil det ikke lenger gi advarsler ved ukjent bruk av komponenter.
 
-Angular vil også tillate web-komponenter med samme tag-navn som Angular-komponenter.
-Dette resulterer i at Angular ikke direkte vil gi advarsler for feil bruk av Angular-komponenter, da den antar at disse potensielt er gyldige web-komponenter.
+Angular vil også tillate webkomponenter med samme tag-navn som Angular-komponenter.
+Dette resulterer i at Angular ikke direkte vil gi advarsler for feil bruk av Angular-komponenter, da den antar at disse potensielt er gyldige webkomponenter.
 Du vil fremdeles indirekte få advarsler for feil bruk av Angular-komponenter gjennom intellisense.
 
 <div style={{padding: ".25rem 1rem", background: "#D3E3F5", borderRadius: "2px", borderBottom: "4px solid #3283CE", marginBottom: "1rem"}}>
-Det er litt vanskelig å forklare endringene i oppførselen til Angular sin type-sjekking, intellisense og linting. Vi anbefaler at du prøver selv å bruke web-komponenter i Angular for å erfare endringene.
+Det er litt vanskelig å forklare endringene i oppførselen til Angular sin type-sjekking, intellisense og linting. Vi anbefaler at du prøver selv å bruke webkomponenter i Angular for å erfare endringene.
 </div>
 
 <div style={{padding: ".25rem 1rem", background: "#FFE7BA", borderRadius: "2px", borderBottom: "4px solid #F1A541", marginBottom: "2rem"}}>
-Angular sin tooling relatert til egendefinerte elementer, inkludert web-komponenter, er fortsatt under utvikling av Angular Teamet. Det er derfor høy sannynlighet for at det vil komme endringer i fremtiden som kan påvirke hvordan <strong>CUSTOM_ELEMENT_SCHEMA</strong> og <strong>Angular Language Service</strong> fungerer.
+Angular sin tooling relatert til egendefinerte elementer, inkludert webkomponenter, er fortsatt under utvikling av Angular Teamet. Det er derfor høy sannynlighet for at det vil komme endringer i fremtiden som kan påvirke hvordan <strong>CUSTOM_ELEMENT_SCHEMA</strong> og <strong>Angular Language Service</strong> fungerer.
 </div>
 
 **Referanser:**

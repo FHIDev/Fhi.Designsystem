@@ -1,7 +1,7 @@
 import { Meta } from '@storybook/blocks';
 import { DesignTokenDocBlock } from 'storybook-design-token';
 
-<Meta title="FAQ/Kan jeg bruke komponentene i Angular Forms?" />
+<Meta title="Ofte stilte spørsmål/Kan jeg bruke komponentene i Angular Forms?" />
 
 ## Kan jeg bruke komponentene i Angular Forms?
 
@@ -11,18 +11,25 @@ Om du bruker Angular uten Angular Forms, e.g om du bruker komponentene med Javas
 
 Ja du kan bruke FHI Designsystem sine form-komponenter i Angular Forms! 🚀
 
-For form-komponenter med `string` verdier, e.g `<fhi-text-input>` kan du bruke Angular sitt `ngDefaultControl` direktiv for å koble komponentene til Angular Forms.
-Dette er et standard Angular-direktiv som lar deg bruke web-komponenter med oppførsel på linje med `<input type="text">` som en del av Angular Forms.
+Angular Forms er litt annerledes enn standard HTML Forms, og krever at du bruker Angular sine `ControlValueAccessor` for å koble komponentene til Angular Forms.
 
+Det finnes 2 måter å gjøre dette på:
+
+#### Valg 1. **Bruk `ngDefaultControl` direktivet**
+Dette er den enkleste måten å koble en komponent til Angular
+
+For webkomponenter med oppførsel på linje med `<input type="text">`, e.g `<fhi-text-input>`, kan du bruke Angular sitt `ngDefaultControl` direktiv for å koble komponentene til Angular Forms.
+
+Dette fungerer bra for komponenter som oppfører seg som et standard tekstfelt, og er en enkel måte å få komponentene til å fungere med Angular Forms.
+For andre komponenter som ikke er tekstbaserte, som `<fhi-radio>` og `<fhi-checkbox>`, anbefales det å bruke `ControlValueAccessor` direktiver som beskrevet i valg 2.
+
+##### Eksempel:
 ```html
 <fhi-text-input ngDefaultControl name="myInput" [(ngModel)]="myModel" />
 ```
 
-**eller**, om du ønsker å bruke andre ikke-tekstbaserte form-komponenter anbefaler vi heller å lage direktiver som gjenbruker Angular Forms sine respektive `ValueAccessor` klasser.
-
-<div style={{padding: ".25rem 1rem", background: "#D3E3F5", borderRadius: "2px", borderBottom: "4px solid #3283CE", marginBottom: "1rem"}}>
-Dette er ikke obligatorisk og du kan bruke `ngDefaultControl` for alle komponentene om du ønsker. `ngDefaultControl` behandler derimot alle verdier som `string`, så eventuelle `boolean` eller `number` verdier vil da bli konvertert til `string`
-</div>
+#### Valg 2. **Gjenbruk Angular sine `ControlValueAccessor` klasser som direktiver**:
+Dette er den anbefalte måten å bruke FHI Designsystem sine form-komponenter i Angular Forms, spesielt for komponenter som ikke er tekstbaserte eller har funksjonalitet utover et standard tekstfelt, som `<fhi-radio>` og `<fhi-checkbox>`
 
 Kopier disse direktivene inn i prosjektet ditt:
 ```typescript
@@ -37,6 +44,42 @@ export class FHITextInputValueAccessor extends DefaultValueAccessor {}
 ```
 
 Om du nå importerer disse direktivene i Angular-komponenten din, kan du bruke alle av FHI Designsystem sine form-komponenter i Angular Forms uten ekstra arbeid.
+
+##### Eksempel:
+```html
+<form [formGroup]="myForm">
+  <fhi-text-input formControlName="myTextInput" label="Tekstfelt"></fhi-text-input>
+  <fhi-radio formControlName="myRadio" value="option1" label="Alternativ 1"></fhi-radio>
+  <fhi-radio formControlName="myRadio" value="option2" label="Alternativ 2"></fhi-radio>
+  <fhi-checkbox formControlName="myCheckbox" label="Avkrysningsboks"></fhi-checkbox>
+</form>
+```
+
+```typescript
+@Component({
+  selector: 'app-root',
+  standalone: true,
+  imports: [
+    FHITextInputValueAccessor, // <-- For bruk av fhi-text-input
+    FHICheckboxValueAccessor, // <-- For bruk av fhi-checkbox
+    FHIRadioValueAccessor, // <-- For bruk av fhi-radio
+    ...,
+  ],
+  schemas: [CUSTOM_ELEMENTS_SCHEMA],
+  templateUrl: './app.component.html',
+  styleUrl: './app.component.scss',
+})
+export class AppComponent {
+
+  myForm = new FormGroup({
+      myTextInput: new FormControl(''),
+      myRadio: new FormControl(''),
+      myCheckbox: new FormControl(false),
+  });
+
+  constructor() {}
+}
+```
 
 **Referanser:**
 - [DefaultValueAccessor](https://angular.dev/api/forms/DefaultValueAccessor#usage-notes)
