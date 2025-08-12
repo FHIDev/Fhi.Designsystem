@@ -2,14 +2,20 @@ import type { Meta, StoryObj } from '@storybook/web-components';
 import { html } from 'lit';
 import { FhiCheckbox } from './fhi-checkbox.component';
 import { ifDefined } from 'lit/directives/if-defined.js';
+import { withActions } from '@storybook/addon-actions/decorator';
 
 new FhiCheckbox();
 
 const meta: Meta<FhiCheckbox> = {
   title: 'Komponenter/Checkbox',
   component: 'fhi-checkbox',
-  parameters: {},
-  decorators: [],
+  parameters: {
+    actions: {
+      handles: ['change', 'input'],
+    },
+    options: { selectedPanel: 'addon-controls' },
+  },
+  decorators: [withActions],
   render: args =>
     html`<fhi-checkbox
       label=${ifDefined(args.label)}
@@ -21,12 +27,12 @@ const meta: Meta<FhiCheckbox> = {
     name: {
       control: { type: 'text' },
       description: 'Navnet på checkbox-gruppen',
-      defaultValue: { summary: '' },
+      defaultValue: { summary: 'undefined' },
     },
     label: {
       control: { type: 'text' },
       description: 'Informerer om hvilket valg avkrysningsboksen tilsvarer.',
-      defaultValue: { summary: '' },
+      defaultValue: { summary: 'undefined' },
     },
     id: {
       control: { type: 'text' },
@@ -36,12 +42,12 @@ const meta: Meta<FhiCheckbox> = {
     status: {
       control: { type: 'select' },
       description: 'Informerer om feil. Dette vil endre utseende.',
-      defaultValue: { summary: undefined },
+      defaultValue: { summary: 'undefined' },
       options: [undefined, 'error'],
     },
     disabled: {
       control: { type: 'boolean' },
-      description: 'Bestemmer om bruker kan samhandle med avkrysningsboksen',
+      description: 'Bestemmer om bruker kan samhandle med avkrysningsboksen.',
       defaultValue: { summary: false },
     },
   },
@@ -66,9 +72,7 @@ export const Error: Story = {
 
 export const NoLabel: Story = {
   tags: [],
-  args: {
-    label: '',
-  },
+  args: {},
 };
 
 export const Disabled: Story = {

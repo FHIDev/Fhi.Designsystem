@@ -153,6 +153,23 @@ describe('fhi-checkbox', () => {
       expect(form.get('myCheckbox')).to.equal(null);
     });
 
+    it('sets form value to specified value', async () => {
+      component = await fixture(
+        html`<fhi-checkbox
+          name="myCheckbox"
+          value="hello"
+          checked
+        ></fhi-checkbox>`,
+        { parentNode: document.createElement('form') },
+      );
+
+      const form = new FormData(
+        document.querySelector('form') as HTMLFormElement,
+      );
+
+      expect(form.get('myCheckbox')).to.equal('hello');
+    });
+
     it('sets form value to "on" if value is not specified', async () => {
       component = await fixture(
         html`<fhi-checkbox name="myCheckbox" checked></fhi-checkbox>`,
