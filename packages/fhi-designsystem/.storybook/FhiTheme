@@ -1,0 +1,11 @@
+import { create } from '@storybook/theming/create';
+
+export default create({
+  base: 'light',
+  brandTitle: 'FHI Designsystem Storybook',
+  brandImage:
+    'https://github.com/user-attachments/assets/221facf3-ce02-4810-8143-cad4b23e8fb8',
+  brandTarget: '_self',
+
+  appBg: '#fdfeff',
+});
