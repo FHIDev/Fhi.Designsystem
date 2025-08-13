@@ -1,4 +1,5 @@
 import { create } from '@storybook/theming/create';
+import '../src/theme/default.css';
 
 export default create({
   base: 'light',
@@ -7,5 +8,5 @@ export default create({
     'https://github.com/user-attachments/assets/221facf3-ce02-4810-8143-cad4b23e8fb8',
   brandTarget: '_self',
 
-  appBg: '#fdfeff',
+  appBg: 'var(--fhi-color-neutral-background-default)',
 });
