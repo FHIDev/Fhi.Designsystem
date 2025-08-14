@@ -218,8 +218,9 @@ export class FhiRadio extends LitElement {
         opacity: 0;
         transition: opacity var(--motion-radio-transition);
         position: absolute;
-        top: 1px;
-        left: 1px;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
       }
 
       input:checked {
