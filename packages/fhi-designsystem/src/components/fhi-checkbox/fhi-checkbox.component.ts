@@ -34,7 +34,15 @@ export class FhiCheckbox extends LitElement {
     this.dispatchEvent(
       new Event('change', {
         bubbles: true,
-        composed: false,
+      }),
+    );
+  }
+
+  public _handleInput(): void {
+    this.dispatchEvent(
+      new Event('input', {
+        bubbles: true,
+        composed: true,
       }),
     );
   }
@@ -63,6 +71,7 @@ export class FhiCheckbox extends LitElement {
           ?disabled="${this.disabled}"
           ?checked="${this.checked}"
           @change=${this._handleChange}
+          @input=${this._handleInput}
         />
         ${this.label}
       </label>
@@ -84,6 +93,7 @@ export class FhiCheckbox extends LitElement {
       --color-checkbox-border: var(--fhi-color-neutral-border-default);
       --color-checkbox-hover: var(--fhi-color-accent-background-subtle);
       --color-checkbox-border-hover: var(--fhi-color-accent-border-strong);
+      --color-checkbox-border-active: var(--fhi-color-accent-border-strong);
       --color-checkbox-active: var(--fhi-color-accent-surface-default);
       --color-checkbox-checked: var(--fhi-color-neutral-base-default);
       --color-checkbox-border-checked: var(--fhi-color-neutral-base-default);
@@ -99,7 +109,7 @@ export class FhiCheckbox extends LitElement {
       --color-checkbox-border-error-hover: var(
         --fhi-color-danger-border-strong
       );
-      --color-checkbox-error-active: var(--fhi-color-danger-surface-hover);
+      --color-checkbox-error-active: var(--fhi-color-danger-surface-default);
       --color-checkbox-error-checked: var(--fhi-color-danger-base-default);
       --color-checkbox-border-error-checked: var(
         --fhi-color-neutral-base-default
@@ -114,15 +124,13 @@ export class FhiCheckbox extends LitElement {
       --color-checkbox-border-checked-error-active: var(
         --fhi-color-danger-base-active
       );
+      --color-checkbox-outline: var(--fhi-color-accent-surface-hover);
+      --color-checkbox-outline-error: var(--fhi-color-danger-surface-hover);
 
       --dimension-checkbox-gap: var(--fhi-spacing-150);
-      --dimension-checkbox-outline: solid 5px
-        var(--fhi-color-accent-surface-hover);
-      --dimension-checkbox-outline-error: solid 5px
-        var(--fhi-color-danger-surface-hover);
       --dimension-checkbox-border-radius: var(--fhi-border-radius-050);
-      --dimension-checkbox-width: 18px;
-      --dimension-checkbox-height: 18px;
+      --dimension-checkbox-border-width: var(--fhi-dimension-border-width);
+      --dimension-checkbox-size: 1.125rem;
 
       --opacity-disabled: var(--fhi-opacity-disabled);
       --motion-checkbox-transition: var(--fhi-motion-ease-default)
@@ -146,10 +154,11 @@ export class FhiCheckbox extends LitElement {
 
       input[type='checkbox'] {
         appearance: none;
-        width: var(--dimension-checkbox-width);
-        height: var(--dimension-checkbox-height);
+        width: var(--dimension-checkbox-size);
+        height: var(--dimension-checkbox-size);
         background-color: var(--color-checkbox);
-        border: 1px solid var(--color-checkbox-border);
+        border: var(--dimension-checkbox-border-width) solid
+          var(--color-checkbox-border);
         border-radius: var(--dimension-checkbox-border-radius);
 
         display: grid;
@@ -163,8 +172,8 @@ export class FhiCheckbox extends LitElement {
 
         &:active {
           background-color: var(--color-checkbox-active);
-          outline: var(--dimension-checkbox-outline);
-          border-color: var(--color-checkbox-border-hover);
+          outline: solid 5px var(--color-checkbox-outline);
+          border-color: var(--color-checkbox-border-active);
         }
 
         &:checked {
@@ -188,11 +197,11 @@ export class FhiCheckbox extends LitElement {
 
       input[type='checkbox']::before {
         content: '';
-        width: 18px;
-        height: 18px;
+        width: var(--dimension-checkbox-size);
+        height: var(--dimension-checkbox-size);
         transform: scale(0);
 
-        background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 18 18" fill="none"><path d="M12.043 6.04295C12.4335 5.65243 13.0666 5.65243 13.4571 6.04295C13.8476 6.43348 13.8476 7.06649 13.4571 7.45702L8.95708 11.957C8.56655 12.3475 7.93354 12.3475 7.54302 11.957L5.29302 9.70702C4.90249 9.31649 4.90249 8.68348 5.29302 8.29295C5.65913 7.92684 6.23813 7.90424 6.63091 8.22459L6.70708 8.29295L8.25005 9.83592L12.043 6.04295Z" fill="%23FDFEFF"/></svg>');
+        background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" fill="none"><path d="M12.043 6.04295C12.4335 5.65243 13.0666 5.65243 13.4571 6.04295C13.8476 6.43348 13.8476 7.06649 13.4571 7.45702L8.95708 11.957C8.56655 12.3475 7.93354 12.3475 7.54302 11.957L5.29302 9.70702C4.90249 9.31649 4.90249 8.68348 5.29302 8.29295C5.65913 7.92684 6.23813 7.90424 6.63091 8.22459L6.70708 8.29295L8.25005 9.83592L12.043 6.04295Z" fill="%23FDFEFF"/></svg>');
       }
     }
 
@@ -231,7 +240,7 @@ export class FhiCheckbox extends LitElement {
 
         &:active {
           background-color: var(--color-checkbox-error-active);
-          outline: var(--dimension-checkbox-outline-error);
+          outline: solid 5px var(--color-checkbox-outline-error);
           border-color: var(--color-checkbox-border-error-hover);
         }
 
