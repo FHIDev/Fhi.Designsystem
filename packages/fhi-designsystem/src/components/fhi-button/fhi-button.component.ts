@@ -25,6 +25,8 @@ export class FhiButton extends LitElement {
 
   @property({ type: Boolean, reflect: true }) disabled = false;
 
+  @property({ type: Boolean, reflect: true }) circle = false;
+
   @property({ type: String }) type: 'button' | 'submit' | 'reset' = 'submit';
 
   private _internals: ElementInternals;
@@ -95,7 +97,9 @@ export class FhiButton extends LitElement {
       @keydown=${this._handleKeydown}
       @click=${this._handleClick}
     >
-      <slot></slot>
+      <div style="display: flex; align-items: center; gap: .5rem;">
+        <slot></slot>
+      </div>
     </button>`;
   }
 
@@ -446,6 +450,11 @@ export class FhiButton extends LitElement {
       }
     }
 
+    :host {
+      display: block;
+      width: min-content;
+    }
+
     :host([size='large']) button {
       font-size: var(--typography-label-large-font-size);
       font-weight: var(--typography-label-large-font-weight);
@@ -720,6 +729,12 @@ export class FhiButton extends LitElement {
         border-color: var(--color-danger-text-border-disabled);
         color: var(--color-danger-text-disabled);
       }
+    }
+
+    :host([circle][size='small']) button {
+      border-radius: 50%;
+      padding: calc(var(--fhi-spacing-100) - var(--fhi-dimension-border-width));
+      background-color: red;
     }
   `;
 }
