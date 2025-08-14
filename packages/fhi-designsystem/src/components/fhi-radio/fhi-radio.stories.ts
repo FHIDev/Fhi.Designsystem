@@ -10,7 +10,7 @@ const meta: Meta<FhiRadio> = {
   component: 'fhi-radio',
   parameters: {
     actions: {
-      handles: ['change'],
+      handles: ['change', 'input'],
     },
     options: { selectedPanel: 'addon-controls' },
     docs: {

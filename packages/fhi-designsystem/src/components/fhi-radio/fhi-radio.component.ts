@@ -104,8 +104,14 @@ export class FhiRadio extends LitElement {
 
     this._setFormValue();
 
+    event.stopPropagation();
+
     this.dispatchEvent(new Event('change', { bubbles: true }));
     this.dispatchEvent(new Event('input', { bubbles: true, composed: true }));
+  }
+
+  private _handleInput(event: Event): void {
+    event.stopPropagation();
   }
 
   render() {
@@ -119,6 +125,7 @@ export class FhiRadio extends LitElement {
           ?checked=${this.checked}
           ?disabled=${this.disabled}
           @change=${this._handleChange}
+          @input=${this._handleInput}
         />
         <svg
           class="radio-dot"
