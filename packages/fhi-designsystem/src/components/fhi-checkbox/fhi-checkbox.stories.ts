@@ -34,11 +34,6 @@ const meta: Meta<FhiCheckbox> = {
       description: 'Informerer om hvilket valg avkrysningsboksen tilsvarer.',
       defaultValue: { summary: 'undefined' },
     },
-    id: {
-      control: { type: 'text' },
-      description: 'Unik id for avkrysningsboksen.',
-      defaultValue: { summary: '' },
-    },
     status: {
       control: { type: 'select' },
       description: 'Informerer om feil. Dette vil endre utseende.',

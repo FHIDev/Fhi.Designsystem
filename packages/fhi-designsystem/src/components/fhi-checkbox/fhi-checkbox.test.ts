@@ -9,7 +9,7 @@ describe('fhi-checkbox', () => {
   describe('accessibility', () => {
     beforeEach(async () => {
       component = await fixture(
-        html`<fhi-checkbox label="Agree" id="agree"></fhi-checkbox>`,
+        html`<fhi-checkbox label="Agree"></fhi-checkbox>`,
       );
     });
 
@@ -25,7 +25,7 @@ describe('fhi-checkbox', () => {
 
     it('is accessible when disabled', async () => {
       component = await fixture(
-        html`<fhi-checkbox label="Agree" id="agree" disabled></fhi-checkbox>`,
+        html`<fhi-checkbox label="Agree" disabled></fhi-checkbox>`,
       );
       await expect(component).to.be.accessible();
     });
@@ -38,12 +38,6 @@ describe('fhi-checkbox', () => {
       );
       expect(component.getAttribute('label')).to.equal('my label');
       expect(component.label).to.equal('my label');
-    });
-
-    it('has an attribute to set id', async () => {
-      component = await fixture(html`<fhi-checkbox id="my id"></fhi-checkbox>`);
-      expect(component.getAttribute('id')).to.equal('my id');
-      expect(component.id).to.equal('my id');
     });
 
     it('has an attribute to set name', async () => {
@@ -207,5 +201,70 @@ describe('fhi-checkbox', () => {
 
       expect(form.get('myCheckbox')).to.equal('hello');
     });
+  });
+
+  describe('events', () => {
+    it('dispatches a "change" event when checked by the user', async () => {
+      component = await fixture(html`<fhi-checkbox></fhi-checkbox>`);
+
+      let changeEvent = false;
+      component.addEventListener('change', () => {
+        changeEvent = true;
+      });
+
+      const input = component.shadowRoot?.querySelector(
+        'input[type="checkbox"]',
+      ) as HTMLInputElement;
+
+      input.click();
+
+      await component.updateComplete;
+
+      expect(changeEvent).to.equal(true);
+    });
+  });
+
+  it('dispatches an "input" event when checked by the user', async () => {
+    component = await fixture(html`<fhi-checkbox></fhi-checkbox>`);
+
+    let inputEvent = false;
+    component.addEventListener('input', () => {
+      inputEvent = true;
+    });
+
+    const input = component.shadowRoot?.querySelector(
+      'input[type="checkbox"]',
+    ) as HTMLInputElement;
+
+    input.click();
+
+    await component.updateComplete;
+
+    expect(inputEvent).to.equal(true);
+  });
+
+  it('does not dispatch an "input" nor "change" event when disabled', async () => {
+    component = await fixture(html`<fhi-checkbox disabled></fhi-checkbox>`);
+
+    let changeEvent = false;
+    component.addEventListener('change', () => {
+      changeEvent = true;
+    });
+
+    let inputEvent = false;
+    component.addEventListener('input', () => {
+      inputEvent = true;
+    });
+
+    const input = component.shadowRoot?.querySelector(
+      'input[type="checkbox"]',
+    ) as HTMLInputElement;
+
+    input.click();
+
+    await component.updateComplete;
+
+    expect(changeEvent).to.equal(false);
+    expect(inputEvent).to.equal(false);
   });
 });

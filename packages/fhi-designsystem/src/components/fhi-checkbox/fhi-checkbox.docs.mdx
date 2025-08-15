@@ -8,34 +8,35 @@ import { Meta, Primary, Canvas, Controls } from '@storybook/blocks';
 
 Checkbox lar brukere markere valg i lister med en eller flere alternativer. Brukere kan velge ingen, ett, flere av eller alle alternativer, samt fjerne valg som er markerte. 
 
-# Passer til
+## Passer til
 
 - Å velge et eller flere alternativer i et sett med muligheter.
 - Å bekrefte noe, slik som samtykke til enkeltstående vilkår.
 - Å velge en rad i en tabell.
 
 <Canvas of={FhiCheckboxStories.Preview} />
-
 <Controls />
 
-## Error
+### Status
+#### `error`
 
-Brukes for destruktive situasjoner, slik som valg av hvilke filer man vil slette permanent, eller feil, slik som at valg ikke er gjort, men påkrevt.
+Brukes for destruktive situasjoner, slik som valg av hvilke filer man vil slette permanent, eller feil, slik som at valg ikke er gjort, men påkrevd.
 
 <Canvas of={FhiCheckboxStories.Error} />
 
 <div style={{padding: ".25rem 1rem", background: "#D3E3F5", borderRadius: "2px", borderBottom: "4px solid #3283CE", marginBottom: "2rem"}}>
-Farge er aldri nok alene ved feilmeldinger. Det skal alltid gis en tilbakemelding til brukeren, gjerne med råd til hvordan man retter feilen, for eksempel gjennom en melding i etter listen.
+Farge er aldri nok alene ved feilmeldinger. Det skal alltid gis en tilbakemelding til brukeren, gjerne med råd til hvordan man retter feilen, for eksempel gjennom en melding etter valgene.
 </div>
 
-## Uten label
+### Uten label
 
 Det finnes tilfeller der det ikke er plass eller behov for Label som en del av selve komponenten, for eksempel i en tabell.
 
 <Canvas of={FhiCheckboxStories.NoLabel} />
 
-## Disabled
+### Form Controls
+#### `disabled`
 
-Avkrysningsbokser som ikke kan samhandles med, kan fortsatt vises med noe transparens. Unngås som regel. 
+Gjør at avkrysningsboksen som ikke kan samhandles med, fokuseres eller automatisk inkluderes i FormData, kan fortsatt vises med noe transparens. Unngås som regel. 
 
 <Canvas of={FhiCheckboxStories.Disabled} />

@@ -8,7 +8,6 @@ export const FhiCheckboxSelector = 'fhi-checkbox';
 export class FhiCheckbox extends LitElement {
   static readonly formAssociated = true;
 
-  @property({ type: String }) id = '';
   @property({ type: String }) label?: string = undefined;
   @property({ type: String }) name?: string = undefined;
   @property({ type: String }) value?: string = undefined;
@@ -66,7 +65,6 @@ export class FhiCheckbox extends LitElement {
         <input
           type="checkbox"
           name=${ifDefined(this.name)}
-          id="${this.id}"
           value=${ifDefined(this.value)}
           ?disabled="${this.disabled}"
           ?checked="${this.checked}"
