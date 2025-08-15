@@ -44,7 +44,7 @@ export class FhiButton extends LitElement {
     this.onselectstart = this._handleSelectStart.bind(this);
   }
 
-  click(): void {
+  public click(): void {
     this._handleClick();
   }
 
@@ -85,8 +85,55 @@ export class FhiButton extends LitElement {
     }
   }
 
-  private _handleSelectStart() {
+  private _handleSelectStart(): boolean {
     return false;
+  }
+
+  private _getIconSize(): string {
+    switch (this.size) {
+      case 'small':
+        return '20';
+      case 'medium':
+        return '24';
+      case 'large':
+        return '24';
+      default:
+        return '24';
+    }
+  }
+
+  private _handleSlotChange(event: Event): void {
+    const slot = event.target as HTMLSlotElement;
+    const nodes = slot.assignedNodes();
+
+    let firstIcon: HTMLElement | undefined;
+    let lastIcon: HTMLElement | undefined;
+
+    for (const node of nodes) {
+      if (
+        node.nodeType === Node.ELEMENT_NODE &&
+        (node as Element).tagName.toLowerCase().startsWith('fhi-icon')
+      ) {
+        if (!firstIcon) {
+          firstIcon = node as HTMLElement;
+          continue;
+        }
+
+        lastIcon = node as HTMLElement;
+      }
+    }
+
+    if (firstIcon) {
+      firstIcon.style.marginRight = 'var(--dimension-icon-margin-right)';
+      firstIcon.style.marginLeft = 'var(--dimension-icon-margin-left-offset)';
+      firstIcon.setAttribute('size', this._getIconSize());
+    }
+
+    if (lastIcon) {
+      lastIcon.style.marginRight = 'var(--dimension-icon-margin-right-offset)';
+      lastIcon.style.marginLeft = 'var(--dimension-icon-margin-left)';
+      lastIcon.setAttribute('size', this._getIconSize());
+    }
   }
 
   render() {
@@ -97,9 +144,9 @@ export class FhiButton extends LitElement {
       @keydown=${this._handleKeydown}
       @click=${this._handleClick}
     >
-      <div style="display: flex; align-items: center; gap: .5rem;">
-        <slot></slot>
-      </div>
+      <section style="display: flex; align-items: center; gap: .25rem;">
+        <slot @slotchange=${this._handleSlotChange}></slot>
+      </section>
     </button>`;
   }
 
@@ -107,12 +154,42 @@ export class FhiButton extends LitElement {
     :host {
       --dimension-border-radius: var(--fhi-border-radius-full);
       --dimension-border-width: var(--fhi-dimension-border-width);
+
+      --dimension-padding-small: calc(
+          var(--fhi-spacing-050) - var(--fhi-dimension-border-width)
+        )
+        calc(
+          var(--fhi-spacing-150) + var(--fhi-spacing-050) - var(
+              --fhi-dimension-border-width
+            )
+        );
+      --dimension-padding-medium: calc(
+          var(--fhi-spacing-100) - var(--fhi-dimension-border-width)
+        )
+        calc(
+          var(--fhi-spacing-200) + var(--fhi-spacing-050) - var(
+              --fhi-dimension-border-width
+            )
+        );
+      --dimension-padding-large: calc(
+          var(--fhi-spacing-200) - var(--fhi-dimension-border-width)
+        )
+        calc(
+          var(--fhi-spacing-300) + var(--fhi-spacing-050) - var(
+              --fhi-dimension-border-width
+            )
+        );
+
+      /* Icon */
+      --dimension-icon-margin-left: var(--fhi-spacing-050);
+      --dimension-icon-margin-right: var(--fhi-spacing-050);
+
+      // Adjust for the button padding when the icon is present on either side
+      --dimension-icon-margin-left-offset: calc(-1 * var(--fhi-spacing-050));
+      --dimension-icon-margin-right-offset: calc(-1 * var(--fhi-spacing-050));
+
+      /* Typography */
       --typography-font-family: var(--fhi-font-family-default);
-      --motion-transition: var(--fhi-motion-duration-quick)
-        var(--fhi-motion-ease-default);
-
-      --opacity-disabled: var(--fhi-opacity-disabled);
-
       --typography-label-large-font-size: var(
         --fhi-typography-label-large-font-size
       );
@@ -150,30 +227,7 @@ export class FhiButton extends LitElement {
         --fhi-typography-label-medium-line-height
       );
 
-      --dimension-padding-small: calc(
-          var(--fhi-spacing-050) - var(--fhi-dimension-border-width)
-        )
-        calc(
-          var(--fhi-spacing-150) + var(--fhi-spacing-050) - var(
-              --fhi-dimension-border-width
-            )
-        );
-      --dimension-padding-medium: calc(
-          var(--fhi-spacing-100) - var(--fhi-dimension-border-width)
-        )
-        calc(
-          var(--fhi-spacing-200) + var(--fhi-spacing-050) - var(
-              --fhi-dimension-border-width
-            )
-        );
-      --dimension-padding-large: calc(
-          var(--fhi-spacing-200) - var(--fhi-dimension-border-width)
-        )
-        calc(
-          var(--fhi-spacing-300) + var(--fhi-spacing-050) - var(
-              --fhi-dimension-border-width
-            )
-        );
+      /* Accent Color */
       --color-accent-strong-background: var(--fhi-color-accent-base-default);
       --color-accent-strong-border: var(--fhi-color-accent-base-default);
       --color-accent-strong: var(--fhi-color-accent-text-inverted);
@@ -258,6 +312,7 @@ export class FhiButton extends LitElement {
       --color-accent-text-border-disabled: transparent;
       --color-accent-text-disabled: var(--fhi-color-accent-text-default);
 
+      /* Neutral Color */
       --color-neutral-strong-background: var(--fhi-color-neutral-base-default);
       --color-neutral-strong-border: var(--fhi-color-neutral-base-default);
       --color-neutral-strong: var(--fhi-color-neutral-text-inverted);
@@ -352,6 +407,7 @@ export class FhiButton extends LitElement {
       --color-neutral-text-border-disabled: transparent;
       --color-neutral-text-disabled: var(--fhi-color-neutral-text-subtle);
 
+      /* Danger Color */
       --color-danger-strong-background: var(--fhi-color-danger-base-default);
       --color-danger-strong-border: var(--fhi-color-danger-base-default);
       --color-danger-strong: var(--fhi-color-danger-text-inverted);
@@ -436,6 +492,15 @@ export class FhiButton extends LitElement {
       --color-danger-text-border-disabled: transparent;
       --color-danger-text-disabled: var(--fhi-color-danger-text-subtle);
 
+      --motion-transition: var(--fhi-motion-duration-quick)
+        var(--fhi-motion-ease-default);
+
+      --opacity-disabled: var(--fhi-opacity-disabled);
+    }
+
+    :host {
+      display: block;
+
       button {
         border-radius: var(--dimension-border-radius);
         border: solid var(--dimension-border-width);
@@ -448,11 +513,6 @@ export class FhiButton extends LitElement {
           cursor: not-allowed;
         }
       }
-    }
-
-    :host {
-      display: block;
-      width: min-content;
     }
 
     :host([size='large']) button {
