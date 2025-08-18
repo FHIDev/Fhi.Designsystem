@@ -8,5 +8,9 @@ export default create({
     'https://github.com/user-attachments/assets/221facf3-ce02-4810-8143-cad4b23e8fb8',
   brandTarget: '_self',
 
-  appBg: 'var(--fhi-color-neutral-background-default)',
+  fontBase: '"Roboto Flex", system-ui, sans-serif',
+  appBg: '#fdfeff',
+  textColor: '#212d34',
+  textInverseColor: '#fdfeff',
+  colorSecondary: '#2a76c6',
 });
