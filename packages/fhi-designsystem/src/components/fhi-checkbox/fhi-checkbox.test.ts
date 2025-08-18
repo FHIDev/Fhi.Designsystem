@@ -207,9 +207,9 @@ describe('fhi-checkbox', () => {
     it('dispatches a "change" event when checked by the user', async () => {
       component = await fixture(html`<fhi-checkbox></fhi-checkbox>`);
 
-      let changeEvent = false;
+      let changeEventCounter = 0;
       component.addEventListener('change', () => {
-        changeEvent = true;
+        changeEventCounter = 1;
       });
 
       const input = component.shadowRoot?.querySelector(
@@ -220,16 +220,17 @@ describe('fhi-checkbox', () => {
 
       await component.updateComplete;
 
-      expect(changeEvent).to.equal(true);
+      expect(changeEventCounter).to.equal(1);
     });
   });
 
   it('dispatches an "input" event when checked by the user', async () => {
     component = await fixture(html`<fhi-checkbox></fhi-checkbox>`);
 
-    let inputEvent = false;
+    let inputEventCounter = 0;
+
     component.addEventListener('input', () => {
-      inputEvent = true;
+      inputEventCounter++;
     });
 
     const input = component.shadowRoot?.querySelector(
@@ -240,7 +241,7 @@ describe('fhi-checkbox', () => {
 
     await component.updateComplete;
 
-    expect(inputEvent).to.equal(true);
+    expect(inputEventCounter).to.equal(1);
   });
 
   it('does not dispatch an "input" nor "change" event when disabled', async () => {

@@ -37,15 +37,6 @@ export class FhiCheckbox extends LitElement {
     );
   }
 
-  public _handleInput(): void {
-    this.dispatchEvent(
-      new Event('input', {
-        bubbles: true,
-        composed: true,
-      }),
-    );
-  }
-
   private _updateFormValue(value: string | undefined) {
     if (value == undefined) {
       this._internals.setFormValue(this.checked ? 'on' : null);
@@ -69,7 +60,6 @@ export class FhiCheckbox extends LitElement {
           ?disabled="${this.disabled}"
           ?checked="${this.checked}"
           @change=${this._handleChange}
-          @input=${this._handleInput}
         />
         ${this.label}
       </label>
@@ -217,11 +207,16 @@ export class FhiCheckbox extends LitElement {
 
         &:active {
           outline: none;
+          background-color: var(--color-checkbox);
         }
 
         &:checked:hover {
           background-color: var(--color-checkbox-checked);
           border-color: var(--color-checkbox-border-checked);
+        }
+
+        &:checked:active {
+          background-color: var(--color-checkbox-checked);
         }
       }
     }

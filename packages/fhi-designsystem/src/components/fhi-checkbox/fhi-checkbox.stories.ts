@@ -51,10 +51,23 @@ const meta: Meta<FhiCheckbox> = {
 type Story = StoryObj<FhiCheckbox>;
 
 export const Preview: Story = {
-  tags: [],
+  tags: ['!dev'],
   args: {
     label: 'Checkbox',
   },
+};
+
+export const Label: Story = {
+  tags: [],
+  args: {
+    label: 'Agree',
+    name: 'newsletter',
+  },
+};
+
+export const NoLabel: Story = {
+  tags: [],
+  args: {},
 };
 
 export const Error: Story = {
@@ -63,11 +76,6 @@ export const Error: Story = {
     label: 'Checkbox',
     status: 'error',
   },
-};
-
-export const NoLabel: Story = {
-  tags: [],
-  args: {},
 };
 
 export const Disabled: Story = {
