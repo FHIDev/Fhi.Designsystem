@@ -84,13 +84,8 @@ export class FhiCheckbox extends LitElement {
       --color-checkbox-border-active: var(--fhi-color-accent-border-strong);
       --color-checkbox-active: var(--fhi-color-accent-surface-default);
       --color-checkbox-checked: var(--fhi-color-neutral-base-default);
-      --color-checkbox-border-checked: var(--fhi-color-neutral-base-default);
       --color-checkbox-checked-hover: var(--fhi-color-accent-base-hover);
       --color-checkbox-checked-active: var(--fhi-color-accent-base-active);
-      --color-checkbox-border-checked-hover: var(--fhi-color-accent-base-hover);
-      --color-checkbox-border-checked-active: var(
-        --fhi-color-accent-base-active
-      );
       --color-checkbox-error: var(--fhi-color-danger-background-default);
       --color-checkbox-border-error: var(--fhi-color-danger-border-default);
       --color-checkbox-error-hover: var(--fhi-color-danger-background-subtle);
@@ -99,17 +94,8 @@ export class FhiCheckbox extends LitElement {
       );
       --color-checkbox-error-active: var(--fhi-color-danger-surface-default);
       --color-checkbox-error-checked: var(--fhi-color-danger-base-default);
-      --color-checkbox-border-error-checked: var(
-        --fhi-color-neutral-base-default
-      );
       --color-checkbox-checked-error-hover: var(--fhi-color-danger-base-hover);
-      --color-checkbox-border-checked-error-hover: var(
-        --fhi-color-danger-base-hover
-      );
       --color-checkbox-checked-error-active: var(
-        --fhi-color-danger-base-active
-      );
-      --color-checkbox-border-checked-error-active: var(
         --fhi-color-danger-base-active
       );
       --color-checkbox-outline: var(--fhi-color-accent-surface-hover);
@@ -166,15 +152,15 @@ export class FhiCheckbox extends LitElement {
 
         &:checked {
           background-color: var(--color-checkbox-checked);
-          border-color: var(--color-checkbox-border-checked);
+          border-color: var(--color-checkbox-checked);
 
           &:hover {
             background-color: var(--color-checkbox-checked-hover);
-            border-color: var(--color-checkbox-border-checked-hover);
+            border-color: var(--color-checkbox-checked-hover);
           }
           &:active {
             background-color: var(--color-checkbox-checked-active);
-            border-color: var(--color-checkbox-border-checked-active);
+            border-color: var(--color-checkbox-checked-active);
           }
         }
       }
@@ -213,7 +199,7 @@ export class FhiCheckbox extends LitElement {
 
         &:checked:hover {
           background-color: var(--color-checkbox-checked);
-          border-color: var(--color-checkbox-border-checked);
+          border-color: var(--color-checkbox-checked);
         }
 
         &:checked:active {
@@ -241,15 +227,15 @@ export class FhiCheckbox extends LitElement {
 
         &:checked {
           background-color: var(--color-checkbox-error-checked);
-          border-color: var(--color-checkbox-border-error);
+          border-color: var(--color-checkbox-error-checked);
           &:hover {
             background-color: var(--color-checkbox-checked-error-hover);
-            border-color: var(--color-checkbox-border-checked-error-hover);
+            border-color: var(--color-checkbox-checked-error-hover);
           }
 
           &:active {
             background-color: var(--color-checkbox-checked-error-active);
-            border-color: var(--color-checkbox-border-checked-error-active);
+            border-color: var(--color-checkbox-checked-error-active);
           }
         }
       }
