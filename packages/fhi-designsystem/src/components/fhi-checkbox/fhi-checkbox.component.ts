@@ -208,6 +208,7 @@ export class FhiCheckbox extends LitElement {
         &:active {
           outline: none;
           background-color: var(--color-checkbox);
+          border-color: var(--color-checkbox-border);
         }
 
         &:checked:hover {
@@ -217,6 +218,7 @@ export class FhiCheckbox extends LitElement {
 
         &:checked:active {
           background-color: var(--color-checkbox-checked);
+          border-color: var(--color-checkbox-checked);
         }
       }
     }
