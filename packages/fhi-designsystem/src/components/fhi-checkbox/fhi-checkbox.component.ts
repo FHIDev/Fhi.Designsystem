@@ -101,7 +101,7 @@ export class FhiCheckbox extends LitElement {
       --color-checkbox-outline: var(--fhi-color-accent-surface-hover);
       --color-checkbox-outline-error: var(--fhi-color-danger-surface-hover);
 
-      --dimension-checkbox-gap: var(--fhi-spacing-150);
+      --dimension-checkbox-gap: var(--fhi-spacing-050);
       --dimension-checkbox-border-radius: var(--fhi-border-radius-050);
       --dimension-checkbox-border-width: var(--fhi-dimension-border-width);
       --dimension-checkbox-size: 1.125rem;
@@ -112,7 +112,8 @@ export class FhiCheckbox extends LitElement {
     }
 
     :host {
-      display: block;
+      display: flex;
+      align-items: center;
       label {
         color: var(--color-text);
         font-family: var(--typography-font-family);
@@ -120,9 +121,8 @@ export class FhiCheckbox extends LitElement {
         font-weight: var(--typography-font-weight);
         line-height: var(--typography-line-height);
         letter-spacing: var(--typography-letter-spacing);
-        display: grid;
-        grid-template-columns: 1rem auto;
-        justify-self: start;
+        display: flex;
+        position: relative;
         gap: var(--dimension-checkbox-gap);
       }
 
@@ -134,7 +134,6 @@ export class FhiCheckbox extends LitElement {
         border: var(--dimension-checkbox-border-width) solid
           var(--color-checkbox-border);
         border-radius: var(--dimension-checkbox-border-radius);
-
         display: grid;
         place-content: center;
         transition: var(--motion-checkbox-transition);
