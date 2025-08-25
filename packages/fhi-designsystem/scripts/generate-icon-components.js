@@ -57,8 +57,8 @@ const optimizeSvg = svgString => {
         params: {
           attributes: [
             {
-              width: '${this.size}',
-              height: '${this.size}',
+              width: '${this.sizeValue}',
+              height: '${this.sizeValue}',
               fill: '${this.color}',
             },
           ],
@@ -95,8 +95,16 @@ export const ${webComponentName}Selector = "${customElementSelector}";
 export class ${webComponentName} extends LitElement {
   @property({ type: String }) color: string = "currentcolor";
 
-  @property({ type: Number }) size: number = 24;
-
+  @property({ type: String | Number }) size: string | number = 'medium';
+  private get sizeValue(): string {
+    const sizeMap = {
+      xsmall: '1rem',
+      small: '1.25rem',
+      medium: '1.5rem',
+      large: '2rem'
+    }
+    return sizeMap[this.size] || '2.5rem';
+  }
   render() {
     return html\`
       ${svg}
@@ -194,9 +202,10 @@ const meta: Meta<${iconKomponentName}> = {
       defaultValue: { summary: 'currentcolor' },
     },
     size: {
-      control: 'number',
+      control: 'select',
+      options: ['xsmall', 'small', 'medium', 'large'],
       description: 'Setter størelsen på ikonet i px.',
-      defaultValue: { summary: 24 },
+      defaultValue: { summary: 'medium' },
     },
   },
 };
@@ -207,7 +216,7 @@ export const Preview: Story = {
   tags: ['!dev'],
   args: {
     color: 'var(--fhi-color-neutral-text-default)',
-    size: 24,
+    size: 'medium',
   },
 };
 
