@@ -97,13 +97,9 @@ export const Disabled: Story = {
 export const Group: Story = {
   tags: ['!dev'],
   render: () => html`
-    <fhi-radio
-      label="Norwegian"
-      name="nationality"
-      value="Norwegian"
-    ></fhi-radio>
-    <fhi-radio label="Swedish" name="nationality" value="Swedish"></fhi-radio>
-    <fhi-radio label="Danish" name="nationality" value="Danish"></fhi-radio>
+    <fhi-radio label="Norsk" name="nationality" value="Norwegian"></fhi-radio>
+    <fhi-radio label="Svensk" name="nationality" value="Swedish"></fhi-radio>
+    <fhi-radio label="Dansk" name="nationality" value="Danish"></fhi-radio>
   `,
 };
 

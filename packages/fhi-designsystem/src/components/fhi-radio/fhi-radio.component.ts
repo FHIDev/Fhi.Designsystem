@@ -171,6 +171,16 @@ export class FhiRadio extends LitElement {
         --fhi-typography-body-medium-letter-spacing
       );
 
+      --dimension-radio-label-gap: var(--fhi-spacing-100);
+      --dimension-radio-width: var(--fhi-spacing-250);
+      --dimension-radio-height: var(--fhi-spacing-250);
+      --dimension-radio-border-width: var(--fhi-dimension-border-width);
+
+      /* Checked state */
+      --dimension-radio-border-width-checked: var(
+        --fhi-dimension-border-width-active
+      );
+
       /* Error state */
       --color-radio-border-error: var(--fhi-color-danger-border-default);
       --color-radio-background-error: var(
@@ -199,7 +209,7 @@ export class FhiRadio extends LitElement {
       }
 
       label {
-        padding-left: var(--fhi-spacing-100);
+        padding-left: var(--dimension-radio-label-gap);
         color: var(--color-radio-label);
         font-family: var(--typography-radio-label-font-family);
         font-size: var(--typography-radio-label-font-size);
@@ -211,10 +221,10 @@ export class FhiRadio extends LitElement {
       input {
         margin: 0;
         appearance: none;
-        width: var(--fhi-spacing-250);
-        height: var(--fhi-spacing-250);
+        width: var(--dimension-radio-width);
+        height: var(--dimension-radio-height);
         background-color: var(--color-radio-background);
-        border: var(--fhi-dimension-border-width) solid
+        border: var(--dimension-radio-border-width) solid
           var(--color-radio-border);
         border-radius: var(--fhi-border-radius-full);
         transition: all var(--motion-radio-transition);
@@ -231,7 +241,7 @@ export class FhiRadio extends LitElement {
       }
 
       input:checked {
-        border-width: var(--fhi-dimension-border-width-active);
+        border-width: var(--dimension-radio-border-width-checked);
         ~ .radio-dot {
           circle {
             fill: var(--color-radio-border);
