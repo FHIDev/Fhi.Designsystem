@@ -94,17 +94,25 @@ export const ${webComponentName}Selector = "${customElementSelector}";
 @customElement(${webComponentName}Selector)
 export class ${webComponentName} extends LitElement {
   @property({ type: String }) color: string = "currentcolor";
-
   @property({ type: String | Number }) size: string | number = 'medium';
+
   private get sizeValue(): string {
     const sizeMap = {
       xsmall: '1rem',
       small: '1.25rem',
       medium: '1.5rem',
       large: '2rem'
+    };
+    const unitRegex = /^\\d+(\\.\\d+)?(px|rem)?$/;
+    if (typeof this.size === 'number' && this.size > 0) {
+      return \`\${this.size}px\`;
+    }
+    if (typeof this.size === 'string' && unitRegex.test(this.size)) {
+      return this.size;
     }
     return sizeMap[this.size] || '2.5rem';
   }
+
   render() {
     return html\`
       ${svg}
@@ -203,8 +211,8 @@ const meta: Meta<${iconKomponentName}> = {
     },
     size: {
       control: 'select',
-      options: ['xsmall', 'small', 'medium', 'large'],
-      description: 'Setter størelsen på ikonet i px.',
+      options: ['xsmall', 'small', 'medium', 'large', '24', '24px', '1.5rem'],
+      description: 'Setter størelsen på ikonet. Kan være et av de forhåndsdefinerte størrelsene eller en spesifikk størrelse i px eller rem. Kun tall blir angitt i px.',
       defaultValue: { summary: 'medium' },
     },
   },
