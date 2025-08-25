@@ -164,15 +164,10 @@ export class FhiCheckbox extends LitElement {
         }
       }
 
-      input[type='checkbox']:checked::before {
-        transform: scale(1);
-      }
-
-      input[type='checkbox']::before {
+      input[type='checkbox']:checked:before {
         content: '';
         width: var(--dimension-checkbox-size);
         height: var(--dimension-checkbox-size);
-        transform: scale(0);
 
         background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" fill="none"><path d="M12.043 6.04295C12.4335 5.65243 13.0666 5.65243 13.4571 6.04295C13.8476 6.43348 13.8476 7.06649 13.4571 7.45702L8.95708 11.957C8.56655 12.3475 7.93354 12.3475 7.54302 11.957L5.29302 9.70702C4.90249 9.31649 4.90249 8.68348 5.29302 8.29295C5.65913 7.92684 6.23813 7.90424 6.63091 8.22459L6.70708 8.29295L8.25005 9.83592L12.043 6.04295Z" fill="%23FDFEFF"/></svg>');
       }
