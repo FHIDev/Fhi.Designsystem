@@ -28,8 +28,8 @@ export class FhiIconInfo extends LitElement {
     }
     if (this.size in sizeMap) {
       return sizeMap[this.size as keyof typeof sizeMap];
-    }
-    return '2.5rem';
+    } 
+    return '1.5rem';
   }
 
   render() {
