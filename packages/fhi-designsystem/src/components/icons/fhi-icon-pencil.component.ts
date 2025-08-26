@@ -10,12 +10,31 @@ export const FhiIconPencilSelector = "fhi-icon-pencil";
 @customElement(FhiIconPencilSelector)
 export class FhiIconPencil extends LitElement {
   @property({ type: String }) color: string = "currentcolor";
+  @property({ type: String }) size: string | number = 'medium';
 
-  @property({ type: Number }) size: number = 24;
+  private get sizeValue(): string {
+    const sizeMap = {
+      xsmall: '1rem',
+      small: '1.25rem',
+      medium: '1.5rem',
+      large: '2rem'
+    };
+    const unitRegex = /^\d+(\.\d+)?(px|rem)?$/;
+    if (typeof this.size === 'number' && this.size > 0) {
+      return `${this.size}px`;
+    }
+    if (typeof this.size === 'string' && unitRegex.test(this.size)) {
+      return this.size;
+    }
+    if (this.size in sizeMap) {
+      return sizeMap[this.size as keyof typeof sizeMap];
+    }
+    return '2.5rem';
+  }
 
   render() {
     return html`
-      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="${this.size}" height="${this.size}" fill="${this.color}"><path d="M19.182 1.25a3.57 3.57 0 0 1 2.644 5.965l-.122.128-2.1 2.1a1 1 0 0 1-.074.087 1 1 0 0 1-.09.075L8.359 20.691l-.001.001a2.75 2.75 0 0 1-.982.63l-.16.054-4.354 1.32H2.86a1.25 1.25 0 0 1-1.556-1.554v-.003l1.321-4.353.001-.002a2.75 2.75 0 0 1 .688-1.14L14.396 4.556a.8.8 0 0 1 .159-.159l2.102-2.102a3.57 3.57 0 0 1 2.525-1.045M4.372 16.705a1.25 1.25 0 0 0-.313.517l-1.185 3.902 3.904-1.184c.196-.06.375-.166.52-.31L17.933 8.993l-2.926-2.926zM19.182 2.75a2.07 2.07 0 0 0-1.463.605l-1.652 1.652 2.926 2.926 1.65-1.65a2.07 2.07 0 0 0-1.461-3.533"/></svg>
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="${this.sizeValue}" height="${this.sizeValue}" fill="${this.color}"><path d="M19.182 1.25a3.57 3.57 0 0 1 2.644 5.965l-.122.128-2.1 2.1a1 1 0 0 1-.074.087 1 1 0 0 1-.09.075L8.359 20.691l-.001.001a2.75 2.75 0 0 1-.982.63l-.16.054-4.354 1.32H2.86a1.25 1.25 0 0 1-1.556-1.554v-.003l1.321-4.353.001-.002a2.75 2.75 0 0 1 .688-1.14L14.396 4.556a.8.8 0 0 1 .159-.159l2.102-2.102a3.57 3.57 0 0 1 2.525-1.045M4.372 16.705a1.25 1.25 0 0 0-.313.517l-1.185 3.902 3.904-1.184c.196-.06.375-.166.52-.31L17.933 8.993l-2.926-2.926zM19.182 2.75a2.07 2.07 0 0 0-1.463.605l-1.652 1.652 2.926 2.926 1.65-1.65a2.07 2.07 0 0 0-1.461-3.533"/></svg>
     `;
   }
       

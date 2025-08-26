@@ -10,12 +10,31 @@ export const FhiIconPrinterSelector = "fhi-icon-printer";
 @customElement(FhiIconPrinterSelector)
 export class FhiIconPrinter extends LitElement {
   @property({ type: String }) color: string = "currentcolor";
+  @property({ type: String }) size: string | number = 'medium';
 
-  @property({ type: Number }) size: number = 24;
+  private get sizeValue(): string {
+    const sizeMap = {
+      xsmall: '1rem',
+      small: '1.25rem',
+      medium: '1.5rem',
+      large: '2rem'
+    };
+    const unitRegex = /^\d+(\.\d+)?(px|rem)?$/;
+    if (typeof this.size === 'number' && this.size > 0) {
+      return `${this.size}px`;
+    }
+    if (typeof this.size === 'string' && unitRegex.test(this.size)) {
+      return this.size;
+    }
+    if (this.size in sizeMap) {
+      return sizeMap[this.size as keyof typeof sizeMap];
+    }
+    return '2.5rem';
+  }
 
   render() {
     return html`
-      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="${this.size}" height="${this.size}" fill="${this.color}"><path d="M17.25 15a.25.25 0 0 0-.25-.25H7a.25.25 0 0 0-.25.25v6c0 .138.112.25.25.25h10a.25.25 0 0 0 .25-.25zm1.5 2.25H20A1.25 1.25 0 0 0 21.25 16v-5A1.25 1.25 0 0 0 20 9.75H4A1.25 1.25 0 0 0 2.75 11v5A1.25 1.25 0 0 0 4 17.25h1.25V15c0-.966.784-1.75 1.75-1.75h10c.966 0 1.75.784 1.75 1.75zM17.25 3a.25.25 0 0 0-.201-.245L17 2.75H7a.25.25 0 0 0-.25.25v5.25h10.5zm1.5 5.25H20A2.75 2.75 0 0 1 22.75 11v5A2.75 2.75 0 0 1 20 18.75h-1.25V21A1.75 1.75 0 0 1 17 22.75H7A1.75 1.75 0 0 1 5.25 21v-2.25H4A2.75 2.75 0 0 1 1.25 16v-5A2.75 2.75 0 0 1 4 8.25h1.25V3A1.75 1.75 0 0 1 7 1.25h10l.173.009A1.75 1.75 0 0 1 18.75 3z"/></svg>
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="${this.sizeValue}" height="${this.sizeValue}" fill="${this.color}"><path d="M17.25 15a.25.25 0 0 0-.25-.25H7a.25.25 0 0 0-.25.25v6c0 .138.112.25.25.25h10a.25.25 0 0 0 .25-.25zm1.5 2.25H20A1.25 1.25 0 0 0 21.25 16v-5A1.25 1.25 0 0 0 20 9.75H4A1.25 1.25 0 0 0 2.75 11v5A1.25 1.25 0 0 0 4 17.25h1.25V15c0-.966.784-1.75 1.75-1.75h10c.966 0 1.75.784 1.75 1.75zM17.25 3a.25.25 0 0 0-.201-.245L17 2.75H7a.25.25 0 0 0-.25.25v5.25h10.5zm1.5 5.25H20A2.75 2.75 0 0 1 22.75 11v5A2.75 2.75 0 0 1 20 18.75h-1.25V21A1.75 1.75 0 0 1 17 22.75H7A1.75 1.75 0 0 1 5.25 21v-2.25H4A2.75 2.75 0 0 1 1.25 16v-5A2.75 2.75 0 0 1 4 8.25h1.25V3A1.75 1.75 0 0 1 7 1.25h10l.173.009A1.75 1.75 0 0 1 18.75 3z"/></svg>
     `;
   }
       

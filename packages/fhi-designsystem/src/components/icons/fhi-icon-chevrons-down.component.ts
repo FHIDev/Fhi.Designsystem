@@ -10,12 +10,31 @@ export const FhiIconChevronsDownSelector = "fhi-icon-chevrons-down";
 @customElement(FhiIconChevronsDownSelector)
 export class FhiIconChevronsDown extends LitElement {
   @property({ type: String }) color: string = "currentcolor";
+  @property({ type: String }) size: string | number = 'medium';
 
-  @property({ type: Number }) size: number = 24;
+  private get sizeValue(): string {
+    const sizeMap = {
+      xsmall: '1rem',
+      small: '1.25rem',
+      medium: '1.5rem',
+      large: '2rem'
+    };
+    const unitRegex = /^\d+(\.\d+)?(px|rem)?$/;
+    if (typeof this.size === 'number' && this.size > 0) {
+      return `${this.size}px`;
+    }
+    if (typeof this.size === 'string' && unitRegex.test(this.size)) {
+      return this.size;
+    }
+    if (this.size in sizeMap) {
+      return sizeMap[this.size as keyof typeof sizeMap];
+    }
+    return '2.5rem';
+  }
 
   render() {
     return html`
-      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="${this.size}" height="${this.size}" fill="${this.color}"><path d="M16.47 12.47a.75.75 0 0 1 1.06 1.06l-5 5a.75.75 0 0 1-1.003.052l-.057-.052-5-5-.052-.056a.75.75 0 0 1 1.056-1.056l.056.052L12 16.94zm.056-7.052a.75.75 0 0 1 1.056 1.056l-.052.056-5 5a.75.75 0 0 1-1.003.052l-.057-.052-5-5-.052-.056a.75.75 0 0 1 1.056-1.056l.056.052L12 9.94l4.47-4.47z"/></svg>
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="${this.sizeValue}" height="${this.sizeValue}" fill="${this.color}"><path d="M16.47 12.47a.75.75 0 0 1 1.06 1.06l-5 5a.75.75 0 0 1-1.003.052l-.057-.052-5-5-.052-.056a.75.75 0 0 1 1.056-1.056l.056.052L12 16.94zm.056-7.052a.75.75 0 0 1 1.056 1.056l-.052.056-5 5a.75.75 0 0 1-1.003.052l-.057-.052-5-5-.052-.056a.75.75 0 0 1 1.056-1.056l.056.052L12 9.94l4.47-4.47z"/></svg>
     `;
   }
       

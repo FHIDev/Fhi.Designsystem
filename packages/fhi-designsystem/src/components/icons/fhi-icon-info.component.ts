@@ -10,12 +10,31 @@ export const FhiIconInfoSelector = "fhi-icon-info";
 @customElement(FhiIconInfoSelector)
 export class FhiIconInfo extends LitElement {
   @property({ type: String }) color: string = "currentcolor";
+  @property({ type: String }) size: string | number = 'medium';
 
-  @property({ type: Number }) size: number = 24;
+  private get sizeValue(): string {
+    const sizeMap = {
+      xsmall: '1rem',
+      small: '1.25rem',
+      medium: '1.5rem',
+      large: '2rem'
+    };
+    const unitRegex = /^\d+(\.\d+)?(px|rem)?$/;
+    if (typeof this.size === 'number' && this.size > 0) {
+      return `${this.size}px`;
+    }
+    if (typeof this.size === 'string' && unitRegex.test(this.size)) {
+      return this.size;
+    }
+    if (this.size in sizeMap) {
+      return sizeMap[this.size as keyof typeof sizeMap];
+    }
+    return '2.5rem';
+  }
 
   render() {
     return html`
-      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="${this.size}" height="${this.size}" fill="${this.color}"><path fill-rule="evenodd" d="M12.112 5.005 12.01 5H12a1 1 0 1 0 0 2h.01l.102-.005a1 1 0 0 0 0-1.99M10 18.75h4a.75.75 0 0 0 0-1.5h-1.25V10a.75.75 0 0 0-.673-.746L12 9.25h-2a.75.75 0 0 0 0 1.5h1.25v6.5H10a.75.75 0 0 0 0 1.5" clip-rule="evenodd"/></svg>
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="${this.sizeValue}" height="${this.sizeValue}" fill="${this.color}"><path fill-rule="evenodd" d="M12.112 5.005 12.01 5H12a1 1 0 1 0 0 2h.01l.102-.005a1 1 0 0 0 0-1.99M10 18.75h4a.75.75 0 0 0 0-1.5h-1.25V10a.75.75 0 0 0-.673-.746L12 9.25h-2a.75.75 0 0 0 0 1.5h1.25v6.5H10a.75.75 0 0 0 0 1.5" clip-rule="evenodd"/></svg>
     `;
   }
       

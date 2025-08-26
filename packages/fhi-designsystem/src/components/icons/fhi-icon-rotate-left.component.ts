@@ -10,12 +10,31 @@ export const FhiIconRotateLeftSelector = "fhi-icon-rotate-left";
 @customElement(FhiIconRotateLeftSelector)
 export class FhiIconRotateLeft extends LitElement {
   @property({ type: String }) color: string = "currentcolor";
+  @property({ type: String }) size: string | number = 'medium';
 
-  @property({ type: Number }) size: number = 24;
+  private get sizeValue(): string {
+    const sizeMap = {
+      xsmall: '1rem',
+      small: '1.25rem',
+      medium: '1.5rem',
+      large: '2rem'
+    };
+    const unitRegex = /^\d+(\.\d+)?(px|rem)?$/;
+    if (typeof this.size === 'number' && this.size > 0) {
+      return `${this.size}px`;
+    }
+    if (typeof this.size === 'string' && unitRegex.test(this.size)) {
+      return this.size;
+    }
+    if (this.size in sizeMap) {
+      return sizeMap[this.size as keyof typeof sizeMap];
+    }
+    return '2.5rem';
+  }
 
   render() {
     return html`
-      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="${this.size}" height="${this.size}" fill="${this.color}"><path d="M12 2.25A9.751 9.751 0 1 1 2.25 12a.75.75 0 0 1 1.5 0 8.25 8.25 0 1 0 8.251-8.25 9 9 0 0 0-6.22 2.53l-.97.97H8a.75.75 0 0 1 0 1.5H3A.75.75 0 0 1 2.25 8V3a.75.75 0 0 1 1.5 0v3.19l.988-.989.373-.344a10.5 10.5 0 0 1 6.886-2.607z"/></svg>
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="${this.sizeValue}" height="${this.sizeValue}" fill="${this.color}"><path d="M12 2.25A9.751 9.751 0 1 1 2.25 12a.75.75 0 0 1 1.5 0 8.25 8.25 0 1 0 8.251-8.25 9 9 0 0 0-6.22 2.53l-.97.97H8a.75.75 0 0 1 0 1.5H3A.75.75 0 0 1 2.25 8V3a.75.75 0 0 1 1.5 0v3.19l.988-.989.373-.344a10.5 10.5 0 0 1 6.886-2.607z"/></svg>
     `;
   }
       

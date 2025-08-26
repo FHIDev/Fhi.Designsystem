@@ -10,12 +10,31 @@ export const FhiIconArrowRightLeftSelector = "fhi-icon-arrow-right-left";
 @customElement(FhiIconArrowRightLeftSelector)
 export class FhiIconArrowRightLeft extends LitElement {
   @property({ type: String }) color: string = "currentcolor";
+  @property({ type: String }) size: string | number = 'medium';
 
-  @property({ type: Number }) size: number = 24;
+  private get sizeValue(): string {
+    const sizeMap = {
+      xsmall: '1rem',
+      small: '1.25rem',
+      medium: '1.5rem',
+      large: '2rem'
+    };
+    const unitRegex = /^\d+(\.\d+)?(px|rem)?$/;
+    if (typeof this.size === 'number' && this.size > 0) {
+      return `${this.size}px`;
+    }
+    if (typeof this.size === 'string' && unitRegex.test(this.size)) {
+      return this.size;
+    }
+    if (this.size in sizeMap) {
+      return sizeMap[this.size as keyof typeof sizeMap];
+    }
+    return '2.5rem';
+  }
 
   render() {
     return html`
-      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="${this.size}" height="${this.size}" fill="${this.color}"><path d="M7.47 12.47a.75.75 0 0 1 1.06 1.06l-2.72 2.72H20a.75.75 0 0 1 0 1.5H5.81l2.72 2.72.052.056a.75.75 0 0 1-1.056 1.056l-.056-.052-4-4a.75.75 0 0 1 0-1.06zm8-10a.75.75 0 0 1 1.004-.052l.056.052 4 4 .052.056a.75.75 0 0 1-.052 1.004l-4 4a.75.75 0 1 1-1.06-1.06l2.72-2.72H4a.75.75 0 0 1 0-1.5h14.19l-2.72-2.72-.052-.056a.75.75 0 0 1 .052-1.004"/></svg>
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="${this.sizeValue}" height="${this.sizeValue}" fill="${this.color}"><path d="M7.47 12.47a.75.75 0 0 1 1.06 1.06l-2.72 2.72H20a.75.75 0 0 1 0 1.5H5.81l2.72 2.72.052.056a.75.75 0 0 1-1.056 1.056l-.056-.052-4-4a.75.75 0 0 1 0-1.06zm8-10a.75.75 0 0 1 1.004-.052l.056.052 4 4 .052.056a.75.75 0 0 1-.052 1.004l-4 4a.75.75 0 1 1-1.06-1.06l2.72-2.72H4a.75.75 0 0 1 0-1.5h14.19l-2.72-2.72-.052-.056a.75.75 0 0 1 .052-1.004"/></svg>
     `;
   }
       

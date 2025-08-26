@@ -28,9 +28,10 @@ const meta: Meta<FhiIconArrowDownLeft> = {
       defaultValue: { summary: 'currentcolor' },
     },
     size: {
-      control: 'number',
-      description: 'Setter størelsen på ikonet i px.',
-      defaultValue: { summary: 24 },
+      control: 'select',
+      options: ['xsmall', 'small', 'medium', 'large', '24', '24px', '1.5rem'],
+      description: 'Setter størelsen på ikonet. Kan være et av de forhåndsdefinerte størrelsene eller en spesifikk størrelse i px eller rem. Kun tall blir angitt i px.',
+      defaultValue: { summary: 'medium' },
     },
   },
 };
@@ -41,7 +42,7 @@ export const Preview: Story = {
   tags: ['!dev'],
   args: {
     color: 'var(--fhi-color-neutral-text-default)',
-    size: 24,
+    size: 'medium',
   },
 };
 

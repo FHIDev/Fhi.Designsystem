@@ -10,12 +10,31 @@ export const FhiIconSquarePenSelector = "fhi-icon-square-pen";
 @customElement(FhiIconSquarePenSelector)
 export class FhiIconSquarePen extends LitElement {
   @property({ type: String }) color: string = "currentcolor";
+  @property({ type: String }) size: string | number = 'medium';
 
-  @property({ type: Number }) size: number = 24;
+  private get sizeValue(): string {
+    const sizeMap = {
+      xsmall: '1rem',
+      small: '1.25rem',
+      medium: '1.5rem',
+      large: '2rem'
+    };
+    const unitRegex = /^\d+(\.\d+)?(px|rem)?$/;
+    if (typeof this.size === 'number' && this.size > 0) {
+      return `${this.size}px`;
+    }
+    if (typeof this.size === 'string' && unitRegex.test(this.size)) {
+      return this.size;
+    }
+    if (this.size in sizeMap) {
+      return sizeMap[this.size as keyof typeof sizeMap];
+    }
+    return '2.5rem';
+  }
 
   render() {
     return html`
-      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="${this.size}" height="${this.size}" fill="${this.color}"><path fill-rule="evenodd" d="M22.036 1.975a2.88 2.88 0 0 0-3.853-.198l-.22.198L9.47 10.47a.8.8 0 0 0-.166.252l-.032.096-1 4a.75.75 0 0 0 .885.915l4-.856a.75.75 0 0 0 .377-.206l8.516-8.639a2.88 2.88 0 0 0 .182-3.84zm-2.906.966a1.38 1.38 0 0 1 1.845.095l.094.104a1.38 1.38 0 0 1-.087 1.839l-8.359 8.478-2.604.558.658-2.632 8.348-8.347zM2.25 5v14A2.75 2.75 0 0 0 5 21.75h14A2.75 2.75 0 0 0 21.75 19v-7a.75.75 0 0 0-1.5 0v7c0 .69-.56 1.25-1.25 1.25H5c-.69 0-1.25-.56-1.25-1.25V5c0-.69.56-1.25 1.25-1.25h7a.75.75 0 0 0 0-1.5H5A2.75 2.75 0 0 0 2.25 5" clip-rule="evenodd"/></svg>
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="${this.sizeValue}" height="${this.sizeValue}" fill="${this.color}"><path fill-rule="evenodd" d="M22.036 1.975a2.88 2.88 0 0 0-3.853-.198l-.22.198L9.47 10.47a.8.8 0 0 0-.166.252l-.032.096-1 4a.75.75 0 0 0 .885.915l4-.856a.75.75 0 0 0 .377-.206l8.516-8.639a2.88 2.88 0 0 0 .182-3.84zm-2.906.966a1.38 1.38 0 0 1 1.845.095l.094.104a1.38 1.38 0 0 1-.087 1.839l-8.359 8.478-2.604.558.658-2.632 8.348-8.347zM2.25 5v14A2.75 2.75 0 0 0 5 21.75h14A2.75 2.75 0 0 0 21.75 19v-7a.75.75 0 0 0-1.5 0v7c0 .69-.56 1.25-1.25 1.25H5c-.69 0-1.25-.56-1.25-1.25V5c0-.69.56-1.25 1.25-1.25h7a.75.75 0 0 0 0-1.5H5A2.75 2.75 0 0 0 2.25 5" clip-rule="evenodd"/></svg>
     `;
   }
       

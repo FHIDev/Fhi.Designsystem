@@ -10,12 +10,31 @@ export const FhiIconArrowUpLeftSelector = "fhi-icon-arrow-up-left";
 @customElement(FhiIconArrowUpLeftSelector)
 export class FhiIconArrowUpLeft extends LitElement {
   @property({ type: String }) color: string = "currentcolor";
+  @property({ type: String }) size: string | number = 'medium';
 
-  @property({ type: Number }) size: number = 24;
+  private get sizeValue(): string {
+    const sizeMap = {
+      xsmall: '1rem',
+      small: '1.25rem',
+      medium: '1.5rem',
+      large: '2rem'
+    };
+    const unitRegex = /^\d+(\.\d+)?(px|rem)?$/;
+    if (typeof this.size === 'number' && this.size > 0) {
+      return `${this.size}px`;
+    }
+    if (typeof this.size === 'string' && unitRegex.test(this.size)) {
+      return this.size;
+    }
+    if (this.size in sizeMap) {
+      return sizeMap[this.size as keyof typeof sizeMap];
+    }
+    return '2.5rem';
+  }
 
   render() {
     return html`
-      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="${this.size}" height="${this.size}" fill="${this.color}"><path d="M6.25 17V7A.75.75 0 0 1 7 6.25h10a.75.75 0 0 1 0 1.5H8.81l8.72 8.72.052.056a.75.75 0 0 1-1.056 1.056l-.056-.052-8.72-8.72V17a.75.75 0 0 1-1.5 0"/></svg>
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="${this.sizeValue}" height="${this.sizeValue}" fill="${this.color}"><path d="M6.25 17V7A.75.75 0 0 1 7 6.25h10a.75.75 0 0 1 0 1.5H8.81l8.72 8.72.052.056a.75.75 0 0 1-1.056 1.056l-.056-.052-8.72-8.72V17a.75.75 0 0 1-1.5 0"/></svg>
     `;
   }
       

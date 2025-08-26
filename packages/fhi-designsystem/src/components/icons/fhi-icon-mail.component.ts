@@ -10,12 +10,31 @@ export const FhiIconMailSelector = "fhi-icon-mail";
 @customElement(FhiIconMailSelector)
 export class FhiIconMail extends LitElement {
   @property({ type: String }) color: string = "currentcolor";
+  @property({ type: String }) size: string | number = 'medium';
 
-  @property({ type: Number }) size: number = 24;
+  private get sizeValue(): string {
+    const sizeMap = {
+      xsmall: '1rem',
+      small: '1.25rem',
+      medium: '1.5rem',
+      large: '2rem'
+    };
+    const unitRegex = /^\d+(\.\d+)?(px|rem)?$/;
+    if (typeof this.size === 'number' && this.size > 0) {
+      return `${this.size}px`;
+    }
+    if (typeof this.size === 'string' && unitRegex.test(this.size)) {
+      return this.size;
+    }
+    if (this.size in sizeMap) {
+      return sizeMap[this.size as keyof typeof sizeMap];
+    }
+    return '2.5rem';
+  }
 
   render() {
     return html`
-      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="${this.size}" height="${this.size}" fill="${this.color}"><path d="M20 3.25A2.75 2.75 0 0 1 22.75 6v12A2.75 2.75 0 0 1 20 20.75H4A2.75 2.75 0 0 1 1.25 18V6A2.75 2.75 0 0 1 4 3.25zm-6.567 10.083-.005.003a2.7 2.7 0 0 1-1.24.403l-.188.007c-.505 0-1-.142-1.428-.41l-.005-.003L2.75 8.364V18c0 .69.56 1.25 1.25 1.25h16c.69 0 1.25-.56 1.25-1.25V8.364zM4 4.75c-.69 0-1.25.56-1.25 1.25v.588l8.617 5.477h.001c.19.118.409.181.632.181l.166-.012a1.2 1.2 0 0 0 .318-.091l.148-.079 8.618-5.476V6c0-.69-.56-1.25-1.25-1.25z"/></svg>
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="${this.sizeValue}" height="${this.sizeValue}" fill="${this.color}"><path d="M20 3.25A2.75 2.75 0 0 1 22.75 6v12A2.75 2.75 0 0 1 20 20.75H4A2.75 2.75 0 0 1 1.25 18V6A2.75 2.75 0 0 1 4 3.25zm-6.567 10.083-.005.003a2.7 2.7 0 0 1-1.24.403l-.188.007c-.505 0-1-.142-1.428-.41l-.005-.003L2.75 8.364V18c0 .69.56 1.25 1.25 1.25h16c.69 0 1.25-.56 1.25-1.25V8.364zM4 4.75c-.69 0-1.25.56-1.25 1.25v.588l8.617 5.477h.001c.19.118.409.181.632.181l.166-.012a1.2 1.2 0 0 0 .318-.091l.148-.079 8.618-5.476V6c0-.69-.56-1.25-1.25-1.25z"/></svg>
     `;
   }
       

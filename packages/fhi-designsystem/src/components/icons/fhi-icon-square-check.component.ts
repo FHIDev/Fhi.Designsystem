@@ -10,12 +10,31 @@ export const FhiIconSquareCheckSelector = "fhi-icon-square-check";
 @customElement(FhiIconSquareCheckSelector)
 export class FhiIconSquareCheck extends LitElement {
   @property({ type: String }) color: string = "currentcolor";
+  @property({ type: String }) size: string | number = 'medium';
 
-  @property({ type: Number }) size: number = 24;
+  private get sizeValue(): string {
+    const sizeMap = {
+      xsmall: '1rem',
+      small: '1.25rem',
+      medium: '1.5rem',
+      large: '2rem'
+    };
+    const unitRegex = /^\d+(\.\d+)?(px|rem)?$/;
+    if (typeof this.size === 'number' && this.size > 0) {
+      return `${this.size}px`;
+    }
+    if (typeof this.size === 'string' && unitRegex.test(this.size)) {
+      return this.size;
+    }
+    if (this.size in sizeMap) {
+      return sizeMap[this.size as keyof typeof sizeMap];
+    }
+    return '2.5rem';
+  }
 
   render() {
     return html`
-      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="${this.size}" height="${this.size}" fill="${this.color}"><path fill-rule="evenodd" d="M19 3.75c.69 0 1.25.56 1.25 1.25v14c0 .69-.56 1.25-1.25 1.25H5c-.69 0-1.25-.56-1.25-1.25V5c0-.69.56-1.25 1.25-1.25zm0 18A2.75 2.75 0 0 0 21.75 19V5A2.75 2.75 0 0 0 19 2.25H5A2.75 2.75 0 0 0 2.25 5v14A2.75 2.75 0 0 0 5 21.75zM15.53 9.47a.75.75 0 0 0-1.004-.052l-.056.052L11 12.94l-1.47-1.47-.056-.052a.75.75 0 0 0-1.056 1.056l.052.056 2 2a.75.75 0 0 0 1.06 0l4-4 .052-.056a.75.75 0 0 0-.052-1.004" clip-rule="evenodd"/></svg>
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="${this.sizeValue}" height="${this.sizeValue}" fill="${this.color}"><path fill-rule="evenodd" d="M19 3.75c.69 0 1.25.56 1.25 1.25v14c0 .69-.56 1.25-1.25 1.25H5c-.69 0-1.25-.56-1.25-1.25V5c0-.69.56-1.25 1.25-1.25zm0 18A2.75 2.75 0 0 0 21.75 19V5A2.75 2.75 0 0 0 19 2.25H5A2.75 2.75 0 0 0 2.25 5v14A2.75 2.75 0 0 0 5 21.75zM15.53 9.47a.75.75 0 0 0-1.004-.052l-.056.052L11 12.94l-1.47-1.47-.056-.052a.75.75 0 0 0-1.056 1.056l.052.056 2 2a.75.75 0 0 0 1.06 0l4-4 .052-.056a.75.75 0 0 0-.052-1.004" clip-rule="evenodd"/></svg>
     `;
   }
       

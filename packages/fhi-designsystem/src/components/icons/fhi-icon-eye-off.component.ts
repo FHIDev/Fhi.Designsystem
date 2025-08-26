@@ -10,12 +10,31 @@ export const FhiIconEyeOffSelector = "fhi-icon-eye-off";
 @customElement(FhiIconEyeOffSelector)
 export class FhiIconEyeOff extends LitElement {
   @property({ type: String }) color: string = "currentcolor";
+  @property({ type: String }) size: string | number = 'medium';
 
-  @property({ type: Number }) size: number = 24;
+  private get sizeValue(): string {
+    const sizeMap = {
+      xsmall: '1rem',
+      small: '1.25rem',
+      medium: '1.5rem',
+      large: '2rem'
+    };
+    const unitRegex = /^\d+(\.\d+)?(px|rem)?$/;
+    if (typeof this.size === 'number' && this.size > 0) {
+      return `${this.size}px`;
+    }
+    if (typeof this.size === 'string' && unitRegex.test(this.size)) {
+      return this.size;
+    }
+    if (this.size in sizeMap) {
+      return sizeMap[this.size as keyof typeof sizeMap];
+    }
+    return '2.5rem';
+  }
 
   render() {
     return html`
-      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="${this.size}" height="${this.size}" fill="${this.color}"><path d="M1.47 1.47a.75.75 0 0 1 1.06 0l20 20 .052.056a.75.75 0 0 1-1.055 1.056l-.058-.052-4.108-4.108a11.5 11.5 0 0 1-4.142 1.264 11.5 11.5 0 0 1-11.728-6.768l-.122-.284-.01-.025a1.75 1.75 0 0 1 0-1.218l.01-.025a11.5 11.5 0 0 1 3.956-4.98L1.469 2.53a.75.75 0 0 1 0-1.06m4.934 5.995a10 10 0 0 0-3.64 4.453.25.25 0 0 0 0 .162 10 10 0 0 0 10.296 6.113 10 10 0 0 0 3.182-.89l-2.175-2.175a3.749 3.749 0 0 1-5.195-5.195zm4.708-3.18a11.495 11.495 0 0 1 11.332 6.65l.187.43.01.025.048.149a1.75 1.75 0 0 1 0 .92l-.048.15-.01.024a11.5 11.5 0 0 1-1.545 2.664l-.05.057a.75.75 0 0 1-1.134-.977l.201-.269a10 10 0 0 0 1.134-2.03.25.25 0 0 0-.002-.165A9.994 9.994 0 0 0 10.822 5.82l-.076.006a.75.75 0 0 1-.102-1.495zm-1.14 6.747a2.25 2.25 0 0 0-.222.988 2.25 2.25 0 0 0 2.23 2.23c.345.003.682-.076.987-.222z"/></svg>
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="${this.sizeValue}" height="${this.sizeValue}" fill="${this.color}"><path d="M1.47 1.47a.75.75 0 0 1 1.06 0l20 20 .052.056a.75.75 0 0 1-1.055 1.056l-.058-.052-4.108-4.108a11.5 11.5 0 0 1-4.142 1.264 11.5 11.5 0 0 1-11.728-6.768l-.122-.284-.01-.025a1.75 1.75 0 0 1 0-1.218l.01-.025a11.5 11.5 0 0 1 3.956-4.98L1.469 2.53a.75.75 0 0 1 0-1.06m4.934 5.995a10 10 0 0 0-3.64 4.453.25.25 0 0 0 0 .162 10 10 0 0 0 10.296 6.113 10 10 0 0 0 3.182-.89l-2.175-2.175a3.749 3.749 0 0 1-5.195-5.195zm4.708-3.18a11.495 11.495 0 0 1 11.332 6.65l.187.43.01.025.048.149a1.75 1.75 0 0 1 0 .92l-.048.15-.01.024a11.5 11.5 0 0 1-1.545 2.664l-.05.057a.75.75 0 0 1-1.134-.977l.201-.269a10 10 0 0 0 1.134-2.03.25.25 0 0 0-.002-.165A9.994 9.994 0 0 0 10.822 5.82l-.076.006a.75.75 0 0 1-.102-1.495zm-1.14 6.747a2.25 2.25 0 0 0-.222.988 2.25 2.25 0 0 0 2.23 2.23c.345.003.682-.076.987-.222z"/></svg>
     `;
   }
       

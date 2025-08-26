@@ -10,12 +10,31 @@ export const FhiIconTrashSelector = "fhi-icon-trash";
 @customElement(FhiIconTrashSelector)
 export class FhiIconTrash extends LitElement {
   @property({ type: String }) color: string = "currentcolor";
+  @property({ type: String }) size: string | number = 'medium';
 
-  @property({ type: Number }) size: number = 24;
+  private get sizeValue(): string {
+    const sizeMap = {
+      xsmall: '1rem',
+      small: '1.25rem',
+      medium: '1.5rem',
+      large: '2rem'
+    };
+    const unitRegex = /^\d+(\.\d+)?(px|rem)?$/;
+    if (typeof this.size === 'number' && this.size > 0) {
+      return `${this.size}px`;
+    }
+    if (typeof this.size === 'string' && unitRegex.test(this.size)) {
+      return this.size;
+    }
+    if (this.size in sizeMap) {
+      return sizeMap[this.size as keyof typeof sizeMap];
+    }
+    return '2.5rem';
+  }
 
   render() {
     return html`
-      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="${this.size}" height="${this.size}" fill="${this.color}"><path d="M18.25 6.75H5.75V20c0 .256.136.575.405.845.27.27.589.405.845.405h10c.256 0 .575-.136.845-.405.27-.27.405-.589.405-.845zM9.25 17v-6a.75.75 0 0 1 1.5 0v6a.75.75 0 0 1-1.5 0m4 0v-6a.75.75 0 0 1 1.5 0v6a.75.75 0 0 1-1.5 0m2-13c0-.256-.136-.575-.405-.845-.27-.27-.589-.405-.845-.405h-4c-.256 0-.575.136-.845.405-.27.27-.405.589-.405.845v1.25h6.5zm1.5 1.25H21a.75.75 0 0 1 0 1.5h-1.25V20c0 .744-.364 1.425-.845 1.905-.48.48-1.161.845-1.905.845H7c-.744 0-1.425-.364-1.905-.845-.48-.48-.845-1.161-.845-1.905V6.75H3a.75.75 0 0 1 0-1.5h4.25V4c0-.744.364-1.425.845-1.905.48-.48 1.161-.845 1.905-.845h4c.744 0 1.425.364 1.905.845.48.48.845 1.161.845 1.905z"/></svg>
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="${this.sizeValue}" height="${this.sizeValue}" fill="${this.color}"><path d="M18.25 6.75H5.75V20c0 .256.136.575.405.845.27.27.589.405.845.405h10c.256 0 .575-.136.845-.405.27-.27.405-.589.405-.845zM9.25 17v-6a.75.75 0 0 1 1.5 0v6a.75.75 0 0 1-1.5 0m4 0v-6a.75.75 0 0 1 1.5 0v6a.75.75 0 0 1-1.5 0m2-13c0-.256-.136-.575-.405-.845-.27-.27-.589-.405-.845-.405h-4c-.256 0-.575.136-.845.405-.27.27-.405.589-.405.845v1.25h6.5zm1.5 1.25H21a.75.75 0 0 1 0 1.5h-1.25V20c0 .744-.364 1.425-.845 1.905-.48.48-1.161.845-1.905.845H7c-.744 0-1.425-.364-1.905-.845-.48-.48-.845-1.161-.845-1.905V6.75H3a.75.75 0 0 1 0-1.5h4.25V4c0-.744.364-1.425.845-1.905.48-.48 1.161-.845 1.905-.845h4c.744 0 1.425.364 1.905.845.48.48.845 1.161.845 1.905z"/></svg>
     `;
   }
       

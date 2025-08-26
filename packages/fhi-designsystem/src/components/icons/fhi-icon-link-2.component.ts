@@ -10,12 +10,31 @@ export const FhiIconLink2Selector = "fhi-icon-link-2";
 @customElement(FhiIconLink2Selector)
 export class FhiIconLink2 extends LitElement {
   @property({ type: String }) color: string = "currentcolor";
+  @property({ type: String }) size: string | number = 'medium';
 
-  @property({ type: Number }) size: number = 24;
+  private get sizeValue(): string {
+    const sizeMap = {
+      xsmall: '1rem',
+      small: '1.25rem',
+      medium: '1.5rem',
+      large: '2rem'
+    };
+    const unitRegex = /^\d+(\.\d+)?(px|rem)?$/;
+    if (typeof this.size === 'number' && this.size > 0) {
+      return `${this.size}px`;
+    }
+    if (typeof this.size === 'string' && unitRegex.test(this.size)) {
+      return this.size;
+    }
+    if (this.size in sizeMap) {
+      return sizeMap[this.size as keyof typeof sizeMap];
+    }
+    return '2.5rem';
+  }
 
   render() {
     return html`
-      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="${this.size}" height="${this.size}" fill="${this.color}"><path d="M9 6.25a.75.75 0 0 1 0 1.5H7a4.25 4.25 0 0 0 0 8.5h2a.75.75 0 0 1 0 1.5H7a5.75 5.75 0 0 1 0-11.5zm8 0a5.75 5.75 0 0 1 .285 11.493L17 17.75h-2a.75.75 0 0 1 0-1.5h2a4.25 4.25 0 0 0 .21-8.495L17 7.75h-2a.75.75 0 0 1 0-1.5zm-1 5a.75.75 0 0 1 0 1.5H8a.75.75 0 0 1 0-1.5z"/></svg>
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="${this.sizeValue}" height="${this.sizeValue}" fill="${this.color}"><path d="M9 6.25a.75.75 0 0 1 0 1.5H7a4.25 4.25 0 0 0 0 8.5h2a.75.75 0 0 1 0 1.5H7a5.75 5.75 0 0 1 0-11.5zm8 0a5.75 5.75 0 0 1 .285 11.493L17 17.75h-2a.75.75 0 0 1 0-1.5h2a4.25 4.25 0 0 0 .21-8.495L17 7.75h-2a.75.75 0 0 1 0-1.5zm-1 5a.75.75 0 0 1 0 1.5H8a.75.75 0 0 1 0-1.5z"/></svg>
     `;
   }
       
