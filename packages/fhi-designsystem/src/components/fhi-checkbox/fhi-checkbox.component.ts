@@ -10,7 +10,7 @@ export class FhiCheckbox extends LitElement {
 
   @property({ type: String }) label?: string = undefined;
   @property({ type: String }) name?: string = undefined;
-  @property({ type: String }) value?: string = undefined;
+  @property({ type: String }) value: string = 'on';
   @property({ type: String, reflect: true }) status?: 'error' | undefined;
   @property({ type: Boolean }) checked? = false;
   @property({ type: Boolean, reflect: true }) disabled? = false;
@@ -24,12 +24,12 @@ export class FhiCheckbox extends LitElement {
 
   connectedCallback(): void {
     super.connectedCallback();
-    this._updateFormValue(this.value);
+    this._updateFormValue();
   }
 
   public _handleChange(event: Event): void {
     this.checked = (event.target as HTMLInputElement).checked;
-    this._updateFormValue(this.value);
+    this._updateFormValue();
     this.dispatchEvent(
       new Event('change', {
         bubbles: true,
@@ -37,17 +37,13 @@ export class FhiCheckbox extends LitElement {
     );
   }
 
-  private _updateFormValue(value: string | undefined) {
-    if (value == undefined) {
-      this._internals.setFormValue(this.checked ? 'on' : null);
-    } else {
-      this._internals.setFormValue(this.checked ? value : null);
-    }
+  private _updateFormValue() {
+    this._internals.setFormValue(this.checked ? this.value : null);
   }
 
   formResetCallback() {
     this.checked = false;
-    this._updateFormValue(this.value);
+    this._updateFormValue();
   }
 
   render() {
