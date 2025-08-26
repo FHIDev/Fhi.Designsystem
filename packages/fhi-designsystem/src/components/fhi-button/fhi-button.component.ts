@@ -25,8 +25,8 @@ export class FhiButton extends LitElement {
 
   @property({ type: Boolean, reflect: true }) disabled = false;
 
-  @property({ type: Boolean, attribute: 'icon-button' })
-  iconButton = false;
+  @property({ type: Boolean, attribute: 'icon-only' })
+  iconOnly = false;
 
   @property({ type: String }) type: 'button' | 'submit' | 'reset' = 'submit';
 
@@ -102,7 +102,7 @@ export class FhiButton extends LitElement {
   }
 
   private _handleSlotChange(event: Event): void {
-    if (this.iconButton) {
+    if (this.iconOnly) {
       return;
     }
 
@@ -203,6 +203,8 @@ export class FhiButton extends LitElement {
       /* Adjust for the button padding when the icon is present on either side */
       --dimension-icon-margin-left-offset: calc(-1 * var(--fhi-spacing-050));
       --dimension-icon-margin-right-offset: calc(-1 * var(--fhi-spacing-050));
+
+      --dimension-icon-only-border-radius: var(--fhi-border-radius-full);
 
       /* Typography */
       --typography-font-family: var(--fhi-font-family-default);
@@ -807,19 +809,19 @@ export class FhiButton extends LitElement {
       }
     }
 
-    :host([icon-button]) button {
-      border-radius: 50%;
+    :host([icon-only]) button {
+      border-radius: var(--dimension-icon-only-border-radius);
     }
 
-    :host([icon-button][size='small']) button {
+    :host([icon-only][size='small']) button {
       padding: calc(var(--fhi-spacing-050) - var(--fhi-dimension-border-width));
     }
 
-    :host([icon-button][size='medium']) button {
+    :host([icon-only][size='medium']) button {
       padding: calc(var(--fhi-spacing-100) - var(--fhi-dimension-border-width));
     }
 
-    :host([icon-button][size='large']) button {
+    :host([icon-only][size='large']) button {
       padding: calc(var(--fhi-spacing-200) - var(--fhi-dimension-border-width));
     }
   `;

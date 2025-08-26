@@ -55,7 +55,7 @@ const meta: Meta<FhiButton> = {
       size=${ifDefined(args.size)}
       type=${ifDefined(args.type)}
       ?disabled=${args.disabled}
-      ?icon-button=${args.iconButton}
+      ?icon-only=${args.iconOnly}
     >
       Handling
     </fhi-button>`,
@@ -89,8 +89,8 @@ const meta: Meta<FhiButton> = {
       description: 'Bestemmer om knappen kan trykkes på.',
       defaultValue: { summary: 'false' },
     },
-    iconButton: {
-      name: 'icon-button',
+    iconOnly: {
+      name: 'icon-only',
       control: { type: 'boolean' },
       description:
         'Bestemmer om knappen er en ikon-knapp. Ikon-knapper skal bare ha ett ikon og ingen tekst.',
@@ -210,35 +210,35 @@ export const showIconButtons: Story = {
       </section>`,
   ],
   render: () => html`
-    <fhi-button icon-button>
+    <fhi-button icon-only>
       <fhi-icon-search></fhi-icon-search>
     </fhi-button>
 
-    <fhi-button icon-button variant="subtle">
+    <fhi-button icon-only variant="subtle">
       <fhi-icon-arrow-right></fhi-icon-arrow-right>
     </fhi-button>
 
-    <fhi-button icon-button variant="outlined">
+    <fhi-button icon-only variant="outlined">
       <fhi-icon-ellipsis-vertical></fhi-icon-ellipsis-vertical>
     </fhi-button>
 
-    <fhi-button icon-button variant="text">
+    <fhi-button icon-only variant="text">
       <fhi-icon-share></fhi-icon-share>
     </fhi-button>
 
-    <fhi-button icon-button color="neutral">
+    <fhi-button icon-only color="neutral">
       <fhi-icon-bell></fhi-icon-bell>
     </fhi-button>
 
-    <fhi-button icon-button color="neutral" variant="subtle">
+    <fhi-button icon-only color="neutral" variant="subtle">
       <fhi-icon-expand></fhi-icon-expand>
     </fhi-button>
 
-    <fhi-button icon-button color="neutral" variant="outlined">
+    <fhi-button icon-only color="neutral" variant="outlined">
       <fhi-icon-user></fhi-icon-user>
     </fhi-button>
 
-    <fhi-button icon-button color="neutral" variant="text">
+    <fhi-button icon-only color="neutral" variant="text">
       <fhi-icon-x></fhi-icon-x>
     </fhi-button>
   `,
