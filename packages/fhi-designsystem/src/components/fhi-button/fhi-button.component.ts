@@ -25,7 +25,8 @@ export class FhiButton extends LitElement {
 
   @property({ type: Boolean, reflect: true }) disabled = false;
 
-  @property({ type: Boolean, reflect: true }) circle = false;
+  @property({ type: Boolean, attribute: 'icon-button' })
+  iconButton = false;
 
   @property({ type: String }) type: 'button' | 'submit' | 'reset' = 'submit';
 
@@ -94,34 +95,49 @@ export class FhiButton extends LitElement {
       case 'small':
         return '20';
       case 'medium':
-        return '24';
       case 'large':
-        return '24';
       default:
         return '24';
     }
   }
 
   private _handleSlotChange(event: Event): void {
+    if (this.iconButton) {
+      return;
+    }
+
     const slot = event.target as HTMLSlotElement;
     const nodes = slot.assignedNodes();
 
     let firstIcon: HTMLElement | undefined;
     let lastIcon: HTMLElement | undefined;
 
-    for (const node of nodes) {
-      if (
-        node.nodeType === Node.ELEMENT_NODE &&
-        (node as Element).tagName.toLowerCase().startsWith('fhi-icon')
-      ) {
-        if (!firstIcon) {
-          firstIcon = node as HTMLElement;
-          continue;
-        }
+    nodes.forEach(node => {
+      if (node.nodeType !== Node.ELEMENT_NODE) {
+        return;
+      }
 
+      if (!(node as Element).tagName.toLowerCase().startsWith('fhi-icon')) {
+        return;
+      }
+
+      // The first icon is either the first child or it is preceded by a whitespace text node
+      if (
+        !node.previousSibling?.nodeType ||
+        (node.previousSibling?.nodeType === Node.TEXT_NODE &&
+          !node.previousSibling.textContent?.trim())
+      ) {
+        firstIcon = node as HTMLElement;
+      }
+
+      // The last icon is either the last child or it is followed by a whitespace text node
+      if (
+        node.previousSibling?.nodeType === Node.TEXT_NODE &&
+        node.previousSibling?.textContent?.trim()
+      ) {
         lastIcon = node as HTMLElement;
       }
-    }
+    });
 
     if (firstIcon) {
       firstIcon.style.marginRight = 'var(--dimension-icon-margin-right)';
@@ -184,7 +200,7 @@ export class FhiButton extends LitElement {
       --dimension-icon-margin-left: var(--fhi-spacing-050);
       --dimension-icon-margin-right: var(--fhi-spacing-050);
 
-      // Adjust for the button padding when the icon is present on either side
+      /* Adjust for the button padding when the icon is present on either side */
       --dimension-icon-margin-left-offset: calc(-1 * var(--fhi-spacing-050));
       --dimension-icon-margin-right-offset: calc(-1 * var(--fhi-spacing-050));
 
@@ -791,10 +807,20 @@ export class FhiButton extends LitElement {
       }
     }
 
-    :host([circle][size='small']) button {
+    :host([icon-button]) button {
       border-radius: 50%;
+    }
+
+    :host([icon-button][size='small']) button {
+      padding: calc(var(--fhi-spacing-050) - var(--fhi-dimension-border-width));
+    }
+
+    :host([icon-button][size='medium']) button {
       padding: calc(var(--fhi-spacing-100) - var(--fhi-dimension-border-width));
-      background-color: red;
+    }
+
+    :host([icon-button][size='large']) button {
+      padding: calc(var(--fhi-spacing-200) - var(--fhi-dimension-border-width));
     }
   `;
 }
