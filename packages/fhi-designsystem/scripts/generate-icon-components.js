@@ -94,7 +94,7 @@ export const ${webComponentName}Selector = "${customElementSelector}";
 @customElement(${webComponentName}Selector)
 export class ${webComponentName} extends LitElement {
   @property({ type: String }) color: string = "currentcolor";
-  @property({ type: String | Number }) size: string | number = 'medium';
+  @property({ type: String }) size: string | number = 'medium';
 
   private get sizeValue(): string {
     const sizeMap = {
@@ -110,7 +110,10 @@ export class ${webComponentName} extends LitElement {
     if (typeof this.size === 'string' && unitRegex.test(this.size)) {
       return this.size;
     }
-    return sizeMap[this.size] || '2.5rem';
+    if (this.size in sizeMap) {
+      return sizeMap[this.size as keyof typeof sizeMap];
+    }
+    return '2.5rem';
   }
 
   render() {
