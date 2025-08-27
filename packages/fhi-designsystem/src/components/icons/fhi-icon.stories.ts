@@ -29,8 +29,8 @@ const meta: Meta<FhiIconArrowDownLeft> = {
     },
     size: {
       control: 'select',
-      options: ['xsmall', 'small', 'medium', 'large', '24', '24px', '1.5rem'],
-      description: 'Setter størelsen på ikonet. Kan være et av de forhåndsdefinerte størrelsene eller en spesifikk størrelse i px eller rem. Kun tall blir angitt i px.',
+      options: ['xsmall', 'small', 'medium', 'large', '16', '20', '24', '32'],
+      description: 'Setter størelsen på ikonet. Kan være et av de forhåndsdefinerte størrelsene (xsmall, small, medium eller large) eller en spesifikk størrelse. Tallverdier blir angitt som px.',
       defaultValue: { summary: 'medium' },
     },
   },

@@ -10,26 +10,24 @@ export const FhiIconCircleSelector = "fhi-icon-circle";
 @customElement(FhiIconCircleSelector)
 export class FhiIconCircle extends LitElement {
   @property({ type: String }) color: string = "currentcolor";
-  @property({ type: String }) size: string | number = 'medium';
-
+  @property({ type: String }) size: string = 'medium';
   private get sizeValue(): string {
-    const sizeMap = {
-      xsmall: '1rem',
-      small: '1.25rem',
-      medium: '1.5rem',
-      large: '2rem'
-    };
-    const unitRegex = /^\d+(\.\d+)?(px|rem)?$/;
-    if (typeof this.size === 'number' && this.size > 0) {
-      return `${this.size}px`;
+    switch (this.size) {
+      case 'xsmall': 
+        return '16px'; 
+      case 'small':
+        return '20px';
+      case 'medium':
+        return '24px'; 
+      case 'large':
+        return '32px'; 
+      default:
+        if (!isNaN(Number(this.size))) {
+          return `${this.size}px`;
+        } else {
+          return '24px';
+        }
     }
-    if (typeof this.size === 'string' && unitRegex.test(this.size)) {
-      return this.size;
-    }
-    if (this.size in sizeMap) {
-      return sizeMap[this.size as keyof typeof sizeMap];
-    } 
-    return '1.5rem';
   }
 
   render() {
