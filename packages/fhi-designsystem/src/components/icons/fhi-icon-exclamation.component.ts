@@ -10,8 +10,8 @@ export const FhiIconExclamationSelector = "fhi-icon-exclamation";
 @customElement(FhiIconExclamationSelector)
 export class FhiIconExclamation extends LitElement {
   @property({ type: String }) color: string = "currentcolor";
-  @property({ type: String }) size: string = 'medium';
-  private get sizeValue(): string {
+  @property({ type: String }) size: 'xsmall' | 'small' | 'medium' | 'large' | number = 'medium';
+  private get _size(): string {
     switch (this.size) {
       case 'xsmall': 
         return '16px'; 
@@ -32,7 +32,7 @@ export class FhiIconExclamation extends LitElement {
 
   render() {
     return html`
-      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="${this.sizeValue}" height="${this.sizeValue}" fill="${this.color}"><path fill-rule="evenodd" d="M11.25 6v8a.75.75 0 0 0 1.5 0V6a.75.75 0 0 0-1.5 0m.862 11.005L12.01 17H12a1 1 0 1 0 0 2h.01l.102-.005a1 1 0 0 0 0-1.99" clip-rule="evenodd"/></svg>
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="${this._size}" height="${this._size}" fill="${this.color}"><path fill-rule="evenodd" d="M11.25 6v8a.75.75 0 0 0 1.5 0V6a.75.75 0 0 0-1.5 0m.862 11.005L12.01 17H12a1 1 0 1 0 0 2h.01l.102-.005a1 1 0 0 0 0-1.99" clip-rule="evenodd"/></svg>
     `;
   }
       

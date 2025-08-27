@@ -10,8 +10,8 @@ export const FhiIconGripVerticalSelector = "fhi-icon-grip-vertical";
 @customElement(FhiIconGripVerticalSelector)
 export class FhiIconGripVertical extends LitElement {
   @property({ type: String }) color: string = "currentcolor";
-  @property({ type: String }) size: string = 'medium';
-  private get sizeValue(): string {
+  @property({ type: String }) size: 'xsmall' | 'small' | 'medium' | 'large' | number = 'medium';
+  private get _size(): string {
     switch (this.size) {
       case 'xsmall': 
         return '16px'; 
@@ -32,7 +32,7 @@ export class FhiIconGripVertical extends LitElement {
 
   render() {
     return html`
-      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="${this.sizeValue}" height="${this.sizeValue}" fill="${this.color}"><path fill-rule="evenodd" d="M9 6.75a1.75 1.75 0 1 0 0-3.5 1.75 1.75 0 0 0 0 3.5m0 7a1.75 1.75 0 1 0 0-3.5 1.75 1.75 0 0 0 0 3.5m0 7a1.75 1.75 0 1 0 0-3.5 1.75 1.75 0 0 0 0 3.5m6-14a1.75 1.75 0 1 0 0-3.5 1.75 1.75 0 0 0 0 3.5m0 7a1.75 1.75 0 1 0 0-3.5 1.75 1.75 0 0 0 0 3.5m0 7a1.75 1.75 0 1 0 0-3.5 1.75 1.75 0 0 0 0 3.5" clip-rule="evenodd"/></svg>
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="${this._size}" height="${this._size}" fill="${this.color}"><path fill-rule="evenodd" d="M9 6.75a1.75 1.75 0 1 0 0-3.5 1.75 1.75 0 0 0 0 3.5m0 7a1.75 1.75 0 1 0 0-3.5 1.75 1.75 0 0 0 0 3.5m0 7a1.75 1.75 0 1 0 0-3.5 1.75 1.75 0 0 0 0 3.5m6-14a1.75 1.75 0 1 0 0-3.5 1.75 1.75 0 0 0 0 3.5m0 7a1.75 1.75 0 1 0 0-3.5 1.75 1.75 0 0 0 0 3.5m0 7a1.75 1.75 0 1 0 0-3.5 1.75 1.75 0 0 0 0 3.5" clip-rule="evenodd"/></svg>
     `;
   }
       

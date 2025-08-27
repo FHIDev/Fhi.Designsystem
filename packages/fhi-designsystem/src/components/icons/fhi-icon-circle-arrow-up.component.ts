@@ -10,8 +10,8 @@ export const FhiIconCircleArrowUpSelector = "fhi-icon-circle-arrow-up";
 @customElement(FhiIconCircleArrowUpSelector)
 export class FhiIconCircleArrowUp extends LitElement {
   @property({ type: String }) color: string = "currentcolor";
-  @property({ type: String }) size: string = 'medium';
-  private get sizeValue(): string {
+  @property({ type: String }) size: 'xsmall' | 'small' | 'medium' | 'large' | number = 'medium';
+  private get _size(): string {
     switch (this.size) {
       case 'xsmall': 
         return '16px'; 
@@ -32,7 +32,7 @@ export class FhiIconCircleArrowUp extends LitElement {
 
   render() {
     return html`
-      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="${this.sizeValue}" height="${this.sizeValue}" fill="${this.color}"><path d="M21.25 12a9.25 9.25 0 1 0-18.5 0 9.25 9.25 0 0 0 18.5 0m-10 4V9.81l-2.72 2.72a.75.75 0 1 1-1.06-1.06l4-4 .056-.052a.75.75 0 0 1 1.004.052l4 4 .052.056a.75.75 0 0 1-1.056 1.056l-.056-.052-2.72-2.72V16a.75.75 0 0 1-1.5 0m11.5-4c0 5.937-4.813 10.75-10.75 10.75S1.25 17.937 1.25 12 6.063 1.25 12 1.25 22.75 6.063 22.75 12"/></svg>
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="${this._size}" height="${this._size}" fill="${this.color}"><path d="M21.25 12a9.25 9.25 0 1 0-18.5 0 9.25 9.25 0 0 0 18.5 0m-10 4V9.81l-2.72 2.72a.75.75 0 1 1-1.06-1.06l4-4 .056-.052a.75.75 0 0 1 1.004.052l4 4 .052.056a.75.75 0 0 1-1.056 1.056l-.056-.052-2.72-2.72V16a.75.75 0 0 1-1.5 0m11.5-4c0 5.937-4.813 10.75-10.75 10.75S1.25 17.937 1.25 12 6.063 1.25 12 1.25 22.75 6.063 22.75 12"/></svg>
     `;
   }
       

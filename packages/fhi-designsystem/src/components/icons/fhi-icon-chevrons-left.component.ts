@@ -10,8 +10,8 @@ export const FhiIconChevronsLeftSelector = "fhi-icon-chevrons-left";
 @customElement(FhiIconChevronsLeftSelector)
 export class FhiIconChevronsLeft extends LitElement {
   @property({ type: String }) color: string = "currentcolor";
-  @property({ type: String }) size: string = 'medium';
-  private get sizeValue(): string {
+  @property({ type: String }) size: 'xsmall' | 'small' | 'medium' | 'large' | number = 'medium';
+  private get _size(): string {
     switch (this.size) {
       case 'xsmall': 
         return '16px'; 
@@ -32,7 +32,7 @@ export class FhiIconChevronsLeft extends LitElement {
 
   render() {
     return html`
-      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="${this.sizeValue}" height="${this.sizeValue}" fill="${this.color}"><path d="M10.526 6.418a.75.75 0 0 1 1.056 1.056l-.052.056L7.06 12l4.47 4.47.052.056a.75.75 0 0 1-1.056 1.056l-.056-.052-5-5a.75.75 0 0 1 0-1.06l5-5zm7 0a.75.75 0 0 1 1.056 1.056l-.052.056L14.06 12l4.47 4.47.052.056a.75.75 0 0 1-1.056 1.056l-.056-.052-5-5a.75.75 0 0 1 0-1.06l5-5z"/></svg>
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="${this._size}" height="${this._size}" fill="${this.color}"><path d="M10.526 6.418a.75.75 0 0 1 1.056 1.056l-.052.056L7.06 12l4.47 4.47.052.056a.75.75 0 0 1-1.056 1.056l-.056-.052-5-5a.75.75 0 0 1 0-1.06l5-5zm7 0a.75.75 0 0 1 1.056 1.056l-.052.056L14.06 12l4.47 4.47.052.056a.75.75 0 0 1-1.056 1.056l-.056-.052-5-5a.75.75 0 0 1 0-1.06l5-5z"/></svg>
     `;
   }
       

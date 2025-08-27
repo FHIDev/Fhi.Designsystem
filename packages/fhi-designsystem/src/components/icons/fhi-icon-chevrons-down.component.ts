@@ -10,8 +10,8 @@ export const FhiIconChevronsDownSelector = "fhi-icon-chevrons-down";
 @customElement(FhiIconChevronsDownSelector)
 export class FhiIconChevronsDown extends LitElement {
   @property({ type: String }) color: string = "currentcolor";
-  @property({ type: String }) size: string = 'medium';
-  private get sizeValue(): string {
+  @property({ type: String }) size: 'xsmall' | 'small' | 'medium' | 'large' | number = 'medium';
+  private get _size(): string {
     switch (this.size) {
       case 'xsmall': 
         return '16px'; 
@@ -32,7 +32,7 @@ export class FhiIconChevronsDown extends LitElement {
 
   render() {
     return html`
-      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="${this.sizeValue}" height="${this.sizeValue}" fill="${this.color}"><path d="M16.47 12.47a.75.75 0 0 1 1.06 1.06l-5 5a.75.75 0 0 1-1.003.052l-.057-.052-5-5-.052-.056a.75.75 0 0 1 1.056-1.056l.056.052L12 16.94zm.056-7.052a.75.75 0 0 1 1.056 1.056l-.052.056-5 5a.75.75 0 0 1-1.003.052l-.057-.052-5-5-.052-.056a.75.75 0 0 1 1.056-1.056l.056.052L12 9.94l4.47-4.47z"/></svg>
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="${this._size}" height="${this._size}" fill="${this.color}"><path d="M16.47 12.47a.75.75 0 0 1 1.06 1.06l-5 5a.75.75 0 0 1-1.003.052l-.057-.052-5-5-.052-.056a.75.75 0 0 1 1.056-1.056l.056.052L12 16.94zm.056-7.052a.75.75 0 0 1 1.056 1.056l-.052.056-5 5a.75.75 0 0 1-1.003.052l-.057-.052-5-5-.052-.056a.75.75 0 0 1 1.056-1.056l.056.052L12 9.94l4.47-4.47z"/></svg>
     `;
   }
       

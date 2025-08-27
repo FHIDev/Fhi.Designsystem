@@ -10,8 +10,8 @@ export const FhiIconPinSelector = "fhi-icon-pin";
 @customElement(FhiIconPinSelector)
 export class FhiIconPin extends LitElement {
   @property({ type: String }) color: string = "currentcolor";
-  @property({ type: String }) size: string = 'medium';
-  private get sizeValue(): string {
+  @property({ type: String }) size: 'xsmall' | 'small' | 'medium' | 'large' | number = 'medium';
+  private get _size(): string {
     switch (this.size) {
       case 'xsmall': 
         return '16px'; 
@@ -32,7 +32,7 @@ export class FhiIconPin extends LitElement {
 
   render() {
     return html`
-      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="${this.sizeValue}" height="${this.sizeValue}" fill="${this.color}"><path d="M16 1.25a2.75 2.75 0 0 1 0 5.5.25.25 0 0 0-.25.25v3.76l.012.173a1.25 1.25 0 0 0 .681.945l.005.003 1.78.9a2.75 2.75 0 0 1 1.522 2.458V16A1.75 1.75 0 0 1 18 17.75h-5.25V22a.75.75 0 0 1-1.5 0v-4.25H6A1.75 1.75 0 0 1 4.25 16v-.76l.007-.192A2.75 2.75 0 0 1 5.77 12.78l1.78-.9.006-.002a1.25 1.25 0 0 0 .681-.945l.012-.173V7A.25.25 0 0 0 8 6.75a2.75 2.75 0 0 1 0-5.5zm-8 1.5a1.25 1.25 0 0 0 0 2.5A1.75 1.75 0 0 1 9.75 7v3.76a2.75 2.75 0 0 1-1.522 2.459l-1.78.9-.005.003a1.25 1.25 0 0 0-.693 1.118V16a.25.25 0 0 0 .25.25h12a.25.25 0 0 0 .25-.25v-.76a1.25 1.25 0 0 0-.693-1.118l-.005-.003-1.78-.9a2.75 2.75 0 0 1-1.522-2.458V7A1.75 1.75 0 0 1 16 5.25a1.25 1.25 0 0 0 0-2.5z"/></svg>
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="${this._size}" height="${this._size}" fill="${this.color}"><path d="M16 1.25a2.75 2.75 0 0 1 0 5.5.25.25 0 0 0-.25.25v3.76l.012.173a1.25 1.25 0 0 0 .681.945l.005.003 1.78.9a2.75 2.75 0 0 1 1.522 2.458V16A1.75 1.75 0 0 1 18 17.75h-5.25V22a.75.75 0 0 1-1.5 0v-4.25H6A1.75 1.75 0 0 1 4.25 16v-.76l.007-.192A2.75 2.75 0 0 1 5.77 12.78l1.78-.9.006-.002a1.25 1.25 0 0 0 .681-.945l.012-.173V7A.25.25 0 0 0 8 6.75a2.75 2.75 0 0 1 0-5.5zm-8 1.5a1.25 1.25 0 0 0 0 2.5A1.75 1.75 0 0 1 9.75 7v3.76a2.75 2.75 0 0 1-1.522 2.459l-1.78.9-.005.003a1.25 1.25 0 0 0-.693 1.118V16a.25.25 0 0 0 .25.25h12a.25.25 0 0 0 .25-.25v-.76a1.25 1.25 0 0 0-.693-1.118l-.005-.003-1.78-.9a2.75 2.75 0 0 1-1.522-2.458V7A1.75 1.75 0 0 1 16 5.25a1.25 1.25 0 0 0 0-2.5z"/></svg>
     `;
   }
       

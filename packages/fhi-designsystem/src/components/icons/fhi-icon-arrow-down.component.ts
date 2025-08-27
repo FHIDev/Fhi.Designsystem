@@ -10,8 +10,8 @@ export const FhiIconArrowDownSelector = "fhi-icon-arrow-down";
 @customElement(FhiIconArrowDownSelector)
 export class FhiIconArrowDown extends LitElement {
   @property({ type: String }) color: string = "currentcolor";
-  @property({ type: String }) size: string = 'medium';
-  private get sizeValue(): string {
+  @property({ type: String }) size: 'xsmall' | 'small' | 'medium' | 'large' | number = 'medium';
+  private get _size(): string {
     switch (this.size) {
       case 'xsmall': 
         return '16px'; 
@@ -32,7 +32,7 @@ export class FhiIconArrowDown extends LitElement {
 
   render() {
     return html`
-      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="${this.sizeValue}" height="${this.sizeValue}" fill="${this.color}"><path d="M11.25 5a.75.75 0 0 1 1.5 0v12.19l5.72-5.72a.75.75 0 1 1 1.06 1.06l-7 7a.75.75 0 0 1-1.003.052l-.057-.052-7-7-.052-.056a.75.75 0 0 1 1.056-1.056l.056.052 5.72 5.72z"/></svg>
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="${this._size}" height="${this._size}" fill="${this.color}"><path d="M11.25 5a.75.75 0 0 1 1.5 0v12.19l5.72-5.72a.75.75 0 1 1 1.06 1.06l-7 7a.75.75 0 0 1-1.003.052l-.057-.052-7-7-.052-.056a.75.75 0 0 1 1.056-1.056l.056.052 5.72 5.72z"/></svg>
     `;
   }
       

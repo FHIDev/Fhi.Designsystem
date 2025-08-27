@@ -10,8 +10,8 @@ export const FhiIconLogOutSelector = "fhi-icon-log-out";
 @customElement(FhiIconLogOutSelector)
 export class FhiIconLogOut extends LitElement {
   @property({ type: String }) color: string = "currentcolor";
-  @property({ type: String }) size: string = 'medium';
-  private get sizeValue(): string {
+  @property({ type: String }) size: 'xsmall' | 'small' | 'medium' | 'large' | number = 'medium';
+  private get _size(): string {
     switch (this.size) {
       case 'xsmall': 
         return '16px'; 
@@ -32,7 +32,7 @@ export class FhiIconLogOut extends LitElement {
 
   render() {
     return html`
-      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="${this.sizeValue}" height="${this.sizeValue}" fill="${this.color}"><path d="M2.25 19V5A2.75 2.75 0 0 1 5 2.25h4a.75.75 0 0 1 0 1.5H5A1.25 1.25 0 0 0 3.75 5v14A1.25 1.25 0 0 0 5 20.25h4a.75.75 0 0 1 0 1.5H5A2.75 2.75 0 0 1 2.25 19M15.47 6.47a.75.75 0 0 1 1.004-.052l.056.052 5 5a.75.75 0 0 1 0 1.06l-5 5a.75.75 0 1 1-1.06-1.06l3.72-3.72H9a.75.75 0 0 1 0-1.5h10.19l-3.72-3.72-.052-.056a.75.75 0 0 1 .052-1.004"/></svg>
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="${this._size}" height="${this._size}" fill="${this.color}"><path d="M2.25 19V5A2.75 2.75 0 0 1 5 2.25h4a.75.75 0 0 1 0 1.5H5A1.25 1.25 0 0 0 3.75 5v14A1.25 1.25 0 0 0 5 20.25h4a.75.75 0 0 1 0 1.5H5A2.75 2.75 0 0 1 2.25 19M15.47 6.47a.75.75 0 0 1 1.004-.052l.056.052 5 5a.75.75 0 0 1 0 1.06l-5 5a.75.75 0 1 1-1.06-1.06l3.72-3.72H9a.75.75 0 0 1 0-1.5h10.19l-3.72-3.72-.052-.056a.75.75 0 0 1 .052-1.004"/></svg>
     `;
   }
       

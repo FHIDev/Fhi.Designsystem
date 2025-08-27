@@ -10,8 +10,8 @@ export const FhiIconFolderSelector = "fhi-icon-folder";
 @customElement(FhiIconFolderSelector)
 export class FhiIconFolder extends LitElement {
   @property({ type: String }) color: string = "currentcolor";
-  @property({ type: String }) size: string = 'medium';
-  private get sizeValue(): string {
+  @property({ type: String }) size: 'xsmall' | 'small' | 'medium' | 'large' | number = 'medium';
+  private get _size(): string {
     switch (this.size) {
       case 'xsmall': 
         return '16px'; 
@@ -32,7 +32,7 @@ export class FhiIconFolder extends LitElement {
 
   render() {
     return html`
-      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="${this.sizeValue}" height="${this.sizeValue}" fill="${this.color}"><path d="M7.93 2.25a2.75 2.75 0 0 1 2.292 1.23l.81 1.2.004.008a1.25 1.25 0 0 0 1.057.562H20A2.75 2.75 0 0 1 22.75 8v10A2.75 2.75 0 0 1 20 20.75H4A2.75 2.75 0 0 1 1.25 18V5A2.75 2.75 0 0 1 4 2.25zM4 3.75A1.25 1.25 0 0 0 2.75 5v13A1.25 1.25 0 0 0 4 19.25h16A1.25 1.25 0 0 0 21.25 18V8A1.25 1.25 0 0 0 20 6.75h-7.9v-.001a2.75 2.75 0 0 1-2.317-1.236v-.001L8.98 4.319l-.005-.006A1.25 1.25 0 0 0 7.93 3.75z"/></svg>
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="${this._size}" height="${this._size}" fill="${this.color}"><path d="M7.93 2.25a2.75 2.75 0 0 1 2.292 1.23l.81 1.2.004.008a1.25 1.25 0 0 0 1.057.562H20A2.75 2.75 0 0 1 22.75 8v10A2.75 2.75 0 0 1 20 20.75H4A2.75 2.75 0 0 1 1.25 18V5A2.75 2.75 0 0 1 4 2.25zM4 3.75A1.25 1.25 0 0 0 2.75 5v13A1.25 1.25 0 0 0 4 19.25h16A1.25 1.25 0 0 0 21.25 18V8A1.25 1.25 0 0 0 20 6.75h-7.9v-.001a2.75 2.75 0 0 1-2.317-1.236v-.001L8.98 4.319l-.005-.006A1.25 1.25 0 0 0 7.93 3.75z"/></svg>
     `;
   }
       
