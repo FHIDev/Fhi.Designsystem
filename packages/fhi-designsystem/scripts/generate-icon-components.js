@@ -57,8 +57,8 @@ const optimizeSvg = svgString => {
         params: {
           attributes: [
             {
-              width: '${this.sizeValue}',
-              height: '${this.sizeValue}',
+              width: '${this._size}',
+              height: '${this._size}',
               fill: '${this.color}',
             },
           ],
@@ -94,8 +94,8 @@ export const ${webComponentName}Selector = "${customElementSelector}";
 @customElement(${webComponentName}Selector)
 export class ${webComponentName} extends LitElement {
   @property({ type: String }) color: string = "currentcolor";
-  @property({ type: String }) size: string = 'medium';
-  private get sizeValue(): string {
+  @property({ type: String }) size: 'xsmall' | 'small' | 'medium' | 'large' | number = 'medium';
+  private get _size(): string {
     switch (this.size) {
       case 'xsmall': 
         return '16px'; 
