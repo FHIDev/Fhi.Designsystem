@@ -22,11 +22,11 @@ export class FhiIconCircleQuestion extends LitElement {
       case 'large':
         return '32px'; 
       default:
-        if (!isNaN(Number(this.size))) {
-          return `${this.size}px`;
-        } else {
+        if (isNaN(Number(this.size))) {
+          console.warn(`Invalid size value: ${this.size}. Falling back to default size '24px'.`)
           return '24px';
         }
+        return `${this.size}px`;
     }
   }
 
