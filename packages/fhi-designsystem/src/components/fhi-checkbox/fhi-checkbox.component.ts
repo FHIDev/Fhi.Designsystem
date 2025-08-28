@@ -48,17 +48,29 @@ export class FhiCheckbox extends LitElement {
 
   render() {
     return html`
-      <label>
+      <div id="checkbox-container">
         <input
           type="checkbox"
+          id="input-element"
           name=${ifDefined(this.name)}
           value=${ifDefined(this.value)}
           ?disabled="${this.disabled}"
           ?checked="${this.checked}"
           @change=${this._handleChange}
         />
-        ${this.label}
-      </label>
+        <svg
+          class="checkmark"
+          width="18"
+          height="18"
+          viewBox="0 0 18 18"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            d="M12.043 6.04295C12.4335 5.65243 13.0666 5.65243 13.4571 6.04295C13.8476 6.43348 13.8476 7.06649 13.4571 7.45702L8.95708 11.957C8.56655 12.3475 7.93354 12.3475 7.54302 11.957L5.29302 9.70702C4.90249 9.31649 4.90249 8.68348 5.29302 8.29295C5.65913 7.92684 6.23813 7.90424 6.63091 8.22459L6.70708 8.29295L8.25005 9.83592L12.043 6.04295Z"
+          />
+        </svg>
+      </div>
+      <label for="input-element"> ${this.label} </label>
     `;
   }
 
@@ -73,6 +85,7 @@ export class FhiCheckbox extends LitElement {
       );
 
       --color-text: var(--fhi-color-neutral-text-default);
+      --color-checkbox-checkmark: var(--fhi-color-neutral-text-inverted);
       --color-checkbox: var(--fhi-color-neutral-background-default);
       --color-checkbox-border: var(--fhi-color-neutral-border-default);
       --color-checkbox-hover: var(--fhi-color-accent-background-subtle);
@@ -110,6 +123,13 @@ export class FhiCheckbox extends LitElement {
     :host {
       display: flex;
       align-items: center;
+      width: max-content;
+
+      #checkbox-container {
+        display: flex;
+        position: relative;
+      }
+
       label {
         color: var(--color-text);
         font-family: var(--typography-font-family);
@@ -117,12 +137,11 @@ export class FhiCheckbox extends LitElement {
         font-weight: var(--typography-font-weight);
         line-height: var(--typography-line-height);
         letter-spacing: var(--typography-letter-spacing);
-        display: flex;
-        position: relative;
-        gap: var(--dimension-checkbox-gap);
+        margin-left: var(--dimension-checkbox-gap);
       }
 
       input[type='checkbox'] {
+        margin: 0;
         appearance: none;
         width: var(--dimension-checkbox-size);
         height: var(--dimension-checkbox-size);
@@ -130,8 +149,6 @@ export class FhiCheckbox extends LitElement {
         border: var(--dimension-checkbox-border-width) solid
           var(--color-checkbox-border);
         border-radius: var(--dimension-checkbox-border-radius);
-        display: grid;
-        place-content: center;
         transition: var(--motion-checkbox-transition);
 
         &:hover {
@@ -148,6 +165,11 @@ export class FhiCheckbox extends LitElement {
         &:checked {
           background-color: var(--color-checkbox-checked);
           border-color: var(--color-checkbox-checked);
+          ~ .checkmark {
+            fill: var(--color-checkbox-checkmark);
+            visibility: visible;
+            opacity: 1;
+          }
 
           &:hover {
             background-color: var(--color-checkbox-checked-hover);
@@ -160,12 +182,13 @@ export class FhiCheckbox extends LitElement {
         }
       }
 
-      input[type='checkbox']:checked:before {
-        content: '';
-        width: 18px;
-        height: 18px;
-
-        background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" fill="none"><path d="M12.043 6.04295C12.4335 5.65243 13.0666 5.65243 13.4571 6.04295C13.8476 6.43348 13.8476 7.06649 13.4571 7.45702L8.95708 11.957C8.56655 12.3475 7.93354 12.3475 7.54302 11.957L5.29302 9.70702C4.90249 9.31649 4.90249 8.68348 5.29302 8.29295C5.65913 7.92684 6.23813 7.90424 6.63091 8.22459L6.70708 8.29295L8.25005 9.83592L12.043 6.04295Z" fill="%23FDFEFF"/></svg>');
+      .checkmark {
+        visibility: hidden;
+        opacity: 0;
+        transition: opacity var(--motion-checkbox-transition);
+        position: absolute;
+        height: var(--dimension-checkbox-size);
+        width: var(--dimension-checkbox-size);
       }
     }
 
