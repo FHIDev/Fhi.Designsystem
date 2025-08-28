@@ -34,11 +34,23 @@ const meta: Meta<FhiCheckbox> = {
       description: 'Informerer om hvilket valg avkrysningsboksen tilsvarer.',
       defaultValue: { summary: 'undefined' },
     },
+    value: {
+      control: { type: 'text' },
+      description:
+        'Verdien som blir sendt til serveren sammen med checkbox-gruppe navnet når boksen er avkryset.',
+      defaultValue: { summary: 'on' },
+    },
     status: {
       control: { type: 'select' },
       description: 'Informerer om feil. Dette vil endre utseende.',
       defaultValue: { summary: 'undefined' },
       options: [undefined, 'error'],
+    },
+    checked: {
+      control: { type: 'boolean' },
+      description:
+        'Bestemmer om feltet er valgt. Brukeren kan sette feltet til valgt ved å klikke på det.',
+      defaultValue: { summary: false },
     },
     disabled: {
       control: { type: 'boolean' },
