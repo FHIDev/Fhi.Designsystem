@@ -51,7 +51,7 @@ const meta: Meta<FhiCheckbox> = {
     checked: {
       control: { type: 'boolean' },
       description:
-        'Setter standard oppførsel ved start. Indikerer ikke om avkrysningsboksen er avkrysset i øyeblikket.',
+        'Indikerer at avkrysningsboksen er avkrysset. Kan brukes for å sette default state.',
       defaultValue: { summary: false },
     },
     disabled: {
