@@ -26,7 +26,7 @@ export class FhiButton extends LitElement {
   @property({ type: Boolean, reflect: true }) disabled = false;
 
   @property({ type: Boolean, attribute: 'icon-only' })
-  iconOnly = false;
+  iconOnly: boolean = false;
 
   @property({ type: String }) type: 'button' | 'submit' | 'reset' = 'submit';
 
