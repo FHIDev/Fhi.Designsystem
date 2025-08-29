@@ -21,7 +21,9 @@ const meta: Meta<FhiCheckbox> = {
       label=${ifDefined(args.label)}
       id=${ifDefined(args.id)}
       status=${ifDefined(args.status)}
+      value=${ifDefined(args.value)}
       ?disabled=${args.disabled}
+      ?checked=${args.checked}
     ></fhi-checkbox>`,
   argTypes: {
     name: {
@@ -37,8 +39,8 @@ const meta: Meta<FhiCheckbox> = {
     value: {
       control: { type: 'text' },
       description:
-        'Verdien som blir sendt til serveren sammen med checkbox-gruppe navnet når boksen er avkryset.',
-      defaultValue: { summary: 'on' },
+        'Verdien som blir sendt til serveren sammen med checkbox-gruppe navnet når boksen er avkrysset.',
+      defaultValue: { summary: '"on"' },
     },
     status: {
       control: { type: 'select' },
@@ -49,7 +51,7 @@ const meta: Meta<FhiCheckbox> = {
     checked: {
       control: { type: 'boolean' },
       description:
-        'Bestemmer om feltet er valgt. Brukeren kan sette feltet til valgt ved å klikke på det.',
+        'Setter standard oppførsel ved start. Indikerer ikke om avkrysningsboksen er avkrysset i øyeblikket.',
       defaultValue: { summary: false },
     },
     disabled: {

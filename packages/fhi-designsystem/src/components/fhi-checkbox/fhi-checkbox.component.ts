@@ -41,17 +41,16 @@ export class FhiCheckbox extends LitElement {
     this._internals.setFormValue(this.checked ? this.value : null);
   }
 
-  formResetCallback() {
+  public formResetCallback() {
     this.checked = false;
     this._updateFormValue();
   }
 
   render() {
     return html`
-      <div id="checkbox-container">
+      <label>
         <input
           type="checkbox"
-          id="input-element"
           name=${ifDefined(this.name)}
           value=${ifDefined(this.value)}
           ?disabled="${this.disabled}"
@@ -69,8 +68,9 @@ export class FhiCheckbox extends LitElement {
             d="M12.043 6.04295C12.4335 5.65243 13.0666 5.65243 13.4571 6.04295C13.8476 6.43348 13.8476 7.06649 13.4571 7.45702L8.95708 11.957C8.56655 12.3475 7.93354 12.3475 7.54302 11.957L5.29302 9.70702C4.90249 9.31649 4.90249 8.68348 5.29302 8.29295C5.65913 7.92684 6.23813 7.90424 6.63091 8.22459L6.70708 8.29295L8.25005 9.83592L12.043 6.04295Z"
           />
         </svg>
-      </div>
-      <label for="input-element"> ${this.label} </label>
+
+        ${this.label}
+      </label>
     `;
   }
 
@@ -125,19 +125,17 @@ export class FhiCheckbox extends LitElement {
       align-items: center;
       width: max-content;
 
-      #checkbox-container {
+      label {
+        align-items: center;
         display: flex;
         position: relative;
-      }
-
-      label {
         color: var(--color-text);
         font-family: var(--typography-font-family);
         font-size: var(--typography-font-size);
         font-weight: var(--typography-font-weight);
         line-height: var(--typography-line-height);
         letter-spacing: var(--typography-letter-spacing);
-        margin-left: var(--dimension-checkbox-gap);
+        gap: var(--dimension-checkbox-gap);
       }
 
       input[type='checkbox'] {
