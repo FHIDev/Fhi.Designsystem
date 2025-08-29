@@ -23,11 +23,14 @@ export class FhiRadio extends LitElement {
 
   private _internals: ElementInternals;
 
+  private groupRoot: Document | HTMLFormElement;
+
   public isFormElement = false;
 
   constructor() {
     super();
     this._internals = this.attachInternals();
+    this.groupRoot = this._internals.form ? this._internals.form : document;
   }
 
   public connectedCallback(): void {
@@ -36,6 +39,46 @@ export class FhiRadio extends LitElement {
     this.isFormElement = !!this._internals.form;
 
     this._setFormValue();
+
+    this.addEventListener('focus', this._setFocusOnInput);
+
+    // If the radio has a name then it is part of a group and needs keyboard navigation
+    if (this.name) {
+      this.addEventListener('keydown', this._handleKeyDown);
+      this._SetTabbableRadios();
+    }
+  }
+
+  public disconnectedCallback(): void {
+    super.disconnectedCallback();
+    this.removeEventListener('keydown', this._handleKeyDown);
+    this.removeEventListener('focus', this._setFocusOnInput);
+  }
+
+  private _setFocusOnInput() {
+    this._input.focus();
+  }
+
+  private _getRadiogroup() {
+    return Array.from(
+      this.groupRoot.querySelectorAll<FhiRadio>(
+        `${FhiRadioSelector}[name="${this.name}"]`,
+      ),
+    );
+  }
+
+  public _SetTabbableRadios() {
+    const radios = this._getRadiogroup();
+
+    radios.forEach(radio => {
+      // Only the checked radio should be tabbable
+      radio.tabIndex = radio.checked ? 0 : -1;
+    });
+
+    // If none of the radios are checked, make the first one tabbable
+    if (!radios.some(radio => radio.checked) && radios.length > 0) {
+      radios[0].tabIndex = 0;
+    }
   }
 
   public updated(changedProperties: Map<string, unknown>) {
@@ -70,18 +113,14 @@ export class FhiRadio extends LitElement {
   }
 
   private uncheckGroupMembers(): void {
-    const root = this._internals.form ? this._internals.form : document;
-
-    const radios = root.querySelectorAll<FhiRadio>(
-      `${FhiRadioSelector}[name="${this.name}"]`,
-    );
+    const radios = this._getRadiogroup();
 
     radios.forEach(radio => {
       if (radio === this) {
         return;
       }
 
-      if (radio.isFormElement && root === document) {
+      if (radio.isFormElement && this.groupRoot === document) {
         return;
       }
 
@@ -112,6 +151,38 @@ export class FhiRadio extends LitElement {
 
   private _handleInput(event: Event): void {
     event.stopPropagation();
+  }
+
+  private _handleKeyDown(event: KeyboardEvent): void {
+    const arrows = ['ArrowUp', 'ArrowDown', 'ArrowLeft', 'ArrowRight'];
+
+    if (!arrows.includes(event.key)) {
+      return;
+    }
+
+    event.preventDefault();
+
+    const radios = this._getRadiogroup();
+
+    if (radios.length < 2) {
+      return;
+    }
+
+    const currentIndex = radios.indexOf(this);
+
+    const nextIndex = currentIndex;
+    let nextRadio: FhiRadio;
+
+    if (event.key === 'ArrowUp' || event.key === 'ArrowLeft') {
+      nextRadio = radios[nextIndex === 0 ? radios.length - 1 : nextIndex - 1];
+    } else {
+      nextRadio = radios[nextIndex === radios.length - 1 ? 0 : nextIndex + 1];
+    }
+
+    nextRadio.focus();
+    this.checked = false;
+    nextRadio.checked = true;
+    this._SetTabbableRadios();
   }
 
   render() {
