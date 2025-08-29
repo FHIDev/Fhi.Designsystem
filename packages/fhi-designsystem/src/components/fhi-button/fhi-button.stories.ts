@@ -47,7 +47,15 @@ const meta: Meta<FhiButton> = {
       },
     },
   },
-  decorators: [withActions],
+  decorators: [
+    withActions,
+    Story =>
+      html`<div
+        style="display: flex; justify-content: start; align-items: center; gap: 1rem;"
+      >
+        ${Story()}
+      </div>`,
+  ],
   render: args =>
     html`<fhi-button
       color=${ifDefined(args.color)}
