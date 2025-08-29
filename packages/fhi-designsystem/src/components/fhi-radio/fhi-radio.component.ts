@@ -224,7 +224,7 @@ export class FhiRadio extends LitElement {
       --color-radio-border-hover: var(--fhi-color-accent-border-strong);
       --color-radio-background-hover: var(--fhi-color-accent-background-subtle);
 
-      --color-radio-outline: var(--fhi-color-accent-surface-default);
+      --color-radio-outline: var(--fhi-color-accent-surface-hover);
 
       --typography-radio-label-font-family: var(--fhi-font-family-default);
       --typography-radio-label-font-size: var(
