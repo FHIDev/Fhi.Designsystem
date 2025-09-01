@@ -137,11 +137,10 @@ export class FhiCheckbox extends LitElement {
         line-height: var(--typography-line-height);
         letter-spacing: var(--typography-letter-spacing);
         gap: var(--dimension-checkbox-gap);
-        margin: 0 var(--dimension-checkbox-margin);
       }
 
       input[type='checkbox'] {
-        margin: var(--dimension-checkbox-margin) 0;
+        margin: var(--dimension-checkbox-margin);
         appearance: none;
         width: var(--dimension-checkbox-size);
         height: var(--dimension-checkbox-size);
@@ -189,6 +188,7 @@ export class FhiCheckbox extends LitElement {
         position: absolute;
         height: var(--dimension-checkbox-size);
         width: var(--dimension-checkbox-size);
+        margin-left: var(--dimension-checkbox-margin);
       }
     }
 
