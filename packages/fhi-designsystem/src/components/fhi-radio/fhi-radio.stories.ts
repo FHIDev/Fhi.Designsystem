@@ -96,6 +96,12 @@ export const Disabled: Story = {
 
 export const Group: Story = {
   tags: ['!dev'],
+  decorators: [
+    Story =>
+      html` <div style="display: flex; flex-direction: column; gap: .5rem">
+        ${Story()}
+      </div>`,
+  ],
   render: () => html`
     <fhi-radio label="Norsk" name="nationality" value="Norwegian"></fhi-radio>
     <fhi-radio label="Svensk" name="nationality" value="Swedish"></fhi-radio>

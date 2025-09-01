@@ -323,15 +323,13 @@ export class FhiRadio extends LitElement {
       }
     }
 
-    :host(:hover:not(:disabled)) {
-      input:not(:checked) {
+    :host(:not(:disabled)) {
+      input:hover:not(:checked) {
         border-color: var(--color-radio-border-hover);
         background-color: var(--color-radio-background-hover);
       }
-    }
 
-    :host(:active:not(:disabled)) {
-      input:not(:checked) {
+      input:active:not(:checked) {
         outline: var(--fhi-dimension-border-width-focus) solid
           var(--color-radio-outline);
       }
@@ -352,15 +350,13 @@ export class FhiRadio extends LitElement {
       }
     }
 
-    :host([status='error']:hover:not(:disabled)) {
-      input:not(:checked) {
+    :host([status='error']:not(:disabled)) {
+      input:hover:not(:checked) {
         border-color: var(--color-radio-border-error-hover);
         background-color: var(--color-radio-background-error-hover);
       }
-    }
 
-    :host([status='error']:active:not(:disabled)) {
-      input:not(:checked) {
+      input:active:not(:checked) {
         outline-color: var(--color-radio-outline-error);
       }
     }
