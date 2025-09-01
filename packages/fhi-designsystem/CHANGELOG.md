@@ -1,5 +1,24 @@
 # Changelog
 
+## [0.8.0](https://github.com/FHIDev/Fhi.Designsystem/compare/v0.6.0...v0.8.0) (2025-09-01)
+
+
+### 🚀 Features
+
+* New Component: Checkbox ([#217](https://github.com/FHIDev/Fhi.Designsystem/issues/217)) ([b62abbf](https://github.com/FHIDev/Fhi.Designsystem/commit/b62abbfc5094fecff68345bd53013af28d383f11))
+* New icons, such as pencil, folder, pin, alternative link and repeat ([#224](https://github.com/FHIDev/Fhi.Designsystem/issues/224)) ([d476b28](https://github.com/FHIDev/Fhi.Designsystem/commit/d476b285d0a562f758dee318ce8127af9b2da44e))
+
+
+### 📑 Documentation
+
+* Legg til logo og juster på farger i storybook ([18d9f6f](https://github.com/FHIDev/Fhi.Designsystem/commit/18d9f6fa3fb00c5c800bd0d07cd700d8890b9f0f))
+
+
+### Other
+
+* release v0.7.0 ([5031436](https://github.com/FHIDev/Fhi.Designsystem/commit/5031436fd96cf2a06c0f77dedd22fdd01c75d7e7))
+* update release-it ([#226](https://github.com/FHIDev/Fhi.Designsystem/issues/226)) ([4d94eb5](https://github.com/FHIDev/Fhi.Designsystem/commit/4d94eb50d3da08e86d96471515a5fbfdfc92d6f9))
+
 ## [0.7.0](https://github.com/FHIDev/Fhi.Designsystem/compare/v0.6.0...v0.7.0) (2025-07-31)
 
 
