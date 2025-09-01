@@ -37,6 +37,16 @@ export class FhiCheckbox extends LitElement {
     );
   }
 
+  public _handleInput(event: Event): void {
+    event.stopPropagation();
+    this.dispatchEvent(
+      new Event('input', {
+        bubbles: true,
+        composed: true,
+      }),
+    );
+  }
+
   private _updateFormValue() {
     this._internals.setFormValue(this.checked ? this.value : null);
   }
@@ -51,11 +61,12 @@ export class FhiCheckbox extends LitElement {
       <label>
         <input
           type="checkbox"
-          name=${ifDefined(this.name)}
-          value=${ifDefined(this.value)}
-          ?disabled="${this.disabled}"
-          ?checked="${this.checked}"
+          name="${ifDefined(this.name)}"
+          value="${ifDefined(this.value)}"
+          ?disabled=${this.disabled}
+          ?checked=${this.checked}
           @change=${this._handleChange}
+          @input=${this._handleInput}
         />
         <svg
           class="checkmark"
