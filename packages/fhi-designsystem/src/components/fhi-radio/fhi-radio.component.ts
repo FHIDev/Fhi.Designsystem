@@ -248,9 +248,10 @@ export class FhiRadio extends LitElement {
         --fhi-typography-body-medium-letter-spacing
       );
 
-      --dimension-radio-label-gap: var(--fhi-spacing-100);
+      --dimension-radio-label-gap: var(--fhi-spacing-050);
       --dimension-radio-width: var(--fhi-spacing-250);
       --dimension-radio-height: var(--fhi-spacing-250);
+      --dimension-radio-margin: 0.125rem;
       --dimension-radio-border-width: var(--fhi-dimension-border-width);
 
       /* Checked state */
@@ -300,8 +301,8 @@ export class FhiRadio extends LitElement {
       }
 
       input {
-        margin: 0;
         appearance: none;
+        margin: var(--dimension-radio-margin);
         width: var(--dimension-radio-width);
         height: var(--dimension-radio-height);
         background-color: var(--color-radio-background);
