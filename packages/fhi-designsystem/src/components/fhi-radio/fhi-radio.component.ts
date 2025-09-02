@@ -1,5 +1,5 @@
 import { html, css, LitElement } from 'lit';
-import { customElement, property, query, state } from 'lit/decorators.js';
+import { customElement, property, query } from 'lit/decorators.js';
 
 export const FhiRadioSelector = 'fhi-radio';
 
@@ -21,9 +21,7 @@ export class FhiRadio extends LitElement {
 
   @query('#input-element') _input!: HTMLInputElement;
 
-  @state()
   private _groupRoot: Document | HTMLFormElement;
-
   private _internals: ElementInternals;
 
   public isFormElement = false;
