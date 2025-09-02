@@ -106,9 +106,6 @@ export const Group: Story = {
     <fhi-radio label="Norsk" name="nationality" value="Norwegian"></fhi-radio>
     <fhi-radio label="Svensk" name="nationality" value="Swedish"></fhi-radio>
     <fhi-radio label="Dansk" name="nationality" value="Danish"></fhi-radio>
-    <input type="radio" name="group">hello</input>
-    <input type="radio" name="group">hello</input>
-    <input type="radio" name="group">hello</input>
   `,
 };
 
