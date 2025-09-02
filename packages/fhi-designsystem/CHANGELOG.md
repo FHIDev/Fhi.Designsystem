@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.9.0](https://github.com/FHIDev/Fhi.Designsystem/compare/v0.8.0...v0.9.0) (2025-09-02)
+
+
+### 🚀 Features
+
+* Made toolttip hoverable ([#235](https://github.com/FHIDev/Fhi.Designsystem/issues/235)) ([db4f36b](https://github.com/FHIDev/Fhi.Designsystem/commit/db4f36b9209b60917c940f81cad9ffde1c65a4d4))
+
 ## [0.8.0](https://github.com/FHIDev/Fhi.Designsystem/compare/v0.6.0...v0.8.0) (2025-09-01)
 
 
