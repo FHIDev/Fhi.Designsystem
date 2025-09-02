@@ -40,7 +40,7 @@ export class FhiRadio extends LitElement {
     this.isFormElement = !!this._internals.form;
 
     if (this.isFormElement) {
-      this._setFormValue();
+      this._updateFormValue();
       this._groupRoot = this._internals.form!;
     }
 
@@ -89,7 +89,7 @@ export class FhiRadio extends LitElement {
     // make sure the radio input can be programmatically toggeled. e.g by a form reset
     if (changedProperties.has('checked')) {
       this._input.checked = !!this.checked;
-      this._setFormValue();
+      this._updateFormValue();
 
       if (this.checked) {
         this.uncheckGroupMembers();
@@ -99,7 +99,7 @@ export class FhiRadio extends LitElement {
     // update the form value when the value or name input changes and the radio is already checked
     if (changedProperties.has('value') || changedProperties.has('name')) {
       if (this._input.checked) {
-        this._setFormValue();
+        this._updateFormValue();
       }
     }
   }
@@ -113,7 +113,7 @@ export class FhiRadio extends LitElement {
       this.checked = true;
     }
 
-    this._setFormValue();
+    this._updateFormValue();
   }
 
   private uncheckGroupMembers(): void {
@@ -132,7 +132,7 @@ export class FhiRadio extends LitElement {
     });
   }
 
-  private _setFormValue(): void {
+  private _updateFormValue(): void {
     if (!this.isFormElement) {
       return;
     }
@@ -145,16 +145,16 @@ export class FhiRadio extends LitElement {
 
     this.uncheckGroupMembers();
 
-    this._setFormValue();
+    this._updateFormValue();
 
     event.stopPropagation();
 
     this.dispatchEvent(new Event('change', { bubbles: true }));
-    this.dispatchEvent(new Event('input', { bubbles: true, composed: true }));
   }
 
   private _handleInput(event: Event): void {
     event.stopPropagation();
+    this.dispatchEvent(new Event('input', { bubbles: true, composed: true }));
   }
 
   private _handleKeyDown(event: KeyboardEvent): void {
@@ -327,6 +327,10 @@ export class FhiRadio extends LitElement {
       }
     }
 
+    :host([disabled]) {
+      opacity: var(--opacity-disabled);
+    }
+
     :host(:not(:disabled)) {
       input:hover:not(:checked) {
         border-color: var(--color-radio-border-hover);
@@ -334,6 +338,7 @@ export class FhiRadio extends LitElement {
       }
 
       input:active:not(:checked) {
+        background-color: var(--color-radio-background-hover);
         outline: var(--fhi-dimension-border-width-focus) solid
           var(--color-radio-outline);
       }
@@ -361,12 +366,9 @@ export class FhiRadio extends LitElement {
       }
 
       input:active:not(:checked) {
+        background-color: var(--color-radio-background-error-hover);
         outline-color: var(--color-radio-outline-error);
       }
-    }
-
-    :host([disabled]) {
-      opacity: var(--opacity-disabled);
     }
   `;
 }
