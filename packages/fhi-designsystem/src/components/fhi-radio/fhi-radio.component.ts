@@ -1,5 +1,5 @@
 import { html, css, LitElement } from 'lit';
-import { customElement, property, query } from 'lit/decorators.js';
+import { customElement, property, query, state } from 'lit/decorators.js';
 
 export const FhiRadioSelector = 'fhi-radio';
 
@@ -21,26 +21,30 @@ export class FhiRadio extends LitElement {
 
   @query('#input-element') _input!: HTMLInputElement;
 
-  private _internals: ElementInternals;
+  @state()
+  private _groupRoot: Document | HTMLFormElement;
 
-  private groupRoot: Document | HTMLFormElement;
+  private _internals: ElementInternals;
 
   public isFormElement = false;
 
   constructor() {
     super();
     this._internals = this.attachInternals();
-    this.groupRoot = this._internals.form ? this._internals.form : document;
+    this._groupRoot = document;
   }
 
   public connectedCallback(): void {
     super.connectedCallback();
 
+    this.addEventListener('focus', this._setFocusOnInput);
+
     this.isFormElement = !!this._internals.form;
 
-    this._setFormValue();
-
-    this.addEventListener('focus', this._setFocusOnInput);
+    if (this.isFormElement) {
+      this._setFormValue();
+      this._groupRoot = this._internals.form!;
+    }
 
     // If the radio has a name then it is part of a group and needs keyboard navigation
     if (this.name) {
@@ -59,16 +63,16 @@ export class FhiRadio extends LitElement {
     this._input.focus();
   }
 
-  private _getRadiogroup() {
+  private _getRadioGroup() {
     return Array.from(
-      this.groupRoot.querySelectorAll<FhiRadio>(
+      this._groupRoot.querySelectorAll<FhiRadio>(
         `${FhiRadioSelector}[name="${this.name}"]`,
       ),
     );
   }
 
   public _SetTabbableRadios() {
-    const radios = this._getRadiogroup();
+    const radios = this._getRadioGroup();
 
     radios.forEach(radio => {
       // Only the checked radio should be tabbable
@@ -103,24 +107,26 @@ export class FhiRadio extends LitElement {
   }
 
   public formResetCallback(): void {
-    this.checked = typeof this.getAttribute('checked') === 'string';
+    const radiosCheckedByDefault = this._getRadioGroup().filter(
+      radio => typeof radio.getAttribute('checked') === 'string',
+    );
+
+    if (radiosCheckedByDefault.pop() === this) {
+      this.checked = true;
+    }
 
     this._setFormValue();
-
-    if (this.checked) {
-      this.uncheckGroupMembers();
-    }
   }
 
   private uncheckGroupMembers(): void {
-    const radios = this._getRadiogroup();
+    const radios = this._getRadioGroup();
 
     radios.forEach(radio => {
       if (radio === this) {
         return;
       }
 
-      if (radio.isFormElement && this.groupRoot === document) {
+      if (radio.isFormElement && this._groupRoot === document) {
         return;
       }
 
@@ -162,7 +168,7 @@ export class FhiRadio extends LitElement {
 
     event.preventDefault();
 
-    const radios = this._getRadiogroup();
+    const radios = this._getRadioGroup();
 
     if (radios.length < 2) {
       return;
