@@ -228,6 +228,8 @@ export class FhiRadio extends LitElement {
       --color-radio-border-hover: var(--fhi-color-accent-border-strong);
       --color-radio-background-hover: var(--fhi-color-accent-background-subtle);
 
+      --color-radio-background-active: var(--fhi-color-accent-surface-default);
+
       --color-radio-outline: var(--fhi-color-accent-surface-hover);
 
       --typography-radio-label-font-family: var(--fhi-font-family-default);
@@ -264,6 +266,10 @@ export class FhiRadio extends LitElement {
 
       --color-radio-border-error-hover: var(--fhi-color-danger-border-strong);
       --color-radio-background-error-hover: var(
+        --fhi-color-danger-surface-default
+      );
+
+      --color-radio-background-error-active: var(
         --fhi-color-danger-surface-default
       );
 
@@ -338,7 +344,7 @@ export class FhiRadio extends LitElement {
       }
 
       input:active:not(:checked) {
-        background-color: var(--color-radio-background-hover);
+        background-color: var(--color-radio-background-active);
         outline: var(--fhi-dimension-border-width-focus) solid
           var(--color-radio-outline);
       }
@@ -366,7 +372,7 @@ export class FhiRadio extends LitElement {
       }
 
       input:active:not(:checked) {
-        background-color: var(--color-radio-background-error-hover);
+        background-color: var(--color-radio-background-error-active);
         outline-color: var(--color-radio-outline-error);
       }
     }
