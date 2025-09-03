@@ -191,28 +191,30 @@ export class FhiRadio extends LitElement {
 
   render() {
     return html`
-      <div id="radio-container">
-        <input
-          type="radio"
-          id="input-element"
-          name="${this.name}"
-          value="${this.value}"
-          ?checked=${this.checked}
-          ?disabled=${this.disabled}
-          @change=${this._handleChange}
-          @input=${this._handleInput}
-        />
-        <svg
-          class="radio-dot"
-          width="18"
-          height="18"
-          viewBox="0 0 18 18"
-          xmlns="http://www.w3.org/2000/svg"
-        >
-          <circle r="6" cx="9" cy="9" />
-        </svg>
-      </div>
-      ${this.label && html`<label for="input-element">${this.label}</label>`}
+      <label>
+        <div class="radio-container">
+          <input
+            type="radio"
+            id="input-element"
+            name="${this.name}"
+            value="${this.value}"
+            ?checked=${this.checked}
+            ?disabled=${this.disabled}
+            @change=${this._handleChange}
+            @input=${this._handleInput}
+          />
+          <svg
+            class="radio-dot"
+            width="18"
+            height="18"
+            viewBox="0 0 18 18"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <circle r="6" cx="9" cy="9" />
+          </svg>
+        </div>
+        ${this.label}
+      </label>
     `;
   }
 
@@ -285,19 +287,21 @@ export class FhiRadio extends LitElement {
       align-items: center;
       width: max-content;
 
-      #radio-container {
+      label {
         display: flex;
         position: relative;
-      }
-
-      label {
-        padding-left: var(--dimension-radio-label-gap);
+        gap: var(--dimension-radio-label-gap);
         color: var(--color-radio-label);
         font-family: var(--typography-radio-label-font-family);
         font-size: var(--typography-radio-label-font-size);
         font-weight: var(--typography-radio-label-font-weight);
         line-height: var(--typography-radio-label-line-height);
         letter-spacing: var(--typography-radio-label-letter-spacing);
+      }
+
+      .radio-container {
+        display: flex;
+        position: relative;
       }
 
       input {
