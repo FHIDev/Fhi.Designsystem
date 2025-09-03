@@ -160,9 +160,9 @@ export class FhiButton extends LitElement {
       @keydown=${this._handleKeydown}
       @click=${this._handleClick}
     >
-      <section style="display: flex; align-items: center; gap: .25rem;">
+      <div style="display: flex; align-items: center; gap: .25rem;">
         <slot @slotchange=${this._handleSlotChange}></slot>
-      </section>
+      </div>
     </button>`;
   }
 
