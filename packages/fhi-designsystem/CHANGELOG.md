@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.10.0](https://github.com/FHIDev/Fhi.Designsystem/compare/v0.9.0...v0.10.0) (2025-09-03)
+
+
+### 🚀 Features
+
+* Add semantic sizes for icons ([#232](https://github.com/FHIDev/Fhi.Designsystem/issues/232)) ([5fbe515](https://github.com/FHIDev/Fhi.Designsystem/commit/5fbe5159cddd2d023d5deee2896fbbb9c62e4239))
+
 ## [0.9.0](https://github.com/FHIDev/Fhi.Designsystem/compare/v0.8.0...v0.9.0) (2025-09-02)
 
 
