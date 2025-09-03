@@ -186,7 +186,7 @@ export const showButtonsWithTextAndIcons: Story = {
   decorators: [
     Story =>
       html`<section
-        style="display: flex; gap: 1rem; flex-wrap: wrap; width: 550px; justify-content: center;"
+        style="display: flex; gap: 1rem; flex-wrap: wrap; width: 550px; justify-content: center; align-items: center;"
       >
         ${Story()}
       </section>`,
