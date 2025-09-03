@@ -32,6 +32,7 @@ new FhiIconEllipsisVertical();
 new FhiIconShare();
 new FhiIconBell();
 new FhiIconUser();
+new FhiIconExpand();
 
 const meta: Meta<FhiButton> = {
   title: 'Komponenter/Button',
@@ -134,6 +135,24 @@ export const Danger: Story = {
   },
 };
 
+export const IconButton: Story = {
+  args: {
+    iconOnly: true,
+  },
+  render: args => html`
+    <fhi-button
+      color=${ifDefined(args.color)}
+      variant=${ifDefined(args.variant)}
+      size=${ifDefined(args.size)}
+      type=${ifDefined(args.type)}
+      ?disabled=${args.disabled}
+      ?icon-only=${args.iconOnly}
+    >
+      <fhi-icon-x></fhi-icon-x>
+    </fhi-button>
+  `,
+};
+
 export const showColors: Story = {
   tags: ['!dev'],
   render: () => html`
@@ -204,8 +223,6 @@ export const showButtonsWithTextAndIcons: Story = {
     </fhi-button>
   `,
 };
-
-new FhiIconExpand();
 
 export const showIconButtons: Story = {
   tags: ['!dev'],
