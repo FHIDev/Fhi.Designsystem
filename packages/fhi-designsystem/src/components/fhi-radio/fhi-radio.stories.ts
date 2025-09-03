@@ -27,6 +27,7 @@ const meta: Meta<FhiRadio> = {
       ?checked=${ifDefined(args.checked)}
       ?disabled=${ifDefined(args.disabled)}
       status=${ifDefined(args.status)}
+      value=${ifDefined(args.value)}
     ></fhi-radio>`,
   argTypes: {
     name: {
@@ -58,6 +59,12 @@ const meta: Meta<FhiRadio> = {
       options: [undefined, 'error'],
       description: 'Bestemmer statusen på feltet.',
       defaultValue: { summary: undefined },
+    },
+    value: {
+      control: 'text',
+      description:
+        'Setter verdien til radiofeltet. Denne verdien sendes til serveren om feltet er valgt når skjemaet sendes inn.',
+      defaultValue: { summary: 'on' },
     },
   },
 };
