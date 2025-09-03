@@ -205,8 +205,6 @@ export class FhiRadio extends LitElement {
           />
           <svg
             class="radio-dot"
-            width="18"
-            height="18"
             viewBox="0 0 18 18"
             xmlns="http://www.w3.org/2000/svg"
           >
@@ -255,6 +253,8 @@ export class FhiRadio extends LitElement {
       --dimension-radio-height: var(--fhi-spacing-250);
       --dimension-radio-margin: 0.125rem;
       --dimension-radio-border-width: var(--fhi-dimension-border-width);
+
+      --dimension-radio-dot-size: 1.125rem;
 
       /* Checked state */
       --dimension-radio-border-width-checked: var(
@@ -324,6 +324,8 @@ export class FhiRadio extends LitElement {
         top: 50%;
         left: 50%;
         transform: translate(-50%, -50%);
+        height: var(--dimension-radio-dot-size);
+        width: var(--dimension-radio-dot-size);
       }
 
       input:checked {
