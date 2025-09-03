@@ -10,12 +10,29 @@ export const FhiIconQuestionSelector = "fhi-icon-question";
 @customElement(FhiIconQuestionSelector)
 export class FhiIconQuestion extends LitElement {
   @property({ type: String }) color: string = "currentcolor";
-
-  @property({ type: Number }) size: number = 24;
+  @property({ type: String }) size: 'xsmall' | 'small' | 'medium' | 'large' | number = 'medium';
+  private get _size(): string {
+    switch (this.size) {
+      case 'xsmall': 
+        return '16px'; 
+      case 'small':
+        return '20px';
+      case 'medium':
+        return '24px'; 
+      case 'large':
+        return '32px'; 
+      default:
+        if (isNaN(Number(this.size))) {
+          console.warn(`Invalid size value: ${this.size}. Falling back to default size '24px'.`)
+          return '24px';
+        }
+        return `${this.size}px`;
+    }
+  }
 
   render() {
     return html`
-      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="${this.size}" height="${this.size}" fill="${this.color}"><path fill-rule="evenodd" d="M11.25 13.947V14l.004.077a.75.75 0 0 0 1.492 0L12.75 14v-.053c0-.307.131-.618.405-.944.278-.33.667-.631 1.09-.894a4.252 4.252 0 0 0-.748-7.587A4.25 4.25 0 0 0 7.895 7.4a.75.75 0 0 0 1.449.388 2.75 2.75 0 1 1 4.108 3.047c-.491.305-1.026.705-1.444 1.202-.421.5-.758 1.142-.758 1.91M9.344 7.788l-.725-.194-.724-.194zm2.768 9.217L12.01 17H12a1 1 0 1 0 0 2h.01l.102-.005a1 1 0 0 0 0-1.99" clip-rule="evenodd"/></svg>
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="${this._size}" height="${this._size}" fill="${this.color}"><path fill-rule="evenodd" d="M11.25 13.947V14l.004.077a.75.75 0 0 0 1.492 0L12.75 14v-.053c0-.307.131-.618.405-.944.278-.33.667-.631 1.09-.894a4.252 4.252 0 0 0-.748-7.587A4.25 4.25 0 0 0 7.895 7.4a.75.75 0 0 0 1.449.388 2.75 2.75 0 1 1 4.108 3.047c-.491.305-1.026.705-1.444 1.202-.421.5-.758 1.142-.758 1.91M9.344 7.788l-.725-.194-.724-.194zm2.768 9.217L12.01 17H12a1 1 0 1 0 0 2h.01l.102-.005a1 1 0 0 0 0-1.99" clip-rule="evenodd"/></svg>
     `;
   }
       

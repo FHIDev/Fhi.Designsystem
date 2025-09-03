@@ -10,12 +10,29 @@ export const FhiIconExternalLinkSelector = "fhi-icon-external-link";
 @customElement(FhiIconExternalLinkSelector)
 export class FhiIconExternalLink extends LitElement {
   @property({ type: String }) color: string = "currentcolor";
-
-  @property({ type: Number }) size: number = 24;
+  @property({ type: String }) size: 'xsmall' | 'small' | 'medium' | 'large' | number = 'medium';
+  private get _size(): string {
+    switch (this.size) {
+      case 'xsmall': 
+        return '16px'; 
+      case 'small':
+        return '20px';
+      case 'medium':
+        return '24px'; 
+      case 'large':
+        return '32px'; 
+      default:
+        if (isNaN(Number(this.size))) {
+          console.warn(`Invalid size value: ${this.size}. Falling back to default size '24px'.`)
+          return '24px';
+        }
+        return `${this.size}px`;
+    }
+  }
 
   render() {
     return html`
-      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="${this.size}" height="${this.size}" fill="${this.color}"><path d="M2.25 19V8A2.75 2.75 0 0 1 5 5.25h6a.75.75 0 0 1 0 1.5H5A1.25 1.25 0 0 0 3.75 8v11A1.25 1.25 0 0 0 5 20.25h11A1.25 1.25 0 0 0 17.25 19v-6a.75.75 0 0 1 1.5 0v6A2.75 2.75 0 0 1 16 21.75H5A2.75 2.75 0 0 1 2.25 19m19.5-10a.75.75 0 0 1-1.5 0V4.81l-9.72 9.72a.75.75 0 1 1-1.06-1.06l9.72-9.72H15a.75.75 0 0 1 0-1.5h6l.077.004A.75.75 0 0 1 21.75 3z"/></svg>
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="${this._size}" height="${this._size}" fill="${this.color}"><path d="M2.25 19V8A2.75 2.75 0 0 1 5 5.25h6a.75.75 0 0 1 0 1.5H5A1.25 1.25 0 0 0 3.75 8v11A1.25 1.25 0 0 0 5 20.25h11A1.25 1.25 0 0 0 17.25 19v-6a.75.75 0 0 1 1.5 0v6A2.75 2.75 0 0 1 16 21.75H5A2.75 2.75 0 0 1 2.25 19m19.5-10a.75.75 0 0 1-1.5 0V4.81l-9.72 9.72a.75.75 0 1 1-1.06-1.06l9.72-9.72H15a.75.75 0 0 1 0-1.5h6l.077.004A.75.75 0 0 1 21.75 3z"/></svg>
     `;
   }
       

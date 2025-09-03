@@ -10,12 +10,29 @@ export const FhiIconRotateRightSelector = "fhi-icon-rotate-right";
 @customElement(FhiIconRotateRightSelector)
 export class FhiIconRotateRight extends LitElement {
   @property({ type: String }) color: string = "currentcolor";
-
-  @property({ type: Number }) size: number = 24;
+  @property({ type: String }) size: 'xsmall' | 'small' | 'medium' | 'large' | number = 'medium';
+  private get _size(): string {
+    switch (this.size) {
+      case 'xsmall': 
+        return '16px'; 
+      case 'small':
+        return '20px';
+      case 'medium':
+        return '24px'; 
+      case 'large':
+        return '32px'; 
+      default:
+        if (isNaN(Number(this.size))) {
+          console.warn(`Invalid size value: ${this.size}. Falling back to default size '24px'.`)
+          return '24px';
+        }
+        return `${this.size}px`;
+    }
+  }
 
   render() {
     return html`
-      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="${this.size}" height="${this.size}" fill="${this.color}"><path d="M12 2.25c2.55 0 4.99.949 6.888 2.608l.372.341.99.99V3a.75.75 0 0 1 1.5 0v5a.75.75 0 0 1-.75.75h-5a.75.75 0 0 1 0-1.5h3.19l-.98-.98A9 9 0 0 0 12 3.75 8.25 8.25 0 1 0 20.25 12a.75.75 0 0 1 1.5 0A9.75 9.75 0 1 1 12 2.25"/></svg>
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="${this._size}" height="${this._size}" fill="${this.color}"><path d="M12 2.25c2.55 0 4.99.949 6.888 2.608l.372.341.99.99V3a.75.75 0 0 1 1.5 0v5a.75.75 0 0 1-.75.75h-5a.75.75 0 0 1 0-1.5h3.19l-.98-.98A9 9 0 0 0 12 3.75 8.25 8.25 0 1 0 20.25 12a.75.75 0 0 1 1.5 0A9.75 9.75 0 1 1 12 2.25"/></svg>
     `;
   }
       

@@ -10,12 +10,29 @@ export const FhiIconArrowUpDownSelector = "fhi-icon-arrow-up-down";
 @customElement(FhiIconArrowUpDownSelector)
 export class FhiIconArrowUpDown extends LitElement {
   @property({ type: String }) color: string = "currentcolor";
-
-  @property({ type: Number }) size: number = 24;
+  @property({ type: String }) size: 'xsmall' | 'small' | 'medium' | 'large' | number = 'medium';
+  private get _size(): string {
+    switch (this.size) {
+      case 'xsmall': 
+        return '16px'; 
+      case 'small':
+        return '20px';
+      case 'medium':
+        return '24px'; 
+      case 'large':
+        return '32px'; 
+      default:
+        if (isNaN(Number(this.size))) {
+          console.warn(`Invalid size value: ${this.size}. Falling back to default size '24px'.`)
+          return '24px';
+        }
+        return `${this.size}px`;
+    }
+  }
 
   render() {
     return html`
-      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="${this.size}" height="${this.size}" fill="${this.color}"><path d="M6.25 20V5.81L3.53 8.53a.75.75 0 1 1-1.06-1.06l4-4 .056-.052a.75.75 0 0 1 1.004.052l4 4 .052.056a.75.75 0 0 1-1.056 1.056l-.056-.052-2.72-2.72V20a.75.75 0 0 1-1.5 0m10-16a.75.75 0 0 1 1.5 0v14.19l2.72-2.72a.75.75 0 0 1 1.06 1.06l-4 4a.75.75 0 0 1-1.06 0l-4-4-.052-.056a.75.75 0 0 1 1.056-1.056l.056.052 2.72 2.72z"/></svg>
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="${this._size}" height="${this._size}" fill="${this.color}"><path d="M6.25 20V5.81L3.53 8.53a.75.75 0 1 1-1.06-1.06l4-4 .056-.052a.75.75 0 0 1 1.004.052l4 4 .052.056a.75.75 0 0 1-1.056 1.056l-.056-.052-2.72-2.72V20a.75.75 0 0 1-1.5 0m10-16a.75.75 0 0 1 1.5 0v14.19l2.72-2.72a.75.75 0 0 1 1.06 1.06l-4 4a.75.75 0 0 1-1.06 0l-4-4-.052-.056a.75.75 0 0 1 1.056-1.056l.056.052 2.72 2.72z"/></svg>
     `;
   }
       

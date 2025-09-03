@@ -28,9 +28,9 @@ const meta: Meta<FhiIconArrowDownLeft> = {
       defaultValue: { summary: 'currentcolor' },
     },
     size: {
-      control: 'number',
-      description: 'Setter størelsen på ikonet i px.',
-      defaultValue: { summary: 24 },
+      control: 'text',
+      description: 'Setter størrelsen på ikonet. Kan være en av de forhåndsdefinerte størrelsene (<code>xsmall</code>, <code>small</code>, <code>medium</code> eller <code>large</code>) eller en egendefinert størrelse. Tallverdier blir angitt som px.',
+      defaultValue: { summary: 'medium' },
     },
   },
 };
@@ -41,7 +41,7 @@ export const Preview: Story = {
   tags: ['!dev'],
   args: {
     color: 'var(--fhi-color-neutral-text-default)',
-    size: 24,
+    size: 'medium',
   },
 };
 

@@ -10,12 +10,29 @@ export const FhiIconRefreshSelector = "fhi-icon-refresh";
 @customElement(FhiIconRefreshSelector)
 export class FhiIconRefresh extends LitElement {
   @property({ type: String }) color: string = "currentcolor";
-
-  @property({ type: Number }) size: number = 24;
+  @property({ type: String }) size: 'xsmall' | 'small' | 'medium' | 'large' | number = 'medium';
+  private get _size(): string {
+    switch (this.size) {
+      case 'xsmall': 
+        return '16px'; 
+      case 'small':
+        return '20px';
+      case 'medium':
+        return '24px'; 
+      case 'large':
+        return '32px'; 
+      default:
+        if (isNaN(Number(this.size))) {
+          console.warn(`Invalid size value: ${this.size}. Falling back to default size '24px'.`)
+          return '24px';
+        }
+        return `${this.size}px`;
+    }
+  }
 
   render() {
     return html`
-      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="${this.size}" height="${this.size}" fill="${this.color}"><path d="M2.25 21v-5a.75.75 0 0 1 .75-.75h5a.75.75 0 0 1 0 1.5H4.81l.971.97.32.295a9 9 0 0 0 5.9 2.234A8.25 8.25 0 0 0 20.25 12a.75.75 0 0 1 1.5 0A9.75 9.75 0 0 1 12 21.75h-.003a10.5 10.5 0 0 1-7.259-2.951l-.988-.988V21a.75.75 0 0 1-1.5 0m0-9A9.75 9.75 0 0 1 12 2.25h.003l.507.014a10.5 10.5 0 0 1 6.379 2.593l.373.344.988.988V3a.75.75 0 0 1 1.5 0v5a.75.75 0 0 1-.75.75h-5a.75.75 0 0 1 0-1.5h3.19l-.971-.97-.32-.295a9 9 0 0 0-5.901-2.235A8.25 8.25 0 0 0 3.75 12a.75.75 0 0 1-1.5 0"/></svg>
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="${this._size}" height="${this._size}" fill="${this.color}"><path d="M2.25 21v-5a.75.75 0 0 1 .75-.75h5a.75.75 0 0 1 0 1.5H4.81l.971.97.32.295a9 9 0 0 0 5.9 2.234A8.25 8.25 0 0 0 20.25 12a.75.75 0 0 1 1.5 0A9.75 9.75 0 0 1 12 21.75h-.003a10.5 10.5 0 0 1-7.259-2.951l-.988-.988V21a.75.75 0 0 1-1.5 0m0-9A9.75 9.75 0 0 1 12 2.25h.003l.507.014a10.5 10.5 0 0 1 6.379 2.593l.373.344.988.988V3a.75.75 0 0 1 1.5 0v5a.75.75 0 0 1-.75.75h-5a.75.75 0 0 1 0-1.5h3.19l-.971-.97-.32-.295a9 9 0 0 0-5.901-2.235A8.25 8.25 0 0 0 3.75 12a.75.75 0 0 1-1.5 0"/></svg>
     `;
   }
       
