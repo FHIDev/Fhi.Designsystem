@@ -160,7 +160,7 @@ export class FhiButton extends LitElement {
       @keydown=${this._handleKeydown}
       @click=${this._handleClick}
     >
-      <div style="display: flex; align-items: center; gap: .25rem;">
+      <div class="slot-container">
         <slot @slotchange=${this._handleSlotChange}></slot>
       </div>
     </button>`;
@@ -530,6 +530,12 @@ export class FhiButton extends LitElement {
           opacity: var(--opacity-disabled);
           cursor: not-allowed;
         }
+      }
+
+      .slot-container {
+        display: flex;
+        align-items: center;
+        gap: 0.25rem;
       }
     }
 
