@@ -72,6 +72,14 @@ describe('fhi-button', () => {
 
       expect(component.size).to.equal('small');
     });
+
+    it('has an attribute to set icon-only', async () => {
+      component = await fixture(
+        html`<fhi-button icon-only>I am a test button</fhi-button>`,
+      );
+
+      expect(component.iconOnly).to.equal(true);
+    });
   });
 
   describe('property-attribute reflection', () => {
