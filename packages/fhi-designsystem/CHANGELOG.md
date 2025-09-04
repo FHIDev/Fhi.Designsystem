@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.11.0](https://github.com/FHIDev/Fhi.Designsystem/compare/v0.10.0...v0.11.0) (2025-09-04)
+
+
+### 🚀 Features
+
+* Implement first iteration of icon buttons ([#234](https://github.com/FHIDev/Fhi.Designsystem/issues/234)) ([bc1e95d](https://github.com/FHIDev/Fhi.Designsystem/commit/bc1e95d6edda32f58412d4108265f25bc2db65ff))
+
 ## [0.10.0](https://github.com/FHIDev/Fhi.Designsystem/compare/v0.9.0...v0.10.0) (2025-09-03)
 
 
