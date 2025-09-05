@@ -2,8 +2,8 @@ import { html, css, LitElement, PropertyValues } from 'lit';
 import { customElement, property } from 'lit/decorators.js';
 
 export const FhiFlexSelector = 'fhi-flex';
-export type FhiFlexDirection = 'row' | 'column';
-export type FhiFlexGap = 'small' | 'medium' | 'large' | FhiGapWidthUnit;
+type FhiFlexDirection = 'row' | 'column';
+type FhiFlexGap = 'small' | 'medium' | 'large' | FhiGapWidthUnit;
 type FhiUnitType = 'px' | 'rem';
 type FhiGapWidthUnit = `${number}${FhiUnitType}` | number;
 
