@@ -10,6 +10,7 @@ export class FhiFlex extends LitElement {
   @property({ type: String, reflect: true }) direction: FhiFlexDirection =
     'row';
   @property({ type: String, reflect: true }) gap: FhiFlexGap = 'medium';
+  @property({ type: Boolean, reflect: true }) wrap = false;
 
   render() {
     return html`<slot></slot>`;
@@ -18,6 +19,13 @@ export class FhiFlex extends LitElement {
   static styles = css`
     :host {
       display: flex;
+
+      &:host([wrap]) {
+        flex-wrap: wrap;
+      }
+      &:host([direction='column']) {
+        flex-direction: column;
+      }
     }
   `;
 }
