@@ -39,11 +39,15 @@ export class FhiFlex extends LitElement {
       --spacing-gap-small: var(--fhi-spacing-100);
       --spacing-gap-medium: var(--fhi-spacing-200);
       --spacing-gap-large: var(--fhi-spacing-300);
-
+    }
+    :host {
       display: flex;
     }
     :host([wrap]) {
       flex-wrap: wrap;
+    }
+    :host([direction='row']) {
+      flex-direction: row;
     }
     :host([direction='column']) {
       flex-direction: column;
