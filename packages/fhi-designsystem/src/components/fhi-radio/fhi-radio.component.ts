@@ -1,5 +1,6 @@
 import { html, css, LitElement } from 'lit';
 import { customElement, property, query } from 'lit/decorators.js';
+import { ifDefined } from 'lit/directives/if-defined.js';
 
 export const FhiRadioSelector = 'fhi-radio';
 
@@ -196,7 +197,7 @@ export class FhiRadio extends LitElement {
           <input
             type="radio"
             id="input-element"
-            name="${this.name}"
+            name="${ifDefined(this.name)}"
             value="${this.value}"
             ?checked=${this.checked}
             ?disabled=${this.disabled}
