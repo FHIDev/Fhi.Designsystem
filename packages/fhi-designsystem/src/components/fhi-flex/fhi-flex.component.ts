@@ -1,9 +1,11 @@
-import { html, css, LitElement } from 'lit';
+import { html, css, LitElement, PropertyValues } from 'lit';
 import { customElement, property } from 'lit/decorators.js';
 
 export const FhiFlexSelector = 'fhi-flex';
 export type FhiFlexDirection = 'row' | 'column';
-export type FhiFlexGap = 'small' | 'medium' | 'large' | number;
+export type FhiFlexGap = 'small' | 'medium' | 'large' | FhiGapWidthUnit;
+type FhiUnitType = 'px' | 'rem';
+type FhiGapWidthUnit = `${number}${FhiUnitType}` | number;
 
 @customElement(FhiFlexSelector)
 export class FhiFlex extends LitElement {
@@ -12,20 +14,48 @@ export class FhiFlex extends LitElement {
   @property({ type: String, reflect: true }) gap: FhiFlexGap = 'medium';
   @property({ type: Boolean, reflect: true }) wrap = false;
 
+  updated(changedProperties: PropertyValues<this>) {
+    super.updated(changedProperties);
+    if (changedProperties.has('gap')) {
+      const isPresetGap = ['small', 'medium', 'large'].includes(
+        this.gap as string,
+      );
+      if (!isPresetGap) {
+        const gapValue =
+          typeof this.gap === 'number' ? `${this.gap}px` : this.gap;
+        this.style.gap = gapValue as string;
+      } else {
+        this.style.gap = '';
+      }
+    }
+  }
+
   render() {
     return html`<slot></slot>`;
   }
 
   static styles = css`
     :host {
-      display: flex;
+      --spacing-gap-small: var(--fhi-spacing-100);
+      --spacing-gap-medium: var(--fhi-spacing-200);
+      --spacing-gap-large: var(--fhi-spacing-300);
 
-      &:host([wrap]) {
-        flex-wrap: wrap;
-      }
-      &:host([direction='column']) {
-        flex-direction: column;
-      }
+      display: flex;
+    }
+    :host([wrap]) {
+      flex-wrap: wrap;
+    }
+    :host([direction='column']) {
+      flex-direction: column;
+    }
+    :host([gap='small']) {
+      gap: var(--spacing-gap-small);
+    }
+    :host([gap='medium']) {
+      gap: var(--spacing-gap-medium);
+    }
+    :host([gap='large']) {
+      gap: var(--spacing-gap-large);
     }
   `;
 }
