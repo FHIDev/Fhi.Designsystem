@@ -1,0 +1,66 @@
+name: Release Notification
+
+on:
+  release:
+    types: [published]
+  workflow_dispatch:
+    inputs:
+      release_version:
+        description: 'Release version (e.g., v1.2.3)'
+        required: true
+        default: 'v1.0.0'
+      release_notes:
+        description: 'Release notes'
+        required: false
+        default: 'Ingen release notes vedlagt.'
+jobs:
+  notify:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Send Teams Notification
+        run: |
+          curl -H 'Content-Type: application/json' -d '{
+            "type": "message",
+            "attachments": [
+              {
+                "contentType": "application/vnd.microsoft.card.adaptive",
+                "content": {
+                  "$schema": "http://adaptivecards.io/schemas/adaptive-card.json",
+                  "type": "AdaptiveCard",
+                  "version": "1.2",
+                  "body": [
+                    {
+                      "type": "TextBlock",
+                      "size": "Large",
+                      "weight": "Bolder",
+                      "text": "🚀 Ny versjon av FHI Designsystem: ${{ github.event.release.tag_name || github.event.inputs.release_version }}"
+                    },
+                    {
+                      "type": "TextBlock",
+                      "text": "Ny versjon av FHI Designsystem er publisert!",
+                      "wrap": true
+                    },
+                    {
+                    "type": "TextBlock",
+                    "text": "${{ github.event.release.body || github.event.inputs.release_notes }}",
+                    "wrap": true,
+                    "markdown": true
+                    },
+                    {
+                      "type": "FactSet",
+                      "facts": [
+                        {
+                          "title": "Versjon",
+                          "value": "${{ github.event.release.tag_name || github.event.inputs.release_version }}"
+                        },
+                        {
+                          "title": "Utgivelsesnotater",
+                          "value": "[Se utgivelsesnotater på GitHub](${{ github.event.release.html_url || format('https://github.com/{0}/releases', github.repository)}})"
+                        }
+                      ]
+                    }
+                  ]
+                }
+              }
+            ]
+          }' '${{ secrets.TEAMS_WEBHOOK_URL }}'
