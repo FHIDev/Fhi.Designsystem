@@ -1,0 +1,40 @@
+import { FhiRadio } from './fhi-radio.component.ts';
+import * as FhiRadioStories from './fhi-radio.stories.ts';
+import { Meta, Primary, Canvas, Controls } from '@storybook/blocks';
+
+<Meta of={FhiRadioStories} />
+
+# Radio
+
+Radioknapp lar brukere velge ett enkelt valg blant to eller flere motstridende alternativer.
+
+## Passer til
+
+- Å velge ett - og kun ett - alternativ i en kort liste
+
+<Canvas of={FhiRadioStories.Preview} />
+
+<Controls />
+
+### Status
+
+#### `error`
+
+Brukes for å kommunisere feil, som at man ikke har gjort et valg som er påkrevd.
+
+<Canvas of={FhiRadioStories.Error} />
+
+### Form Controls
+
+#### `disabled`
+
+Radioknapper som ikke kan samhandles med, kan fortsatt vises med noe transparens. Unngås som regel. 
+
+<Canvas of={FhiRadioStories.Disabled} />
+
+
+#### Group
+
+`fhi-radio`-komponenter kan grupperes ved å bruke samme `name`-attributte. Bare én radioknapp i gruppen kan være valgt om gangen.
+
+<Canvas of={FhiRadioStories.Group} />
