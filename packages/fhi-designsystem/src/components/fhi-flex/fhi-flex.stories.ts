@@ -66,42 +66,9 @@ export const Preview: Story = {
   },
   render: args => html`
     <fhi-flex direction=${args.direction} gap=${args.gap} ?wrap=${args.wrap}>
-      <section
-        style="background: #DAE7F7; padding: 1rem; border-radius: 12px; border: 2px dashed #2A76C6; display: flex; justify-content: start; align-items: center; gap: 1rem;"
-      >
-        <fhi-icon-arrow-right-left
-          size="small"
-          color="#2A76C6"
-        ></fhi-icon-arrow-right-left
-        >Flex
-      </section>
-      <section
-        style="background: #DAE7F7; padding: 1rem; border-radius: 12px; border: 2px dashed #2A76C6; display: flex; justify-content: start; align-items: center; gap: 1rem;"
-      >
-        <fhi-icon-arrow-right-left
-          size="small"
-          color="#2A76C6"
-        ></fhi-icon-arrow-right-left
-        >med
-      </section>
-      <section
-        style="background: #DAE7F7; padding: 1rem; border-radius: 12px; border: 2px dashed #2A76C6; display: flex; justify-content: start; align-items: center; gap: 1rem;"
-      >
-        <fhi-icon-arrow-right-left
-          size="small"
-          color="#2A76C6"
-        ></fhi-icon-arrow-right-left
-        >Default
-      </section>
-      <section
-        style="background: #DAE7F7; padding: 1rem; border-radius: 12px; border: 2px dashed #2A76C6; display: flex; justify-content: start; align-items: center; gap: 1rem;"
-      >
-        <fhi-icon-arrow-right-left
-          size="small"
-          color="#2A76C6"
-        ></fhi-icon-arrow-right-left
-        >verdier
-      </section>
+      <fhi-button variant="strong">Knapp</fhi-button>
+      <fhi-button variant="subtle">Diskret Knapp</fhi-button>
+      <fhi-button variant="text">Tekst knapp</fhi-button>
     </fhi-flex>
   `,
 };
