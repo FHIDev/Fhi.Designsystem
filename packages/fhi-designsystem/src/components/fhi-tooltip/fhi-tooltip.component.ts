@@ -30,7 +30,7 @@ export class FhiTooltip extends LitElement {
 
   @property({ type: String }) placement: TooltipPlacement = 'top';
 
-  @property({ type: String }) delay: number = 500;
+  @property({ type: Number }) delay: number = 500;
 
   @property({ type: String }) trigger: 'click' | 'hover' = 'hover';
 
@@ -178,20 +178,20 @@ export class FhiTooltip extends LitElement {
         @click=${this._handleClick}
       >
         <slot aria-describedby="tooltip"></slot>
-      </div>
-      <section
-        id="tooltip"
-        role="tooltip"
-        aria-hidden=${!this._isVisible}
-        ?fading-out=${this._isFadingOut}
-        style="
+        <section
+          id="tooltip"
+          role="tooltip"
+          aria-hidden=${!this._isVisible}
+          ?fading-out=${this._isFadingOut}
+          style="
           transform: translate3d(${this._position.left}px, ${this._position
-          .top}px, 0); max-width: ${this.maxWidth};
+            .top}px, 0); max-width: ${this.maxWidth};
           max-width: ${this.maxWidth};
           "
-      >
-        <span>${this.message}</span>
-      </section>
+        >
+          <span>${this.message}</span>
+        </section>
+      </div>
     `;
   }
 
@@ -250,6 +250,14 @@ export class FhiTooltip extends LitElement {
         }
         &[fading-out] {
           opacity: 0;
+        }
+        &::after {
+          content: '';
+          position: absolute;
+          top: -4px;
+          right: -4px;
+          bottom: -4px;
+          left: -4px;
         }
       }
     }

@@ -1,5 +1,64 @@
 # Changelog
 
+## [0.12.0](https://github.com/FHIDev/Fhi.Designsystem/compare/v0.11.0...v0.12.0) (2025-09-08)
+
+
+### 🚀 Features
+
+* New Component: Radio ([#227](https://github.com/FHIDev/Fhi.Designsystem/issues/227)) ([0cf669f](https://github.com/FHIDev/Fhi.Designsystem/commit/0cf669f33fe55bfdf501b16624ac97e177157c99))
+
+
+### Other
+
+* Improve release notes notification for Teams ([#237](https://github.com/FHIDev/Fhi.Designsystem/issues/237)) ([b897ad3](https://github.com/FHIDev/Fhi.Designsystem/commit/b897ad371c907c52c8fd0f39f013aceda44e4058))
+
+## [0.11.0](https://github.com/FHIDev/Fhi.Designsystem/compare/v0.10.0...v0.11.0) (2025-09-04)
+
+
+### 🚀 Features
+
+* Implement first iteration of icon buttons ([#234](https://github.com/FHIDev/Fhi.Designsystem/issues/234)) ([bc1e95d](https://github.com/FHIDev/Fhi.Designsystem/commit/bc1e95d6edda32f58412d4108265f25bc2db65ff))
+
+## [0.10.0](https://github.com/FHIDev/Fhi.Designsystem/compare/v0.9.0...v0.10.0) (2025-09-03)
+
+
+### 🚀 Features
+
+* Add semantic sizes for icons ([#232](https://github.com/FHIDev/Fhi.Designsystem/issues/232)) ([5fbe515](https://github.com/FHIDev/Fhi.Designsystem/commit/5fbe5159cddd2d023d5deee2896fbbb9c62e4239))
+
+## [0.9.0](https://github.com/FHIDev/Fhi.Designsystem/compare/v0.8.0...v0.9.0) (2025-09-02)
+
+
+### 🚀 Features
+
+* Made toolttip hoverable ([#235](https://github.com/FHIDev/Fhi.Designsystem/issues/235)) ([db4f36b](https://github.com/FHIDev/Fhi.Designsystem/commit/db4f36b9209b60917c940f81cad9ffde1c65a4d4))
+
+## [0.8.0](https://github.com/FHIDev/Fhi.Designsystem/compare/v0.6.0...v0.8.0) (2025-09-01)
+
+
+### 🚀 Features
+
+* New Component: Checkbox ([#217](https://github.com/FHIDev/Fhi.Designsystem/issues/217)) ([b62abbf](https://github.com/FHIDev/Fhi.Designsystem/commit/b62abbfc5094fecff68345bd53013af28d383f11))
+* New icons, such as pencil, folder, pin, alternative link and repeat ([#224](https://github.com/FHIDev/Fhi.Designsystem/issues/224)) ([d476b28](https://github.com/FHIDev/Fhi.Designsystem/commit/d476b285d0a562f758dee318ce8127af9b2da44e))
+
+
+### 📑 Documentation
+
+* Legg til logo og juster på farger i storybook ([18d9f6f](https://github.com/FHIDev/Fhi.Designsystem/commit/18d9f6fa3fb00c5c800bd0d07cd700d8890b9f0f))
+
+
+### Other
+
+* release v0.7.0 ([5031436](https://github.com/FHIDev/Fhi.Designsystem/commit/5031436fd96cf2a06c0f77dedd22fdd01c75d7e7))
+* update release-it ([#226](https://github.com/FHIDev/Fhi.Designsystem/issues/226)) ([4d94eb5](https://github.com/FHIDev/Fhi.Designsystem/commit/4d94eb50d3da08e86d96471515a5fbfdfc92d6f9))
+
+## [0.7.0](https://github.com/FHIDev/Fhi.Designsystem/compare/v0.6.0...v0.7.0) (2025-07-31)
+
+
+### 🚀 Features
+
+* New icons, such as pencil, folder, pin, alternative link and repeat ([#224](https://github.com/FHIDev/Fhi.Designsystem/issues/224)) ([d476b28](https://github.com/FHIDev/Fhi.Designsystem/commit/d476b285d0a562f758dee318ce8127af9b2da44e))
+
 ## [0.6.0](https://github.com/FHIDev/Fhi.Designsystem/compare/v0.5.0...v0.6.0) (2025-07-02)
 
 

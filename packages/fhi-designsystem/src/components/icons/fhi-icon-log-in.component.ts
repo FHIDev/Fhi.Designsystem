@@ -10,12 +10,29 @@ export const FhiIconLogInSelector = "fhi-icon-log-in";
 @customElement(FhiIconLogInSelector)
 export class FhiIconLogIn extends LitElement {
   @property({ type: String }) color: string = "currentcolor";
-
-  @property({ type: Number }) size: number = 24;
+  @property({ type: String }) size: 'xsmall' | 'small' | 'medium' | 'large' | number = 'medium';
+  private get _size(): string {
+    switch (this.size) {
+      case 'xsmall': 
+        return '16px'; 
+      case 'small':
+        return '20px';
+      case 'medium':
+        return '24px'; 
+      case 'large':
+        return '32px'; 
+      default:
+        if (isNaN(Number(this.size))) {
+          console.warn(`Invalid size value: ${this.size}. Falling back to default size '24px'.`)
+          return '24px';
+        }
+        return `${this.size}px`;
+    }
+  }
 
   render() {
     return html`
-      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="${this.size}" height="${this.size}" fill="${this.color}"><path d="M20.25 19V5A1.25 1.25 0 0 0 19 3.75h-4a.75.75 0 0 1 0-1.5h4A2.75 2.75 0 0 1 21.75 5v14A2.75 2.75 0 0 1 19 21.75h-4a.75.75 0 0 1 0-1.5h4A1.25 1.25 0 0 0 20.25 19M9.47 6.47a.75.75 0 0 1 1.004-.052l.056.052 5 5a.75.75 0 0 1 0 1.06l-5 5a.75.75 0 1 1-1.06-1.06l3.72-3.72H3a.75.75 0 0 1 0-1.5h10.19L9.47 7.53l-.052-.056A.75.75 0 0 1 9.47 6.47"/></svg>
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="${this._size}" height="${this._size}" fill="${this.color}"><path d="M20.25 19V5A1.25 1.25 0 0 0 19 3.75h-4a.75.75 0 0 1 0-1.5h4A2.75 2.75 0 0 1 21.75 5v14A2.75 2.75 0 0 1 19 21.75h-4a.75.75 0 0 1 0-1.5h4A1.25 1.25 0 0 0 20.25 19M9.47 6.47a.75.75 0 0 1 1.004-.052l.056.052 5 5a.75.75 0 0 1 0 1.06l-5 5a.75.75 0 1 1-1.06-1.06l3.72-3.72H3a.75.75 0 0 1 0-1.5h10.19L9.47 7.53l-.052-.056A.75.75 0 0 1 9.47 6.47"/></svg>
     `;
   }
       

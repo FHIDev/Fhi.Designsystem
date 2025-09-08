@@ -10,12 +10,29 @@ export const FhiIconSquareSelector = "fhi-icon-square";
 @customElement(FhiIconSquareSelector)
 export class FhiIconSquare extends LitElement {
   @property({ type: String }) color: string = "currentcolor";
-
-  @property({ type: Number }) size: number = 24;
+  @property({ type: String }) size: 'xsmall' | 'small' | 'medium' | 'large' | number = 'medium';
+  private get _size(): string {
+    switch (this.size) {
+      case 'xsmall': 
+        return '16px'; 
+      case 'small':
+        return '20px';
+      case 'medium':
+        return '24px'; 
+      case 'large':
+        return '32px'; 
+      default:
+        if (isNaN(Number(this.size))) {
+          console.warn(`Invalid size value: ${this.size}. Falling back to default size '24px'.`)
+          return '24px';
+        }
+        return `${this.size}px`;
+    }
+  }
 
   render() {
     return html`
-      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="${this.size}" height="${this.size}" fill="${this.color}"><path d="M20.25 5c0-.69-.56-1.25-1.25-1.25H5c-.69 0-1.25.56-1.25 1.25v14c0 .69.56 1.25 1.25 1.25h14c.69 0 1.25-.56 1.25-1.25zm1.5 14A2.75 2.75 0 0 1 19 21.75H5A2.75 2.75 0 0 1 2.25 19V5A2.75 2.75 0 0 1 5 2.25h14A2.75 2.75 0 0 1 21.75 5z"/></svg>
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="${this._size}" height="${this._size}" fill="${this.color}"><path d="M20.25 5c0-.69-.56-1.25-1.25-1.25H5c-.69 0-1.25.56-1.25 1.25v14c0 .69.56 1.25 1.25 1.25h14c.69 0 1.25-.56 1.25-1.25zm1.5 14A2.75 2.75 0 0 1 19 21.75H5A2.75 2.75 0 0 1 2.25 19V5A2.75 2.75 0 0 1 5 2.25h14A2.75 2.75 0 0 1 21.75 5z"/></svg>
     `;
   }
       

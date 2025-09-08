@@ -10,12 +10,29 @@ export const FhiIconLockSelector = "fhi-icon-lock";
 @customElement(FhiIconLockSelector)
 export class FhiIconLock extends LitElement {
   @property({ type: String }) color: string = "currentcolor";
-
-  @property({ type: Number }) size: number = 24;
+  @property({ type: String }) size: 'xsmall' | 'small' | 'medium' | 'large' | number = 'medium';
+  private get _size(): string {
+    switch (this.size) {
+      case 'xsmall': 
+        return '16px'; 
+      case 'small':
+        return '20px';
+      case 'medium':
+        return '24px'; 
+      case 'large':
+        return '32px'; 
+      default:
+        if (isNaN(Number(this.size))) {
+          console.warn(`Invalid size value: ${this.size}. Falling back to default size '24px'.`)
+          return '24px';
+        }
+        return `${this.size}px`;
+    }
+  }
 
   render() {
     return html`
-      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="${this.size}" height="${this.size}" fill="${this.color}"><path d="M20.25 13c0-.69-.56-1.25-1.25-1.25H5c-.69 0-1.25.56-1.25 1.25v7c0 .69.56 1.25 1.25 1.25h14c.69 0 1.25-.56 1.25-1.25zm-4-6a4.25 4.25 0 0 0-8.5 0v3.25h8.5zm1.5 3.25H19A2.75 2.75 0 0 1 21.75 13v7A2.75 2.75 0 0 1 19 22.75H5A2.75 2.75 0 0 1 2.25 20v-7A2.75 2.75 0 0 1 5 10.25h1.25V7a5.75 5.75 0 0 1 11.5 0z"/></svg>
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="${this._size}" height="${this._size}" fill="${this.color}"><path d="M20.25 13c0-.69-.56-1.25-1.25-1.25H5c-.69 0-1.25.56-1.25 1.25v7c0 .69.56 1.25 1.25 1.25h14c.69 0 1.25-.56 1.25-1.25zm-4-6a4.25 4.25 0 0 0-8.5 0v3.25h8.5zm1.5 3.25H19A2.75 2.75 0 0 1 21.75 13v7A2.75 2.75 0 0 1 19 22.75H5A2.75 2.75 0 0 1 2.25 20v-7A2.75 2.75 0 0 1 5 10.25h1.25V7a5.75 5.75 0 0 1 11.5 0z"/></svg>
     `;
   }
       

@@ -119,7 +119,7 @@ describe('fhi-tooltip', () => {
       );
 
       expect(component.getAttribute('delay')).to.equal('200');
-      expect(component.delay).to.equal('200');
+      expect(component.delay).to.equal(200);
     });
 
     it('has an attribute to set the maxWidth', async () => {

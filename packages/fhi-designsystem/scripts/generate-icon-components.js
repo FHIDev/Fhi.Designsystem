@@ -57,8 +57,8 @@ const optimizeSvg = svgString => {
         params: {
           attributes: [
             {
-              width: '${this.size}',
-              height: '${this.size}',
+              width: '${this._size}',
+              height: '${this._size}',
               fill: '${this.color}',
             },
           ],
@@ -94,8 +94,25 @@ export const ${webComponentName}Selector = "${customElementSelector}";
 @customElement(${webComponentName}Selector)
 export class ${webComponentName} extends LitElement {
   @property({ type: String }) color: string = "currentcolor";
-
-  @property({ type: Number }) size: number = 24;
+  @property({ type: String }) size: 'xsmall' | 'small' | 'medium' | 'large' | number = 'medium';
+  private get _size(): string {
+    switch (this.size) {
+      case 'xsmall': 
+        return '16px'; 
+      case 'small':
+        return '20px';
+      case 'medium':
+        return '24px'; 
+      case 'large':
+        return '32px'; 
+      default:
+        if (isNaN(Number(this.size))) {
+          console.warn(\`Invalid size value: \${this.size}. Falling back to default size '24px'.\`)
+          return '24px';
+        }
+        return \`\${this.size}px\`;
+    }
+  }
 
   render() {
     return html\`
@@ -194,9 +211,9 @@ const meta: Meta<${iconKomponentName}> = {
       defaultValue: { summary: 'currentcolor' },
     },
     size: {
-      control: 'number',
-      description: 'Setter størelsen på ikonet i px.',
-      defaultValue: { summary: 24 },
+      control: 'text',
+      description: 'Setter størrelsen på ikonet. Kan være en av de forhåndsdefinerte størrelsene (<code>xsmall</code>, <code>small</code>, <code>medium</code> eller <code>large</code>) eller en egendefinert størrelse. Tallverdier blir angitt som px.',
+      defaultValue: { summary: 'medium' },
     },
   },
 };
@@ -207,7 +224,7 @@ export const Preview: Story = {
   tags: ['!dev'],
   args: {
     color: 'var(--fhi-color-neutral-text-default)',
-    size: 24,
+    size: 'medium',
   },
 };
 

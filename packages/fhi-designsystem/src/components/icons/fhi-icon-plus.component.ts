@@ -10,12 +10,29 @@ export const FhiIconPlusSelector = "fhi-icon-plus";
 @customElement(FhiIconPlusSelector)
 export class FhiIconPlus extends LitElement {
   @property({ type: String }) color: string = "currentcolor";
-
-  @property({ type: Number }) size: number = 24;
+  @property({ type: String }) size: 'xsmall' | 'small' | 'medium' | 'large' | number = 'medium';
+  private get _size(): string {
+    switch (this.size) {
+      case 'xsmall': 
+        return '16px'; 
+      case 'small':
+        return '20px';
+      case 'medium':
+        return '24px'; 
+      case 'large':
+        return '32px'; 
+      default:
+        if (isNaN(Number(this.size))) {
+          console.warn(`Invalid size value: ${this.size}. Falling back to default size '24px'.`)
+          return '24px';
+        }
+        return `${this.size}px`;
+    }
+  }
 
   render() {
     return html`
-      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="${this.size}" height="${this.size}" fill="${this.color}"><path d="M11.25 19v-6.25H5a.75.75 0 0 1 0-1.5h6.25V5a.75.75 0 0 1 1.5 0v6.25H19a.75.75 0 0 1 0 1.5h-6.25V19a.75.75 0 0 1-1.5 0"/></svg>
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="${this._size}" height="${this._size}" fill="${this.color}"><path d="M11.25 19v-6.25H5a.75.75 0 0 1 0-1.5h6.25V5a.75.75 0 0 1 1.5 0v6.25H19a.75.75 0 0 1 0 1.5h-6.25V19a.75.75 0 0 1-1.5 0"/></svg>
     `;
   }
       

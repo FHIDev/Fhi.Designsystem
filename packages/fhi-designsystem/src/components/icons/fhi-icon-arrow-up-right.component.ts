@@ -10,12 +10,29 @@ export const FhiIconArrowUpRightSelector = "fhi-icon-arrow-up-right";
 @customElement(FhiIconArrowUpRightSelector)
 export class FhiIconArrowUpRight extends LitElement {
   @property({ type: String }) color: string = "currentcolor";
-
-  @property({ type: Number }) size: number = 24;
+  @property({ type: String }) size: 'xsmall' | 'small' | 'medium' | 'large' | number = 'medium';
+  private get _size(): string {
+    switch (this.size) {
+      case 'xsmall': 
+        return '16px'; 
+      case 'small':
+        return '20px';
+      case 'medium':
+        return '24px'; 
+      case 'large':
+        return '32px'; 
+      default:
+        if (isNaN(Number(this.size))) {
+          console.warn(`Invalid size value: ${this.size}. Falling back to default size '24px'.`)
+          return '24px';
+        }
+        return `${this.size}px`;
+    }
+  }
 
   render() {
     return html`
-      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="${this.size}" height="${this.size}" fill="${this.color}"><path d="M17.75 17a.75.75 0 0 1-1.5 0V8.81l-8.72 8.72a.75.75 0 1 1-1.06-1.06l8.72-8.72H7a.75.75 0 0 1 0-1.5h10l.077.004A.75.75 0 0 1 17.75 7z"/></svg>
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="${this._size}" height="${this._size}" fill="${this.color}"><path d="M17.75 17a.75.75 0 0 1-1.5 0V8.81l-8.72 8.72a.75.75 0 1 1-1.06-1.06l8.72-8.72H7a.75.75 0 0 1 0-1.5h10l.077.004A.75.75 0 0 1 17.75 7z"/></svg>
     `;
   }
       

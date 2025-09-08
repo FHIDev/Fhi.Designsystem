@@ -25,6 +25,9 @@ export class FhiButton extends LitElement {
 
   @property({ type: Boolean, reflect: true }) disabled = false;
 
+  @property({ type: Boolean, attribute: 'icon-only' })
+  iconOnly: boolean = false;
+
   @property({ type: String }) type: 'button' | 'submit' | 'reset' = 'submit';
 
   private _internals: ElementInternals;
@@ -42,7 +45,7 @@ export class FhiButton extends LitElement {
     this.onselectstart = this._handleSelectStart.bind(this);
   }
 
-  click(): void {
+  public click(): void {
     this._handleClick();
   }
 
@@ -83,8 +86,70 @@ export class FhiButton extends LitElement {
     }
   }
 
-  private _handleSelectStart() {
+  private _handleSelectStart(): boolean {
     return false;
+  }
+
+  private _getIconSize(): string {
+    switch (this.size) {
+      case 'small':
+        return '20';
+      case 'medium':
+      case 'large':
+      default:
+        return '24';
+    }
+  }
+
+  private _handleSlotChange(event: Event): void {
+    if (this.iconOnly) {
+      return;
+    }
+
+    const slot = event.target as HTMLSlotElement;
+    const nodes = slot.assignedNodes();
+
+    let firstIcon: HTMLElement | undefined;
+    let lastIcon: HTMLElement | undefined;
+
+    nodes.forEach(node => {
+      if (node.nodeType !== Node.ELEMENT_NODE) {
+        return;
+      }
+
+      if (!(node as Element).tagName.toLowerCase().startsWith('fhi-icon')) {
+        return;
+      }
+
+      // The first icon is either the first child or it is preceded by a whitespace text node
+      if (
+        !node.previousSibling?.nodeType ||
+        (node.previousSibling?.nodeType === Node.TEXT_NODE &&
+          !node.previousSibling.textContent?.trim())
+      ) {
+        firstIcon = node as HTMLElement;
+      }
+
+      // The last icon is either the last child or it is followed by a whitespace text node
+      if (
+        node.previousSibling?.nodeType === Node.TEXT_NODE &&
+        node.previousSibling?.textContent?.trim()
+      ) {
+        lastIcon = node as HTMLElement;
+      }
+    });
+
+    if (firstIcon) {
+      firstIcon.style.marginRight = 'var(--dimension-icon-margin-right)';
+      firstIcon.style.marginLeft = 'var(--dimension-icon-margin-left-offset)';
+      firstIcon.setAttribute('size', this._getIconSize());
+    }
+
+    if (lastIcon) {
+      lastIcon.style.marginRight = 'var(--dimension-icon-margin-right-offset)';
+      lastIcon.style.marginLeft = 'var(--dimension-icon-margin-left)';
+      lastIcon.setAttribute('size', this._getIconSize());
+    }
   }
 
   render() {
@@ -95,7 +160,9 @@ export class FhiButton extends LitElement {
       @keydown=${this._handleKeydown}
       @click=${this._handleClick}
     >
-      <slot></slot>
+      <div class="slot-container">
+        <slot @slotchange=${this._handleSlotChange}></slot>
+      </div>
     </button>`;
   }
 
@@ -103,12 +170,44 @@ export class FhiButton extends LitElement {
     :host {
       --dimension-border-radius: var(--fhi-border-radius-full);
       --dimension-border-width: var(--fhi-dimension-border-width);
+
+      --dimension-padding-small: calc(
+          var(--fhi-spacing-050) - var(--fhi-dimension-border-width)
+        )
+        calc(
+          var(--fhi-spacing-150) + var(--fhi-spacing-050) - var(
+              --fhi-dimension-border-width
+            )
+        );
+      --dimension-padding-medium: calc(
+          var(--fhi-spacing-100) - var(--fhi-dimension-border-width)
+        )
+        calc(
+          var(--fhi-spacing-200) + var(--fhi-spacing-050) - var(
+              --fhi-dimension-border-width
+            )
+        );
+      --dimension-padding-large: calc(
+          var(--fhi-spacing-200) - var(--fhi-dimension-border-width)
+        )
+        calc(
+          var(--fhi-spacing-300) + var(--fhi-spacing-050) - var(
+              --fhi-dimension-border-width
+            )
+        );
+
+      /* Icon */
+      --dimension-icon-margin-left: var(--fhi-spacing-050);
+      --dimension-icon-margin-right: var(--fhi-spacing-050);
+
+      /* Adjust for the button padding when the icon is present on either side */
+      --dimension-icon-margin-left-offset: calc(-1 * var(--fhi-spacing-050));
+      --dimension-icon-margin-right-offset: calc(-1 * var(--fhi-spacing-050));
+
+      --dimension-icon-only-border-radius: var(--fhi-border-radius-full);
+
+      /* Typography */
       --typography-font-family: var(--fhi-font-family-default);
-      --motion-transition: var(--fhi-motion-duration-quick)
-        var(--fhi-motion-ease-default);
-
-      --opacity-disabled: var(--fhi-opacity-disabled);
-
       --typography-label-large-font-size: var(
         --fhi-typography-label-large-font-size
       );
@@ -146,30 +245,7 @@ export class FhiButton extends LitElement {
         --fhi-typography-label-medium-line-height
       );
 
-      --dimension-padding-small: calc(
-          var(--fhi-spacing-050) - var(--fhi-dimension-border-width)
-        )
-        calc(
-          var(--fhi-spacing-150) + var(--fhi-spacing-050) - var(
-              --fhi-dimension-border-width
-            )
-        );
-      --dimension-padding-medium: calc(
-          var(--fhi-spacing-100) - var(--fhi-dimension-border-width)
-        )
-        calc(
-          var(--fhi-spacing-200) + var(--fhi-spacing-050) - var(
-              --fhi-dimension-border-width
-            )
-        );
-      --dimension-padding-large: calc(
-          var(--fhi-spacing-200) - var(--fhi-dimension-border-width)
-        )
-        calc(
-          var(--fhi-spacing-300) + var(--fhi-spacing-050) - var(
-              --fhi-dimension-border-width
-            )
-        );
+      /* Accent Color */
       --color-accent-strong-background: var(--fhi-color-accent-base-default);
       --color-accent-strong-border: var(--fhi-color-accent-base-default);
       --color-accent-strong: var(--fhi-color-accent-text-inverted);
@@ -254,6 +330,7 @@ export class FhiButton extends LitElement {
       --color-accent-text-border-disabled: transparent;
       --color-accent-text-disabled: var(--fhi-color-accent-text-default);
 
+      /* Neutral Color */
       --color-neutral-strong-background: var(--fhi-color-neutral-base-default);
       --color-neutral-strong-border: var(--fhi-color-neutral-base-default);
       --color-neutral-strong: var(--fhi-color-neutral-text-inverted);
@@ -348,6 +425,7 @@ export class FhiButton extends LitElement {
       --color-neutral-text-border-disabled: transparent;
       --color-neutral-text-disabled: var(--fhi-color-neutral-text-subtle);
 
+      /* Danger Color */
       --color-danger-strong-background: var(--fhi-color-danger-base-default);
       --color-danger-strong-border: var(--fhi-color-danger-base-default);
       --color-danger-strong: var(--fhi-color-danger-text-inverted);
@@ -432,6 +510,15 @@ export class FhiButton extends LitElement {
       --color-danger-text-border-disabled: transparent;
       --color-danger-text-disabled: var(--fhi-color-danger-text-subtle);
 
+      --motion-transition: var(--fhi-motion-duration-quick)
+        var(--fhi-motion-ease-default);
+
+      --opacity-disabled: var(--fhi-opacity-disabled);
+    }
+
+    :host {
+      display: block;
+
       button {
         border-radius: var(--dimension-border-radius);
         border: solid var(--dimension-border-width);
@@ -443,6 +530,12 @@ export class FhiButton extends LitElement {
           opacity: var(--opacity-disabled);
           cursor: not-allowed;
         }
+      }
+
+      .slot-container {
+        display: flex;
+        align-items: center;
+        gap: 0.25rem;
       }
     }
 
@@ -720,6 +813,22 @@ export class FhiButton extends LitElement {
         border-color: var(--color-danger-text-border-disabled);
         color: var(--color-danger-text-disabled);
       }
+    }
+
+    :host([icon-only]) button {
+      border-radius: var(--dimension-icon-only-border-radius);
+    }
+
+    :host([icon-only][size='small']) button {
+      padding: calc(var(--fhi-spacing-050) - var(--fhi-dimension-border-width));
+    }
+
+    :host([icon-only][size='medium']) button {
+      padding: calc(var(--fhi-spacing-100) - var(--fhi-dimension-border-width));
+    }
+
+    :host([icon-only][size='large']) button {
+      padding: calc(var(--fhi-spacing-200) - var(--fhi-dimension-border-width));
     }
   `;
 }
