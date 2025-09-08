@@ -81,6 +81,7 @@ describe(FhiFlexSelector, () => {
       );
       expect(component.style.gap).to.equal('1.5rem');
     });
+
     it('applies the default medium gap when no gap is provided', async () => {
       const component = await fixture<HTMLDivElement>(html`
         <div>
@@ -99,9 +100,46 @@ describe(FhiFlexSelector, () => {
         getComputedStyle(component.querySelector<FhiFlex>('fhi-flex')!).gap,
       ).to.equal('16px');
     });
+    it('applies the small gap when gap is set to small', async () => {
+      const component = await fixture<HTMLDivElement>(html`
+        <div>
+          <style>
+            fhi-flex {
+              --fhi-spacing-100: 8px;
+            }
+          </style>
+          <fhi-flex gap="small"></fhi-flex>
+        </div>
+      `);
+      expect(
+        getComputedStyle(component.querySelector<FhiFlex>('fhi-flex')!).gap,
+      ).to.equal('8px');
+    });
+    it('applies the large gap when gap is set to large', async () => {
+      const component = await fixture<HTMLDivElement>(html`
+        <div>
+          <style>
+            fhi-flex {
+              --fhi-spacing-300: 24px;
+            }
+          </style>
+          <fhi-flex gap="large"></fhi-flex>
+        </div>
+      `);
+      expect(
+        getComputedStyle(component.querySelector<FhiFlex>('fhi-flex')!).gap,
+      ).to.equal('24px');
+    });
+
     it('applies default direction as row when no direction is set.', async () => {
       const component = await fixture<FhiFlex>(html`<fhi-flex></fhi-flex>`);
       expect(getComputedStyle(component).flexDirection).to.equal('row');
+    });
+    it('applies flex-direction to column when direction is set to column', async () => {
+      const component = await fixture<FhiFlex>(
+        html`<fhi-flex direction="column"></fhi-flex>`,
+      );
+      expect(getComputedStyle(component).flexDirection).to.equal('column');
     });
     it('applies flex-wrap style when wrap is set to true', async () => {
       const component = await fixture<FhiFlex>(
