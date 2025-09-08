@@ -109,5 +109,9 @@ describe(FhiFlexSelector, () => {
       );
       expect(getComputedStyle(component).flexWrap).to.equal('wrap');
     });
+    it('does not apply flex-wrap style when wrap is not set to true', async () => {
+      const component = await fixture<FhiFlex>(html`<fhi-flex></fhi-flex>`);
+      expect(getComputedStyle(component).flexWrap).to.equal('nowrap');
+    });
   });
 });
