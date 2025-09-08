@@ -21,8 +21,7 @@ export class FhiFlex extends LitElement {
         this.gap as string,
       );
       if (!isPresetGap) {
-        const gapValue =
-          typeof this.gap === 'number' ? `${this.gap}px` : this.gap;
+        const gapValue = Number(this.gap) ? `${this.gap}px` : this.gap;
         this.style.gap = gapValue as string;
       } else {
         this.style.gap = '';
@@ -42,6 +41,7 @@ export class FhiFlex extends LitElement {
     }
     :host {
       display: flex;
+      gap: var(--spacing-gap-medium);
     }
     :host([wrap]) {
       flex-wrap: wrap;
