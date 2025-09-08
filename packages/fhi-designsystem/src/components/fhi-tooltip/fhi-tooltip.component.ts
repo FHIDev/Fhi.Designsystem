@@ -30,7 +30,7 @@ export class FhiTooltip extends LitElement {
 
   @property({ type: String }) placement: TooltipPlacement = 'top';
 
-  @property({ type: String }) delay: number = 500;
+  @property({ type: Number }) delay: number = 500;
 
   @property({ type: String }) trigger: 'click' | 'hover' = 'hover';
 
