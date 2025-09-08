@@ -1,5 +1,17 @@
 # Changelog
 
+## [0.12.0](https://github.com/FHIDev/Fhi.Designsystem/compare/v0.11.0...v0.12.0) (2025-09-08)
+
+
+### 🚀 Features
+
+* New Component: Radio ([#227](https://github.com/FHIDev/Fhi.Designsystem/issues/227)) ([0cf669f](https://github.com/FHIDev/Fhi.Designsystem/commit/0cf669f33fe55bfdf501b16624ac97e177157c99))
+
+
+### Other
+
+* Improve release notes notification for Teams ([#237](https://github.com/FHIDev/Fhi.Designsystem/issues/237)) ([b897ad3](https://github.com/FHIDev/Fhi.Designsystem/commit/b897ad371c907c52c8fd0f39f013aceda44e4058))
+
 ## [0.11.0](https://github.com/FHIDev/Fhi.Designsystem/compare/v0.10.0...v0.11.0) (2025-09-04)
 
 
