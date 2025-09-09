@@ -43,25 +43,32 @@ export class FhiFlex extends LitElement {
       --spacing-gap-medium: var(--fhi-spacing-200);
       --spacing-gap-large: var(--fhi-spacing-300);
     }
+
     :host {
       display: flex;
       gap: var(--spacing-gap-medium);
     }
+
     :host([wrap]) {
       flex-wrap: wrap;
     }
+
     :host([direction='row']) {
       flex-direction: row;
     }
+
     :host([direction='column']) {
       flex-direction: column;
     }
+
     :host([gap='small']) {
       gap: var(--spacing-gap-small);
     }
+
     :host([gap='medium']) {
       gap: var(--spacing-gap-medium);
     }
+
     :host([gap='large']) {
       gap: var(--spacing-gap-large);
     }
