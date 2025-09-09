@@ -4,9 +4,11 @@ import { withActions } from '@storybook/addon-actions/decorator';
 import { html } from 'lit';
 
 import { FhiFlex } from './fhi-flex.component';
+import { FhiButton } from '../fhi-button/fhi-button.component';
 import { FhiIconArrowRightLeft } from '../icons/fhi-icon-arrow-right-left.component';
 
 new FhiFlex();
+new FhiButton();
 new FhiIconArrowRightLeft();
 
 const meta: Meta<FhiFlex> = {
