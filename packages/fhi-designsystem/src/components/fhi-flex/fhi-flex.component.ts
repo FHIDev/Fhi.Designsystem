@@ -2,16 +2,18 @@ import { html, css, LitElement, PropertyValues } from 'lit';
 import { customElement, property } from 'lit/decorators.js';
 
 export const FhiFlexSelector = 'fhi-flex';
-type FhiFlexDirection = 'row' | 'column';
-type FhiFlexGap = 'small' | 'medium' | 'large' | FhiGapWidthUnit;
 type FhiUnitType = 'px' | 'rem';
 type FhiGapWidthUnit = `${number}${FhiUnitType}` | number;
 
 @customElement(FhiFlexSelector)
 export class FhiFlex extends LitElement {
-  @property({ type: String, reflect: true }) direction: FhiFlexDirection =
+  @property({ type: String, reflect: true }) direction: 'row' | 'column' =
     'row';
-  @property({ type: String, reflect: true }) gap: FhiFlexGap = 'medium';
+  @property({ type: String, reflect: true }) gap:
+    | 'small'
+    | 'medium'
+    | 'large'
+    | FhiGapWidthUnit = 'medium';
   @property({ type: Boolean, reflect: true }) wrap = false;
 
   updated(changedProperties: PropertyValues<this>) {
