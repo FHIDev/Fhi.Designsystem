@@ -23,12 +23,13 @@ export class FhiFlex extends LitElement {
       const isPresetGap = ['small', 'medium', 'large'].includes(
         String(this.gap),
       );
-      if (!isPresetGap) {
-        const gapValue = Number(this.gap) ? `${this.gap}px` : this.gap;
-        this.style.gap = gapValue as string;
-      } else {
+
+      if (isPresetGap) {
         this.style.gap = '';
+        return;
       }
+      const gapValue = Number(this.gap) ? `${this.gap}px` : this.gap;
+      this.style.gap = gapValue as string;
     }
   }
 
