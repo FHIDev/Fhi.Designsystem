@@ -67,7 +67,7 @@ export const Preview: Story = {
   render: args => html`
     <fhi-flex direction=${args.direction} gap=${args.gap} ?wrap=${args.wrap}>
       <fhi-button variant="strong">Knapp</fhi-button>
-      <fhi-button variant="subtle">Diskret Knapp</fhi-button>
+      <fhi-button variant="subtle">Knapp</fhi-button>
       <fhi-button variant="text">Tekst knapp</fhi-button>
     </fhi-flex>
   `,
