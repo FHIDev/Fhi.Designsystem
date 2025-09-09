@@ -18,9 +18,10 @@ export class FhiFlex extends LitElement {
 
   updated(changedProperties: PropertyValues<this>) {
     super.updated(changedProperties);
+
     if (changedProperties.has('gap')) {
       const isPresetGap = ['small', 'medium', 'large'].includes(
-        this.gap as string,
+        String(this.gap),
       );
       if (!isPresetGap) {
         const gapValue = Number(this.gap) ? `${this.gap}px` : this.gap;
