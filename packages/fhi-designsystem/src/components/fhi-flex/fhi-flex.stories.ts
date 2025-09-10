@@ -169,37 +169,17 @@ export const Wrap: Story = {
   },
   render: args => html`
     <fhi-flex direction=${args.direction} gap=${args.gap} ?wrap=${args.wrap}>
-      ${[
-        'Flex',
-        'med',
-        'wrap',
-        'på',
-        'element',
-        'element',
-        'element',
-        'element',
-        'element',
-        'element',
-        'element',
-        'element',
-        'element',
-        'element',
-        'element',
-        'element',
-        'element',
-        'element',
-        'element',
-        'element',
-        'element',
-      ].map(
-        word => html`
-          <div
-            style="font-family: var(--fhi-font-family-default);background: var(--fhi-blue-100); padding: var(--fhi-spacing-200); border-radius: var(--fhi-border-radius-150); border: var(--fhi-dimension-border-width-active) dashed var(--fhi-blue-500); display: flex; justify-content: start; align-items: center;"
-          >
-            ${word}
-          </div>
-        `,
-      )}
+      ${['Flex', 'med', 'wrap', 'på']
+        .concat(Array(17).fill('element'))
+        .map(
+          word => html`
+            <div
+              style="font-family: var(--fhi-font-family-default);background: var(--fhi-blue-100); padding: var(--fhi-spacing-200); border-radius: var(--fhi-border-radius-150); border: var(--fhi-dimension-border-width-active) dashed var(--fhi-blue-500); display: flex; justify-content: start; align-items: center;"
+            >
+              ${word}
+            </div>
+          `,
+        )}
     </fhi-flex>
   `,
 };
