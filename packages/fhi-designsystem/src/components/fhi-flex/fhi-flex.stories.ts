@@ -84,7 +84,7 @@ export const RowDirection: Story = {
       ${['Flex', 'med', 'row/default', 'direction'].map(
         word => html`
           <div
-            style="background: #DAE7F7; padding: 1rem; border-radius: 12px; border: 2px dashed #2A76C6; display: flex; justify-content: start; align-items: center; gap: 1rem;"
+            style="font-family: var(--fhi-font-family-default);background: var(--fhi-blue-100); padding: var(--fhi-spacing-200); border-radius: var(--fhi-border-radius-150); border: var(--fhi-dimension-border-width-active) dashed var(--fhi-blue-500); display: flex; justify-content: start; align-items: center;"
           >
             ${word}
           </div>
@@ -105,7 +105,7 @@ export const ColumnDirection: Story = {
       ${['Flex', 'med', 'column', 'direction'].map(
         word => html`
           <div
-            style="background: #DAE7F7; padding: 1rem; border-radius: 12px; border: 2px dashed #2A76C6; display: flex; justify-content: start; align-items: center; gap: 1rem;"
+            style="font-family: var(--fhi-font-family-default);background: var(--fhi-blue-100); padding: var(--fhi-spacing-200); border-radius: var(--fhi-border-radius-150); border: var(--fhi-dimension-border-width-active) dashed var(--fhi-blue-500); display: flex; justify-content: start; align-items: center;"
           >
             ${word}
           </div>
@@ -140,7 +140,7 @@ export const CustomGap: Story = {
       ${['Flex', 'med', 'custom', 'gap'].map(
         word => html`
           <div
-            style="background: #DAE7F7; padding: 1rem; border-radius: 12px; border: 2px dashed #2A76C6; display: flex; justify-content: start; align-items: center; gap: 1rem;"
+            style="font-family: var(--fhi-font-family-default);background: var(--fhi-blue-100); padding: var(--fhi-spacing-200); border-radius: var(--fhi-border-radius-150); border: var(--fhi-dimension-border-width-active) dashed var(--fhi-blue-500); display: flex; justify-content: start; align-items: center;"
           >
             ${word}
           </div>
@@ -194,7 +194,7 @@ export const Wrap: Story = {
       ].map(
         word => html`
           <div
-            style="background: #DAE7F7; padding: 1rem; border-radius: 12px; border: 2px dashed #2A76C6; display: flex; justify-content: start; align-items: center; gap: 1rem;"
+            style="font-family: var(--fhi-font-family-default);background: var(--fhi-blue-100); padding: var(--fhi-spacing-200); border-radius: var(--fhi-border-radius-150); border: var(--fhi-dimension-border-width-active) dashed var(--fhi-blue-500); display: flex; justify-content: start; align-items: center;"
           >
             ${word}
           </div>
