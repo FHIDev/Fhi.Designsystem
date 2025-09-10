@@ -169,17 +169,25 @@ export const Wrap: Story = {
   },
   render: args => html`
     <fhi-flex direction=${args.direction} gap=${args.gap} ?wrap=${args.wrap}>
-      ${['Flex', 'med', 'wrap', 'på']
-        .concat(Array(17).fill('element'))
-        .map(
-          word => html`
-            <div
-              style="font-family: var(--fhi-font-family-default); color: var(--fhi-color-accent-text-subtle); background: var(--fhi-color-accent-background-subtle); border: var(--fhi-dimension-border-width) solid var(--fhi-color-accent-border-subtle); padding: var(--fhi-spacing-200); border-radius: var(--fhi-border-radius-150); display: flex; justify-content: start; align-items: center;"
-            >
-              ${word}
-            </div>
-          `,
-        )}
+      ${[
+        'Dette er et',
+        'eksempel på Flex',
+        'som har satt',
+        'Wrap',
+        'på seg',
+        'så elementene går',
+        'videre til neste',
+        'linje når det',
+        'ikke er plass',
+      ].map(
+        word => html`
+          <div
+            style="font-family: var(--fhi-font-family-default); color: var(--fhi-color-accent-text-subtle); background: var(--fhi-color-accent-background-subtle); border: var(--fhi-dimension-border-width) solid var(--fhi-color-accent-border-subtle); padding: var(--fhi-spacing-200); border-radius: var(--fhi-border-radius-150); display: flex; justify-content: start; align-items: center;"
+          >
+            ${word}
+          </div>
+        `,
+      )}
     </fhi-flex>
   `,
 };
