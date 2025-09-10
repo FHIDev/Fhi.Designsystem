@@ -24,6 +24,14 @@ export type TooltipPlacement =
   | 'right-start'
   | 'right-end';
 
+/**
+ * @summary A tooltip component that displays additional information on hover or click
+ * @slot default - Content that triggers the tooltip
+ * @csspart tooltip - The tooltip container
+ * @csspart anchor - The anchor element that triggers the tooltip
+ * @fires show - Fired when the tooltip becomes visible
+ * @fires hide - Fired when the tooltip becomes hidden
+ */
 @customElement(FhiTooltipSelector)
 export class FhiTooltip extends LitElement {
   @property({ type: String }) message: string = '';

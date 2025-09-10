@@ -50,13 +50,15 @@
     "format:eslint": "eslint \"**/*.{js,ts}\" --fix",
     "format:prettier": "prettier \"**/*.js\" --write --ignore-path .gitignore",
     "publish:npm": "pnpm build && cd dist/npm && npm publish",
-    "changelog:ci": "release-it --ci"
+    "changelog:ci": "release-it --ci",
+    "analyze": "cem analyze --config ../../custom-elements-manifest.config.js"
   },
   "peerDependencies": {
     "lit": "~3.2.0"
   },
   "devDependencies": {
     "@chromatic-com/storybook": "~1.9.0",
+    "@custom-elements-manifest/analyzer": "^0.10.5",
     "@esm-bundle/chai": "~4.3.4-fix.0",
     "@open-wc/testing": "~4.0.0",
     "@playwright/test": "^1.51.1",
@@ -75,6 +77,7 @@
     "@web/test-runner": "~0.18.3",
     "@web/test-runner-playwright": "~0.11.0",
     "cross-env": "7.0.3",
+    "custom-elements-manifest": "^2.1.0",
     "lit": "~3.2.0",
     "mocha": "~10.7.0",
     "release-it": "~19.0.4",
@@ -87,5 +90,6 @@
   },
   "dependencies": {
     "@floating-ui/dom": "^1.7.1"
-  }
+  },
+  "customElements": "custom-elements.json"
 }
