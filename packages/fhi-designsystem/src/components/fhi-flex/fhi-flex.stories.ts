@@ -84,7 +84,7 @@ export const RowDirection: Story = {
       ${['Flex', 'med', 'row/default', 'direction'].map(
         word => html`
           <div
-            style="font-family: var(--fhi-font-family-default);background: var(--fhi-blue-100); padding: var(--fhi-spacing-200); border-radius: var(--fhi-border-radius-150); border: var(--fhi-dimension-border-width-active) dashed var(--fhi-blue-500); display: flex; justify-content: start; align-items: center;"
+            style="font-family: var(--fhi-font-family-default); color: var(--fhi-color-accent-text-subtle); background: var(--fhi-color-accent-background-subtle); border: var(--fhi-dimension-border-width) solid var(--fhi-color-accent-border-subtle); padding: var(--fhi-spacing-200); border-radius: var(--fhi-border-radius-150); display: flex; justify-content: start; align-items: center;"
           >
             ${word}
           </div>
@@ -105,7 +105,7 @@ export const ColumnDirection: Story = {
       ${['Flex', 'med', 'column', 'direction'].map(
         word => html`
           <div
-            style="font-family: var(--fhi-font-family-default);background: var(--fhi-blue-100); padding: var(--fhi-spacing-200); border-radius: var(--fhi-border-radius-150); border: var(--fhi-dimension-border-width-active) dashed var(--fhi-blue-500); display: flex; justify-content: start; align-items: center;"
+            style="font-family: var(--fhi-font-family-default); color: var(--fhi-color-accent-text-subtle); background: var(--fhi-color-accent-background-subtle); border: var(--fhi-dimension-border-width) solid var(--fhi-color-accent-border-subtle); padding: var(--fhi-spacing-200); border-radius: var(--fhi-border-radius-150); display: flex; justify-content: start; align-items: center;"
           >
             ${word}
           </div>
@@ -140,7 +140,7 @@ export const CustomGap: Story = {
       ${['Flex', 'med', 'custom', 'gap'].map(
         word => html`
           <div
-            style="font-family: var(--fhi-font-family-default);background: var(--fhi-blue-100); padding: var(--fhi-spacing-200); border-radius: var(--fhi-border-radius-150); border: var(--fhi-dimension-border-width-active) dashed var(--fhi-blue-500); display: flex; justify-content: start; align-items: center;"
+            style="font-family: var(--fhi-font-family-default); color: var(--fhi-color-accent-text-subtle); background: var(--fhi-color-accent-background-subtle); border: var(--fhi-dimension-border-width) solid var(--fhi-color-accent-border-subtle); padding: var(--fhi-spacing-200); border-radius: var(--fhi-border-radius-150); display: flex; justify-content: start; align-items: center;"
           >
             ${word}
           </div>
@@ -174,7 +174,7 @@ export const Wrap: Story = {
         .map(
           word => html`
             <div
-              style="font-family: var(--fhi-font-family-default);background: var(--fhi-blue-100); padding: var(--fhi-spacing-200); border-radius: var(--fhi-border-radius-150); border: var(--fhi-dimension-border-width-active) dashed var(--fhi-blue-500); display: flex; justify-content: start; align-items: center;"
+              style="font-family: var(--fhi-font-family-default); color: var(--fhi-color-accent-text-subtle); background: var(--fhi-color-accent-background-subtle); border: var(--fhi-dimension-border-width) solid var(--fhi-color-accent-border-subtle); padding: var(--fhi-spacing-200); border-radius: var(--fhi-border-radius-150); display: flex; justify-content: start; align-items: center;"
             >
               ${word}
             </div>
