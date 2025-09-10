@@ -5,11 +5,9 @@ import { html } from 'lit';
 
 import { FhiFlex } from './fhi-flex.component';
 import { FhiButton } from '../fhi-button/fhi-button.component';
-import { FhiIconArrowRightLeft } from '../icons/fhi-icon-arrow-right-left.component';
 
 new FhiFlex();
 new FhiButton();
-new FhiIconArrowRightLeft();
 
 const meta: Meta<FhiFlex> = {
   title: 'Komponenter/Flex',
@@ -83,42 +81,15 @@ export const RowDirection: Story = {
   },
   render: args => html`
     <fhi-flex direction=${args.direction} gap=${args.gap} ?wrap=${args.wrap}>
-      <section
-        style="background: #DAE7F7; padding: 1rem; border-radius: 12px; border: 2px dashed #2A76C6; display: flex; justify-content: start; align-items: center; gap: 1rem;"
-      >
-        <fhi-icon-arrow-right-left
-          size="small"
-          color="#2A76C6"
-        ></fhi-icon-arrow-right-left
-        >Flex
-      </section>
-      <section
-        style="background: #DAE7F7; padding: 1rem; border-radius: 12px; border: 2px dashed #2A76C6; display: flex; justify-content: start; align-items: center; gap: 1rem;"
-      >
-        <fhi-icon-arrow-right-left
-          size="small"
-          color="#2A76C6"
-        ></fhi-icon-arrow-right-left
-        >med
-      </section>
-      <section
-        style="background: #DAE7F7; padding: 1rem; border-radius: 12px; border: 2px dashed #2A76C6; display: flex; justify-content: start; align-items: center; gap: 1rem;"
-      >
-        <fhi-icon-arrow-right-left
-          size="small"
-          color="#2A76C6"
-        ></fhi-icon-arrow-right-left
-        >Default/row
-      </section>
-      <section
-        style="background: #DAE7F7; padding: 1rem; border-radius: 12px; border: 2px dashed #2A76C6; display: flex; justify-content: start; align-items: center; gap: 1rem;"
-      >
-        <fhi-icon-arrow-right-left
-          size="small"
-          color="#2A76C6"
-        ></fhi-icon-arrow-right-left
-        >direction
-      </section>
+      ${['Flex', 'med', 'row/default', 'direction'].map(
+        word => html`
+          <div
+            style="background: #DAE7F7; padding: 1rem; border-radius: 12px; border: 2px dashed #2A76C6; display: flex; justify-content: start; align-items: center; gap: 1rem;"
+          >
+            ${word}
+          </div>
+        `,
+      )}
     </fhi-flex>
   `,
 };
@@ -131,42 +102,15 @@ export const ColumnDirection: Story = {
   },
   render: args => html`
     <fhi-flex direction=${args.direction} gap=${args.gap} ?wrap=${args.wrap}>
-      <section
-        style="background: #DAE7F7; padding: 1rem; border-radius: 12px; border: 2px dashed #2A76C6; display: flex; justify-content: start; align-items: center; gap: 1rem;"
-      >
-        <fhi-icon-arrow-right-left
-          size="small"
-          color="#2A76C6"
-        ></fhi-icon-arrow-right-left
-        >Flex
-      </section>
-      <section
-        style="background: #DAE7F7; padding: 1rem; border-radius: 12px; border: 2px dashed #2A76C6; display: flex; justify-content: start; align-items: center; gap: 1rem;"
-      >
-        <fhi-icon-arrow-right-left
-          size="small"
-          color="#2A76C6"
-        ></fhi-icon-arrow-right-left
-        >med
-      </section>
-      <section
-        style="background: #DAE7F7; padding: 1rem; border-radius: 12px; border: 2px dashed #2A76C6; display: flex; justify-content: start; align-items: center; gap: 1rem;"
-      >
-        <fhi-icon-arrow-right-left
-          size="small"
-          color="#2A76C6"
-        ></fhi-icon-arrow-right-left
-        >column
-      </section>
-      <section
-        style="background: #DAE7F7; padding: 1rem; border-radius: 12px; border: 2px dashed #2A76C6; display: flex; justify-content: start; align-items: center; gap: 1rem;"
-      >
-        <fhi-icon-arrow-right-left
-          size="small"
-          color="#2A76C6"
-        ></fhi-icon-arrow-right-left
-        >direction
-      </section>
+      ${['Flex', 'med', 'column', 'direction'].map(
+        word => html`
+          <div
+            style="background: #DAE7F7; padding: 1rem; border-radius: 12px; border: 2px dashed #2A76C6; display: flex; justify-content: start; align-items: center; gap: 1rem;"
+          >
+            ${word}
+          </div>
+        `,
+      )}
     </fhi-flex>
   `,
 };
@@ -193,42 +137,15 @@ export const CustomGap: Story = {
   },
   render: args => html`
     <fhi-flex direction=${args.direction} gap=${args.gap} ?wrap=${args.wrap}>
-      <section
-        style="background: #DAE7F7; padding: 1rem; border-radius: 12px; border: 2px dashed #2A76C6; display: flex; justify-content: start; align-items: center; gap: 1rem;"
-      >
-        <fhi-icon-arrow-right-left
-          size="small"
-          color="#2A76C6"
-        ></fhi-icon-arrow-right-left
-        >Flex
-      </section>
-      <section
-        style="background: #DAE7F7; padding: 1rem; border-radius: 12px; border: 2px dashed #2A76C6; display: flex; justify-content: start; align-items: center; gap: 1rem;"
-      >
-        <fhi-icon-arrow-right-left
-          size="small"
-          color="#2A76C6"
-        ></fhi-icon-arrow-right-left
-        >med
-      </section>
-      <section
-        style="background: #DAE7F7; padding: 1rem; border-radius: 12px; border: 2px dashed #2A76C6; display: flex; justify-content: start; align-items: center; gap: 1rem;"
-      >
-        <fhi-icon-arrow-right-left
-          size="small"
-          color="#2A76C6"
-        ></fhi-icon-arrow-right-left
-        >custom
-      </section>
-      <section
-        style="background: #DAE7F7; padding: 1rem; border-radius: 12px; border: 2px dashed #2A76C6; display: flex; justify-content: start; align-items: center; gap: 1rem;"
-      >
-        <fhi-icon-arrow-right-left
-          size="small"
-          color="#2A76C6"
-        ></fhi-icon-arrow-right-left
-        >gap
-      </section>
+      ${['Flex', 'med', 'custom', 'gap'].map(
+        word => html`
+          <div
+            style="background: #DAE7F7; padding: 1rem; border-radius: 12px; border: 2px dashed #2A76C6; display: flex; justify-content: start; align-items: center; gap: 1rem;"
+          >
+            ${word}
+          </div>
+        `,
+      )}
     </fhi-flex>
   `,
 };
@@ -252,123 +169,37 @@ export const Wrap: Story = {
   },
   render: args => html`
     <fhi-flex direction=${args.direction} gap=${args.gap} ?wrap=${args.wrap}>
-      <section
-        style="background: #DAE7F7; padding: 1rem; border-radius: 12px; border: 2px dashed #2A76C6; display: flex; justify-content: start; align-items: center; gap: 1rem;"
-      >
-        <fhi-icon-arrow-right-left
-          size="small"
-          color="#2A76C6"
-        ></fhi-icon-arrow-right-left
-        >Flex
-      </section>
-      <section
-        style="background: #DAE7F7; padding: 1rem; border-radius: 12px; border: 2px dashed #2A76C6; display: flex; justify-content: start; align-items: center; gap: 1rem;"
-      >
-        <fhi-icon-arrow-right-left
-          size="small"
-          color="#2A76C6"
-        ></fhi-icon-arrow-right-left
-        >med
-      </section>
-      <section
-        style="background: #DAE7F7; padding: 1rem; border-radius: 12px; border: 2px dashed #2A76C6; display: flex; justify-content: start; align-items: center; gap: 1rem;"
-      >
-        <fhi-icon-arrow-right-left
-          size="small"
-          color="#2A76C6"
-        ></fhi-icon-arrow-right-left
-        >Wrap
-      </section>
-      <section
-        style="background: #DAE7F7; padding: 1rem; border-radius: 12px; border: 2px dashed #2A76C6; display: flex; justify-content: start; align-items: center; gap: 1rem;"
-      >
-        <fhi-icon-arrow-right-left
-          size="small"
-          color="#2A76C6"
-        ></fhi-icon-arrow-right-left
-        >på
-      </section>
-      <section
-        style="background: #DAE7F7; padding: 1rem; border-radius: 12px; border: 2px dashed #2A76C6; display: flex; justify-content: start; align-items: center; gap: 1rem;"
-      >
-        <fhi-icon-arrow-right-left
-          size="small"
-          color="#2A76C6"
-        ></fhi-icon-arrow-right-left
-        >Section
-      </section>
-      <section
-        style="background: #DAE7F7; padding: 1rem; border-radius: 12px; border: 2px dashed #2A76C6; display: flex; justify-content: start; align-items: center; gap: 1rem;"
-      >
-        <fhi-icon-arrow-right-left
-          size="small"
-          color="#2A76C6"
-        ></fhi-icon-arrow-right-left
-        >Section
-      </section>
-      <section
-        style="background: #DAE7F7; padding: 1rem; border-radius: 12px; border: 2px dashed #2A76C6; display: flex; justify-content: start; align-items: center; gap: 1rem;"
-      >
-        <fhi-icon-arrow-right-left
-          size="small"
-          color="#2A76C6"
-        ></fhi-icon-arrow-right-left
-        >Section
-      </section>
-      <section
-        style="background: #DAE7F7; padding: 1rem; border-radius: 12px; border: 2px dashed #2A76C6; display: flex; justify-content: start; align-items: center; gap: 1rem;"
-      >
-        <fhi-icon-arrow-right-left
-          size="small"
-          color="#2A76C6"
-        ></fhi-icon-arrow-right-left
-        >Section
-      </section>
-      <section
-        style="background: #DAE7F7; padding: 1rem; border-radius: 12px; border: 2px dashed #2A76C6; display: flex; justify-content: start; align-items: center; gap: 1rem;"
-      >
-        <fhi-icon-arrow-right-left
-          size="small"
-          color="#2A76C6"
-        ></fhi-icon-arrow-right-left
-        >Section
-      </section>
-      <section
-        style="background: #DAE7F7; padding: 1rem; border-radius: 12px; border: 2px dashed #2A76C6; display: flex; justify-content: start; align-items: center; gap: 1rem;"
-      >
-        <fhi-icon-arrow-right-left
-          size="small"
-          color="#2A76C6"
-        ></fhi-icon-arrow-right-left
-        >Section
-      </section>
-      <section
-        style="background: #DAE7F7; padding: 1rem; border-radius: 12px; border: 2px dashed #2A76C6; display: flex; justify-content: start; align-items: center; gap: 1rem;"
-      >
-        <fhi-icon-arrow-right-left
-          size="small"
-          color="#2A76C6"
-        ></fhi-icon-arrow-right-left
-        >Section
-      </section>
-      <section
-        style="background: #DAE7F7; padding: 1rem; border-radius: 12px; border: 2px dashed #2A76C6; display: flex; justify-content: start; align-items: center; gap: 1rem;"
-      >
-        <fhi-icon-arrow-right-left
-          size="small"
-          color="#2A76C6"
-        ></fhi-icon-arrow-right-left
-        >Section
-      </section>
-      <section
-        style="background: #DAE7F7; padding: 1rem; border-radius: 12px; border: 2px dashed #2A76C6; display: flex; justify-content: start; align-items: center; gap: 1rem;"
-      >
-        <fhi-icon-arrow-right-left
-          size="small"
-          color="#2A76C6"
-        ></fhi-icon-arrow-right-left
-        >Section
-      </section>
+      ${[
+        'Flex',
+        'med',
+        'wrap',
+        'på',
+        'element',
+        'element',
+        'element',
+        'element',
+        'element',
+        'element',
+        'element',
+        'element',
+        'element',
+        'element',
+        'element',
+        'element',
+        'element',
+        'element',
+        'element',
+        'element',
+        'element',
+      ].map(
+        word => html`
+          <div
+            style="background: #DAE7F7; padding: 1rem; border-radius: 12px; border: 2px dashed #2A76C6; display: flex; justify-content: start; align-items: center; gap: 1rem;"
+          >
+            ${word}
+          </div>
+        `,
+      )}
     </fhi-flex>
   `,
 };
