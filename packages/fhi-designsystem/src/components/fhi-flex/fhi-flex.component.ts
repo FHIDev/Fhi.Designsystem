@@ -39,14 +39,14 @@ export class FhiFlex extends LitElement {
 
   static styles = css`
     :host {
-      --spacing-gap-small: var(--fhi-spacing-100);
-      --spacing-gap-medium: var(--fhi-spacing-200);
-      --spacing-gap-large: var(--fhi-spacing-300);
+      --dimension-gap-small: var(--fhi-spacing-100);
+      --dimension-gap-medium: var(--fhi-spacing-200);
+      --dimension-gap-large: var(--fhi-spacing-300);
     }
 
     :host {
       display: flex;
-      gap: var(--spacing-gap-medium);
+      gap: var(--dimension-gap-medium);
     }
 
     :host([wrap]) {
@@ -62,15 +62,15 @@ export class FhiFlex extends LitElement {
     }
 
     :host([gap='small']) {
-      gap: var(--spacing-gap-small);
+      gap: var(--dimension-gap-small);
     }
 
     :host([gap='medium']) {
-      gap: var(--spacing-gap-medium);
+      gap: var(--dimension-gap-medium);
     }
 
     :host([gap='large']) {
-      gap: var(--spacing-gap-large);
+      gap: var(--dimension-gap-large);
     }
   `;
 }
