@@ -1,9 +1,15 @@
-import { litPlugin } from 'cem-plugin-lit-describe';
+import { getTsProgram, typeParserPlugin } from '@wc-toolkit/type-parser';
 
 export default {
-  globs: ['packages/fhi-designsystem/src/components/**/*.ts'],
+  globs: ['src/components/**/*.ts'],
   exclude: ['**/*.test.ts', '**/*.stories.ts'],
-  plugins: [litPlugin()],
-  outdir: 'packages/fhi-designsystem/custom-elements.json',
-  litelement: true,
+  // Give the plugin access to the TypeScript type checker
+  overrideModuleCreation({ ts, globs }) {
+    const program = getTsProgram(ts, globs, 'tsconfig.json');
+    return program
+      .getSourceFiles()
+      .filter(sf => globs.find(glob => sf.fileName.includes(glob)));
+  },
+  plugins: [typeParserPlugin()],
+  outdir: '/dist/npm',
 };

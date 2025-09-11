@@ -3,6 +3,7 @@
   "author": "FHI Designsystem team",
   "name": "@folkehelseinstituttet/designsystem",
   "version": "0.8.0",
+  "customElements": "/dist/npm/custom-elements.json",
   "description": "The official design system for the Norwegian Institute of Public Health implemented as web components",
   "keywords": [
     "fhi",
@@ -30,15 +31,25 @@
     "last 2 versions"
   ],
   "files": [
-    "*"
+    "dist/npm/",
+    "custom-elements.json"
   ],
-  "main": "index.js",
+  "types": "dist/npm/index.d.ts",
+  "main": "dist/npm/index.js",
+  "module": "dist/npm/index.js",
+  "exports": {
+    ".": {
+      "import": "./dist/npm/index.js",
+      "types": "./dist/npm/index.d.ts"
+    }
+  },
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "pnpm build:cdn && pnpm build:npm",
+    "build": "pnpm clean && pnpm analyze && pnpm build:cdn && pnpm build:npm",
     "build:cdn": "tsc && cross-env DEPLOY_TARGET=cdn vite build",
     "build:npm": "tsc && cross-env DEPLOY_TARGET=npm vite build",
+    "clean": "rimraf dist custom-elements.json",
     "storybook": "storybook dev -p 6006",
     "storybook:build": "storybook build",
     "generate:icons": "node ./scripts/generate-icon-components.js --input ./src/assets/icons/ --output ./src/components/icons --clean-output-folder",
@@ -81,6 +92,7 @@
     "lit": "~3.2.0",
     "mocha": "~10.7.0",
     "release-it": "~19.0.4",
+    "rimraf": "^5.0.10",
     "storybook": "~8.3.0",
     "storybook-design-token": "^3.2.0",
     "svgo": "^3.3.2",
@@ -90,6 +102,5 @@
   },
   "dependencies": {
     "@floating-ui/dom": "^1.7.1"
-  },
-  "customElements": "custom-elements.json"
+  }
 }
