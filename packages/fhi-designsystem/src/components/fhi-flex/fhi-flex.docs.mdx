@@ -1,0 +1,53 @@
+import { FhiFlex } from './fhi-flex.component';
+import * as FhiFlexStories from './fhi-flex.stories.ts';
+import {
+    Meta,
+    Title,
+    Primary,
+    Canvas,
+    Story,
+    Controls,
+} from '@storybook/blocks';
+
+<Meta of={FhiFlexStories} />
+
+# Flex
+
+Flex er en layoutkomponent som gjør det enkelt å lage fleksible og responsive oppsett ved hjelp av CSS Flexbox. Den gir kontroll over retning, mellomrom, og innpakning av innholdselementer.
+
+## Passer til
+
+- Gruppering av elementer som passer sammen. 
+- Lage fleksible og responsive oppsett som tilpasser seg ulike skjermstørrelser.
+- Justere avstand mellom elementer for å skape visuell balanse.
+- Organisere innhold i rader eller kolonner med enkel konfigurasjon.
+
+<Canvas of={FhiFlexStories.Preview} />
+> *Eksempel på lignende elementer gruppert sammen med flexbox*
+<Controls />
+
+## Retning
+
+Bestemmer om elementene skal arrangeres i en rad eller kolonne. Default er rad.
+
+### Row/default
+
+<Canvas of={FhiFlexStories.RowDirection} />
+
+### Column
+
+<Canvas of={FhiFlexStories.ColumnDirection} />
+
+## Gap
+
+Bestemmer mellomrom mellom elementene.
+
+<Canvas of={FhiFlexStories.CustomGap} />
+
+## Wrap
+
+Wrap styrer om elementene skal bryte til neste linje når det ikke lenger er plass til nye elementer Gjelder som regel kun for rader.
+
+<Canvas of={FhiFlexStories.Wrap} />
+
+
