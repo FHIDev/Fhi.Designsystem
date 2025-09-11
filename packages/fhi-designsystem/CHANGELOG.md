@@ -1,5 +1,22 @@
 # Changelog
 
+## [0.13.0](https://github.com/FHIDev/Fhi.Designsystem/compare/v0.12.0...v0.13.0) (2025-09-11)
+
+
+### 🚀 Features
+
+* New Component: Flex ([#246](https://github.com/FHIDev/Fhi.Designsystem/issues/246)) ([169edcc](https://github.com/FHIDev/Fhi.Designsystem/commit/169edcce48cb12382394ed9fdf6f0f68006299d2))
+
+
+### 📑 Documentation
+
+* Add FAQ section to storybook ([#220](https://github.com/FHIDev/Fhi.Designsystem/issues/220)) ([3c5d769](https://github.com/FHIDev/Fhi.Designsystem/commit/3c5d7695f919ac559ccc024f954177893b1b3ea0))
+
+
+### Other
+
+* Type issue with Tooltip property ([#242](https://github.com/FHIDev/Fhi.Designsystem/issues/242)) ([3ba42fb](https://github.com/FHIDev/Fhi.Designsystem/commit/3ba42fb2d548691bf3453f511c7959b6730f89f7))
+
 ## [0.12.0](https://github.com/FHIDev/Fhi.Designsystem/compare/v0.11.0...v0.12.0) (2025-09-08)
 
 
