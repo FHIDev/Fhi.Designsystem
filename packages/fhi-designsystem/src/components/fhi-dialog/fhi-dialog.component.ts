@@ -2,6 +2,7 @@ import { html, css, LitElement, PropertyValues } from 'lit';
 import { customElement, property, query } from 'lit/decorators.js';
 
 import '../fhi-button/fhi-button.component';
+import '../icons/fhi-icon-x.component';
 
 export const FhiDialogSelector = 'fhi-dialog';
 
@@ -106,13 +107,21 @@ export class FhiDialog extends LitElement {
     return html`<dialog open=${this.open} @click=${this._handleSlotClick}>
       <header>
         <h1>${this.heading}</h1>
-        <fhi-button @click=${() => (this.open = false)}>Lukk</fhi-button>
+        <fhi-button
+          icon-only
+          variant="text"
+          color="neutral"
+          @click=${() => (this.open = false)}
+          aria-label="Close dialog"
+        >
+          <fhi-icon-x></fhi-icon-x>
+        </fhi-button>
       </header>
       <section>
-        <slot></slot>
+        <slot name="body"></slot>
       </section>
       <footer>
-        <fhi-button @click=${() => (this.open = false)}>Lukk</fhi-button>
+        <slot name="footer"></slot>
       </footer>
     </dialog>`;
   }
@@ -145,6 +154,13 @@ export class FhiDialog extends LitElement {
           justify-content: space-between;
           align-items: center;
           gap: 2rem;
+        }
+        footer {
+          display: flex;
+          justify-content: flex-end;
+          align-items: center;
+          gap: var(--fhi-spacing-050);
+          flex-wrap: wrap;
         }
       }
     }
