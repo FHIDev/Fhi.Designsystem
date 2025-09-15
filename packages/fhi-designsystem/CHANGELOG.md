@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.14.0](https://github.com/FHIDev/Fhi.Designsystem/compare/v0.13.0...v0.14.0) (2025-09-15)
+
+
+### 🚀 Features
+
+* Endret padding på text-button. ([98a9c88](https://github.com/FHIDev/Fhi.Designsystem/commit/98a9c885d042f633b8439decb6489f58bec7fb8f))
+
 ## [0.13.0](https://github.com/FHIDev/Fhi.Designsystem/compare/v0.12.0...v0.13.0) (2025-09-11)
 
 
