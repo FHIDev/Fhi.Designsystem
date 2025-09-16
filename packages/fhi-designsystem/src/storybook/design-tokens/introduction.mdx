@@ -5,6 +5,24 @@ import { DesignTokenDocBlock } from 'storybook-design-token';
 
 # Design tokens i FHI Designsystem
 
+## Hva er designtokens?
+
+Designtokens er variabler som definerer blandt annet farger, typografi og avstander. De gjør det mulig å holde designet konsistent mellom 
+komponeneter, og gir en effektiv måte å håndtere og bruke designelementer på. Bruk av designtokens gjør det lett å oppretteholde konsistens i 
+designet, og å gjøre endringer på tvers av hele nettstedet ved å endre på noen få verdier. 
+
+## Designtokens for utviklere
+
+I kode er designtokens representert som [CSS custom properties](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_cascading_variables/Using_CSS_custom_properties) (variabler).
+Ved å bruke våre variabler (tokens) istedenfor å hardkode egne variabler får du konsistent utseende sammen med våre komponenter og de komponentene du selv lager i din løsning. 
+Variablene skal ikke overskrives. På den måten får du automatisk med deg eventuelle endringer på farger og størrelser ved å bare oppdatere versjonen på designsystemet.
+Etter at CSS-filen er importert i prosjektet ditt kan du bruke CSS variablene slik:
+```
+.din-klasse {
+  color: var(--fhi-color-neutral-background-default);
+}
+```
+
 ## Farger
 
 Våre farger er delt opp i to lag med design tokens:
