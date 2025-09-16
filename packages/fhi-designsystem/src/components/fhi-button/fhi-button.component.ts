@@ -3,6 +3,27 @@ import { customElement, property } from 'lit/decorators.js';
 
 export const FhiButtonSelector = 'fhi-button';
 
+/**
+ * @tag fhi-button
+ * @tagName fhi-button
+ *
+ * @prop {string} color - Defines the color of the button with the semantic values accent, neutral and danger. Default = accent.
+ * @prop {strong|subtle|outlined|text} variant - semantic values for the avaialable variants strong, subtle, outlined and text.
+ * @prop {string} size - defines size of button.
+ *
+ * @property {string} type - The type of the button. When used in a form, 'submit' will submit the form, and 'reset' will reset it. Default is 'submit'.
+ *
+ * @attribute {accent|neutral|danger} color - Defines the color of the button. Default is 'accent'.
+ * @attribute {strong|subtle|outlined|text} variant - Defines the visual style of the button. Default is 'strong'.
+ * @attribute {large|medium|small} size - Defines the size of the button. Default is 'medium'.
+ * @attribute {boolean} disabled - Disables the button, making it non-interactive.
+ *
+ * @slot - The content of the button, typically text or an icon.
+ *
+ * @cssprop [--fhi-border-radius-full] --dimension-border-radius - Controls the border radius of the button.
+ *
+ * @fires click - Fired when the user clicks the button.
+ */
 @customElement(FhiButtonSelector)
 export class FhiButton extends LitElement {
   static readonly formAssociated = true;
@@ -722,4 +743,12 @@ export class FhiButton extends LitElement {
       }
     }
   `;
+}
+
+customElements.define('fhi-button', FhiButton);
+declare global {
+  //should be there for types
+  interface HTMLElementTagNameMap {
+    'fhi-button': FhiButton;
+  }
 }

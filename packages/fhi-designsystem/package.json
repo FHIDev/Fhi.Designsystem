@@ -30,15 +30,32 @@
     "last 2 versions"
   ],
   "files": [
-    "*"
+    "*.js",
+    "*.js.map",
+    "*.d.ts",
+    "theme/",
+    "custom-elements.json",
+    "vscode.html-custom-data.json",
+    "vscode.css-custom-data.json",
+    "dist/npm"
   ],
   "main": "index.js",
+  "module": "index.js",
+  "types": "*.d.ts",
+  "exports": {
+    ".": {
+      "import": "./index.js",
+      "types": "./index.d.ts"
+    },
+    "./theme/default.css": "./theme/default.css",
+    "./custom-elements.json": "./custom-elements.json"
+  },
   "type": "module",
   "scripts": {
     "dev": "vite",
     "build": "pnpm build:cdn && pnpm build:npm",
     "build:cdn": "tsc && cross-env DEPLOY_TARGET=cdn vite build",
-    "build:npm": "tsc && cross-env DEPLOY_TARGET=npm vite build",
+    "build:npm": "cross-env DEPLOY_TARGET=npm vite build",
     "storybook": "storybook dev -p 6006",
     "storybook:build": "storybook build",
     "generate:icons": "node ./scripts/generate-icon-components.js --input ./src/assets/icons/ --output ./src/components/icons --clean-output-folder",
@@ -50,13 +67,15 @@
     "format:eslint": "eslint \"**/*.{js,ts}\" --fix",
     "format:prettier": "prettier \"**/*.js\" --write --ignore-path .gitignore",
     "publish:npm": "pnpm build && cd dist/npm && npm publish",
-    "changelog:ci": "release-it --ci"
+    "changelog:ci": "release-it --ci",
+    "analyze": "cem analyze --litelement"
   },
   "peerDependencies": {
     "lit": "~3.2.0"
   },
   "devDependencies": {
     "@chromatic-com/storybook": "~1.9.0",
+    "@custom-elements-manifest/analyzer": "^0.10.5",
     "@esm-bundle/chai": "~4.3.4-fix.0",
     "@open-wc/testing": "~4.0.0",
     "@playwright/test": "^1.51.1",
@@ -70,11 +89,16 @@
     "@storybook/web-components-vite": "~8.3.0",
     "@types/mocha": "~10.0.0",
     "@types/node": "~22.5.0",
+    "@wc-toolkit/cem-sorter": "^1.0.1",
+    "@wc-toolkit/cem-utilities": "^1.4.1",
+    "@wc-toolkit/type-parser": "^1.2.0",
     "@web/dev-server": "~0.4.6",
     "@web/dev-server-esbuild": "~1.0.2",
     "@web/test-runner": "~0.18.3",
     "@web/test-runner-playwright": "~0.11.0",
     "cross-env": "7.0.3",
+    "custom-element-vs-code-integration": "^1.5.0",
+    "custom-elements-manifest": "^2.1.0",
     "lit": "~3.2.0",
     "mocha": "~10.7.0",
     "release-it": "~19.0.4",
@@ -86,6 +110,8 @@
     "vite-plugin-static-copy": "~1.0.6"
   },
   "dependencies": {
-    "@floating-ui/dom": "^1.7.1"
-  }
+    "@floating-ui/dom": "^1.7.1",
+    "typescript": "^5.9.2"
+  },
+  "customElements": "custom-elements.json"
 }

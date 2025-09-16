@@ -1,0 +1,43 @@
+{
+  "$schema": "https://raw.githubusercontent.com/microsoft/vscode-html-languageservice/main/docs/customData.schema.json",
+  "version": 1.1,
+  "tags": [
+    {
+      "name": "fhi-button",
+      "description": "\n---\n\n\n### **Events:**\n - **click** - Fired when the user clicks the button.\n\n### **Slots:**\n - _default_ - The content of the button, typically text or an icon.\n\n### **CSS Properties:**\n - **--fhi-border-radius-full** - --dimension-border-radius - Controls the border radius of the button. _(default: undefined)_",
+      "attributes": [
+        {
+          "name": "color",
+          "description": "Defines the color of the button with the semantic values accent, neutral and danger. Default = accent.",
+          "values": []
+        },
+        {
+          "name": "disabled",
+          "description": "Disables the button, making it non-interactive.",
+          "values": []
+        },
+        {
+          "name": "size",
+          "description": "defines size of button.",
+          "values": []
+        },
+        {
+          "name": "type",
+          "description": "The type of the button. When used in a form, 'submit' will submit the form, and 'reset' will reset it. Default is 'submit'.",
+          "values": []
+        },
+        {
+          "name": "variant",
+          "description": "semantic values for the avaialable variants strong, subtle, outlined and text.",
+          "values": [
+            { "name": "strong" },
+            { "name": "subtle" },
+            { "name": "outlined" },
+            { "name": "text" }
+          ]
+        }
+      ],
+      "references": []
+    }
+  ]
+}

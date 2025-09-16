@@ -2,6 +2,7 @@ import { defineConfig, loadEnv } from 'vite';
 import { viteStaticCopy } from 'vite-plugin-static-copy';
 import generateFile from 'vite-plugin-generate-file';
 import fs from 'fs';
+import dts from 'vite-plugin-dts';
 import path from 'path';
 
 const OUTPUT_DIRECTORY = 'dist';
@@ -80,6 +81,25 @@ export default defineConfig(({ mode }) => {
     };
   }
 
+  function createExportsMap() {
+    const exportsMap = {
+      '.': {
+        import: './index.js',
+        types: './index.d.ts',
+      },
+      './theme/default.css': './theme/default.css',
+      './custom-elements.json': './custom-elements.json',
+    };
+
+    for (const component of Object.keys(listOfComponents)) {
+      exportsMap[`./${component}`] = {
+        import: `./${component}.js`,
+        types: `./${component}.d.ts`,
+      };
+    }
+    return exportsMap;
+  }
+
   switch (env.DEPLOY_TARGET) {
     case 'cdn':
       return {
@@ -116,6 +136,12 @@ export default defineConfig(({ mode }) => {
     case 'npm':
       return {
         plugins: [
+          dts({
+            entryRoot: 'src',
+            outDir: `${OUTPUT_DIRECTORY}/npm`,
+            tsconfigPath: './tsconfig.json',
+            rollupTypes: true,
+          }),
           resolveVirtualModule({
             moduleId: virtualLibraryModule.path,
             moduleContent: virtualLibraryModule.code,
@@ -125,9 +151,26 @@ export default defineConfig(({ mode }) => {
               {
                 src: 'package.json',
                 dest: './',
+                transform: content => {
+                  const pkg = JSON.parse(content.toString());
+                  pkg.exports = createExportsMap();
+                  return JSON.stringify(pkg, null, 2);
+                },
               },
               {
                 src: 'README.md',
+                dest: './',
+              },
+              {
+                src: 'custom-elements.json',
+                dest: './',
+              },
+              {
+                src: 'vscode.html-custom-data.json',
+                dest: './',
+              },
+              {
+                src: 'vscode.css-custom-data.json',
                 dest: './',
               },
             ],
@@ -135,6 +178,7 @@ export default defineConfig(({ mode }) => {
         ],
         build: {
           cssCodeSplit: true,
+          emptyOutDir: true,
           lib: {
             formats: ['es'],
             entry: {

@@ -1,0 +1,12 @@
+{
+  "$schema": "https://raw.githubusercontent.com/microsoft/vscode-css-languageservice/main/docs/customData.schema.json",
+  "version": 1.1,
+  "properties": [
+    {
+      "name": "--fhi-border-radius-full",
+      "description": "--dimension-border-radius - Controls the border radius of the button.",
+      "values": []
+    }
+  ],
+  "pseudoElements": []
+}
