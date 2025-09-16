@@ -8,11 +8,12 @@ export const FhiDialogSelector = 'fhi-dialog';
 
 @customElement(FhiDialogSelector)
 export class FhiDialog extends LitElement {
+  static readonly zIndex = 2000;
   static openDialogs = 0;
 
-  @property({ type: Boolean, reflect: true }) open = false;
+  @property({ type: Boolean, reflect: true }) open: boolean = false;
 
-  @property({ type: String }) heading = undefined;
+  @property({ type: String }) heading?: string = undefined;
 
   @query('dialog') _dialog!: HTMLDialogElement;
 
@@ -41,7 +42,7 @@ export class FhiDialog extends LitElement {
       if (this.open) {
         FhiDialog.openDialogs += 1;
 
-        this.style.zIndex = `${2000 + FhiDialog.openDialogs}`;
+        this.style.zIndex = `${FhiDialog.zIndex + FhiDialog.openDialogs}`;
 
         this._dialog.focus();
 
@@ -73,7 +74,7 @@ export class FhiDialog extends LitElement {
     }
 
     // Only trap focus for the topmost dialog
-    if (this.style.zIndex !== `${2000 + FhiDialog.openDialogs}`) {
+    if (this.style.zIndex !== `${FhiDialog.zIndex + FhiDialog.openDialogs}`) {
       return;
     }
 
