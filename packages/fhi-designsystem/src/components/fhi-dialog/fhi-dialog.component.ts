@@ -19,7 +19,8 @@ export class FhiDialog extends LitElement {
   connectedCallback(): void {
     super.connectedCallback();
 
-    window.addEventListener('focusin', this._focusTrap);
+    window.addEventListener('focusin', this._focusTrap.bind(this));
+    window.addEventListener('keydown', this._handleEscapeClick.bind(this));
 
     this.addEventListener('click', this._handleBackdropClick);
   }
@@ -28,6 +29,7 @@ export class FhiDialog extends LitElement {
     super.disconnectedCallback();
 
     window.removeEventListener('focusin', this._focusTrap);
+    window.removeEventListener('keydown', this._handleEscapeClick);
 
     this.addEventListener('click', this._handleBackdropClick);
   }
@@ -101,6 +103,18 @@ export class FhiDialog extends LitElement {
     if (event.target === this) {
       this.close();
     }
+  }
+
+  private _handleEscapeClick(event: KeyboardEvent) {
+    if (!this.open) {
+      return;
+    }
+
+    if (event.key === 'Escape') {
+      this.close();
+    }
+
+    console.log(event.key, this.open);
   }
 
   render() {
