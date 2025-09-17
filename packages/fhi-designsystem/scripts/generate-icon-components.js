@@ -106,6 +106,9 @@ export class ${webComponentName} extends LitElement {
       case 'large':
         return '32px'; 
       default:
+        if (/^-?\\d*\\.?\\d+(px|rem)$/.test(String(this.size))) {
+          return String(this.size);
+        }
         if (isNaN(Number(this.size))) {
           console.warn(\`Invalid size value: \${this.size}. Falling back to default size '24px'.\`)
           return '24px';
@@ -212,7 +215,7 @@ const meta: Meta<${iconKomponentName}> = {
     },
     size: {
       control: 'text',
-      description: 'Setter størrelsen på ikonet. Kan være en av de forhåndsdefinerte størrelsene (<code>xsmall</code>, <code>small</code>, <code>medium</code> eller <code>large</code>) eller en egendefinert størrelse. Tallverdier blir angitt som px.',
+      description: 'Setter størrelsen på ikonet. Kan være en av de forhåndsdefinerte størrelsene (<code>xsmall</code>, <code>small</code>, <code>medium</code> eller <code>large</code>) eller en egendefinert størrelse som tallverdi, <code>rem</code> eller <code>px</code> Eksempel: <code>3rem</code>. Rene tallverdier blir angitt som px.',
       defaultValue: { summary: 'medium' },
     },
   },
