@@ -94,7 +94,7 @@ export const ${webComponentName}Selector = "${customElementSelector}";
 @customElement(${webComponentName}Selector)
 export class ${webComponentName} extends LitElement {
   @property({ type: String }) color: string = "currentcolor";
-  @property({ type: String }) size: 'xsmall' | 'small' | 'medium' | 'large' | number = 'medium';
+  @property({ type: String }) size: 'xsmall' | 'small' | 'medium' | 'large' | number | string = 'medium';
   private get _size(): string {
     switch (this.size) {
       case 'xsmall': 
