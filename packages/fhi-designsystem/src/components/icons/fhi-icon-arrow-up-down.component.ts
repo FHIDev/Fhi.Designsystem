@@ -10,7 +10,7 @@ export const FhiIconArrowUpDownSelector = "fhi-icon-arrow-up-down";
 @customElement(FhiIconArrowUpDownSelector)
 export class FhiIconArrowUpDown extends LitElement {
   @property({ type: String }) color: string = "currentcolor";
-  @property({ type: String }) size: 'xsmall' | 'small' | 'medium' | 'large' | number = 'medium';
+  @property({ type: String }) size: 'xsmall' | 'small' | 'medium' | 'large' | number | string = 'medium';
   private get _size(): string {
     switch (this.size) {
       case 'xsmall': 
@@ -22,7 +22,7 @@ export class FhiIconArrowUpDown extends LitElement {
       case 'large':
         return '32px'; 
       default:
-        if (/^-?\d*\.?\d+(px|rem)$/.test(String(this.size))) {
+        if (String(this.size).endsWith('px') || String(this.size).endsWith('rem')) {
           return String(this.size);
         }
         if (isNaN(Number(this.size))) {

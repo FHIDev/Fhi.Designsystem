@@ -10,7 +10,7 @@ export const FhiIconRotateRightSelector = "fhi-icon-rotate-right";
 @customElement(FhiIconRotateRightSelector)
 export class FhiIconRotateRight extends LitElement {
   @property({ type: String }) color: string = "currentcolor";
-  @property({ type: String }) size: 'xsmall' | 'small' | 'medium' | 'large' | number = 'medium';
+  @property({ type: String }) size: 'xsmall' | 'small' | 'medium' | 'large' | number | string = 'medium';
   private get _size(): string {
     switch (this.size) {
       case 'xsmall': 
@@ -22,7 +22,7 @@ export class FhiIconRotateRight extends LitElement {
       case 'large':
         return '32px'; 
       default:
-        if (/^-?\d*\.?\d+(px|rem)$/.test(String(this.size))) {
+        if (String(this.size).endsWith('px') || String(this.size).endsWith('rem')) {
           return String(this.size);
         }
         if (isNaN(Number(this.size))) {
