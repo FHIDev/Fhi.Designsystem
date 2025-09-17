@@ -13,6 +13,9 @@ export class FhiDialog extends LitElement {
 
   @property({ type: Boolean, reflect: true }) open: boolean = false;
 
+  @property({ type: String, reflect: true, attribute: 'close-button-label' })
+  closeButtonLabel: string = 'Lukk';
+
   @property({ type: String }) heading?: string = undefined;
 
   @query('dialog') _dialog!: HTMLDialogElement;
@@ -114,8 +117,6 @@ export class FhiDialog extends LitElement {
     if (event.key === 'Escape') {
       this.close();
     }
-
-    console.log(event.key, this.open);
   }
 
   render() {
@@ -123,12 +124,12 @@ export class FhiDialog extends LitElement {
       <header>
         <h1>${this.heading}</h1>
         <fhi-button
-          icon-only
           variant="text"
           color="neutral"
-          @click=${() => (this.open = false)}
+          @click=${this.close}
           aria-label="Close dialog"
         >
+          ${this.closeButtonLabel}
           <fhi-icon-x></fhi-icon-x>
         </fhi-button>
       </header>
