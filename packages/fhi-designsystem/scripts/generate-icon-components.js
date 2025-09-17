@@ -106,7 +106,7 @@ export class ${webComponentName} extends LitElement {
       case 'large':
         return '32px'; 
       default:
-        if (/^-?\\d*\\.?\\d+(px|rem)$/.test(String(this.size))) {
+        if (String(this.size).endsWith('px') || String(this.size).endsWith('rem')) {
           return String(this.size);
         }
         if (isNaN(Number(this.size))) {
