@@ -29,7 +29,7 @@ const meta: Meta<FhiIconArrowDownLeft> = {
     },
     size: {
       control: 'text',
-      description: 'Setter størrelsen på ikonet. Kan være en av de forhåndsdefinerte størrelsene (<code>xsmall</code>, <code>small</code>, <code>medium</code> eller <code>large</code>) eller en egendefinert størrelse. Tallverdier blir angitt som px.',
+      description: 'Setter størrelsen på ikonet. Kan være en av de forhåndsdefinerte størrelsene (<code>xsmall</code>, <code>small</code>, <code>medium</code> eller <code>large</code>) eller en egendefinert størrelse som tallverdi, <code>rem</code> eller <code>px</code> Eksempel: <code>3rem</code>. Rene tallverdier blir angitt som px.',
       defaultValue: { summary: 'medium' },
     },
   },

@@ -22,6 +22,9 @@ export class FhiIconMinus extends LitElement {
       case 'large':
         return '32px'; 
       default:
+        if (/^-?\d*\.?\d+(px|rem)$/.test(String(this.size))) {
+          return String(this.size);
+        }
         if (isNaN(Number(this.size))) {
           console.warn(`Invalid size value: ${this.size}. Falling back to default size '24px'.`)
           return '24px';
