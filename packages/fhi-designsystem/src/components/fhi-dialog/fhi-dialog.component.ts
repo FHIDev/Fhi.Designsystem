@@ -13,8 +13,9 @@ export class FhiDialog extends LitElement {
 
   @property({ type: Boolean, reflect: true }) open: boolean = false;
 
-  @property({ type: String, reflect: true, attribute: 'close-button-label' })
-  closeButtonLabel: string = 'Lukk';
+  @property({ type: String, attribute: 'max-width' }) maxWidth:
+    | 'small'
+    | 'medium' = 'medium';
 
   @property({ type: String }) heading?: string = undefined;
 
@@ -122,14 +123,14 @@ export class FhiDialog extends LitElement {
   render() {
     return html`<dialog open=${this.open} @click=${this._handleSlotClick}>
       <header>
-        <h1>${this.heading}</h1>
+        <h1 class="title">${this.heading}</h1>
         <fhi-button
           variant="text"
           color="neutral"
           @click=${this.close}
           aria-label="Close dialog"
         >
-          ${this.closeButtonLabel}
+          Lukk
           <fhi-icon-x></fhi-icon-x>
         </fhi-button>
       </header>
@@ -169,7 +170,19 @@ export class FhiDialog extends LitElement {
           display: flex;
           justify-content: space-between;
           align-items: center;
-          gap: 2rem;
+          gap: var(--fhi-spacing-400);
+        }
+        .title {
+          margin: 0;
+          font-family: var(--fhi-font-family-default);
+          font-weight: var(--fhi-typography-headline-medium-font-weight);
+          font-size: var(--fhi-typography-headline-medium-font-size);
+          line-height: var(--fhi-typography-headline-medium-line-height);
+          letter-spacing: var(--fhi-typography-headline-medium-letter-spacing);
+        }
+        slot[name='body'] {
+          display: block;
+          padding: var(--fhi-spacing-500) 0;
         }
         footer {
           display: flex;
@@ -189,6 +202,14 @@ export class FhiDialog extends LitElement {
 
     :host(:not([open])) {
       display: none;
+    }
+
+    :host([max-width='small']) dialog {
+      max-width: 28rem;
+    }
+
+    :host([max-width='medium']) dialog {
+      max-width: 40rem;
     }
   `;
 }
