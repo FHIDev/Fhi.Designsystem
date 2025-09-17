@@ -1,5 +1,31 @@
 # Changelog
 
+## [0.16.0](https://github.com/FHIDev/Fhi.Designsystem/compare/v0.15.0...v0.16.0) (2025-09-17)
+
+
+### 🚀 Features
+
+* Add the new typography tokens ([#259](https://github.com/FHIDev/Fhi.Designsystem/issues/259)) ([99ce31e](https://github.com/FHIDev/Fhi.Designsystem/commit/99ce31ed2dcdaf25ec01eca154a5697d19929394))
+
+## [0.15.0](https://github.com/FHIDev/Fhi.Designsystem/compare/v0.14.0...v0.15.0) (2025-09-17)
+
+
+### 🚀 Features
+
+* New icons ([#257](https://github.com/FHIDev/Fhi.Designsystem/issues/257)) ([c948de5](https://github.com/FHIDev/Fhi.Designsystem/commit/c948de5fb70dfecd6db48373f0f18bef85ea5b03))
+
+
+### 📑 Documentation
+
+* fix typo and broken urls ([#256](https://github.com/FHIDev/Fhi.Designsystem/issues/256)) ([f244f1f](https://github.com/FHIDev/Fhi.Designsystem/commit/f244f1f8256e74dfbb6cebe0f44f7c07797d501e))
+
+## [0.14.0](https://github.com/FHIDev/Fhi.Designsystem/compare/v0.13.0...v0.14.0) (2025-09-15)
+
+
+### 🚀 Features
+
+* Endret padding på text-button. ([98a9c88](https://github.com/FHIDev/Fhi.Designsystem/commit/98a9c885d042f633b8439decb6489f58bec7fb8f))
+
 ## [0.13.0](https://github.com/FHIDev/Fhi.Designsystem/compare/v0.12.0...v0.13.0) (2025-09-11)
 
 
