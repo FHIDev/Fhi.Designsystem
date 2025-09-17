@@ -10,7 +10,7 @@ export const FhiIconEyeSelector = "fhi-icon-eye";
 @customElement(FhiIconEyeSelector)
 export class FhiIconEye extends LitElement {
   @property({ type: String }) color: string = "currentcolor";
-  @property({ type: String }) size: 'xsmall' | 'small' | 'medium' | 'large' | number | string = 'medium';
+  @property({ type: String }) size: 'xsmall' | 'small' | 'medium' | 'large' | number | `${number}px` | `${number}rem` = 'medium';
   private get _size(): string {
     switch (this.size) {
       case 'xsmall': 

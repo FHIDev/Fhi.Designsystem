@@ -10,7 +10,7 @@ export const FhiIconLinkSelector = "fhi-icon-link";
 @customElement(FhiIconLinkSelector)
 export class FhiIconLink extends LitElement {
   @property({ type: String }) color: string = "currentcolor";
-  @property({ type: String }) size: 'xsmall' | 'small' | 'medium' | 'large' | number | string = 'medium';
+  @property({ type: String }) size: 'xsmall' | 'small' | 'medium' | 'large' | number | `${number}px` | `${number}rem` = 'medium';
   private get _size(): string {
     switch (this.size) {
       case 'xsmall': 

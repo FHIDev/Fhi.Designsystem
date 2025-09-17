@@ -10,7 +10,7 @@ export const FhiIconArrowDownRightSelector = "fhi-icon-arrow-down-right";
 @customElement(FhiIconArrowDownRightSelector)
 export class FhiIconArrowDownRight extends LitElement {
   @property({ type: String }) color: string = "currentcolor";
-  @property({ type: String }) size: 'xsmall' | 'small' | 'medium' | 'large' | number | string = 'medium';
+  @property({ type: String }) size: 'xsmall' | 'small' | 'medium' | 'large' | number | `${number}px` | `${number}rem` = 'medium';
   private get _size(): string {
     switch (this.size) {
       case 'xsmall': 
