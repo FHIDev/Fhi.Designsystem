@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.16.0](https://github.com/FHIDev/Fhi.Designsystem/compare/v0.15.0...v0.16.0) (2025-09-17)
+
+
+### 🚀 Features
+
+* Add the new typography tokens ([#259](https://github.com/FHIDev/Fhi.Designsystem/issues/259)) ([99ce31e](https://github.com/FHIDev/Fhi.Designsystem/commit/99ce31ed2dcdaf25ec01eca154a5697d19929394))
+
 ## [0.15.0](https://github.com/FHIDev/Fhi.Designsystem/compare/v0.14.0...v0.15.0) (2025-09-17)
 
 
