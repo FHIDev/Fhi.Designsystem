@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.17.0](https://github.com/FHIDev/Fhi.Designsystem/compare/v0.16.0...v0.17.0) (2025-09-18)
+
+
+### 🚀 Features
+
+* Add rem and explisit px support for icons ([#261](https://github.com/FHIDev/Fhi.Designsystem/issues/261)) ([a2e257e](https://github.com/FHIDev/Fhi.Designsystem/commit/a2e257ee20deae7249c1c8ffaf3c7207a3d03834))
+
 ## [0.16.0](https://github.com/FHIDev/Fhi.Designsystem/compare/v0.15.0...v0.16.0) (2025-09-17)
 
 
