@@ -106,46 +106,45 @@ export class FhiButton extends LitElement {
       return;
     }
 
-    const slot = event.target as HTMLSlotElement;
-    const nodes = slot.assignedNodes();
+    const nodes = (event.target as HTMLSlotElement).assignedNodes();
 
-    let firstIcon: HTMLElement | undefined;
-    let lastIcon: HTMLElement | undefined;
+    const validNodes = nodes.filter(
+      node =>
+        node.nodeType === Node.ELEMENT_NODE ||
+        (node.nodeType === Node.TEXT_NODE && node.textContent?.trim()),
+    );
 
-    nodes.forEach(node => {
-      if (node.nodeType !== Node.ELEMENT_NODE) {
-        return;
-      }
+    if (validNodes.length === 0) {
+      return;
+    }
 
-      if (!(node as Element).tagName.toLowerCase().startsWith('fhi-icon')) {
-        return;
-      }
+    const firstNode: Node = validNodes[0];
 
-      // The first icon is either the first child or it is preceded by a whitespace text node
-      if (
-        !node.previousSibling?.nodeType ||
-        (node.previousSibling?.nodeType === Node.TEXT_NODE &&
-          !node.previousSibling.textContent?.trim())
-      ) {
-        firstIcon = node as HTMLElement;
-      }
+    // if the first node is an icon, style it.
+    if (
+      firstNode.nodeType === Node.ELEMENT_NODE &&
+      (firstNode as Element).tagName.toLowerCase().startsWith('fhi-icon')
+    ) {
+      const firstIcon = firstNode as HTMLElement;
 
-      // The last icon is either the last child or it is followed by a whitespace text node
-      if (
-        node.previousSibling?.nodeType === Node.TEXT_NODE &&
-        node.previousSibling?.textContent?.trim()
-      ) {
-        lastIcon = node as HTMLElement;
-      }
-    });
-
-    if (firstIcon) {
       firstIcon.style.marginRight = 'var(--dimension-icon-margin-right)';
       firstIcon.style.marginLeft = 'var(--dimension-icon-margin-left-offset)';
       firstIcon.setAttribute('size', this._getIconSize());
     }
 
-    if (lastIcon) {
+    if (validNodes.length === 1) {
+      return;
+    }
+
+    const lastNode: Node = validNodes[validNodes.length - 1];
+
+    // if the last node is an icon, style it.
+    if (
+      lastNode.nodeType === Node.ELEMENT_NODE &&
+      (lastNode as Element).tagName.toLowerCase().startsWith('fhi-icon')
+    ) {
+      const lastIcon = lastNode as HTMLElement;
+
       lastIcon.style.marginRight = 'var(--dimension-icon-margin-right-offset)';
       lastIcon.style.marginLeft = 'var(--dimension-icon-margin-left)';
       lastIcon.setAttribute('size', this._getIconSize());
