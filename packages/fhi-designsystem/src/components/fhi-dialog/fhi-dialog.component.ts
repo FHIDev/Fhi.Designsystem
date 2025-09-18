@@ -130,7 +130,7 @@ export class FhiDialog extends LitElement {
   }
 
   render() {
-    return html`<dialog open=${this.open} @click=${this._handleSlotClick}>
+    return html`<dialog open @click=${this._handleSlotClick}>
       <header>
         <h1 class="title">${this.heading}</h1>
         <fhi-button
@@ -155,17 +155,22 @@ export class FhiDialog extends LitElement {
 
   static styles = css`
     :host {
+      --motion-transition: var(--fhi-motion-duration-quick)
+        var(--fhi-motion-ease-default);
     }
 
     :host {
+      display: flex;
+      justify-content: center;
+      align-items: center;
       position: fixed;
       top: 0;
       left: 0;
       width: 100vw;
       height: 100vh;
       opacity: 0;
+      transition: var(--motion-transition);
       visibility: hidden;
-      transition: opacity 0.15s ease-in-out;
       &::before {
         content: '';
         width: 100%;
@@ -211,8 +216,8 @@ export class FhiDialog extends LitElement {
       display: flex;
       align-items: center;
       justify-content: center;
-      visibility: visible;
       opacity: 1;
+      visibility: visible;
     }
 
     :host([max-width='small']) dialog {
