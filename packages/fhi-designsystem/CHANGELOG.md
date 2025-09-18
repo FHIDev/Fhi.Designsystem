@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.17.1](https://github.com/FHIDev/Fhi.Designsystem/compare/v0.17.0...v0.17.1) (2025-09-18)
+
+
+### 🛠️ Bug Fixes
+
+* issue with icon styling ([#267](https://github.com/FHIDev/Fhi.Designsystem/issues/267)) ([d0753aa](https://github.com/FHIDev/Fhi.Designsystem/commit/d0753aab3518ba6f9051200455f2e3ff8c661a35))
+
 ## [0.17.0](https://github.com/FHIDev/Fhi.Designsystem/compare/v0.16.0...v0.17.0) (2025-09-18)
 
 
