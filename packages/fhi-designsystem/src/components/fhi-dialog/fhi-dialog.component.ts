@@ -134,6 +134,7 @@ export class FhiDialog extends LitElement {
       <header>
         <h1 class="title">${this.heading}</h1>
         <fhi-button
+          ?icon-only=${!this.closeButtonText}
           variant="text"
           color="neutral"
           @click=${this.close}
