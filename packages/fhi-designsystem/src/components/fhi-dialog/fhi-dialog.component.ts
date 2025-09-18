@@ -163,6 +163,9 @@ export class FhiDialog extends LitElement {
       left: 0;
       width: 100vw;
       height: 100vh;
+      opacity: 0;
+      visibility: hidden;
+      transition: opacity 0.15s ease-in-out;
       &::before {
         content: '';
         width: 100%;
@@ -208,10 +211,8 @@ export class FhiDialog extends LitElement {
       display: flex;
       align-items: center;
       justify-content: center;
-    }
-
-    :host(:not([open])) {
-      display: none;
+      visibility: visible;
+      opacity: 1;
     }
 
     :host([max-width='small']) dialog {
