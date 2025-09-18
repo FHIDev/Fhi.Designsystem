@@ -17,9 +17,14 @@ export class FhiDialog extends LitElement {
     | 'small'
     | 'medium' = 'medium';
 
+  @property({ type: String, attribute: 'close-button-text' })
+  closeButtonText: string = 'Lukk';
+
   @property({ type: String }) heading?: string = undefined;
 
   @query('dialog') _dialog!: HTMLDialogElement;
+
+  private _triggerElement: HTMLElement | null = null;
 
   connectedCallback(): void {
     super.connectedCallback();
@@ -44,6 +49,8 @@ export class FhiDialog extends LitElement {
 
     if (changedProperties.has('open')) {
       if (this.open) {
+        this._triggerElement = document.activeElement as HTMLElement | null;
+
         FhiDialog.openDialogs += 1;
 
         this.style.zIndex = `${FhiDialog.zIndex + FhiDialog.openDialogs}`;
@@ -67,6 +74,8 @@ export class FhiDialog extends LitElement {
 
   public close() {
     this.open = false;
+
+    this._triggerElement?.focus();
 
     this._dispatchToggleEvent();
     this.dispatchEvent(new CloseEvent('close'));
@@ -130,7 +139,7 @@ export class FhiDialog extends LitElement {
           @click=${this.close}
           aria-label="Close dialog"
         >
-          Lukk
+          ${this.closeButtonText}
           <fhi-icon-x></fhi-icon-x>
         </fhi-button>
       </header>
