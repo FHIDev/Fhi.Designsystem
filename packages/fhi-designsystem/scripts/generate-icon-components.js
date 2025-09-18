@@ -94,7 +94,7 @@ export const ${webComponentName}Selector = "${customElementSelector}";
 @customElement(${webComponentName}Selector)
 export class ${webComponentName} extends LitElement {
   @property({ type: String }) color: string = "currentcolor";
-  @property({ type: String }) size: 'xsmall' | 'small' | 'medium' | 'large' | number = 'medium';
+  @property({ type: String }) size: 'xsmall' | 'small' | 'medium' | 'large' | number | \`\${number}px\` | \`\${number}rem\` = 'medium';
   private get _size(): string {
     switch (this.size) {
       case 'xsmall': 
@@ -106,6 +106,9 @@ export class ${webComponentName} extends LitElement {
       case 'large':
         return '32px'; 
       default:
+        if (String(this.size).endsWith('px') || String(this.size).endsWith('rem')) {
+          return String(this.size);
+        }
         if (isNaN(Number(this.size))) {
           console.warn(\`Invalid size value: \${this.size}. Falling back to default size '24px'.\`)
           return '24px';
@@ -212,7 +215,7 @@ const meta: Meta<${iconKomponentName}> = {
     },
     size: {
       control: 'text',
-      description: 'Setter størrelsen på ikonet. Kan være en av de forhåndsdefinerte størrelsene (<code>xsmall</code>, <code>small</code>, <code>medium</code> eller <code>large</code>) eller en egendefinert størrelse. Tallverdier blir angitt som px.',
+      description: 'Setter størrelsen på ikonet. Kan være en av de forhåndsdefinerte størrelsene (<code>xsmall</code>, <code>small</code>, <code>medium</code> eller <code>large</code>) eller en egendefinert størrelse som tallverdi, <code>rem</code> eller <code>px</code> Eksempel: <code>3rem</code>. Rene tallverdier blir angitt som px.',
       defaultValue: { summary: 'medium' },
     },
   },

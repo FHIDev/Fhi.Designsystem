@@ -10,7 +10,7 @@ export const FhiIconLink2Selector = "fhi-icon-link-2";
 @customElement(FhiIconLink2Selector)
 export class FhiIconLink2 extends LitElement {
   @property({ type: String }) color: string = "currentcolor";
-  @property({ type: String }) size: 'xsmall' | 'small' | 'medium' | 'large' | number = 'medium';
+  @property({ type: String }) size: 'xsmall' | 'small' | 'medium' | 'large' | number | `${number}px` | `${number}rem` = 'medium';
   private get _size(): string {
     switch (this.size) {
       case 'xsmall': 
@@ -22,6 +22,9 @@ export class FhiIconLink2 extends LitElement {
       case 'large':
         return '32px'; 
       default:
+        if (String(this.size).endsWith('px') || String(this.size).endsWith('rem')) {
+          return String(this.size);
+        }
         if (isNaN(Number(this.size))) {
           console.warn(`Invalid size value: ${this.size}. Falling back to default size '24px'.`)
           return '24px';
