@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.17.2](https://github.com/FHIDev/Fhi.Designsystem/compare/v0.17.1...v0.17.2) (2025-09-19)
+
+
+### 🛠️ Bug Fixes
+
+* Bold adjusted ([#269](https://github.com/FHIDev/Fhi.Designsystem/issues/269)) ([2b703b9](https://github.com/FHIDev/Fhi.Designsystem/commit/2b703b946470a5bb50eea67cb3effee7304c8c53))
+
 ## [0.17.1](https://github.com/FHIDev/Fhi.Designsystem/compare/v0.17.0...v0.17.1) (2025-09-18)
 
 
