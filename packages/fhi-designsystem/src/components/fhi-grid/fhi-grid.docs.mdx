@@ -1,0 +1,35 @@
+import { FhiGrid } from './fhi-Grid.component';
+import * as FhiGridStories from './fhi-grid.stories.ts';
+import {
+    Meta,
+    Title,
+    Primary,
+    Canvas,
+    Story,
+    Controls,
+} from '@storybook/blocks';
+
+<Meta of={FhiGridStories} />
+
+# Grid
+
+Layoutprimitiv for å gruppere elementer i en grid for fast avstand. Grid ligner på Flex, men gir bedre kontroll til å lage konsekvente layouts.
+Den er ikke tiltenkt hele sider, men deler av siden der man har flere seksjoner. 
+
+## Passer til
+
+- Gruppering av elementer som hører sammen.
+
+<Canvas of={FhiGridStories.Preview} />
+
+### Kolonner
+
+Grid har 12 kolonner. Dette gjør det enklere å dele opp i 2, 3 og 4 seksjoner.
+
+### Gap
+
+Grid har noen forhåndsdefinerte avstander man kan sette:
+- Small: 0.5rem (8px, gitt 1rem er 16px)
+- Medium (default): 1rem (16px)
+- Large: 1.5rem (24px)
+I tillegg kan man sette egen verdi i tilfeller der standardene ikke er nok, for eksempel når man trenger ingen eller negativ avstand mellom elementene.
