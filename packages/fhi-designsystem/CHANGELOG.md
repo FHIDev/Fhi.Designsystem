@@ -1,5 +1,26 @@
 # Changelog
 
+## [0.17.2](https://github.com/FHIDev/Fhi.Designsystem/compare/v0.17.1...v0.17.2) (2025-09-19)
+
+
+### 🛠️ Bug Fixes
+
+* Bold adjusted ([#269](https://github.com/FHIDev/Fhi.Designsystem/issues/269)) ([2b703b9](https://github.com/FHIDev/Fhi.Designsystem/commit/2b703b946470a5bb50eea67cb3effee7304c8c53))
+
+## [0.17.1](https://github.com/FHIDev/Fhi.Designsystem/compare/v0.17.0...v0.17.1) (2025-09-18)
+
+
+### 🛠️ Bug Fixes
+
+* issue with icon styling ([#267](https://github.com/FHIDev/Fhi.Designsystem/issues/267)) ([d0753aa](https://github.com/FHIDev/Fhi.Designsystem/commit/d0753aab3518ba6f9051200455f2e3ff8c661a35))
+
+## [0.17.0](https://github.com/FHIDev/Fhi.Designsystem/compare/v0.16.0...v0.17.0) (2025-09-18)
+
+
+### 🚀 Features
+
+* Add rem and explisit px support for icons ([#261](https://github.com/FHIDev/Fhi.Designsystem/issues/261)) ([a2e257e](https://github.com/FHIDev/Fhi.Designsystem/commit/a2e257ee20deae7249c1c8ffaf3c7207a3d03834))
+
 ## [0.16.0](https://github.com/FHIDev/Fhi.Designsystem/compare/v0.15.0...v0.16.0) (2025-09-17)
 
 
