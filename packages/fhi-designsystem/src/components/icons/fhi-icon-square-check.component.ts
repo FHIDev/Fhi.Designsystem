@@ -14,20 +14,20 @@ export class FhiIconSquareCheck extends LitElement {
   private get _size(): string {
     switch (this.size) {
       case 'xsmall': 
-        return '16px'; 
+        return '1rem'; 
       case 'small':
-        return '20px';
+        return '1.25rem';
       case 'medium':
-        return '24px'; 
+        return '1.5rem'; 
       case 'large':
-        return '32px'; 
+        return '2rem'; 
       default:
         if (String(this.size).endsWith('px') || String(this.size).endsWith('rem')) {
           return String(this.size);
         }
         if (isNaN(Number(this.size))) {
-          console.warn(`Invalid size value: ${this.size}. Falling back to default size '24px'.`)
-          return '24px';
+          console.warn(`Invalid size value: ${this.size}. Falling back to default size '1.5rem'.`)
+          return '1.5rem';
         }
         return `${this.size}px`;
     }
