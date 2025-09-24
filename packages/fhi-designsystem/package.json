@@ -2,7 +2,7 @@
   "title": "FHI Designsystem",
   "author": "FHI Designsystem team",
   "name": "@folkehelseinstituttet/designsystem",
-  "version": "0.17.2",
+  "version": "0.17.3",
   "description": "The official design system for the Norwegian Institute of Public Health implemented as web components",
   "keywords": [
     "fhi",

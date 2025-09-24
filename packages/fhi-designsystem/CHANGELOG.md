@@ -1,5 +1,22 @@
 # Changelog
 
+## [0.17.3](https://github.com/FHIDev/Fhi.Designsystem/compare/v0.17.2...v0.17.3) (2025-09-24)
+
+
+### 🛠️ Bug Fixes
+
+* Endret predefinerte verdier fra px til rem. ([#274](https://github.com/FHIDev/Fhi.Designsystem/issues/274)) ([d7550f7](https://github.com/FHIDev/Fhi.Designsystem/commit/d7550f703afbf89294043cdc7a78fb037a402c1d))
+
+
+### 📑 Documentation
+
+* La til info om designsystem og bruk for utviklere. ([#254](https://github.com/FHIDev/Fhi.Designsystem/issues/254)) ([ab277db](https://github.com/FHIDev/Fhi.Designsystem/commit/ab277dbb5488d6c5fe4cd1ce44a387c03117f0e6))
+
+
+### Other
+
+* do not run Pull Request Guard on PR closed event ([#268](https://github.com/FHIDev/Fhi.Designsystem/issues/268)) ([c111067](https://github.com/FHIDev/Fhi.Designsystem/commit/c1110677144dc9aea2ac55169a32e8c5588ae562))
+
 ## [0.17.2](https://github.com/FHIDev/Fhi.Designsystem/compare/v0.17.1...v0.17.2) (2025-09-19)
 
 
