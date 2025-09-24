@@ -8,14 +8,15 @@ export const FhiDialogSelector = 'fhi-dialog';
 
 @customElement(FhiDialogSelector)
 export class FhiDialog extends LitElement {
-  static readonly zIndex = 2000;
+  static readonly zIndex = 5000;
   static openDialogs = 0;
 
   @property({ type: Boolean, reflect: true }) open: boolean = false;
 
   @property({ type: String, attribute: 'max-width' }) maxWidth:
     | 'small'
-    | 'medium' = 'medium';
+    | 'medium'
+    | `${string}rem` = 'medium';
 
   @property({ type: String, attribute: 'close-button-text' })
   closeButtonText: string = 'Lukk';
@@ -49,31 +50,51 @@ export class FhiDialog extends LitElement {
 
     if (changedProperties.has('open')) {
       if (this.open) {
-        this._triggerElement = document.activeElement as HTMLElement | null;
-
-        FhiDialog.openDialogs += 1;
-
-        this.style.zIndex = `${FhiDialog.zIndex + FhiDialog.openDialogs}`;
-
-        this._dialog.focus();
-
-        return;
+        this.show();
+      } else {
+        this.close();
       }
+    }
 
-      this.style.zIndex = '0';
-
-      FhiDialog.openDialogs = Math.max(0, FhiDialog.openDialogs - 1);
+    if (changedProperties.has('maxWidth')) {
+      if (this.maxWidth.endsWith('rem')) {
+        this._dialog.style.maxWidth = this.maxWidth;
+      } else {
+        this._dialog.style.maxWidth = '';
+      }
     }
   }
 
   public show() {
-    this.open = true;
+    this._triggerElement = document.activeElement as HTMLElement | null;
+
+    FhiDialog.openDialogs += 1;
+
+    this.style.zIndex = `${FhiDialog.zIndex + FhiDialog.openDialogs}`;
+
+    if (!this.open) {
+      this.open = true;
+    }
+
+    // Wait for the dialog to be visible before focusing
+    const handleTransitionEnd = () => {
+      this._dialog.focus();
+      this.removeEventListener('transitionend', handleTransitionEnd);
+    };
+
+    this.addEventListener('transitionend', handleTransitionEnd);
 
     this._dispatchToggleEvent();
   }
 
   public close() {
-    this.open = false;
+    if (this.open) {
+      this.open = false;
+    }
+
+    this.style.zIndex = '0';
+
+    FhiDialog.openDialogs = Math.max(0, FhiDialog.openDialogs - 1);
 
     this._triggerElement?.focus();
 
@@ -130,7 +151,7 @@ export class FhiDialog extends LitElement {
   }
 
   render() {
-    return html`<dialog open @click=${this._handleSlotClick}>
+    return html`<dialog ?open=${this.open} @click=${this._handleSlotClick}>
       <header>
         <h1 class="title">${this.heading}</h1>
         <fhi-button
@@ -155,6 +176,20 @@ export class FhiDialog extends LitElement {
 
   static styles = css`
     :host {
+      --dimension-dialog-padding: var(--fhi-spacing-500);
+      --dimension-dialog-body-padding: var(--fhi-spacing-500) 0;
+      --dimension-dialog-border-width: var(--fhi-dimension-border-width);
+      --dimension-dialog-border-radius: var(--fhi-border-radius-200);
+      --dimension-dialog-footer-gap: var(--fhi-spacing-050);
+
+      --dimension-dialog-max-width-small: 28rem;
+      --dimension-dialog-max-width-medium: 40rem;
+
+      --color-backdrop: var(--fhi-color-neutral-border-default);
+      --color-dialog-border: var(--fhi-color-neutral-border-subtle);
+
+      --opacity-backdrop: var(--fhi-opacity-disabled);
+
       --motion-transition: var(--fhi-motion-duration-quick)
         var(--fhi-motion-ease-default);
     }
@@ -175,15 +210,16 @@ export class FhiDialog extends LitElement {
         content: '';
         width: 100%;
         height: 100%;
-        background-color: var(--fhi-color-neutral-border-default);
-        opacity: var(--fhi-opacity-disabled);
+        background-color: var(--color-backdrop);
+        opacity: var(--opacity-backdrop);
         backdrop-filter: blur(80px);
       }
 
       dialog {
-        border: 1px solid var(--fhi-color-neutral-border-subtle);
-        border-radius: var(--fhi-border-radius-200);
-        padding: var(--fhi-spacing-500);
+        border: var(--dimension-dialog-border-width) solid
+          var(--color-dialog-border);
+        border-radius: var(--dimension-dialog-border-radius);
+        padding: var(--dimension-dialog-padding);
         header {
           display: flex;
           justify-content: space-between;
@@ -200,13 +236,13 @@ export class FhiDialog extends LitElement {
         }
         slot[name='body'] {
           display: block;
-          padding: var(--fhi-spacing-500) 0;
+          padding: var(--dimension-dialog-body-padding);
         }
         footer {
           display: flex;
           justify-content: flex-end;
           align-items: center;
-          gap: var(--fhi-spacing-050);
+          gap: var(--dimension-dialog-footer-gap);
           flex-wrap: wrap;
         }
       }
@@ -220,12 +256,16 @@ export class FhiDialog extends LitElement {
       visibility: visible;
     }
 
-    :host([max-width='small']) dialog {
-      max-width: 28rem;
+    :host([max-width='small']) {
+      dialog {
+        max-width: var(--dimension-dialog-max-width-small);
+      }
     }
 
-    :host([max-width='medium']) dialog {
-      max-width: 40rem;
+    :host([max-width='medium']) {
+      dialog {
+        max-width: var(--dimension-dialog-max-width-medium);
+      }
     }
   `;
 }
