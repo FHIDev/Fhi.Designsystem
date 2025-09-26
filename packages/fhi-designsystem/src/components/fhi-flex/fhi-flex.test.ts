@@ -78,6 +78,24 @@ describe(FhiFlexSelector, () => {
       expect(component.hasAttribute('wrap')).to.equal(true);
       expect(component.wrap).to.equal(true);
     });
+
+    it('has an attribute to set justify', async () => {
+      const component = await fixture<FhiFlex>(
+        html`<fhi-flex justify="start"></fhi-flex>`,
+      );
+
+      expect(component.hasAttribute('justify')).to.equal(true);
+      expect(component.justify).to.equal('start');
+    });
+
+    it('has an attribute to set align', async () => {
+      const component = await fixture<FhiFlex>(
+        html`<fhi-flex align="start"></fhi-flex>`,
+      );
+
+      expect(component.hasAttribute('align')).to.equal(true);
+      expect(component.align).to.equal('start');
+    });
   });
 
   describe('Styles', async () => {
@@ -193,6 +211,7 @@ describe(FhiFlexSelector, () => {
       expect(component.getAttribute('direction')).to.equal('column');
       expect(component.direction).to.equal('column');
     });
+
     it('reflects the "gap" property with the "gap" attribute', async () => {
       const component = await fixture<FhiFlex>(
         html`<fhi-flex gap="medium"></fhi-flex>`,
@@ -207,6 +226,7 @@ describe(FhiFlexSelector, () => {
       expect(component.getAttribute('gap')).to.equal('2rem');
       expect(component.gap).to.equal('2rem');
     });
+
     it('reflects the "wrap" property with the "wrap" attribute', async () => {
       const component = await fixture<FhiFlex>(
         html`<fhi-flex wrap></fhi-flex>`,
@@ -220,6 +240,34 @@ describe(FhiFlexSelector, () => {
 
       expect(component.hasAttribute('wrap')).to.equal(false);
       expect(component.wrap).to.equal(false);
+    });
+
+    it('reflects the "justify" property with the "justify" attribute', async () => {
+      const component = await fixture<FhiFlex>(
+        html`<fhi-flex justify="start"></fhi-flex>`,
+      );
+
+      expect(component.hasAttribute('justify')).to.equal(true);
+      expect(component.justify).to.equal('start');
+
+      component.justify = 'end';
+      await component.updateComplete;
+
+      expect(component.justify).to.equal('end');
+    });
+
+    it('reflects the "align" property with the "align" attribute', async () => {
+      const component = await fixture<FhiFlex>(
+        html`<fhi-flex align="start"></fhi-flex>`,
+      );
+
+      expect(component.hasAttribute('align')).to.equal(true);
+      expect(component.align).to.equal('start');
+
+      component.align = 'end';
+      await component.updateComplete;
+
+      expect(component.align).to.equal('end');
     });
   });
 });

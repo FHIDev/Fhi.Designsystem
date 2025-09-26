@@ -54,6 +54,38 @@ const meta: Meta<FhiFlex> = {
         'Bestemmer om elementene skal brytes til neste linje ved behov.',
       defaultValue: { summary: false },
     },
+    justify: {
+      control: { type: 'select' },
+      options: [
+        'center',
+        'start',
+        'end',
+        'flex-start',
+        'flex-end',
+        'left',
+        'right',
+        'normal',
+      ],
+      description: 'Bestemmer distribusjonen til elementene.',
+      defaultValue: { summary: 'normal' },
+    },
+    align: {
+      control: { type: 'select' },
+      options: [
+        'stretch',
+        'center',
+        'start',
+        'end',
+        'flex-start',
+        'flex-end',
+        'baseline',
+        'left',
+        'right',
+        'normal',
+      ],
+      description: 'Bestemmer distribusjonen til elementene langs kryssaksen.',
+      defaultValue: { summary: 'normal' },
+    },
   },
 };
 type Story = StoryObj<FhiFlex>;
@@ -63,9 +95,17 @@ export const Preview: Story = {
     direction: 'row',
     gap: 'medium',
     wrap: false,
+    justify: 'normal',
+    align: 'normal',
   },
   render: args => html`
-    <fhi-flex direction=${args.direction} gap=${args.gap} ?wrap=${args.wrap}>
+    <fhi-flex
+      direction=${args.direction}
+      gap=${args.gap}
+      ?wrap=${args.wrap}
+      justify=${args.justify}
+      align=${args.align}
+    >
       <fhi-button variant="strong">Knapp</fhi-button>
       <fhi-button variant="subtle">Knapp</fhi-button>
       <fhi-button variant="text">Knapp</fhi-button>
@@ -80,7 +120,13 @@ export const RowDirection: Story = {
     wrap: false,
   },
   render: args => html`
-    <fhi-flex direction=${args.direction} gap=${args.gap} ?wrap=${args.wrap}>
+    <fhi-flex
+      direction=${args.direction}
+      gap=${args.gap}
+      ?wrap=${args.wrap}
+      justify=${args.justify}
+      align=${args.align}
+    >
       ${['Flex', 'med', 'row/default', 'direction'].map(
         word => html`
           <div
@@ -101,7 +147,13 @@ export const ColumnDirection: Story = {
     wrap: false,
   },
   render: args => html`
-    <fhi-flex direction=${args.direction} gap=${args.gap} ?wrap=${args.wrap}>
+    <fhi-flex
+      direction=${args.direction}
+      gap=${args.gap}
+      ?wrap=${args.wrap}
+      justify=${args.justify}
+      align=${args.align}
+    >
       ${['Flex', 'med', 'column', 'direction'].map(
         word => html`
           <div
@@ -121,22 +173,14 @@ export const CustomGap: Story = {
     gap: '2rem',
     wrap: false,
   },
-  argTypes: {
-    gap: {
-      control: { type: 'text' },
-      description:
-        'Bestemmer avstand mellom elementene. Kan være <code>small</code>, <code>medium</code>, <code>large</code> eller en spesifikk verdi som <code>10px</code>, <code>1rem</code> eller <code>20<code>.',
-      defaultValue: { summary: 'medium' },
-    },
-    direction: {
-      disabled: true,
-    },
-    wrap: {
-      disabled: true,
-    },
-  },
   render: args => html`
-    <fhi-flex direction=${args.direction} gap=${args.gap} ?wrap=${args.wrap}>
+    <fhi-flex
+      direction=${args.direction}
+      gap=${args.gap}
+      ?wrap=${args.wrap}
+      justify=${args.justify}
+      align=${args.align}
+    >
       ${['Flex', 'med', 'custom', 'gap'].map(
         word => html`
           <div
@@ -156,19 +200,14 @@ export const Wrap: Story = {
     gap: 'medium',
     wrap: true,
   },
-  argTypes: {
-    gap: {
-      disabled: true,
-    },
-    direction: {
-      disabled: true,
-    },
-    wrap: {
-      disabled: false,
-    },
-  },
   render: args => html`
-    <fhi-flex direction=${args.direction} gap=${args.gap} ?wrap=${args.wrap}>
+    <fhi-flex
+      direction=${args.direction}
+      gap=${args.gap}
+      ?wrap=${args.wrap}
+      justify=${args.justify}
+      align=${args.align}
+    >
       ${[
         'Dette er et',
         'eksempel på Flex',
