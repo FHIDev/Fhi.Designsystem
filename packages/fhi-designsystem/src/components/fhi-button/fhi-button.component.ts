@@ -93,11 +93,11 @@ export class FhiButton extends LitElement {
   private _getIconSize(): string {
     switch (this.size) {
       case 'small':
-        return '20';
+        return '1.25rem';
       case 'medium':
       case 'large':
       default:
-        return '24';
+        return '1.5rem';
     }
   }
 
