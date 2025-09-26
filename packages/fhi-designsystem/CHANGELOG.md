@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.18.0](https://github.com/FHIDev/Fhi.Designsystem/compare/v0.17.3...v0.18.0) (2025-09-26)
+
+
+### 🚀 Features
+
+* Endret ikonstørrelser fra px til rem. ([#275](https://github.com/FHIDev/Fhi.Designsystem/issues/275)) ([56df527](https://github.com/FHIDev/Fhi.Designsystem/commit/56df5274c055345b76b3876615ae91c6f10f52a9))
+
 ## [0.17.3](https://github.com/FHIDev/Fhi.Designsystem/compare/v0.17.2...v0.17.3) (2025-09-24)
 
 
