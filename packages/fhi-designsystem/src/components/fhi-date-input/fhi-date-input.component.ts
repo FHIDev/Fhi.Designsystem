@@ -233,6 +233,7 @@ export class FhiDateInput extends LitElement {
         appearance: none;
         -moz-appearance: none;
         -webkit-appearance: none;
+        min-width: 10rem;
         &:hover {
           border-color: var(--color-input-border-hover);
           background-color: var(--color-input-background-hover);
