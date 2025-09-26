@@ -136,10 +136,16 @@ export class FhiDateInput extends LitElement {
       --color-label-text-error: var(--fhi-color-danger-text-default);
 
       --typography-label-font-family: var(--fhi-typography-label-small-font);
-      --typography-label-font-weight: var(--fhi-typography-label-small-font-weight);
+      --typography-label-font-weight: var(
+        --fhi-typography-label-small-font-weight
+      );
       --typography-label-font-size: var(--fhi-typography-label-small-size);
-      --typography-label-line-height: var(--fhi-typography-label-small-line-height);
-      --typography-label-letter-spacing: var(--fhi-typography-label-small-letter-spacing);
+      --typography-label-line-height: var(
+        --fhi-typography-label-small-line-height
+      );
+      --typography-label-letter-spacing: var(
+        --fhi-typography-label-small-letter-spacing
+      );
 
       --dimension-label-padding-bottom: var(--fhi-spacing-050);
 
@@ -159,7 +165,9 @@ export class FhiDateInput extends LitElement {
       --color-input-border-active: var(--fhi-color-accent-border-strong);
       --color-input-border-error: var(--fhi-color-danger-border-strong);
       --color-input-border-disabled: var(--fhi-color-neutral-border-default);
-      --color-input-selection-background: var(--fhi-color-accent-surface-active);
+      --color-input-selection-background: var(
+        --fhi-color-accent-surface-active
+      );
 
       --typography-input-font-weight: var(
         --fhi-typography-body-medium-font-weight
@@ -220,7 +228,7 @@ export class FhiDateInput extends LitElement {
         padding-bottom: var(--dimension-label-padding-bottom);
       }
 
-      input[type="date"] {
+      input[type='date'] {
         font-family: var(--typography-font-family);
         font-weight: var(--typography-input-font-weight);
         font-size: var(--typography-input-font-size);
@@ -228,9 +236,11 @@ export class FhiDateInput extends LitElement {
         letter-spacing: var(--typography-input-letter-spacing);
         box-sizing: border-box;
         height: var(--dimension-input-height);
-        border: var(--dimension-input-border-width) solid var(--color-input-border);
+        border: var(--dimension-input-border-width) solid
+          var(--color-input-border);
         border-radius: var(--dimension-input-border-radius);
-        padding: 0 var(--dimension-input-padding-right) 0 var(--dimension-input-padding-left);
+        padding: 0 var(--dimension-input-padding-right) 0
+          var(--dimension-input-padding-left);
         color: var(--color-input-text);
         background-color: var(--color-input-background);
         transition: var(--motion-input-transition);
@@ -256,10 +266,10 @@ export class FhiDateInput extends LitElement {
         line-height: var(--typography-message-line-height);
         letter-spacing: var(--typography-message-letter-spacing);
       }
-      [type="date"]::-webkit-inner-spin-button {
+      [type='date']::-webkit-inner-spin-button {
         opacity: 0;
       }
-      [type="date"]::-webkit-calendar-picker-indicator {
+      [type='date']::-webkit-calendar-picker-indicator {
         opacity: 0;
         -webkit-appearance: none;
       }
@@ -276,7 +286,6 @@ export class FhiDateInput extends LitElement {
         margin-right: var(--dimension-icon-margin-right);
         height: fit-content;
         transition: var(--motion-input-transition);
-        
       }
     }
 
@@ -286,7 +295,7 @@ export class FhiDateInput extends LitElement {
       * {
         cursor: not-allowed;
       }
-      input[type="date"] {
+      input[type='date'] {
         &:hover {
           border-color: var(--color-input-border);
           background-color: var(--color-input-background);
@@ -295,11 +304,12 @@ export class FhiDateInput extends LitElement {
     }
 
     :host([readonly]:not([disabled])) {
-      input[type="date"] {
+      input[type='date'] {
         border: unset;
         border-radius: unset;
         background-color: unset;
-        border-left: var(--dimension-input-border-width) solid var(--color-input-border);
+        border-left: var(--dimension-input-border-width) solid
+          var(--color-input-border);
         &:hover + #dateIcon {
           background-color: unset;
         }
@@ -307,14 +317,13 @@ export class FhiDateInput extends LitElement {
       #dateIcon {
         background-color: unset;
       }
-      
     }
 
     :host([status='error']:not([disabled]):not([readonly])) {
       label {
         color: var(--color-label-text-error);
       }
-      input[type="date"] {
+      input[type='date'] {
         border-color: var(--color-input-border-error);
         background-color: var(--color-input-background-error);
         color: var(--color-input-text-error);
@@ -334,23 +343,24 @@ export class FhiDateInput extends LitElement {
           padding-left: var(--dimension-icon-padding-left);
           background-color: var(--color-input-background);
         }
-        input[type="date"]:hover + #dateIcon {
+        input[type='date']:hover + #dateIcon {
           background-color: var(--color-input-background-hover);
         }
-        input[type="date"]:focus + #dateIcon {
+        input[type='date']:focus + #dateIcon {
           background-color: var(--color-input-background-active);
         }
       }
       :host([disabled]) {
-        input[type="date"] {
+        input[type='date'] {
           padding-right: calc(var(--dimension-input-padding-right) + 24px);
         }
       }
       :host([readonly]:not([disabled])) {
-        input[type="date"] {
+        input[type='date'] {
           padding-right: calc(var(--dimension-input-padding-right) + 24px);
         }
       }
+    }
   `;
 }
 
