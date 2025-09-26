@@ -182,6 +182,10 @@ export class FhiDateInput extends LitElement {
       --motion-input-transition: all var(--fhi-motion-ease-default)
         var(--fhi-motion-duration-quick);
 
+      /* icon */
+      --dimension-icon-margin-right: var(--fhi-spacing-100);
+      --dimension-icon-padding-left: var(--fhi-spacing-050);
+
       /* message */
       --color-message-text: var(--fhi-color-neutral-text-default);
       --color-message-text-error: var(--fhi-color-danger-text-subtle);
@@ -238,15 +242,9 @@ export class FhiDateInput extends LitElement {
           border-color: var(--color-input-border-hover);
           background-color: var(--color-input-background-hover);
         }
-        &:hover + #dateIcon {
-          background-color: var(--color-input-background-hover);
-        }
         &:focus {
           outline: none;
           border-color: var(--color-input-border-active);
-          background-color: var(--color-input-background-active);
-        }
-        &:focus + #dateIcon {
           background-color: var(--color-input-background-active);
         }
       }
@@ -275,10 +273,10 @@ export class FhiDateInput extends LitElement {
         right: 0;
         top: 50%;
         transform: translateY(-50%);
-        margin-right: var(--dimension-input-padding-right);
+        margin-right: var(--dimension-icon-margin-right);
         height: fit-content;
         transition: var(--motion-input-transition);
-        background-color: var(--color-input-background)
+        
       }
     }
 
@@ -331,6 +329,18 @@ export class FhiDateInput extends LitElement {
     }
 
     @-moz-document url-prefix() {
+      :host {
+        #dateIcon {
+          padding-left: var(--dimension-icon-padding-left);
+          background-color: var(--color-input-background);
+        }
+        input[type="date"]:hover + #dateIcon {
+          background-color: var(--color-input-background-hover);
+        }
+        input[type="date"]:focus + #dateIcon {
+          background-color: var(--color-input-background-active);
+        }
+      }
       :host([disabled]) {
         input[type="date"] {
           padding-right: calc(var(--dimension-input-padding-right) + 24px);
