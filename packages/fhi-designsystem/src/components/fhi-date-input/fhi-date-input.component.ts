@@ -16,9 +16,9 @@ export class FhiDateInput extends LitElement {
 
   @property({ type: String }) message?: string = undefined;
 
-  @property({ type: String }) minDate?: FhiDateValue = undefined;
+  @property({ type: String }) min?: FhiDateValue = undefined;
 
-  @property({ type: String }) maxDate?: FhiDateValue = undefined;
+  @property({ type: String }) max?: FhiDateValue = undefined;
 
   @property({ type: String, reflect: true }) status?: 'error' = undefined;
 
@@ -108,8 +108,8 @@ export class FhiDateInput extends LitElement {
           type="date"
           id="input-element"
           name=${ifDefined(this.name)}
-          min=${ifDefined(this.minDate)}
-          max=${ifDefined(this.maxDate)}
+          min=${ifDefined(this.min)}
+          max=${ifDefined(this.max)}
           .value=${this.value ?? ''}
           ?readonly=${this.readonly}
           ?disabled=${this.disabled}
