@@ -15,6 +15,13 @@ export class FhiFlex extends LitElement {
     | 'large'
     | FhiGapWidthUnit = 'medium';
   @property({ type: Boolean, reflect: true }) wrap = false;
+  @property({ type: String }) justify: 'start' | 'center' | 'end' = 'start';
+  @property({ type: String }) align:
+    | 'stretch'
+    | 'start'
+    | 'center'
+    | 'end'
+    | 'baseline' = 'stretch';
 
   updated(changedProperties: PropertyValues<this>) {
     super.updated(changedProperties);
@@ -71,6 +78,38 @@ export class FhiFlex extends LitElement {
 
     :host([gap='large']) {
       gap: var(--dimension-gap-large);
+    }
+
+    :host([justify='center']) {
+      justify-content: center;
+    }
+
+    :host([justify='start']) {
+      justify-content: start;
+    }
+
+    :host([justify='end']) {
+      justify-content: end;
+    }
+
+    :host([align='stretch']) {
+      align-items: stretch;
+    }
+
+    :host([align='center']) {
+      align-items: center;
+    }
+
+    :host([align='start']) {
+      align-items: start;
+    }
+
+    :host([align='end']) {
+      align-items: end;
+    }
+
+    :host([align='baseline']) {
+      align-items: baseline;
     }
   `;
 }
