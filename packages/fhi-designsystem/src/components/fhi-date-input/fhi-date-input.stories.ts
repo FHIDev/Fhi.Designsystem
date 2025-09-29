@@ -47,12 +47,13 @@ const meta: Meta<FhiDateInput> = {
     value: {
       control: { type: 'text' },
       description:
-        'Setter verdi på inputfeltet. Dette vil være synlig i feltet og automatisk bli med i FormData.',
+        'Setter verdi på inputfeltet. Dette vil være synlig i feltet og automatisk bli med i FormData. Format `YYYY-MM-DD`',
       defaultValue: { summary: '' },
     },
     min: {
-      control: { type: `text` },
-      description: `Setter minimumsdato (gitt som `YYYY-MM-DD`), som hindrer brukeren å velge en dato tidligere enn denne. Dersom feltet ikke er satt til dette formatet vil verdien ignoreres.`,
+      control: { type: 'text' },
+      description:
+        'Setter minimumsdato (gitt som `YYYY-MM-DD`), som hindrer brukeren å velge en dato tidligere enn denne. Dersom feltet ikke er satt til dette formatet vil verdien ignoreres.',
       table: {
         type: { summary: 'number-number-number' },
       },
