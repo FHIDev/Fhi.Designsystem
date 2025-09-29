@@ -15,26 +15,13 @@ export class FhiFlex extends LitElement {
     | 'large'
     | FhiGapWidthUnit = 'medium';
   @property({ type: Boolean, reflect: true }) wrap = false;
-  @property({ type: String }) justify:
-    | 'center'
-    | 'start'
-    | 'end'
-    | 'flex-start'
-    | 'flex-end'
-    | 'left'
-    | 'right'
-    | 'normal' = 'normal';
+  @property({ type: String }) justify: 'center' | 'start' | 'end' = 'center';
   @property({ type: String }) align:
-    | 'normal'
     | 'stretch'
     | 'center'
-    | 'flex-start'
-    | 'flex-end'
     | 'start'
     | 'end'
-    | 'baseline'
-    | 'initial'
-    | 'inherit' = 'normal';
+    | 'baseline' = 'center';
 
   updated(changedProperties: PropertyValues<this>) {
     super.updated(changedProperties);
@@ -105,40 +92,12 @@ export class FhiFlex extends LitElement {
       justify-content: end;
     }
 
-    :host([justify='flex-start']) {
-      justify-content: flex-start;
-    }
-
-    :host([justify='flex-end']) {
-      justify-content: flex-end;
-    }
-
-    :host([justify='left']) {
-      justify-content: left;
-    }
-
-    :host([justify='right']) {
-      justify-content: right;
-    }
-
-    :host([align='normal']) {
-      align-items: normal;
-    }
-
     :host([align='stretch']) {
       align-items: stretch;
     }
 
     :host([align='center']) {
       align-items: center;
-    }
-
-    :host([align='flex-start']) {
-      align-items: flex-start;
-    }
-
-    :host([align='flex-end']) {
-      align-items: flex-end;
     }
 
     :host([align='start']) {
@@ -151,14 +110,6 @@ export class FhiFlex extends LitElement {
 
     :host([align='baseline']) {
       align-items: baseline;
-    }
-
-    :host([align='initial']) {
-      align-items: initial;
-    }
-
-    :host([align='inherit']) {
-      align-items: inherit;
     }
   `;
 }
