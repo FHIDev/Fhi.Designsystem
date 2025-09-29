@@ -56,15 +56,15 @@ const meta: Meta<FhiFlex> = {
     },
     justify: {
       control: { type: 'select' },
-      options: ['center', 'start', 'end'],
+      options: ['start', 'center', 'end'],
       description: 'Bestemmer distribusjonen til elementene.',
-      defaultValue: { summary: 'center' },
+      defaultValue: { summary: 'start' },
     },
     align: {
       control: { type: 'select' },
-      options: ['stretch', 'center', 'start', 'end', 'baseline'],
+      options: ['stretch', 'start', 'center', 'end', 'baseline'],
       description: 'Bestemmer distribusjonen til elementene langs kryssaksen.',
-      defaultValue: { summary: 'center' },
+      defaultValue: { summary: 'stretch' },
     },
   },
 };

@@ -15,13 +15,13 @@ export class FhiFlex extends LitElement {
     | 'large'
     | FhiGapWidthUnit = 'medium';
   @property({ type: Boolean, reflect: true }) wrap = false;
-  @property({ type: String }) justify: 'center' | 'start' | 'end' = 'center';
+  @property({ type: String }) justify: 'start' | 'center' | 'end' = 'start';
   @property({ type: String }) align:
     | 'stretch'
-    | 'center'
     | 'start'
+    | 'center'
     | 'end'
-    | 'baseline' = 'center';
+    | 'baseline' = 'stretch';
 
   updated(changedProperties: PropertyValues<this>) {
     super.updated(changedProperties);
