@@ -52,7 +52,7 @@ const meta: Meta<FhiDateInput> = {
     },
     min: {
       control: { type: `text` },
-      description: `Setter minimum-dato. Dette vil hindre at brukeren kan velge en dato tidligere enn denne. Format \`YYYY-MM-DD\` Dersom feltet ikke er satt til dette formatet vil verdien ignoreres.`,
+      description: `Setter minimumsdato (gitt som `YYYY-MM-DD`), som hindrer brukeren å velge en dato tidligere enn denne. Dersom feltet ikke er satt til dette formatet vil verdien ignoreres.`,
       table: {
         type: { summary: 'number-number-number' },
       },
