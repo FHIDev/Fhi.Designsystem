@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.19.0](https://github.com/FHIDev/Fhi.Designsystem/compare/v0.18.0...v0.19.0) (2025-09-29)
+
+
+### 🚀 Features
+
+* La til justify-content og align-items. ([#278](https://github.com/FHIDev/Fhi.Designsystem/issues/278)) ([5128f6b](https://github.com/FHIDev/Fhi.Designsystem/commit/5128f6b8f312e7a52ded4f8b59b8deb7ee06a3ad))
+
 ## [0.18.0](https://github.com/FHIDev/Fhi.Designsystem/compare/v0.17.3...v0.18.0) (2025-09-26)
 
 
