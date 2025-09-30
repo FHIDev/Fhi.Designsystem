@@ -93,7 +93,11 @@ export class FhiDateInput extends LitElement {
     this._internals.setFormValue(this.value ?? null);
   }
 
-  public showDate() {
+  public showDate(e?: KeyboardEvent) {
+    console.log('Event', e);
+    if (e && e.type == 'keydown' && e.key !== 'Enter' && e.code !== 'Space') {
+      return;
+    }
     const dateInput = this.shadowRoot?.querySelector(
       'input[type="date"]',
     ) as HTMLInputElement;
@@ -117,7 +121,11 @@ export class FhiDateInput extends LitElement {
           @input=${this.onInput}
           @keydown=${this.onKeyDown}
         />
-        <span id="dateIcon" @click=${this.showDate}
+        <span
+          id="dateIcon"
+          @click=${this.showDate}
+          @keydown=${this.showDate}
+          tabindex="0"
           ><fhi-icon-calendar></fhi-icon-calendar
         ></span>
       </div>
@@ -195,6 +203,10 @@ export class FhiDateInput extends LitElement {
       /* icon */
       --dimension-icon-margin-right: var(--fhi-spacing-100);
       --dimension-icon-padding-left: var(--fhi-spacing-050);
+
+      --color-icon-focus-outline: var(--fhi-color-accent-border-default);
+
+      --dimension-icon-border-radius: var(--fhi-border-radius-050);
 
       /* message */
       --color-message-text: var(--fhi-color-neutral-text-default);
@@ -275,6 +287,13 @@ export class FhiDateInput extends LitElement {
       [type='date']::-webkit-calendar-picker-indicator {
         opacity: 0;
         -webkit-appearance: none;
+        display: none;
+        visibility: hidden;
+
+        &:target {
+          outline: solid;
+          font-size: 5rem;
+        }
       }
       div {
         width: fit-content;
@@ -289,6 +308,11 @@ export class FhiDateInput extends LitElement {
         margin-right: var(--dimension-icon-margin-right);
         height: fit-content;
         transition: var(--motion-input-transition);
+        border-radius: var(--dimension-icon-border-radius);
+        &:focus {
+          /* outline: solid var(--color-icon-focus-outline); */
+          outline: solid var(--color-icon-focus-outline);
+        }
       }
     }
 
@@ -344,24 +368,8 @@ export class FhiDateInput extends LitElement {
     @-moz-document url-prefix() {
       :host {
         #dateIcon {
-          padding-left: var(--dimension-icon-padding-left);
-          background-color: var(--color-input-background);
-        }
-        input[type='date']:hover + #dateIcon {
-          background-color: var(--color-input-background-hover);
-        }
-        input[type='date']:focus + #dateIcon {
-          background-color: var(--color-input-background-active);
-        }
-      }
-      :host([disabled]) {
-        input[type='date'] {
-          padding-right: calc(var(--dimension-input-padding-right) + 24px);
-        }
-      }
-      :host([readonly]:not([disabled])) {
-        input[type='date'] {
-          padding-right: calc(var(--dimension-input-padding-right) + 24px);
+          display: none;
+          visibility: hidden;
         }
       }
     }
