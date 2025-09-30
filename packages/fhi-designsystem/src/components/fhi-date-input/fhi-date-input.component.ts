@@ -147,6 +147,7 @@ export class FhiDateInput extends LitElement {
         --fhi-typography-label-small-letter-spacing
       );
 
+      --dimension-label-min-width: calc(var(--fhi-spacing-1000) * 2);
       --dimension-label-padding-bottom: var(--fhi-spacing-050);
 
       /* input */
@@ -183,6 +184,7 @@ export class FhiDateInput extends LitElement {
       --dimension-input-border-width: var(--fhi-dimension-border-width);
 
       --dimension-input-height: var(--fhi-spacing-500);
+      --dimension-input-min-width: calc(var(--fhi-spacing-1000) * 2);
       --dimension-input-border-radius: var(--fhi-border-radius-050);
       --dimension-input-padding-left: var(--fhi-spacing-150);
       --dimension-input-padding-right: var(--fhi-spacing-150);
@@ -226,6 +228,8 @@ export class FhiDateInput extends LitElement {
         letter-spacing: var(--typography-label-letter-spacing);
         color: var(--color-label-text);
         padding-bottom: var(--dimension-label-padding-bottom);
+        width: fit-content;
+        min-width: var(--dimension-label-min-width);
       }
 
       input[type='date'] {
@@ -247,7 +251,7 @@ export class FhiDateInput extends LitElement {
         appearance: none;
         -moz-appearance: none;
         -webkit-appearance: none;
-        min-width: 10rem;
+        min-width: var(--dimension-input-min-width);
         &:hover {
           border-color: var(--color-input-border-hover);
           background-color: var(--color-input-background-hover);
