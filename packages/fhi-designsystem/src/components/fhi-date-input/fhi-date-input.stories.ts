@@ -116,7 +116,7 @@ export const WithNoAttributes: Story = {
 };
 
 export const MinMax: Story = {
-  name: 'Min og Max dato',
+  name: 'Min og Max',
   args: {
     label: 'Label',
     message: 'Field with min and max date',
