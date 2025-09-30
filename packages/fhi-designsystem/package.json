@@ -16,7 +16,7 @@
     "web component",
     "ui"
   ],
-  "customElements": "./custom-elements.json",
+  "customElements": "custom-elements.json",
   "homepage": "https://github.com/FHIDev/Fhi.Designsystem",
   "bugs": {
     "url": "https://github.com/FHIDev/Fhi.Designsystem/issues"
