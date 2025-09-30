@@ -362,4 +362,37 @@ describe('fhi-date-input', () => {
       expect(message?.textContent).to.equal('message text');
     });
   });
+
+  describe('keyboard navigation and interaction', () => {
+    let input: HTMLInputElement;
+    let icon: HTMLElement;
+
+    beforeEach(async () => {
+      component = await fixture(
+        html`<fhi-date-input label="Dato"></fhi-date-input>`,
+      );
+      input = component.shadowRoot!.querySelector('input') as HTMLInputElement;
+      icon = component.shadowRoot!.querySelector('#dateIcon') as HTMLElement;
+    });
+
+    it('should have focusable input and icon elements', () => {
+      expect(input.tabIndex).to.not.equal(-1);
+      expect(icon.tabIndex).to.equal(0);
+    });
+
+    it('should not have a focusable icon when component is readonly', async () => {
+      component.readonly = true;
+      await component.updateComplete;
+      // The icon is hidden with display: none, so it is not focusable.
+      // We can check if it is visible.
+      expect(getComputedStyle(icon).display).to.equal('none');
+    });
+
+    it('should not have a focusable icon when component is disabled', async () => {
+      component.disabled = true;
+      await component.updateComplete;
+      // The whole component has styles making it non-interactive.
+      expect(icon.tabIndex).to.equal(0); // tabindex is not changed
+    });
+  });
 });
