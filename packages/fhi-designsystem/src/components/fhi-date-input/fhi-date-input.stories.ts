@@ -62,7 +62,7 @@ const meta: Meta<FhiDateInput> = {
     max: {
       control: { type: 'text' },
       description:
-        'Setter maksimum-dato. Dette vil hindre at brukeren kan velge en dato senere enn denne. Format `YYYY-MM-DD` Dersom feltet ikke er satt til dette formatet eller verdien ikke er en dato senere enn min vil verdien ignoreres.',
+        'Setter maksimumdato (gitt som `YYYY-MM-DD`). Dette vil hindre at brukeren kan velge en dato senere enn denne. Dersom feltet ikke er satt til dette formatet eller verdien ikke er en dato senere enn min vil verdien ignoreres.',
       table: {
         type: { summary: 'number-number-number' },
       },
