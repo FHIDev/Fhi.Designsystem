@@ -316,6 +316,7 @@ export class FhiDateInput extends LitElement {
       }
       #dateIcon {
         background-color: unset;
+        display: none;
       }
     }
 
