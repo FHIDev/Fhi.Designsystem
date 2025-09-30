@@ -4,26 +4,55 @@ import { ifDefined } from 'lit/directives/if-defined.js';
 
 export const FhiTextInputSelector = 'fhi-text-input';
 
+/**
+ * @tag fhi-text-input
+ *
+ */
 @customElement(FhiTextInputSelector)
 export class FhiTextInput extends LitElement {
   static readonly formAssociated = true;
 
+  /**
+   * @prop {string} label
+   */
   @property({ type: String }) label?: string = undefined;
 
+  /**
+   * @prop {string} message
+   */
   @property({ type: String }) message?: string = undefined;
 
+  /**
+   * @prop {string} placeholder
+   */
   @property({ type: String }) placeholder?: string | null = null;
 
+  /**
+   * @prop {string} status
+   * @reflect
+   */
   @property({ type: String, reflect: true }) status?: 'error' = undefined;
 
+  /**
+   * @prop {boolean} readonly
+   * @reflect
+   */
   @property({ type: Boolean, reflect: true }) readonly? = false;
 
+  /**
+   * @prop {boolean} disabled
+   * @reflect
+   */
   @property({ type: Boolean, reflect: true }) disabled? = false;
 
   @query('#input-element') _input!: HTMLInputElement;
 
   private _name?: string = undefined;
 
+  /**
+   * @prop {string} name
+   * @reflect
+   */
   @property({ type: String, reflect: true })
   get name(): string | undefined {
     return this._name;
@@ -37,6 +66,9 @@ export class FhiTextInput extends LitElement {
 
   private _value: string = '';
 
+  /**
+   * @prop {string} value
+   */
   @property({ type: String })
   get value(): string {
     return this._value;
