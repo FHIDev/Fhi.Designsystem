@@ -20,6 +20,8 @@ export class FhiDateInput extends LitElement {
 
   @property({ type: String }) max?: FhiDateValue = undefined;
 
+  @property({ type: Number }) step?: number = undefined;
+
   @property({ type: String, reflect: true }) status?: 'error' = undefined;
 
   @property({ type: Boolean, reflect: true }) readonly? = false;
@@ -110,6 +112,7 @@ export class FhiDateInput extends LitElement {
           name=${ifDefined(this.name)}
           min=${ifDefined(this.min)}
           max=${ifDefined(this.max)}
+          step=${ifDefined(this.step)}
           .value=${this.value ?? ''}
           ?readonly=${this.readonly}
           ?disabled=${this.disabled}
