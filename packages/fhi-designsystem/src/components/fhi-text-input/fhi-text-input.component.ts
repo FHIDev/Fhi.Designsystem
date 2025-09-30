@@ -13,34 +13,34 @@ export class FhiTextInput extends LitElement {
   static readonly formAssociated = true;
 
   /**
-   * @prop {string} label
+   * @attr {string} label - Text for label assosiated with input field.
    */
   @property({ type: String }) label?: string = undefined;
 
   /**
-   * @prop {string} message
+   * @attr {string} message - Optional
    */
   @property({ type: String }) message?: string = undefined;
 
   /**
-   * @prop {string} placeholder
+   * @attr {string} placeholder
    */
   @property({ type: String }) placeholder?: string | null = null;
 
   /**
-   * @prop {string} status
+   * @attr {error} status - optional
    * @reflect
    */
   @property({ type: String, reflect: true }) status?: 'error' = undefined;
 
   /**
-   * @prop {boolean} readonly
+   * @attr {boolean} readonly
    * @reflect
    */
   @property({ type: Boolean, reflect: true }) readonly? = false;
 
   /**
-   * @prop {boolean} disabled
+   * @attr {boolean} disabled
    * @reflect
    */
   @property({ type: Boolean, reflect: true }) disabled? = false;
@@ -50,7 +50,7 @@ export class FhiTextInput extends LitElement {
   private _name?: string = undefined;
 
   /**
-   * @prop {string} name
+   * @attr {string} name - Name attribute for input field.
    * @reflect
    */
   @property({ type: String, reflect: true })
@@ -67,7 +67,7 @@ export class FhiTextInput extends LitElement {
   private _value: string = '';
 
   /**
-   * @prop {string} value
+   * @attr {string} value - Input field value
    */
   @property({ type: String })
   get value(): string {
@@ -92,8 +92,12 @@ export class FhiTextInput extends LitElement {
     super.connectedCallback();
     this._internals.setFormValue(this.value);
   }
-
+  /**
+   * Dispatches a `change` event when the value of the input is committed by the user.
+   * @fires change
+   */
   public onChange(): void {
+    /**@type {change} change - Standard DOM event with type 'change' */
     this.dispatchEvent(
       new Event('change', {
         bubbles: true,
@@ -101,7 +105,9 @@ export class FhiTextInput extends LitElement {
       }),
     );
   }
-
+  /**
+   * Set new `value
+   */
   public onInput(): void {
     this.value = this._input.value;
     this._internals.setFormValue(this.value);
