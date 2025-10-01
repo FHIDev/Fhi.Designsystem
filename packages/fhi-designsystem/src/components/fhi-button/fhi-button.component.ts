@@ -844,7 +844,7 @@ export class FhiButton extends LitElement {
     }
 
     :host([icon-only][size='small']) button {
-      padding: calc(var(--fhi-spacing-050) - var(--fhi-dimension-border-width));
+      padding: calc(0.375rem - var(--fhi-dimension-border-width));
     }
 
     :host([icon-only][size='medium']) button {
