@@ -24,17 +24,17 @@ const meta: Meta<FhiGrid> = {
     gap: {
       control: 'text',
       description:
-        'Bestemmer avstand mellom elementene. Kan være `small`, `medium`, `large` eller en spesifikk verdi som `10px`, `1rem` eller `20`.',
+        'Bestemmer avstand mellom elementene. Kan være `small`, `medium`, `large` eller en spesifikk verdi som `12px`, `1rem` eller `24`.',
       defaultValue: { summary: 'medium' },
-    },
-    rows: {
-      controls: 'number',
-      description: 'Bestemmer antall rader.',
     },
     columns: {
       controls: 'number',
       description: 'Bestemmer antall kolonner',
       defaultValue: { summary: '12' },
+    },
+    rows: {
+      controls: 'number',
+      description: 'Bestemmer antall rader.',
     },
   },
 };
@@ -46,7 +46,7 @@ export const Preview: Story = {
   args: {
     gap: 'medium',
     rows: 3,
-    columns: 10,
+    columns: 12,
   },
   render: args => html`
     <fhi-grid
@@ -55,7 +55,7 @@ export const Preview: Story = {
       columns=${args.columns}
     >
       <div
-        style="grid-column: span 4;  grid-row: span 2; font-family: var(--fhi-font-family-default); color: var(--fhi-color-accent-text-subtle); background: var(--fhi-color-accent-background-subtle); border: var(--fhi-dimension-border-width) solid var(--fhi-color-accent-border-subtle); padding: var(--fhi-spacing-200); border-radius: var(--fhi-border-radius-150); display: flex; justify-content: start; align-items: center;"
+        style="grid-column: span 6;  grid-row: span 2; font-family: var(--fhi-font-family-default); color: var(--fhi-color-accent-text-subtle); background: var(--fhi-color-accent-background-subtle); border: var(--fhi-dimension-border-width) solid var(--fhi-color-accent-border-subtle); padding: var(--fhi-spacing-200); border-radius: var(--fhi-border-radius-150); display: flex; justify-content: start; align-items: center;"
       >
         Slot
       </div>
@@ -78,6 +78,7 @@ export const LargeGrid: Story = {
   args: {
     gap: 'medium',
     columns: 12,
+    rows: 3,
   },
   render: args => html`
     <fhi-grid
