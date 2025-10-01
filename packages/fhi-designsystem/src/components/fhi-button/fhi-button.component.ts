@@ -102,10 +102,6 @@ export class FhiButton extends LitElement {
   }
 
   private _handleSlotChange(event: Event): void {
-    if (this.iconOnly) {
-      return;
-    }
-
     const nodes = (event.target as HTMLSlotElement).assignedNodes();
 
     const validNodes = nodes.filter(
@@ -127,9 +123,12 @@ export class FhiButton extends LitElement {
     ) {
       const firstIcon = firstNode as HTMLElement;
 
+      if (this.iconOnly) {
+        firstIcon.setAttribute('size', this._getIconSize());
+        return;
+      }
       firstIcon.style.marginRight = 'var(--dimension-icon-margin-right)';
       firstIcon.style.marginLeft = 'var(--dimension-icon-margin-left-offset)';
-      firstIcon.setAttribute('size', this._getIconSize());
     }
 
     if (validNodes.length === 1) {
