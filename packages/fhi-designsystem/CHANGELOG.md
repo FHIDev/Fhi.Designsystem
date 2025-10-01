@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.19.1](https://github.com/FHIDev/Fhi.Designsystem/compare/v0.19.0...v0.19.1) (2025-09-30)
+
+
+### 🛠️ Bug Fixes
+
+* Juster margin for ikoner på knapp. ([d881131](https://github.com/FHIDev/Fhi.Designsystem/commit/d88113103cebc7a76c20ce2a0042854da14d03c0))
+
 ## [0.19.0](https://github.com/FHIDev/Fhi.Designsystem/compare/v0.18.0...v0.19.0) (2025-09-29)
 
 

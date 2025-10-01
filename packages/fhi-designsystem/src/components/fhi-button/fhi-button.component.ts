@@ -127,7 +127,10 @@ export class FhiButton extends LitElement {
         firstIcon.setAttribute('size', this._getIconSize());
         return;
       }
-      firstIcon.style.marginRight = 'var(--dimension-icon-margin-right)';
+      
+      if (this.size != 'small') {
+        firstIcon.style.marginRight = 'var(--dimension-icon-margin-right)';
+      }
       firstIcon.style.marginLeft = 'var(--dimension-icon-margin-left-offset)';
     }
 
@@ -145,7 +148,9 @@ export class FhiButton extends LitElement {
       const lastIcon = lastNode as HTMLElement;
 
       lastIcon.style.marginRight = 'var(--dimension-icon-margin-right-offset)';
-      lastIcon.style.marginLeft = 'var(--dimension-icon-margin-left)';
+      if (this.size != 'small') {
+        lastIcon.style.marginLeft = 'var(--dimension-icon-margin-left)';
+      }
       lastIcon.setAttribute('size', this._getIconSize());
     }
   }
