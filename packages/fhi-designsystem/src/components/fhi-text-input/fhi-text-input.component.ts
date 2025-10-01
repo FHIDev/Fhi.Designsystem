@@ -5,8 +5,11 @@ import { ifDefined } from 'lit/directives/if-defined.js';
 export const FhiTextInputSelector = 'fhi-text-input';
 
 /**
- * @tag fhi-text-input
+ * ## FHI Text Input
  *
+ * {@link https://designsystem.fhi.no/?path=/docs/komponenter-text-input--docs}
+ *
+ * @tag fhi-text-input
  * @element fhi-text-input
  */
 @customElement(FhiTextInputSelector)
@@ -14,35 +17,47 @@ export class FhiTextInput extends LitElement {
   static readonly formAssociated = true;
 
   /**
-   * @attr {string} label - Text for label associated with input field.
+   * Text for label associated with input field.
+   * @attr
+   * @type {string}
    */
   @property({ type: String }) label?: string = undefined;
 
   /**
-   * @attr {string} message - Text for message shown beneath the input field.
+   * Text for message shown beneath the input field.
+   * @attr
+   * @type {string}
    */
   @property({ type: String }) message?: string = undefined;
 
   /**
-   * @attr {string} placeholder - Placeholder text for input field
+   * Placeholder text for input field
+   * @attr
+   * @type {string}
    */
   @property({ type: String }) placeholder?: string | null = null;
 
   /**
-   * @attr {error} status - Decides if the field has a status, will change the look of the field.
+   * Decides if the field has a status, will change the look of the field.
+   * @attr
    * @reflect
+   * @type {'error'}
    */
   @property({ type: String, reflect: true }) status?: 'error' = undefined;
 
   /**
-   * @attr {boolean} readonly - Set field to read only state
+   * Set field to read only state
+   * @attr
    * @reflect
+   * @type {boolean}
    */
   @property({ type: Boolean, reflect: true }) readonly? = false;
 
   /**
-   * @attr {boolean} disabled - Disables the field
+   * Disables the field
+   * @attr
    * @reflect
+   * @type {boolean}
    */
   @property({ type: Boolean, reflect: true }) disabled? = false;
 
@@ -55,8 +70,10 @@ export class FhiTextInput extends LitElement {
   private _name?: string = undefined;
 
   /**
-   * @attr {string} name - Name attribute for input field.
+   * Name attribute for input field.
+   * @attr
    * @reflect
+   * @type {string}
    */
   @property({ type: String, reflect: true })
   get name(): string | undefined {
@@ -72,7 +89,9 @@ export class FhiTextInput extends LitElement {
   private _value: string = '';
 
   /**
-   * @attr {string} value - Input field value
+   * Input field value
+   * @attr
+   * @type {string}
    */
   @property({ type: String })
   get value(): string {
@@ -102,7 +121,7 @@ export class FhiTextInput extends LitElement {
    * @fires change
    */
   public onChange(): void {
-    /**@type {change} change - Standard DOM event with type 'change' */
+    /**@type {Event} - Standard DOM event with type 'change' */
     this.dispatchEvent(
       new Event('change', {
         bubbles: true,

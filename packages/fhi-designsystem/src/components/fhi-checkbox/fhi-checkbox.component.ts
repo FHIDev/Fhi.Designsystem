@@ -4,17 +4,65 @@ import { ifDefined } from 'lit/directives/if-defined.js';
 
 export const FhiCheckboxSelector = 'fhi-checkbox';
 
+/**
+ * ## FHI Checkbox
+ *
+ * {@link https://designsystem.fhi.no/?path=/docs/komponenter-checkbox--docs}
+ *
+ * @tag fhi-checkbox
+ * @element fhi-checkbox
+ */
 @customElement(FhiCheckboxSelector)
 export class FhiCheckbox extends LitElement {
   static readonly formAssociated = true;
 
+  /**
+   * The text label displayed next to the checkbox.
+   * @attr
+   * @type {string}
+   */
   @property({ type: String }) label?: string = undefined;
+
+  /**
+   * The name of the checkbox, submitted with form data.
+   * @attr
+   * @type {string}
+   */
   @property({ type: String }) name?: string = undefined;
+
+  /**
+   * The value of the checkbox, submitted with form data when checked. Defaults to 'on'.
+   * @attr
+   * @type {string}
+   */
   @property({ type: String }) value: string = 'on';
+
+  /**
+   * Sets the visual status of the checkbox, typically for indicating an error.
+   * @attr
+   * @reflect
+   * @type {'error' | undefined}
+   */
   @property({ type: String, reflect: true }) status?: 'error' | undefined;
+
+  /**
+   * Whether the checkbox is checked.
+   * @attr
+   * @type {boolean}
+   */
   @property({ type: Boolean }) checked? = false;
+
+  /**
+   * Disables the checkbox, making it non-interactive.
+   * @attr
+   * @reflect
+   * @type {boolean}
+   */
   @property({ type: Boolean, reflect: true }) disabled? = false;
 
+  /**
+   * @internal
+   */
   private _internals: ElementInternals;
 
   constructor() {
@@ -27,9 +75,14 @@ export class FhiCheckbox extends LitElement {
     this._updateFormValue();
   }
 
+  /**
+   * Handles the `change` event for the inner input.
+   * @internal
+   */
   public _handleChange(event: Event): void {
     this.checked = (event.target as HTMLInputElement).checked;
     this._updateFormValue();
+    /**@type {Event} - Standard DOM event with the type `change` */
     this.dispatchEvent(
       new Event('change', {
         bubbles: true,
@@ -37,8 +90,13 @@ export class FhiCheckbox extends LitElement {
     );
   }
 
+  /**
+   * Handles the `input` event for the inner input.
+   * @internal
+   */
   public _handleInput(event: Event): void {
     event.stopPropagation();
+    /**@type {Event} - Standard DOM event with the type `input`*/
     this.dispatchEvent(
       new Event('input', {
         bubbles: true,
@@ -47,10 +105,16 @@ export class FhiCheckbox extends LitElement {
     );
   }
 
+  /**
+   * @internal
+   */
   private _updateFormValue() {
     this._internals.setFormValue(this.checked ? this.value : null);
   }
 
+  /**
+   * Resets the checkbox to its initial state when its parent form is reset.
+   */
   public formResetCallback() {
     this.checked = false;
     this._updateFormValue();

@@ -7,10 +7,33 @@ import { customElement, property } from "lit/decorators.js";
 
 export const FhiIconArrowDownSelector = "fhi-icon-arrow-down";
 
+/**
+ * ## FhiIconArrowDown
+ * 
+ * {@url https://designsystem.fhi.no/?path=/docs/ikoner--docs}
+ * 
+ * @tag fhi-icon-arrow-down
+ * @element fhi-icon-arrow-down
+ */
 @customElement(FhiIconArrowDownSelector)
 export class FhiIconArrowDown extends LitElement {
+
+  /**
+   * Sets the color for the icon
+   * @attr
+   * @type {string}
+   */ 
   @property({ type: String }) color: string = "currentcolor";
+
+  /**
+   * Sets the size of the icon. Predefined options `xsmall`, `small`, `medium`, `large`. Also accepts `number` or `rem` and `px` values. Default `medium`.
+   * @attr
+   * @type { 'xsmall' | 'small' | 'medium' | 'large' | number | string}
+   * @default "medium"
+   */
   @property({ type: String }) size: 'xsmall' | 'small' | 'medium' | 'large' | number | `${number}px` | `${number}rem` = 'medium';
+
+  /**@internal */
   private get _size(): string {
     switch (this.size) {
       case 'xsmall': 
