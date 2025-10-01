@@ -18,33 +18,37 @@ export class FhiTextInput extends LitElement {
   @property({ type: String }) label?: string = undefined;
 
   /**
-   * @attr {string} message - Optional
+   * @attr {string} message - Text for message shown beneath the input field.
    */
   @property({ type: String }) message?: string = undefined;
 
   /**
-   * @attr {string} placeholder
+   * @attr {string} placeholder - Placeholder text for input field
    */
   @property({ type: String }) placeholder?: string | null = null;
 
   /**
-   * @attr {error} status - optional
+   * @attr {error} status - Decides if the field has a status, will change the look of the field.
    * @reflect
    */
   @property({ type: String, reflect: true }) status?: 'error' = undefined;
 
   /**
-   * @attr {boolean} readonly
+   * @attr {boolean} readonly - Set field to read only state
    * @reflect
    */
   @property({ type: Boolean, reflect: true }) readonly? = false;
 
   /**
-   * @attr {boolean} disabled
+   * @attr {boolean} disabled - Disables the field
    * @reflect
    */
   @property({ type: Boolean, reflect: true }) disabled? = false;
 
+  /**
+   * A reference to the internal `<input>` element.
+   * @internal
+   */
   @query('#input-element') _input!: HTMLInputElement;
 
   private _name?: string = undefined;
@@ -106,19 +110,23 @@ export class FhiTextInput extends LitElement {
     );
   }
   /**
-   * Set new `value
+   * Set new `value` to the input field.
    */
   public onInput(): void {
     this.value = this._input.value;
     this._internals.setFormValue(this.value);
   }
-
+  /**
+   * Requests submit on key down `enter`.
+   */
   public onKeyDown(event: KeyboardEvent): void {
     if (event.key === 'Enter' && this._internals.form) {
       this._internals.form!.requestSubmit();
     }
   }
-
+  /**
+   * Resets the field when the form is reset.
+   */
   public formResetCallback(): void {
     this.value = this.getAttribute('value') || '';
     this._internals.setFormValue(this.value);
