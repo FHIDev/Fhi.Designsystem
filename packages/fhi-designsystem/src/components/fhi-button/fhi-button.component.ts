@@ -102,10 +102,6 @@ export class FhiButton extends LitElement {
   }
 
   private _handleSlotChange(event: Event): void {
-    if (this.iconOnly) {
-      return;
-    }
-
     const nodes = (event.target as HTMLSlotElement).assignedNodes();
 
     const validNodes = nodes.filter(
@@ -126,11 +122,16 @@ export class FhiButton extends LitElement {
       (firstNode as Element).tagName.toLowerCase().startsWith('fhi-icon')
     ) {
       const firstIcon = firstNode as HTMLElement;
+
+      if (this.iconOnly) {
+        firstIcon.setAttribute('size', this._getIconSize());
+        return;
+      }
+      
       if (this.size != 'small') {
         firstIcon.style.marginRight = 'var(--dimension-icon-margin-right)';
       }
       firstIcon.style.marginLeft = 'var(--dimension-icon-margin-left-offset)';
-      firstIcon.setAttribute('size', this._getIconSize());
     }
 
     if (validNodes.length === 1) {
@@ -848,7 +849,7 @@ export class FhiButton extends LitElement {
     }
 
     :host([icon-only][size='small']) button {
-      padding: calc(var(--fhi-spacing-050) - var(--fhi-dimension-border-width));
+      padding: calc(0.375rem - var(--fhi-dimension-border-width));
     }
 
     :host([icon-only][size='medium']) button {
