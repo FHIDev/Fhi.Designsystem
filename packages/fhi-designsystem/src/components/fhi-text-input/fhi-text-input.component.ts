@@ -6,13 +6,15 @@ export const FhiTextInputSelector = 'fhi-text-input';
 
 /**
  * @tag fhi-text-input
+ *
+ * @element fhi-text-input
  */
 @customElement(FhiTextInputSelector)
 export class FhiTextInput extends LitElement {
   static readonly formAssociated = true;
 
   /**
-   * @attr {string} label - Text for label assosiated with input field.
+   * @attr {string} label - Text for label associated with input field.
    */
   @property({ type: String }) label?: string = undefined;
 
