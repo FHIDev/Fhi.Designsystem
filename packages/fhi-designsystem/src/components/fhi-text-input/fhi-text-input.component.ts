@@ -6,7 +6,6 @@ export const FhiTextInputSelector = 'fhi-text-input';
 
 /**
  * @tag fhi-text-input
- *
  */
 @customElement(FhiTextInputSelector)
 export class FhiTextInput extends LitElement {
