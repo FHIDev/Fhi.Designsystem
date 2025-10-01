@@ -46,7 +46,7 @@ export const Preview: Story = {
   args: {
     gap: 'medium',
     rows: 3,
-    columns: 10,
+    columns: 12,
   },
   render: args => html`
     <fhi-grid
