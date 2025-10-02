@@ -10,7 +10,7 @@ export const FhiIconSearchSelector = "fhi-icon-search";
 /**
  * ## FhiIconSearch
  * 
- * {@url https://designsystem.fhi.no/?path=/docs/ikoner--docs}
+ * {@link https://designsystem.fhi.no/?path=/docs/ikoner--docs}
  * 
  * @tag fhi-icon-search
  * @element fhi-icon-search

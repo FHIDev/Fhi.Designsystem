@@ -10,7 +10,7 @@ export const FhiIconCircleArrowLeftSelector = "fhi-icon-circle-arrow-left";
 /**
  * ## FhiIconCircleArrowLeft
  * 
- * {@url https://designsystem.fhi.no/?path=/docs/ikoner--docs}
+ * {@link https://designsystem.fhi.no/?path=/docs/ikoner--docs}
  * 
  * @tag fhi-icon-circle-arrow-left
  * @element fhi-icon-circle-arrow-left

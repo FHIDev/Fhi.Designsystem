@@ -10,7 +10,7 @@ export const FhiIconMenuSelector = "fhi-icon-menu";
 /**
  * ## FhiIconMenu
  * 
- * {@url https://designsystem.fhi.no/?path=/docs/ikoner--docs}
+ * {@link https://designsystem.fhi.no/?path=/docs/ikoner--docs}
  * 
  * @tag fhi-icon-menu
  * @element fhi-icon-menu

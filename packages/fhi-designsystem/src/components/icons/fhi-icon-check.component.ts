@@ -10,7 +10,7 @@ export const FhiIconCheckSelector = "fhi-icon-check";
 /**
  * ## FhiIconCheck
  * 
- * {@url https://designsystem.fhi.no/?path=/docs/ikoner--docs}
+ * {@link https://designsystem.fhi.no/?path=/docs/ikoner--docs}
  * 
  * @tag fhi-icon-check
  * @element fhi-icon-check

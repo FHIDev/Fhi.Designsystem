@@ -10,7 +10,7 @@ export const FhiIconPencilSelector = "fhi-icon-pencil";
 /**
  * ## FhiIconPencil
  * 
- * {@url https://designsystem.fhi.no/?path=/docs/ikoner--docs}
+ * {@link https://designsystem.fhi.no/?path=/docs/ikoner--docs}
  * 
  * @tag fhi-icon-pencil
  * @element fhi-icon-pencil

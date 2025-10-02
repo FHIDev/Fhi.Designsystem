@@ -10,7 +10,7 @@ export const FhiIconBellSelector = "fhi-icon-bell";
 /**
  * ## FhiIconBell
  * 
- * {@url https://designsystem.fhi.no/?path=/docs/ikoner--docs}
+ * {@link https://designsystem.fhi.no/?path=/docs/ikoner--docs}
  * 
  * @tag fhi-icon-bell
  * @element fhi-icon-bell

@@ -10,7 +10,7 @@ export const FhiIconTrashSelector = "fhi-icon-trash";
 /**
  * ## FhiIconTrash
  * 
- * {@url https://designsystem.fhi.no/?path=/docs/ikoner--docs}
+ * {@link https://designsystem.fhi.no/?path=/docs/ikoner--docs}
  * 
  * @tag fhi-icon-trash
  * @element fhi-icon-trash

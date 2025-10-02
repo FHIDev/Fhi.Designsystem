@@ -10,7 +10,7 @@ export const FhiIconFilterSelector = "fhi-icon-filter";
 /**
  * ## FhiIconFilter
  * 
- * {@url https://designsystem.fhi.no/?path=/docs/ikoner--docs}
+ * {@link https://designsystem.fhi.no/?path=/docs/ikoner--docs}
  * 
  * @tag fhi-icon-filter
  * @element fhi-icon-filter

@@ -10,7 +10,7 @@ export const FhiIconOctagonAlertSelector = "fhi-icon-octagon-alert";
 /**
  * ## FhiIconOctagonAlert
  * 
- * {@url https://designsystem.fhi.no/?path=/docs/ikoner--docs}
+ * {@link https://designsystem.fhi.no/?path=/docs/ikoner--docs}
  * 
  * @tag fhi-icon-octagon-alert
  * @element fhi-icon-octagon-alert

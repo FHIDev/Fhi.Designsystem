@@ -10,7 +10,7 @@ export const FhiIconPhoneSelector = "fhi-icon-phone";
 /**
  * ## FhiIconPhone
  * 
- * {@url https://designsystem.fhi.no/?path=/docs/ikoner--docs}
+ * {@link https://designsystem.fhi.no/?path=/docs/ikoner--docs}
  * 
  * @tag fhi-icon-phone
  * @element fhi-icon-phone

@@ -10,7 +10,7 @@ export const FhiIconArrowUpLeftSelector = "fhi-icon-arrow-up-left";
 /**
  * ## FhiIconArrowUpLeft
  * 
- * {@url https://designsystem.fhi.no/?path=/docs/ikoner--docs}
+ * {@link https://designsystem.fhi.no/?path=/docs/ikoner--docs}
  * 
  * @tag fhi-icon-arrow-up-left
  * @element fhi-icon-arrow-up-left

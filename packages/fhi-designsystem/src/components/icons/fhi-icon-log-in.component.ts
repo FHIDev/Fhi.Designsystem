@@ -10,7 +10,7 @@ export const FhiIconLogInSelector = "fhi-icon-log-in";
 /**
  * ## FhiIconLogIn
  * 
- * {@url https://designsystem.fhi.no/?path=/docs/ikoner--docs}
+ * {@link https://designsystem.fhi.no/?path=/docs/ikoner--docs}
  * 
  * @tag fhi-icon-log-in
  * @element fhi-icon-log-in

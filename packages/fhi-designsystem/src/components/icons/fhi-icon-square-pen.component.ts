@@ -10,7 +10,7 @@ export const FhiIconSquarePenSelector = "fhi-icon-square-pen";
 /**
  * ## FhiIconSquarePen
  * 
- * {@url https://designsystem.fhi.no/?path=/docs/ikoner--docs}
+ * {@link https://designsystem.fhi.no/?path=/docs/ikoner--docs}
  * 
  * @tag fhi-icon-square-pen
  * @element fhi-icon-square-pen

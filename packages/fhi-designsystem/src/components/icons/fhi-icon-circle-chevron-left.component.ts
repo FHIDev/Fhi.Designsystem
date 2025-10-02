@@ -10,7 +10,7 @@ export const FhiIconCircleChevronLeftSelector = "fhi-icon-circle-chevron-left";
 /**
  * ## FhiIconCircleChevronLeft
  * 
- * {@url https://designsystem.fhi.no/?path=/docs/ikoner--docs}
+ * {@link https://designsystem.fhi.no/?path=/docs/ikoner--docs}
  * 
  * @tag fhi-icon-circle-chevron-left
  * @element fhi-icon-circle-chevron-left

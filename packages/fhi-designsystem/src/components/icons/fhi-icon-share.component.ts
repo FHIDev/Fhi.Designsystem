@@ -10,7 +10,7 @@ export const FhiIconShareSelector = "fhi-icon-share";
 /**
  * ## FhiIconShare
  * 
- * {@url https://designsystem.fhi.no/?path=/docs/ikoner--docs}
+ * {@link https://designsystem.fhi.no/?path=/docs/ikoner--docs}
  * 
  * @tag fhi-icon-share
  * @element fhi-icon-share

@@ -10,7 +10,7 @@ export const FhiIconCalendarSelector = "fhi-icon-calendar";
 /**
  * ## FhiIconCalendar
  * 
- * {@url https://designsystem.fhi.no/?path=/docs/ikoner--docs}
+ * {@link https://designsystem.fhi.no/?path=/docs/ikoner--docs}
  * 
  * @tag fhi-icon-calendar
  * @element fhi-icon-calendar

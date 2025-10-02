@@ -10,7 +10,7 @@ export const FhiIconEyeOffSelector = "fhi-icon-eye-off";
 /**
  * ## FhiIconEyeOff
  * 
- * {@url https://designsystem.fhi.no/?path=/docs/ikoner--docs}
+ * {@link https://designsystem.fhi.no/?path=/docs/ikoner--docs}
  * 
  * @tag fhi-icon-eye-off
  * @element fhi-icon-eye-off

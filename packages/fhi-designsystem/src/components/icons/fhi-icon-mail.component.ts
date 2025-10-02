@@ -10,7 +10,7 @@ export const FhiIconMailSelector = "fhi-icon-mail";
 /**
  * ## FhiIconMail
  * 
- * {@url https://designsystem.fhi.no/?path=/docs/ikoner--docs}
+ * {@link https://designsystem.fhi.no/?path=/docs/ikoner--docs}
  * 
  * @tag fhi-icon-mail
  * @element fhi-icon-mail

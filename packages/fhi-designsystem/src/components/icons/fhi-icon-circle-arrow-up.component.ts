@@ -10,7 +10,7 @@ export const FhiIconCircleArrowUpSelector = "fhi-icon-circle-arrow-up";
 /**
  * ## FhiIconCircleArrowUp
  * 
- * {@url https://designsystem.fhi.no/?path=/docs/ikoner--docs}
+ * {@link https://designsystem.fhi.no/?path=/docs/ikoner--docs}
  * 
  * @tag fhi-icon-circle-arrow-up
  * @element fhi-icon-circle-arrow-up

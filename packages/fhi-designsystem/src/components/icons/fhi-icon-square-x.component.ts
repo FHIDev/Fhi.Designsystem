@@ -10,7 +10,7 @@ export const FhiIconSquareXSelector = "fhi-icon-square-x";
 /**
  * ## FhiIconSquareX
  * 
- * {@url https://designsystem.fhi.no/?path=/docs/ikoner--docs}
+ * {@link https://designsystem.fhi.no/?path=/docs/ikoner--docs}
  * 
  * @tag fhi-icon-square-x
  * @element fhi-icon-square-x

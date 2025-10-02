@@ -10,7 +10,7 @@ export const FhiIconCircleCheckBigSelector = "fhi-icon-circle-check-big";
 /**
  * ## FhiIconCircleCheckBig
  * 
- * {@url https://designsystem.fhi.no/?path=/docs/ikoner--docs}
+ * {@link https://designsystem.fhi.no/?path=/docs/ikoner--docs}
  * 
  * @tag fhi-icon-circle-check-big
  * @element fhi-icon-circle-check-big

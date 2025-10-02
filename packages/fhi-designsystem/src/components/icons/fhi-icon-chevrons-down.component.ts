@@ -10,7 +10,7 @@ export const FhiIconChevronsDownSelector = "fhi-icon-chevrons-down";
 /**
  * ## FhiIconChevronsDown
  * 
- * {@url https://designsystem.fhi.no/?path=/docs/ikoner--docs}
+ * {@link https://designsystem.fhi.no/?path=/docs/ikoner--docs}
  * 
  * @tag fhi-icon-chevrons-down
  * @element fhi-icon-chevrons-down

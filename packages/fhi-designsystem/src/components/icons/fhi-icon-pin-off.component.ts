@@ -10,7 +10,7 @@ export const FhiIconPinOffSelector = "fhi-icon-pin-off";
 /**
  * ## FhiIconPinOff
  * 
- * {@url https://designsystem.fhi.no/?path=/docs/ikoner--docs}
+ * {@link https://designsystem.fhi.no/?path=/docs/ikoner--docs}
  * 
  * @tag fhi-icon-pin-off
  * @element fhi-icon-pin-off

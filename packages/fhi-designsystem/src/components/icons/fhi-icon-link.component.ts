@@ -10,7 +10,7 @@ export const FhiIconLinkSelector = "fhi-icon-link";
 /**
  * ## FhiIconLink
  * 
- * {@url https://designsystem.fhi.no/?path=/docs/ikoner--docs}
+ * {@link https://designsystem.fhi.no/?path=/docs/ikoner--docs}
  * 
  * @tag fhi-icon-link
  * @element fhi-icon-link

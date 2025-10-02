@@ -10,7 +10,7 @@ export const FhiIconEyeSelector = "fhi-icon-eye";
 /**
  * ## FhiIconEye
  * 
- * {@url https://designsystem.fhi.no/?path=/docs/ikoner--docs}
+ * {@link https://designsystem.fhi.no/?path=/docs/ikoner--docs}
  * 
  * @tag fhi-icon-eye
  * @element fhi-icon-eye

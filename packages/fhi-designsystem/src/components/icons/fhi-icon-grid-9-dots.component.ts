@@ -10,7 +10,7 @@ export const FhiIconGrid9DotsSelector = "fhi-icon-grid-9-dots";
 /**
  * ## FhiIconGrid9Dots
  * 
- * {@url https://designsystem.fhi.no/?path=/docs/ikoner--docs}
+ * {@link https://designsystem.fhi.no/?path=/docs/ikoner--docs}
  * 
  * @tag fhi-icon-grid-9-dots
  * @element fhi-icon-grid-9-dots

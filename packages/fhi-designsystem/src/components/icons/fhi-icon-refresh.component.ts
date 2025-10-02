@@ -10,7 +10,7 @@ export const FhiIconRefreshSelector = "fhi-icon-refresh";
 /**
  * ## FhiIconRefresh
  * 
- * {@url https://designsystem.fhi.no/?path=/docs/ikoner--docs}
+ * {@link https://designsystem.fhi.no/?path=/docs/ikoner--docs}
  * 
  * @tag fhi-icon-refresh
  * @element fhi-icon-refresh

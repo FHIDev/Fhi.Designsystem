@@ -10,7 +10,7 @@ export const FhiIconEllipsisVerticalSelector = "fhi-icon-ellipsis-vertical";
 /**
  * ## FhiIconEllipsisVertical
  * 
- * {@url https://designsystem.fhi.no/?path=/docs/ikoner--docs}
+ * {@link https://designsystem.fhi.no/?path=/docs/ikoner--docs}
  * 
  * @tag fhi-icon-ellipsis-vertical
  * @element fhi-icon-ellipsis-vertical

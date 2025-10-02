@@ -10,7 +10,7 @@ export const FhiIconLogOutSelector = "fhi-icon-log-out";
 /**
  * ## FhiIconLogOut
  * 
- * {@url https://designsystem.fhi.no/?path=/docs/ikoner--docs}
+ * {@link https://designsystem.fhi.no/?path=/docs/ikoner--docs}
  * 
  * @tag fhi-icon-log-out
  * @element fhi-icon-log-out

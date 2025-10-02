@@ -10,7 +10,7 @@ export const FhiIconCopySelector = "fhi-icon-copy";
 /**
  * ## FhiIconCopy
  * 
- * {@url https://designsystem.fhi.no/?path=/docs/ikoner--docs}
+ * {@link https://designsystem.fhi.no/?path=/docs/ikoner--docs}
  * 
  * @tag fhi-icon-copy
  * @element fhi-icon-copy

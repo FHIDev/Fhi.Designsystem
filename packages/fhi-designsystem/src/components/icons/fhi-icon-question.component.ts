@@ -10,7 +10,7 @@ export const FhiIconQuestionSelector = "fhi-icon-question";
 /**
  * ## FhiIconQuestion
  * 
- * {@url https://designsystem.fhi.no/?path=/docs/ikoner--docs}
+ * {@link https://designsystem.fhi.no/?path=/docs/ikoner--docs}
  * 
  * @tag fhi-icon-question
  * @element fhi-icon-question

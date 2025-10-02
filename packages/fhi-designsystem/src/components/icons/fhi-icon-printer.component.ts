@@ -10,7 +10,7 @@ export const FhiIconPrinterSelector = "fhi-icon-printer";
 /**
  * ## FhiIconPrinter
  * 
- * {@url https://designsystem.fhi.no/?path=/docs/ikoner--docs}
+ * {@link https://designsystem.fhi.no/?path=/docs/ikoner--docs}
  * 
  * @tag fhi-icon-printer
  * @element fhi-icon-printer

@@ -10,7 +10,7 @@ export const FhiIconChevronDownSelector = "fhi-icon-chevron-down";
 /**
  * ## FhiIconChevronDown
  * 
- * {@url https://designsystem.fhi.no/?path=/docs/ikoner--docs}
+ * {@link https://designsystem.fhi.no/?path=/docs/ikoner--docs}
  * 
  * @tag fhi-icon-chevron-down
  * @element fhi-icon-chevron-down

@@ -10,7 +10,7 @@ export const FhiIconCirclePlusSelector = "fhi-icon-circle-plus";
 /**
  * ## FhiIconCirclePlus
  * 
- * {@url https://designsystem.fhi.no/?path=/docs/ikoner--docs}
+ * {@link https://designsystem.fhi.no/?path=/docs/ikoner--docs}
  * 
  * @tag fhi-icon-circle-plus
  * @element fhi-icon-circle-plus

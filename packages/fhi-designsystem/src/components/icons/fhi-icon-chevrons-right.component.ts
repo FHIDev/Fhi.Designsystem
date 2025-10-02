@@ -10,7 +10,7 @@ export const FhiIconChevronsRightSelector = "fhi-icon-chevrons-right";
 /**
  * ## FhiIconChevronsRight
  * 
- * {@url https://designsystem.fhi.no/?path=/docs/ikoner--docs}
+ * {@link https://designsystem.fhi.no/?path=/docs/ikoner--docs}
  * 
  * @tag fhi-icon-chevrons-right
  * @element fhi-icon-chevrons-right

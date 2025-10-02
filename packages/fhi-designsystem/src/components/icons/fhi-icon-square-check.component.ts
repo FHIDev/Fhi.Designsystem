@@ -10,7 +10,7 @@ export const FhiIconSquareCheckSelector = "fhi-icon-square-check";
 /**
  * ## FhiIconSquareCheck
  * 
- * {@url https://designsystem.fhi.no/?path=/docs/ikoner--docs}
+ * {@link https://designsystem.fhi.no/?path=/docs/ikoner--docs}
  * 
  * @tag fhi-icon-square-check
  * @element fhi-icon-square-check

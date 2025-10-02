@@ -10,7 +10,7 @@ export const FhiIconGearSelector = "fhi-icon-gear";
 /**
  * ## FhiIconGear
  * 
- * {@url https://designsystem.fhi.no/?path=/docs/ikoner--docs}
+ * {@link https://designsystem.fhi.no/?path=/docs/ikoner--docs}
  * 
  * @tag fhi-icon-gear
  * @element fhi-icon-gear

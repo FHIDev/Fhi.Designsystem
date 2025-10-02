@@ -10,7 +10,7 @@ export const FhiIconExpandSelector = "fhi-icon-expand";
 /**
  * ## FhiIconExpand
  * 
- * {@url https://designsystem.fhi.no/?path=/docs/ikoner--docs}
+ * {@link https://designsystem.fhi.no/?path=/docs/ikoner--docs}
  * 
  * @tag fhi-icon-expand
  * @element fhi-icon-expand

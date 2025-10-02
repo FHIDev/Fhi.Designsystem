@@ -10,7 +10,7 @@ export const FhiIconGripVerticalSelector = "fhi-icon-grip-vertical";
 /**
  * ## FhiIconGripVertical
  * 
- * {@url https://designsystem.fhi.no/?path=/docs/ikoner--docs}
+ * {@link https://designsystem.fhi.no/?path=/docs/ikoner--docs}
  * 
  * @tag fhi-icon-grip-vertical
  * @element fhi-icon-grip-vertical

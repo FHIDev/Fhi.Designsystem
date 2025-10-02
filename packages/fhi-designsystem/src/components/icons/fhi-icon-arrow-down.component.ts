@@ -10,7 +10,7 @@ export const FhiIconArrowDownSelector = "fhi-icon-arrow-down";
 /**
  * ## FhiIconArrowDown
  * 
- * {@url https://designsystem.fhi.no/?path=/docs/ikoner--docs}
+ * {@link https://designsystem.fhi.no/?path=/docs/ikoner--docs}
  * 
  * @tag fhi-icon-arrow-down
  * @element fhi-icon-arrow-down

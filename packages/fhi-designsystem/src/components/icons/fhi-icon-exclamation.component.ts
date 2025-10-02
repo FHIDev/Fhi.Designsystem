@@ -10,7 +10,7 @@ export const FhiIconExclamationSelector = "fhi-icon-exclamation";
 /**
  * ## FhiIconExclamation
  * 
- * {@url https://designsystem.fhi.no/?path=/docs/ikoner--docs}
+ * {@link https://designsystem.fhi.no/?path=/docs/ikoner--docs}
  * 
  * @tag fhi-icon-exclamation
  * @element fhi-icon-exclamation

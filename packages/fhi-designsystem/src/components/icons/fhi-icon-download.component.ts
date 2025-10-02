@@ -10,7 +10,7 @@ export const FhiIconDownloadSelector = "fhi-icon-download";
 /**
  * ## FhiIconDownload
  * 
- * {@url https://designsystem.fhi.no/?path=/docs/ikoner--docs}
+ * {@link https://designsystem.fhi.no/?path=/docs/ikoner--docs}
  * 
  * @tag fhi-icon-download
  * @element fhi-icon-download

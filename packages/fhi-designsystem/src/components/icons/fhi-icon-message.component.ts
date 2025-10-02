@@ -10,7 +10,7 @@ export const FhiIconMessageSelector = "fhi-icon-message";
 /**
  * ## FhiIconMessage
  * 
- * {@url https://designsystem.fhi.no/?path=/docs/ikoner--docs}
+ * {@link https://designsystem.fhi.no/?path=/docs/ikoner--docs}
  * 
  * @tag fhi-icon-message
  * @element fhi-icon-message

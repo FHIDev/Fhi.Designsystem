@@ -10,7 +10,7 @@ export const FhiIconPaperclipSelector = "fhi-icon-paperclip";
 /**
  * ## FhiIconPaperclip
  * 
- * {@url https://designsystem.fhi.no/?path=/docs/ikoner--docs}
+ * {@link https://designsystem.fhi.no/?path=/docs/ikoner--docs}
  * 
  * @tag fhi-icon-paperclip
  * @element fhi-icon-paperclip

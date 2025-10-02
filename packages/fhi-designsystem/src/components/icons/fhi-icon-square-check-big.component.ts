@@ -10,7 +10,7 @@ export const FhiIconSquareCheckBigSelector = "fhi-icon-square-check-big";
 /**
  * ## FhiIconSquareCheckBig
  * 
- * {@url https://designsystem.fhi.no/?path=/docs/ikoner--docs}
+ * {@link https://designsystem.fhi.no/?path=/docs/ikoner--docs}
  * 
  * @tag fhi-icon-square-check-big
  * @element fhi-icon-square-check-big

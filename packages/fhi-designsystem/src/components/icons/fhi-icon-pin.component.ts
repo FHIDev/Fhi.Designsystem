@@ -10,7 +10,7 @@ export const FhiIconPinSelector = "fhi-icon-pin";
 /**
  * ## FhiIconPin
  * 
- * {@url https://designsystem.fhi.no/?path=/docs/ikoner--docs}
+ * {@link https://designsystem.fhi.no/?path=/docs/ikoner--docs}
  * 
  * @tag fhi-icon-pin
  * @element fhi-icon-pin

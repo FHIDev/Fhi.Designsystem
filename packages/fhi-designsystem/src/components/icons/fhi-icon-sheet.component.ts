@@ -10,7 +10,7 @@ export const FhiIconSheetSelector = "fhi-icon-sheet";
 /**
  * ## FhiIconSheet
  * 
- * {@url https://designsystem.fhi.no/?path=/docs/ikoner--docs}
+ * {@link https://designsystem.fhi.no/?path=/docs/ikoner--docs}
  * 
  * @tag fhi-icon-sheet
  * @element fhi-icon-sheet

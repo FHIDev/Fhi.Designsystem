@@ -10,7 +10,7 @@ export const FhiIconRotateRightSelector = "fhi-icon-rotate-right";
 /**
  * ## FhiIconRotateRight
  * 
- * {@url https://designsystem.fhi.no/?path=/docs/ikoner--docs}
+ * {@link https://designsystem.fhi.no/?path=/docs/ikoner--docs}
  * 
  * @tag fhi-icon-rotate-right
  * @element fhi-icon-rotate-right

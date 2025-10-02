@@ -94,7 +94,7 @@ export const ${webComponentName}Selector = "${customElementSelector}";
 /**
  * ## ${webComponentName}
  * 
- * {@url https://designsystem.fhi.no/?path=/docs/ikoner--docs}
+ * {@link https://designsystem.fhi.no/?path=/docs/ikoner--docs}
  * 
  * @tag ${customElementSelector}
  * @element ${customElementSelector}

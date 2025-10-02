@@ -10,7 +10,7 @@ export const FhiIconMinusSelector = "fhi-icon-minus";
 /**
  * ## FhiIconMinus
  * 
- * {@url https://designsystem.fhi.no/?path=/docs/ikoner--docs}
+ * {@link https://designsystem.fhi.no/?path=/docs/ikoner--docs}
  * 
  * @tag fhi-icon-minus
  * @element fhi-icon-minus

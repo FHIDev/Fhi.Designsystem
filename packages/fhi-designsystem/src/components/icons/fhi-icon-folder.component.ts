@@ -10,7 +10,7 @@ export const FhiIconFolderSelector = "fhi-icon-folder";
 /**
  * ## FhiIconFolder
  * 
- * {@url https://designsystem.fhi.no/?path=/docs/ikoner--docs}
+ * {@link https://designsystem.fhi.no/?path=/docs/ikoner--docs}
  * 
  * @tag fhi-icon-folder
  * @element fhi-icon-folder

@@ -10,7 +10,7 @@ export const FhiIconLink2OffSelector = "fhi-icon-link-2-off";
 /**
  * ## FhiIconLink2Off
  * 
- * {@url https://designsystem.fhi.no/?path=/docs/ikoner--docs}
+ * {@link https://designsystem.fhi.no/?path=/docs/ikoner--docs}
  * 
  * @tag fhi-icon-link-2-off
  * @element fhi-icon-link-2-off

@@ -10,7 +10,7 @@ export const FhiIconTriangleAlertSelector = "fhi-icon-triangle-alert";
 /**
  * ## FhiIconTriangleAlert
  * 
- * {@url https://designsystem.fhi.no/?path=/docs/ikoner--docs}
+ * {@link https://designsystem.fhi.no/?path=/docs/ikoner--docs}
  * 
  * @tag fhi-icon-triangle-alert
  * @element fhi-icon-triangle-alert

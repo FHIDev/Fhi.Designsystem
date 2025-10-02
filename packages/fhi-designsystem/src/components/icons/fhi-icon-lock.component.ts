@@ -10,7 +10,7 @@ export const FhiIconLockSelector = "fhi-icon-lock";
 /**
  * ## FhiIconLock
  * 
- * {@url https://designsystem.fhi.no/?path=/docs/ikoner--docs}
+ * {@link https://designsystem.fhi.no/?path=/docs/ikoner--docs}
  * 
  * @tag fhi-icon-lock
  * @element fhi-icon-lock

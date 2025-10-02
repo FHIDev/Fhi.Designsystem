@@ -10,7 +10,7 @@ export const FhiIconCircleExclamationSelector = "fhi-icon-circle-exclamation";
 /**
  * ## FhiIconCircleExclamation
  * 
- * {@url https://designsystem.fhi.no/?path=/docs/ikoner--docs}
+ * {@link https://designsystem.fhi.no/?path=/docs/ikoner--docs}
  * 
  * @tag fhi-icon-circle-exclamation
  * @element fhi-icon-circle-exclamation

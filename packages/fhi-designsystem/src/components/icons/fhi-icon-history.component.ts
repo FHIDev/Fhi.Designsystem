@@ -10,7 +10,7 @@ export const FhiIconHistorySelector = "fhi-icon-history";
 /**
  * ## FhiIconHistory
  * 
- * {@url https://designsystem.fhi.no/?path=/docs/ikoner--docs}
+ * {@link https://designsystem.fhi.no/?path=/docs/ikoner--docs}
  * 
  * @tag fhi-icon-history
  * @element fhi-icon-history
