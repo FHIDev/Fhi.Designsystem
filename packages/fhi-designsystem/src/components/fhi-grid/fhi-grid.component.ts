@@ -12,15 +12,10 @@ export class FhiGrid extends LitElement {
     | 'medium'
     | 'large'
     | FhiGapWidthUnit = 'medium';
-  @property({ type: Number }) rows?: number;
   @property({ type: Number }) columns = 12;
 
   updated(changedProperties: PropertyValues<this>) {
     super.updated(changedProperties);
-
-    if (changedProperties.has('rows')) {
-      this.style.gridTemplateRows = `repeat( ${this.rows}, 1fr )`;
-    }
 
     if (changedProperties.has('columns')) {
       this.style.gridTemplateColumns = `repeat( ${this.columns}, 1fr )`;

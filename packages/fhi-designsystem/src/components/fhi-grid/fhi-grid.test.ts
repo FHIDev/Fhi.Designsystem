@@ -23,15 +23,6 @@ describe('fhi-grid', () => {
   });
 
   describe('setting attributes', () => {
-    it('has an attribute to set rows', async () => {
-      const component = await fixture<FhiGrid>(
-        html`<fhi-grid rows="2"></fhi-grid>`,
-      );
-
-      expect(component.getAttribute('rows')).to.equal('2');
-      expect(component.rows).to.equal(2);
-    });
-
     it('has an attribute to set columns', async () => {
       const component = await fixture<FhiGrid>(
         html`<fhi-grid columns="10"></fhi-grid>`,
