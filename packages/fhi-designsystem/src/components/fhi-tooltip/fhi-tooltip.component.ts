@@ -24,37 +24,92 @@ export type TooltipPlacement =
   | 'right-start'
   | 'right-end';
 
+/**
+ * ## FHI Tooltip
+ *
+ * A component that displays a small pop-up of descriptive text when a user hovers over or clicks on an element.
+ *
+ * {@link https://designsystem.fhi.no/?path=/docs/komponenter-tooltip--docs}
+ *
+ * @tag fhi-tooltip
+ * @element fhi-tooltip
+ *
+ * @slot - The content that will trigger the tooltip.
+ */
 @customElement(FhiTooltipSelector)
 export class FhiTooltip extends LitElement {
+  /**
+   * The text content to display inside the tooltip.
+   * @attr
+   * @type {string}
+   */
   @property({ type: String }) message: string = '';
 
+  /**
+   * The placement of the tooltip relative to its trigger element.
+   * @attr
+   * @type {"top" | "top-start" | "top-end" | "bottom" | "bottom-start" | "bottom-end" | "left" | "left-start" | "left-end" | "right" | "right-start" | "right-end"}
+   */
   @property({ type: String }) placement: TooltipPlacement = 'top';
 
+  /**
+   * The delay in milliseconds before the tooltip appears on hover.
+   * @attr
+   * @type {number}
+   */
   @property({ type: Number }) delay: number = 500;
 
+  /**
+   * The event that triggers the tooltip to show. Can be 'hover' or 'click'.
+   * @attr
+   * @type {'click' | 'hover'}
+   */
   @property({ type: String }) trigger: 'click' | 'hover' = 'hover';
 
+  /**
+   * The maximum width of the tooltip.
+   * @attr max-width
+   * @type {string}
+   */
   @property({ type: String, attribute: 'max-width' }) maxWidth? = '18.75rem';
 
+  /**
+   * A reference to the tooltip's anchor element (the slotted content).
+   * @internal
+   */
   @query('#tooltip-anchor') _anchor!: HTMLElement;
+
+  /**
+   * A reference to the tooltip element itself.
+   * @internal
+   */
   @query('#tooltip') _tooltip!: HTMLElement;
 
+  /** @internal */
   protected _timeoutId: number | undefined = undefined;
 
+  /** @internal */
   protected _autoPositioningCleanup: () => void = () => {};
 
+  /** @internal */
   @state()
   protected _isVisible = false;
 
+  /** @internal */
   @state()
   protected _isFadingOut = false;
 
+  /** @internal */
   @state()
   protected _position = {
     top: 0,
     left: 0,
   };
 
+  /**
+   * Shows the tooltip.
+   * @internal
+   */
   private _showTooltip() {
     if (this._isVisible) {
       return;
@@ -72,6 +127,10 @@ export class FhiTooltip extends LitElement {
     window.addEventListener('keydown', this.__handlePotentialEscapeKeyPress);
   }
 
+  /**
+   * Hides the tooltip.
+   * @internal
+   */
   private _hideTooltip() {
     if (!this._isVisible) {
       return;
@@ -93,6 +152,11 @@ export class FhiTooltip extends LitElement {
     }, 150);
   }
 
+  /**
+   * Positions the tooltip using Floating UI.
+   * @internal
+   * @param {TooltipPlacement} placement - The desired placement.
+   */
   private _positionTooltip(placement: TooltipPlacement) {
     // Look into anchor and fallback positioning when they are out of experimental and adopted by all relevant browsers.
     // https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_anchor_positioning
@@ -119,6 +183,10 @@ export class FhiTooltip extends LitElement {
     );
   }
 
+  /**
+   * Handles the mouse enter event to show the tooltip on hover.
+   * @internal
+   */
   private _handleMouseEnter() {
     if (this.trigger !== 'hover') {
       return;
@@ -129,6 +197,10 @@ export class FhiTooltip extends LitElement {
     }, this.delay) as unknown as number;
   }
 
+  /**
+   * Handles the mouse leave event to hide the tooltip on hover.
+   * @internal
+   */
   private _handleMouseLeave() {
     if (this.trigger !== 'hover') {
       return;
@@ -138,6 +210,11 @@ export class FhiTooltip extends LitElement {
     this._hideTooltip();
   }
 
+  /**
+   * Handles clicks outside the component to hide the tooltip when triggered by click.
+   * @internal
+   * @param {MouseEvent} event - The click event.
+   */
   private _handlePotentialClickOutside = (event: MouseEvent) => {
     if (this.trigger !== 'click') {
       return;
@@ -148,12 +225,21 @@ export class FhiTooltip extends LitElement {
     }
   };
 
+  /**
+   * Handles the Escape key press to hide the tooltip.
+   * @internal
+   * @param {KeyboardEvent} event - The keydown event.
+   */
   private __handlePotentialEscapeKeyPress = (event: KeyboardEvent) => {
     if (event.key === 'Escape' && this._isVisible) {
       this._hideTooltip();
     }
   };
 
+  /**
+   * Handles the click event to toggle the tooltip's visibility.
+   * @internal
+   */
   private _handleClick() {
     if (this.trigger === 'click') {
       if (this._isVisible) {

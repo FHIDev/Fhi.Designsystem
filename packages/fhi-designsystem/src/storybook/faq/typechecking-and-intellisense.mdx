@@ -5,9 +5,20 @@ import { DesignTokenDocBlock } from 'storybook-design-token';
 
 ## Typesjekking & Intellisense
 
-FHI designsystem leverer foreløpig ikke type-filer for typesjekking eller intellisense.
+FHI designsystem kan levere intellisense for ***VS Code***. For å ta dette i bruk må du ta noen enkle grep.
 
-Konsekvensene av dette er at du ikke vil få noen forslag fra intellisense relatert til komponentene sine attributter utenom standard forslag fra IDE-en, og en eventuell kompilator vil ikke typesjekke komponentene.
+1. Sett følgende inn i `.vscode/settings.json`
+```json 
+{
+    "html.customData": ["./node_modules/@folkehelseinstituttet/designsystem/custom-elements.json"],
+}
+```
+
+2. Installer [Web Component Language Server](https://wc-toolkit.com/integrations/web-components-language-server/) extension i VS code.
+
+> FHI designsystem leverer foreløpig ikke type-filer for typesjekking eller intellisense for andre IDE'er enn VS Code. Det er også begrensninger i intellisense for komplekse typer, men det kommer opp forklaringer av typen.
+> 
+> Konsekvensene av dette er at du ikke vil få noen forslag fra intellisense relatert til komponentene sine attributter utenom standard forslag fra IDE-en hvis du ikke bruker VS Code, og en eventuell kompilator vil ikke typesjekke komponentene.
 
 Bedre støtte for typesjekking og intellisense kommer i fremtiden og vi har åpene issues relatert til dette.
 
