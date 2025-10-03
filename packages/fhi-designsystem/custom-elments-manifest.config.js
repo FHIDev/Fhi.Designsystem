@@ -4,7 +4,7 @@ import { typeParserPlugin } from '@wc-toolkit/type-parser';
 export default {
   globs: ['src/components/**/*.component.ts'],
   exclude: ['**/*.test.ts', '**/*.stories.ts'],
-  outdir: 'dist/npm/',
+  outdir: './',
   LitElement: true,
   plugins: [
     cemSorterPlugin({
