@@ -130,10 +130,6 @@ export default defineConfig(({ mode }) => {
                 src: 'README.md',
                 dest: './',
               },
-              {
-                src: 'custom-elements.json',
-                dest: './',
-              },
             ],
           }),
         ],
