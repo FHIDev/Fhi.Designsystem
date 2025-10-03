@@ -37,7 +37,7 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "pnpm build:cdn && pnpm build:npm && pnpm analyze",
+    "build": "pnpm analyze && pnpm build:cdn && pnpm build:npm",
     "build:cdn": "tsc && cross-env DEPLOY_TARGET=cdn vite build",
     "build:npm": "tsc && cross-env DEPLOY_TARGET=npm vite build",
     "storybook": "storybook dev -p 6006",
