@@ -37,7 +37,7 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "pnpm analyze && pnpm build:cdn && pnpm build:npm",
+    "build": "pnpm analyze && pnpm build:cdn && pnpm build:npm && pnpm clean",
     "build:cdn": "tsc && cross-env DEPLOY_TARGET=cdn vite build",
     "build:npm": "tsc && cross-env DEPLOY_TARGET=npm vite build",
     "storybook": "storybook dev -p 6006",
@@ -52,7 +52,8 @@
     "format:prettier": "prettier \"**/*.js\" --write --ignore-path .gitignore",
     "publish:npm": "pnpm build && cd dist/npm && npm publish",
     "changelog:ci": "release-it --ci",
-    "analyze": "cem analyze --litelement"
+    "analyze": "cem analyze --litelement",
+    "clean": "rimraf custom-elements.json"
   },
   "peerDependencies": {
     "lit": "~3.2.0"
@@ -83,6 +84,7 @@
     "lit": "~3.2.0",
     "mocha": "~10.7.0",
     "release-it": "~19.0.4",
+    "rimraf": "^6.0.1",
     "storybook": "~8.3.0",
     "storybook-design-token": "^3.2.0",
     "svgo": "^3.3.2",
