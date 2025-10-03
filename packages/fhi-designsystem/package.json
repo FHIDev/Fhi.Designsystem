@@ -16,7 +16,7 @@
     "web component",
     "ui"
   ],
-  "customElements": "custom-elements.json",
+  "customElements": "dist/npm/custom-elements.json",
   "homepage": "https://github.com/FHIDev/Fhi.Designsystem",
   "bugs": {
     "url": "https://github.com/FHIDev/Fhi.Designsystem/issues"
@@ -37,7 +37,7 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "pnpm analyze && pnpm build:cdn && pnpm build:npm",
+    "build": "pnpm build:cdn && pnpm build:npm && pnpm analyze",
     "build:cdn": "tsc && cross-env DEPLOY_TARGET=cdn vite build",
     "build:npm": "tsc && cross-env DEPLOY_TARGET=npm vite build",
     "storybook": "storybook dev -p 6006",
