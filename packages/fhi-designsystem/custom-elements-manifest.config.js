@@ -1,5 +1,6 @@
 import { cemSorterPlugin } from '@wc-toolkit/cem-sorter';
 import { typeParserPlugin } from '@wc-toolkit/type-parser';
+import { customElementJetBrainsPlugin } from 'custom-element-jet-brains-integration';
 
 const options = {
   outdir: './',
