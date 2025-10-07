@@ -7,10 +7,33 @@ import { customElement, property } from "lit/decorators.js";
 
 export const FhiIconFilterSelector = "fhi-icon-filter";
 
+/**
+ * ## FhiIconFilter
+ * 
+ * {@link https://designsystem.fhi.no/?path=/docs/ikoner--docs}
+ * 
+ * @tag fhi-icon-filter
+ * @element fhi-icon-filter
+ */
 @customElement(FhiIconFilterSelector)
 export class FhiIconFilter extends LitElement {
+
+  /**
+   * Sets the color for the icon
+   * @attr
+   * @type {string}
+   */ 
   @property({ type: String }) color: string = "currentcolor";
+
+  /**
+   * Sets the size of the icon. Predefined options `xsmall`, `small`, `medium`, `large`. Also accepts `number` or `rem` and `px` values. Default `medium`.
+   * @attr
+   * @type { 'xsmall' | 'small' | 'medium' | 'large' | number | string}
+   * @default "medium"
+   */
   @property({ type: String }) size: 'xsmall' | 'small' | 'medium' | 'large' | number | `${number}px` | `${number}rem` = 'medium';
+
+  /**@internal */
   private get _size(): string {
     switch (this.size) {
       case 'xsmall': 
