@@ -4,26 +4,77 @@ import { ifDefined } from 'lit/directives/if-defined.js';
 
 export const FhiTextInputSelector = 'fhi-text-input';
 
+/**
+ * ## FHI Text Input
+ *
+ * {@link https://designsystem.fhi.no/?path=/docs/komponenter-text-input--docs}
+ *
+ * @tag fhi-text-input
+ * @element fhi-text-input
+ */
 @customElement(FhiTextInputSelector)
 export class FhiTextInput extends LitElement {
   static readonly formAssociated = true;
 
+  /**
+   * Text for label associated with input field.
+   * @attr
+   * @type {string}
+   */
   @property({ type: String }) label?: string = undefined;
 
+  /**
+   * Text for message shown beneath the input field.
+   * @attr
+   * @type {string}
+   */
   @property({ type: String }) message?: string = undefined;
 
+  /**
+   * Placeholder text for input field
+   * @attr
+   * @type {string}
+   */
   @property({ type: String }) placeholder?: string | null = null;
 
+  /**
+   * Decides if the field has a status, will change the look of the field.
+   * @attr
+   * @reflect
+   * @type {'error'}
+   */
   @property({ type: String, reflect: true }) status?: 'error' = undefined;
 
+  /**
+   * Set field to read only state
+   * @attr
+   * @reflect
+   * @type {boolean}
+   */
   @property({ type: Boolean, reflect: true }) readonly? = false;
 
+  /**
+   * Disables the field
+   * @attr
+   * @reflect
+   * @type {boolean}
+   */
   @property({ type: Boolean, reflect: true }) disabled? = false;
 
+  /**
+   * A reference to the internal `<input>` element.
+   * @internal
+   */
   @query('#input-element') _input!: HTMLInputElement;
 
   private _name?: string = undefined;
 
+  /**
+   * Name attribute for input field.
+   * @attr
+   * @reflect
+   * @type {string}
+   */
   @property({ type: String, reflect: true })
   get name(): string | undefined {
     return this._name;
@@ -37,6 +88,11 @@ export class FhiTextInput extends LitElement {
 
   private _value: string = '';
 
+  /**
+   * Input field value
+   * @attr
+   * @type {string}
+   */
   @property({ type: String })
   get value(): string {
     return this._value;
@@ -60,8 +116,12 @@ export class FhiTextInput extends LitElement {
     super.connectedCallback();
     this._internals.setFormValue(this.value);
   }
-
+  /**
+   * Dispatches a `change` event when the value of the input is committed by the user.
+   * @fires change
+   */
   public onChange(): void {
+    /**@type {Event} - Standard DOM event with type 'change' */
     this.dispatchEvent(
       new Event('change', {
         bubbles: true,
@@ -69,18 +129,24 @@ export class FhiTextInput extends LitElement {
       }),
     );
   }
-
+  /**
+   * Set new `value` to the input field.
+   */
   public onInput(): void {
     this.value = this._input.value;
     this._internals.setFormValue(this.value);
   }
-
+  /**
+   * Requests submit on key down `enter`.
+   */
   public onKeyDown(event: KeyboardEvent): void {
     if (event.key === 'Enter' && this._internals.form) {
       this._internals.form!.requestSubmit();
     }
   }
-
+  /**
+   * Resets the field when the form is reset.
+   */
   public formResetCallback(): void {
     this.value = this.getAttribute('value') || '';
     this._internals.setFormValue(this.value);
