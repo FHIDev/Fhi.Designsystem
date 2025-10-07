@@ -101,6 +101,10 @@ export default defineConfig(({ mode }) => {
                 src: 'custom-elements.json',
                 dest: './',
               },
+              {
+                src: 'web-types.json',
+                dest: './',
+              },
             ],
           }),
         ],
@@ -136,6 +140,10 @@ export default defineConfig(({ mode }) => {
               },
               {
                 src: 'custom-elements.json',
+                dest: './',
+              },
+              {
+                src: 'web-types.json',
                 dest: './',
               },
             ],
