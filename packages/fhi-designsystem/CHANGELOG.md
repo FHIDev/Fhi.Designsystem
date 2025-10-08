@@ -1,5 +1,64 @@
 # Changelog
 
+## [0.19.1](https://github.com/FHIDev/Fhi.Designsystem/compare/v0.19.0...v0.19.1) (2025-09-30)
+
+
+### 🛠️ Bug Fixes
+
+* Juster margin for ikoner på knapp. ([d881131](https://github.com/FHIDev/Fhi.Designsystem/commit/d88113103cebc7a76c20ce2a0042854da14d03c0))
+
+## [0.19.0](https://github.com/FHIDev/Fhi.Designsystem/compare/v0.18.0...v0.19.0) (2025-09-29)
+
+
+### 🚀 Features
+
+* La til justify-content og align-items. ([#278](https://github.com/FHIDev/Fhi.Designsystem/issues/278)) ([5128f6b](https://github.com/FHIDev/Fhi.Designsystem/commit/5128f6b8f312e7a52ded4f8b59b8deb7ee06a3ad))
+
+## [0.18.0](https://github.com/FHIDev/Fhi.Designsystem/compare/v0.17.3...v0.18.0) (2025-09-26)
+
+
+### 🚀 Features
+
+* Endret ikonstørrelser fra px til rem. ([#275](https://github.com/FHIDev/Fhi.Designsystem/issues/275)) ([56df527](https://github.com/FHIDev/Fhi.Designsystem/commit/56df5274c055345b76b3876615ae91c6f10f52a9))
+
+## [0.17.3](https://github.com/FHIDev/Fhi.Designsystem/compare/v0.17.2...v0.17.3) (2025-09-24)
+
+
+### 🛠️ Bug Fixes
+
+* Endret predefinerte verdier fra px til rem. ([#274](https://github.com/FHIDev/Fhi.Designsystem/issues/274)) ([d7550f7](https://github.com/FHIDev/Fhi.Designsystem/commit/d7550f703afbf89294043cdc7a78fb037a402c1d))
+
+
+### 📑 Documentation
+
+* La til info om designsystem og bruk for utviklere. ([#254](https://github.com/FHIDev/Fhi.Designsystem/issues/254)) ([ab277db](https://github.com/FHIDev/Fhi.Designsystem/commit/ab277dbb5488d6c5fe4cd1ce44a387c03117f0e6))
+
+
+### Other
+
+* do not run Pull Request Guard on PR closed event ([#268](https://github.com/FHIDev/Fhi.Designsystem/issues/268)) ([c111067](https://github.com/FHIDev/Fhi.Designsystem/commit/c1110677144dc9aea2ac55169a32e8c5588ae562))
+
+## [0.17.2](https://github.com/FHIDev/Fhi.Designsystem/compare/v0.17.1...v0.17.2) (2025-09-19)
+
+
+### 🛠️ Bug Fixes
+
+* Bold adjusted ([#269](https://github.com/FHIDev/Fhi.Designsystem/issues/269)) ([2b703b9](https://github.com/FHIDev/Fhi.Designsystem/commit/2b703b946470a5bb50eea67cb3effee7304c8c53))
+
+## [0.17.1](https://github.com/FHIDev/Fhi.Designsystem/compare/v0.17.0...v0.17.1) (2025-09-18)
+
+
+### 🛠️ Bug Fixes
+
+* issue with icon styling ([#267](https://github.com/FHIDev/Fhi.Designsystem/issues/267)) ([d0753aa](https://github.com/FHIDev/Fhi.Designsystem/commit/d0753aab3518ba6f9051200455f2e3ff8c661a35))
+
+## [0.17.0](https://github.com/FHIDev/Fhi.Designsystem/compare/v0.16.0...v0.17.0) (2025-09-18)
+
+
+### 🚀 Features
+
+* Add rem and explisit px support for icons ([#261](https://github.com/FHIDev/Fhi.Designsystem/issues/261)) ([a2e257e](https://github.com/FHIDev/Fhi.Designsystem/commit/a2e257ee20deae7249c1c8ffaf3c7207a3d03834))
+
 ## [0.16.0](https://github.com/FHIDev/Fhi.Designsystem/compare/v0.15.0...v0.16.0) (2025-09-17)
 
 

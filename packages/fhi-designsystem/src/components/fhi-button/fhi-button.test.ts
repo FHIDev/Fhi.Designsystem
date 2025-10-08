@@ -3,8 +3,11 @@ import { html } from 'lit/static-html.js';
 
 import { FhiButton } from './fhi-button.component';
 
+import { FhiIconX } from '../icons/fhi-icon-x.component';
+
 describe('fhi-button', () => {
   new FhiButton();
+  new FhiIconX();
 
   let component: FhiButton;
 
@@ -292,6 +295,38 @@ describe('fhi-button', () => {
       expect(child).to.exist;
       expect(child).to.be.accessible();
       expect(child!.textContent).to.equal('Look at my child');
+    });
+  });
+
+  describe('icon buttons', () => {
+    it('correctly styles an icon that is the first child', async () => {
+      component = await fixture(
+        html`<fhi-button> <fhi-icon-x></fhi-icon-x> Click me</fhi-button>`,
+      );
+
+      const icon: HTMLElement = component.querySelector('fhi-icon-x')!;
+
+      await expect(icon.style.marginRight).to.equal(
+        'var(--dimension-icon-margin-right)',
+      );
+      await expect(icon.style.marginLeft).to.equal(
+        'var(--dimension-icon-margin-left-offset)',
+      );
+    });
+
+    it('correctly styles an icon that is the last child', async () => {
+      component = await fixture(
+        html`<fhi-button>Click me <fhi-icon-x></fhi-icon-x> </fhi-button>`,
+      );
+
+      const icon: HTMLElement = component.querySelector('fhi-icon-x')!;
+
+      await expect(icon.style.marginRight).to.equal(
+        'var(--dimension-icon-margin-right-offset)',
+      );
+      await expect(icon.style.marginLeft).to.equal(
+        'var(--dimension-icon-margin-left)',
+      );
     });
   });
 });

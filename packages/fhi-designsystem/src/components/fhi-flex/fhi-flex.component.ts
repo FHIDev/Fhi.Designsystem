@@ -5,17 +5,65 @@ export const FhiFlexSelector = 'fhi-flex';
 type FhiUnitType = 'px' | 'rem';
 type FhiGapWidthUnit = `${number}${FhiUnitType}` | number;
 
+/**
+ * ## FHI Flex
+ *
+ * A layout component for creating flexible box layouts. It is a wrapper around the CSS Flexbox module.
+ *
+ * {@link https://designsystem.fhi.no/?path=/docs/komponenter-flex--docs}
+ *
+ * @tag fhi-flex
+ * @element fhi-flex
+ *
+ */
 @customElement(FhiFlexSelector)
 export class FhiFlex extends LitElement {
+  /**
+   * Sets the direction of the flex items.
+   * @attr
+   * @type {'row' | 'column'}
+   */
   @property({ type: String, reflect: true }) direction: 'row' | 'column' =
     'row';
+
+  /**
+   * Sets the gap between flex items. Can be a preset value ('small', 'medium', 'large') or a custom CSS value (e.g., '20px', '1.5rem').
+   * @attr
+   * @type {'small' | 'medium' | 'large' | number | string}
+   */
   @property({ type: String, reflect: true }) gap:
     | 'small'
     | 'medium'
     | 'large'
     | FhiGapWidthUnit = 'medium';
+
+  /**
+   * Allows flex items to wrap onto multiple lines.
+   * @attr
+   * @type {boolean}
+   */
   @property({ type: Boolean, reflect: true }) wrap = false;
 
+  /**
+   * Aligns flex items along the main axis.
+   * @attr
+   * @type {'start' | 'center' | 'end'}
+   */
+  @property({ type: String }) justify: 'start' | 'center' | 'end' = 'start';
+
+  /**
+   * Aligns flex items along the cross axis.
+   * @attr
+   * @type {'stretch' | 'start' | 'center' | 'end' | 'baseline'}
+   */
+  @property({ type: String }) align:
+    | 'stretch'
+    | 'start'
+    | 'center'
+    | 'end'
+    | 'baseline' = 'stretch';
+
+  /** @internal */
   updated(changedProperties: PropertyValues<this>) {
     super.updated(changedProperties);
 
@@ -71,6 +119,38 @@ export class FhiFlex extends LitElement {
 
     :host([gap='large']) {
       gap: var(--dimension-gap-large);
+    }
+
+    :host([justify='center']) {
+      justify-content: center;
+    }
+
+    :host([justify='start']) {
+      justify-content: start;
+    }
+
+    :host([justify='end']) {
+      justify-content: end;
+    }
+
+    :host([align='stretch']) {
+      align-items: stretch;
+    }
+
+    :host([align='center']) {
+      align-items: center;
+    }
+
+    :host([align='start']) {
+      align-items: start;
+    }
+
+    :host([align='end']) {
+      align-items: end;
+    }
+
+    :host([align='baseline']) {
+      align-items: baseline;
     }
   `;
 }
