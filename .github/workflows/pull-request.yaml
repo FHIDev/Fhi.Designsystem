@@ -6,12 +6,13 @@ permissions:
 
 on:
   pull_request:
-    types: [opened, synchronize, reopened, closed]
+    types: [opened, synchronize, reopened]
     branches:
       - main
 
 jobs:
-  build:
+  pull_request_guard:
+    name: Pull Request Guard
     runs-on: ubuntu-latest
     environment: development
     steps:

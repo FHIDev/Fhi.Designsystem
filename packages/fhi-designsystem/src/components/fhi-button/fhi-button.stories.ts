@@ -139,11 +139,33 @@ export const IconButton: Story = {
   args: {
     iconOnly: true,
   },
+  parameters: { controls: { exclude: ['size', 'icon-only'] } },
   render: args => html`
     <fhi-button
       color=${ifDefined(args.color)}
       variant=${ifDefined(args.variant)}
-      size=${ifDefined(args.size)}
+      size="small"
+      type=${ifDefined(args.type)}
+      ?disabled=${args.disabled}
+      ?icon-only=${args.iconOnly}
+    >
+      <fhi-icon-x></fhi-icon-x>
+    </fhi-button>
+
+    <fhi-button
+      color=${ifDefined(args.color)}
+      variant=${ifDefined(args.variant)}
+      size="medium"
+      type=${ifDefined(args.type)}
+      ?disabled=${args.disabled}
+      ?icon-only=${args.iconOnly}
+    >
+      <fhi-icon-x></fhi-icon-x>
+    </fhi-button>
+    <fhi-button
+      color=${ifDefined(args.color)}
+      variant=${ifDefined(args.variant)}
+      size="large"
       type=${ifDefined(args.type)}
       ?disabled=${args.disabled}
       ?icon-only=${args.iconOnly}
