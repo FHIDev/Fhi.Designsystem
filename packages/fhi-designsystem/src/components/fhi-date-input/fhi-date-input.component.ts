@@ -327,6 +327,12 @@ export class FhiDateInput extends LitElement {
           background-color: var(--color-input-background);
         }
       }
+      #dateIcon {
+        background-color: unset;
+        &:focus {
+          outline: none;
+        }
+      }
     }
 
     :host([readonly]:not([disabled])) {
