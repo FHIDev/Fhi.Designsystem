@@ -2,9 +2,11 @@ import { html, css, LitElement } from 'lit';
 import { customElement, property, query } from 'lit/decorators.js';
 import { ifDefined } from 'lit/directives/if-defined.js';
 import '../icons/fhi-icon-calendar.component.js';
+
 export const FhiDateInputSelector = 'fhi-date-input';
 
 export type FhiDateValue = `${number}-${number}-${number}` | undefined; // YYYY-MM-DD
+
 /**
  * @tag fhi-date-input
  */
