@@ -22,16 +22,17 @@ export class FhiGrid extends LitElement {
     }
 
     if (changedProperties.has('gap')) {
-      const isPresetGap = ['small', 'medium', 'large'].includes(
-        String(this.gap),
-      );
-
-      if (isPresetGap) {
-        this.style.gap = '';
-        return;
+      switch (this.gap) {
+        case 'large':
+        case 'medium':
+        case 'small':
+          this.style.gap = '';
+          return;
+        default:
+          const gapValue = Number(this.gap) ? `${this.gap}px` : this.gap;
+          this.style.gap = gapValue as string;
+          return;
       }
-      const gapValue = Number(this.gap) ? `${this.gap}px` : this.gap;
-      this.style.gap = gapValue as string;
     }
   }
 
