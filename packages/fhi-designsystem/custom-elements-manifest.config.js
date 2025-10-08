@@ -3,7 +3,7 @@ import { typeParserPlugin } from '@wc-toolkit/type-parser';
 import { customElementJetBrainsPlugin } from 'custom-element-jet-brains-integration';
 
 const options = {
-  outdir: './',
+  outdir: './.temp/',
   webTypesFileName: 'web-types.json',
   descriptionSrc: 'description',
   hideSlotDocs: false,
@@ -26,7 +26,7 @@ const options = {
 export default {
   globs: ['src/components/**/*.component.ts'],
   exclude: ['**/*.test.ts', '**/*.stories.ts'],
-  outdir: './',
+  outdir: './.temp/',
   LitElement: true,
   plugins: [
     cemSorterPlugin({

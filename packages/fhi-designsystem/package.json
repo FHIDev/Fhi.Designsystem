@@ -16,7 +16,7 @@
     "web component",
     "ui"
   ],
-  "customElements": "custom-elements.json",
+  "customElements": ".temp/custom-elements.json",
   "web-types": "./web-types.json",
   "homepage": "https://github.com/FHIDev/Fhi.Designsystem",
   "bugs": {
@@ -54,7 +54,7 @@
     "publish:npm": "pnpm build && cd dist/npm && npm publish",
     "changelog:ci": "release-it --ci",
     "analyze": "cem analyze --litelement",
-    "clean": "rimraf custom-elements.json web-types.json"
+    "clean": "rimraf .temp"
   },
   "peerDependencies": {
     "lit": "~3.2.0"
