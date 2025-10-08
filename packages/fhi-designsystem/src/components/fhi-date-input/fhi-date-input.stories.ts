@@ -71,7 +71,7 @@ const meta: Meta<FhiDateInput> = {
     label: {
       control: { type: 'text' },
       description:
-        'Setter label. Dette assosieres med inputfelted og vises over. Om dette er satt trenger du ikke å deklarere eget label-element.',
+        'Setter label, som assosieres med inputfeltet og vises over. Om dette er satt trenger du ikke å deklarere eget label-element.',
       defaultValue: { summary: 'undefined' },
     },
     message: {
