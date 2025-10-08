@@ -127,6 +127,10 @@ export class FhiDateInput extends LitElement {
     this._internals.setFormValue(this.value ?? null);
   }
 
+  /**
+   * Dispatches a `change` event when the value of the input is comitted by the user.
+   * @fires change
+   */
   public _handleChange(): void {
     this.dispatchEvent(
       new Event('change', {
@@ -136,22 +140,35 @@ export class FhiDateInput extends LitElement {
     );
   }
 
+  /**
+   * Set new `value` to the input field.
+   */
   public _handleInput(): void {
     this.value = this._input.value as FhiDateValue;
     this._internals.setFormValue(this.value ?? null);
   }
 
+  /**
+   * Requests submit on the key down `Enter`.
+   */
   public _handleKeyDown(event: KeyboardEvent): void {
     if (event.key === 'Enter' && this._internals.form) {
       this._internals.form!.requestSubmit();
     }
   }
 
+  /**
+   * Resets the field when the associated form is reset.
+   */
   public formResetCallback(): void {
     this.value = this.getAttribute('value') as FhiDateValue;
     this._internals.setFormValue(this.value ?? null);
   }
 
+  /**
+   * Shows the date picker when the calendar icon is clicked or activated by keyboard.
+   * @internal
+   */
   private _showDate(event?: KeyboardEvent) {
     if (
       event &&
@@ -164,6 +181,10 @@ export class FhiDateInput extends LitElement {
     this._input.showPicker();
   }
 
+  /**
+   * Tests if the browser is safari.
+   * @internal
+   */
   private _isSafari() {
     return /^((?!chrome|android).)*safari/i.test(navigator.userAgent);
   }
