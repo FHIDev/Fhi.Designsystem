@@ -375,24 +375,30 @@ describe('fhi-date-input', () => {
       icon = component.shadowRoot!.querySelector('#dateIcon') as HTMLElement;
     });
 
-    it('should have focusable input and icon elements', () => {
+    it('should have focusable input and icon elements, unless safari', () => {
+      const isSafari = /^((?!chrome|android).)*safari/i.test(
+        navigator.userAgent,
+      );
+
       expect(input.tabIndex).to.not.equal(-1);
-      expect(icon.tabIndex).to.equal(0);
+      expect(icon.tabIndex).to.equal(isSafari ? -1 : 0);
     });
 
     it('should not have a focusable icon when component is readonly', async () => {
       component.readonly = true;
       await component.updateComplete;
-      // The icon is hidden with display: none, so it is not focusable.
-      // We can check if it is visible.
+
       expect(getComputedStyle(icon).display).to.equal('none');
     });
 
     it('should not have a focusable icon when component is disabled', async () => {
       component.disabled = true;
       await component.updateComplete;
-      // The whole component has styles making it non-interactive.
-      expect(icon.tabIndex).to.equal(0); // tabindex is not changed
+      const isSafari = /^((?!chrome|android).)*safari/i.test(
+        navigator.userAgent,
+      );
+
+      expect(icon.tabIndex).to.equal(isSafari ? -1 : 0);
     });
   });
 });
