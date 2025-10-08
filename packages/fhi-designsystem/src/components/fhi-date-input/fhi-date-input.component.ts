@@ -129,6 +129,9 @@ export class FhiDateInput extends LitElement {
           @click=${this._showDate}
           @keydown=${this._showDate}
           tabindex="0"
+          role="button"
+          aria-label="Vis datovelger"
+          aria-haspopup="true"
           ><fhi-icon-calendar></fhi-icon-calendar
         ></span>
       </div>
@@ -381,10 +384,4 @@ export class FhiDateInput extends LitElement {
       }
     }
   `;
-}
-
-declare global {
-  interface HTMLElementTagNameMap {
-    [FhiDateInputSelector]: FhiDateInput;
-  }
 }
