@@ -70,7 +70,7 @@ export class FhiDateInput extends LitElement {
     this._internals.setFormValue(this.value ?? null);
   }
 
-  public onChange(): void {
+  public _handleChange(): void {
     this.dispatchEvent(
       new Event('change', {
         bubbles: true,
@@ -79,12 +79,12 @@ export class FhiDateInput extends LitElement {
     );
   }
 
-  public onInput(): void {
+  public _handleInput(): void {
     this.value = this._input.value as FhiDateValue;
     this._internals.setFormValue(this.value ?? null);
   }
 
-  public onKeyDown(event: KeyboardEvent): void {
+  public _handleKeyDown(event: KeyboardEvent): void {
     if (event.key === 'Enter' && this._internals.form) {
       this._internals.form!.requestSubmit();
     }
@@ -95,14 +95,16 @@ export class FhiDateInput extends LitElement {
     this._internals.setFormValue(this.value ?? null);
   }
 
-  public showDate(e?: KeyboardEvent) {
-    if (e && e.type == 'keydown' && e.key !== 'Enter' && e.code !== 'Space') {
+  public _handleShowDate(event?: KeyboardEvent) {
+    if (
+      event &&
+      event.type == 'keydown' &&
+      event.key !== 'Enter' &&
+      event.code !== 'Space'
+    ) {
       return;
     }
-    const dateInput = this.shadowRoot?.querySelector(
-      'input[type="date"]',
-    ) as HTMLInputElement;
-    dateInput.showPicker();
+    this._input.showPicker();
   }
 
   render() {
@@ -118,14 +120,14 @@ export class FhiDateInput extends LitElement {
           .value=${this.value ?? ''}
           ?readonly=${this.readonly}
           ?disabled=${this.disabled}
-          @change=${this.onChange}
-          @input=${this.onInput}
-          @keydown=${this.onKeyDown}
+          @change=${this._handleChange}
+          @input=${this._handleInput}
+          @keydown=${this._handleKeyDown}
         />
         <span
           id="dateIcon"
-          @click=${this.showDate}
-          @keydown=${this.showDate}
+          @click=${this._handleShowDate}
+          @keydown=${this._handleShowDate}
           tabindex="0"
           ><fhi-icon-calendar></fhi-icon-calendar
         ></span>
