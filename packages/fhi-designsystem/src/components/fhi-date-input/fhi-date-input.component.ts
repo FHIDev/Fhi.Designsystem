@@ -8,30 +8,82 @@ export const FhiDateInputSelector = 'fhi-date-input';
 export type FhiDateValue = `${number}-${number}-${number}` | undefined; // YYYY-MM-DD
 
 /**
+ * ##FHI Date input
+ *
+ * {@link https://designsystemet.dhi.no/?path=/docs/komponenter-date-input--docs}
+ *
  * @tag fhi-date-input
+ * @element fhi-date-input
  */
 @customElement(FhiDateInputSelector)
 export class FhiDateInput extends LitElement {
   static readonly formAssociated = true;
 
+  /**
+   * Text for label associated with input field.
+   * @attr
+   * @type {string}
+   */
   @property({ type: String }) label?: string = undefined;
 
+  /**
+   * Text for message shown beneath the input field.
+   * @attr
+   * @type {string}
+   */
   @property({ type: String }) message?: string = undefined;
 
+  /**
+   * Sets minium date available for selection in the input field. Format `YYYY-MM-DD`.
+   * @attr
+   * @type {string}
+   */
   @property({ type: String }) min?: FhiDateValue = undefined;
 
+  /**
+   * Sets maximum date available for selection in the input field. Format `YYYY-MM-DD`.
+   * @attr
+   * @type {string}
+   */
   @property({ type: String }) max?: FhiDateValue = undefined;
 
+  /**
+   * Decides if the field has a status, will change the look of the field.
+   * @attr
+   * @reflect
+   * @type {'error'}
+   */
   @property({ type: String, reflect: true }) status?: 'error' = undefined;
 
+  /**
+   * Set field to read only state.
+   * @attr
+   * @reflect
+   * @type {boolean}
+   */
   @property({ type: Boolean, reflect: true }) readonly? = false;
 
+  /**
+   * Disables the field.
+   * @attr
+   * @reflect
+   */
   @property({ type: Boolean, reflect: true }) disabled? = false;
 
+  /**
+   * A reference to the internal `<input>` element.
+   * @internal
+   */
   @query('#input-element') _input!: HTMLInputElement;
 
   private _name?: string | undefined = undefined;
 
+  /**
+   * Name attribute for input field.
+   * @attr
+   * @reflect
+   * @type {string}
+   */
   @property({ type: String, reflect: true })
   get name(): string | undefined {
     return this._name;
@@ -46,6 +98,11 @@ export class FhiDateInput extends LitElement {
 
   private _value?: string = '';
 
+  /**
+   * Input field value.
+   * @attr
+   * @type {string}
+   */
   @property({ type: String })
   get value(): FhiDateValue {
     return this._value as FhiDateValue;
@@ -107,6 +164,10 @@ export class FhiDateInput extends LitElement {
     this._input.showPicker();
   }
 
+  private _isSafari() {
+    return /^((?!chrome|android).)*safari/i.test(navigator.userAgent);
+  }
+
   render() {
     return html`
       ${this.label && html`<label for="input-element">${this.label}</label>`}
@@ -128,7 +189,7 @@ export class FhiDateInput extends LitElement {
           id="dateIcon"
           @click=${this._showDate}
           @keydown=${this._showDate}
-          tabindex="0"
+          tabindex=${this._isSafari() ? '-1' : '0'}
           role="button"
           aria-label="Vis datovelger"
           aria-haspopup="true"
