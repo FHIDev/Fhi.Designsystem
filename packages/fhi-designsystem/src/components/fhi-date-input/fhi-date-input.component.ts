@@ -94,7 +94,6 @@ export class FhiDateInput extends LitElement {
   }
 
   public showDate(e?: KeyboardEvent) {
-    console.log('Event', e);
     if (e && e.type == 'keydown' && e.key !== 'Enter' && e.code !== 'Space') {
       return;
     }
@@ -309,7 +308,6 @@ export class FhiDateInput extends LitElement {
         transition: var(--motion-input-transition);
         border-radius: var(--dimension-icon-border-radius);
         &:focus {
-          /* outline: solid var(--color-icon-focus-outline); */
           outline: solid var(--color-icon-focus-outline);
         }
       }
