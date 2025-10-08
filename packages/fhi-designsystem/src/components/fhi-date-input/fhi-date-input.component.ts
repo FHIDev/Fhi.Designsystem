@@ -296,7 +296,6 @@ export class FhiDateInput extends LitElement {
         }
       }
       div {
-        width: fit-content;
         height: var(--dimension-input-height);
         position: relative;
       }
