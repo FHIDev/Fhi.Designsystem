@@ -95,7 +95,7 @@ export class FhiDateInput extends LitElement {
     this._internals.setFormValue(this.value ?? null);
   }
 
-  public _handleShowDate(event?: KeyboardEvent) {
+  private _showDate(event?: KeyboardEvent) {
     if (
       event &&
       event.type == 'keydown' &&
@@ -126,8 +126,8 @@ export class FhiDateInput extends LitElement {
         />
         <span
           id="dateIcon"
-          @click=${this._handleShowDate}
-          @keydown=${this._handleShowDate}
+          @click=${this._showDate}
+          @keydown=${this._showDate}
           tabindex="0"
           ><fhi-icon-calendar></fhi-icon-calendar
         ></span>
