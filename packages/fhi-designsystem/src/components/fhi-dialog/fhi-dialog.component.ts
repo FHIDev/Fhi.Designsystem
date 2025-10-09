@@ -8,9 +8,6 @@ export const FhiDialogSelector = 'fhi-dialog';
 
 @customElement(FhiDialogSelector)
 export class FhiDialog extends LitElement {
-  static readonly zIndex = 5000;
-  static openDialogs = 0;
-
   @property({ type: Boolean, reflect: true }) open: boolean = false;
 
   @property({ type: String, attribute: 'max-width' }) maxWidth:
@@ -30,7 +27,6 @@ export class FhiDialog extends LitElement {
   connectedCallback(): void {
     super.connectedCallback();
 
-    window.addEventListener('focusin', this._focusTrap.bind(this));
     window.addEventListener('keydown', this._handleEscapeClick.bind(this));
 
     this.addEventListener('click', this._handleBackdropClick);
@@ -39,7 +35,6 @@ export class FhiDialog extends LitElement {
   disconnectedCallback(): void {
     super.disconnectedCallback();
 
-    window.removeEventListener('focusin', this._focusTrap);
     window.removeEventListener('keydown', this._handleEscapeClick);
 
     this.addEventListener('click', this._handleBackdropClick);
@@ -68,21 +63,11 @@ export class FhiDialog extends LitElement {
   public show() {
     this._triggerElement = document.activeElement as HTMLElement | null;
 
-    FhiDialog.openDialogs += 1;
-
-    this.style.zIndex = `${FhiDialog.zIndex + FhiDialog.openDialogs}`;
-
     if (!this.open) {
       this.open = true;
     }
 
-    // Wait for the dialog to be visible before focusing
-    const handleTransitionEnd = () => {
-      this._dialog.focus();
-      this.removeEventListener('transitionend', handleTransitionEnd);
-    };
-
-    this.addEventListener('transitionend', handleTransitionEnd);
+    this._dialog.showPopover();
 
     this._dispatchToggleEvent();
   }
@@ -92,34 +77,11 @@ export class FhiDialog extends LitElement {
       this.open = false;
     }
 
-    this.style.zIndex = '0';
-
-    FhiDialog.openDialogs = Math.max(0, FhiDialog.openDialogs - 1);
-
-    this._triggerElement?.focus();
+    this._dialog.hidePopover();
 
     this._dispatchToggleEvent();
     this.dispatchEvent(new CloseEvent('close'));
   }
-
-  private _focusTrap = () => {
-    if (!this.open) {
-      return;
-    }
-
-    // Only trap focus for the topmost dialog
-    if (this.style.zIndex !== `${FhiDialog.zIndex + FhiDialog.openDialogs}`) {
-      return;
-    }
-
-    const active = document.activeElement as HTMLElement | null;
-
-    if (this === active || this.contains(active)) {
-      return;
-    }
-
-    this._dialog.focus();
-  };
 
   private _handleSlotClick(event: MouseEvent) {
     event.stopPropagation();
@@ -151,7 +113,7 @@ export class FhiDialog extends LitElement {
   }
 
   render() {
-    return html`<dialog ?open=${this.open} @click=${this._handleSlotClick}>
+    return html`<dialog popover="manual" @click=${this._handleSlotClick}>
       <header>
         <h1 class="title">${this.heading}</h1>
         <fhi-button
