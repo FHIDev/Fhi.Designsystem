@@ -108,4 +108,31 @@ export const LargeGrid: Story = {
   `,
 };
 
+export const noSpan: Story = {
+  tags: [],
+  args: {
+    gap: 'medium',
+    columns: 3,
+  },
+  render: args => html`
+    <fhi-grid gap=${args.gap} columns=${args.columns}>
+      <div
+        style="font-family: var(--fhi-font-family-default); color: var(--fhi-color-accent-text-subtle); background: var(--fhi-color-accent-background-subtle); border: var(--fhi-dimension-border-width) solid var(--fhi-color-accent-border-subtle); padding: var(--fhi-spacing-200); border-radius: var(--fhi-border-radius-150); display: flex; justify-content: start; align-items: center;"
+      >
+        Slot
+      </div>
+      <div
+        style="font-family: var(--fhi-font-family-default); color: var(--fhi-color-accent-text-subtle); background: var(--fhi-color-accent-background-subtle); border: var(--fhi-dimension-border-width) solid var(--fhi-color-accent-border-subtle); padding: var(--fhi-spacing-200); border-radius: var(--fhi-border-radius-150); display: flex; justify-content: start; align-items: center;"
+      >
+        Slot
+      </div>
+      <div
+        style="font-family: var(--fhi-font-family-default); color: var(--fhi-color-accent-text-subtle); background: var(--fhi-color-accent-background-subtle); border: var(--fhi-dimension-border-width) solid var(--fhi-color-accent-border-subtle); padding: var(--fhi-spacing-200); border-radius: var(--fhi-border-radius-150); display: flex; justify-content: start; align-items: center;"
+      >
+        Slot
+      </div>
+    </fhi-grid>
+  `,
+};
+
 export default meta;

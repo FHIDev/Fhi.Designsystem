@@ -27,6 +27,10 @@ Den er ikke tiltenkt hele sider, men deler av siden der man har flere seksjoner.
 
 Grid tar utgangspunkt i 12 kolonner, men er mulig å endre. Ved bruk av 12 kolonner er det enkelt å dele opp i 2, 3 og 4 seksjoner. Hvis en løsning krever et annet antall kolonner anbefaler vi å ta i bruk 2, 3, 4, 6, eller 16 kolonner.
 
+Hvis span ikke er definert på elementene i grid vil hvert element ta opp en kolonne. 
+
+<Canvas of={FhiGridStories.noSpan} />
+
 ### Gap
 
 Grid har noen forhåndsdefinerte avstander man kan sette:
@@ -35,3 +39,5 @@ Grid har noen forhåndsdefinerte avstander man kan sette:
 - Large: 1.5rem (24px)
 
 I tillegg kan man sette egen verdi i tilfeller der standardene ikke er nok, for eksempel når man trenger ingen eller negativ avstand mellom elementene.
+
+
