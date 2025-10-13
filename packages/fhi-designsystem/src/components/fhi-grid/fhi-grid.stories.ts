@@ -21,7 +21,7 @@ const meta: Meta<FhiGrid> = {
     gap: {
       control: 'text',
       description:
-        'Bestemmer avstand mellom elementene. Kan være `small`, `medium`, `large` eller en spesifikk verdi som `12px`, `1rem` eller `24`.',
+        'Bestemmer avstand mellom elementene. Kan være `small`, `medium`, `large` eller en spesifikk verdi som `12px`, `1rem` eller `24`. Rene tallverdier blir angitt som px.',
       defaultValue: { summary: 'medium' },
     },
     columns: {
