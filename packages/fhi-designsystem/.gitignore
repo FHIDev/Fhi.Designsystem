@@ -33,5 +33,4 @@ index.html
 design-tokens.source.json
 
 # Generated manifest files.
-custom-elements.json
-web-types.json
+.temp/*
