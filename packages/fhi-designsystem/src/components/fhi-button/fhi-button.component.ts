@@ -3,31 +3,71 @@ import { customElement, property } from 'lit/decorators.js';
 
 export const FhiButtonSelector = 'fhi-button';
 
+/**
+ * ## FHI Button
+ *
+ * {@link https://designsystem.fhi.no/?path=/docs/komponenter-button--docs}
+ *
+ * @tag fhi-button
+ * @element fhi-button
+ *
+ * @slot - The content of the button, typically text or an icon.
+ */
 @customElement(FhiButtonSelector)
 export class FhiButton extends LitElement {
   static readonly formAssociated = true;
 
+  /**
+   * Sets the color of the button.
+   * @attr
+   * @type {'accent' | 'neutral' | 'danger'}
+   */
   @property({ type: String, reflect: true }) color:
     | 'accent'
     | 'neutral'
     | 'danger' = 'accent';
 
+  /**
+   * Sets the visual style of the button.
+   * @attr
+   * @type {'strong' | 'subtle' | 'outlined' | 'text'}
+   */
   @property({ type: String, reflect: true }) variant:
     | 'strong'
     | 'subtle'
     | 'outlined'
     | 'text' = 'strong';
 
+  /**
+   * Sets the size of the button.
+   * @attr
+   * @type {'large' | 'medium' | 'small'}
+   */
   @property({ type: String, reflect: true }) size:
     | 'large'
     | 'medium'
     | 'small' = 'medium';
 
+  /**
+   * Disables the button, making it non-interactive.
+   * @attr
+   * @type {boolean}
+   */
   @property({ type: Boolean, reflect: true }) disabled = false;
 
+  /**
+   * Styles the button for icon-only content, making it circular.
+   * @attr
+   * @type {boolean}
+   */
   @property({ type: Boolean, attribute: 'icon-only' })
   iconOnly: boolean = false;
 
+  /**
+   * Sets the button's type, which determines its behavior in a form.
+   * @attr
+   * @type {'button' | 'submit' | 'reset'}
+   */
   @property({ type: String }) type: 'button' | 'submit' | 'reset' = 'submit';
 
   private _internals: ElementInternals;
@@ -44,7 +84,9 @@ export class FhiButton extends LitElement {
     this.onkeydown = this._handleKeydown.bind(this);
     this.onselectstart = this._handleSelectStart.bind(this);
   }
-
+  /**
+   * Invokes _handleClick method.
+   */
   public click(): void {
     this._handleClick();
   }
@@ -57,6 +99,7 @@ export class FhiButton extends LitElement {
       return;
     }
 
+    /**@type {Event} - Standard DOM event with the type `click` */
     this.dispatchEvent(
       new MouseEvent('click', { bubbles: true, composed: true }),
     );
@@ -93,61 +136,64 @@ export class FhiButton extends LitElement {
   private _getIconSize(): string {
     switch (this.size) {
       case 'small':
-        return '20';
+        return '1.25rem';
       case 'medium':
       case 'large':
       default:
-        return '24';
+        return '1.5rem';
     }
   }
 
   private _handleSlotChange(event: Event): void {
-    if (this.iconOnly) {
+    const nodes = (event.target as HTMLSlotElement).assignedNodes();
+
+    const validNodes = nodes.filter(
+      node =>
+        node.nodeType === Node.ELEMENT_NODE ||
+        (node.nodeType === Node.TEXT_NODE && node.textContent?.trim()),
+    );
+
+    if (validNodes.length === 0) {
       return;
     }
 
-    const slot = event.target as HTMLSlotElement;
-    const nodes = slot.assignedNodes();
+    const firstNode: Node = validNodes[0];
 
-    let firstIcon: HTMLElement | undefined;
-    let lastIcon: HTMLElement | undefined;
+    // if the first node is an icon, style it.
+    if (
+      firstNode.nodeType === Node.ELEMENT_NODE &&
+      (firstNode as Element).tagName.toLowerCase().startsWith('fhi-icon')
+    ) {
+      const firstIcon = firstNode as HTMLElement;
 
-    nodes.forEach(node => {
-      if (node.nodeType !== Node.ELEMENT_NODE) {
+      if (this.iconOnly) {
+        firstIcon.setAttribute('size', this._getIconSize());
         return;
       }
 
-      if (!(node as Element).tagName.toLowerCase().startsWith('fhi-icon')) {
-        return;
+      if (this.size != 'small') {
+        firstIcon.style.marginRight = 'var(--dimension-icon-margin-right)';
       }
-
-      // The first icon is either the first child or it is preceded by a whitespace text node
-      if (
-        !node.previousSibling?.nodeType ||
-        (node.previousSibling?.nodeType === Node.TEXT_NODE &&
-          !node.previousSibling.textContent?.trim())
-      ) {
-        firstIcon = node as HTMLElement;
-      }
-
-      // The last icon is either the last child or it is followed by a whitespace text node
-      if (
-        node.previousSibling?.nodeType === Node.TEXT_NODE &&
-        node.previousSibling?.textContent?.trim()
-      ) {
-        lastIcon = node as HTMLElement;
-      }
-    });
-
-    if (firstIcon) {
-      firstIcon.style.marginRight = 'var(--dimension-icon-margin-right)';
       firstIcon.style.marginLeft = 'var(--dimension-icon-margin-left-offset)';
-      firstIcon.setAttribute('size', this._getIconSize());
     }
 
-    if (lastIcon) {
+    if (validNodes.length === 1) {
+      return;
+    }
+
+    const lastNode: Node = validNodes[validNodes.length - 1];
+
+    // if the last node is an icon, style it.
+    if (
+      lastNode.nodeType === Node.ELEMENT_NODE &&
+      (lastNode as Element).tagName.toLowerCase().startsWith('fhi-icon')
+    ) {
+      const lastIcon = lastNode as HTMLElement;
+
       lastIcon.style.marginRight = 'var(--dimension-icon-margin-right-offset)';
-      lastIcon.style.marginLeft = 'var(--dimension-icon-margin-left)';
+      if (this.size != 'small') {
+        lastIcon.style.marginLeft = 'var(--dimension-icon-margin-left)';
+      }
       lastIcon.setAttribute('size', this._getIconSize());
     }
   }
@@ -846,7 +892,7 @@ export class FhiButton extends LitElement {
     }
 
     :host([icon-only][size='small']) button {
-      padding: calc(var(--fhi-spacing-050) - var(--fhi-dimension-border-width));
+      padding: calc(0.375rem - var(--fhi-dimension-border-width));
     }
 
     :host([icon-only][size='medium']) button {
