@@ -131,7 +131,7 @@ export class FhiDateInput extends LitElement {
    * Dispatches a `change` event when the value of the input is comitted by the user.
    * @fires change
    */
-  public _handleChange(): void {
+  private _handleChange(): void {
     this.dispatchEvent(
       new Event('change', {
         bubbles: true,
@@ -142,16 +142,18 @@ export class FhiDateInput extends LitElement {
 
   /**
    * Set new `value` to the input field.
+   * @internal
    */
-  public _handleInput(): void {
+  private _handleInput(): void {
     this.value = this._input.value as FhiDateValue;
     this._internals.setFormValue(this.value ?? null);
   }
 
   /**
    * Requests submit on the key down `Enter`.
+   * @internal
    */
-  public _handleKeyDown(event: KeyboardEvent): void {
+  private _handleKeyDown(event: KeyboardEvent): void {
     if (event.key === 'Enter' && this._internals.form) {
       this._internals.form!.requestSubmit();
     }
