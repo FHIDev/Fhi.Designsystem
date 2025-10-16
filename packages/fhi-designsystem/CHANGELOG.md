@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.21.0](https://github.com/FHIDev/Fhi.Designsystem/compare/v0.20.0...v0.21.0) (2025-10-16)
+
+
+### 🚀 Features
+
+* Implement first version of grid ([#270](https://github.com/FHIDev/Fhi.Designsystem/issues/270)) ([9f2bd45](https://github.com/FHIDev/Fhi.Designsystem/commit/9f2bd45f4cd4285097c4c56b0d1fffa5081cfa6d))
+
 ## [0.20.0](https://github.com/FHIDev/Fhi.Designsystem/compare/v0.19.1...v0.20.0) (2025-10-15)
 
 
