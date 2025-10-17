@@ -1,0 +1,31 @@
+import { Meta } from '@storybook/blocks';
+
+<Meta title="Universell utforming" />
+
+# Universell utforming
+
+Innhold på nettsider og apper som skal ut til et generelt publikum fra offentlig sektor i Norge skal følge WCAG-standeren for universell utforming på nett.
+Selv om fagsystemer kun tilgjengelige for ansatte ikke er omfattet av de samme kravene til universell utforming, blir det en bedre brukeropplevelse – for alle – når vi drar nytte av prinsippene om universell utforming i våre løsninger.
+Tilsynet for universell utforming av ikt [lister de norske WCAG-kravene](https://www.uutilsynet.no/wcag-standarden/wcag-standarden/86) og har ellers mange [gode ressurser om tilgjengelighet og universell utforming](https://www.uutilsynet.no/veiledning/introduksjon-til-universell-utforming/238). 
+
+## Farger
+
+WCAG-standeren setter krav om bruk av farge og fargekontrast. Farger skal aldri være eneste visuelle virkemiddel til å formidle informasjon ( [1.4.1 Bruk av farge (Nivå A)](https://www.uutilsynet.no/wcag-standarden/141-bruk-av-farge-niva/93) ).
+Visuelle komponenter i designsystemet bruker fargetemaer som møter kontrastkravene, men det er opp til hvert enkelt produkt å ta i bruk farger og kontrast på riktig måte. Se [Design tokens](?path=/docs/design-tokens-introduksjon--docs) for veiledning på hvordan du tar i bruk fargetokens fra designsystemet. 
+
+## ARIA
+
+Komponenter i designsystemet støtter bruk av [ARIA-attributter](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Reference/Attributes).
+ARIA hjelper brukere av assisterende teknologi med å navigere nettsider og apper, for eksempel kan en svaksynt bruker trenge å få lest opp `aria-label` på en knapp som ikke har en synlig tekst, men kun et ikon. 
+Som hovedregel brukes HTML-elementer og attributter når det er mulig, og ARIA kan vurderes hvis HTML ikke har semantikken som trengs. **Husk: Det er bedre med ingen ARIA enn dårlig ARIA**. 
+
+Her er et typisk eksempel på bruk av `aria-label` på en `<fhi-button>` uten en synlig tekst som kan leses opp:
+```
+<fhi-button type="button" aria-label="Redigér navn" icon-only>
+    <fhi-icon-pencil></fhi-icon-pencil>
+</fhi-button>
+```
+
+## Tastaturnavigering
+
+Komponenter støtter tastaturinteraksjoner, slik som `enter` og `space` for å trykke på en knapp.
