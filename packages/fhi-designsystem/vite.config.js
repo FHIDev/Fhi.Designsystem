@@ -97,6 +97,14 @@ export default defineConfig(({ mode }) => {
                 src: 'staticwebapp.config.json',
                 dest: './',
               },
+              {
+                src: '.temp/custom-elements.json',
+                dest: './',
+              },
+              {
+                src: '.temp/web-types.json',
+                dest: './',
+              },
             ],
           }),
         ],
@@ -128,6 +136,14 @@ export default defineConfig(({ mode }) => {
               },
               {
                 src: 'README.md',
+                dest: './',
+              },
+              {
+                src: '.temp/custom-elements.json',
+                dest: './',
+              },
+              {
+                src: '.temp/web-types.json',
                 dest: './',
               },
             ],
