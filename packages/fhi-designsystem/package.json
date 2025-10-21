@@ -2,7 +2,7 @@
   "title": "FHI Designsystem",
   "author": "FHI Designsystem team",
   "name": "@folkehelseinstituttet/designsystem",
-  "version": "0.19.1",
+  "version": "0.21.0",
   "description": "The official design system for the Norwegian Institute of Public Health implemented as web components",
   "keywords": [
     "fhi",
@@ -16,6 +16,8 @@
     "web component",
     "ui"
   ],
+  "customElements": ".temp/custom-elements.json",
+  "web-types": "./web-types.json",
   "homepage": "https://github.com/FHIDev/Fhi.Designsystem",
   "bugs": {
     "url": "https://github.com/FHIDev/Fhi.Designsystem/issues"
@@ -36,7 +38,7 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "pnpm build:cdn && pnpm build:npm",
+    "build": "pnpm analyze && pnpm build:cdn && pnpm build:npm && pnpm clean",
     "build:cdn": "tsc && cross-env DEPLOY_TARGET=cdn vite build",
     "build:npm": "tsc && cross-env DEPLOY_TARGET=npm vite build",
     "storybook": "storybook dev -p 6006",
@@ -50,13 +52,16 @@
     "format:eslint": "eslint \"**/*.{js,ts}\" --fix",
     "format:prettier": "prettier \"**/*.js\" --write --ignore-path .gitignore",
     "publish:npm": "pnpm build && cd dist/npm && npm publish",
-    "changelog:ci": "release-it --ci"
+    "changelog:ci": "release-it --ci",
+    "analyze": "cem analyze --litelement",
+    "clean": "rimraf .temp"
   },
   "peerDependencies": {
     "lit": "~3.2.0"
   },
   "devDependencies": {
     "@chromatic-com/storybook": "~1.9.0",
+    "@custom-elements-manifest/analyzer": "^0.10.8",
     "@esm-bundle/chai": "~4.3.4-fix.0",
     "@open-wc/testing": "~4.0.0",
     "@playwright/test": "^1.51.1",
@@ -70,14 +75,18 @@
     "@storybook/web-components-vite": "~8.3.0",
     "@types/mocha": "~10.0.0",
     "@types/node": "~22.5.0",
+    "@wc-toolkit/cem-sorter": "^1.0.1",
+    "@wc-toolkit/type-parser": "^1.2.0",
     "@web/dev-server": "~0.4.6",
     "@web/dev-server-esbuild": "~1.0.2",
     "@web/test-runner": "~0.18.3",
     "@web/test-runner-playwright": "~0.11.0",
     "cross-env": "7.0.3",
+    "custom-element-jet-brains-integration": "^1.7.0",
     "lit": "~3.2.0",
     "mocha": "~10.7.0",
     "release-it": "~19.0.4",
+    "rimraf": "^6.0.1",
     "storybook": "~8.3.0",
     "storybook-design-token": "^3.2.0",
     "svgo": "^3.3.2",
