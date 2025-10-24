@@ -15,8 +15,11 @@ export class FhiDialog extends LitElement {
     | 'medium'
     | `${string}rem` = 'medium';
 
-  @property({ type: String, attribute: 'close-button-text' })
-  closeButtonText: string = 'Lukk';
+  @property({ type: String, attribute: 'close-button-label' })
+  closeButtonLabel?: string = undefined;
+
+  @property({ type: Boolean, attribute: 'hide-close-button' })
+  hideCloseButton: boolean = false;
 
   @property({ type: String }) heading?: string = undefined;
 
@@ -63,6 +66,8 @@ export class FhiDialog extends LitElement {
   public show() {
     this._triggerElement = document.activeElement as HTMLElement | null;
 
+    console.log('Showing dialog', this._triggerElement);
+
     if (!this.open) {
       this.open = true;
     }
@@ -78,6 +83,8 @@ export class FhiDialog extends LitElement {
     }
 
     this._dialog.hidePopover();
+
+    this._triggerElement?.focus();
 
     this._dispatchToggleEvent();
     this.dispatchEvent(new CloseEvent('close'));
@@ -116,16 +123,20 @@ export class FhiDialog extends LitElement {
     return html`<dialog popover="manual" @click=${this._handleSlotClick}>
       <header>
         <h1 class="title">${this.heading}</h1>
-        <fhi-button
-          ?icon-only=${!this.closeButtonText}
-          variant="text"
-          color="neutral"
-          @click=${this.close}
-          aria-label="Close dialog"
-        >
-          ${this.closeButtonText}
-          <fhi-icon-x></fhi-icon-x>
-        </fhi-button>
+        ${!this.hideCloseButton
+          ? html`
+              <fhi-button
+                ?icon-only=${!this.closeButtonLabel}
+                variant="text"
+                color="neutral"
+                @click=${this.close}
+                aria-label="Close dialog"
+              >
+                ${this.closeButtonLabel}
+                <fhi-icon-x></fhi-icon-x>
+              </fhi-button>
+            `
+          : null}
       </header>
       <section>
         <slot name="body"></slot>
@@ -166,7 +177,7 @@ export class FhiDialog extends LitElement {
       width: 100vw;
       height: 100vh;
       opacity: 0;
-      transition: var(--motion-transition);
+      transition: opacity var(--motion-transition);
       visibility: hidden;
       &::before {
         content: '';
@@ -211,9 +222,6 @@ export class FhiDialog extends LitElement {
     }
 
     :host([open]) {
-      display: flex;
-      align-items: center;
-      justify-content: center;
       opacity: 1;
       visibility: visible;
     }
