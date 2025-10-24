@@ -1,0 +1,148 @@
+name: Publish NPM package of PR to GitHub Packages
+
+permissions:
+  contents: read
+  issues: write
+  packages: write
+
+on:
+  pull_request:
+    types: [opened, synchronize, reopened, closed]
+    branches: [master]
+
+env: 
+  PACKAGE_SCOPE: "@fhidev"
+  PACKAGE_NAME: "designsystem-pull-request-${{ github.event.pull_request.number }}"
+  PACKAGE_VERSION: "0.0.${{ github.run_number }}"
+
+jobs:
+  check_for_changes:
+    runs-on: ubuntu-latest
+    if: github.event.action != 'closed'
+    outputs:
+        should_publish_package: ${{ steps.check_files.outputs.should_publish_package }}
+    steps:
+        - name: Checkout
+          uses: actions/checkout@v4
+          with:
+            fetch-depth: 0
+
+        - name: Check if component or styling files changed
+          id: check_files
+          run: |
+            changed=$(git diff --name-only --diff-filter=d ${{ github.event.pull_request.base.sha }}...${{ github.event.pull_request.head.sha }} | grep -E '\.(component\.ts|css)$' || true)
+            if [ -n "$changed" ]; then
+              echo "Found changed component or css files. Proceeding..."
+              echo "should_publish_package=true" >> $GITHUB_OUTPUT
+            else
+              echo "No component or css files changed. Skipping workflow."
+              echo "should_publish_package=false" >> $GITHUB_OUTPUT
+            fi
+
+  publish_github_package:
+    needs: check_for_changes
+    if: needs.check_for_changes.outputs.should_publish_package == 'true' && github.event.action != 'closed'
+    runs-on: ubuntu-latest
+    environment: development
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Configure Git
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+
+      - name: Install pnpm
+        uses: pnpm/action-setup@v4
+        with:
+          version: 9
+          run_install: false
+
+      - name: Install Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: lts/*
+          registry-url: 'https://npm.pkg.github.com'
+
+      - name: Install dependencies
+        run: pnpm i
+
+      - name: Lint
+        working-directory: ./packages/fhi-designsystem
+        run: pnpm lint
+
+      - name: Build
+        working-directory: ./packages/fhi-designsystem
+        run: pnpm build:github
+
+      - name: Update package name for staging
+        working-directory: ./packages/fhi-designsystem/dist/github
+        env:
+          PR_NUMBER: ${{ github.event.pull_request.number }}
+          PR_RUN_NUMBER: ${{ github.run_number }}
+        run: |
+          jq --arg name "${{ env.PACKAGE_SCOPE }}/${{ env.PACKAGE_NAME }}" \
+            --arg version "${{ env.PACKAGE_VERSION }}" \
+            '.name = $name | .version = $version' package.json > package.tmp.json
+          mv package.tmp.json package.json
+
+      - name: Delete staging package if it already exists
+        uses: actions/github-script@v8
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          script: |
+            await github.rest.packages.deletePackageForOrg({
+              package_type: "npm",
+              package_name: `${{ env.PACKAGE_SCOPE }}/${{ env.PACKAGE_NAME }}`,
+              org: "FHIDev"
+            })
+
+      - name: Configure npm for GitHub Packages
+        working-directory: ./packages/fhi-designsystem/dist/github
+        run: |
+          echo "//npm.pkg.github.com/:_authToken=${{ secrets.GITHUB_TOKEN }}" > .npmrc
+          echo "${{ env.PACKAGE_SCOPE }}:registry=https://npm.pkg.github.com/" >> .npmrc
+
+      - name: Publish package to GitHub Packages
+        working-directory: ./packages/fhi-designsystem/dist/github
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: npm publish
+
+  comment_on_pr:
+    needs: publish_github_package
+    runs-on: ubuntu-latest
+    environment: development
+    if: github.event.action != 'closed'
+    steps:
+      - name: Comment on PR with package info
+        uses: actions/github-script@v8
+        with:
+          github-token: ${{secrets.REPO_GITHUB_TOKEN}}
+          script: |
+            github.rest.issues.createComment({
+              issue_number: context.issue.number,
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              body: `**Staging NPM Package published:** \`${{ env.PACKAGE_SCOPE }}/${{ env.PACKAGE_NAME }}@0.0.${{ github.run_number }}\`
+            [View on GitHub Packages](https://github.com/FHIDev/${{ github.event.repository.name }}/pkgs/npm/${{ env.PACKAGE_NAME }})`
+                  })
+
+  clean_up_github_package:
+      if: github.event.action == 'closed'
+      runs-on: ubuntu-latest
+      environment: development
+      steps:
+        - name: Clean up potential PR staging package
+          uses: actions/github-script@v8
+          with:
+            github-token: ${{ secrets.GITHUB_TOKEN }}
+            script: |
+              await github.rest.packages.deletePackageForOrg({
+                package_type: "npm",
+                package_name: `${{ env.PACKAGE_SCOPE }}/${{ env.PACKAGE_NAME }}`,
+                org: "FHIDev"
+              })
