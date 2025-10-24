@@ -3,8 +3,6 @@ import { customElement, property } from 'lit/decorators.js';
 
 export const FhiLabelSelector = 'fhi-label';
 
-export type LabelLevel = 1 | 2 | 3 | 4 | 5 | 6;
-
 @customElement(FhiLabelSelector)
 export class FhiLabel extends LitElement {
   /**
