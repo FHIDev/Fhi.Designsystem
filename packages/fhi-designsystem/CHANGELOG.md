@@ -1,5 +1,17 @@
 # Changelog
 
+## [0.21.1](https://github.com/FHIDev/Fhi.Designsystem/compare/v0.21.0...v0.21.1) (2025-10-27)
+
+
+### 🛠️ Bug Fixes
+
+* Riktig størrelse på ikon. ([#291](https://github.com/FHIDev/Fhi.Designsystem/issues/291)) ([1a6e1a9](https://github.com/FHIDev/Fhi.Designsystem/commit/1a6e1a9761d6e3cfdbfe94e9cc1418b6f6d98999))
+
+
+### 📑 Documentation
+
+* 152 quick intro to accessibility on our components ([#290](https://github.com/FHIDev/Fhi.Designsystem/issues/290)) ([61725da](https://github.com/FHIDev/Fhi.Designsystem/commit/61725da66fe8438160e623d13653c31a66395a62))
+
 ## [0.21.0](https://github.com/FHIDev/Fhi.Designsystem/compare/v0.20.0...v0.21.0) (2025-10-16)
 
 
