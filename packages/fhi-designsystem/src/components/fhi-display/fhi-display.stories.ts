@@ -12,7 +12,7 @@ const meta: Meta<FhiDisplay> = {
   decorators: [],
   render: args =>
     html`<fhi-display
-      level=${ifDefined(args.level)}
+      level=${args.level}
       size=${args.size}
       color=${ifDefined(args.color)}
       >Eksempel</fhi-display
@@ -25,7 +25,7 @@ const meta: Meta<FhiDisplay> = {
       defaultValue: { summary: 'medium' },
     },
     level: {
-      options: ['1', '2', '3', '4', '5', '6'],
+      options: [1, 2, 3, 4, 5, 6],
       control: { type: 'select' },
       description:
         'Overskriftsnivået på elementet (f.eks. `level="3"` gir `<h3>`). **Påkrevd**.',
