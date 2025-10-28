@@ -57,16 +57,22 @@ export class FhiHeadline extends LitElement {
   static styles = css`
     :host {
       --font-size-large: var(--fhi-font-size-8);
-      --line-height-large: 2.25rem;
-      --letter-spacing-large: -0.0175rem;
+      --line-height-large: var(--fhi-typography-headline-large-line-height);
+      --letter-spacing-large: var(
+        --fhi-typography-headline-large-letter-spacing
+      );
 
       --font-size-medium: var(--fhi-font-size-7);
-      --line-height-medium: 2rem;
-      --letter-spacing-medium: -0.01rem;
+      --line-height-medium: var(--fhi-typography-headline-medium-line-height);
+      --letter-spacing-medium: var(
+        --fhi-typography-headline-medium-letter-spacing
+      );
 
       --font-size-small: var(--fhi-font-size-6);
-      --line-height-small: 1.75rem;
-      --letter-spacing-small: -0.0025rem;
+      --line-height-small: var(--fhi-typography-headline-small-line-height);
+      --letter-spacing-small: var(
+        --fhi-typography-headline-small-letter-spacing
+      );
     }
 
     :host {

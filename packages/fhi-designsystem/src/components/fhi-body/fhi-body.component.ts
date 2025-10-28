@@ -42,16 +42,16 @@ export class FhiBody extends LitElement {
   static styles = css`
     :host {
       --font-size-large: var(--fhi-font-size-5);
-      --line-height-large: 1.5rem;
-      --letter-spacing-large: 0.00125rem;
+      --line-height-large: var(--fhi-typography-body-large-line-height);
+      --letter-spacing-large: var(--fhi-typography-body-large-letter-spacing);
 
       --font-size-medium: var(--fhi-font-size-4);
-      --line-height-medium: 1.5rem;
-      --letter-spacing-medium: 0.005rem;
+      --line-height-medium: var(--fhi-typography-body-medium-line-height);
+      --letter-spacing-medium: var(--fhi-typography-body-medium-letter-spacing);
 
       --font-size-small: var(--fhi-font-size-3);
-      --line-height-small: 1.25rem;
-      --letter-spacing-small: 0.00875rem;
+      --line-height-small: var(--fhi-typography-body-small-line-height);
+      --letter-spacing-small: var(--fhi-typography-body-small-letter-spacing);
     }
 
     :host {
