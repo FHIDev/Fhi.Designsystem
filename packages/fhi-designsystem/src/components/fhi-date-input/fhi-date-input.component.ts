@@ -3,6 +3,8 @@ import { customElement, property, query } from 'lit/decorators.js';
 import { ifDefined } from 'lit/directives/if-defined.js';
 import '../icons/fhi-icon-calendar.component.js';
 
+import { isSafari } from '../../utils/browser';
+
 export const FhiDateInputSelector = 'fhi-date-input';
 
 export type FhiDateValue = `${number}-${number}-${number}` | undefined; // YYYY-MM-DD
@@ -20,14 +22,14 @@ export class FhiDateInput extends LitElement {
   static readonly formAssociated = true;
 
   /**
-   * Text for label associated with input field.
+   * The label associated with input field.
    * @attr
    * @type {string}
    */
   @property({ type: String }) label?: string = undefined;
 
   /**
-   * Text for message shown beneath the input field.
+   * The message shown beneath the input field.
    * @attr
    * @type {string}
    */
@@ -48,7 +50,7 @@ export class FhiDateInput extends LitElement {
   @property({ type: String }) max?: FhiDateValue = undefined;
 
   /**
-   * Decides if the field has a status, will change the look of the field.
+   * Decides if the field has a status. the status will change the look of the field.
    * @attr
    * @reflect
    * @type {'error'}
@@ -56,7 +58,7 @@ export class FhiDateInput extends LitElement {
   @property({ type: String, reflect: true }) status?: 'error' = undefined;
 
   /**
-   * Set field to read only state.
+   * Set field to read only state. A read only field cannot be changed by the user.
    * @attr
    * @reflect
    * @type {boolean}
@@ -64,7 +66,7 @@ export class FhiDateInput extends LitElement {
   @property({ type: Boolean, reflect: true }) readonly? = false;
 
   /**
-   * Disables the field.
+   * Disables the field. A disabled field will not be submitted with the form and cannot be interacted with by the user.
    * @attr
    * @reflect
    */
@@ -79,7 +81,9 @@ export class FhiDateInput extends LitElement {
   private _name?: string | undefined = undefined;
 
   /**
-   * Name attribute for input field.
+   * Name of the input field. this is used as the key in the form data.
+   *
+   * this attribute is similar to: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/date#name
    * @attr
    * @reflect
    * @type {string}
@@ -99,7 +103,9 @@ export class FhiDateInput extends LitElement {
   private _value?: string = '';
 
   /**
-   * Input field value.
+   * The default value of the input field.
+   *
+   * this attribute is similar to: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/date#value
    * @attr
    * @type {string}
    */
@@ -128,7 +134,12 @@ export class FhiDateInput extends LitElement {
   }
 
   /**
-   * Dispatches a `change` event when the value of the input is comitted by the user.
+   * Dispatches a standard `change` event when the value of the input is committed by the user.
+   *
+   * The `change` event includes a reference the the current value. This value can be found at `event.target.value`.
+   *
+   * See the MDN documentation for more info about events: https://developer.mozilla.org/en-US/docs/Web/API/Event
+   *
    * @fires change
    */
   private _handleChange(): void {
@@ -160,7 +171,7 @@ export class FhiDateInput extends LitElement {
   }
 
   /**
-   * Resets the field when the associated form is reset.
+   * Resets the field to the default valuewhen the associated form is reset.
    */
   public formResetCallback(): void {
     this.value = this.getAttribute('value') as FhiDateValue;
@@ -183,18 +194,10 @@ export class FhiDateInput extends LitElement {
     this._input.showPicker();
   }
 
-  /**
-   * Tests if the browser is safari.
-   * @internal
-   */
-  private _isSafari() {
-    return /^((?!chrome|android).)*safari/i.test(navigator.userAgent);
-  }
-
   render() {
     return html`
       ${this.label && html`<label for="input-element">${this.label}</label>`}
-      <div>
+      <div class="input-container">
         <input
           type="date"
           id="input-element"
@@ -209,10 +212,10 @@ export class FhiDateInput extends LitElement {
           @keydown=${this._handleKeyDown}
         />
         <span
-          id="dateIcon"
+          class="date-icon"
           @click=${this._showDate}
           @keydown=${this._showDate}
-          tabindex=${this._isSafari() ? '-1' : '0'}
+          tabindex=${isSafari() ? '-1' : '0'}
           role="button"
           aria-label="Vis datovelger"
           aria-haspopup="true"
@@ -385,11 +388,11 @@ export class FhiDateInput extends LitElement {
           font-size: 5rem;
         }
       }
-      div {
+      .input-container {
         height: var(--dimension-input-height);
         position: relative;
       }
-      #dateIcon {
+      .date-icon {
         position: absolute;
         right: 0;
         top: 50%;
@@ -416,7 +419,7 @@ export class FhiDateInput extends LitElement {
           background-color: var(--color-input-background);
         }
       }
-      #dateIcon {
+      .date-icon {
         background-color: unset;
         &:focus {
           outline: none;
@@ -431,11 +434,11 @@ export class FhiDateInput extends LitElement {
         background-color: unset;
         border-left: var(--dimension-input-border-width) solid
           var(--color-input-border);
-        &:hover + #dateIcon {
+        &:hover + .date-icon {
           background-color: unset;
         }
       }
-      #dateIcon {
+      .date-icon {
         background-color: unset;
         display: none;
       }
@@ -453,7 +456,7 @@ export class FhiDateInput extends LitElement {
       .message {
         color: var(--color-message-text-error);
       }
-      #dateIcon {
+      .date-icon {
         background-color: var(--color-input-background-error);
         color: var(--color-input-text-error);
       }
@@ -461,7 +464,7 @@ export class FhiDateInput extends LitElement {
 
     @-moz-document url-prefix() {
       :host {
-        #dateIcon {
+        .date-icon {
           display: none;
           visibility: hidden;
         }
