@@ -6,7 +6,7 @@ import { ifDefined } from 'lit/directives/if-defined.js';
 new FhiDisplay();
 
 const meta: Meta<FhiDisplay> = {
-  title: 'Komponenter/Display',
+  title: 'Komponenter/Typography/Display',
   component: 'fhi-display',
   parameters: {},
   decorators: [],
@@ -27,7 +27,8 @@ const meta: Meta<FhiDisplay> = {
     level: {
       options: ['1', '2', '3', '4', '5', '6'],
       control: { type: 'select' },
-      description: 'Nivået på h-tag. **Obligatorisk attributt**.',
+      description:
+        'Overskriftsnivået på elementet (f.eks. `level="3"` gir `<h3>`). **Påkrevd**.',
     },
     color: {
       control: { type: 'text' },

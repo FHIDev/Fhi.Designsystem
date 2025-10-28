@@ -6,7 +6,7 @@ import { ifDefined } from 'lit/directives/if-defined.js';
 new FhiLabel();
 
 const meta: Meta<FhiLabel> = {
-  title: 'Komponenter/Label',
+  title: 'Komponenter/Typography/Label',
   component: 'fhi-label',
   parameters: {},
   decorators: [],

@@ -6,7 +6,7 @@ import { ifDefined } from 'lit/directives/if-defined.js';
 new FhiTitle();
 
 const meta: Meta<FhiTitle> = {
-  title: 'Komponenter/Title',
+  title: 'Komponenter/Typography/Title',
   component: 'fhi-title',
   parameters: {},
   decorators: [],
@@ -27,7 +27,8 @@ const meta: Meta<FhiTitle> = {
     level: {
       options: ['1', '2', '3', '4', '5', '6'],
       control: { type: 'select' },
-      description: 'Nivået på h-tag. **Obligatorisk attributt**.',
+      description:
+        'Overskriftsnivået på elementet (f.eks. `level="3"` gir `<h3>`). **Påkrevd**.',
     },
     color: {
       control: { type: 'text' },

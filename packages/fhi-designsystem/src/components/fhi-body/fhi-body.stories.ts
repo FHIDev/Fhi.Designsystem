@@ -6,7 +6,7 @@ import { ifDefined } from 'lit/directives/if-defined.js';
 new FhiBody();
 
 const meta: Meta<FhiBody> = {
-  title: 'Komponenter/Body',
+  title: 'Komponenter/Typography/Body',
   component: 'fhi-body',
   parameters: {},
   decorators: [],
