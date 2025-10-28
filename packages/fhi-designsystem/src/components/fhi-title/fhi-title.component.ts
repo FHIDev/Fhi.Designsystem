@@ -19,14 +19,14 @@ export class FhiTitle extends LitElement {
     | 'small' = 'medium';
 
   /**
-   * Sets text color.
+   * Sets text color. Accepts the same values as the CSS property: https://developer.mozilla.org/en-US/docs/Web/CSS/color.
    * @attr
    * @type {string}
    */
   @property({ type: String }) color?: string;
 
   /**
-   * Indicates the title tag level.
+   * Indicates the title tag level, i.e. 'level=2' gives '<h2>'.
    * @attr level
    * @type {1 | 2 | 3 | 4 | 5 | 6}
    */

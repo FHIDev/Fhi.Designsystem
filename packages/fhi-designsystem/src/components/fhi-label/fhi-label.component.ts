@@ -16,7 +16,7 @@ export class FhiLabel extends LitElement {
     | 'small' = 'medium';
 
   /**
-   * Sets text color.
+   * Sets text color. Accepts the same values as the CSS property: https://developer.mozilla.org/en-US/docs/Web/CSS/color.
    * @attr
    * @type {string}
    */
