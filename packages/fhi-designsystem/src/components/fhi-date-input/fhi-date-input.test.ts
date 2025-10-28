@@ -1,7 +1,7 @@
 import { fixture, expect } from '@open-wc/testing';
 import { html } from 'lit/static-html.js';
 
-import { FhiDateInput } from '.';
+import { FhiDateInput } from './fhi-date-input.component';
 
 describe('fhi-date-input', () => {
   new FhiDateInput();
@@ -372,7 +372,7 @@ describe('fhi-date-input', () => {
         html`<fhi-date-input label="Dato"></fhi-date-input>`,
       );
       input = component.shadowRoot!.querySelector('input') as HTMLInputElement;
-      icon = component.shadowRoot!.querySelector('#dateIcon') as HTMLElement;
+      icon = component.shadowRoot!.querySelector('.date-icon') as HTMLElement;
     });
 
     it('should have focusable input and icon elements, unless safari', () => {
