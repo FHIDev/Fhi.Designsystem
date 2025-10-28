@@ -29,7 +29,7 @@ describe('fhi-date-input', () => {
       await expect(component).to.be.accessible();
     });
 
-    it('is accessible whe disabled', async () => {
+    it('is accessible when disabled', async () => {
       component = await fixture(html`
         <fhi-date-input
           label="Dato"
