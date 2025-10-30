@@ -28,7 +28,7 @@ const meta: Meta<FhiHeadline> = {
       options: [1, 2, 3, 4, 5, 6],
       control: { type: 'select' },
       description:
-        'Overskriftsnivået på elementet (f.eks. `level="3"` gir `<h3>`).',
+        'Overskriftsnivået på elementet (f.eks. `level="3"` gir `<h3>`). Gyldige verdier er `1 | 2 | 3 | 4 | 5 | 6`.',
       defaultValue: { summary: 1 },
     },
     color: {
