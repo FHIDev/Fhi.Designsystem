@@ -43,7 +43,7 @@ type Story = StoryObj<FhiHeadline>;
 
 export const Preview: Story = {
   tags: [],
-  args: { size: 'large' },
+  args: { size: 'large', level: 1 },
 };
 
 export default meta;
