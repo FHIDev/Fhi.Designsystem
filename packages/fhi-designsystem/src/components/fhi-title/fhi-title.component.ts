@@ -74,12 +74,12 @@ export class FhiTitle extends LitElement {
     :host {
       display: block;
       contain: layout;
+      color: var(--fhi-color-neutral-text-default);
     }
 
     .title {
       font-weight: var(--fhi-font-weight-bold);
       font-family: var(--fhi-font-family-default);
-      color: var(--fhi-color-neutral-text-default);
       margin: 0;
     }
 

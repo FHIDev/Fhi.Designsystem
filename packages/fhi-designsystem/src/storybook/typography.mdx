@@ -11,23 +11,37 @@ import { Meta, Primary, Canvas, Controls } from '@storybook/blocks';
 
 Designsystemet tilbyr 5 typografikomponenter for å standarisere tekst: 
 
+- [Body](#body)
+- [Label](#label)
 - [Display](#display)
 - [Headline](#headline)
 - [Title](#title)
-- [Label](#label)
-- [Body](#body)
 
 ## Attributter
 
 ### Level
 
-Level er en påkrevd attributt på display-, headline- og titlekomponentene. Den bestemmer overskriftsnivået på elementet (f.eks.`level="3"` gir `<h3>`). Gyldige verdier er hele tall mellom 1 og 6 som korresponderer til `<h1>` til `<h6>`. 
+Level er en påkrevd attributt på display-, headline- og titlekomponentene. Den bestemmer overskriftsnivået på elementet (f.eks.`level="3"` gir `<h3>`). Gyldige verdier er hele tall mellom 1 og 6 som korresponderer med `<h1>` til `<h6>`. 
 
 Du bruker level for å lage et semantisk hierarki på siden. Det skal bare være én `<h1>` per side, men det kan være flere av de andre nivåene. Det er viktig at nivåene følger en logisk rekkefølge. Det vil si, ikke hopp over level, begynn med `<h1>` fulgt av `<h2>` osv. 
 
 ### Color 
 
 Color setter [Color CSS-attributtet](https://developer.mozilla.org/en-US/docs/Web/CSS/color) til elementet og støtter dermed de samme fargeverdiene. Standardverdien er `var(--fhi-color-neutral-text-default)`.   
+
+## Body
+
+Brukes til brødtekst, avsnitt og beskrivelser. Utgangspunkt for all tekst.
+
+<Canvas of={FhiBodyStories.Preview}/>
+<Controls of={FhiBodyStories.Preview}/>
+
+## Label 
+
+Brukes som etikett på knapper, handlinger, felt og mer. Label samsvarer i stor grad med HTML-elementet Label, og er ikke ment til overskrifter.
+
+<Canvas of={FhiLabelStories.Preview}/>
+<Controls of={FhiLabelStories.Preview}/>
 
 ## Display 
 
@@ -49,17 +63,3 @@ Stiler for under- og korttitler. Typisk bruk er internt i komponenter.
 
 <Canvas of={FhiTitleStories.Preview}/>
 <Controls of={FhiTitleStories.Preview}/>
-
-## Label 
-
-Etiketter på knapper, handlinger, felt og mer. Label samsvarer i stor grad med HTML-elementet Label, og er ikke ment til overskrifter.
-
-<Canvas of={FhiLabelStories.Preview}/>
-<Controls of={FhiLabelStories.Preview}/>
-
-## Body
-
-Brødtekst, avsnitt og beskrivelser. Utgangspunkt for all tekst.
-
-<Canvas of={FhiBodyStories.Preview}/>
-<Controls of={FhiBodyStories.Preview}/>
