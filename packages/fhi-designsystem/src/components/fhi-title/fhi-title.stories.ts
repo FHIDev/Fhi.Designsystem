@@ -28,7 +28,8 @@ const meta: Meta<FhiTitle> = {
       options: [1, 2, 3, 4, 5, 6],
       control: { type: 'select' },
       description:
-        'Overskriftsnivået på elementet (f.eks. `level="3"` gir `<h3>`). **Påkrevd**.',
+        'Overskriftsnivået på elementet (f.eks. `level="3"` gir `<h3>`).',
+      defaultValue: { summary: 1 },
     },
     color: {
       control: { type: 'text' },

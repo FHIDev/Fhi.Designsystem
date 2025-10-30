@@ -30,15 +30,11 @@ export class FhiTitle extends LitElement {
    * @attr level
    * @type {1 | 2 | 3 | 4 | 5 | 6}
    */
-  @property({ type: Number }) level!: TitleLevel;
+  @property({ type: Number }) level: TitleLevel = 1;
 
   /** @internal */
   updated(changedProperties: PropertyValues<this>) {
     super.updated(changedProperties);
-
-    if (!this.level) {
-      throw new Error(`level is a required attribute.`);
-    }
 
     if (changedProperties.has('color') && typeof this.color == 'string') {
       this.style.color = this.color;

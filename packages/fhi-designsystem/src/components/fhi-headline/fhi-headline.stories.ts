@@ -28,7 +28,8 @@ const meta: Meta<FhiHeadline> = {
       options: [1, 2, 3, 4, 5, 6],
       control: { type: 'select' },
       description:
-        'Overskriftsnivået på elementet (f.eks. `level="3"` gir `<h3>`). **Påkrevd**.',
+        'Overskriftsnivået på elementet (f.eks. `level="3"` gir `<h3>`).',
+      defaultValue: { summary: 1 },
     },
     color: {
       control: { type: 'text' },
@@ -42,7 +43,7 @@ type Story = StoryObj<FhiHeadline>;
 
 export const Preview: Story = {
   tags: [],
-  args: { size: 'large', level: 1 },
+  args: { size: 'large' },
 };
 
 export default meta;
