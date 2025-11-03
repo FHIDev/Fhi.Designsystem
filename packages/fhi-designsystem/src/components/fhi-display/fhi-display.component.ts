@@ -30,7 +30,7 @@ export class FhiDisplay extends LitElement {
    * @attr level
    * @type {1 | 2 | 3 | 4 | 5 | 6}
    */
-  @property({ type: Number }) level: DisplayLevel = 1;
+  @property({ type: Number }) level!: DisplayLevel;
 
   /** @internal */
   updated(changedProperties: PropertyValues<this>) {
@@ -75,12 +75,11 @@ export class FhiDisplay extends LitElement {
       display: block;
       contain: layout;
       color: var(--fhi-color-neutral-text-default);
-    }
-
-    .display {
-      font-weight: var(--fhi-font-weight-regular);
-      font-family: var(--fhi-font-family-default);
-      margin: 0;
+      .display {
+        font-weight: var(--fhi-font-weight-regular);
+        font-family: var(--fhi-font-family-default);
+        margin: 0;
+      }
     }
 
     :host([size='large']) {

@@ -60,12 +60,11 @@ export class FhiLabel extends LitElement {
       display: block;
       contain: layout;
       color: var(--fhi-color-neutral-text-default);
-    }
-
-    .label {
-      font-weight: var(--fhi-font-weight-medium);
-      font-family: var(--fhi-font-family-default);
-      margin: 0;
+      .label {
+        font-weight: var(--fhi-font-weight-medium);
+        font-family: var(--fhi-font-family-default);
+        margin: 0;
+      }
     }
 
     :host([size='large']) {

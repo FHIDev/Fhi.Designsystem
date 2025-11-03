@@ -51,14 +51,14 @@ describe('fhi-title', () => {
       expect(component.getAttribute('size')).to.equal('small');
       expect(component.size).to.equal('small');
     });
-  });
 
-  it('renders the correct h level', async () => {
-    component = await fixture(html` <fhi-title level="2">Test</fhi-title> `);
-    expect(component).shadowDom.to.equal(`
+    it('renders the correct h level', async () => {
+      component = await fixture(html` <fhi-title level="2">Test</fhi-title> `);
+      expect(component).shadowDom.to.equal(`
       <h2 class="title">
         <slot></slot>
       </h2>
     `);
+    });
   });
 });

@@ -58,12 +58,11 @@ export class FhiBody extends LitElement {
       display: block;
       contain: layout;
       color: var(--fhi-color-neutral-text-default);
-    }
-
-    .body {
-      font-weight: var(--fhi-font-weight-regular);
-      font-family: var(--fhi-font-family-default);
-      margin: 0;
+      .body {
+        font-weight: var(--fhi-font-weight-regular);
+        font-family: var(--fhi-font-family-default);
+        margin: 0;
+      }
     }
 
     :host([size='large']) {

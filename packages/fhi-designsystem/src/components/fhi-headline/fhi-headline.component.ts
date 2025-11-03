@@ -30,7 +30,7 @@ export class FhiHeadline extends LitElement {
    * @attr level
    * @type {1 | 2 | 3 | 4 | 5 | 6}
    */
-  @property({ type: Number }) level: HeadlineLevel = 1;
+  @property({ type: Number }) level!: HeadlineLevel;
 
   /** @internal */
   updated(changedProperties: PropertyValues<this>) {
@@ -75,12 +75,11 @@ export class FhiHeadline extends LitElement {
       display: block;
       contain: layout;
       color: var(--fhi-color-neutral-text-default);
-    }
-
-    .headline {
-      font-weight: var(--fhi-font-weight-medium);
-      font-family: var(--fhi-font-family-default);
-      margin: 0;
+      .headline {
+        font-weight: var(--fhi-font-weight-medium);
+        font-family: var(--fhi-font-family-default);
+        margin: 0;
+      }
     }
 
     :host([size='large']) {
