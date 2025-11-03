@@ -52,17 +52,17 @@ export class FhiTitle extends LitElement {
 
   static styles = css`
     :host {
-      --font-size-large: var(--fhi-font-size-5);
+      --font-size-large: var(--fhi-typography-title-large-font-size);
       --line-height-large: var(--fhi-typography-title-large-line-height);
       --letter-spacing-large: var(--fhi-typography-title-large-letter-spacing);
 
-      --font-size-medium: var(--fhi-font-size-4);
+      --font-size-medium: var(--fhi-typography-title-medium-font-size);
       --line-height-medium: var(--fhi-typography-title-medium-line-height);
       --letter-spacing-medium: var(
         --fhi-typography-title-medium-letter-spacing
       );
 
-      --font-size-small: var(--fhi-font-size-3);
+      --font-size-small: var(--fhi-typography-title-small-font-size);
       --line-height-small: var(--fhi-typography-title-small-line-height);
       --letter-spacing-small: var(--fhi-typography-title-small-letter-spacing);
     }

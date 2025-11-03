@@ -41,17 +41,17 @@ export class FhiLabel extends LitElement {
 
   static styles = css`
     :host {
-      --font-size-large: var(--fhi-font-size-5);
+      --font-size-large: var(--fhi-typography-label-large-font-size);
       --line-height-large: var(--fhi-typography-label-large-line-height);
       --letter-spacing-large: var(--fhi-typography-label-large-letter-spacing);
 
-      --font-size-medium: var(--fhi-font-size-4);
+      --font-size-medium: var(--fhi-typography-label-medium-font-size);
       --line-height-medium: var(--fhi-typography-label-medium-line-height);
       --letter-spacing-medium: var(
         --fhi-typography-label-medium-letter-spacing
       );
 
-      --font-size-small: var(--fhi-font-size-3);
+      --font-size-small: var(--fhi-typography-label-small-font-size);
       --line-height-small: var(--fhi-typography-label-small-line-height);
       --letter-spacing-small: var(--fhi-typography-label-small-letter-spacing);
     }

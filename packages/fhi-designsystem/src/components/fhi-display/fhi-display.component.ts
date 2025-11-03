@@ -52,19 +52,19 @@ export class FhiDisplay extends LitElement {
 
   static styles = css`
     :host {
-      --font-size-large: var(--fhi-font-size-14);
+      --font-size-large: var(--fhi-typography-display-large-font-size);
       --line-height-large: var(--fhi-typography-display-large-line-height);
       --letter-spacing-large: var(
         --fhi-typography-display-large-letter-spacing
       );
 
-      --font-size-medium: var(--fhi-font-size-12);
+      --font-size-medium: var(--fhi-typography-display-medium-font-size);
       --line-height-medium: var(--fhi-typography-display-medium-line-height);
       --letter-spacing-medium: var(
         --fhi-typography-display-medium-letter-spacing
       );
 
-      --font-size-small: var(--fhi-font-size-10);
+      --font-size-small: var(--fhi-typography-display-small-font-size);
       --line-height-small: var(--fhi-typography-display-small-line-height);
       --letter-spacing-small: var(
         --fhi-typography-display-small-letter-spacing
