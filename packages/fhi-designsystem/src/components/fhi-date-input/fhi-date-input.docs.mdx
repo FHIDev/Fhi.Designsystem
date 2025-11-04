@@ -1,0 +1,53 @@
+import { FhiDateInput } from './fhi-date-input.component';
+import * as FhiDateInputStories from './fhi-date-input.stories.ts';
+import {
+    Meta,
+    Title,
+    Primary,
+    Canvas,
+    Story,
+    Controls,
+} from '@storybook/blocks';
+
+<Meta of={FhiDateInputStories} />
+
+# Date input
+
+Date Input er et felt som lar brukere skrive en dato eller åpne en kalender for å velge en dato. 
+
+Date Input er basert på HTML-elementet `input` med typen `date`. Dette betyr at funksjonaliteten og utseendet kan variere mellom ulike nettlesere og operativsystemer.
+[Les mer om Date Input HTML-elementet her](https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/input/date).
+
+## Passer til
+
+- Å velge en dato.
+
+<Canvas of={FhiDateInputStories.Preview} />
+<Controls />
+
+### Status
+
+#### `error`
+Uttrykker at noe mangler eller er skrevet feil.
+
+<Canvas of={FhiDateInputStories.Error} />
+
+### Form Controls
+
+#### `min` og `max`
+
+Setter henholdsvis laveste og høyeste dato som kan velges. Datoene må være i formatet `YYYY-MM-DD`.
+
+<Canvas of={FhiDateInputStories.MinMax} />
+
+#### `readonly`
+
+Gjør at feltet ikke kan endres. Feltet vil fortsatt kunne fokuseres og vil automatisk bli inkludert i FormData.
+
+<Canvas of={FhiDateInputStories.Readonly} />
+
+#### `disabled`
+
+Gjør at feltet ikke kan endres, fokuseres eller automatisk inkluderes i FormData. Unngås hvis man kan.
+
+<Canvas of={FhiDateInputStories.Disabled} />
