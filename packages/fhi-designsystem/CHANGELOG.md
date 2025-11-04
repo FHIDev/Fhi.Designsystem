@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.22.0](https://github.com/FHIDev/Fhi.Designsystem/compare/v0.21.1...v0.22.0) (2025-11-04)
+
+
+### 🚀 Features
+
+* New Component - Date Input ([#279](https://github.com/FHIDev/Fhi.Designsystem/issues/279)) ([3b76a8c](https://github.com/FHIDev/Fhi.Designsystem/commit/3b76a8c5863c1e7f4f1c170a20e1fef40392a5f3))
+
 ## [0.21.1](https://github.com/FHIDev/Fhi.Designsystem/compare/v0.21.0...v0.21.1) (2025-10-27)
 
 
