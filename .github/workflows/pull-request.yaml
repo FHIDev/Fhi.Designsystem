@@ -19,6 +19,7 @@ env:
 
 jobs:
   check_for_package_changes:
+    name: Check for Package Changes
     runs-on: ubuntu-latest
     outputs:
       should_publish_package: ${{ steps.check_files.outputs.should_publish_package }}
@@ -93,10 +94,10 @@ jobs:
           path: ./packages/fhi-designsystem/dist/github
 
   deploy_staging_storybook:
+    name: Deploy Staging Storybook
     runs-on: ubuntu-latest
     environment: development
-    needs: check_for_package_changes
-    if: needs.check_for_package_changes.outputs.should_publish_package == 'hello'
+    needs: build_and_test
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -117,6 +118,7 @@ jobs:
           skip_app_build: true
 
   publish_staging_package:
+    name: Publish Staging NPM Package
     runs-on: ubuntu-latest
     environment: development
     needs: [check_for_package_changes, build_and_test]
