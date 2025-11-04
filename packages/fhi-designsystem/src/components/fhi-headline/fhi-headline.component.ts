@@ -53,18 +53,21 @@ export class FhiHeadline extends LitElement {
   static styles = css`
     :host {
       --font-size-large: var(--fhi-typography-headline-large-font-size);
+      --font-weight-large: var(--fhi-typography-headline-large-font-weight);
       --line-height-large: var(--fhi-typography-headline-large-line-height);
       --letter-spacing-large: var(
         --fhi-typography-headline-large-letter-spacing
       );
 
       --font-size-medium: var(--fhi-typography-headline-medium-font-size);
+      --font-weight-medium: var(--fhi-typography-headline-medium-font-weight);
       --line-height-medium: var(--fhi-typography-headline-medium-line-height);
       --letter-spacing-medium: var(
         --fhi-typography-headline-medium-letter-spacing
       );
 
       --font-size-small: var(--fhi-typography-headline-small-font-size);
+      --font-weight-small: var(--fhi-typography-headline-small-font-weight);
       --line-height-small: var(--fhi-typography-headline-small-line-height);
       --letter-spacing-small: var(
         --fhi-typography-headline-small-letter-spacing
@@ -76,7 +79,6 @@ export class FhiHeadline extends LitElement {
       contain: layout;
       color: var(--fhi-color-neutral-text-default);
       .headline {
-        font-weight: var(--fhi-font-weight-medium);
         font-family: var(--fhi-font-family-default);
         margin: 0;
       }
@@ -85,6 +87,7 @@ export class FhiHeadline extends LitElement {
     :host([size='large']) {
       .headline {
         font-size: var(--font-size-large);
+        font-weight: var(--font-weight-large);
         line-height: var(--line-height-large);
         letter-spacing: var(--letter-spacing-large);
       }
@@ -93,6 +96,7 @@ export class FhiHeadline extends LitElement {
     :host([size='medium']) {
       .headline {
         font-size: var(--font-size-medium);
+        font-weight: var(--font-weight-medium);
         line-height: var(--line-height-medium);
         letter-spacing: var(--letter-spacing-medium);
       }
@@ -101,6 +105,7 @@ export class FhiHeadline extends LitElement {
     :host([size='small']) {
       .headline {
         font-size: var(--font-size-small);
+        font-weight: var(--font-weight-small);
         line-height: var(--line-height-small);
         letter-spacing: var(--letter-spacing-small);
       }

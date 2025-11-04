@@ -42,14 +42,17 @@ export class FhiBody extends LitElement {
   static styles = css`
     :host {
       --font-size-large: var(--fhi-typography-body-large-font-size);
+      --font-weight-large: var(--fhi-typography-body-large-font-weight);
       --line-height-large: var(--fhi-typography-body-large-line-height);
       --letter-spacing-large: var(--fhi-typography-body-large-letter-spacing);
 
       --font-size-medium: var(--fhi-typography-body-medium-font-size);
+      --font-weight-medium: var(--fhi-typography-body-medium-font-weight);
       --line-height-medium: var(--fhi-typography-body-medium-line-height);
       --letter-spacing-medium: var(--fhi-typography-body-medium-letter-spacing);
 
       --font-size-small: var(--fhi-typography-body-small-font-size);
+      --font-weight-small: var(--fhi-typography-body-small-font-weight);
       --line-height-small: var(--fhi-typography-body-small-line-height);
       --letter-spacing-small: var(--fhi-typography-body-small-letter-spacing);
     }
@@ -59,7 +62,6 @@ export class FhiBody extends LitElement {
       contain: layout;
       color: var(--fhi-color-neutral-text-default);
       .body {
-        font-weight: var(--fhi-font-weight-regular);
         font-family: var(--fhi-font-family-default);
         margin: 0;
       }
@@ -68,6 +70,7 @@ export class FhiBody extends LitElement {
     :host([size='large']) {
       .body {
         font-size: var(--font-size-large);
+        font-weight: var(--font-weight-large);
         line-height: var(--line-height-large);
         letter-spacing: var(--letter-spacing-large);
       }
@@ -76,6 +79,7 @@ export class FhiBody extends LitElement {
     :host([size='medium']) {
       .body {
         font-size: var(--font-size-medium);
+        font-weight: var(--font-weight-medium);
         line-height: var(--line-height-medium);
         letter-spacing: var(--letter-spacing-medium);
       }
@@ -84,6 +88,7 @@ export class FhiBody extends LitElement {
     :host([size='small']) {
       .body {
         font-size: var(--font-size-small);
+        font-weight: var(--font-weight-small);
         line-height: var(--line-height-small);
         letter-spacing: var(--letter-spacing-small);
       }

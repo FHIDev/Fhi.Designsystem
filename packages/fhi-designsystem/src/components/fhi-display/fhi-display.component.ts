@@ -53,18 +53,21 @@ export class FhiDisplay extends LitElement {
   static styles = css`
     :host {
       --font-size-large: var(--fhi-typography-display-large-font-size);
+      --font-weight-large: var(--fhi-typography-display-large-font-weight);
       --line-height-large: var(--fhi-typography-display-large-line-height);
       --letter-spacing-large: var(
         --fhi-typography-display-large-letter-spacing
       );
 
       --font-size-medium: var(--fhi-typography-display-medium-font-size);
+      --font-weight-medium: var(--fhi-typography-display-medium-font-weight);
       --line-height-medium: var(--fhi-typography-display-medium-line-height);
       --letter-spacing-medium: var(
         --fhi-typography-display-medium-letter-spacing
       );
 
       --font-size-small: var(--fhi-typography-display-small-font-size);
+      --font-weight-small: var(--fhi-typography-display-small-font-weight);
       --line-height-small: var(--fhi-typography-display-small-line-height);
       --letter-spacing-small: var(
         --fhi-typography-display-small-letter-spacing
@@ -76,7 +79,6 @@ export class FhiDisplay extends LitElement {
       contain: layout;
       color: var(--fhi-color-neutral-text-default);
       .display {
-        font-weight: var(--fhi-font-weight-regular);
         font-family: var(--fhi-font-family-default);
         margin: 0;
       }
@@ -85,6 +87,7 @@ export class FhiDisplay extends LitElement {
     :host([size='large']) {
       .display {
         font-size: var(--font-size-large);
+        font-weight: var(--font-weight-large);
         line-height: var(--line-height-large);
         letter-spacing: var(--letter-spacing-large);
       }
@@ -93,6 +96,7 @@ export class FhiDisplay extends LitElement {
     :host([size='medium']) {
       .display {
         font-size: var(--font-size-medium);
+        font-weight: var(--font-weight-medium);
         line-height: var(--line-height-medium);
         letter-spacing: var(--letter-spacing-medium);
       }
@@ -101,6 +105,7 @@ export class FhiDisplay extends LitElement {
     :host([size='small']) {
       .display {
         font-size: var(--font-size-small);
+        font-weight: var(--font-weight-small);
         line-height: var(--line-height-small);
         letter-spacing: var(--letter-spacing-small);
       }
