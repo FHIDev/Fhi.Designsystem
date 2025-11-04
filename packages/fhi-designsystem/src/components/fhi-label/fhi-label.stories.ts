@@ -33,7 +33,7 @@ type Story = StoryObj<FhiLabel>;
 
 export const Preview: Story = {
   tags: [],
-  args: { size: 'large' },
+  args: { size: 'medium' },
 };
 
 export default meta;

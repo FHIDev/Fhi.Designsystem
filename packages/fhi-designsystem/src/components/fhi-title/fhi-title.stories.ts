@@ -43,7 +43,7 @@ type Story = StoryObj<FhiTitle>;
 
 export const Preview: Story = {
   tags: [],
-  args: { size: 'large', level: 1 },
+  args: { size: 'medium', level: 1 },
 };
 
 export default meta;
