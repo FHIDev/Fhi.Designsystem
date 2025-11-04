@@ -6,6 +6,10 @@ on:
     branches:
       - main
 
+env:
+  PACKAGE_SCOPE: '@fhidev'
+  PACKAGE_NAME: 'pull-request-${{ github.event.repository.name }}'
+
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -16,3 +20,22 @@ jobs:
         with:
           azure_static_web_apps_api_token: ${{ secrets.AZURE_STORYBOOK_API_TOKEN }}
           action: 'close'
+
+      - name: Delete staging package
+        uses: actions/github-script@v8
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          script: |
+            try {
+              await github.rest.packages.deletePackageForOrg({
+                package_type: "npm",
+                package_name: `${{ env.PACKAGE_SCOPE }}/${{ env.PACKAGE_NAME }}`,
+                org: "FHIDev"
+              })
+            } catch (error) {
+             if (error.status === 404) {
+                console.log("No existing package to delete.");
+                return;
+              }
+                throw error;
+              }
