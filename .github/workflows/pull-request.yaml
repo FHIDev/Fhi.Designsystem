@@ -88,12 +88,6 @@ jobs:
           name: build-artifact
           path: ./packages/fhi-designsystem/dist/github
 
-      - name: Upload node_modules artifact 
-        uses: actions/upload-artifact@v4
-        with:
-          name: node_modules-artifact
-          path: ./packages/fhi-designsystem/node_modules
-
   deploy_staging_storybook:
     name: Deploy Staging Storybook
     runs-on: ubuntu-latest
@@ -117,11 +111,8 @@ jobs:
           node-version: lts/*
           registry-url: 'https://registry.npmjs.org/'
 
-      - name: Download node_modules artifact
-        uses: actions/download-artifact@v4
-        with:
-          name: node_modules-artifact
-          path: ./packages/fhi-designsystem/node_modules
+      - name: Install dependencies
+        run: pnpm i
 
       - name: Build Storybook
         working-directory: ./packages/fhi-designsystem
@@ -147,6 +138,12 @@ jobs:
         uses: actions/checkout@v4
         with:
           fetch-depth: 0
+
+      - name: Install Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: lts/*
+          registry-url: 'https://registry.npmjs.org/'
 
       - name: Download build artifact for Github Packages
         uses: actions/download-artifact@v4
