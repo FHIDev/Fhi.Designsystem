@@ -14,7 +14,7 @@ on:
 
 env:
   PACKAGE_SCOPE: '@fhidev'
-  PACKAGE_NAME: 'pull-request-${{ github.event.repository.name }}'
+  PACKAGE_NAME: 'pull-request-designsystem'
   PACKAGE_VERSION: '0.0.${{ github.run_number }}'
 
 jobs:
