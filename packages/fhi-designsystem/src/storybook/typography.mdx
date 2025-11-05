@@ -1,0 +1,69 @@
+import * as FhiDisplayStories from '../components/fhi-display/fhi-display.stories.ts';
+import * as FhiHeadlineStories from '../components/fhi-headline/fhi-headline.stories.ts';
+import * as FhiTitleStories from '../components/fhi-title/fhi-title.stories.ts';
+import * as FhiLabelStories from '../components/fhi-label/fhi-label.stories.ts';
+import * as FhiBodyStories from '../components/fhi-body/fhi-body.stories.ts';
+import { Meta, Primary, Canvas, Controls } from '@storybook/blocks';
+
+<Meta title="Komponenter/Typography" />
+
+# Typography
+
+Designsystemet tilbyr 5 komponenter for tekst: 
+
+- [Body](#body) for brødtekst, avsnitt og beskrivelser
+- [Label](#label) for knapper, handlinger, navn på felt og lignende
+- [Display](#display) for store, iøynefallende overskrifter
+- [Headline](#headline) for overskrifter
+- [Title](#title) for mindre titler, for eksempel underoverskrifter
+
+## Attributter
+
+### Level
+
+`level` er en attributt på overskriftskomponentene (Display, Headline og Title). Den bestemmer overskriftsnivået på elementet (f.eks.`level="3"` gir `<h3>`). Gyldige verdier er hele tall mellom 1 og 6 som korresponderer med `<h1>` til `<h6>`. 
+
+Du bruker `level` for å lage et semantisk hierarki på siden. Det skal bare være én `<h1>` per side, men det kan være flere av de andre nivåene. Det er viktig at nivåene følger en logisk rekkefølge. Det vil si, ikke hopp over level, begynn med `<h1>` fulgt av `<h2>` osv. 
+
+Størrelsene på `<h1>`-`<h6>` kan variere fra løsning til løsning. For eksempel kan åpne sider rettet mot offentligheten både ha nytte og mulighet til større kontrast mellom overskriftene, mens interne admin-arbeidsflater har mange nivåer i mer kompakte omgivelser. Dette kan også variere internt i en løsning. 
+
+Du må selv definere - for din løsning - faste regler for størrelser basert på `<h1>`-`<h6>`-taggen, hvis dette er noe du ønsker.
+
+### Color 
+
+`color` setter [Color CSS-attributtet](https://developer.mozilla.org/en-US/docs/Web/CSS/color) til elementet og støtter dermed de samme fargeverdiene. Standardverdien er `var(--fhi-color-neutral-text-default)`.   
+
+## Body
+
+Brukes til brødtekst, avsnitt og beskrivelser. Utgangspunkt for all tekst.
+
+<Canvas of={FhiBodyStories.Preview}/>
+<Controls of={FhiBodyStories.Preview}/>
+
+## Label 
+
+Brukes til etiketter på knapper, handlinger, felt og mer. Label samsvarer i stor grad med HTML-elementet `<label>`, og er ikke ment til overskrifter.
+
+<Canvas of={FhiLabelStories.Preview}/>
+<Controls of={FhiLabelStories.Preview}/>
+
+## Display 
+
+Våre største, mest iøynefallende tekststiler. De passer godt til forsider, landingssider og «Hero»-seksjoner.
+
+<Canvas of={FhiDisplayStories.Preview}/>
+<Controls of={FhiDisplayStories.Preview}/>
+
+## Headline
+
+Typiske mellomstore, overskrifter for seksjoner, artikler, kort og slikt.
+
+<Canvas of={FhiHeadlineStories.Preview}/>
+<Controls of={FhiHeadlineStories.Preview}/>
+
+## Title
+
+Stiler for under- og korttitler. Typisk bruk er internt i komponenter.
+
+<Canvas of={FhiTitleStories.Preview}/>
+<Controls of={FhiTitleStories.Preview}/>
