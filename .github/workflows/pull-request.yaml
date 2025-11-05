@@ -91,7 +91,7 @@ jobs:
       - name: Upload node_modules artifact 
         uses: actions/upload-artifact@v4
         with:
-          name: build-artifact
+          name: node_modules-artifact
           path: ./packages/fhi-designsystem/node_modules
 
   deploy_staging_storybook:
@@ -120,7 +120,7 @@ jobs:
       - name: Download node_modules artifact
         uses: actions/download-artifact@v4
         with:
-          name: build-artifact
+          name: node_modules-artifact
           path: ./packages/fhi-designsystem/node_modules
 
       - name: Build Storybook
