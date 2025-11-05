@@ -4,7 +4,7 @@ import { customElement, property } from 'lit/decorators.js';
 export const FhiButtonSelector = 'fhi-button';
 
 /**
- * ## FHI Button
+ * ## FHI Button 2
  *
  * {@link https://designsystem.fhi.no/?path=/docs/komponenter-button--docs}
  *
