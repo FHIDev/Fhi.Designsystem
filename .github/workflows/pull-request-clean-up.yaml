@@ -8,7 +8,7 @@ on:
 
 env:
   PACKAGE_SCOPE: '@fhidev'
-  PACKAGE_NAME: 'pull-request-designsystem'
+  PACKAGE_NAME: 'pull-request-designsystem-${{ github.event.pull_request.number }}'
 
 jobs:
   build:
