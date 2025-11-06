@@ -1,7 +1,7 @@
 name: Pull Request Guard
 
 permissions:
-  contents: write
+  contents: read
   id-token: write
   issues: write
   packages: write
