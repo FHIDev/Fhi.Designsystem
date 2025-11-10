@@ -16,6 +16,11 @@ const preview: Preview = {
           'Kom i gang',
           '*',
           'Ikoner',
+          'Komponenter',
+          [
+            'Typography',
+            ['Docs', 'Body', 'Label', 'Display', 'Headline', 'Title'],
+          ],
           'Design Tokens',
           ['Introduksjon'],
           'Ofte stilte spørsmål',

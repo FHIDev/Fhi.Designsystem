@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.23.0](https://github.com/FHIDev/Fhi.Designsystem/compare/v0.22.0...v0.23.0) (2025-11-05)
+
+
+### 🚀 Features
+
+* Typography komponenter ([#292](https://github.com/FHIDev/Fhi.Designsystem/issues/292)) ([3d8e591](https://github.com/FHIDev/Fhi.Designsystem/commit/3d8e591b2542c32eded751b48465068bb23bfe7e))
+
 ## [0.22.0](https://github.com/FHIDev/Fhi.Designsystem/compare/v0.21.1...v0.22.0) (2025-11-04)
 
 
