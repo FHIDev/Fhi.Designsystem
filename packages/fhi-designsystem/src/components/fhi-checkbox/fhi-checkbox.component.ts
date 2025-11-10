@@ -207,6 +207,7 @@ export class FhiCheckbox extends LitElement {
         position: relative;
         color: var(--color-text);
         font-family: var(--typography-font-family);
+        -webkit-font-smoothing: antialiased;
         font-size: var(--typography-font-size);
         font-weight: var(--typography-font-weight);
         line-height: var(--typography-line-height);

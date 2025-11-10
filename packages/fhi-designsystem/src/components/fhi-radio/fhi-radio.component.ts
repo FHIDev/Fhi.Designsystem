@@ -327,6 +327,7 @@ export class FhiRadio extends LitElement {
       --color-radio-outline: var(--fhi-color-accent-surface-hover);
 
       --typography-radio-label-font-family: var(--fhi-font-family-default);
+      -webkit-font-smoothing: antialiased;
       --typography-radio-label-font-size: var(
         --fhi-typography-body-medium-font-size
       );
