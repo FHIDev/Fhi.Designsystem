@@ -3,27 +3,65 @@ import { customElement, property, query } from 'lit/decorators.js';
 
 import '../fhi-button/fhi-button.component';
 import '../icons/fhi-icon-x.component';
+import '../fhi-headline/fhi-headline.component';
 
 export const FhiDialogSelector = 'fhi-dialog';
 
+/**
+ * ## FHI Dialog
+ *
+ * {@link https://designsystem.fhi.no/?path=/docs/komponenter-dialog--docs}
+ *
+ * @tag fhi-dialog
+ * @element fhi-dialog
+ *
+ * @slot body - The main content of the dialog. Typically contains text or form elements.
+ * @slot footer - The footer content of the dialog, typically containing action buttons.
+ */
 @customElement(FhiDialogSelector)
 export class FhiDialog extends LitElement {
+  /**
+   * Decides whether the dialog is open or closed.
+   * This property is reflected as an attribute and will therefor also change if the user opens or closes the dialog.
+   * @attr
+   * @type {boolean}
+   */
   @property({ type: Boolean, reflect: true }) open: boolean = false;
 
+  /**
+   * Sets the maximum width of the dialog.
+   * @attr
+   * @type {'small' | 'medium' | `${string}rem`}
+   */
   @property({ type: String, attribute: 'max-width' }) maxWidth:
     | 'small'
     | 'medium'
     | `${string}rem` = 'medium';
 
+  /**
+   * Label for the close button. If not provided, the button will be icon-only.
+   * @attr
+   * @type {string | undefined}
+   */
   @property({ type: String, attribute: 'close-button-label' })
   closeButtonLabel?: string = undefined;
 
+  /**
+   * If true, the close button will be hidden.
+   * @attr
+   * @type {boolean}
+   */
   @property({ type: Boolean, attribute: 'hide-close-button' })
   hideCloseButton: boolean = false;
 
+  /**
+   * The heading text of the dialog. This is displayed at the top of the dialog.
+   * @attr
+   * @type {string | undefined}
+   */
   @property({ type: String }) heading?: string = undefined;
 
-  @query('dialog') _dialog!: HTMLDialogElement;
+  @query('dialog') private _dialog!: HTMLDialogElement;
 
   private _triggerElement: HTMLElement | null = null;
 
@@ -87,6 +125,8 @@ export class FhiDialog extends LitElement {
     this._triggerElement?.focus();
 
     this._dispatchToggleEvent();
+
+    /**@type {Event} - Standard DOM event of type `close` */
     this.dispatchEvent(new CloseEvent('close'));
   }
 
@@ -95,6 +135,7 @@ export class FhiDialog extends LitElement {
   }
 
   private _dispatchToggleEvent() {
+    /**@type {Event} - Standard DOM event with the type `toggle` */
     this.dispatchEvent(
       new ToggleEvent('toggle', {
         newState: this.open ? 'open' : 'closed',
@@ -120,9 +161,9 @@ export class FhiDialog extends LitElement {
   }
 
   render() {
-    return html`<dialog popover="manual" @click=${this._handleSlotClick}>
+    return html` <dialog popover="manual" @click=${this._handleSlotClick}>
       <header>
-        <h1 class="title">${this.heading}</h1>
+        <fhi-headline level="1">${this.heading}</fhi-headline>
         ${!this.hideCloseButton
           ? html`
               <fhi-button
@@ -148,6 +189,12 @@ export class FhiDialog extends LitElement {
   }
 
   static styles = css`
+    @keyframes fhi-dialog-fade-in {
+      from {
+        opacity: 0;
+      }
+    }
+
     :host {
       --dimension-dialog-padding: var(--fhi-spacing-500);
       --dimension-dialog-body-padding: var(--fhi-spacing-500) 0;
@@ -172,40 +219,23 @@ export class FhiDialog extends LitElement {
       justify-content: center;
       align-items: center;
       position: fixed;
-      top: 0;
-      left: 0;
       width: 100vw;
       height: 100vh;
-      opacity: 0;
-      transition: opacity var(--motion-transition);
+      top: 0;
+      left: 0;
       visibility: hidden;
-      &::before {
-        content: '';
-        width: 100%;
-        height: 100%;
-        background-color: var(--color-backdrop);
-        opacity: var(--opacity-backdrop);
-        backdrop-filter: blur(80px);
-      }
 
       dialog {
         border: var(--dimension-dialog-border-width) solid
           var(--color-dialog-border);
         border-radius: var(--dimension-dialog-border-radius);
         padding: var(--dimension-dialog-padding);
+        animation: var(--motion-transition) fhi-dialog-fade-in;
         header {
           display: flex;
           justify-content: space-between;
           align-items: center;
           gap: var(--fhi-spacing-400);
-        }
-        .title {
-          margin: 0;
-          font-family: var(--fhi-font-family-default);
-          font-weight: var(--fhi-typography-headline-medium-font-weight);
-          font-size: var(--fhi-typography-headline-medium-font-size);
-          line-height: var(--fhi-typography-headline-medium-line-height);
-          letter-spacing: var(--fhi-typography-headline-medium-letter-spacing);
         }
         slot[name='body'] {
           display: block;
@@ -218,12 +248,26 @@ export class FhiDialog extends LitElement {
           gap: var(--dimension-dialog-footer-gap);
           flex-wrap: wrap;
         }
+        &::backdrop {
+          content: '';
+          width: 100%;
+          height: 100%;
+          background-color: var(--color-backdrop);
+          opacity: var(--opacity-backdrop);
+          backdrop-filter: blur(80px);
+          animation: var(--motion-transition) fhi-dialog-fade-in;
+        }
       }
     }
 
     :host([open]) {
       opacity: 1;
       visibility: visible;
+      display: flex;
+    }
+
+    dialog:popover-open {
+      animation: var(--motion-transition) fhi-dialog-fade-in;
     }
 
     :host([max-width='small']) {

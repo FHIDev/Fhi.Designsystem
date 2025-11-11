@@ -1,0 +1,17 @@
+import { FhiDialog } from './fhi-dialog.component.ts';
+import * as FhiDialogStories from './fhi-dialog.stories.ts';
+import { Meta, Primary, Canvas, Controls } from '@storybook/blocks';
+
+<Meta of={FhiDialogStories} />
+
+# Dialog
+Dialog er et vindu som åpner og legger seg over annet innhold, hvor brukeren kan fokusere på en spesifikk oppgave eller informasjon. 
+Dialoger er modale; de tar over skjermen og hindrer brukeren å interagere med elementer i bakgrunnen. 
+
+## Passer til
+- Å gi brukeren fokus på sjeldne, men viktige oppgaver
+- Å sikre at brukeren får med seg kritisk informasjon
+
+<Canvas of={FhiDialogStories.Preview} />
+
+<Controls />
