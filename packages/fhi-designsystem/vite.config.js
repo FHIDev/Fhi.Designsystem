@@ -121,6 +121,7 @@ export default defineConfig(({ mode }) => {
           outDir: `${OUTPUT_DIRECTORY}/cdn`,
         },
       };
+    case 'github':
     case 'npm':
       return {
         plugins: [
@@ -167,7 +168,7 @@ export default defineConfig(({ mode }) => {
               },
             },
           },
-          outDir: `${OUTPUT_DIRECTORY}/npm`,
+          outDir: `${OUTPUT_DIRECTORY}/${env.DEPLOY_TARGET}`,
         },
       };
     default:
