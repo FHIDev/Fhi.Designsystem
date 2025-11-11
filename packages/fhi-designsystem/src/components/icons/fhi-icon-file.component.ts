@@ -7,27 +7,50 @@ import { customElement, property } from "lit/decorators.js";
 
 export const FhiIconFileSelector = "fhi-icon-file";
 
+/**
+ * ## FhiIconFile
+ * 
+ * {@link https://designsystem.fhi.no/?path=/docs/ikoner--docs}
+ * 
+ * @tag fhi-icon-file
+ * @element fhi-icon-file
+ */
 @customElement(FhiIconFileSelector)
 export class FhiIconFile extends LitElement {
+
+  /**
+   * Sets the color for the icon
+   * @attr
+   * @type {string}
+   */ 
   @property({ type: String }) color: string = "currentcolor";
+
+  /**
+   * Sets the size of the icon. Predefined options `xsmall`, `small`, `medium`, `large`. Also accepts `number` or `rem` and `px` values. Default `medium`.
+   * @attr
+   * @type { 'xsmall' | 'small' | 'medium' | 'large' | number | string}
+   * @default "medium"
+   */
   @property({ type: String }) size: 'xsmall' | 'small' | 'medium' | 'large' | number | `${number}px` | `${number}rem` = 'medium';
+
+  /**@internal */
   private get _size(): string {
     switch (this.size) {
       case 'xsmall': 
-        return '16px'; 
+        return '1rem'; 
       case 'small':
-        return '20px';
+        return '1.25rem';
       case 'medium':
-        return '24px'; 
+        return '1.5rem'; 
       case 'large':
-        return '32px'; 
+        return '2rem'; 
       default:
         if (String(this.size).endsWith('px') || String(this.size).endsWith('rem')) {
           return String(this.size);
         }
         if (isNaN(Number(this.size))) {
-          console.warn(`Invalid size value: ${this.size}. Falling back to default size '24px'.`)
-          return '24px';
+          console.warn(`Invalid size value: ${this.size}. Falling back to default size '1.5rem'.`)
+          return '1.5rem';
         }
         return `${this.size}px`;
     }

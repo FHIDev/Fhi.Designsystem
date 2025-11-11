@@ -1,5 +1,91 @@
 # Changelog
 
+## [0.23.0](https://github.com/FHIDev/Fhi.Designsystem/compare/v0.22.0...v0.23.0) (2025-11-05)
+
+
+### 🚀 Features
+
+* Typography komponenter ([#292](https://github.com/FHIDev/Fhi.Designsystem/issues/292)) ([3d8e591](https://github.com/FHIDev/Fhi.Designsystem/commit/3d8e591b2542c32eded751b48465068bb23bfe7e))
+
+## [0.22.0](https://github.com/FHIDev/Fhi.Designsystem/compare/v0.21.1...v0.22.0) (2025-11-04)
+
+
+### 🚀 Features
+
+* New Component - Date Input ([#279](https://github.com/FHIDev/Fhi.Designsystem/issues/279)) ([3b76a8c](https://github.com/FHIDev/Fhi.Designsystem/commit/3b76a8c5863c1e7f4f1c170a20e1fef40392a5f3))
+
+## [0.21.1](https://github.com/FHIDev/Fhi.Designsystem/compare/v0.21.0...v0.21.1) (2025-10-27)
+
+
+### 🛠️ Bug Fixes
+
+* Riktig størrelse på ikon. ([#291](https://github.com/FHIDev/Fhi.Designsystem/issues/291)) ([1a6e1a9](https://github.com/FHIDev/Fhi.Designsystem/commit/1a6e1a9761d6e3cfdbfe94e9cc1418b6f6d98999))
+
+
+### 📑 Documentation
+
+* 152 quick intro to accessibility on our components ([#290](https://github.com/FHIDev/Fhi.Designsystem/issues/290)) ([61725da](https://github.com/FHIDev/Fhi.Designsystem/commit/61725da66fe8438160e623d13653c31a66395a62))
+
+## [0.21.0](https://github.com/FHIDev/Fhi.Designsystem/compare/v0.20.0...v0.21.0) (2025-10-16)
+
+
+### 🚀 Features
+
+* Implement first version of grid ([#270](https://github.com/FHIDev/Fhi.Designsystem/issues/270)) ([9f2bd45](https://github.com/FHIDev/Fhi.Designsystem/commit/9f2bd45f4cd4285097c4c56b0d1fffa5081cfa6d))
+
+## [0.20.0](https://github.com/FHIDev/Fhi.Designsystem/compare/v0.19.1...v0.20.0) (2025-10-15)
+
+
+### 🚀 Features
+
+* 271 generate a custom element manifest for our package ([#282](https://github.com/FHIDev/Fhi.Designsystem/issues/282)) ([57cf4b3](https://github.com/FHIDev/Fhi.Designsystem/commit/57cf4b3e6c9cd242ea57ba13dab0f723676e9713))
+* Add Web-Types for all components ([#287](https://github.com/FHIDev/Fhi.Designsystem/issues/287)) ([d4e816f](https://github.com/FHIDev/Fhi.Designsystem/commit/d4e816fe74fcd1fe31ae3e47d65ee542babe7d6e))
+
+
+### Other
+
+* Add clean up action for storybook dev environments ([#284](https://github.com/FHIDev/Fhi.Designsystem/issues/284)) ([0e4f3ab](https://github.com/FHIDev/Fhi.Designsystem/commit/0e4f3abbf164415dc2c8a540e48609b53d467203))
+* Add mandatory job completion on PR ([#286](https://github.com/FHIDev/Fhi.Designsystem/issues/286)) ([21a02d3](https://github.com/FHIDev/Fhi.Designsystem/commit/21a02d34cf7cab7238ae79239701b79facd1b3d4))
+* Riktig størrelse på ikon i iconOnly-knapper. ([#281](https://github.com/FHIDev/Fhi.Designsystem/issues/281)) ([666bb79](https://github.com/FHIDev/Fhi.Designsystem/commit/666bb79980ded9d8651df93971d531f149d5ebb9))
+
+## [0.19.1](https://github.com/FHIDev/Fhi.Designsystem/compare/v0.19.0...v0.19.1) (2025-09-30)
+
+
+### 🛠️ Bug Fixes
+
+* Juster margin for ikoner på knapp. ([d881131](https://github.com/FHIDev/Fhi.Designsystem/commit/d88113103cebc7a76c20ce2a0042854da14d03c0))
+
+## [0.19.0](https://github.com/FHIDev/Fhi.Designsystem/compare/v0.18.0...v0.19.0) (2025-09-29)
+
+
+### 🚀 Features
+
+* La til justify-content og align-items. ([#278](https://github.com/FHIDev/Fhi.Designsystem/issues/278)) ([5128f6b](https://github.com/FHIDev/Fhi.Designsystem/commit/5128f6b8f312e7a52ded4f8b59b8deb7ee06a3ad))
+
+## [0.18.0](https://github.com/FHIDev/Fhi.Designsystem/compare/v0.17.3...v0.18.0) (2025-09-26)
+
+
+### 🚀 Features
+
+* Endret ikonstørrelser fra px til rem. ([#275](https://github.com/FHIDev/Fhi.Designsystem/issues/275)) ([56df527](https://github.com/FHIDev/Fhi.Designsystem/commit/56df5274c055345b76b3876615ae91c6f10f52a9))
+
+## [0.17.3](https://github.com/FHIDev/Fhi.Designsystem/compare/v0.17.2...v0.17.3) (2025-09-24)
+
+
+### 🛠️ Bug Fixes
+
+* Endret predefinerte verdier fra px til rem. ([#274](https://github.com/FHIDev/Fhi.Designsystem/issues/274)) ([d7550f7](https://github.com/FHIDev/Fhi.Designsystem/commit/d7550f703afbf89294043cdc7a78fb037a402c1d))
+
+
+### 📑 Documentation
+
+* La til info om designsystem og bruk for utviklere. ([#254](https://github.com/FHIDev/Fhi.Designsystem/issues/254)) ([ab277db](https://github.com/FHIDev/Fhi.Designsystem/commit/ab277dbb5488d6c5fe4cd1ce44a387c03117f0e6))
+
+
+### Other
+
+* do not run Pull Request Guard on PR closed event ([#268](https://github.com/FHIDev/Fhi.Designsystem/issues/268)) ([c111067](https://github.com/FHIDev/Fhi.Designsystem/commit/c1110677144dc9aea2ac55169a32e8c5588ae562))
+
 ## [0.17.2](https://github.com/FHIDev/Fhi.Designsystem/compare/v0.17.1...v0.17.2) (2025-09-19)
 
 
