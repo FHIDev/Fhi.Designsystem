@@ -162,25 +162,6 @@ jobs:
             '.name = $name | .version = $version' package.json > package.tmp.json
           mv package.tmp.json package.json
 
-      - name: Delete staging package if it already exists
-        uses: actions/github-script@v8
-        with:
-          github-token: ${{ secrets.GITHUB_TOKEN }}
-          script: |
-            try {
-              await github.rest.packages.deletePackageForOrg({
-                package_type: "npm",
-                package_name: `${{ env.PACKAGE_SCOPE }}/${{ env.PACKAGE_NAME }}`,
-                org: "FHIDev"
-              })
-            } catch (error) {
-             if (error.status === 404) {
-                console.log("No existing package to delete.");
-                return;
-              }
-                throw error;
-              }
-
       - name: Configure npm for publishing on GitHub Packages
         working-directory: ./packages/fhi-designsystem/dist/github
         run: |
