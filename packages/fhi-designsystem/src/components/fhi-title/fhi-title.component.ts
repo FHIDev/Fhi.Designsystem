@@ -78,6 +78,7 @@ export class FhiTitle extends LitElement {
         font-weight: var(--fhi-font-weight-bold);
         font-weight: var(--font-weight-large);
         font-family: var(--fhi-font-family-default);
+        -webkit-font-smoothing: antialiased;
         margin: 0;
       }
     }

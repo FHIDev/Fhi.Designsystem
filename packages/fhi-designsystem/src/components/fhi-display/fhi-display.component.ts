@@ -80,6 +80,7 @@ export class FhiDisplay extends LitElement {
       color: var(--fhi-color-neutral-text-default);
       .display {
         font-family: var(--fhi-font-family-default);
+        -webkit-font-smoothing: antialiased;
         margin: 0;
       }
     }

@@ -63,6 +63,7 @@ export class FhiBody extends LitElement {
       color: var(--fhi-color-neutral-text-default);
       .body {
         font-family: var(--fhi-font-family-default);
+        -webkit-font-smoothing: antialiased;
         margin: 0;
       }
     }
