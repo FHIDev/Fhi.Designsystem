@@ -3,12 +3,22 @@ import { customElement, property } from 'lit/decorators.js';
 
 export const FhiTagSelector = 'fhi-tag';
 
+/**
+ * ## FHI Tag
+ *
+ * {@link https://designsystem.fhi.no/?path=/docs/komponenter-tag--docs}
+ *
+ * @tag fhi-tag
+ * @element fhi-tag
+ *
+ * @slot - The content of the tag, typically text or text with an icon.
+ */
 @customElement(FhiTagSelector)
 export class FhiTag extends LitElement {
   /**
    * Sets the color theme of the tag.
    * @attr
-   * @type {'accent' | 'neutral' | 'danger'}
+   * @type {'neutral' | 'accent' | 'success' | 'warning' | 'danger' | 'info'}
    */
   @property({ type: String, reflect: true }) color:
     | 'neutral'
@@ -66,8 +76,22 @@ export class FhiTag extends LitElement {
       --dimension-height: var(--fhi-spacing-300);
 
       --color-neutral-text: var(--fhi-color-neutral-text-default);
-      color: var(--fhi-color);
-      background-color: var(--fhi-background-color);
+      --color-neutral-background: var(--fhi-color-neutral-surface-default);
+
+      --color-accent-text: var(--fhi-color-accent-text-default);
+      --color-accent-background: var(--fhi-color-accent-surface-default);
+
+      --color-success-text: var(--fhi-color-success-text-default);
+      --color-success-background: var(--fhi-color-success-surface-default);
+
+      --color-warning-text: var(--fhi-color-warning-text-default);
+      --color-warning-background: var(--fhi-color-warning-surface-default);
+
+      --color-danger-text: var(--fhi-color-danger-text-default);
+      --color-danger-background: var(--fhi-color-danger-surface-default);
+
+      --color-info-text: var(--fhi-color-info-text-default);
+      --color-info-background: var(--fhi-color-info-surface-default);
     }
 
     :host {
@@ -95,8 +119,8 @@ export class FhiTag extends LitElement {
     }
 
     :host([color='accent']) {
-      --fhi-color: var(--fhi-color-accent-text-default);
-      --fhi-background-color: var(--fhi-color-accent-surface-default);
+      color: var(--color-accent-text);
+      background-color: var(--fhi-color-accent-surface-default);
     }
 
     :host([color='success']) {
@@ -105,18 +129,18 @@ export class FhiTag extends LitElement {
     }
 
     :host([color='warning']) {
-      --fhi-color: var(--fhi-color-warning-text-default);
-      --fhi-background-color: var(--fhi-color-warning-surface-default);
+      color: var(--fhi-color-warning-text-default);
+      background-color: var(--fhi-color-warning-surface-default);
     }
 
     :host([color='danger']) {
-      --fhi-color: var(--fhi-color-danger-text-default);
-      --fhi-background-color: var(--fhi-color-danger-surface-default);
+      color: var(--fhi-color-danger-text-default);
+      background-color: var(--fhi-color-danger-surface-default);
     }
 
     :host([color='info']) {
-      --fhi-color: var(--fhi-color-info-text-default);
-      --fhi-background-color: var(--fhi-color-info-surface-default);
+      color: var(--fhi-color-info-text-default);
+      background-color: var(--fhi-color-info-surface-default);
     }
   `;
 }
