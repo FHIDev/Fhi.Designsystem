@@ -1,0 +1,29 @@
+import { FhiTag } from './fhi-tag.component.ts';
+import * as FhiTagStories from './fhi-tag.stories.ts';
+import { Meta, Primary, Canvas, Controls } from '@storybook/blocks';
+
+<Meta of={FhiTagStories} />
+
+# Tag
+
+Tag er en merkelapp for å organisere, kategorisere og utheve viktig data, slik som status. Tagger hjelper brukere å differensiere mellom hvilke kategori innhold tilhører, særlig i en større oversikt med flere like elementer og/eller tabeller.
+
+## Passer til
+
+- Å kommunisere kategori, status eller annen metadata.
+- Å skille ut og trekke oppmersomhet til et element.
+
+<Canvas of={FhiTagStories.Preview} />
+
+<Controls />
+
+## Farge
+
+Ved bruk av forskjellige farger kan du skille ulike tagger fra hverandre. I tillegg kan du utnytte typiske assosiasjoner vi har til hver farge.
+Tag er tilgjengelig i alle semantiske skalaer. Har man behov for en spesifikk bakgrunnsfarge, kan det også settes.
+
+## Ikon
+
+Teksten skal være god nok for å forstå informasjonen. Ikoner kan brukes for å støtte teksten, samt skape gjenkjennelighet over tid. Ikonet plasseres før teksten.
+
+<Canvas of={FhiTagStories.Icon} />
