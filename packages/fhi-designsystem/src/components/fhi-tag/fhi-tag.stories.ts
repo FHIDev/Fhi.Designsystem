@@ -39,9 +39,9 @@ export const Preview: Story = {
 export const Icon: Story = {
   tags: ['!dev'],
   render: () =>
-    html`<fhi-flex direction="row" wrap>
+    html`<fhi-flex direction="row" gap="small" wrap>
       <fhi-tag color="neutral"
-        ><fhi-icon-download></fhi-icon-download>Fra Kristin</fhi-tag
+        ><fhi-icon-download></fhi-icon-download>Fra Folkeregisteret</fhi-tag
       >
       <fhi-tag color="accent"
         ><fhi-icon-refresh></fhi-icon-refresh>Pågår</fhi-tag
