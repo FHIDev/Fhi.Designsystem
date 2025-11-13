@@ -33,7 +33,7 @@ type Story = StoryObj<FhiTag>;
 
 export const Preview: Story = {
   tags: [],
-  args: {},
+  args: { color: 'neutral' },
 };
 
 export const Icon: Story = {

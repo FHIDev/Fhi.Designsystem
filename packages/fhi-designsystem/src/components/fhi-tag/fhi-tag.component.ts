@@ -72,8 +72,10 @@ export class FhiTag extends LitElement {
       --dimension-icon-offset: calc(-1 * var(--fhi-spacing-050));
       --dimension-border-radius: var(--fhi-border-radius-050);
       --dimension-gap: var(--fhi-spacing-050);
-      --dimension-padding: 0 var(--fhi-spacing-100);
-      --dimension-height: var(--fhi-spacing-300);
+      --dimension-padding: 0 calc(var(--fhi-spacing-100) - 1px);
+      --dimension-height: calc(var(--dimension-height) - 2px);
+
+      --color-border: transparent;
 
       --color-neutral-text: var(--fhi-color-neutral-text-default);
       --color-neutral-background: var(--fhi-color-neutral-surface-default);
@@ -107,6 +109,7 @@ export class FhiTag extends LitElement {
       letter-spacing: var(--typography-letter-spacing);
       font-variant-numeric: var(--typography-font-variant-numeric);
 
+      border: 1px solid var(--color-border);
       border-radius: var(--dimension-border-radius);
       gap: var(--dimension-gap);
       padding: var(--dimension-padding);
