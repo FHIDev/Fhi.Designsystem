@@ -38,9 +38,10 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "pnpm analyze && pnpm build:cdn && pnpm build:npm && pnpm clean",
+    "build": "pnpm analyze && pnpm build:cdn && pnpm build:npm && pnpm build:github && pnpm clean",
     "build:cdn": "tsc && cross-env DEPLOY_TARGET=cdn vite build",
     "build:npm": "tsc && cross-env DEPLOY_TARGET=npm vite build",
+    "build:github": "tsc && cross-env DEPLOY_TARGET=github vite build",
     "storybook": "storybook dev -p 6006",
     "storybook:build": "storybook build",
     "generate:icons": "node ./scripts/generate-icon-components.js --input ./src/assets/icons/ --output ./src/components/icons --clean-output-folder",
