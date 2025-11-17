@@ -93,7 +93,6 @@ export const Preview: Story = {
 };
 
 export const OpenDialog: Story = {
-  tags: [],
   render: args =>
     html` <fhi-dialog
       .open=${args.open}
