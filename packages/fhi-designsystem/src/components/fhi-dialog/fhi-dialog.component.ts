@@ -65,18 +65,6 @@ export class FhiDialog extends LitElement {
   private _triggerElement: HTMLElement | null = null;
   private _bodyOverflowStyle: string = '';
 
-  connectedCallback(): void {
-    super.connectedCallback();
-
-    window.addEventListener('keydown', this._handleKeyPress.bind(this));
-  }
-
-  disconnectedCallback(): void {
-    super.disconnectedCallback();
-
-    window.removeEventListener('keydown', this._handleKeyPress);
-  }
-
   updated(changedProperties: PropertyValues<this>) {
     super.updated(changedProperties);
 
@@ -111,7 +99,11 @@ export class FhiDialog extends LitElement {
 
     document.body.style.overflow = 'hidden';
 
+    window.addEventListener('keydown', this._handleKeyPress.bind(this));
+
     this._dialog.showModal();
+
+    this._focusDialog();
 
     this._dispatchToggleEvent();
   }
@@ -129,10 +121,16 @@ export class FhiDialog extends LitElement {
 
     this._dialog.close();
 
+    window.removeEventListener('keydown', this._handleKeyPress);
+
     this._triggerElement?.focus();
 
     this._dispatchToggleEvent();
     this._dispatchCloseEvent();
+  }
+
+  private _focusDialog() {
+    this._dialog.focus();
   }
 
   private _dispatchToggleEvent() {
@@ -203,6 +201,12 @@ export class FhiDialog extends LitElement {
         <footer>
           <slot name="footer"></slot>
         </footer>
+
+        <button
+          data-focus-trap
+          aria-hidden
+          @focus=${this._focusDialog}
+        ></button>
       </section>
     </dialog>`;
   }
@@ -235,6 +239,11 @@ export class FhiDialog extends LitElement {
 
     :host {
       display: none;
+
+      [data-focus-trap] {
+        position: absolute;
+        opacity: 0;
+      }
 
       dialog {
         border: var(--dimension-dialog-border-width) solid
