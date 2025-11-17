@@ -22,25 +22,24 @@ export const FhiDialogSelector = 'fhi-dialog';
 export class FhiDialog extends LitElement {
   /**
    * Decides whether the dialog is open or closed.
-   * This property is reflected as an attribute and will therefor also change if the user opens or closes the dialog.
-   * @attr
+   * By setting this property to true, the dialog will be shown. Setting it to false will close the dialog.
+   *
+   * This property is reflected as an attribute and will therefor also change if the user toggles the dialog or
+   * if you use the `show()` and `close()` methods.
    * @type {boolean}
    */
-  @property({ type: Boolean, reflect: true }) open: boolean = false;
+  @property({ type: Boolean, reflect: true })
+  open: boolean = false;
 
   /**
    * Sets the maximum width of the dialog.
-   * @attr
    * @type {'small' | 'medium' | `${string}rem`}
    */
-  @property({ type: String, attribute: 'max-width' }) maxWidth:
-    | 'small'
-    | 'medium'
-    | `${string}rem` = 'medium';
+  @property({ type: String, attribute: 'max-width' })
+  maxWidth: 'small' | 'medium' | `${string}rem` = 'medium';
 
   /**
    * Label for the close button. If not provided, the button will be icon-only.
-   * @attr
    * @type {string | undefined}
    */
   @property({ type: String, attribute: 'close-button-label' })
@@ -48,7 +47,6 @@ export class FhiDialog extends LitElement {
 
   /**
    * If true, the close button will be hidden.
-   * @attr
    * @type {boolean}
    */
   @property({ type: Boolean, attribute: 'hide-close-button' })
@@ -56,14 +54,16 @@ export class FhiDialog extends LitElement {
 
   /**
    * The heading text of the dialog. This is displayed at the top of the dialog.
-   * @attr
    * @type {string | undefined}
    */
-  @property({ type: String }) heading?: string = undefined;
+  @property({ type: String })
+  heading?: string = undefined;
 
-  @query('dialog') private _dialog!: HTMLDialogElement;
+  @query('dialog')
+  private _dialog!: HTMLDialogElement;
 
   private _triggerElement: HTMLElement | null = null;
+  private _bodyOverflowStyle: string = '';
 
   connectedCallback(): void {
     super.connectedCallback();
@@ -101,33 +101,42 @@ export class FhiDialog extends LitElement {
     }
   }
 
+  /**
+   * Programmatically opens the dialog.
+   * You can also open the dialog by instead setting the `open` property to `true`.
+   */
   public show() {
     this._triggerElement = document.activeElement as HTMLElement | null;
-
-    console.log('Showing dialog', this._triggerElement);
+    this._bodyOverflowStyle = document.body.style.overflow;
 
     if (!this.open) {
       this.open = true;
     }
 
-    this._dialog.showPopover();
+    document.body.style.overflow = 'hidden';
+
+    this._dialog.showModal();
 
     this._dispatchToggleEvent();
   }
 
+  /**
+   * Programmatically closes the dialog.
+   * You can also close the dialog by instead setting the `open` property to `false`.
+   */
   public close() {
     if (this.open) {
       this.open = false;
     }
 
-    this._dialog.hidePopover();
+    document.body.style.overflow = this._bodyOverflowStyle;
+
+    this._dialog.close();
 
     this._triggerElement?.focus();
 
     this._dispatchToggleEvent();
-
-    /**@type {Event} - Standard DOM event of type `close` */
-    this.dispatchEvent(new CloseEvent('close'));
+    this._dispatchCloseEvent();
   }
 
   private _handleSlotClick(event: MouseEvent) {
@@ -135,13 +144,27 @@ export class FhiDialog extends LitElement {
   }
 
   private _dispatchToggleEvent() {
-    /**@type {Event} - Standard DOM event with the type `toggle` */
+    /**
+     * @type {Event} - Standard DOM event with the type `toggle`
+     * This event is fired whenever the dialog is opened or closed.
+     *
+     * @property {string} newState - The new state of the dialog, either `open` or `closed`.
+     * @property {string} oldState - The previous state of the dialog, either `open` or `closed`.
+     * */
     this.dispatchEvent(
       new ToggleEvent('toggle', {
         newState: this.open ? 'open' : 'closed',
         oldState: this.open ? 'closed' : 'open',
       }),
     );
+  }
+
+  private _dispatchCloseEvent() {
+    /**
+     * @type {Event} - Standard DOM event with the type `toggle`
+     * This event is fired whenever the dialog is closed.
+     * */
+    this.dispatchEvent(new CloseEvent('close'));
   }
 
   private _handleBackdropClick(event: MouseEvent) {
@@ -161,7 +184,7 @@ export class FhiDialog extends LitElement {
   }
 
   render() {
-    return html` <dialog popover="manual" @click=${this._handleSlotClick}>
+    return html` <dialog @click=${this._handleSlotClick}>
       <header>
         <fhi-headline level="1">${this.heading}</fhi-headline>
         ${!this.hideCloseButton
@@ -215,15 +238,7 @@ export class FhiDialog extends LitElement {
     }
 
     :host {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      position: fixed;
-      width: 100vw;
-      height: 100vh;
-      top: 0;
-      left: 0;
-      visibility: hidden;
+      display: none;
 
       dialog {
         border: var(--dimension-dialog-border-width) solid
@@ -249,9 +264,6 @@ export class FhiDialog extends LitElement {
           flex-wrap: wrap;
         }
         &::backdrop {
-          content: '';
-          width: 100%;
-          height: 100%;
           background-color: var(--color-backdrop);
           opacity: var(--opacity-backdrop);
           backdrop-filter: blur(80px);
@@ -261,9 +273,7 @@ export class FhiDialog extends LitElement {
     }
 
     :host([open]) {
-      opacity: 1;
-      visibility: visible;
-      display: flex;
+      display: block;
     }
 
     dialog:popover-open {
