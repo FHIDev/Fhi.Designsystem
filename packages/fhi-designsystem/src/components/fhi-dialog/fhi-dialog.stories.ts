@@ -21,33 +21,33 @@ const meta: Meta<FhiDialog> = {
     open: {
       control: { type: 'boolean' },
       description:
-        'Decides whether the dialog is open or closed. This property is reflected as an attribute and will therefor also change if the user opens or closes the dialog.',
+        'Bestemmer om dialogen er åpen eller ikke. Dette er en property som er reflektert som en attribute og vil derfor også endre seg om brukeren åpner eller lukker dialogen selv.',
       defaultValue: { summary: false },
     },
     maxWidth: {
       name: 'max-width',
       control: { type: 'text' },
       description:
-        'Sets the maximum width of the dialog. Can be a predefined size (`small`, `medium`, `large`) or a custom size in rem units (e.g., `30rem`).',
+        'Setter dialogen sin maksimum bredde. Det kan være en predefinert størrelse, (`small`, `medium`, `large`) eller en egendefinert størrelse i rem (e.g `30rem`).',
       defaultValue: { summary: 'medium' },
     },
     closeButtonLabel: {
       name: 'close-button-label',
       control: { type: 'text' },
       description:
-        'Label for the close button. If not provided, the button will be icon-only.',
+        'Label for lukkeknappen. Om ikke gitt vil knappen bli icon-only.',
       defaultValue: { summary: 'undefined' },
     },
     hideCloseButton: {
       name: 'hide-close-button',
       control: { type: 'boolean' },
-      description: 'If true, the close button will be hidden.',
+      description: 'Om `true`, vil lukkeknappen være skjult.',
       defaultValue: { summary: false },
     },
     heading: {
       control: { type: 'text' },
       description:
-        'The heading text of the dialog. This is displayed at the top of the dialog.',
+        'Tittelen på dialogen. Vises øverst, over resten av innholdet.',
       defaultValue: { summary: 'undefined' },
     },
   },
@@ -60,10 +60,10 @@ export const Preview: Story = {
   decorators: [
     Story => html`
       <div>
-        <fhi-body
-          >Toggle the <code>"open"</code> attribute in the control panel to
-          open/close the dialog</fhi-body
-        >
+        <fhi-body>
+          Samhandle med "open" attributen under i kontrolpanelet for å
+          åpne/lukke dialogen.
+        </fhi-body>
         ${Story()}
       </div>
     `,
