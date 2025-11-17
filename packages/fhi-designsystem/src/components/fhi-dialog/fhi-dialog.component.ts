@@ -69,16 +69,12 @@ export class FhiDialog extends LitElement {
     super.connectedCallback();
 
     window.addEventListener('keydown', this._handleEscapeClick.bind(this));
-
-    this.addEventListener('click', this._handleBackdropClick);
   }
 
   disconnectedCallback(): void {
     super.disconnectedCallback();
 
     window.removeEventListener('keydown', this._handleEscapeClick);
-
-    this.addEventListener('click', this._handleBackdropClick);
   }
 
   updated(changedProperties: PropertyValues<this>) {
@@ -139,10 +135,6 @@ export class FhiDialog extends LitElement {
     this._dispatchCloseEvent();
   }
 
-  private _handleSlotClick(event: MouseEvent) {
-    event.stopPropagation();
-  }
-
   private _dispatchToggleEvent() {
     /**
      * @type {Event} - Standard DOM event with the type `toggle`
@@ -161,16 +153,18 @@ export class FhiDialog extends LitElement {
 
   private _dispatchCloseEvent() {
     /**
-     * @type {Event} - Standard DOM event with the type `toggle`
+     * @type {Event} - Standard DOM event with the type `close`
      * This event is fired whenever the dialog is closed.
      * */
     this.dispatchEvent(new CloseEvent('close'));
   }
 
-  private _handleBackdropClick(event: MouseEvent) {
-    if (event.target === this) {
+  private _handleDialogClick(event: MouseEvent) {
+    if (event.target === this._dialog) {
       this.close();
     }
+
+    event.stopPropagation();
   }
 
   private _handleEscapeClick(event: KeyboardEvent) {
@@ -184,30 +178,32 @@ export class FhiDialog extends LitElement {
   }
 
   render() {
-    return html` <dialog @click=${this._handleSlotClick}>
-      <header>
-        <fhi-headline level="1">${this.heading}</fhi-headline>
-        ${!this.hideCloseButton
-          ? html`
-              <fhi-button
-                ?icon-only=${!this.closeButtonLabel}
-                variant="text"
-                color="neutral"
-                @click=${this.close}
-                aria-label="Close dialog"
-              >
-                ${this.closeButtonLabel}
-                <fhi-icon-x></fhi-icon-x>
-              </fhi-button>
-            `
-          : null}
-      </header>
-      <section>
-        <slot name="body"></slot>
+    return html` <dialog @click=${this._handleDialogClick}>
+      <section class="dialog-content">
+        <header>
+          <fhi-headline level="1">${this.heading}</fhi-headline>
+          ${!this.hideCloseButton
+            ? html`
+                <fhi-button
+                  ?icon-only=${!this.closeButtonLabel}
+                  variant="text"
+                  color="neutral"
+                  @click=${this.close}
+                  aria-roledescription="button that will close the dialog"
+                >
+                  ${this.closeButtonLabel}
+                  <fhi-icon-x></fhi-icon-x>
+                </fhi-button>
+              `
+            : null}
+        </header>
+        <section>
+          <slot name="body"></slot>
+        </section>
+        <footer>
+          <slot name="footer"></slot>
+        </footer>
       </section>
-      <footer>
-        <slot name="footer"></slot>
-      </footer>
     </dialog>`;
   }
 
@@ -244,8 +240,11 @@ export class FhiDialog extends LitElement {
         border: var(--dimension-dialog-border-width) solid
           var(--color-dialog-border);
         border-radius: var(--dimension-dialog-border-radius);
-        padding: var(--dimension-dialog-padding);
         animation: var(--motion-transition) fhi-dialog-fade-in;
+        padding: 0;
+        .dialog-content {
+          padding: var(--dimension-dialog-padding);
+        }
         header {
           display: flex;
           justify-content: space-between;
