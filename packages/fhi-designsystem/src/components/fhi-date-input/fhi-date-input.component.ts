@@ -325,6 +325,7 @@ export class FhiDateInput extends LitElement {
       display: flex;
       flex-direction: column;
       font-family: var(--typography-font-family);
+      -webkit-font-smoothing: antialiased;
       width: var(--dimension-width);
 
       label {
