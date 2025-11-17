@@ -68,13 +68,13 @@ export class FhiDialog extends LitElement {
   connectedCallback(): void {
     super.connectedCallback();
 
-    window.addEventListener('keydown', this._handleEscapeClick.bind(this));
+    window.addEventListener('keydown', this._handleKeyPress.bind(this));
   }
 
   disconnectedCallback(): void {
     super.disconnectedCallback();
 
-    window.removeEventListener('keydown', this._handleEscapeClick);
+    window.removeEventListener('keydown', this._handleKeyPress);
   }
 
   updated(changedProperties: PropertyValues<this>) {
@@ -167,7 +167,7 @@ export class FhiDialog extends LitElement {
     event.stopPropagation();
   }
 
-  private _handleEscapeClick(event: KeyboardEvent) {
+  private _handleKeyPress(event: KeyboardEvent) {
     if (!this.open) {
       return;
     }
