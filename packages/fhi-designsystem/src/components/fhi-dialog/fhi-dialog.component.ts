@@ -12,6 +12,9 @@ export const FhiDialogSelector = 'fhi-dialog';
  *
  * {@link https://designsystem.fhi.no/?path=/docs/komponenter-dialog--docs}
  *
+ * The `fhi-dialog` component is used to display important information or prompt the user for input in a modal window.
+ * It overlays the main content and usually requires user interaction before returning to the underlying page.
+ *
  * @tag fhi-dialog
  * @element fhi-dialog
  *
@@ -26,6 +29,7 @@ export class FhiDialog extends LitElement {
    *
    * This property is reflected as an attribute and will therefor also change if the user toggles the dialog or
    * if you use the `show()` and `close()` methods.
+   * @reflect
    * @type {boolean}
    */
   @property({ type: Boolean, reflect: true })
@@ -137,9 +141,6 @@ export class FhiDialog extends LitElement {
     /**
      * @type {Event} - Standard DOM event with the type `toggle`
      * This event is fired whenever the dialog is opened or closed.
-     *
-     * @property {string} newState - The new state of the dialog, either `open` or `closed`.
-     * @property {string} oldState - The previous state of the dialog, either `open` or `closed`.
      * */
     this.dispatchEvent(
       new ToggleEvent('toggle', {
