@@ -9,60 +9,56 @@ export const FhiCheckboxSelector = 'fhi-checkbox';
  *
  * {@link https://designsystem.fhi.no/?path=/docs/komponenter-checkbox--docs}
  *
+ * The `fhi-checkbox` component represents a checkbox input element styled according to the FHI Design System guidelines.
+ * It allows users to make binary choices, such as selecting or deselecting an option.
+ *
  * @tag fhi-checkbox
  * @element fhi-checkbox
  */
 @customElement(FhiCheckboxSelector)
 export class FhiCheckbox extends LitElement {
+  /** @internal */
   static readonly formAssociated = true;
 
   /**
-   * The text label displayed next to the checkbox.
-   * @attr
+   * The text labeling the checkbox. A checkbox should always have a label.
    * @type {string}
    */
   @property({ type: String }) label?: string = undefined;
 
   /**
-   * The name of the checkbox, submitted with form data.
-   * @attr
+   * The name of the checkbox. This is submitted with the form data as a `key` when the checkbox is checked.
    * @type {string}
    */
   @property({ type: String }) name?: string = undefined;
 
   /**
-   * The value of the checkbox, submitted with form data when checked. Defaults to 'on'.
-   * @attr
+   * The value of the checkbox. This is submitted with the form data as a `value` when the checkbox is checked.
    * @type {string}
    */
   @property({ type: String }) value: string = 'on';
 
   /**
-   * Sets the visual status of the checkbox, typically for indicating an error.
-   * @attr
+   * Sets the visual status of the checkbox. There is currently only one status available: `error`.
+   * The `error` status is used to indicate that there is an issue with the checkbox, such as a required checkbox not being checked.
    * @reflect
    * @type {'error' | undefined}
    */
   @property({ type: String, reflect: true }) status?: 'error' | undefined;
 
   /**
-   * Whether the checkbox is checked.
-   * @attr
+   * Whether the checkbox is checked or not.
    * @type {boolean}
    */
   @property({ type: Boolean }) checked? = false;
 
   /**
-   * Disables the checkbox, making it non-interactive.
-   * @attr
+   * Disables the checkbox. This changes the design and makes it non-interactive.
    * @reflect
    * @type {boolean}
    */
   @property({ type: Boolean, reflect: true }) disabled? = false;
 
-  /**
-   * @internal
-   */
   private _internals: ElementInternals;
 
   constructor() {
@@ -75,11 +71,7 @@ export class FhiCheckbox extends LitElement {
     this._updateFormValue();
   }
 
-  /**
-   * Handles the `change` event for the inner input.
-   * @internal
-   */
-  public _handleChange(event: Event): void {
+  private _handleChange(event: Event): void {
     this.checked = (event.target as HTMLInputElement).checked;
     this._updateFormValue();
     /**@type {Event} - Standard DOM event with the type `change` */
@@ -90,11 +82,7 @@ export class FhiCheckbox extends LitElement {
     );
   }
 
-  /**
-   * Handles the `input` event for the inner input.
-   * @internal
-   */
-  public _handleInput(event: Event): void {
+  private _handleInput(event: Event): void {
     event.stopPropagation();
     /**@type {Event} - Standard DOM event with the type `input`*/
     this.dispatchEvent(
@@ -105,16 +93,11 @@ export class FhiCheckbox extends LitElement {
     );
   }
 
-  /**
-   * @internal
-   */
   private _updateFormValue() {
     this._internals.setFormValue(this.checked ? this.value : null);
   }
 
-  /**
-   * Resets the checkbox to its initial state when its parent form is reset.
-   */
+  /** @internal */
   public formResetCallback() {
     this.checked = false;
     this._updateFormValue();

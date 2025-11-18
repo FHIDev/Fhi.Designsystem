@@ -3,11 +3,24 @@ import { customElement, property } from 'lit/decorators.js';
 
 export const FhiBodySelector = 'fhi-body';
 
+/**
+ * ## FHI Body
+ *
+ * {@link https://designsystem.fhi.no/?path=/story/komponenter-typography-body--preview}
+ *
+ * The `fhi-body` component is used to display body text in accordance with the FHI Design System guidelines.
+ * It provides options for different text sizes and allows customization of text color.
+ * Use this component instead of the standard HTML paragraph element, `<p>`, to ensure consistent styling across your application.
+ *
+ * @tag fhi-body
+ * @element fhi-body
+ *
+ * @slot - The content of the fhi-body component. This should be pure text.
+ */
 @customElement(FhiBodySelector)
 export class FhiBody extends LitElement {
   /**
-   * Sets the size of the text styles.
-   * @attr
+   * Sets the font size of the given text.
    * @type {'large' | 'medium' | 'small'}
    */
   @property({ type: String, reflect: true }) size:
@@ -16,13 +29,22 @@ export class FhiBody extends LitElement {
     | 'small' = 'medium';
 
   /**
-   * Sets text color. Accepts the same values as the CSS property: https://developer.mozilla.org/en-US/docs/Web/CSS/color.
-   * @attr
+   * Sets color of the given text. It supports any valid CSS color value (e.g. hex, rgb, rgba, hsl, hsla, color names).
+   *
+   * It is recommended to use Design Tokens for colors defined in the FHI Design System.
+   * See: {@link https://designsystem.fhi.no/?path=/docs/design-tokens-farger--docs}
+   *
+   * Example:
+   * ```html
+   *  <fhi-body color="var(--fhi-color-primary-text-default)">
+   *    This text will be in the primary text color.
+   *  </fhi-body>
+   * ```
+   *
    * @type {string}
    */
   @property({ type: String }) color?: string;
 
-  /** @internal */
   updated(changedProperties: PropertyValues<this>) {
     super.updated(changedProperties);
 
