@@ -8,9 +8,10 @@ type FhiGapWidthUnit = `${number}${FhiUnitType}` | number;
 /**
  * ## FHI Grid
  *
- * A layout component for creating grid layouts. It is a wrapper around the CSS Grid Layout module.
- *
  * {@link https://designsystem.fhi.no/?path=/docs/komponenter-grid--docs}
+ *
+ * The `fhi-grid` component is a grid container that uses CSS Grid Layout to organize its child elements into a structured grid format.
+ * It allows for easy control over the number of columns and the spacing between grid items.
  *
  * @tag fhi-grid
  * @element fhi-grid
@@ -19,8 +20,8 @@ type FhiGapWidthUnit = `${number}${FhiUnitType}` | number;
 @customElement(FhiGridSelector)
 export class FhiGrid extends LitElement {
   /**
-   * Sets the gap between grid items. Can be a preset value ('small', 'medium', 'large') or a custom CSS value (e.g., '20px', '1.5rem').
-   * @attr
+   * Sets the gap between items within the grid container. It can be one of the preset values, a rem value, or a number.
+   * If you give a number, it will be treated as pixels.
    * @type {'small' | 'medium' | 'large' | number | string}
    */
   @property({ type: String }) gap:
@@ -30,13 +31,11 @@ export class FhiGrid extends LitElement {
     | FhiGapWidthUnit = 'medium';
 
   /**
-   * Sets the number of columns in the grid.
-   * @attr
+   * Sets the number of columns in the grid layout.
    * @type {number}
    */
   @property({ type: Number }) columns = 12;
 
-  /** @internal */
   updated(changedProperties: PropertyValues<this>) {
     super.updated(changedProperties);
 

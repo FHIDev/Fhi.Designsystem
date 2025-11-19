@@ -48,7 +48,7 @@ export class FhiDisplay extends LitElement {
   @property({ type: String }) color?: string;
 
   /**
-   * Sets the heading level for the display text, corresponding to HTML heading elements `<h1>` to `<h6>`.
+   * Sets the heading level for the text, corresponding to HTML heading elements `<h1>` to `<h6>`.
    * @type {1 | 2 | 3 | 4 | 5 | 6}
    */
   @property({ type: Number }) level!: DisplayLevel;

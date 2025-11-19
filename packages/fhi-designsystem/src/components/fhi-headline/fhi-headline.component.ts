@@ -6,6 +6,19 @@ export const FhiHeadlineSelector = 'fhi-headline';
 
 export type HeadlineLevel = 1 | 2 | 3 | 4 | 5 | 6;
 
+/**
+ * ## FHI Headline
+ *
+ * {@link https://designsystem.fhi.no/?path=/story/komponenter-typography-headline--preview}
+ *
+ * The `fhi-headline` component is used to display headline text in accordance with the FHI Design System guidelines.
+ * Use this component instead of the standard HTML heading elements, `<h1>` - `<h6>`, to ensure consistent styling across your application.
+ *
+ * @tag fhi-headline
+ * @element fhi-headline
+ *
+ * @slot - The content of the fhi-headline component. This should be pure text.
+ */
 @customElement(FhiHeadlineSelector)
 export class FhiHeadline extends LitElement {
   /**
@@ -19,20 +32,28 @@ export class FhiHeadline extends LitElement {
     | 'small' = 'medium';
 
   /**
-   * Sets text color. Accepts the same values as the CSS property: https://developer.mozilla.org/en-US/docs/Web/CSS/color.
-   * @attr
+   * Sets color of the given text. It supports any valid CSS color value (e.g. hex, rgb, rgba, hsl, hsla, color names).
+   *
+   * It is recommended to use Design Tokens for colors defined in the FHI Design System.
+   * See: {@link https://designsystem.fhi.no/?path=/docs/design-tokens-farger--docs}
+   *
+   * Example:
+   * ```html
+   *  <fhi-headline color="var(--fhi-color-primary-text-default)">
+   *    This text will be in the primary text color.
+   *  </fhi-headline>
+   * ```
+   *
    * @type {string}
    */
   @property({ type: String }) color?: string;
 
   /**
-   * Indicates the headline tag level, i.e. 'level=2' gives '<h2>'.
-   * @attr level
+   * Sets the heading level for the text, corresponding to HTML heading elements `<h1>` to `<h6>`.
    * @type {1 | 2 | 3 | 4 | 5 | 6}
    */
   @property({ type: Number }) level!: HeadlineLevel;
 
-  /** @internal */
   updated(changedProperties: PropertyValues<this>) {
     super.updated(changedProperties);
 
