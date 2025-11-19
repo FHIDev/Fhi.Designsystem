@@ -177,10 +177,16 @@ export class FhiDialog extends LitElement {
   }
 
   render() {
-    return html` <dialog @click=${this._handleDialogClick}>
+    return html` <dialog
+      @click=${this._handleDialogClick}
+      ?aria-modal=${this.open}
+      aria-labelledby="dialog-label"
+    >
       <section class="dialog-content">
         <header>
-          <fhi-headline level="1">${this.heading}</fhi-headline>
+          <fhi-headline id="dialog-label" level="1"
+            >${this.heading}</fhi-headline
+          >
           ${!this.hideCloseButton
             ? html`
                 <fhi-button
