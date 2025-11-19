@@ -6,11 +6,23 @@ export const FhiDisplaySelector = 'fhi-display';
 
 export type DisplayLevel = 1 | 2 | 3 | 4 | 5 | 6;
 
+/**
+ * ## FHI Display
+ *
+ * {@link https://designsystem.fhi.no/?path=/story/komponenter-typography-display--preview}
+ *
+ * The `fhi-display` component is used to display large headline text in accordance with the FHI Design System guidelines.
+ * Use this component instead of the standard HTML heading elements, `<h1>` - `<h6>`, to ensure consistent styling across your application.
+ *
+ * @tag fhi-display
+ * @element fhi-display
+ *
+ * @slot - The content of the fhi-display component. This should be pure text.
+ */
 @customElement(FhiDisplaySelector)
 export class FhiDisplay extends LitElement {
   /**
-   * Sets the size of the text styles.
-   * @attr
+   * Sets the font size of the given text.
    * @type {'large' | 'medium' | 'small'}
    */
   @property({ type: String, reflect: true }) size:
@@ -19,15 +31,24 @@ export class FhiDisplay extends LitElement {
     | 'small' = 'medium';
 
   /**
-   * Sets text color. Accepts the same values as the CSS property: https://developer.mozilla.org/en-US/docs/Web/CSS/color.
-   * @attr
+   * Sets color of the given text. It supports any valid CSS color value (e.g. hex, rgb, rgba, hsl, hsla, color names).
+   *
+   * It is recommended to use Design Tokens for colors defined in the FHI Design System.
+   * See: {@link https://designsystem.fhi.no/?path=/docs/design-tokens-farger--docs}
+   *
+   * Example:
+   * ```html
+   *  <fhi-display color="var(--fhi-color-primary-text-default)">
+   *    This text will be in the primary text color.
+   *  </fhi-display>
+   * ```
+   *
    * @type {string}
    */
   @property({ type: String }) color?: string;
 
   /**
-   * Indicates the display tag level, i.e. 'level=2' gives '<h2>'.
-   * @attr level
+   * Sets the heading level for the display text, corresponding to HTML heading elements `<h1>` to `<h6>`.
    * @type {1 | 2 | 3 | 4 | 5 | 6}
    */
   @property({ type: Number }) level!: DisplayLevel;

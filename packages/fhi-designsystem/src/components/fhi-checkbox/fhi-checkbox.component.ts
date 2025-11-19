@@ -9,7 +9,7 @@ export const FhiCheckboxSelector = 'fhi-checkbox';
  *
  * {@link https://designsystem.fhi.no/?path=/docs/komponenter-checkbox--docs}
  *
- * The `fhi-checkbox` component represents a checkbox input element styled according to the FHI Design System guidelines.
+ * The `fhi-checkbox` component represents a checkbox input element styled and implemented according to the FHI design system guidelines.
  * It allows users to make binary choices, such as selecting or deselecting an option.
  *
  * @tag fhi-checkbox

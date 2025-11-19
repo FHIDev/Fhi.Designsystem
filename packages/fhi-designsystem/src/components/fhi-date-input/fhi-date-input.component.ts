@@ -10,81 +10,81 @@ export const FhiDateInputSelector = 'fhi-date-input';
 export type FhiDateValue = `${number}-${number}-${number}` | undefined; // YYYY-MM-DD
 
 /**
- * ##FHI Date input
+ * ## FHI Date input
  *
  * {@link https://designsystemet.dhi.no/?path=/docs/komponenter-date-input--docs}
+ *
+ * The `fhi-date-input` component represents a date input field styled and implemented according to the FHI design system guidelines.
+ * It allows users to select or input a date.
  *
  * @tag fhi-date-input
  * @element fhi-date-input
  */
 @customElement(FhiDateInputSelector)
 export class FhiDateInput extends LitElement {
+  /** @internal */
   static readonly formAssociated = true;
 
   /**
-   * The label associated with input field.
-   * @attr
+   * The text the labels the input field.
+   * An input field should always have a label to ensure accessibility.
    * @type {string}
    */
   @property({ type: String }) label?: string = undefined;
 
   /**
    * The message shown beneath the input field.
-   * @attr
+   * This is often used to provide additional information or feedback to the user.
    * @type {string}
    */
   @property({ type: String }) message?: string = undefined;
 
   /**
    * Sets minium date available for selection in the input field. Format `YYYY-MM-DD`.
-   * @attr
    * @type {string}
    */
   @property({ type: String }) min?: FhiDateValue = undefined;
 
   /**
    * Sets maximum date available for selection in the input field. Format `YYYY-MM-DD`.
-   * @attr
    * @type {string}
    */
   @property({ type: String }) max?: FhiDateValue = undefined;
 
   /**
-   * Decides if the field has a status. the status will change the look of the field.
-   * @attr
+   * Sets the visual status of the input. There is currently only one status available: `error`.
+   *
+   * The `error` status is used to indicate that there is an issue with the input, such as invalid or missing data.
    * @reflect
    * @type {'error'}
    */
   @property({ type: String, reflect: true }) status?: 'error' = undefined;
 
   /**
-   * Set field to read only state. A read only field cannot be changed by the user.
-   * @attr
+   * Sets the input to read-only. A read-only field cannot be modified by the user but may be submitted with the form.
    * @reflect
    * @type {boolean}
    */
   @property({ type: Boolean, reflect: true }) readonly? = false;
 
   /**
-   * Disables the field. A disabled field will not be submitted with the form and cannot be interacted with by the user.
+   * Disables the input.  This changes the design and makes it non-interactive.
    * @attr
    * @reflect
    */
   @property({ type: Boolean, reflect: true }) disabled? = false;
 
-  /**
-   * A reference to the internal `<input>` element.
-   * @internal
-   */
-  @query('#input-element') _input!: HTMLInputElement;
+  @query('#input-element')
+  private _input!: HTMLInputElement;
 
   private _name?: string | undefined = undefined;
 
   /**
-   * Name of the input field. this is used as the key in the form data.
+   * The name of the input. This is submitted with the form data as a `key`.
    *
-   * this attribute is similar to: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/date#name
-   * @attr
+   * This attribute conforms with the standard HTML `name` attribute for input fields.
+   * See: {@link https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input#name}
+   *
    * @reflect
    * @type {string}
    */
@@ -103,9 +103,11 @@ export class FhiDateInput extends LitElement {
   private _value?: string = '';
 
   /**
-   * The default value of the input field.
+   * The default value of the input field, formatted as `YYYY-MM-DD`.
    *
-   * this attribute is similar to: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/date#value
+   * This attribute conforms with the standard HTML `value` attribute for input fields.
+   * See: {@link https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input#value}
+   *
    * @attr
    * @type {string}
    */
@@ -133,16 +135,15 @@ export class FhiDateInput extends LitElement {
     this._internals.setFormValue(this.value ?? null);
   }
 
-  /**
-   * Dispatches a standard `change` event when the value of the input is committed by the user.
-   *
-   * The `change` event includes a reference the the current value. This value can be found at `event.target.value`.
-   *
-   * See the MDN documentation for more info about events: https://developer.mozilla.org/en-US/docs/Web/API/Event
-   *
-   * @fires change
-   */
   private _handleChange(): void {
+    this._dispatchChangeEvent();
+  }
+
+  private _dispatchChangeEvent(): void {
+    /**
+     * @type {Event} - Standard DOM event with the type `change`.
+     * This event is dispatched when the value of the date input changes.
+     */
     this.dispatchEvent(
       new Event('change', {
         bubbles: true,
@@ -151,37 +152,23 @@ export class FhiDateInput extends LitElement {
     );
   }
 
-  /**
-   * Set new `value` to the input field.
-   * @internal
-   */
   private _handleInput(): void {
     this.value = this._input.value as FhiDateValue;
     this._internals.setFormValue(this.value ?? null);
   }
 
-  /**
-   * Requests submit on the key down `Enter`.
-   * @internal
-   */
   private _handleKeyDown(event: KeyboardEvent): void {
     if (event.key === 'Enter' && this._internals.form) {
       this._internals.form!.requestSubmit();
     }
   }
 
-  /**
-   * Resets the field to the default valuewhen the associated form is reset.
-   */
+  /** @internal */
   public formResetCallback(): void {
     this.value = this.getAttribute('value') as FhiDateValue;
     this._internals.setFormValue(this.value ?? null);
   }
 
-  /**
-   * Shows the date picker when the calendar icon is clicked or activated by keyboard.
-   * @internal
-   */
   private _showDate(event?: KeyboardEvent) {
     if (
       event &&
