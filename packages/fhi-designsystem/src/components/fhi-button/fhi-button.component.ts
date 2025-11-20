@@ -579,11 +579,13 @@ export class FhiButton extends LitElement {
 
     :host {
       display: block;
+      width: fit-content;
 
       button {
         border-radius: var(--dimension-border-radius);
         border: solid var(--dimension-border-width);
         font-family: var(--typography-font-family);
+        -webkit-font-smoothing: antialiased;
         transition: var(--motion-transition);
 
         cursor: pointer;
