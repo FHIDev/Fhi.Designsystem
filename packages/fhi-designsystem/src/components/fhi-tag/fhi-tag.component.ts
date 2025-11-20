@@ -41,16 +41,17 @@ export class FhiTag extends LitElement {
       return;
     }
 
-    for (const node of validNodes) {
-      if (
-        node.nodeType === Node.ELEMENT_NODE &&
-        (node as Element).tagName.toLowerCase().startsWith('fhi-icon')
-      ) {
-        const icon = node as HTMLElement;
+    const firstNode: Node = validNodes[0];
 
-        icon.setAttribute('size', '1rem');
-        icon.style.marginLeft = 'var(--dimension-icon-offset)';
-      }
+    if (
+      firstNode.nodeType === Node.ELEMENT_NODE &&
+      (firstNode as Element).tagName.toLowerCase().startsWith('fhi-icon')
+    ) {
+      const icon = firstNode as HTMLElement;
+
+      icon.setAttribute('size', '1rem');
+      icon.setAttribute('color', 'var(--color-' + this.color + '-text)');
+      icon.style.marginLeft = 'var(--dimension-icon-offset)';
     }
   }
 
