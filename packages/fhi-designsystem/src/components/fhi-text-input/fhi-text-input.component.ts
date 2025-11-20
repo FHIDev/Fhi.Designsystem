@@ -256,6 +256,7 @@ export class FhiTextInput extends LitElement {
       display: flex;
       flex-direction: column;
       font-family: var(--typography-font-family);
+      -webkit-font-smoothing: antialiased;
 
       label {
         font-weight: var(--typography-label-font-weight);
