@@ -38,10 +38,6 @@ describe('fhi-tag', () => {
   });
 
   describe('icon handling', () => {
-    it('renders the icon', async () => {
-      component = await fixture(html``);
-    });
-
     it('correctly styles an icon that is the first child', async () => {
       component = await fixture(
         html`<fhi-tag color="warning"
@@ -53,9 +49,9 @@ describe('fhi-tag', () => {
 
       await expect(icon.getAttribute('size')).to.equal('1rem');
       await expect(icon.getAttribute('color')).to.equal(
-        'var(--color-warning-text',
+        'var(--color-warning-text)',
       );
-      await expect(icon.style.paddingLeft).to.equal(
+      await expect(icon.style.marginLeft).to.equal(
         'var(--dimension-icon-offset)',
       );
     });
