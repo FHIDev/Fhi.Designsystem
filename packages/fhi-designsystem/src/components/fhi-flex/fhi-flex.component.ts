@@ -8,7 +8,7 @@ type FhiGapWidthUnit = `${number}${FhiUnitType}` | number;
 /**
  * ## FHI Flex
  *
- * The `fhi-flex` component is a flexible container that utilizes CSS Flexbox to arrange its child elements in a responsive layout.
+ * The `<fhi-flex>` component is a flexible container that utilizes CSS Flexbox to arrange its child elements in a responsive layout.
  * It allows for easy alignment, spacing, and direction control of its items.
  *
  * {@link https://designsystem.fhi.no/?path=/docs/komponenter-flex--docs}

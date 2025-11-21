@@ -10,7 +10,7 @@ type FhiGapWidthUnit = `${number}${FhiUnitType}` | number;
  *
  * {@link https://designsystem.fhi.no/?path=/docs/komponenter-grid--docs}
  *
- * The `fhi-grid` component is a grid container that uses CSS Grid Layout to organize its child elements into a structured grid format.
+ * The `<fhi-grid>` component is a grid container that uses CSS Grid Layout to organize its child elements into a structured grid format.
  * It allows for easy control over the number of columns and the spacing between grid items.
  *
  * @tag fhi-grid

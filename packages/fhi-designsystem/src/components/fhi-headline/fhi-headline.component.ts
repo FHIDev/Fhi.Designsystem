@@ -11,7 +11,7 @@ export type HeadlineLevel = 1 | 2 | 3 | 4 | 5 | 6;
  *
  * {@link https://designsystem.fhi.no/?path=/story/komponenter-typography-headline--preview}
  *
- * The `fhi-headline` component is used to display headline text in accordance with the FHI Design System guidelines.
+ * The `<fhi-headline>` component is used to display headline text in accordance with the FHI Design System guidelines.
  * Use this component instead of the standard HTML heading elements, `<h1>` - `<h6>`, to ensure consistent styling across your application.
  *
  * @tag fhi-headline

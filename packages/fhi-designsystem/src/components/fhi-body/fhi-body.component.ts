@@ -8,7 +8,7 @@ export const FhiBodySelector = 'fhi-body';
  *
  * {@link https://designsystem.fhi.no/?path=/story/komponenter-typography-body--preview}
  *
- * The `fhi-body` component is used to display body text in accordance with the FHI Design System guidelines.
+ * The `<fhi-body>` component is used to display body text in accordance with the FHI Design System guidelines.
  * Use this component instead of the standard HTML paragraph element, `<p>`, to ensure consistent styling across your application.
  *
  * @tag fhi-body

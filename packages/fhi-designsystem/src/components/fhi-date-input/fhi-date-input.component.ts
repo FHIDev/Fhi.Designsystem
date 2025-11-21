@@ -14,7 +14,7 @@ export type FhiDateValue = `${number}-${number}-${number}` | undefined; // YYYY-
  *
  * {@link https://designsystemet.dhi.no/?path=/docs/komponenter-date-input--docs}
  *
- * The `fhi-date-input` component represents a date input field styled and implemented according to the FHI design system guidelines.
+ * The `<fhi-date-input>` component represents a date input field styled and implemented according to the FHI design system guidelines.
  * It allows users to select or input a date.
  *
  * @tag fhi-date-input
@@ -69,8 +69,8 @@ export class FhiDateInput extends LitElement {
 
   /**
    * Disables the input.  This changes the design and makes it non-interactive.
-   * @attr
    * @reflect
+   * @type {boolean}
    */
   @property({ type: Boolean, reflect: true }) disabled? = false;
 
@@ -105,10 +105,11 @@ export class FhiDateInput extends LitElement {
   /**
    * The default value of the input field, formatted as `YYYY-MM-DD`.
    *
+   * You can fetch the current value of the date input by accessing this property directly on the component instance, or by listening for the `change` or `input` events which are dispatched whenever the value changes.
+   *
    * This attribute conforms with the standard HTML `value` attribute for input fields.
    * See: {@link https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input#value}
    *
-   * @attr
    * @type {string}
    */
   @property({ type: String })
@@ -142,7 +143,7 @@ export class FhiDateInput extends LitElement {
   private _dispatchChangeEvent(): void {
     /**
      * @type {Event} - Standard DOM event with the type `change`.
-     * This event is dispatched when the value of the date input changes.
+     * This event is dispatched when the value of the input changes.
      */
     this.dispatchEvent(
       new Event('change', {
@@ -163,7 +164,6 @@ export class FhiDateInput extends LitElement {
     }
   }
 
-  /** @internal */
   public formResetCallback(): void {
     this.value = this.getAttribute('value') as FhiDateValue;
     this._internals.setFormValue(this.value ?? null);

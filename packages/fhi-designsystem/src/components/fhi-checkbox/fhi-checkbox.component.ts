@@ -9,7 +9,7 @@ export const FhiCheckboxSelector = 'fhi-checkbox';
  *
  * {@link https://designsystem.fhi.no/?path=/docs/komponenter-checkbox--docs}
  *
- * The `fhi-checkbox` component represents a checkbox input element styled and implemented according to the FHI design system guidelines.
+ * The `<fhi-checkbox>` component represents a checkbox input element styled and implemented according to the FHI design system guidelines.
  * It allows users to make binary choices, such as selecting or deselecting an option.
  *
  * @tag fhi-checkbox
@@ -74,30 +74,36 @@ export class FhiCheckbox extends LitElement {
   private _handleChange(event: Event): void {
     this.checked = (event.target as HTMLInputElement).checked;
     this._updateFormValue();
-    /**@type {Event} - Standard DOM event with the type `change` */
-    this.dispatchEvent(
-      new Event('change', {
-        bubbles: true,
-      }),
-    );
+
+    event.stopPropagation();
+    this._dispatchChangeEvent();
   }
 
   private _handleInput(event: Event): void {
     event.stopPropagation();
-    /**@type {Event} - Standard DOM event with the type `input`*/
-    this.dispatchEvent(
-      new Event('input', {
-        bubbles: true,
-        composed: true,
-      }),
-    );
+    this._dispatchInputEvent();
   }
 
   private _updateFormValue() {
     this._internals.setFormValue(this.checked ? this.value : null);
   }
 
-  /** @internal */
+  private _dispatchChangeEvent(): void {
+    /**
+     * @type {Event} - Standard DOM event with the type `change`.
+     * This event is dispatched when the checkbox is checked or unchecked.
+     */
+    this.dispatchEvent(new Event('change', { bubbles: true }));
+  }
+
+  private _dispatchInputEvent(): void {
+    /**
+     * @type {Event} - Standard DOM event with the type `input`.
+     * This event is dispatched when the checkbox is checked or unchecked.
+     */
+    this.dispatchEvent(new Event('input', { bubbles: true, composed: true }));
+  }
+
   public formResetCallback() {
     this.checked = false;
     this._updateFormValue();

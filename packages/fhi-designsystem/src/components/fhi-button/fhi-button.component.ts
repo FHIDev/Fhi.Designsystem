@@ -8,7 +8,7 @@ export const FhiButtonSelector = 'fhi-button';
  *
  * {@link https://designsystem.fhi.no/?path=/docs/komponenter-button--docs}
  *
- * The `fhi-button` component is used to create interactive buttons in accordance with the FHI design system guidelines.
+ * The `<fhi-button>` component is used to create interactive buttons in accordance with the FHI design system guidelines.
  * Use this component instead of the standard HTML `<button>` element to ensure consistent styling and behavior across your application.
  *
  * @tag fhi-button
