@@ -579,6 +579,7 @@ export class FhiButton extends LitElement {
 
     :host {
       display: block;
+      width: fit-content;
 
       button {
         border-radius: var(--dimension-border-radius);
