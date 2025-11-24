@@ -1,5 +1,18 @@
 # Changelog
 
+## [0.23.1](https://github.com/FHIDev/Fhi.Designsystem/compare/v0.23.0...v0.23.1) (2025-11-20)
+
+
+### 🛠️ Bug Fixes
+
+* Fit-content på button ([6ef1551](https://github.com/FHIDev/Fhi.Designsystem/commit/6ef155107458512931ccc554f36e304d6c852915))
+
+
+### Other
+
+* Add antialiasing to components ([#306](https://github.com/FHIDev/Fhi.Designsystem/issues/306)) ([a87e2f2](https://github.com/FHIDev/Fhi.Designsystem/commit/a87e2f24a373099294dcd75e9498cfb6c36761f8))
+* Add pipeline for staging npm package ([#295](https://github.com/FHIDev/Fhi.Designsystem/issues/295)) ([b751551](https://github.com/FHIDev/Fhi.Designsystem/commit/b751551394e8874fbb07d5652f13c176fb5322d7))
+
 ## [0.23.0](https://github.com/FHIDev/Fhi.Designsystem/compare/v0.22.0...v0.23.0) (2025-11-05)
 
 

@@ -65,6 +65,7 @@ export class FhiLabel extends LitElement {
       color: var(--fhi-color-neutral-text-default);
       .label {
         font-family: var(--fhi-font-family-default);
+        -webkit-font-smoothing: antialiased;
         margin: 0;
       }
     }
