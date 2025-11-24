@@ -58,7 +58,7 @@ export class FhiTextInput extends LitElement {
   @property({ type: Boolean, reflect: true }) readonly? = false;
 
   /**
-   * Disables the input.  This changes the design and makes it non-interactive.
+   * Disables the input.  This changes its appearance and makes it non-interactive.
    * @reflect
    * @type {boolean}
    */

@@ -28,7 +28,7 @@ export class FhiRadio extends LitElement {
 
   /**
    * The name of the radio. This is submitted with the form data as a `key` when the checkbox is checked.
-   * All fhi-radio components with the same name belong to the same group.
+   * All `<fhi-radio>` components with the same name belong to the same group.
    * @reflect
    * @type {string}
    */
@@ -43,7 +43,7 @@ export class FhiRadio extends LitElement {
   @property({ type: String, reflect: true }) status?: 'error' = undefined;
 
   /**
-   * Disables the radio. This changes the design and makes it non-interactive.
+   * Disables the radio. This changes its appearance and makes it non-interactive.
    * @reflect
    * @type {boolean}
    */

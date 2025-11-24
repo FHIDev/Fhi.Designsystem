@@ -8,13 +8,13 @@ export const FhiButtonSelector = 'fhi-button';
  *
  * {@link https://designsystem.fhi.no/?path=/docs/komponenter-button--docs}
  *
- * The `<fhi-button>` component is used to create interactive buttons in accordance with the FHI design system guidelines.
+ * The `<fhi-button>` component is used to create interactive buttons in accordance with the FHI Design System guidelines.
  * Use this component instead of the standard HTML `<button>` element to ensure consistent styling and behavior across your application.
  *
  * @tag fhi-button
  * @element fhi-button
  *
- * @slot - The content of the button. This should be pure text with, or without, an icon.
+ * @slot - The content of the button. This should be pure text, an icon or both.
  */
 @customElement(FhiButtonSelector)
 export class FhiButton extends LitElement {
@@ -59,7 +59,7 @@ export class FhiButton extends LitElement {
     | 'small' = 'medium';
 
   /**
-   * Disables the button. This changes the design and makes it non-interactive.
+   * Disables the button. This changes its appearance and makes it non-interactive.
    * @type {boolean}
    */
   @property({ type: Boolean, reflect: true }) disabled = false;
