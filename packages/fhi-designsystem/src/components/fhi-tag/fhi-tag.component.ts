@@ -8,15 +8,17 @@ export const FhiTagSelector = 'fhi-tag';
  *
  * {@link https://designsystem.fhi.no/?path=/docs/komponenter-tag--docs}
  *
+ * The `<fhi-tag>` component is used to create non-interactive tags in accordance with the FHI design system guidelines.
+ *
  * @tag fhi-tag
  * @element fhi-tag
  *
- * @slot - The content of the tag, typically text or text with an icon.
+ * @slot - The content of the tag. This should be pure text with, or without, an icon.
  */
 @customElement(FhiTagSelector)
 export class FhiTag extends LitElement {
   /**
-   * Sets the color theme of the tag.
+   * Sets the color of the tag.
    * @attr
    * @type {'neutral' | 'accent' | 'success' | 'warning' | 'danger' | 'info'}
    */
