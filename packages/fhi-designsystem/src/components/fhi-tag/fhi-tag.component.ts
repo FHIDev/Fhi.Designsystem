@@ -70,8 +70,6 @@ export class FhiTag extends LitElement {
 
   static styles = css`
     :host {
-      --typography-font-variant-numeric: lining-nums proportional-nums;
-
       --dimension-icon-offset: calc(-1 * var(--fhi-spacing-050));
       --dimension-border-radius: var(--fhi-border-radius-050);
       --dimension-gap: var(--fhi-spacing-050);
@@ -103,9 +101,6 @@ export class FhiTag extends LitElement {
       display: flex;
       width: fit-content;
       align-items: center;
-
-      font-variant-numeric: var(--typography-font-variant-numeric);
-      -webkit-font-smoothing: antialiased;
 
       border: 1px solid var(--color-border);
       border-radius: var(--dimension-border-radius);
