@@ -116,7 +116,6 @@ export class FhiTag extends LitElement {
       .slot-container {
         display: flex;
         align-items: center;
-        justify-content: center;
 
         gap: var(--dimension-gap);
       }
@@ -124,32 +123,32 @@ export class FhiTag extends LitElement {
 
     :host([color='neutral']) {
       color: var(--color-neutral-text);
-      background-color: var(--fhi-color-neutral-surface-default);
+      background-color: var(--color-neutral-background);
     }
 
     :host([color='accent']) {
       color: var(--color-accent-text);
-      background-color: var(--fhi-color-accent-surface-default);
+      background-color: var(--color-accent-background);
     }
 
     :host([color='success']) {
-      color: var(--fhi-color-success-text-default);
-      background-color: var(--fhi-color-success-surface-default);
+      color: var(--color-success-text);
+      background-color: var(--color-success-background);
     }
 
     :host([color='warning']) {
-      color: var(--fhi-color-warning-text-default);
-      background-color: var(--fhi-color-warning-surface-default);
+      color: var(--color-warning-text);
+      background-color: var(--color-warning-background);
     }
 
     :host([color='danger']) {
-      color: var(--fhi-color-danger-text-default);
-      background-color: var(--fhi-color-danger-surface-default);
+      color: var(--color-danger-text);
+      background-color: var(--color-danger-background);
     }
 
     :host([color='info']) {
-      color: var(--fhi-color-info-text-default);
-      background-color: var(--fhi-color-info-surface-default);
+      color: var(--color-info-text);
+      background-color: var(--color-info-background);
     }
   `;
 }
