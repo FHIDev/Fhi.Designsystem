@@ -21,7 +21,8 @@ export class FhiCheckbox extends LitElement {
   static readonly formAssociated = true;
 
   /**
-   * The text labeling the checkbox. A checkbox should always have a label.
+   * The text label assigned to and displayed next to the checkbox.
+   * You should always provide a label.
    * @type {string}
    */
   @property({ type: String }) label?: string = undefined;
