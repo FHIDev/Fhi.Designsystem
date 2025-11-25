@@ -20,7 +20,7 @@ export class FhiRadio extends LitElement {
   static readonly formAssociated = true;
 
   /**
-   * The text label displayed next to the radio.
+   * The text label assigned to and displayed next to the radio.
    * You should always provide a label.
    * @type {string}
    */
