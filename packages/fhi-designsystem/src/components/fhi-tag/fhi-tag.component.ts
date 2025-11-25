@@ -1,5 +1,6 @@
 import { html, css, LitElement } from 'lit';
 import { customElement, property } from 'lit/decorators.js';
+import '../fhi-body/fhi-body.component';
 
 export const FhiTagSelector = 'fhi-tag';
 
@@ -19,7 +20,6 @@ export const FhiTagSelector = 'fhi-tag';
 export class FhiTag extends LitElement {
   /**
    * Sets the color of the tag.
-   * @attr
    * @type {'neutral' | 'accent' | 'success' | 'warning' | 'danger' | 'info'}
    */
   @property({ type: String, reflect: true }) color:
@@ -58,18 +58,18 @@ export class FhiTag extends LitElement {
   }
 
   render() {
-    return html` <slot @slotchange=${this._handleSlotChange}></slot> `;
+    return html`
+      <fhi-body size="small"
+        ><slot
+          class="slot-container"
+          @slotchange=${this._handleSlotChange}
+        ></slot
+      ></fhi-body>
+    `;
   }
 
   static styles = css`
     :host {
-      --typography-font-family: var(--fhi-font-family-default);
-      --typography-font-size: var(--fhi-typography-body-small-font-size);
-      --typography-font-weight: var(--fhi-typography-body-small-font-weight);
-      --typography-font-height: var(--fhi-typography-body-small-line-height);
-      --typography-letter-spacing: var(
-        --fhi-typography-body-small-letter-spacing
-      );
       --typography-font-variant-numeric: lining-nums proportional-nums;
 
       --dimension-icon-offset: calc(-1 * var(--fhi-spacing-050));
@@ -103,21 +103,23 @@ export class FhiTag extends LitElement {
       display: flex;
       width: fit-content;
       align-items: center;
-      justify-content: center;
 
-      font-family: var(--typography-font-family);
-      font-size: var(--typography-font-size);
-      font-weight: var(--typography-font-weight);
-      line-height: var(--typography-font-height);
-      letter-spacing: var(--typography-letter-spacing);
       font-variant-numeric: var(--typography-font-variant-numeric);
       -webkit-font-smoothing: antialiased;
 
       border: 1px solid var(--color-border);
       border-radius: var(--dimension-border-radius);
-      gap: var(--dimension-gap);
-      padding: var(--dimension-padding);
+
       height: var(--dimension-height);
+      padding: var(--dimension-padding);
+
+      .slot-container {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        gap: var(--dimension-gap);
+      }
     }
 
     :host([color='neutral']) {
