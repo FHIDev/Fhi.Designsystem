@@ -7,10 +7,10 @@ export const FhiRadioSelector = 'fhi-radio';
 /**
  * ## FHI Radio
  *
+ * {@link https://designsystem.fhi.no/?path=/docs/komponenter-radio--docs}
+ *
  * The `<fhi-radio>` component represents a single radio button.
  * It should be used within a group of options, allowing users to select one option from a set.
- *
- * {@link https://designsystem.fhi.no/?path=/docs/komponenter-radio--docs}
  *
  * @tag fhi-radio
  * @element fhi-radio

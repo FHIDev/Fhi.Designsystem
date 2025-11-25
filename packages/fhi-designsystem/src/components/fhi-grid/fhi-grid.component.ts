@@ -20,7 +20,7 @@ type FhiGapWidthUnit = `${number}${FhiUnitType}` | number;
 @customElement(FhiGridSelector)
 export class FhiGrid extends LitElement {
   /**
-   * Sets the gap between items within the grid container. It can be one of the preset values, a rem value, or a number.
+   * Sets the gap between items within the grid container. It can be one of the preset values, a rem or px value, or a number.
    * If you give a number, it will be treated as pixels.
    * @type {'small' | 'medium' | 'large' | number | string}
    */

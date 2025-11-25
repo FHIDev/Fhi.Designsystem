@@ -26,7 +26,7 @@ export class FhiDateInput extends LitElement {
   static readonly formAssociated = true;
 
   /**
-   * The text the labels the input field.
+   * The text that labels the input field.
    * An input field should always have a label to ensure accessibility.
    * @type {string}
    */

@@ -39,9 +39,9 @@ export class FhiTitle extends LitElement {
    *
    * Example:
    * ```html
-   *  <fhi-headline color="var(--fhi-color-primary-text-default)">
+   *  <fhi-title color="var(--fhi-color-primary-text-default)">
    *    This text will be in the primary text color.
-   *  </fhi-headline>
+   *  </fhi-title>
    * ```
    *
    * @type {string}

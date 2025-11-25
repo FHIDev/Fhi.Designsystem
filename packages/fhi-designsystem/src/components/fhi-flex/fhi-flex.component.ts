@@ -8,10 +8,10 @@ type FhiGapWidthUnit = `${number}${FhiUnitType}` | number;
 /**
  * ## FHI Flex
  *
+ * {@link https://designsystem.fhi.no/?path=/docs/komponenter-flex--docs}
+ *
  * The `<fhi-flex>` component is a flexible container that utilizes CSS Flexbox to arrange its child elements in a responsive layout.
  * It allows for easy alignment, spacing, and direction control of its items.
- *
- * {@link https://designsystem.fhi.no/?path=/docs/komponenter-flex--docs}
  *
  * @tag fhi-flex
  * @element fhi-flex
@@ -32,7 +32,7 @@ export class FhiFlex extends LitElement {
 
   /**
    * Sets the gap between items within the flex container.
-   * It can be one of the preset values, a rem value, or a number.
+   * It can be one of the preset values, a rem or px value, or a number.
    * If you give a number, it will be treated as pixels.
    * @reflect
    * @type {'small' | 'medium' | 'large' | number | string}

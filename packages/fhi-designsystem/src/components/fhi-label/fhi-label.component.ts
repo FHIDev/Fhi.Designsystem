@@ -6,7 +6,7 @@ export const FhiLabelSelector = 'fhi-label';
 /**
  * ## FHI Label
  *
- * {@link https://designsystem.fhi.no/?path=/story/komponenter-typography-headline--preview}
+ * {@link https://designsystem.fhi.no/?path=/story/komponenter-typography-label--preview}
  *
  * The `<fhi-label>` component is used to display label text in accordance with the FHI Design System guidelines.
  * Use this component instead of the standard HTML `<label>` element to ensure consistent styling across your application.
