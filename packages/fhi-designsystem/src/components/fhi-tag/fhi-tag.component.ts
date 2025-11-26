@@ -9,7 +9,7 @@ export const FhiTagSelector = 'fhi-tag';
  *
  * {@link https://designsystem.fhi.no/?path=/docs/komponenter-tag--docs}
  *
- * The `<fhi-tag>` component is used to create non-interactive tags in accordance with the FHI design system guidelines.
+ * The `<fhi-tag>` component is used to create non-interactive tags in accordance with the FHI Design System guidelines.
  *
  * @tag fhi-tag
  * @element fhi-tag
