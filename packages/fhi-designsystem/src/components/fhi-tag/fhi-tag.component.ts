@@ -20,6 +20,7 @@ export const FhiTagSelector = 'fhi-tag';
 export class FhiTag extends LitElement {
   /**
    * Sets the color of the tag.
+   * @reflect
    * @type {'neutral' | 'accent' | 'success' | 'warning' | 'danger' | 'info'}
    */
   @property({ type: String, reflect: true }) color:

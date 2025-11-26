@@ -30,6 +30,14 @@ describe('fhi-tag', () => {
       expect(component.color).to.equal('danger');
     });
 
+    it('should reflect the color property to the attribute', async () => {
+      component = await fixture(html`<fhi-tag>Test Tag</fhi-tag>`);
+      component.color = 'warning';
+      await component.updateComplete;
+
+      expect(component.getAttribute('color')).to.equal('warning');
+    });
+
     it('sets default value for color attribute', async () => {
       component = await fixture(html`<fhi-tag>Test Tag</fhi-tag>`);
 
