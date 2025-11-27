@@ -13,6 +13,7 @@ const preview: Preview = {
     options: {
       storySort: {
         order: [
+          'Introduksjon',
           'Kom i gang',
           '*',
           'Ikoner',
