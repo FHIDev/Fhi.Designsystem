@@ -28,7 +28,7 @@ const meta: Meta<FhiDialog> = {
       name: 'max-width',
       control: { type: 'text' },
       description:
-        'Setter dialogen sin maksimum bredde. Det kan være en predefinert størrelse, (`small`, `medium`, `large`) eller en egendefinert størrelse i rem (e.g `30rem`).',
+        'Setter dialogen sin maksimum bredde. Det kan være en predefinert størrelse, (`small` eller `medium`) eller en egendefinert størrelse i rem (e.g `30rem`).',
       defaultValue: { summary: 'medium' },
     },
     closeButtonLabel: {
