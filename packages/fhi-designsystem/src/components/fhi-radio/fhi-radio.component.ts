@@ -51,7 +51,6 @@ export class FhiRadio extends LitElement {
 
   /**
    * Whether the radio button is checked or not.
-   * @attr
    * @type {boolean}
    */
   @property({ type: Boolean }) checked? = false;

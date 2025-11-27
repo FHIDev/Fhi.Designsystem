@@ -20,6 +20,7 @@ export const FhiLabelSelector = 'fhi-label';
 export class FhiLabel extends LitElement {
   /**
    * Sets the font size of the given text.
+   * @reflect
    * @type {'large' | 'medium' | 'small'}
    */
   @property({ type: String, reflect: true }) size:

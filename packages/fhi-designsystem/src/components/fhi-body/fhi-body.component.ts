@@ -20,6 +20,7 @@ export const FhiBodySelector = 'fhi-body';
 export class FhiBody extends LitElement {
   /**
    * Sets the font size of the given text.
+   * @reflect
    * @type {'large' | 'medium' | 'small'}
    */
   @property({ type: String, reflect: true }) size:

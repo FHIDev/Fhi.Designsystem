@@ -65,7 +65,6 @@ export class FhiTooltip extends LitElement {
 
   /**
    * The maximum width of the tooltip.
-   * @attr max-width
    * @type {string}
    */
   @property({ type: String, attribute: 'max-width' }) maxWidth? = '18.75rem';

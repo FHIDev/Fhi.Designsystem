@@ -23,6 +23,7 @@ export type DisplayLevel = 1 | 2 | 3 | 4 | 5 | 6;
 export class FhiDisplay extends LitElement {
   /**
    * Sets the font size of the given text.
+   * @reflect
    * @type {'large' | 'medium' | 'small'}
    */
   @property({ type: String, reflect: true }) size:

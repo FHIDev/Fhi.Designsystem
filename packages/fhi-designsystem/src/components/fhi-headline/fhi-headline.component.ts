@@ -23,7 +23,7 @@ export type HeadlineLevel = 1 | 2 | 3 | 4 | 5 | 6;
 export class FhiHeadline extends LitElement {
   /**
    * Sets the size of the text styles.
-   * @attr
+   * @reflect
    * @type {'large' | 'medium' | 'small'}
    */
   @property({ type: String, reflect: true }) size:

@@ -25,6 +25,7 @@ export class FhiButton extends LitElement {
    *
    * See: {@link https://designsystem.fhi.no/?path=/docs/komponenter-button--docs#color-farge}
    *
+   * @reflect
    * @type {'accent' | 'neutral' | 'danger'}
    */
   @property({ type: String, reflect: true }) color:
@@ -38,6 +39,7 @@ export class FhiButton extends LitElement {
    *
    * See: {@link https://designsystem.fhi.no/?path=/docs/komponenter-button--docs#variant}
    *
+   * @reflect
    * @type {'strong' | 'subtle' | 'outlined' | 'text'}
    */
   @property({ type: String, reflect: true }) variant:
@@ -51,6 +53,7 @@ export class FhiButton extends LitElement {
    *
    * See: {@link https://designsystem.fhi.no/?path=/docs/komponenter-button--docs#size-st%C3%B8rrelse}
    *
+   * @reflect
    * @type {'large' | 'medium' | 'small'}
    */
   @property({ type: String, reflect: true }) size:
@@ -60,6 +63,7 @@ export class FhiButton extends LitElement {
 
   /**
    * Disables the button. This changes its appearance and makes it non-interactive.
+   * @reflect
    * @type {boolean}
    */
   @property({ type: Boolean, reflect: true }) disabled = false;
