@@ -9,10 +9,17 @@ import { Meta, Subtitle } from '@storybook/blocks';
 <div class="card-group">
         
     <div class="card">
-        <a href="">Kom i gang</a>
-        <p>Installér og bruk FHI Designsystem</p>
+        [Kom i gang](?path=?/docs/kom-i-gang--docs)
+
+        Installér FHI Designsystem
     </div>
         
+    <div class="card">
+        [Bruk](?path=/docs/bruk--docs)
+
+        i ditt rammeverk
+    </div>
+
 </div>
 
 ## Bidra
@@ -22,13 +29,17 @@ FHI Designsystem er et levende system under kontinuerlig, iterativ utvikling. Vi
 <div class="card-group">
     
     <div class="card">
-        <a href="">Github</a>
-        <p>Se alle saker – eller opprett nye</p>
+
+        [Github](https://github.com/FHIDev/Fhi.Designsystem)
+        
+        Se alle saker – eller opprett nye
+    
     </div>
     
     <div class="card">
-        <a href="">Teams</a>
-        <p>Spør og sparr med teamet og andre i FHI</p>
+        [Teams](https://teams.microsoft.com/l/channel/19%3Aa0d23e5a6954497d9e378d3367e7f458%40thread.skype/General?groupId=571dd359-777d-4c02-85ea-d56854d03ef7)
+
+        Spør og sparr med teamet og andre i FHI
     </div>
     
 </div>
@@ -38,18 +49,21 @@ FHI Designsystem er et levende system under kontinuerlig, iterativ utvikling. Vi
 <div class="card-group">
         
         <div class="card">
-            <a href="">Komponenter</a>
-            <p>Alle produksjonsklare komponenter</p>
+            [Komponenter](?path=/docs/komponenter-button--docs)
+
+            Alle produksjonsklare komponenter
         </div>
         
         <div class="card">
-            <a href="">Design Tokens</a>
-            <p>Variabler for font, farge og mer</p>
+            [Design Tokens](?path=/docs/design-tokens-introduksjon--docs)
+
+            Variabler for font, farge og mer
         </div>
         
         <div class="card">
-            <a href="">Figma-bibliotek</a>
-            <p>Design med FHI Designsystem</p>
+            [Figma-bibliotek](https://www.figma.com/design/VgQG6XeEbFOmHIrxyAOACR/FHI-Designsystem?node-id=0-1&p=f&t=0VomBdF7RrUbf0YO-11)
+
+            Design med FHI Designsystem
         </div>
     
 </div>
@@ -62,27 +76,27 @@ FHI Designsystem er et levende system under kontinuerlig, iterativ utvikling. Vi
         padding: 1.5rem;
         border-radius: var(--fhi-border-radius-100);
 
-        background-color: var(--fhi-color-neutral-background-subtle);
-
         display: flex;
         flex-direction: column;
         gap: 0.5rem;
 
-        & > a {
+        background-color: var(--fhi-color-neutral-background-subtle);
+
+        & a {
             font-size: var(--fhi-typography-headline-medium-font-size);
             font-weight: var(--fhi-typography-headline-medium-font-weight);
             line-height: var(--fhi-typography-headline-medium-line-height);
             letter-spacing: var(--fhi-typography-label-large-letter-spacing);
+
             transition-duration: var(--fhi-motion-duration-quick);
             transition-timing-function: var(--fhi-motion-ease-default);
-                text-underline-offset: 0.5rem;
+            text-underline-offset: 0.125rem;
 
-            color: var(--fhi-color-accent-base-default);
+            color: var(--fhi-color-accent-text-subtle);
             
             &:hover {
-                text-underline-offset: 0.25rem;
-                color: var(--fhi-color-neutral-text-default);
-                transition: cubic-bezier(0.4, 0, 0.1, 1) 150ms;
+                color: var(--fhi-color-accent-text-default);
+                text-underline-offset: 0.5rem;
             }
         }
 
@@ -94,8 +108,9 @@ FHI Designsystem er et levende system under kontinuerlig, iterativ utvikling. Vi
 
     .card-group {
         display: grid;
-        gap: var(--fhi-spacing-150) var(--fhi-spacing-100);
         grid-template-columns: repeat(auto-fill, minmax(min(20rem, 100%), 1fr));
+
+        gap: var(--fhi-spacing-150) var(--fhi-spacing-100);
         margin-bottom: 2rem;
     }
 
