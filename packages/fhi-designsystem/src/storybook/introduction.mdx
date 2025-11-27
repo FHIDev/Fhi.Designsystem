@@ -1,6 +1,6 @@
 import { Meta, Subtitle } from '@storybook/blocks';
 
-<Meta title="Introduksjon" />
+<Meta title="Oversikt" />
 
 # Velkommen til FHI Designsystem
 
@@ -96,10 +96,15 @@ FHI Designsystem er et levende system under kontinuerlig, iterativ utvikling. Vi
         display: grid;
         gap: var(--fhi-spacing-150) var(--fhi-spacing-100);
         grid-template-columns: repeat(auto-fill, minmax(min(20rem, 100%), 1fr));
+        margin-bottom: 2rem;
     }
 
     .sbdocs-content a {
         text-decoration: underline;
+
+        &:hover {
+            color: var(--fhi-color-neutral-text-default);
+        }
     }
 
 `}</style>

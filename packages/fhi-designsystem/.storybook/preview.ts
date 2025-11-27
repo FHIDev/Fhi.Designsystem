@@ -13,12 +13,14 @@ const preview: Preview = {
     options: {
       storySort: {
         order: [
-          'Introduksjon',
+          'Oversikt',
           'Kom i gang',
+          'Bruk',
           '*',
           'Ikoner',
           'Komponenter',
           [
+            '*',
             'Typography',
             ['Docs', 'Body', 'Label', 'Display', 'Headline', 'Title'],
           ],
