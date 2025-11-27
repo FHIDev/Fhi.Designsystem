@@ -91,11 +91,8 @@ FHI Designsystem er et levende system under kontinuerlig, iterativ utvikling. Vi
             transition-duration: var(--fhi-motion-duration-quick);
             transition-timing-function: var(--fhi-motion-ease-default);
             text-underline-offset: 0.125rem;
-
-            color: var(--fhi-color-accent-text-subtle);
             
             &:hover {
-                color: var(--fhi-color-accent-text-default);
                 text-underline-offset: 0.5rem;
             }
         }
@@ -103,7 +100,6 @@ FHI Designsystem er et levende system under kontinuerlig, iterativ utvikling. Vi
         & > p {
             margin: 0;
         }
-
     }
 
     .card-group {
@@ -116,6 +112,7 @@ FHI Designsystem er et levende system under kontinuerlig, iterativ utvikling. Vi
 
     .sbdocs-content a {
         text-decoration: underline;
+        color: var(--fhi-color-accent-text-subtle);
 
         &:hover {
             color: var(--fhi-color-neutral-text-default);
