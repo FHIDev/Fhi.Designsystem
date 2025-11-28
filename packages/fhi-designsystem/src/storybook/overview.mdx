@@ -1,5 +1,7 @@
 import { Meta, Subtitle } from '@storybook/blocks';
 
+import '../components/fhi-tag/fhi-tag.component.ts';
+
 <Meta title="Oversikt" />
 
 # Velkommen til FHI Designsystem
@@ -29,17 +31,19 @@ FHI Designsystem er et levende system under kontinuerlig, iterativ utvikling. Vi
 <div class="card-group">
     
     <div class="card">
-
         [Github](https://github.com/FHIDev/Fhi.Designsystem)
         
         Se alle saker – eller opprett nye
-    
     </div>
     
     <div class="card">
-        [Teams](https://teams.microsoft.com/l/channel/19%3Aa0d23e5a6954497d9e378d3367e7f458%40thread.skype/General?groupId=571dd359-777d-4c02-85ea-d56854d03ef7)
+        <span class="split-row">
+            [Teams](https://teams.microsoft.com/l/channel/19%3Aa0d23e5a6954497d9e378d3367e7f458%40thread.skype/General?groupId=571dd359-777d-4c02-85ea-d56854d03ef7)
+            
+            <fhi-tag color="danger" style={{borderColor: "var(--fhi-color-danger-surface-active)"}}>Krever tilgang</fhi-tag>
+        </span>
 
-        Spør og sparr med teamet og andre i FHI
+        Spør og sparr med teamet og andre i FHI 
     </div>
     
 </div>
@@ -73,12 +77,11 @@ FHI Designsystem er et levende system under kontinuerlig, iterativ utvikling. Vi
 <style>{`
    
     .card {
-        padding: 1.5rem;
-        border-radius: var(--fhi-border-radius-100);
-
         display: flex;
         flex-direction: column;
+        padding: 1.5rem;
         gap: 0.5rem;
+        border-radius: var(--fhi-border-radius-100);
 
         background-color: var(--fhi-color-neutral-background-subtle);
 
@@ -97,7 +100,7 @@ FHI Designsystem er et levende system under kontinuerlig, iterativ utvikling. Vi
             }
         }
 
-        & > p {
+        & p {
             margin: 0;
         }
     }
@@ -105,7 +108,6 @@ FHI Designsystem er et levende system under kontinuerlig, iterativ utvikling. Vi
     .card-group {
         display: grid;
         grid-template-columns: repeat(auto-fill, minmax(min(20rem, 100%), 1fr));
-
         gap: var(--fhi-spacing-150) var(--fhi-spacing-100);
         margin-bottom: 2rem;
     }
@@ -117,6 +119,12 @@ FHI Designsystem er et levende system under kontinuerlig, iterativ utvikling. Vi
         &:hover {
             color: var(--fhi-color-neutral-text-default);
         }
+    }
+
+    .split-row {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
     }
 
 `}</style>

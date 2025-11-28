@@ -7,9 +7,11 @@ import { Meta, Subtitle } from '@storybook/blocks';
 <Subtitle>Slik installerer du FHI Designsystem</Subtitle>
 
 Kjør følgende kommando for å legge til komponentbiblioteket i prosjektet ditt:
+
 ```zsh
 npm install @folkehelseinstituttet/designsystem
 ```
+
 **eller**, om `npm` ikke er et alternativ, kan du bruke vår CDN. Legg til følgende script og link tag under `<head>` i hoved-HTML-filen for appen:
 
 ```html
@@ -27,18 +29,19 @@ npm install @folkehelseinstituttet/designsystem
 
 Bruker du **Blazor** er hoved-HTML-filen typisk `app.razor`.
 
-<div style={{padding: ".25rem 1rem", background: "#FEE9E6", borderRadius: "2px", borderBottom: "4px solid #EC7C73", marginBottom: "2rem"}} >
-<p>
+<div class="callout-danger">
+
 Vi anbefaler ikke å bruke CDN i produksjon.
 Det krever at klienten laster ned hele biblioteket, uavhengig av hvilke komponenter som faktisk brukes. Dette påvirker ytelsen og båndbreddebruken negativt.
-</p>
+
 Bruk bare CDN hvis `npm` ikke er et alternativ.
+
 </div>
 
+<div class="callout-warning">
 
-<div style={{padding: ".25rem 1rem", background: "#FFE7BA", borderRadius: "2px", borderBottom: "4px solid #F1A541", marginBottom: "2rem"}}>
-**Obs:** FHI Designsystem er fullt kompatibelt med Typescript, men det er ikke enda typesatt. Det betyr at intellisense for importering og bruk, samt typesjekking, er foreløpig begrenset.
-Se våre *Ofte stilte spørsmål* for [info om intellisense og typesjekking](/docs/ofte-stilte-spørsmål-typesjekking-intellisense--docs).
+**Obs:** FHI Designsystem er fullt kompatibelt med Typescript, men det er ikke enda typesatt. Det betyr at intellisense for importering og bruk, samt typesjekking, er foreløpig begrenset. Se våre *Ofte stilte spørsmål* for [info om intellisense og typesjekking](/docs/ofte-stilte-spørsmål-typesjekking-intellisense--docs).
+
 </div>
 
 ## Bruk
@@ -53,6 +56,22 @@ Etter installering kan du [ta FHI Designsystem i bruk](?path=/docs/bruk--docs) i
     &:hover {
       color: var(--fhi-color-neutral-text-default);
     }
+  }
+
+  .callout-danger {
+    border-radius: 2px;
+    padding: .25rem 1rem;
+    margin-bottom: 2rem;
+    background-color: #FEE9E6;
+    border-bottom: 4px solid #EC7C73;
+  }
+
+  .callout-warning {
+    border-radius: 2px;
+    padding: .25rem 1rem;
+    margin-bottom: 2rem;
+    background-color: #FFE7BA;
+    border-bottom: 4px solid #F1A541;
   }
 
 `}</style>
