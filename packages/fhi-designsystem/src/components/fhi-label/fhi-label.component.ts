@@ -3,11 +3,24 @@ import { customElement, property } from 'lit/decorators.js';
 
 export const FhiLabelSelector = 'fhi-label';
 
+/**
+ * ## FHI Label
+ *
+ * {@link https://designsystem.fhi.no/?path=/story/komponenter-typography-label--preview}
+ *
+ * The `<fhi-label>` component is used to display label text in accordance with the FHI Design System guidelines.
+ * Use this component instead of the standard HTML `<label>` element to ensure consistent styling across your application.
+ *
+ * @tag fhi-label
+ * @element fhi-label
+ *
+ * @slot - The content of the fhi-label component. This should be pure text.
+ */
 @customElement(FhiLabelSelector)
 export class FhiLabel extends LitElement {
   /**
-   * Sets the size of the text styles.
-   * @attr
+   * Sets the font size of the given text.
+   * @reflect
    * @type {'large' | 'medium' | 'small'}
    */
   @property({ type: String, reflect: true }) size:
@@ -16,13 +29,22 @@ export class FhiLabel extends LitElement {
     | 'small' = 'medium';
 
   /**
-   * Sets text color. Accepts the same values as the CSS property: https://developer.mozilla.org/en-US/docs/Web/CSS/color.
-   * @attr
+   * Sets color of the given text. It supports any valid CSS color value (e.g. hex, rgb, rgba, hsl, hsla, color names).
+   *
+   * It is recommended to use Design Tokens for colors defined in the FHI Design System.
+   * See: {@link https://designsystem.fhi.no/?path=/docs/design-tokens-farger--docs}
+   *
+   * Example:
+   * ```html
+   *  <fhi-label color="var(--fhi-color-primary-text-default)">
+   *    This text will be in the primary text color.
+   *  </fhi-label>
+   * ```
+   *
    * @type {string}
    */
   @property({ type: String }) color?: string;
 
-  /** @internal */
   updated(changedProperties: PropertyValues<this>) {
     super.updated(changedProperties);
 

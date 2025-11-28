@@ -9,69 +9,72 @@ export const FhiTextInputSelector = 'fhi-text-input';
  *
  * {@link https://designsystem.fhi.no/?path=/docs/komponenter-text-input--docs}
  *
+ * The `<fhi-text-input>` component is used to collect user input in forms.
+ * It provides a labeled input field with optional placeholder text, status indication, and a message area for additional information or validation feedback.
+ *
  * @tag fhi-text-input
  * @element fhi-text-input
  */
 @customElement(FhiTextInputSelector)
 export class FhiTextInput extends LitElement {
+  /** @internal */
   static readonly formAssociated = true;
 
   /**
-   * Text for label associated with input field.
-   * @attr
+   * The text that labels the input field.
+   * An input field should always have a label to ensure accessibility.
    * @type {string}
    */
   @property({ type: String }) label?: string = undefined;
 
   /**
-   * Text for message shown beneath the input field.
-   * @attr
+   * The message shown beneath the input field.
+   * This is often used to provide additional information or feedback to the user.
    * @type {string}
    */
   @property({ type: String }) message?: string = undefined;
 
   /**
-   * Placeholder text for input field
-   * @attr
+   * Sets the placeholder text for the input field.
+   * This text is displayed when the input field is empty, providing a hint to the user about the expected input.
    * @type {string}
    */
   @property({ type: String }) placeholder?: string | null = null;
 
   /**
-   * Decides if the field has a status, will change the look of the field.
-   * @attr
+   * Sets the visual status of the input. There is currently only one status available: `error`.
+   *
+   * The `error` status is used to indicate that there is an issue with the input, such as invalid or missing data.
    * @reflect
    * @type {'error'}
    */
   @property({ type: String, reflect: true }) status?: 'error' = undefined;
 
   /**
-   * Set field to read only state
-   * @attr
+   * Sets the input to read-only. A read-only field cannot be modified by the user but may be submitted with the form.
    * @reflect
    * @type {boolean}
    */
   @property({ type: Boolean, reflect: true }) readonly? = false;
 
   /**
-   * Disables the field
-   * @attr
+   * Disables the input.  This changes its appearance and makes it non-interactive.
    * @reflect
    * @type {boolean}
    */
   @property({ type: Boolean, reflect: true }) disabled? = false;
 
-  /**
-   * A reference to the internal `<input>` element.
-   * @internal
-   */
-  @query('#input-element') _input!: HTMLInputElement;
+  @query('#input-element')
+  private _input!: HTMLInputElement;
 
   private _name?: string = undefined;
 
   /**
-   * Name attribute for input field.
-   * @attr
+   * The name of the input. This is submitted with the form data as a `key`.
+   *
+   * This attribute conforms with the standard HTML `name` attribute for input fields.
+   * See: {@link https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input#name}
+   *
    * @reflect
    * @type {string}
    */
@@ -89,8 +92,13 @@ export class FhiTextInput extends LitElement {
   private _value: string = '';
 
   /**
-   * Input field value
-   * @attr
+   * The default value of the input field.
+   *
+   * You can fetch the current value of the text input by accessing this property directly on the component instance, or by listening for the `change` or `input` events which are dispatched whenever the value changes.
+   *
+   * This attribute conforms with the standard HTML `value` attribute for input fields.
+   * See: {@link https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input#value}
+   *
    * @type {string}
    */
   @property({ type: String })
@@ -116,12 +124,12 @@ export class FhiTextInput extends LitElement {
     super.connectedCallback();
     this._internals.setFormValue(this.value);
   }
-  /**
-   * Dispatches a `change` event when the value of the input is committed by the user.
-   * @fires change
-   */
-  public onChange(): void {
-    /**@type {Event} - Standard DOM event with type 'change' */
+
+  private _dispatchChangeEvent(): void {
+    /**
+     * @type {Event} - Standard DOM event with the type `change`.
+     * This event is dispatched when the value of the input changes.
+     */
     this.dispatchEvent(
       new Event('change', {
         bubbles: true,
@@ -129,24 +137,39 @@ export class FhiTextInput extends LitElement {
       }),
     );
   }
-  /**
-   * Set new `value` to the input field.
-   */
-  public onInput(): void {
+
+  private _dispatchInputEvent(): void {
+    /**
+     * @type {Event} - Standard DOM event with the type `input`.
+     * This event is dispatched when the value of the input changes.
+     */
+    this.dispatchEvent(
+      new Event('input', {
+        bubbles: true,
+        composed: true,
+      }),
+    );
+  }
+
+  private handleChange(event: Event): void {
+    event.stopPropagation();
+    this._dispatchChangeEvent();
+  }
+
+  private handleInput(event: Event): void {
     this.value = this._input.value;
     this._internals.setFormValue(this.value);
+
+    event.stopPropagation();
+    this._dispatchInputEvent();
   }
-  /**
-   * Requests submit on key down `enter`.
-   */
-  public onKeyDown(event: KeyboardEvent): void {
+
+  private handleKeyDown(event: KeyboardEvent): void {
     if (event.key === 'Enter' && this._internals.form) {
       this._internals.form!.requestSubmit();
     }
   }
-  /**
-   * Resets the field when the form is reset.
-   */
+
   public formResetCallback(): void {
     this.value = this.getAttribute('value') || '';
     this._internals.setFormValue(this.value);
@@ -162,9 +185,9 @@ export class FhiTextInput extends LitElement {
         .value=${this.value}
         ?readonly=${this.readonly}
         ?disabled=${this.disabled}
-        @change=${this.onChange}
-        @input=${this.onInput}
-        @keydown=${this.onKeyDown}
+        @change=${this.handleChange}
+        @input=${this.handleInput}
+        @keydown=${this.handleKeyDown}
       />
       ${this.message ? html`<p class="message">${this.message}</p>` : ''}
     `;

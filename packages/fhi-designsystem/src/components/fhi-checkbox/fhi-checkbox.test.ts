@@ -222,50 +222,49 @@ describe('fhi-checkbox', () => {
 
       expect(changeEventCounter).to.equal(1);
     });
-  });
 
-  it('dispatches an "input" event when checked by the user', async () => {
-    component = await fixture(html`<fhi-checkbox></fhi-checkbox>`);
+    it('dispatches an "input" event when checked by the user', async () => {
+      component = await fixture(html`<fhi-checkbox></fhi-checkbox>`);
 
-    let inputEventCounter = 0;
+      let inputEventCounter = 0;
+      component.addEventListener('input', () => {
+        inputEventCounter = 1;
+      });
 
-    component.addEventListener('input', () => {
-      inputEventCounter++;
+      const input = component.shadowRoot?.querySelector(
+        'input[type="checkbox"]',
+      ) as HTMLInputElement;
+
+      input.click();
+
+      await component.updateComplete;
+
+      expect(inputEventCounter).to.equal(1);
     });
 
-    const input = component.shadowRoot?.querySelector(
-      'input[type="checkbox"]',
-    ) as HTMLInputElement;
+    it('does not dispatch an "input" nor "change" event when disabled', async () => {
+      component = await fixture(html`<fhi-checkbox disabled></fhi-checkbox>`);
 
-    input.click();
+      let changeEvent = false;
+      component.addEventListener('change', () => {
+        changeEvent = true;
+      });
 
-    await component.updateComplete;
+      let inputEvent = false;
+      component.addEventListener('input', () => {
+        inputEvent = true;
+      });
 
-    expect(inputEventCounter).to.equal(1);
-  });
+      const input = component.shadowRoot?.querySelector(
+        'input[type="checkbox"]',
+      ) as HTMLInputElement;
 
-  it('does not dispatch an "input" nor "change" event when disabled', async () => {
-    component = await fixture(html`<fhi-checkbox disabled></fhi-checkbox>`);
+      input.click();
 
-    let changeEvent = false;
-    component.addEventListener('change', () => {
-      changeEvent = true;
+      await component.updateComplete;
+
+      expect(changeEvent).to.equal(false);
+      expect(inputEvent).to.equal(false);
     });
-
-    let inputEvent = false;
-    component.addEventListener('input', () => {
-      inputEvent = true;
-    });
-
-    const input = component.shadowRoot?.querySelector(
-      'input[type="checkbox"]',
-    ) as HTMLInputElement;
-
-    input.click();
-
-    await component.updateComplete;
-
-    expect(changeEvent).to.equal(false);
-    expect(inputEvent).to.equal(false);
   });
 });

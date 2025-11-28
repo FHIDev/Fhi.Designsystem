@@ -305,7 +305,7 @@ describe('fhi-text-input', () => {
         { parentNode: form },
       );
 
-      component._input.dispatchEvent(
+      component['_input'].dispatchEvent(
         new KeyboardEvent('keydown', { key: 'Enter' }),
       );
 
