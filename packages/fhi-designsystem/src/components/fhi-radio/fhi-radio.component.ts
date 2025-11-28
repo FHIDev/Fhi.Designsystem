@@ -437,6 +437,9 @@ export class FhiRadio extends LitElement {
 
     :host([disabled]) {
       opacity: var(--opacity-disabled);
+      * {
+        cursor: not-allowed;
+      }
     }
 
     :host(:not(:disabled)) {
