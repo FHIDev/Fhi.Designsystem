@@ -15,10 +15,9 @@ import { Meta, Subtitle } from '@storybook/blocks';
 ## Angular
 Angular har innebygd støtte for webkomponenter. Du kan derfor bruke komponentene direkte i Angular-prosjektet ditt.
 
-Under er et eksempel på hvordan du bruker `fhi-button`-komponenten i et Angular-prosjekt. Her tar vi utgangspunkt i at du har brukt `npm` da du installerte pakken.
+Her er et eksempel av bruk av `fhi-button`-komponenten i et Angular-prosjekt. Vi tar utgangspunkt i at du har brukt `npm` da du installerte pakken.
 
-Først importerer vi _design tokens_-filen. Denne filen inneholder alle primitive og semantiske _tokens_ brukt av komponentbiblioteket.
-Denne filen må importeres før du tar i bruk komponentbiblioteket, helst via angular.json, der en setter følgende property:
+Først importerer vi filen med [Design Tokens](?path=/docs/design-tokens-introduksjon--docs). Denne filen må importeres før du tar i bruk komponentbiblioteket, helst via angular.json, der en setter følgende property:
 ```json
 projects.[your-project].architect.build.options.styles: ["@folkehelseinstituttet/designsystem/theme/default.css"]
 ```
@@ -83,7 +82,7 @@ Det er noen mindre forskjeller fra standard HTML-elementer, [se React sin offisi
 
 Under er et eksempel på hvordan du bruker `fhi-button`-komponenten i et React-prosjekt. Her tar vi utgangspunkt i at du har brukt `npm` da du installerte pakken.
 
-Først importerer vi _design tokens_-filen. Denne filen inneholder alle primitive og semantiske _tokens_ brukt av komponentbiblioteket.
+Først importerer vi filen med [Design Tokens](?paht=/docs/design-tokens-introduksjon--docs).
 Denne filen må importeres før du tar i bruk komponentbiblioteket, helst helt i starten av appen din.
 ```ts
 import '@folkehelseinstituttet/designsystem/theme/default.css';
@@ -100,7 +99,7 @@ Nå kan du bruke komponenten i JSX:
 <fhi-button onClick={(event) => console.log("hello world", event)}>Click me!</fhi-button>
 ```
 
-**Typescript:** Bruker du typescript i React-prosjektet ditt, kan du oppleve at React ikke gjenkjenner webkomponentene. Dette er fordi de ikke er typesatt ennå.
+**Typescript:** Bruker du Typescript i React-prosjektet ditt, kan du oppleve at React ikke gjenkjenner webkomponentene. Dette er fordi de ikke er typesatt ennå.
 For å løse dette kan du legge til en global deklarasjon i prosjektet ditt:
 
 ```ts
