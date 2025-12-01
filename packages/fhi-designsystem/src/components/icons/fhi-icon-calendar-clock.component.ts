@@ -5,18 +5,18 @@
 import { html, css, LitElement } from "lit";
 import { customElement, property } from "lit/decorators.js";
 
-export const FhiIconMailSelector = "fhi-icon-mail";
+export const FhiIconCalendarClockSelector = "fhi-icon-calendar-clock";
 
 /**
- * ## FhiIconMail
+ * ## FhiIconCalendarClock
  * 
  * {@link https://designsystem.fhi.no/?path=/docs/ikoner--docs}
  * 
- * @tag fhi-icon-mail
- * @element fhi-icon-mail
+ * @tag fhi-icon-calendar-clock
+ * @element fhi-icon-calendar-clock
  */
-@customElement(FhiIconMailSelector)
-export class FhiIconMail extends LitElement {
+@customElement(FhiIconCalendarClockSelector)
+export class FhiIconCalendarClock extends LitElement {
 
   /**
    * Sets the color for the icon.
@@ -56,7 +56,7 @@ export class FhiIconMail extends LitElement {
 
   render() {
     return html`
-      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="${this._size}" height="${this._size}" fill="${this.color}"><path d="M20 3.25A2.75 2.75 0 0 1 22.75 6v12A2.75 2.75 0 0 1 20 20.75H4A2.75 2.75 0 0 1 1.25 18V6A2.75 2.75 0 0 1 4 3.25zm-6.567 10.083-.005.003a2.7 2.7 0 0 1-1.24.403l-.188.007c-.505 0-1-.142-1.428-.41l-.005-.003L2.75 8.364V18c0 .69.56 1.25 1.25 1.25h16c.69 0 1.25-.56 1.25-1.25V8.364zM4 4.75c-.69 0-1.25.56-1.25 1.25v.588l8.617 5.477h.001c.19.118.409.181.632.181l.166-.012a1.2 1.2 0 0 0 .318-.091l.148-.079 8.618-5.476V6c0-.69-.56-1.25-1.25-1.25z"/></svg>
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="${this._size}" height="${this._size}" fill="${this.color}"><path d="M16 1.25a.75.75 0 0 1 .75.75v1.25H19A2.75 2.75 0 0 1 21.75 6v1.5a.75.75 0 0 1-1.5 0V6a1.25 1.25 0 0 0-1.126-1.244L19 4.75h-2.25V6a.75.75 0 0 1-1.5 0V4.75h-6.5V6a.75.75 0 0 1-1.5 0V4.75H5A1.25 1.25 0 0 0 3.75 6v3.25H8a.75.75 0 0 1 0 1.5H3.75V20A1.25 1.25 0 0 0 5 21.25h3.5a.75.75 0 0 1 0 1.5H5A2.75 2.75 0 0 1 2.25 20V6A2.75 2.75 0 0 1 5 3.25h2.25V2a.75.75 0 0 1 1.5 0v1.25h6.5V2a.75.75 0 0 1 .75-.75m0 8a6.75 6.75 0 1 1 0 13.5 6.75 6.75 0 0 1 0-13.5m0 1.5a5.25 5.25 0 1 0 0 10.5 5.25 5.25 0 0 0 0-10.5m0 2.5a.75.75 0 0 1 .75.75v1.938l1.219.976a.75.75 0 0 1-.938 1.172l-1.5-1.2a.75.75 0 0 1-.281-.586V14a.75.75 0 0 1 .75-.75"/></svg>
     `;
   }
       

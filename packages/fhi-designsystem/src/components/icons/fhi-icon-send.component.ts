@@ -5,18 +5,18 @@
 import { html, css, LitElement } from "lit";
 import { customElement, property } from "lit/decorators.js";
 
-export const FhiIconMailSelector = "fhi-icon-mail";
+export const FhiIconSendSelector = "fhi-icon-send";
 
 /**
- * ## FhiIconMail
+ * ## FhiIconSend
  * 
  * {@link https://designsystem.fhi.no/?path=/docs/ikoner--docs}
  * 
- * @tag fhi-icon-mail
- * @element fhi-icon-mail
+ * @tag fhi-icon-send
+ * @element fhi-icon-send
  */
-@customElement(FhiIconMailSelector)
-export class FhiIconMail extends LitElement {
+@customElement(FhiIconSendSelector)
+export class FhiIconSend extends LitElement {
 
   /**
    * Sets the color for the icon.
@@ -56,7 +56,7 @@ export class FhiIconMail extends LitElement {
 
   render() {
     return html`
-      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="${this._size}" height="${this._size}" fill="${this.color}"><path d="M20 3.25A2.75 2.75 0 0 1 22.75 6v12A2.75 2.75 0 0 1 20 20.75H4A2.75 2.75 0 0 1 1.25 18V6A2.75 2.75 0 0 1 4 3.25zm-6.567 10.083-.005.003a2.7 2.7 0 0 1-1.24.403l-.188.007c-.505 0-1-.142-1.428-.41l-.005-.003L2.75 8.364V18c0 .69.56 1.25 1.25 1.25h16c.69 0 1.25-.56 1.25-1.25V8.364zM4 4.75c-.69 0-1.25.56-1.25 1.25v.588l8.617 5.477h.001c.19.118.409.181.632.181l.166-.012a1.2 1.2 0 0 0 .318-.091l.148-.079 8.618-5.476V6c0-.69-.56-1.25-1.25-1.25z"/></svg>
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="${this._size}" height="${this._size}" fill="${this.color}"><path d="M22.023 1.252a1 1 0 0 1 .096.009l.034.004q.06.013.118.036l.035.015a1 1 0 0 1 .127.072l.023.017a.8.8 0 0 1 .138.138l.015.021.026.04a1 1 0 0 1 .046.087l.017.037a1 1 0 0 1 .035.118l.005.036a1 1 0 0 1 .01.094v.038a.8.8 0 0 1-.04.234l-7 20a.75.75 0 0 1-1.393.056l-3.883-8.736-8.737-3.883a.75.75 0 0 1 .057-1.393l20-7a.8.8 0 0 1 .233-.041zM11.895 13.165l3.022 6.8 5.287-15.11zM4.033 9.082l6.801 3.022 8.312-8.311z"/></svg>
     `;
   }
       
