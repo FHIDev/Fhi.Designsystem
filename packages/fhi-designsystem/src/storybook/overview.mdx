@@ -9,27 +9,21 @@ import '../components/fhi-tag/fhi-tag.component.ts';
 <Subtitle>Vår felles verktøykasse for å lage digitale, brukervennlige løsninger</Subtitle>
 
 ## Kom i gang
-Installér og bruk i ditt rammeverk:
 
-<div class="card-group">
+<div class="start-section">
         
-    <div class="card">
-        [Angular](?path=?/docs/kom-i-gang-angular--docs)
-    </div>
-        
-    <div class="card">
-        [Blazor](?path=/docs/kom-i-gang-blazor--docs)
-    </div>
-        
-    <div class="card">
-        [React](?path=/docs/kom-i-gang-react--docs)
-    </div>
-        
-    <div class="card">
-        [Standard HTML/JS](?path=/docs/kom-i-gang-standard-html-og-js--docs)
-    </div>
+    Installér og bruk i ditt rammeverk:
 
-</div>
+        <span>
+            [Angular](?path=?/docs/kom-i-gang-angular--docs)
+            
+            [Blazor](?path=/docs/kom-i-gang-blazor--docs)
+            
+            [React](?path=/docs/kom-i-gang-react--docs)
+
+            [Standard HTML/JS](?path=/docs/kom-i-gang-standard-html-og-js--docs)
+        </span>
+    </div>
 
 ## Bidra
 
@@ -50,7 +44,7 @@ FHI Designsystem er et levende system under kontinuerlig, iterativ utvikling. Vi
             <fhi-tag color="danger" style={{borderColor: "var(--fhi-color-danger-surface-active)"}}>Krever tilgang</fhi-tag>
         </span>
 
-        Spør og sparr med teamet og andre i FHI 
+        Sparr med teamet og andre i FHI 
     </div>
     
 </div>
@@ -82,21 +76,33 @@ FHI Designsystem er et levende system under kontinuerlig, iterativ utvikling. Vi
 **Obs:** Disse sidene beskriver FHI Designsystem, med komponenter bygd som webkomponenter. Leter du etter dokumentasjon for komponentene til Angular, samt tilhørende CSS-bibliotek, [finner du det på de gamle sidene](https://old.designsystem.fhi.no)
 
 <style>{`
-   
-    .card {
+
+    .card, .start-section {
         display: flex;
         flex-direction: column;
         padding: 1.5rem;
         gap: 0.5rem;
         border-radius: var(--fhi-border-radius-100);
-
         background-color: var(--fhi-color-neutral-background-subtle);
+    }
 
+    .start-section {
+        margin-bottom: 2rem;
+        
+        & span {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+    }
+
+    .start-section,
+    .card-group {
         & a {
-            font-size: var(--fhi-typography-headline-medium-font-size);
-            font-weight: var(--fhi-typography-headline-medium-font-weight);
-            line-height: var(--fhi-typography-headline-medium-line-height);
-            letter-spacing: var(--fhi-typography-label-large-letter-spacing);
+            font-size: var(--fhi-typography-headline-small-font-size);
+            font-weight: var(--fhi-typography-headline-small-font-weight);
+            line-height: var(--fhi-typography-headline-small-line-height);
+            letter-spacing: var(--fhi-typography-headline-small-letter-spacing);
 
             transition-duration: var(--fhi-motion-duration-quick);
             transition-timing-function: var(--fhi-motion-ease-default);
@@ -114,7 +120,7 @@ FHI Designsystem er et levende system under kontinuerlig, iterativ utvikling. Vi
 
     .card-group {
         display: grid;
-        grid-template-columns: repeat(auto-fill, minmax(min(20rem, 100%), 1fr));
+        grid-template-columns: repeat(auto-fill, minmax(min(16rem, 100%), 1fr));
         gap: var(--fhi-spacing-150) var(--fhi-spacing-100);
         margin-bottom: 2rem;
     }
