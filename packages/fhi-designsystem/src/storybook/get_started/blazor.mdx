@@ -1,10 +1,12 @@
 import { Meta, Subtitle } from '@storybook/blocks';
 
-<Meta title="Kom i gang" />
- 
-# Kom i gang
+<Meta title="Kom i gang/Blazor" />
 
-<Subtitle>Slik installerer du FHI Designsystem</Subtitle>
+# Blazor
+
+<Subtitle>Kom i gang med FHI Designsystem i ditt Blazor-prosjekt</Subtitle>
+
+## Installasjon
 
 Kjør følgende kommando for å legge til komponentbiblioteket i prosjektet ditt:
 
@@ -12,7 +14,7 @@ Kjør følgende kommando for å legge til komponentbiblioteket i prosjektet ditt
 npm install @folkehelseinstituttet/designsystem
 ```
 
-**eller**, om `npm` ikke er et alternativ, kan du bruke vår CDN. Legg til følgende script og link tag under `<head>` i hoved-HTML-filen for appen:
+**eller**, om `npm` ikke er et alternativ, kan du bruke vår CDN. Legg til følgende script og link tag under `<head>` i hoved-HTML-filen for appen (typisk `app.razor` i Blazor):
 
 ```html
 <link
@@ -26,8 +28,6 @@ npm install @folkehelseinstituttet/designsystem
   crossorigin="anonymous">
 </script>
 ```
-
-Bruker du **Blazor** er hoved-HTML-filen typisk `app.razor`.
 
 <div class="callout-danger">
 
@@ -46,7 +46,15 @@ Bruker du **Blazor** er hoved-HTML-filen typisk `app.razor`.
 
 ## Bruk
 
-Etter installering kan du [ta FHI Designsystem i bruk](?path=/docs/bruk--docs) i ditt valgte rammeverk.
+Blazor støtter webkomponenter på samme måte som vanlige HTML-elementer. FHI Designsystems komponenter er globalt tilgjengelige i applikasjonen uten ekstra konfigurasjon. 
+
+For eksempel, kan du bruke `fhi-button` – hvor som helst i Blazor-appen – som følgende:
+
+```html
+<fhi-button @onclick="@(e => { Console.WriteLine($"Hello World! {e}"); })">Click me!</fhi-button>
+```
+
+**Merk:** Eksempelet tar utgangspunkt i at du har brukt CDN for å installerte pakken.
 
 <style>{`
 
