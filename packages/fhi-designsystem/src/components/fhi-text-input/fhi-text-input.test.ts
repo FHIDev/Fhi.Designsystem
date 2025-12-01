@@ -1,7 +1,7 @@
 import { fixture, expect } from '@open-wc/testing';
 import { html } from 'lit/static-html.js';
 
-import { FhiTextInput } from '.';
+import { FhiTextInput } from './fhi-text-input.component';
 
 describe('fhi-text-input', () => {
   new FhiTextInput();
