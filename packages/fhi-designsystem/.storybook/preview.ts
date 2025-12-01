@@ -15,7 +15,6 @@ const preview: Preview = {
         order: [
           'Kom i gang',
           '*',
-          'Ikoner',
           'Komponenter',
           [
             'Typography',
