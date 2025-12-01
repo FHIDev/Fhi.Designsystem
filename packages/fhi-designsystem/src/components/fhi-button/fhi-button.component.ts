@@ -8,10 +8,13 @@ export const FhiButtonSelector = 'fhi-button';
  *
  * {@link https://designsystem.fhi.no/?path=/docs/komponenter-button--docs}
  *
+ * The `<fhi-button>` component is used to create interactive buttons in accordance with the FHI Design System guidelines.
+ * Use this component instead of the standard HTML `<button>` element to ensure consistent styling and behavior across your application.
+ *
  * @tag fhi-button
  * @element fhi-button
  *
- * @slot - The content of the button, typically text or an icon.
+ * @slot - The content of the button. This should be pure text, an icon or both.
  */
 @customElement(FhiButtonSelector)
 export class FhiButton extends LitElement {
@@ -19,7 +22,10 @@ export class FhiButton extends LitElement {
 
   /**
    * Sets the color of the button.
-   * @attr
+   *
+   * See: {@link https://designsystem.fhi.no/?path=/docs/komponenter-button--docs#color-farge}
+   *
+   * @reflect
    * @type {'accent' | 'neutral' | 'danger'}
    */
   @property({ type: String, reflect: true }) color:
@@ -28,8 +34,12 @@ export class FhiButton extends LitElement {
     | 'danger' = 'accent';
 
   /**
-   * Sets the visual style of the button.
-   * @attr
+   *
+   * Sets the button variant. The variant determines the button's visual style and emphasis.
+   *
+   * See: {@link https://designsystem.fhi.no/?path=/docs/komponenter-button--docs#variant}
+   *
+   * @reflect
    * @type {'strong' | 'subtle' | 'outlined' | 'text'}
    */
   @property({ type: String, reflect: true }) variant:
@@ -39,8 +49,11 @@ export class FhiButton extends LitElement {
     | 'text' = 'strong';
 
   /**
-   * Sets the size of the button.
-   * @attr
+   * Sets the size of the button to one of the predefined options.
+   *
+   * See: {@link https://designsystem.fhi.no/?path=/docs/komponenter-button--docs#size-st%C3%B8rrelse}
+   *
+   * @reflect
    * @type {'large' | 'medium' | 'small'}
    */
   @property({ type: String, reflect: true }) size:
@@ -49,23 +62,27 @@ export class FhiButton extends LitElement {
     | 'small' = 'medium';
 
   /**
-   * Disables the button, making it non-interactive.
-   * @attr
+   * Disables the button. This changes its appearance and makes it non-interactive.
+   * @reflect
    * @type {boolean}
    */
   @property({ type: Boolean, reflect: true }) disabled = false;
 
   /**
-   * Styles the button for icon-only content, making it circular.
-   * @attr
+   * Styles the button for icon-only content.
+   *
+   * If you only have an icon as the child of the button, then you should set this property to `true`.
+   *
    * @type {boolean}
    */
   @property({ type: Boolean, attribute: 'icon-only' })
   iconOnly: boolean = false;
 
   /**
-   * Sets the button's type, which determines its behavior in a form.
-   * @attr
+   * Sets the button's type. This determines the button's behavior when used within a form.
+   * The predefined types conform to standard HTML button types.
+   *
+   * For more information about button types, see: {@link https://developer.mozilla.org/en-US/docs/Web/HTML/Element/button#attr-type}
    * @type {'button' | 'submit' | 'reset'}
    */
   @property({ type: String }) type: 'button' | 'submit' | 'reset' = 'submit';
@@ -84,8 +101,9 @@ export class FhiButton extends LitElement {
     this.onkeydown = this._handleKeydown.bind(this);
     this.onselectstart = this._handleSelectStart.bind(this);
   }
+
   /**
-   * Invokes _handleClick method.
+   * Programmatically clicks the button.
    */
   public click(): void {
     this._handleClick();
@@ -99,10 +117,7 @@ export class FhiButton extends LitElement {
       return;
     }
 
-    /**@type {Event} - Standard DOM event with the type `click` */
-    this.dispatchEvent(
-      new MouseEvent('click', { bubbles: true, composed: true }),
-    );
+    this._dispatchClickEvent();
 
     if (this.type === 'submit') {
       this._internals.form?.requestSubmit();
@@ -111,6 +126,16 @@ export class FhiButton extends LitElement {
     if (this.type === 'reset') {
       this._internals.form?.reset();
     }
+  }
+
+  private _dispatchClickEvent(): void {
+    /**
+     * @type {Event} - Standard DOM event with the type `click`.
+     * This event is dispatched when the button is clicked, either via mouse or keyboard interaction.
+     * */
+    this.dispatchEvent(
+      new MouseEvent('click', { bubbles: true, composed: true }),
+    );
   }
 
   private _handleKeyup(event: KeyboardEvent): void {
@@ -579,6 +604,7 @@ export class FhiButton extends LitElement {
 
     :host {
       display: block;
+      width: fit-content;
 
       button {
         border-radius: var(--dimension-border-radius);

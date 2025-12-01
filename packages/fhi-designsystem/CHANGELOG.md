@@ -1,5 +1,49 @@
 # Changelog
 
+## [0.26.0](https://github.com/FHIDev/Fhi.Designsystem/compare/v0.25.0...v0.26.0) (2025-12-01)
+
+
+### 🚀 Features
+
+* Send and Calendar Clock Icons ([#321](https://github.com/FHIDev/Fhi.Designsystem/issues/321)) ([be3ec1b](https://github.com/FHIDev/Fhi.Designsystem/commit/be3ec1bbc9f25e2674c8fe5b54a4fa8073f8ab5a))
+
+
+### Other
+
+* Slettet index filer. ([#312](https://github.com/FHIDev/Fhi.Designsystem/issues/312)) ([1349f6e](https://github.com/FHIDev/Fhi.Designsystem/commit/1349f6e53f4435afdf8da68651cbabdb28de39b3))
+
+## [0.25.0](https://github.com/FHIDev/Fhi.Designsystem/compare/v0.24.0...v0.25.0) (2025-12-01)
+
+
+### 🚀 Features
+
+* Improve manifest documentation ([#318](https://github.com/FHIDev/Fhi.Designsystem/issues/318)) ([969451e](https://github.com/FHIDev/Fhi.Designsystem/commit/969451ef47db89a4e1aba7f657e2072f795caee1))
+
+## [0.24.0](https://github.com/FHIDev/Fhi.Designsystem/compare/v0.23.1...v0.24.0) (2025-11-28)
+
+
+### 🚀 Features
+
+* implement first iteration of tag component ([#311](https://github.com/FHIDev/Fhi.Designsystem/issues/311)) ([9aa97a6](https://github.com/FHIDev/Fhi.Designsystem/commit/9aa97a68b5b349b7dca6a6fed292549e35eeeaff))
+
+
+### Other
+
+* Adjust border-subtle ([#322](https://github.com/FHIDev/Fhi.Designsystem/issues/322)) ([8ca5fad](https://github.com/FHIDev/Fhi.Designsystem/commit/8ca5fadbf6d69bdad072d638e6b567933a041886))
+
+## [0.23.1](https://github.com/FHIDev/Fhi.Designsystem/compare/v0.23.0...v0.23.1) (2025-11-20)
+
+
+### 🛠️ Bug Fixes
+
+* Fit-content på button ([6ef1551](https://github.com/FHIDev/Fhi.Designsystem/commit/6ef155107458512931ccc554f36e304d6c852915))
+
+
+### Other
+
+* Add antialiasing to components ([#306](https://github.com/FHIDev/Fhi.Designsystem/issues/306)) ([a87e2f2](https://github.com/FHIDev/Fhi.Designsystem/commit/a87e2f24a373099294dcd75e9498cfb6c36761f8))
+* Add pipeline for staging npm package ([#295](https://github.com/FHIDev/Fhi.Designsystem/issues/295)) ([b751551](https://github.com/FHIDev/Fhi.Designsystem/commit/b751551394e8874fbb07d5652f13c176fb5322d7))
+
 ## [0.23.0](https://github.com/FHIDev/Fhi.Designsystem/compare/v0.22.0...v0.23.0) (2025-11-05)
 
 
