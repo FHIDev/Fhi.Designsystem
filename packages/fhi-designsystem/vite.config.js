@@ -114,6 +114,7 @@ export default defineConfig(({ mode }) => {
             formats: ['es'],
             entry: {
               'theme/default.css': './src/theme/default.css',
+              'fonts/RobotoFlex.ttf': './fonts/RobotoFlex.ttf',
               'fhi-designsystem': virtualLibraryModule.path,
             },
           },
@@ -156,6 +157,7 @@ export default defineConfig(({ mode }) => {
             formats: ['es'],
             entry: {
               'theme/default.css': './src/theme/default.css',
+              'fonts/RobotoFlex.ttf': './fonts/RobotoFlex.ttf',
               index: virtualLibraryModule.path,
               ...listOfComponents,
             },
