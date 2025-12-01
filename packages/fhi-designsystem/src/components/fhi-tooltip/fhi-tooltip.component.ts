@@ -27,10 +27,10 @@ export type TooltipPlacement =
 /**
  * ## FHI Tooltip
  *
+ * {@link https://designsystem.fhi.no/?path=/docs/komponenter-tooltip--docs}
+ *
  * The `<fhi-tooltip>` component provides contextual information when users hover over or focus on an element.
  * It is designed to enhance user experience by offering additional details without cluttering the interface.
- *
- * {@link https://designsystem.fhi.no/?path=/docs/komponenter-tooltip--docs}
  *
  * @tag fhi-tooltip
  * @element fhi-tooltip

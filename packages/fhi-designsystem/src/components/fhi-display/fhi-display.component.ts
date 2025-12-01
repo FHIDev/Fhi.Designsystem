@@ -54,7 +54,6 @@ export class FhiDisplay extends LitElement {
    */
   @property({ type: Number }) level!: DisplayLevel;
 
-  /** @internal */
   updated(changedProperties: PropertyValues<this>) {
     super.updated(changedProperties);
 
