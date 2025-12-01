@@ -1,5 +1,17 @@
 # Changelog
 
+## [0.24.0](https://github.com/FHIDev/Fhi.Designsystem/compare/v0.23.1...v0.24.0) (2025-11-28)
+
+
+### 🚀 Features
+
+* implement first iteration of tag component ([#311](https://github.com/FHIDev/Fhi.Designsystem/issues/311)) ([9aa97a6](https://github.com/FHIDev/Fhi.Designsystem/commit/9aa97a68b5b349b7dca6a6fed292549e35eeeaff))
+
+
+### Other
+
+* Adjust border-subtle ([#322](https://github.com/FHIDev/Fhi.Designsystem/issues/322)) ([8ca5fad](https://github.com/FHIDev/Fhi.Designsystem/commit/8ca5fadbf6d69bdad072d638e6b567933a041886))
+
 ## [0.23.1](https://github.com/FHIDev/Fhi.Designsystem/compare/v0.23.0...v0.23.1) (2025-11-20)
 
 
