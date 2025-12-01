@@ -142,7 +142,7 @@
   --fhi-color-neutral-surface-default: var(--fhi-greyblue-100);
   --fhi-color-neutral-surface-hover: var(--fhi-greyblue-150);
   --fhi-color-neutral-surface-active: var(--fhi-greyblue-200);
-  --fhi-color-neutral-border-subtle: var(--fhi-greyblue-200);
+  --fhi-color-neutral-border-subtle: var(--fhi-greyblue-300);
   --fhi-color-neutral-border-default: var(--fhi-greyblue-500);
   --fhi-color-neutral-border-strong: var(--fhi-greyblue-700);
   --fhi-color-neutral-base-default: var(--fhi-greyblue-500);
@@ -157,7 +157,7 @@
   --fhi-color-accent-surface-default: var(--fhi-blue-100);
   --fhi-color-accent-surface-hover: var(--fhi-blue-150);
   --fhi-color-accent-surface-active: var(--fhi-blue-200);
-  --fhi-color-accent-border-subtle: var(--fhi-blue-200);
+  --fhi-color-accent-border-subtle: var(--fhi-blue-300);
   --fhi-color-accent-border-default: var(--fhi-blue-500);
   --fhi-color-accent-border-strong: var(--fhi-blue-700);
   --fhi-color-accent-base-default: var(--fhi-blue-500);
@@ -172,7 +172,7 @@
   --fhi-color-info-surface-default: var(--fhi-blue-100);
   --fhi-color-info-surface-hover: var(--fhi-blue-150);
   --fhi-color-info-surface-active: var(--fhi-blue-200);
-  --fhi-color-info-border-subtle: var(--fhi-blue-200);
+  --fhi-color-info-border-subtle: var(--fhi-blue-300);
   --fhi-color-info-border-default: var(--fhi-blue-500);
   --fhi-color-info-border-strong: var(--fhi-blue-700);
   --fhi-color-info-base-default: var(--fhi-blue-500);
@@ -187,7 +187,7 @@
   --fhi-color-success-surface-default: var(--fhi-green-100);
   --fhi-color-success-surface-hover: var(--fhi-green-150);
   --fhi-color-success-surface-active: var(--fhi-green-200);
-  --fhi-color-success-border-subtle: var(--fhi-green-200);
+  --fhi-color-success-border-subtle: var(--fhi-green-300);
   --fhi-color-success-border-default: var(--fhi-green-500);
   --fhi-color-success-border-strong: var(--fhi-green-700);
   --fhi-color-success-base-default: var(--fhi-green-500);
@@ -202,7 +202,7 @@
   --fhi-color-warning-surface-default: var(--fhi-yellow-100);
   --fhi-color-warning-surface-hover: var(--fhi-yellow-150);
   --fhi-color-warning-surface-active: var(--fhi-yellow-200);
-  --fhi-color-warning-border-subtle: var(--fhi-yellow-200);
+  --fhi-color-warning-border-subtle: var(--fhi-yellow-300);
   --fhi-color-warning-border-default: var(--fhi-orange-500);
   --fhi-color-warning-border-strong: var(--fhi-orange-700);
   --fhi-color-warning-base-default: var(--fhi-orange-200);
@@ -217,7 +217,7 @@
   --fhi-color-danger-surface-default: var(--fhi-red-100);
   --fhi-color-danger-surface-hover: var(--fhi-red-150);
   --fhi-color-danger-surface-active: var(--fhi-red-200);
-  --fhi-color-danger-border-subtle: var(--fhi-red-200);
+  --fhi-color-danger-border-subtle: var(--fhi-red-300);
   --fhi-color-danger-border-default: var(--fhi-red-500);
   --fhi-color-danger-border-strong: var(--fhi-red-700);
   --fhi-color-danger-base-default: var(--fhi-red-500);
