@@ -14,10 +14,8 @@ const preview: Preview = {
       storySort: {
         order: [
           'Oversikt',
-          'Kom i gang',
-          'Bruk',
-          '*',
           'Ikoner',
+          'Kom i gang',
           'Komponenter',
           [
             '*',
