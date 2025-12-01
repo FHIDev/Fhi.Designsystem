@@ -1,5 +1,5 @@
 @font-face {
-  font-family: 'RobotoFlex';
+  font-family: 'Roboto Flex';
   src: url('../../fonts/RobotoFlex.ttf') format('truetype');
 }
 
@@ -235,7 +235,7 @@
   * @presenter FontFamily
   **/
 
-  --fhi-font-family-default: 'RobotoFlex', system-ui, sans-serif;
+  --fhi-font-family-default: 'Roboto Flex', system-ui, sans-serif;
 
   /**
   * @tokens FontWeight
