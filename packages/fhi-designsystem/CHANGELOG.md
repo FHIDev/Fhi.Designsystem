@@ -1,5 +1,24 @@
 # Changelog
 
+## [0.25.0](https://github.com/FHIDev/Fhi.Designsystem/compare/v0.24.0...v0.25.0) (2025-12-01)
+
+
+### 🚀 Features
+
+* Improve manifest documentation ([#318](https://github.com/FHIDev/Fhi.Designsystem/issues/318)) ([969451e](https://github.com/FHIDev/Fhi.Designsystem/commit/969451ef47db89a4e1aba7f657e2072f795caee1))
+
+## [0.24.0](https://github.com/FHIDev/Fhi.Designsystem/compare/v0.23.1...v0.24.0) (2025-11-28)
+
+
+### 🚀 Features
+
+* implement first iteration of tag component ([#311](https://github.com/FHIDev/Fhi.Designsystem/issues/311)) ([9aa97a6](https://github.com/FHIDev/Fhi.Designsystem/commit/9aa97a68b5b349b7dca6a6fed292549e35eeeaff))
+
+
+### Other
+
+* Adjust border-subtle ([#322](https://github.com/FHIDev/Fhi.Designsystem/issues/322)) ([8ca5fad](https://github.com/FHIDev/Fhi.Designsystem/commit/8ca5fadbf6d69bdad072d638e6b567933a041886))
+
 ## [0.23.1](https://github.com/FHIDev/Fhi.Designsystem/compare/v0.23.0...v0.23.1) (2025-11-20)
 
 
