@@ -11,7 +11,7 @@ import { FhiIconArrowDownLeft } from './fhi-icon-arrow-down-left.component';
 new FhiIconArrowDownLeft();
 
 const meta: Meta<FhiIconArrowDownLeft> = {
-  title: 'Ikoner',
+  title: 'Komponenter/Ikoner',
   component: 'fhi-icon-arrow-down-left',
   parameters: {},
   decorators: [],
