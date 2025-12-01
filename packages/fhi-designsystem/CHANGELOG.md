@@ -1,5 +1,17 @@
 # Changelog
 
+## [0.26.0](https://github.com/FHIDev/Fhi.Designsystem/compare/v0.25.0...v0.26.0) (2025-12-01)
+
+
+### 🚀 Features
+
+* Send and Calendar Clock Icons ([#321](https://github.com/FHIDev/Fhi.Designsystem/issues/321)) ([be3ec1b](https://github.com/FHIDev/Fhi.Designsystem/commit/be3ec1bbc9f25e2674c8fe5b54a4fa8073f8ab5a))
+
+
+### Other
+
+* Slettet index filer. ([#312](https://github.com/FHIDev/Fhi.Designsystem/issues/312)) ([1349f6e](https://github.com/FHIDev/Fhi.Designsystem/commit/1349f6e53f4435afdf8da68651cbabdb28de39b3))
+
 ## [0.25.0](https://github.com/FHIDev/Fhi.Designsystem/compare/v0.24.0...v0.25.0) (2025-12-01)
 
 
