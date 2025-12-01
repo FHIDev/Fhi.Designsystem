@@ -14,7 +14,6 @@ const preview: Preview = {
       storySort: {
         order: [
           'Oversikt',
-          'Ikoner',
           'Kom i gang',
           'Komponenter',
           [
