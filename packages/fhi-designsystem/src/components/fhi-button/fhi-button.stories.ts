@@ -52,7 +52,7 @@ const meta: Meta<FhiButton> = {
     withActions,
     Story =>
       html`<div
-        style="display: flex; justify-content: start; align-items: center; gap: 1rem;"
+        style="display: flex; justify-content: start; align-items: center; gap: 0.5rem;"
       >
         ${Story()}
       </div>`,
@@ -175,31 +175,31 @@ export const IconButton: Story = {
   `,
 };
 
-export const showColors: Story = {
-  tags: ['!dev'],
-  render: () => html`
-    <fhi-button color="accent">Handling</fhi-button>
-    <fhi-button color="neutral">Handling</fhi-button>
-    <fhi-button color="danger">Handling</fhi-button>
-  `,
-};
-
 export const showVariants: Story = {
   tags: ['!dev'],
   render: () => html`
-    <fhi-button color="neutral" variant="strong">Handling</fhi-button>
-    <fhi-button color="neutral" variant="subtle">Handling</fhi-button>
-    <fhi-button color="neutral" variant="outlined">Handling</fhi-button>
-    <fhi-button color="neutral" variant="text">Handling</fhi-button>
+    <fhi-button variant="strong">Strong</fhi-button>
+    <fhi-button variant="subtle">Subtle</fhi-button>
+    <fhi-button variant="outlined">Outlined</fhi-button>
+    <fhi-button variant="text">Text</fhi-button>
+  `,
+};
+
+export const showColors: Story = {
+  tags: ['!dev'],
+  render: () => html`
+    <fhi-button color="accent">Accent</fhi-button>
+    <fhi-button color="neutral">Neutral</fhi-button>
+    <fhi-button color="danger">Danger</fhi-button>
   `,
 };
 
 export const showSizes: Story = {
   tags: ['!dev'],
   render: () => html`
-    <fhi-button color="neutral" size="large">Handling</fhi-button>
-    <fhi-button color="neutral" size="medium">Handling</fhi-button>
-    <fhi-button color="neutral" size="small">Handling</fhi-button>
+    <fhi-button size="large">Large</fhi-button>
+    <fhi-button size="medium">Medium</fhi-button>
+    <fhi-button size="small">Small</fhi-button>
   `,
 };
 
@@ -288,6 +288,15 @@ export const showIconButtons: Story = {
     <fhi-button icon-only color="neutral" variant="text">
       <fhi-icon-x></fhi-icon-x>
     </fhi-button>
+  `,
+};
+
+export const showButtonsWithMixedColors: Story = {
+  tags: ['!dev'],
+  render: () => html`
+    <fhi-button>Lagre melding</fhi-button>
+    <fhi-button variant="outlined">Kopiér</fhi-button>
+    <fhi-button color="danger" variant="text">Forkast</fhi-button>
   `,
 };
 

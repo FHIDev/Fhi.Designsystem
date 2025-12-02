@@ -30,58 +30,32 @@ navigere seg videre og andre spesifikke oppgaver.
 
 Ulike varianter og størrelser kan gi knappen ulike vekter av fremheving, for å skape hierarki og veilede oppmerksomheten til brukeren.
 
-### Color (Farge)
-
-<Canvas of={FhiButtonStories.showColors} />
-
-#### `accent`
-
-Default. Knapper som skal ta oppmerksomhet og stå ut. Brukes gjerne for å gå videre eller avslutte en flyt.
-
-#### `neutral`
-
-Brukes på handlinger som ikke trenger mye oppmerksomhet. Mye bruk av `neutral` forsterker bruk av `accent`, når du trenger det.
-
-#### `danger`
-
-Signaliserer destruktive handlinger, for eksempel der data slettes eller handlinger ikke kan angres.
-
 ### Variant
 
 <Canvas of={FhiButtonStories.showVariants} />
 
-#### `strong`
+For å gi knappen riktig fremheving og visuell vekt bruker vi ulike varianter:
 
-Default. Brukes for å guide brukeren til hovedhandlingen i en kontekst. Sikt på å kun ha én synlig på skjermen til enhver tid.
+- **`strong`** (default) til hovedhandlinger
+- **`subtle`** til sækundere handlinger som trenger litt ekstra vekt enn det `outlined` har
+- **`outlined`** til sekundære handlinger
+- **`text`** til handlinger av laveste prioritet
 
-#### `subtle`
+### Color (Farge)
 
-Et mellomnivå mellom `strong` og `outlined`. Brukes for handlinger som trenger mer tyngde enn det `outline` gir, men der bruk av `strong` kan resultere i flere på samme skjerm eller blir støyende og slitsomt for brukeren.
+<Canvas of={FhiButtonStories.showColors} />
 
-#### `outlined`
-
-Brukes til handlinger som ikke er hovedhandlinger. Kan trygt brukes mange ganger på én og samme skjerm.
-
-#### `text`
-
-Brukes på handlinger av laveste prioritet. Ofte brukt sammen med handlinger satt med andre typer knapper (f.eks. «Lagre» satt som `strong` og «Avbryt» satt i `text`).
+- **`accent`** (default) er handlingsdrivende, tar oppmerksomhet og står ut. Brukes gjerne for å gå videre eller avslutte en flyt
+- **`neutral`** brukes på handlinger som ikke trenger mye oppmerksomhet. Mye bruk av `neutral` forsterker bruk av `accent`, når du trenger det
+- **`danger`** signaliserer destruktive handlinger, for eksempel der noe slettes eller ikke kan angres
 
 ### Size (størrelse)
 
 <Canvas of={FhiButtonStories.showSizes} />
 
-#### `large`
-
-Brukes for å trekke oppmerksomhet eller som en fin avslutning etter en lengre flyt.
-
-#### `medium`
-
-Default. Brukes trygt i de fleste kontekster.
-
-#### `small`
-
-Brukes når det er lite plass til knappen eller der det er flere knapper sammen på siden og det kan bli overveldende med `medium` på alle.
-
+- **`large`** brukes for å trekke oppmerksomhet eller som en fin avslutning etter en lengre flyt.
+- **`medium`** (default) brukes trygt i de fleste kontekster.
+- **`small`** brukes når det er lite plass til knappen eller der det er flere knapper sammen på siden og det kan bli overveldende med `medium` på alle.
 
 ### Button with icon (knapp med ikon)
 
@@ -92,3 +66,17 @@ Ikoner kan brukes for å forsterke gjenkjennelighet. Ikon settes til venstre for
 
 Knapper med kun ikon brukes når ikonet er godt nok kjent, uten umiddelbar forklaring. Det skal være en tilgjengelig, alternativ tittel.
 <Canvas of={FhiButtonStories.showIconButtons} />
+
+## Tips og råd
+
+### Grupper med knapper
+
+Når...
+
+<Canvas of={FhiButtonStories.showButtonsWithMixedColors} />
+
+### Maks én `strong` på siden
+På sider med flere `strong`-knapper samtidig vil det bli konkurranse i hvilke handlinger som er viktigst; sikt på å kun ha én synlig om gangen. Utforsk bruk av `subtle`-knapper i stedet, om andre elementer kan vektes ned eller om det er andre grep med farge, størrelse eller layout kan bidra til riktig hierarki.
+
+### Ikke alle sider trenger en `strong`-button
+Noen ganger er hovedformålet til en side å interagere med andre elementer eller presentere innhold, i stedet for å sette i gang en handling. En veldig sterk handlingsknapp (også kalt «Call to Action») vil kunne ta oppmerksomhet fra selve hovedformålet. Vurdér andre varianter for sekundære støttehandlinger.
