@@ -2,6 +2,7 @@ import type { Meta, StoryObj } from '@storybook/web-components';
 import { html } from 'lit';
 import { FhiDialog } from './fhi-dialog.component';
 import { FhiBody } from '../fhi-body/fhi-body.component';
+import { ifDefined } from 'lit/directives/if-defined.js';
 
 new FhiDialog();
 new FhiBody();
@@ -70,11 +71,11 @@ export const Preview: Story = {
   ],
   render: args =>
     html` <fhi-dialog
-      .open=${args.open}
-      .maxWidth=${args.maxWidth}
-      .closeButtonLabel=${args.closeButtonLabel}
-      .hideCloseButton=${args.hideCloseButton}
-      .heading=${args.heading}
+      ?open=${ifDefined(args.open)}
+      maxWidth=${args.maxWidth}
+      closeButtonLabel=${args.closeButtonLabel}
+      hideCloseButton=${args.hideCloseButton}
+      heading=${args.heading}
     >
       <fhi-body slot="body">
         Er du sikker på at du vil slette Sandra Salamander?
