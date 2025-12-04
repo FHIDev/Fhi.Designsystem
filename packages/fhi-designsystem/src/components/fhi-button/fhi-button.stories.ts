@@ -208,20 +208,15 @@ export const showButtonsWithTextAndIcons: Story = {
   decorators: [
     Story =>
       html`<section
-        style="display: flex; gap: 1rem; flex-wrap: wrap; width: 550px; justify-content: center; align-items: center;"
+        style="display: flex; gap: 1rem; flex-wrap: wrap; width: 550px; justify-content: start; align-items: center;"
       >
         ${Story()}
       </section>`,
   ],
   render: () => html`
-    <fhi-button size="large">
-      <fhi-icon-upload></fhi-icon-upload>
-      Gjør utrekk
-    </fhi-button>
-
-    <fhi-button color="danger" variant="text" size="small">
-      <fhi-icon-x></fhi-icon-x>
-      Forkast kladd
+    <fhi-button>
+      <fhi-icon-check></fhi-icon-check>
+      Lagre
     </fhi-button>
 
     <fhi-button color="neutral" variant="outlined">
@@ -229,19 +224,24 @@ export const showButtonsWithTextAndIcons: Story = {
       <fhi-icon-chevron-down></fhi-icon-chevron-down>
     </fhi-button>
 
-    <fhi-button color="neutral" variant="text" size="small">
-      Neste Side
+    <fhi-button color="danger" variant="text" size="small">
+      <fhi-icon-x></fhi-icon-x>
+      Forkast kladd
+    </fhi-button>
+
+    <fhi-button color="neutral" variant="text">
+      Neste side
       <fhi-icon-arrow-right></fhi-icon-arrow-right>
     </fhi-button>
 
-    <fhi-button color="danger" size="small" variant="subtle">
+    <fhi-button color="danger" variant="subtle" size="small">
       <fhi-icon-trash></fhi-icon-trash>
       Slett
     </fhi-button>
 
-    <fhi-button variant="text">
-      <fhi-icon-check></fhi-icon-check>
-      Lagre
+    <fhi-button size="large">
+      <fhi-icon-upload></fhi-icon-upload>
+      Trekk ut
     </fhi-button>
   `,
 };
@@ -293,10 +293,16 @@ export const showIconButtons: Story = {
 
 export const showButtonsWithMixedColors: Story = {
   tags: ['!dev'],
+  decorators: [
+    Story =>
+      html`<section style="display: flex; gap: 0.25rem; flex-wrap: wrap;">
+        ${Story()}
+      </section>`,
+  ],
   render: () => html`
-    <fhi-button>Lagre melding</fhi-button>
+    <fhi-button>Lagre endringer</fhi-button>
     <fhi-button variant="outlined">Kopiér</fhi-button>
-    <fhi-button color="danger" variant="text">Forkast</fhi-button>
+    <fhi-button variant="text" color="danger">Forkast</fhi-button>
   `,
 };
 
