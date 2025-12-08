@@ -45,7 +45,7 @@ Knapper er tilgjengelig i tre farger:
 
 <Canvas of={FhiButtonStories.showColors} />
 
-- **`accent`** (default) tar oppmerksomhet og står ut, gjerne for handlinger som er del av en planlagt flyt
+- **`accent`** (default) står mest ut, gjerne for handlinger i en planlagt flyt
 - **`neutral`** brukes på handlinger som ikke trenger mye oppmerksomhet
 - **`danger`** signaliserer destruktive handlinger, for eksempel der noe slettes eller ikke kan angres
 
@@ -75,7 +75,7 @@ Knapper med kun ikon brukes når ikonet er godt nok kjent, uten umiddelbar forkl
 
 ## Bruk
 
-Her prøver vi å beskrive noen råd, tips og retningslinjer om bruk av knapper. 
+Her er noen råd, tips og retningslinjer om bruk av knapper:
 
 ### Tekst
 
@@ -91,7 +91,7 @@ Her er noen skriveråd:
 
 ### Hierarki
 
-Vi vil legge til rette for god "orkestrering" av visuell hierarki – og med det brukerens oppmerksomhet. Dette gjelder både i enkle skjemaer med tydelig flyt og komplekse løsninger hvor brukeren kan navigere fritt, avhengig av oppgaven de har i øyeblikket. 
+Vi vil legge til rette for god "orkestrering" av visuell hierarki – og med det brukerens oppmerksomhet. Dette gjelder både i enkle skjemaer med tydelig flyt og komplekse løsninger hvor brukeren kan navigere fritt, avhengig av oppgaven de har i øyeblikket.
 
 #### Grupper med knapper
 
@@ -109,11 +109,13 @@ Bruk `neutral` som utgangspunkt, så *dytter du "opp"* til `accent` når det tre
 
 #### Maks én `strong` på siden
 
-På sider med flere `strong`-knapper samtidig vil det bli konkurranse i hvilke handlinger som er viktigst; sikt på å kun ha én synlig om gangen. Utforsk bruk av `subtle`-knapper i stedet, om andre elementer kan vektes ned eller om det er andre grep med farge, størrelse eller layout kan bidra til riktig hierarki.
+På sider med flere `strong`-knapper samtidig vil det bli konkurranse i hvilke handlinger som er viktigst; sikt på å kun ha én synlig om gangen. Utforsk bruk av `subtle`-knapper i stedet, om andre elementer kan vektes ned eller om det er andre grep med størrelse, farge eller layout kan bidra til riktig hierarki.
 
 #### Trenger siden alltid en `strong`-button?
 
-Noen ganger er hovedformålet til en side å interagere med andre elementer eller presentere innhold, i stedet for å sette i gang en handling. I slike tilfeller kan en veldig sterk handlingsknapp (også kalt «Call to Action») vil konkurrere om oppmerksomheten fra selve hovedformålet. Vurdér andre varianter for sekundære handlinger.
+Enkelte sider kan ha et hovedformål som ikke ikke kan oppsummeres med én enkel knapp. Det kan være andre typer elementer man skal interagere med eller at formålet er å presentere en liste eller tabell. 
+
+I slike tilfeller kan en veldig sterk handlingsknapp (også kalt «Call to Action») konkurrere om oppmerksomheten fra selve hovedformålet. Bruk heller andre varianter for sekundære handlinger, for å gi fokus til hovedinnholdet.
 
 ### Alternativ til `disabled`
 
