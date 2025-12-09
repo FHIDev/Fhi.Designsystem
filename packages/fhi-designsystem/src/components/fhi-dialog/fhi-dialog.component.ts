@@ -66,6 +66,12 @@ export class FhiDialog extends LitElement {
   @query('dialog')
   private _dialog!: HTMLDialogElement;
 
+  @query('footer')
+  private _footer!: HTMLSlotElement;
+
+  @query('slot[name="footer"]')
+  private _footerSlot!: HTMLSlotElement;
+
   private _triggerElement: HTMLElement | null = null;
   private _bodyOverflowStyle: string = '';
 
@@ -87,6 +93,11 @@ export class FhiDialog extends LitElement {
         this._dialog.style.maxWidth = '';
       }
     }
+  }
+
+  protected firstUpdated(_changedProperties: PropertyValues): void {
+    super.firstUpdated(_changedProperties);
+    this._toggleFooter();
   }
 
   /**
@@ -176,6 +187,20 @@ export class FhiDialog extends LitElement {
     }
   }
 
+  private _handleFooterSlotChange() {
+    this._toggleFooter();
+  }
+
+  private _toggleFooter() {
+    const nodes = this._footerSlot.assignedNodes({ flatten: true });
+
+    if (nodes.length === 0) {
+      this._footer.style.display = 'none';
+    } else {
+      this._footer.style.display = 'flex';
+    }
+  }
+
   render() {
     return html` <dialog
       @click=${this._handleDialogClick}
@@ -183,31 +208,38 @@ export class FhiDialog extends LitElement {
       aria-labelledby="dialog-label"
     >
       <section class="dialog-content">
-        <header>
-          <fhi-headline id="dialog-label" level="1"
-            >${this.heading}</fhi-headline
-          >
-          ${!this.hideCloseButton
-            ? html`
-                <fhi-button
-                  ?icon-only=${!this.closeButtonLabel}
-                  variant="text"
-                  color="neutral"
-                  size="small"
-                  @click=${this.close}
-                  aria-roledescription="button that will close the dialog"
+        ${this.heading || !this.hideCloseButton
+          ? html`
+              <header>
+                <fhi-headline id="dialog-label" level="1"
+                  >${this.heading}</fhi-headline
                 >
-                  ${this.closeButtonLabel}
-                  <fhi-icon-x></fhi-icon-x>
-                </fhi-button>
-              `
-            : null}
-        </header>
+                ${!this.hideCloseButton
+                  ? html`
+                      <fhi-button
+                        ?icon-only=${!this.closeButtonLabel}
+                        variant="text"
+                        color="neutral"
+                        size="small"
+                        @click=${this.close}
+                        aria-roledescription="button that will close the dialog"
+                      >
+                        ${this.closeButtonLabel}
+                        <fhi-icon-x></fhi-icon-x>
+                      </fhi-button>
+                    `
+                  : null}
+              </header>
+            `
+          : null}
         <section>
           <slot name="body"></slot>
         </section>
         <footer>
-          <slot name="footer"></slot>
+          <slot
+            name="footer"
+            @slotchange=${this._handleFooterSlotChange}
+          ></slot>
         </footer>
 
         <button
@@ -228,9 +260,10 @@ export class FhiDialog extends LitElement {
 
     :host {
       --dimension-dialog-padding: var(--fhi-spacing-500);
-      --dimension-dialog-body-padding: var(--fhi-spacing-500) 0;
       --dimension-dialog-border-width: var(--fhi-dimension-border-width);
       --dimension-dialog-border-radius: var(--fhi-border-radius-200);
+      --dimension-dialog-header-padding-bottom: var(--fhi-spacing-500);
+      --dimension-dialog-footer-padding-top: var(--fhi-spacing-500);
       --dimension-dialog-footer-gap: var(--fhi-spacing-050);
 
       --dimension-dialog-max-width-small: 28rem;
@@ -267,10 +300,10 @@ export class FhiDialog extends LitElement {
           justify-content: space-between;
           align-items: center;
           gap: var(--fhi-spacing-400);
+          padding-bottom: var(--dimension-dialog-header-padding-bottom);
         }
         slot[name='body'] {
           display: block;
-          padding: var(--dimension-dialog-body-padding);
         }
         footer {
           display: flex;
@@ -278,6 +311,7 @@ export class FhiDialog extends LitElement {
           align-items: center;
           gap: var(--dimension-dialog-footer-gap);
           flex-wrap: wrap;
+          padding-top: var(--dimension-dialog-footer-padding-top);
         }
         &::backdrop {
           background-color: var(--color-backdrop);
