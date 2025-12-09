@@ -232,7 +232,7 @@ export class FhiDialog extends LitElement {
               </header>
             `
           : null}
-        <section>
+        <section class="body">
           <slot name="body"></slot>
         </section>
         <footer>
@@ -259,11 +259,13 @@ export class FhiDialog extends LitElement {
     }
 
     :host {
-      --dimension-dialog-padding: var(--fhi-spacing-500);
       --dimension-dialog-border-width: var(--fhi-dimension-border-width);
       --dimension-dialog-border-radius: var(--fhi-border-radius-200);
-      --dimension-dialog-header-padding-bottom: var(--fhi-spacing-500);
-      --dimension-dialog-footer-padding-top: var(--fhi-spacing-500);
+      --dimension-dialog-header-padding: var(--fhi-spacing-500)
+        var(--fhi-spacing-500) 0 var(--fhi-spacing-500);
+      --dimension-dialog-body-padding: var(--fhi-spacing-500);
+      --dimension-dialog-footer-padding: 0 var(--fhi-spacing-500)
+        var(--fhi-spacing-500) var(--fhi-spacing-500);
       --dimension-dialog-footer-gap: var(--fhi-spacing-050);
 
       --dimension-dialog-max-width-small: 28rem;
@@ -292,18 +294,16 @@ export class FhiDialog extends LitElement {
         border-radius: var(--dimension-dialog-border-radius);
         animation: var(--motion-transition) fhi-dialog-fade-in;
         padding: 0;
-        .dialog-content {
-          padding: var(--dimension-dialog-padding);
-        }
         header {
           display: flex;
           justify-content: space-between;
           align-items: center;
           gap: var(--fhi-spacing-400);
-          padding-bottom: var(--dimension-dialog-header-padding-bottom);
+          padding: var(--dimension-dialog-header-padding);
         }
         slot[name='body'] {
           display: block;
+          padding: var(--dimension-dialog-body-padding);
         }
         footer {
           display: flex;
@@ -311,7 +311,7 @@ export class FhiDialog extends LitElement {
           align-items: center;
           gap: var(--dimension-dialog-footer-gap);
           flex-wrap: wrap;
-          padding-top: var(--dimension-dialog-footer-padding-top);
+          padding: var(--dimension-dialog-footer-padding);
         }
         &::backdrop {
           background-color: var(--color-backdrop);
