@@ -222,7 +222,9 @@ export class FhiDialog extends LitElement {
                         color="neutral"
                         size="small"
                         @click=${this.close}
-                        aria-roledescription="button that will close the dialog"
+                        aria-label=${this.closeButtonLabel
+                          ? null
+                          : 'Close dialog'}
                       >
                         ${this.closeButtonLabel}
                         <fhi-icon-x></fhi-icon-x>
