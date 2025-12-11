@@ -261,19 +261,22 @@ export class FhiDialog extends LitElement {
     }
 
     :host {
+      /* Her har jeg eksperimentert litt og latt det stå for diskusjonens skyld */
+
+      --dimension-dialog-padding: var(--fhi-spacing-500);
+      --dimension-dialog-gap: var(--fhi-spacing-300);
+      --dimension-dialog-body-gap: var(--dimension-dialog-gap);
+      --dimension-dialog-footer-gap: var(--fhi-spacing-050);
+
+      /* ------------------------------ */
+
       --dimension-dialog-border-width: var(--fhi-dimension-border-width);
       --dimension-dialog-border-radius: var(--fhi-border-radius-200);
-      --dimension-dialog-header-padding: var(--fhi-spacing-500)
-        var(--fhi-spacing-500) 0 var(--fhi-spacing-500);
-      --dimension-dialog-body-padding: var(--fhi-spacing-500);
-      --dimension-dialog-footer-padding: 0 var(--fhi-spacing-500)
-        var(--fhi-spacing-500) var(--fhi-spacing-500);
-      --dimension-dialog-footer-gap: var(--fhi-spacing-050);
 
       --dimension-dialog-max-width-small: 28rem;
       --dimension-dialog-max-width-medium: 40rem;
 
-      --color-backdrop: var(--fhi-color-neutral-border-default);
+      --color-backdrop: var(--fhi-color-neutral-surface-active);
       --color-dialog-border: var(--fhi-color-neutral-border-subtle);
 
       --opacity-backdrop: var(--fhi-opacity-disabled);
@@ -290,35 +293,45 @@ export class FhiDialog extends LitElement {
         opacity: 0;
       }
 
+      /* Her har jeg eksperimentert litt og latt det stå for diskusjonens skyld */
+
       dialog {
+        padding: 0;
+
         border: var(--dimension-dialog-border-width) solid
           var(--color-dialog-border);
         border-radius: var(--dimension-dialog-border-radius);
         animation: var(--motion-transition) fhi-dialog-fade-in;
-        padding: 0;
+
+        .dialog-content {
+          padding: var(--dimension-dialog-padding);
+          display: flex;
+          flex-direction: column;
+          gap: var(--dimension-dialog-gap);
+        }
+
         header {
           display: flex;
           justify-content: space-between;
-          align-items: center;
           gap: var(--fhi-spacing-400);
-          padding: var(--dimension-dialog-header-padding);
         }
+
         slot[name='body'] {
-          display: block;
-          padding: var(--dimension-dialog-body-padding);
+          display: flex;
+          flex-direction: column;
+          gap: var(--dimension-dialog-body-gap);
         }
+
         footer {
           display: flex;
-          justify-content: flex-end;
-          align-items: center;
-          gap: var(--dimension-dialog-footer-gap);
+          flex-direction: row-reverse;
           flex-wrap: wrap;
-          padding: var(--dimension-dialog-footer-padding);
+          gap: var(--dimension-dialog-footer-gap);
         }
+
         &::backdrop {
           background-color: var(--color-backdrop);
           opacity: var(--opacity-backdrop);
-          backdrop-filter: blur(80px);
           animation: var(--motion-transition) fhi-dialog-fade-in;
         }
       }
@@ -334,13 +347,13 @@ export class FhiDialog extends LitElement {
 
     :host([max-width='small']) {
       dialog {
-        max-width: var(--dimension-dialog-max-width-small);
+        width: var(--dimension-dialog-max-width-small);
       }
     }
 
     :host([max-width='medium']) {
       dialog {
-        max-width: var(--dimension-dialog-max-width-medium);
+        width: var(--dimension-dialog-max-width-medium);
       }
     }
   `;

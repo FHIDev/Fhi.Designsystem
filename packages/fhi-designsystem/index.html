@@ -1,19 +1,47 @@
 <!doctype html>
-<html lang="en">
+<html lang="no">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
     <link rel="stylesheet" href="src/theme/default.css" />
-
     <title>FHI Designsystem – development</title>
 
     <!-- Import your web component here using a script tag -->
-    <!-- <script type="module" src="src/components/..."></script> -->
+    <script type="module" src="src/components/fhi-button/fhi-button.component.ts"></script>
+    <script type="module" src="src/components/fhi-dialog/fhi-dialog.component.ts"></script>
+    <script type="module" src="src/components/fhi-body/fhi-body.component.ts"></script>
+    <script type="module" src="src/components/fhi-flex/fhi-flex.component.ts"></script>
+    <script type="module" src="src/components/fhi-text-input/fhi-text-input.component.ts"></script>    
   </head>
 
-  <body>
-    <!-- Add you web component here for development purposes -->
-    <!-- <fhi-my-component></fhi-my-component> -->
+  <body style="padding: 2rem;">
+
+    <!-- Lar greiene stå enn så lenge så det kan sammenlignes kjapt med Storybook -->
+
+    <fhi-button onclick="openDialog('dialog-1')" style="margin: auto">Åpne dialog</fhi-button>
+
+    <fhi-dialog id="dialog-1" open heading="Bekreft sletting" max-width="medium" close-button-label="Lukk">  
+      <fhi-body slot="body">
+        Er du sikker på at du vil slette Sandra Salamander? Hun vil aldri kunne vende tilbake igjen, med mindre du legger henne til. Ingenting av det hun hadde av filer vil bli ivaretatt, men kastes i vulkanen.
+      </fhi-body>
+      <fhi-text-input label="Ditt navn" slot="body" /></fhi-text-input>
+      <fhi-button slot="footer" onclick="openDialog('dialog-i-dialog')">Åpne dialogen</fhi-button>  
+    </fhi-dialog>
+
+    <fhi-dialog id="dialog-i-dialog" max-width="small" heading="Dialog i en annen dialog" open>
+      <fhi-body slot="body">Innhold i dialogen</fhi-body>
+    </fhi-dialog>
+
+    <script>
+      function toggleDialog() {
+        document.querySelector("fhi-dialog").toggleAttribute("Open");
+        console.log("toggleDialog");
+      }
+
+      function openDialog(dialog) {
+        document.getElementById(dialog).toggleAttribute("Open");
+        console.log("openDialog");
+      }
+    </script>
   </body>
 </html>

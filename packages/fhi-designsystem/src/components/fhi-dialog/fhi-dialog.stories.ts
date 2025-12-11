@@ -4,13 +4,17 @@ import { FhiDialog } from './fhi-dialog.component';
 import { FhiBody } from '../fhi-body/fhi-body.component';
 import { ifDefined } from 'lit/directives/if-defined.js';
 import { FhiButton } from '../fhi-button/fhi-button.component';
+import { FhiTextInput } from '../fhi-text-input/fhi-text-input.component';
+import { FhiCheckbox } from '../fhi-checkbox/fhi-checkbox.component';
 
 new FhiDialog();
 new FhiBody();
 new FhiButton();
+new FhiTextInput();
+new FhiCheckbox();
 
 const meta: Meta<FhiDialog> = {
-  title: 'Komponenter/Dialog',
+  title: 'Komponenter/Dialog ',
   component: 'fhi-dialog',
   parameters: {
     docs: {
@@ -120,17 +124,15 @@ export const Preview: Story = {
       heading=${args.heading}
     >
       <fhi-body slot="body">
-        Er du sikker på at du vil slette Sandra Salamander?
+        Dialogen åpner, og legger seg over annet innhold, slik at brukeren kan
+        fokusere på en spesifikk oppgave eller informasjon.
       </fhi-body>
-      <fhi-button slot="footer" variant="subtle">Avbryt</fhi-button>
-      <fhi-button slot="footer" variant="subtle" color="danger"
-        >Ja, Hasta la vista</fhi-button
-      >
+      <fhi-button slot="footer" variant="outlined">Lukk</fhi-button>
     </fhi-dialog>
   `,
 
   args: {
-    heading: 'Bekreft sletting av bruker',
+    heading: 'Dialog',
     open: false,
     hideCloseButton: false,
     maxWidth: 'medium',
@@ -155,17 +157,85 @@ export const OpenDialog: Story = {
       heading=${args.heading}
     >
       <fhi-body slot="body">
-        Er du sikker på at du vil slette Sandra Salamander?
+        Dialogen åpner, og legger seg over annet innhold, slik at brukeren kan
+        fokusere på en spesifikk oppgave eller informasjon.
       </fhi-body>
-      <fhi-button slot="footer" variant="subtle">Avbryt</fhi-button>
-      <fhi-button slot="footer" variant="subtle" color="danger"
-        >Ja, Hasta la vista</fhi-button
-      >
+      <fhi-button slot="footer" variant="outlined">Lukk</fhi-button>
     </fhi-dialog>`,
+
   args: {
-    heading: 'Bekreft sletting av bruker',
+    heading: 'Dialog',
+    hideCloseButton: false,
+    closeButtonLabel: 'Lukk',
+    maxWidth: 'medium',
+  },
+};
+
+export const ExampleDialogForm: Story = {
+  decorators: [
+    Story => html`
+      <dialog-preview-wrapper>
+        <fhi-button>Ny tabell</fhi-button>
+        ${Story()}
+      </dialog-preview-wrapper>
+    `,
+  ],
+  render: args =>
+    html` <fhi-dialog
+      ?open=${args.open}
+      maxWidth=${args.maxWidth}
+      closeButtonLabel=${args.closeButtonLabel}
+      hideCloseButton=${args.hideCloseButton}
+      heading=${args.heading}
+    >
+      <fhi-text-input
+        slot="body"
+        label="Navn på tabell"
+        message="Brukes og er kun synlig internt"
+      ></fhi-text-input>
+      <fhi-button slot="footer">Opprett tabell</fhi-button>
+      <fhi-button slot="footer" variant="text">Avbryt</fhi-button>
+    </fhi-dialog>`,
+
+  args: {
+    open: false,
+    heading: 'Ny tabell',
     hideCloseButton: false,
     maxWidth: 'medium',
+  },
+};
+
+export const ExampleDialogDanger: Story = {
+  decorators: [
+    Story => html`
+      <dialog-preview-wrapper>
+        <fhi-button color="neutral" variant="outlined">Slett bruker</fhi-button>
+        ${Story()}
+      </dialog-preview-wrapper>
+    `,
+  ],
+  render: args =>
+    html` <fhi-dialog
+      ?open=${args.open}
+      maxWidth=${args.maxWidth}
+      closeButtonLabel=${args.closeButtonLabel}
+      hideCloseButton=${args.hideCloseButton}
+      heading=${args.heading}
+    >
+      <fhi-body slot="body">
+        Er du sikker på at du vil slette Sandra Salamander? Det kan ikke angres.
+      </fhi-body>
+      <fhi-button slot="footer" variant="subtle" color="danger"
+        >Slett bruker</fhi-button
+      >
+      <fhi-button slot="footer" variant="text">Avbryt</fhi-button>
+    </fhi-dialog>`,
+
+  args: {
+    open: false,
+    maxWidth: 'small',
+    hideCloseButton: false,
+    heading: 'Bekreft sletting',
   },
 };
 
