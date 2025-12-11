@@ -1,4 +1,7 @@
-@import url('https://fonts.googleapis.com/css2?family=Roboto+Flex:opsz,wght,XOPQ@8..144,100..1000,88&display=swap');
+@font-face {
+  font-family: 'Roboto Flex';
+  src: url('../../fonts/RobotoFlex.ttf') format('truetype');
+}
 
 :root {
   /* Color */
