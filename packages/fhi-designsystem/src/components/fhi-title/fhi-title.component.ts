@@ -6,11 +6,24 @@ export const FhiTitleSelector = 'fhi-title';
 
 export type TitleLevel = 1 | 2 | 3 | 4 | 5 | 6;
 
+/**
+ * ## FHI Title
+ *
+ * {@link https://designsystem.fhi.no/?path=/story/komponenter-typography-title--preview}
+ *
+ * The `<fhi-title>` component is used to display title text in accordance with the FHI Design System guidelines.
+ * Use this component instead of the standard HTML heading elements, `<h1>` - `<h6>`, to ensure consistent styling across your application.
+ *
+ * @tag fhi-title
+ * @element fhi-title
+ *
+ * @slot - The content of the fhi-title component. This should be pure text.
+ */
 @customElement(FhiTitleSelector)
 export class FhiTitle extends LitElement {
   /**
    * Sets the size of the text styles.
-   * @attr
+   * @reflect
    * @type {'large' | 'medium' | 'small'}
    */
   @property({ type: String, reflect: true }) size:
@@ -19,20 +32,28 @@ export class FhiTitle extends LitElement {
     | 'small' = 'medium';
 
   /**
-   * Sets text color. Accepts the same values as the CSS property: https://developer.mozilla.org/en-US/docs/Web/CSS/color.
-   * @attr
+   * Sets color of the given text. It supports any valid CSS color value (e.g. hex, rgb, rgba, hsl, hsla, color names).
+   *
+   * It is recommended to use Design Tokens for colors defined in the FHI Design System.
+   * See: {@link https://designsystem.fhi.no/?path=/docs/design-tokens-farger--docs}
+   *
+   * Example:
+   * ```html
+   *  <fhi-title color="var(--fhi-color-primary-text-default)">
+   *    This text will be in the primary text color.
+   *  </fhi-title>
+   * ```
+   *
    * @type {string}
    */
   @property({ type: String }) color?: string;
 
   /**
-   * Indicates the title tag level, i.e. 'level=2' gives '<h2>'.
-   * @attr level
+   * Sets the heading level for the text, corresponding to HTML heading elements `<h1>` to `<h6>`.
    * @type {1 | 2 | 3 | 4 | 5 | 6}
    */
   @property({ type: Number }) level!: TitleLevel;
 
-  /** @internal */
   updated(changedProperties: PropertyValues<this>) {
     super.updated(changedProperties);
 
@@ -75,8 +96,6 @@ export class FhiTitle extends LitElement {
       contain: layout;
       color: var(--fhi-color-neutral-text-default);
       .title {
-        font-weight: var(--fhi-font-weight-bold);
-        font-weight: var(--font-weight-large);
         font-family: var(--fhi-font-family-default);
         -webkit-font-smoothing: antialiased;
         margin: 0;
