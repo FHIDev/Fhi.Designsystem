@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.28.0](https://github.com/FHIDev/Fhi.Designsystem/compare/v0.27.0...v0.28.0) (2025-12-11)
+
+
+### 🚀 Features
+
+* Add Roboto Flex font to package ([#320](https://github.com/FHIDev/Fhi.Designsystem/issues/320)) ([c86d96a](https://github.com/FHIDev/Fhi.Designsystem/commit/c86d96a3b8c455c4dd380124f910bdaf5183fb83))
+
 ## [0.27.0](https://github.com/FHIDev/Fhi.Designsystem/compare/v0.26.0...v0.27.0) (2025-12-09)
 
 
