@@ -13,14 +13,12 @@ import {
 
 # Button
 
-Knapper lar brukere sette i gang handlinger, som å lagre, sende inn skjemaer,
-navigere seg videre og andre spesifikke oppgaver.
+Knapper lar brukere utføre handlinger.
 
 ## Passer til
 
-- Å utføre spesifikke handlinger, slik som å sende inn et skjemasvar eller åpne en meny.
-
-- Å starte, navigere seg gjennom og avslutte en flyt eller prosess, for eksempel med «Neste» eller «Gå videre».
+- Å utføre spesifikke handlinger, slik som å lagre endringer, sende inn et skjemasvar eller åpne en meny
+- Å starte, navigere seg gjennom og avslutte en flyt eller prosess, for eksempel med «Neste» eller «Gå videre»
 
 <Canvas of={FhiButtonStories.Preview} />
 
@@ -28,67 +26,104 @@ navigere seg videre og andre spesifikke oppgaver.
 
 ## Valg
 
-Ulike varianter og størrelser kan gi knappen ulike vekter av fremheving, for å skape hierarki og veilede oppmerksomheten til brukeren.
+Ulike varianter og størrelser kan gi knappen ulike vekter av fremheving, for å skape hierarki og veilede oppmerksomheten til brukeren. Les også våre retningslinjer, råd og tips lenger ned.
 
-### Color (Farge)
+### Variant (`variant`)
+
+For å gi knappen riktig fremheving og visuell vekt bruker vi ulike varianter:
+<Canvas of={FhiButtonStories.showVariants} />
+
+- **`strong`** (default) til hovedhandlinger
+- **`subtle`** til sækundere handlinger som trenger litt ekstra vekt enn det `outlined` har
+- **`outlined`** til sekundære handlinger
+- **`text`** til handlinger av laveste prioritet
+
+### Farger (`color`)
+
+Knapper er tilgjengelig i tre farger:
 
 <Canvas of={FhiButtonStories.showColors} />
 
-#### `accent`
+- **`accent`** (default) står mest ut, gjerne for handlinger i en planlagt flyt
+- **`neutral`** brukes på handlinger som ikke trenger mye oppmerksomhet
+- **`danger`** signaliserer destruktive handlinger, for eksempel der noe slettes eller ikke kan angres
 
-Default. Knapper som skal ta oppmerksomhet og stå ut. Brukes gjerne for å gå videre eller avslutte en flyt.
+### Størrelser (`size`)
 
-#### `neutral`
-
-Brukes på handlinger som ikke trenger mye oppmerksomhet. Mye bruk av `neutral` forsterker bruk av `accent`, når du trenger det.
-
-#### `danger`
-
-Signaliserer destruktive handlinger, for eksempel der data slettes eller handlinger ikke kan angres.
-
-### Variant
-
-<Canvas of={FhiButtonStories.showVariants} />
-
-#### `strong`
-
-Default. Brukes for å guide brukeren til hovedhandlingen i en kontekst. Sikt på å kun ha én synlig på skjermen til enhver tid.
-
-#### `subtle`
-
-Et mellomnivå mellom `strong` og `outlined`. Brukes for handlinger som trenger mer tyngde enn det `outline` gir, men der bruk av `strong` kan resultere i flere på samme skjerm eller blir støyende og slitsomt for brukeren.
-
-#### `outlined`
-
-Brukes til handlinger som ikke er hovedhandlinger. Kan trygt brukes mange ganger på én og samme skjerm.
-
-#### `text`
-
-Brukes på handlinger av laveste prioritet. Ofte brukt sammen med handlinger satt med andre typer knapper (f.eks. «Lagre» satt som `strong` og «Avbryt» satt i `text`).
-
-### Size (størrelse)
+Knapper kommer i tre størrelser:
 
 <Canvas of={FhiButtonStories.showSizes} />
 
-#### `large`
+- **`large`** står ekstra ut og trekker til seg mye oppmerksomhet
+- **`medium`** (default) er utgangspunktet vårt og brukes i de fleste situasjoner
+- **`small`** brukes når det er lite plass til knappen eller det kan bli overveldende med mange `medium`-knapper i én gruppe
 
-Brukes for å trekke oppmerksomhet eller som en fin avslutning etter en lengre flyt.
+### Ikon
 
-#### `medium`
+Et ikon kan brukes for å tydeliggjøre meningen til en handling, eller gjøre den raskere å kjenne igjen. 
 
-Default. Brukes trygt i de fleste kontekster.
-
-#### `small`
-
-Brukes når det er lite plass til knappen eller der det er flere knapper sammen på siden og det kan bli overveldende med `medium` på alle.
-
-
-### Button with icon (knapp med ikon)
-
-Ikoner kan brukes for å forsterke gjenkjennelighet. Ikon settes til venstre for label. I noen kontekster settes det til høyre, slik som handlinger som minner om retning (f.eks. “gå videre”, “neste side” og “flytt til høyre”) eller man åpner en nedtrekksmeny.
 <Canvas of={FhiButtonStories.showButtonsWithTextAndIcons} />
 
-#### `icon-only` (knapp med _kun_ ikon)
+Ikon settes som oftest til venstre for teksten. Vi setter ikon til høyre når det assosieres med en handling eller bevegelse til høyre eller ned, slik som en pil mot høyre for “gå videre” og “neste side” eller chevron som peker ned for “åpne nedtrekksmeny”.
 
-Knapper med kun ikon brukes når ikonet er godt nok kjent, uten umiddelbar forklaring. Det skal være en tilgjengelig, alternativ tittel.
+#### Knapp med _kun_ ikon (`icon-only`)
+
+Knapper med kun ikon brukes når ikonet er godt nok kjent, uten umiddelbar forklaring. Husk å legge til [en tilgjengelig, alternativ tittel](?path=/docs/universell-utforming--docs). Du kan også vurdere [å legge knappen i en Tooltip](?path=/docs/komponenter-tooltip--docs).
+
 <Canvas of={FhiButtonStories.showIconButtons} />
+
+## Bruk
+
+Her er noen råd, tips og retningslinjer om bruk av knapper:
+
+### Tekst
+
+Teksten på knappen skal kort og tydelig beskrive hva som skjer når du klikker på den.
+
+Her er noen skriveråd:
+
+- Hold den så kort som mulig, ofte holder det med 1 til 2 ord
+- Er det tydelig at konteksten er et skjema, holder det å skrive "Send inn" (i stedet for "Send inn skjema")  
+- Bruk stor forbokstav og små bokstaver på resten av ordene (ikke "LAGRE", men "Lagre")
+- Ikke skriv "Klikk her", men forklar hva knappen faktisk gjør
+- Vær obs på bruk av "Ja" og "Nei", skriv heller tydelige handlinger som "Avbryt" og "Slett"
+
+### Hierarki
+
+Vi vil legge til rette for god "orkestrering" av visuell hierarki – og med det brukerens oppmerksomhet. Dette gjelder både i enkle skjemaer med tydelig flyt og komplekse løsninger hvor brukeren kan navigere fritt, avhengig av oppgaven de har i øyeblikket.
+
+#### Grupper med knapper
+
+Vi bruker `variant` for å skape hierarki i en gruppe med relaterte handlinger, som oftest med de viktigste handlingene først. 
+
+Knappene bør ha samme størrelse og farge. Unntaket for farge er når vi må tydeliggjøre en handling som ikke kan angres, slik som "Slett".
+
+<Canvas of={FhiButtonStories.showButtonsWithMixedColors} />
+
+#### `accent` eller `neutral`?
+
+Komplekse løsninger, uten en tydelig steg-for-steg-flyt, krever ofte flere nivåer. Løsningen kan inneholde en rekke ulike verktøy, dashboard og lister. En og samme løsning kan også ha lagt til rette for ulike brukeres ønskede måter å gjøre jobben sin på. Én side kan også ha flere viktige handlinger. Fremhever vi noe ett sted, må vi muligens legge til noe ekstra et annet sted som er *like viktig*. Dette kan bruke opp handlingsrommet du har for å bygge hierarki, med mange elementer som konkurrerer om oppmerksomheten til brukeren. I stedet for å legge på, kan vi heller holde tilbake på det totale uttrykket og gi pusterom til brukeren.
+
+Bruk `neutral` som utgangspunkt, så *dytter du "opp"* til `accent` når det trengs. Dette kan også være nyttig å tenke på gjennomgående i løsningen: Ved å holde tilbake bruken av knapper satt i `accent` – til bekreftende handlinger, ofte i en tydelig flyt – kan de oppfattes som tydeligere og mer handlingsdrivende.
+
+#### Maks én `strong` på siden
+
+På sider med flere `strong`-knapper samtidig vil det bli konkurranse i hvilke handlinger som er viktigst; sikt på å kun ha én synlig om gangen. Utforsk bruk av `subtle`-knapper i stedet, om andre elementer kan vektes ned eller om det er andre grep med størrelse, farge eller layout kan bidra til riktig hierarki.
+
+#### Trenger siden alltid en `strong`-button?
+
+Enkelte sider kan ha et hovedformål som ikke ikke kan oppsummeres med én enkel knapp. Det kan være andre typer elementer man skal interagere med eller at formålet er å presentere en liste eller tabell. 
+
+I slike tilfeller kan en veldig sterk handlingsknapp (også kalt «Call to Action») konkurrere om oppmerksomheten fra selve hovedformålet. Bruk heller andre varianter for sekundære handlinger, for å gi fokus til hovedinnholdet.
+
+### Alternativ til `disabled`
+
+Vi unngår bruk av `disabled` siden det ofte kan forvirre brukeren hvorfor knappen ikke kan interageres med. 
+
+En mulig alternativ strategi – la oss si i et skjema med påkrevde felt og en `strong` "Send inn"-knapp – er å starte med en `subtle`-knapp som endrer seg til `strong`, når alt er fylt ut. Den kan fortsatt trykkes på, og kanskje servere passende feilmeldinger som hjelper brukeren i mål.
+
+### Ikoner
+
+Dersom du bruker knapper av `text`-varianten alene, kan et ikon gjøre det tydeligere for brukeren at det er en knapp.
+
+Overforbruk av ikoner kan føre til noen utfordringer. Ethvert ikon er et nytt visuelt element som brukeren må forholde seg til. Det kan bli mange på skjermen samtidig, noe som kan føles unødvendig travelt ut. Ikke alle ikoner er like standard som forstørrelsesglass for "søk" eller tre linjer for "meny", og kan kreve mer tolkning av brukeren.
