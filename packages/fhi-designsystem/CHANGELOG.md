@@ -1,5 +1,24 @@
 # Changelog
 
+## [0.28.0](https://github.com/FHIDev/Fhi.Designsystem/compare/v0.27.0...v0.28.0) (2025-12-11)
+
+
+### 🚀 Features
+
+* Add Roboto Flex font to package ([#320](https://github.com/FHIDev/Fhi.Designsystem/issues/320)) ([c86d96a](https://github.com/FHIDev/Fhi.Designsystem/commit/c86d96a3b8c455c4dd380124f910bdaf5183fb83))
+
+## [0.27.0](https://github.com/FHIDev/Fhi.Designsystem/compare/v0.26.0...v0.27.0) (2025-12-09)
+
+
+### 🚀 Features
+
+* Ikoner for statistikk og grafer ([#335](https://github.com/FHIDev/Fhi.Designsystem/issues/335)) ([94dd8f1](https://github.com/FHIDev/Fhi.Designsystem/commit/94dd8f1dc258fe184378c70bf42f98675439fd0a))
+
+
+### Other
+
+* Rydd tokens for Title og Defaults i Stories ([#336](https://github.com/FHIDev/Fhi.Designsystem/issues/336)) ([e998275](https://github.com/FHIDev/Fhi.Designsystem/commit/e9982754c438519ebc516687d5b325f39e7e71d6))
+
 ## [0.26.0](https://github.com/FHIDev/Fhi.Designsystem/compare/v0.25.0...v0.26.0) (2025-12-01)
 
 
