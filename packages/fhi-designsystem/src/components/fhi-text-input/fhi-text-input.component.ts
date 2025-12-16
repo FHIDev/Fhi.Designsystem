@@ -332,7 +332,8 @@ export class FhiTextInput extends LitElement {
     :host([disabled]) {
       opacity: var(--opacity-disabled);
       cursor: not-allowed;
-      * {
+      label,
+      input {
         cursor: not-allowed;
       }
       input {
