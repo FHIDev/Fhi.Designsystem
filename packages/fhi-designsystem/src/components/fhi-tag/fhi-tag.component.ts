@@ -53,7 +53,6 @@ export class FhiTag extends LitElement {
       const icon = firstNode as HTMLElement;
 
       icon.setAttribute('size', '1rem');
-      icon.setAttribute('color', 'var(--color-' + this.color + '-text)');
       icon.style.marginLeft = 'var(--dimension-icon-offset)';
     }
   }
