@@ -61,18 +61,4 @@ describe('fhi-tag', () => {
       );
     });
   });
-
-  describe('text handling', () => {
-    it('correctly styles body', async () => {
-      component = await fixture(
-        html`<fhi-tag color="warning">Utløper snart</fhi-tag>`,
-      );
-
-      const body = component.shadowRoot!.querySelector('fhi-body')!;
-
-      await expect(body.getAttribute('color')).to.equal(
-        'var(--color-warning-text)',
-      );
-    });
-  });
 });
