@@ -60,12 +60,12 @@ export class FhiTag extends LitElement {
 
   render() {
     return html`
-      <fhi-body size="small"
-        ><slot
+      <fhi-body size="small" color=${'var(--color-' + this.color + '-text)'}>
+        <slot
           class="slot-container"
           @slotchange=${this._handleSlotChange}
-        ></slot
-      ></fhi-body>
+        ></slot>
+      </fhi-body>
     `;
   }
 
