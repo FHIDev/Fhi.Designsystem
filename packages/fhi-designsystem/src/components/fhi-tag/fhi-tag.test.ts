@@ -68,7 +68,7 @@ describe('fhi-tag', () => {
         html`<fhi-tag color="warning">Utløper snart</fhi-tag>`,
       );
 
-      const body: HTMLElement = component.shadowRoot.querySelector('fhi-body')!;
+      const body = component.shadowRoot!.querySelector('fhi-body')!;
 
       await expect(body.getAttribute('color')).to.equal(
         'var(--color-warning-text)',
