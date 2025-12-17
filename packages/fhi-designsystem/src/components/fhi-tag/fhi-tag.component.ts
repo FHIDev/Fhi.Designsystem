@@ -59,7 +59,7 @@ export class FhiTag extends LitElement {
 
   render() {
     return html`
-      <fhi-body size="small" color=${'var(--color-' + this.color + '-text)'}>
+      <fhi-body size="small">
         <slot
           class="slot-container"
           @slotchange=${this._handleSlotChange}
@@ -113,6 +113,10 @@ export class FhiTag extends LitElement {
         align-items: center;
 
         gap: var(--dimension-gap);
+      }
+
+      & fhi-body {
+        color: inherit;
       }
     }
 
