@@ -193,8 +193,8 @@ export const ExampleDialogForm: Story = {
         label="Navn på tabell"
         message="Brukes og er kun synlig internt"
       ></fhi-text-input>
-      <fhi-button slot="footer">Opprett tabell</fhi-button>
       <fhi-button slot="footer" variant="text">Avbryt</fhi-button>
+      <fhi-button slot="footer">Opprett tabell</fhi-button>
     </fhi-dialog>`,
 
   args: {
@@ -225,10 +225,10 @@ export const ExampleDialogDanger: Story = {
       <fhi-body slot="body">
         Er du sikker på at du vil slette Sandra Salamander? Det kan ikke angres.
       </fhi-body>
+      <fhi-button slot="footer" variant="text">Avbryt</fhi-button>
       <fhi-button slot="footer" variant="subtle" color="danger"
         >Slett bruker</fhi-button
       >
-      <fhi-button slot="footer" variant="text">Avbryt</fhi-button>
     </fhi-dialog>`,
 
   args: {

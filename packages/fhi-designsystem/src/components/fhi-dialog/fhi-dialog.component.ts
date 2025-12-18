@@ -323,10 +323,9 @@ export class FhiDialog extends LitElement {
         }
 
         footer {
-          display: flex;
-          flex-direction: row-reverse;
           flex-wrap: wrap;
           gap: var(--dimension-dialog-footer-gap);
+          justify-content: end;
         }
 
         &::backdrop {
