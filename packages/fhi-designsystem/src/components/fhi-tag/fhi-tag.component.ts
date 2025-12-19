@@ -53,19 +53,18 @@ export class FhiTag extends LitElement {
       const icon = firstNode as HTMLElement;
 
       icon.setAttribute('size', '1rem');
-      icon.setAttribute('color', 'var(--color-' + this.color + '-text)');
       icon.style.marginLeft = 'var(--dimension-icon-offset)';
     }
   }
 
   render() {
     return html`
-      <fhi-body size="small"
-        ><slot
+      <fhi-body size="small">
+        <slot
           class="slot-container"
           @slotchange=${this._handleSlotChange}
-        ></slot
-      ></fhi-body>
+        ></slot>
+      </fhi-body>
     `;
   }
 
@@ -114,6 +113,10 @@ export class FhiTag extends LitElement {
         align-items: center;
 
         gap: var(--dimension-gap);
+      }
+
+      & fhi-body {
+        color: inherit;
       }
     }
 
