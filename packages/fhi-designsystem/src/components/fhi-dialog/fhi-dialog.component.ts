@@ -273,10 +273,8 @@ export class FhiDialog extends LitElement {
       --dimension-dialog-max-width-small: 28rem;
       --dimension-dialog-max-width-medium: 40rem;
 
-      --color-backdrop: var(--fhi-color-neutral-border-default);
+      --color-backdrop: var(--fhi-color-neutral-surface-active);
       --color-dialog-border: var(--fhi-color-neutral-border-subtle);
-
-      --opacity-backdrop: var(--fhi-opacity-disabled);
 
       --motion-transition: var(--fhi-motion-duration-quick)
         var(--fhi-motion-ease-default);
@@ -317,7 +315,6 @@ export class FhiDialog extends LitElement {
         }
         &::backdrop {
           background-color: var(--color-backdrop);
-          opacity: var(--opacity-backdrop);
           backdrop-filter: blur(80px);
           animation: var(--motion-transition) fhi-dialog-fade-in;
         }
