@@ -1,5 +1,17 @@
 # Changelog
 
+## [0.28.1](https://github.com/FHIDev/Fhi.Designsystem/compare/v0.28.0...v0.28.1) (2025-12-16)
+
+
+### 🛠️ Bug Fixes
+
+* Add cursor: not-allowed to disabled radio ([#331](https://github.com/FHIDev/Fhi.Designsystem/issues/331)) ([0af9cda](https://github.com/FHIDev/Fhi.Designsystem/commit/0af9cda45a19a585eac69a98856c3999a3b613db))
+
+
+### 📑 Documentation
+
+* Oppdaterte retningslinjer, råd og tips for fhi-button ([#333](https://github.com/FHIDev/Fhi.Designsystem/issues/333)) ([f686698](https://github.com/FHIDev/Fhi.Designsystem/commit/f6866982ac5c9b1a65fc3b1fb66a276c20522e1a))
+
 ## [0.28.0](https://github.com/FHIDev/Fhi.Designsystem/compare/v0.27.0...v0.28.0) (2025-12-11)
 
 
