@@ -4,10 +4,12 @@ import { FhiDialog } from './fhi-dialog.component';
 import { FhiBody } from '../fhi-body/fhi-body.component';
 import { ifDefined } from 'lit/directives/if-defined.js';
 import { FhiButton } from '../fhi-button/fhi-button.component';
+import { FhiTextInput } from '../fhi-text-input/fhi-text-input.component';
 
 new FhiDialog();
 new FhiBody();
 new FhiButton();
+new FhiTextInput();
 
 const meta: Meta<FhiDialog> = {
   title: 'Komponenter/Dialog',
@@ -106,64 +108,31 @@ export const Preview: Story = {
   decorators: [
     Story => html`
       <dialog-preview-wrapper>
-        <fhi-button>Åpne dialog</fhi-button>
-        ${Story()}
-      </dialog-preview-wrapper>
-    `,
-  ],
-  render: args => html`
-    <fhi-dialog
-      ?open=${ifDefined(args.open)}
-      maxWidth=${args.maxWidth}
-      closeButtonLabel=${args.closeButtonLabel}
-      hideCloseButton=${args.hideCloseButton}
-      heading=${args.heading}
-    >
-      <fhi-body slot="body">
-        Er du sikker på at du vil slette Sandra Salamander?
-      </fhi-body>
-      <fhi-button slot="footer" variant="subtle">Avbryt</fhi-button>
-      <fhi-button slot="footer" variant="subtle" color="danger"
-        >Ja, Hasta la vista</fhi-button
-      >
-    </fhi-dialog>
-  `,
-
-  args: {
-    heading: 'Bekreft sletting av bruker',
-    open: false,
-    hideCloseButton: false,
-    maxWidth: 'medium',
-  },
-};
-
-export const OpenDialog: Story = {
-  decorators: [
-    Story => html`
-      <dialog-preview-wrapper autoOpen>
-        <fhi-button>Åpne dialog</fhi-button>
+        <fhi-button>Åpne Dialog</fhi-button>
         ${Story()}
       </dialog-preview-wrapper>
     `,
   ],
   render: args =>
     html` <fhi-dialog
-      ?open=${args.open}
+      ?open=${ifDefined(args.open)}
       maxWidth=${args.maxWidth}
       closeButtonLabel=${args.closeButtonLabel}
       hideCloseButton=${args.hideCloseButton}
       heading=${args.heading}
     >
-      <fhi-body slot="body">
-        Er du sikker på at du vil slette Sandra Salamander?
-      </fhi-body>
-      <fhi-button slot="footer" variant="subtle">Avbryt</fhi-button>
-      <fhi-button slot="footer" variant="subtle" color="danger"
-        >Ja, Hasta la vista</fhi-button
-      >
+      <fhi-text-input
+        slot="body"
+        label="Navn på tabell"
+        message="Brukes og er kun synlig internt"
+      ></fhi-text-input>
+      <fhi-button slot="footer" variant="text">Avbryt</fhi-button>
+      <fhi-button slot="footer">Opprett tabell</fhi-button>
     </fhi-dialog>`,
+
   args: {
-    heading: 'Bekreft sletting av bruker',
+    open: false,
+    heading: 'Ny tabell',
     hideCloseButton: false,
     maxWidth: 'medium',
   },
