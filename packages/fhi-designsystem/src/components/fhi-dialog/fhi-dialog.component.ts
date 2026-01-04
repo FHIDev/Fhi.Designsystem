@@ -72,6 +72,9 @@ export class FhiDialog extends LitElement {
   @query('slot[name="footer"]')
   private _footerSlot!: HTMLSlotElement;
 
+  @query('slot[name="body"]')
+  private _bodySlot!: HTMLSlotElement;
+
   private _triggerElement: HTMLElement | null = null;
   private _bodyOverflowStyle: string = '';
 
@@ -93,6 +96,11 @@ export class FhiDialog extends LitElement {
         this._dialog.style.maxWidth = '';
       }
     }
+  }
+
+  disconnectedCallback(): void {
+    super.disconnectedCallback();
+    this._stopForcingFocus();
   }
 
   protected firstUpdated(_changedProperties: PropertyValues): void {
@@ -121,6 +129,8 @@ export class FhiDialog extends LitElement {
     this._focusDialog();
 
     this._dispatchToggleEvent();
+
+    this._startForcingFocus();
   }
 
   /**
@@ -146,6 +156,30 @@ export class FhiDialog extends LitElement {
 
   private _focusDialog() {
     this._dialog.focus();
+  }
+
+  private _forceFocus(event: FocusEvent) {
+    const relatedTarget = event.relatedTarget as Node | null;
+    if (
+      relatedTarget &&
+      !this._dialog.contains(relatedTarget) &&
+      !this._bodySlot
+        ?.assignedNodes({ flatten: true })
+        .some(node => node === relatedTarget) &&
+      !this._footerSlot
+        ?.assignedNodes({ flatten: true })
+        .some(node => node === relatedTarget)
+    ) {
+      this._focusDialog();
+    }
+  }
+
+  private _startForcingFocus() {
+    this._dialog.addEventListener('focusout', this._forceFocus.bind(this));
+  }
+
+  private _stopForcingFocus() {
+    this._dialog.removeEventListener('focusout', this._forceFocus.bind(this));
   }
 
   private _dispatchToggleEvent() {
@@ -243,12 +277,6 @@ export class FhiDialog extends LitElement {
             @slotchange=${this._handleFooterSlotChange}
           ></slot>
         </footer>
-
-        <button
-          data-focus-trap
-          aria-hidden
-          @focus=${this._focusDialog}
-        ></button>
       </section>
     </dialog>`;
   }
