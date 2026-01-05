@@ -66,6 +66,9 @@ export class FhiDialog extends LitElement {
   @query('dialog')
   private _dialog!: HTMLDialogElement;
 
+  @query('.dialog-content')
+  private _dialogContent!: HTMLDivElement;
+
   @query('footer')
   private _footer!: HTMLElement;
 
@@ -204,6 +207,11 @@ export class FhiDialog extends LitElement {
   }
 
   private _handleDialogClick(event: MouseEvent) {
+    // Prevent closing the dialog if user clicks on the backdrop and then moves the cursor into the dialog content
+    if (this._dialogContent && this._dialogContent.matches(':hover')) {
+      return;
+    }
+
     if (event.target === this._dialog) {
       this.close();
     }
