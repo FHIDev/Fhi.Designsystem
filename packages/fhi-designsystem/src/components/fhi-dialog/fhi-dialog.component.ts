@@ -281,9 +281,7 @@ export class FhiDialog extends LitElement {
               </header>
             `
           : null}
-        <section class="body">
-          <slot name="body"></slot>
-        </section>
+        <slot name="body"></slot>
         <footer>
           <slot
             name="footer"
