@@ -1,0 +1,117 @@
+import { Meta, Subtitle } from '@storybook/blocks';
+
+<Meta title="Kom i gang/Angular" />
+
+# Angular
+
+<Subtitle>Kom i gang med FHI Designsystem i ditt Angular-prosjekt</Subtitle>
+
+## Installasjon
+
+Kjør følgende kommando for å legge til komponentbiblioteket i prosjektet ditt:
+
+```zsh
+npm install @folkehelseinstituttet/designsystem
+```
+
+**eller**, om `npm` ikke er et alternativ, kan du bruke vår CDN. Legg til følgende script og link tag under `<head>` i hoved-HTML-filen for appen:
+
+```html
+<link
+  rel="stylesheet"
+  href="https://cdn.designsystem.fhi.no/theme/default.css"
+>
+
+<script
+  type="module"
+  src="https://cdn.designsystem.fhi.no/fhi-designsystem.js"
+  crossorigin="anonymous">
+</script>
+```
+
+<div class="callout-danger">
+  Vi anbefaler ikke å bruke CDN i produksjon.
+  Det krever at klienten laster ned hele biblioteket, uavhengig av hvilke komponenter som faktisk brukes. Dette påvirker ytelsen og båndbreddebruken negativt.
+
+  Bruk bare CDN hvis `npm` ikke er et alternativ.
+</div>
+
+Pakkene inneholder komponentene, en CSS-fil med våre design tokens og font-filen for skrifttypen Roboto Flex. Roboto Flex er allerede tatt i bruk i komponentene og er gjort tilgjengelig som en design token. Du trenger ikke å gjøre noe mer utover dette for å ta den i bruk.
+
+<div class="callout-warning">
+  **Obs:** FHI Designsystem er fullt kompatibelt med Typescript, men det er ikke enda typesatt. Det betyr at intellisense for importering og bruk, samt typesjekking, er foreløpig begrenset. Se våre *Ofte stilte spørsmål* for [info om intellisense og typesjekking](/docs/ofte-stilte-spørsmål-typesjekking-intellisense--docs).
+</div>
+
+## Bruk
+
+Angular har innebygd støtte for webkomponenter. Du kan derfor bruke komponentene direkte i Angular-prosjektet ditt.
+
+Her er et eksempel av bruk av `fhi-button`-komponenten i et Angular-prosjekt. Vi tar utgangspunkt i at du har brukt `npm` da du installerte pakken.
+
+Først importerer vi filen med [Design Tokens](?path=/docs/design-tokens-introduksjon--docs). Denne filen må importeres før du tar i bruk komponentbiblioteket, helst via angular.json, der en setter følgende property:
+```json
+projects.[your-project].architect.build.options.styles: ["@folkehelseinstituttet/designsystem/theme/default.css"]
+```
+
+Så må vi fortelle Angular at vi bruker webkomponenter.
+Vi gjør dette ved å legge til <a href="https://angular.dev/api/core/CUSTOM_ELEMENTS_SCHEMA">CUSTOM_ELEMENTS_SCHEMA</a>
+i Angular-komponent-filen sin komponentdekoratør.
+
+```ts
+import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
+
+@Component({
+  ...
+  schemas: [CUSTOM_ELEMENTS_SCHEMA],
+})
+
+```
+
+**Eller**, om du bruker Angular sitt gamle modulsystem, skal du legge til `CUSTOM_ELEMENTS_SCHEMA` i modulen din.
+
+```ts
+import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
+
+@NgModule({
+  ...
+  schemas: [CUSTOM_ELEMENTS_SCHEMA],
+})
+
+```
+Før du bruker komponenten må du først importere den. Importér komponenten i Angular-komponentens Typescript-fil. I dette tilfellet importerer vi `fhi-button`:
+```ts
+import '@folkehelseinstituttet/designsystem/fhi-button';
+```
+
+Nå kan du bruke komponenten som om det var et vanlig HTML-element i din Angular-komponents HTML-fil:
+
+```html
+<fhi-button (click)="handleClick($event)">Click me!</fhi-button>
+```
+_Obs: `handleClick` er brukt her som et eksempel. Du må selv lage en metode i Angular-komponenten som håndterer klikk-eventet._
+
+<style>{`
+  .sbdocs-content a {
+    text-decoration: underline;
+
+    &:hover {
+      color: var(--fhi-color-neutral-text-default);
+    }
+  }
+
+  .callout-danger {
+    border-radius: 2px;
+    padding: .25rem 1rem;
+    margin-bottom: 2rem;
+    background-color: #FEE9E6;
+    border-bottom: 4px solid #EC7C73;
+  }
+
+  .callout-warning {
+    border-radius: 2px;
+    padding: .25rem 1rem;
+    margin-bottom: 2rem;
+    background-color: #FFE7BA;
+    border-bottom: 4px solid #F1A541;
+  }
+`}</style>

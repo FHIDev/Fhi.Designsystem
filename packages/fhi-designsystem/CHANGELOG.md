@@ -1,5 +1,80 @@
 # Changelog
 
+## [0.28.2](https://github.com/FHIDev/Fhi.Designsystem/compare/v0.28.1...v0.28.2) (2025-12-19)
+
+
+### 🛠️ Bug Fixes
+
+* Farge på fhi tag sendes ikke ned til fhi body ([#339](https://github.com/FHIDev/Fhi.Designsystem/issues/339)) ([8373a8b](https://github.com/FHIDev/Fhi.Designsystem/commit/8373a8b8295e772c8a57434348a37c95521fb74f))
+
+
+### 📑 Documentation
+
+* 298 gjennomgang av storybook inngang ([#323](https://github.com/FHIDev/Fhi.Designsystem/issues/323)) ([fa0e1f9](https://github.com/FHIDev/Fhi.Designsystem/commit/fa0e1f9e5ceacd558228ef39169b4ba9e62aa086))
+* 319 Update Icon Docs ([#332](https://github.com/FHIDev/Fhi.Designsystem/issues/332)) ([035308e](https://github.com/FHIDev/Fhi.Designsystem/commit/035308eca5c1cd6425b9b5ef2e51cadfcdcdbbb0))
+
+## [0.28.1](https://github.com/FHIDev/Fhi.Designsystem/compare/v0.28.0...v0.28.1) (2025-12-16)
+
+
+### 🛠️ Bug Fixes
+
+* Add cursor: not-allowed to disabled radio ([#331](https://github.com/FHIDev/Fhi.Designsystem/issues/331)) ([0af9cda](https://github.com/FHIDev/Fhi.Designsystem/commit/0af9cda45a19a585eac69a98856c3999a3b613db))
+
+
+### 📑 Documentation
+
+* Oppdaterte retningslinjer, råd og tips for fhi-button ([#333](https://github.com/FHIDev/Fhi.Designsystem/issues/333)) ([f686698](https://github.com/FHIDev/Fhi.Designsystem/commit/f6866982ac5c9b1a65fc3b1fb66a276c20522e1a))
+
+## [0.28.0](https://github.com/FHIDev/Fhi.Designsystem/compare/v0.27.0...v0.28.0) (2025-12-11)
+
+
+### 🚀 Features
+
+* Add Roboto Flex font to package ([#320](https://github.com/FHIDev/Fhi.Designsystem/issues/320)) ([c86d96a](https://github.com/FHIDev/Fhi.Designsystem/commit/c86d96a3b8c455c4dd380124f910bdaf5183fb83))
+
+## [0.27.0](https://github.com/FHIDev/Fhi.Designsystem/compare/v0.26.0...v0.27.0) (2025-12-09)
+
+
+### 🚀 Features
+
+* Ikoner for statistikk og grafer ([#335](https://github.com/FHIDev/Fhi.Designsystem/issues/335)) ([94dd8f1](https://github.com/FHIDev/Fhi.Designsystem/commit/94dd8f1dc258fe184378c70bf42f98675439fd0a))
+
+
+### Other
+
+* Rydd tokens for Title og Defaults i Stories ([#336](https://github.com/FHIDev/Fhi.Designsystem/issues/336)) ([e998275](https://github.com/FHIDev/Fhi.Designsystem/commit/e9982754c438519ebc516687d5b325f39e7e71d6))
+
+## [0.26.0](https://github.com/FHIDev/Fhi.Designsystem/compare/v0.25.0...v0.26.0) (2025-12-01)
+
+
+### 🚀 Features
+
+* Send and Calendar Clock Icons ([#321](https://github.com/FHIDev/Fhi.Designsystem/issues/321)) ([be3ec1b](https://github.com/FHIDev/Fhi.Designsystem/commit/be3ec1bbc9f25e2674c8fe5b54a4fa8073f8ab5a))
+
+
+### Other
+
+* Slettet index filer. ([#312](https://github.com/FHIDev/Fhi.Designsystem/issues/312)) ([1349f6e](https://github.com/FHIDev/Fhi.Designsystem/commit/1349f6e53f4435afdf8da68651cbabdb28de39b3))
+
+## [0.25.0](https://github.com/FHIDev/Fhi.Designsystem/compare/v0.24.0...v0.25.0) (2025-12-01)
+
+
+### 🚀 Features
+
+* Improve manifest documentation ([#318](https://github.com/FHIDev/Fhi.Designsystem/issues/318)) ([969451e](https://github.com/FHIDev/Fhi.Designsystem/commit/969451ef47db89a4e1aba7f657e2072f795caee1))
+
+## [0.24.0](https://github.com/FHIDev/Fhi.Designsystem/compare/v0.23.1...v0.24.0) (2025-11-28)
+
+
+### 🚀 Features
+
+* implement first iteration of tag component ([#311](https://github.com/FHIDev/Fhi.Designsystem/issues/311)) ([9aa97a6](https://github.com/FHIDev/Fhi.Designsystem/commit/9aa97a68b5b349b7dca6a6fed292549e35eeeaff))
+
+
+### Other
+
+* Adjust border-subtle ([#322](https://github.com/FHIDev/Fhi.Designsystem/issues/322)) ([8ca5fad](https://github.com/FHIDev/Fhi.Designsystem/commit/8ca5fadbf6d69bdad072d638e6b567933a041886))
+
 ## [0.23.1](https://github.com/FHIDev/Fhi.Designsystem/compare/v0.23.0...v0.23.1) (2025-11-20)
 
 
