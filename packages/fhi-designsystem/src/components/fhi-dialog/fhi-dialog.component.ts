@@ -39,7 +39,7 @@ export class FhiDialog extends LitElement {
    * Sets the maximum width of the dialog.
    * @type {'small' | 'medium' | `${string}rem`}
    */
-  @property({ type: String, attribute: 'max-width' })
+  @property({ type: String, attribute: 'max-width', reflect: true })
   maxWidth: 'small' | 'medium' | `${string}rem` = 'medium';
 
   /**
