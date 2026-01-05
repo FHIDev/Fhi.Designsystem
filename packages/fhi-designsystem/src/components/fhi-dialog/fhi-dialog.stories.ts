@@ -124,7 +124,6 @@ export const Preview: Story = {
       <fhi-text-input
         slot="body"
         label="Navn på tabell"
-        message="Brukes og er kun synlig internt"
       ></fhi-text-input>
       <fhi-button slot="footer" variant="text">Avbryt</fhi-button>
       <fhi-button slot="footer">Opprett tabell</fhi-button>
