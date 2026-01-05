@@ -80,6 +80,7 @@ export class FhiDialog extends LitElement {
 
   private _triggerElement: HTMLElement | null = null;
   private _bodyOverflowStyle: string = '';
+  private _mouseDownInsideDialog: boolean = false;
 
   updated(changedProperties: PropertyValues<this>) {
     super.updated(changedProperties);
@@ -206,9 +207,9 @@ export class FhiDialog extends LitElement {
     this.dispatchEvent(new CloseEvent('close'));
   }
 
-  private _handleDialogClick(event: MouseEvent) {
-    // Prevent closing the dialog if user clicks on the backdrop and then moves the cursor into the dialog content
-    if (this._dialogContent && this._dialogContent.matches(':hover')) {
+  private _handleDialogMouseUp(event: MouseEvent) {
+    if (this._mouseDownInsideDialog) {
+      this._mouseDownInsideDialog = false;
       return;
     }
 
@@ -217,6 +218,10 @@ export class FhiDialog extends LitElement {
     }
 
     event.stopPropagation();
+  }
+
+  private _handleDialogContentMouseDown() {
+    this._mouseDownInsideDialog = true;
   }
 
   private _handleKeyPress(event: KeyboardEvent) {
@@ -245,11 +250,14 @@ export class FhiDialog extends LitElement {
 
   render() {
     return html` <dialog
-      @click=${this._handleDialogClick}
+      @mouseup=${this._handleDialogMouseUp}
       ?aria-modal=${this.open}
       aria-labelledby="dialog-label"
     >
-      <section class="dialog-content">
+      <section
+        class="dialog-content"
+        @mousedown=${this._handleDialogContentMouseDown}
+      >
         ${this.heading || !this.hideCloseButton
           ? html`
               <header>
