@@ -66,9 +66,6 @@ export class FhiDialog extends LitElement {
   @query('dialog')
   private _dialog!: HTMLDialogElement;
 
-  @query('.dialog-content')
-  private _dialogContent!: HTMLDivElement;
-
   @query('footer')
   private _footer!: HTMLElement;
 
