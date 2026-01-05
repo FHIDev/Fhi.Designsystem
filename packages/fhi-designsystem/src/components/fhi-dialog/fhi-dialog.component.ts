@@ -351,7 +351,7 @@ export class FhiDialog extends LitElement {
         }
         &::backdrop {
           background-color: var(--color-backdrop);
-          backdrop-filter: blur(80px);
+          opacity: var(--fhi-opacity-disabled);
           animation: var(--motion-transition) fhi-dialog-fade-in;
         }
       }
