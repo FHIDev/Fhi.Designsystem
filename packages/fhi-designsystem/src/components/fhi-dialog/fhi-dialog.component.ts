@@ -327,11 +327,6 @@ export class FhiDialog extends LitElement {
     :host {
       display: none;
 
-      [data-focus-trap] {
-        position: absolute;
-        opacity: 0;
-      }
-
       dialog {
         border: var(--dimension-dialog-border-width) solid
           var(--color-dialog-border);
