@@ -109,8 +109,17 @@ describe('fhi-dialog', () => {
       const dialog = component.shadowRoot?.querySelector(
         'dialog',
       ) as HTMLDialogElement;
+      const rect = dialog.getBoundingClientRect();
 
-      dialog.click();
+      // Click outside the dialog content and on the backdrop.
+      dialog.dispatchEvent(
+        new MouseEvent('mouseup', {
+          bubbles: true,
+          clientX: rect.left + 1,
+          clientY: rect.top + 1,
+        }),
+      );
+
       await component.updateComplete;
 
       expect(component.open).to.equal(false);
