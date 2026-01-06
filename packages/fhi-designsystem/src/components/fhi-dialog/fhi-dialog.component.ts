@@ -57,6 +57,13 @@ export class FhiDialog extends LitElement {
   hideCloseButton: boolean = false;
 
   /**
+   * If true, the dialog cannot be closed by the user (e.g., by clicking the backdrop or pressing the Escape key).
+   * @type {boolean}
+   */
+  @property({ type: Boolean, attribute: 'not-closable' })
+  notClosable: boolean = false;
+
+  /**
    * The heading text of the dialog. This is displayed at the top of the dialog.
    * @type {string | undefined}
    */
@@ -309,8 +316,8 @@ export class FhiDialog extends LitElement {
         var(--fhi-spacing-500) var(--fhi-spacing-500);
       --dimension-dialog-footer-gap: var(--fhi-spacing-050);
 
-      --dimension-dialog-max-width-small: 28rem;
-      --dimension-dialog-max-width-medium: 40rem;
+      --dimension-dialog-width-small: 28rem;
+      --dimension-dialog-width-medium: 40rem;
 
       --color-backdrop: var(--fhi-color-neutral-surface-active);
       --color-dialog-border: var(--fhi-color-neutral-border-subtle);
@@ -365,13 +372,13 @@ export class FhiDialog extends LitElement {
 
     :host([size='small']) {
       dialog {
-        max-width: var(--dimension-dialog-max-width-small);
+        width: var(--dimension-dialog-width-small);
       }
     }
 
     :host([size='medium']) {
       dialog {
-        max-width: var(--dimension-dialog-max-width-medium);
+        width: var(--dimension-dialog-width-medium);
       }
     }
   `;
