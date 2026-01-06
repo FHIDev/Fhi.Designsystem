@@ -57,13 +57,6 @@ export class FhiDialog extends LitElement {
   hideCloseButton: boolean = false;
 
   /**
-   * If true, the dialog cannot be closed by the user (e.g., by clicking the backdrop or pressing the Escape key).
-   * @type {boolean}
-   */
-  @property({ type: Boolean, attribute: 'not-closable' })
-  notClosable: boolean = false;
-
-  /**
    * The heading text of the dialog. This is displayed at the top of the dialog.
    * @type {string | undefined}
    */
