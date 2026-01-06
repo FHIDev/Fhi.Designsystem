@@ -1,5 +1,37 @@
 # Changelog
 
+## [0.28.2](https://github.com/FHIDev/Fhi.Designsystem/compare/v0.28.1...v0.28.2) (2025-12-19)
+
+
+### 🛠️ Bug Fixes
+
+* Farge på fhi tag sendes ikke ned til fhi body ([#339](https://github.com/FHIDev/Fhi.Designsystem/issues/339)) ([8373a8b](https://github.com/FHIDev/Fhi.Designsystem/commit/8373a8b8295e772c8a57434348a37c95521fb74f))
+
+
+### 📑 Documentation
+
+* 298 gjennomgang av storybook inngang ([#323](https://github.com/FHIDev/Fhi.Designsystem/issues/323)) ([fa0e1f9](https://github.com/FHIDev/Fhi.Designsystem/commit/fa0e1f9e5ceacd558228ef39169b4ba9e62aa086))
+* 319 Update Icon Docs ([#332](https://github.com/FHIDev/Fhi.Designsystem/issues/332)) ([035308e](https://github.com/FHIDev/Fhi.Designsystem/commit/035308eca5c1cd6425b9b5ef2e51cadfcdcdbbb0))
+
+## [0.28.1](https://github.com/FHIDev/Fhi.Designsystem/compare/v0.28.0...v0.28.1) (2025-12-16)
+
+
+### 🛠️ Bug Fixes
+
+* Add cursor: not-allowed to disabled radio ([#331](https://github.com/FHIDev/Fhi.Designsystem/issues/331)) ([0af9cda](https://github.com/FHIDev/Fhi.Designsystem/commit/0af9cda45a19a585eac69a98856c3999a3b613db))
+
+
+### 📑 Documentation
+
+* Oppdaterte retningslinjer, råd og tips for fhi-button ([#333](https://github.com/FHIDev/Fhi.Designsystem/issues/333)) ([f686698](https://github.com/FHIDev/Fhi.Designsystem/commit/f6866982ac5c9b1a65fc3b1fb66a276c20522e1a))
+
+## [0.28.0](https://github.com/FHIDev/Fhi.Designsystem/compare/v0.27.0...v0.28.0) (2025-12-11)
+
+
+### 🚀 Features
+
+* Add Roboto Flex font to package ([#320](https://github.com/FHIDev/Fhi.Designsystem/issues/320)) ([c86d96a](https://github.com/FHIDev/Fhi.Designsystem/commit/c86d96a3b8c455c4dd380124f910bdaf5183fb83))
+
 ## [0.27.0](https://github.com/FHIDev/Fhi.Designsystem/compare/v0.26.0...v0.27.0) (2025-12-09)
 
 
