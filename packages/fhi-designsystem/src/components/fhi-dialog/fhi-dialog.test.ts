@@ -54,13 +54,11 @@ describe('fhi-dialog', () => {
       expect(component.open).to.equal(true);
     });
 
-    it('has an attribute to set max-width', async () => {
-      component = await fixture(
-        html`<fhi-dialog max-width="small"></fhi-dialog>`,
-      );
+    it('has an attribute to set size', async () => {
+      component = await fixture(html`<fhi-dialog size="small"></fhi-dialog>`);
 
-      expect(component.getAttribute('max-width')).to.equal('small');
-      expect(component.maxWidth).to.equal('small');
+      expect(component.getAttribute('size')).to.equal('small');
+      expect(component.size).to.equal('small');
     });
 
     it('has an attribute to set close-button-label', async () => {

@@ -29,7 +29,7 @@ const meta: Meta<FhiDialog> = {
         'Bestemmer om dialogen er åpen eller ikke. Dette er en property som er reflektert som en attribute og vil derfor også endre seg om brukeren åpner eller lukker dialogen selv.',
       defaultValue: { summary: false },
     },
-    maxWidth: {
+    size: {
       name: 'max-width',
       control: { type: 'text' },
       description:
@@ -116,15 +116,12 @@ export const Preview: Story = {
   render: args =>
     html` <fhi-dialog
       ?open=${ifDefined(args.open)}
-      maxWidth=${args.maxWidth}
+      size=${args.size}
       closeButtonLabel=${args.closeButtonLabel}
       hideCloseButton=${args.hideCloseButton}
       heading=${args.heading}
     >
-      <fhi-text-input
-        slot="body"
-        label="Navn på tabell"
-      ></fhi-text-input>
+      <fhi-text-input slot="body" label="Navn på tabell"></fhi-text-input>
       <fhi-button slot="footer" variant="text">Avbryt</fhi-button>
       <fhi-button slot="footer">Opprett tabell</fhi-button>
     </fhi-dialog>`,
@@ -133,7 +130,7 @@ export const Preview: Story = {
     open: false,
     heading: 'Ny tabell',
     hideCloseButton: false,
-    maxWidth: 'medium',
+    size: 'medium',
   },
 };
 
