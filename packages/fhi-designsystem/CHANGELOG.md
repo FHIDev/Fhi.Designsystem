@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.28.3](https://github.com/FHIDev/Fhi.Designsystem/compare/v0.28.2...v0.28.3) (2026-01-07)
+
+
+### 🛠️ Bug Fixes
+
+* more accurate font rendering ([#347](https://github.com/FHIDev/Fhi.Designsystem/issues/347)) ([2116169](https://github.com/FHIDev/Fhi.Designsystem/commit/211616911a0fe94d073e8dae47de16fc89352b52))
+
 ## [0.28.2](https://github.com/FHIDev/Fhi.Designsystem/compare/v0.28.1...v0.28.2) (2025-12-19)
 
 
