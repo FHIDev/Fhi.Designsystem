@@ -108,7 +108,9 @@ export const Preview: Story = {
   decorators: [
     Story => html`
       <dialog-preview-wrapper>
-        <fhi-button>Åpne Dialog</fhi-button>
+        <fhi-button>
+          <span>Åpne Dialog</span>
+        </fhi-button>
         ${Story()}
       </dialog-preview-wrapper>
     `,
