@@ -88,7 +88,7 @@
     "mocha": "~10.7.3",
     "release-it": "~19.0.6",
     "rimraf": "^6.1.2",
-    "storybook": "~8.6.14",
+    "storybook": "~8.6.15",
     "storybook-design-token": "^3.3.0",
     "svgo": "^3.3.2",
     "vite": "~6.4.1",
