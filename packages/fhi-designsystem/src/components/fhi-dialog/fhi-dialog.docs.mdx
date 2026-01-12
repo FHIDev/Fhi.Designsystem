@@ -15,3 +15,10 @@ Dialoger er modale; de tar over skjermen og hindrer brukeren å interagere med e
 <Canvas of={FhiDialogStories.Preview} />
 
 <Controls />
+
+<div style={{marginBottom: '2rem', borderRadius: '2px', padding: ".25rem 1rem", backgroundColor: '#FFE7BA', borderBottom: '4px solid #F1A541'}}>
+    **Kjente problemer:**
+  - I Safari kan det oppstå problemer relatert til uønsket fjerning av tekst i andre komponenter når dialogen lukkes.
+  Dette er et kjent problem med Safari sin "clean-up" av DOM-elementer, og vi jobber med en løsning.
+  Om du opplaver dette problemet, kan det hjelpe å wrappe den gjeldende teksten i en `<span>` eller lignende html-tag.
+</div>
