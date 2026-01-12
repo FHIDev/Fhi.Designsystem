@@ -153,9 +153,24 @@ export class FhiDateInput extends LitElement {
     );
   }
 
-  private _handleInput(): void {
+  private _handleInput(event: Event): void {
     this.value = this._input.value as FhiDateValue;
     this._internals.setFormValue(this.value ?? null);
+    event.stopPropagation();
+    this._dispatchInputEvent();
+  }
+
+  private _dispatchInputEvent(): void {
+    /**
+     * @type {Event} - Standard DOM event with the type `input`.
+     * This event is dispatched when the value of the input changes.
+     */
+    this.dispatchEvent(
+      new Event('input', {
+        bubbles: true,
+        composed: true,
+      }),
+    );
   }
 
   private _handleKeyDown(event: KeyboardEvent): void {
