@@ -1,5 +1,17 @@
 # Changelog
 
+## [0.28.4](https://github.com/FHIDev/Fhi.Designsystem/compare/v0.28.3...v0.28.4) (2026-01-12)
+
+
+### 🛠️ Bug Fixes
+
+* input event ([#349](https://github.com/FHIDev/Fhi.Designsystem/issues/349)) ([3147b42](https://github.com/FHIDev/Fhi.Designsystem/commit/3147b42d8f546ef884da7eda67515e73a3c6171b))
+
+
+### Other
+
+* stop using the auth token for publishing npm packages ([#348](https://github.com/FHIDev/Fhi.Designsystem/issues/348)) ([0ea0886](https://github.com/FHIDev/Fhi.Designsystem/commit/0ea0886f192a4645a02391cb08aa04ee30ba8495))
+
 ## [0.28.3](https://github.com/FHIDev/Fhi.Designsystem/compare/v0.28.2...v0.28.3) (2026-01-07)
 
 
