@@ -43,7 +43,7 @@
     "build:npm": "tsc && cross-env DEPLOY_TARGET=npm vite build",
     "build:github": "tsc && cross-env DEPLOY_TARGET=github vite build",
     "storybook": "storybook dev -p 6006",
-    "storybook:build": "storybook build",
+    "storybook:build": "pnpm analyze && storybook build",
     "generate:icons": "node ./scripts/generate-icon-components.js --input ./src/assets/icons/ --output ./src/components/icons --clean-output-folder",
     "test": "wtr ./**/*.test.ts --node-resolve --playwright --browsers chromium webkit",
     "lint": "pnpm lint:eslint && pnpm lint:prettier",
