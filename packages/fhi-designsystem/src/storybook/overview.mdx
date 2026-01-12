@@ -1,0 +1,136 @@
+import { Meta, Subtitle } from '@storybook/blocks';
+
+import '../components/fhi-tag/fhi-tag.component.ts';
+
+<Meta title="Oversikt" />
+
+# Velkommen til FHI Designsystem
+
+<Subtitle>Vår felles verktøykasse for å lage digitale, brukervennlige løsninger</Subtitle>
+
+## Kom i gang
+
+<div class="start-section">
+    Installér og bruk i ditt rammeverk:
+
+        <span>
+            [Angular](?path=?/docs/kom-i-gang-angular--docs)
+            
+            [Blazor](?path=/docs/kom-i-gang-blazor--docs)
+            
+            [React](?path=/docs/kom-i-gang-react--docs)
+
+            [Standard HTML/JS](?path=/docs/kom-i-gang-standard-html-og-js--docs)
+        </span>
+    </div>
+
+## Bidra
+
+FHI Designsystem er et levende system under kontinuerlig, iterativ utvikling. Vi ønsker alle tilbakemeldinger om nye ønsker eller oppdagede feil hjertelig velkomne. Dette hjelper oss å holde designsystemet oppdatert og dekke alle behov.
+
+<div class="card-group">
+    <div class="card">
+        [Github](https://github.com/FHIDev/Fhi.Designsystem)
+        
+        Se alle saker – eller opprett nye
+    </div>
+    
+    <div class="card">
+        <span class="split-row">
+            [Teams](https://teams.microsoft.com/l/channel/19%3Aa0d23e5a6954497d9e378d3367e7f458%40thread.skype/General?groupId=571dd359-777d-4c02-85ea-d56854d03ef7)
+            
+            <fhi-tag color="danger" style={{borderColor: "var(--fhi-color-danger-surface-active)"}}>Krever tilgang</fhi-tag>
+        </span>
+
+        Sparr med teamet og andre i FHI 
+    </div>
+</div>
+
+## Utforsk FHI Designsystem
+
+<div class="card-group">
+    <div class="card">
+        [Komponenter](?path=/docs/komponenter-button--docs)
+
+        Alle produksjonsklare komponenter
+    </div>
+    
+    <div class="card">
+        [Design Tokens](?path=/docs/design-tokens-introduksjon--docs)
+
+        Variabler for font, farge og mer
+    </div>
+    
+    <div class="card">
+        [Figma-bibliotek](https://www.figma.com/design/VgQG6XeEbFOmHIrxyAOACR/FHI-Designsystem?node-id=0-1&p=f&t=0VomBdF7RrUbf0YO-11)
+
+        Design med FHI Designsystem
+    </div>
+</div>
+
+**Obs:** Disse sidene beskriver FHI Designsystem, med komponenter bygd som webkomponenter. Leter du etter dokumentasjon for komponentene til Angular, samt tilhørende CSS-bibliotek, [finner du det på de gamle sidene](https://old.designsystem.fhi.no)
+
+<style>{`
+    .card, .start-section {
+        display: flex;
+        flex-direction: column;
+        padding: 1.5rem;
+        gap: 0.5rem;
+        border-radius: var(--fhi-border-radius-100);
+        background-color: var(--fhi-color-neutral-background-subtle);
+    }
+
+    .start-section {
+        margin-bottom: 2rem;
+        
+        & span {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+    }
+
+    .start-section,
+    .card-group {
+        & a {
+            font-size: var(--fhi-typography-headline-small-font-size);
+            font-weight: var(--fhi-typography-headline-small-font-weight);
+            line-height: var(--fhi-typography-headline-small-line-height);
+            letter-spacing: var(--fhi-typography-headline-small-letter-spacing);
+
+            transition-duration: var(--fhi-motion-duration-quick);
+            transition-timing-function: var(--fhi-motion-ease-default);
+            text-underline-offset: 0.125rem;
+            
+            &:hover {
+                text-underline-offset: 0.5rem;
+            }
+        }
+
+        & p {
+            margin: 0;
+        }
+    }
+
+    .card-group {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(min(16rem, 100%), 1fr));
+        gap: var(--fhi-spacing-150) var(--fhi-spacing-100);
+        margin-bottom: 2rem;
+    }
+
+    .sbdocs-content a {
+        text-decoration: underline;
+        color: var(--fhi-color-accent-text-subtle);
+
+        &:hover {
+            color: var(--fhi-color-neutral-text-default);
+        }
+    }
+
+    .split-row {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+    }
+`}</style>

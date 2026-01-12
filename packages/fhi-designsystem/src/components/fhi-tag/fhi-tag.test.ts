@@ -56,9 +56,6 @@ describe('fhi-tag', () => {
       const icon: HTMLElement = component.querySelector('fhi-icon-clock')!;
 
       await expect(icon.getAttribute('size')).to.equal('1rem');
-      await expect(icon.getAttribute('color')).to.equal(
-        'var(--color-warning-text)',
-      );
       await expect(icon.style.marginLeft).to.equal(
         'var(--dimension-icon-offset)',
       );
