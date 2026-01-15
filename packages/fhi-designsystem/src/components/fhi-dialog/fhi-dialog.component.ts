@@ -248,7 +248,7 @@ export class FhiDialog extends LitElement {
   render() {
     return html` <dialog
       @mouseup=${this._handleDialogMouseUp}
-      ?aria-modal=${this.open}
+      aria-modal="true"
       aria-labelledby="dialog-label"
     >
       <section
@@ -270,7 +270,7 @@ export class FhiDialog extends LitElement {
                         size="small"
                         @click=${this.close}
                         aria-label=${this.closeButtonLabel
-                          ? null
+                          ? ''
                           : 'Close dialog'}
                       >
                         ${this.closeButtonLabel}
@@ -321,6 +321,7 @@ export class FhiDialog extends LitElement {
 
     :host {
       display: none;
+      position: absolute;
 
       dialog {
         border: var(--dimension-dialog-border-width) solid
