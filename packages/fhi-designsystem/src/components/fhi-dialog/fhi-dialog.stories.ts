@@ -117,11 +117,11 @@ export const Preview: Story = {
   ],
   render: args =>
     html` <fhi-dialog
-      ?open=${ifDefined(args.open)}
+      ?open=${args.open}
       size=${args.size}
-      closeButtonLabel=${args.closeButtonLabel}
-      hideCloseButton=${args.hideCloseButton}
-      heading=${args.heading}
+      close-button-label=${ifDefined(args.closeButtonLabel)}
+      ?hide-close-button=${args.hideCloseButton}
+      heading=${ifDefined(args.heading)}
     >
       <fhi-text-input slot="body" label="Navn på tabell"></fhi-text-input>
       <fhi-button slot="footer" variant="text">Avbryt</fhi-button>
