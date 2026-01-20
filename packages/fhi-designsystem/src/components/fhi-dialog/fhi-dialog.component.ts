@@ -87,13 +87,13 @@ export class FhiDialog extends LitElement {
       typeof this.closeButtonLabel !== 'string' ||
       this.closeButtonLabel.length === 0
     ) {
-      throw new Error(
+      throw new TypeError(
         'The close-button-label property must be set to a non-empty string. This label must describe the purpose of the close button for accessibility reasons.',
       );
     }
 
     if (typeof this.heading !== 'string' || this.heading.length === 0) {
-      throw new Error(
+      throw new TypeError(
         'The heading property must be set to a non-empty string. This heading describes the purpose of the dialog.',
       );
     }
