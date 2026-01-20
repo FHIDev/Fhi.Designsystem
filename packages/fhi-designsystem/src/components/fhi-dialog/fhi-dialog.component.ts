@@ -37,10 +37,10 @@ export class FhiDialog extends LitElement {
 
   /**
    * Sets the maximum width of the dialog.
-   * @type {'small' | 'medium' | `${string}rem`}
+   * @type {'small' | 'medium'`}
    */
   @property({ type: String, attribute: 'size', reflect: true })
-  size: 'small' | 'medium' | `${string}rem` = 'medium';
+  size: 'small' | 'medium' = 'medium';
 
   /**
    * Label for the close button. If not provided, the button will be icon-only.
@@ -87,14 +87,6 @@ export class FhiDialog extends LitElement {
         this.show();
       } else {
         this.close();
-      }
-    }
-
-    if (changedProperties.has('size')) {
-      if (this.size.endsWith('rem')) {
-        this._dialog.style.maxWidth = this.size;
-      } else {
-        this._dialog.style.maxWidth = '';
       }
     }
   }
