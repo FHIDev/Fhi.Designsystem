@@ -119,7 +119,10 @@ export class FhiDialog extends LitElement {
 
     this._dialog.showModal();
 
-    this._focusDialog();
+    // Delay focus to make sure the windows screen reader properly detects the dialog
+    setTimeout(() => {
+      this._focusDialog();
+    }, 10);
 
     this._dispatchToggleEvent();
 
