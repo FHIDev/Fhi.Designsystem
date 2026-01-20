@@ -242,6 +242,7 @@ export class FhiDialog extends LitElement {
       @mouseup=${this._handleDialogMouseUp}
       aria-modal="true"
       aria-labelledby="dialog-label"
+      role="dialog"
     >
       <section
         class="dialog-content"
@@ -250,9 +251,12 @@ export class FhiDialog extends LitElement {
         ${this.heading || !this.hideCloseButton
           ? html`
               <header>
-                <fhi-headline id="dialog-label" level="1"
-                  >${this.heading}</fhi-headline
-                >
+                <fhi-headline
+                  ?hidden=${!this.heading}
+                  id="dialog-label"
+                  level="1"
+                  >${this.heading}
+                </fhi-headline>
                 ${!this.hideCloseButton
                   ? html`
                       <fhi-button
