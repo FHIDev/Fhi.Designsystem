@@ -43,25 +43,18 @@ export class FhiDialog extends LitElement {
   size: 'small' | 'medium' = 'medium';
 
   /**
-   * Label for the close button. If not provided, the button will be icon-only.
-   * @type {string | undefined}
+   * Label for the close button.
+   * @type {string}
    */
   @property({ type: String, attribute: 'close-button-label' })
-  closeButtonLabel?: string = undefined;
-
-  /**
-   * If true, the close button will be hidden.
-   * @type {boolean}
-   */
-  @property({ type: Boolean, attribute: 'hide-close-button' })
-  hideCloseButton: boolean = false;
+  closeButtonLabel: string = '';
 
   /**
    * The heading text of the dialog. This is displayed at the top of the dialog.
-   * @type {string | undefined}
+   * @type {string}
    */
   @property({ type: String })
-  heading?: string = undefined;
+  heading: string = '';
 
   @query('dialog')
   private _dialog!: HTMLDialogElement;
@@ -88,6 +81,21 @@ export class FhiDialog extends LitElement {
       } else {
         this.close();
       }
+    }
+
+    if (
+      typeof this.closeButtonLabel !== 'string' ||
+      this.closeButtonLabel.length === 0
+    ) {
+      throw new Error(
+        'The close-button-label property must be set to a non-empty string. This label must describe the purpose of the close button for accessibility reasons.',
+      );
+    }
+
+    if (typeof this.heading !== 'string' || this.heading.length === 0) {
+      throw new Error(
+        'The heading property must be set to a non-empty string. This heading describes the purpose of the dialog.',
+      );
     }
   }
 
@@ -251,35 +259,20 @@ export class FhiDialog extends LitElement {
         class="dialog-content"
         @mousedown=${this._handleDialogContentMouseDown}
       >
-        ${this.heading || !this.hideCloseButton
-          ? html`
-              <header>
-                <fhi-headline
-                  ?hidden=${!this.heading}
-                  id="dialog-label"
-                  level="1"
-                  >${this.heading}
-                </fhi-headline>
-                ${!this.hideCloseButton
-                  ? html`
-                      <fhi-button
-                        ?icon-only=${!this.closeButtonLabel}
-                        variant="text"
-                        color="neutral"
-                        size="small"
-                        @click=${this.close}
-                        aria-label=${this.closeButtonLabel
-                          ? ''
-                          : 'Close dialog'}
-                      >
-                        ${this.closeButtonLabel}
-                        <fhi-icon-x></fhi-icon-x>
-                      </fhi-button>
-                    `
-                  : null}
-              </header>
-            `
-          : null}
+        <header>
+          <fhi-headline ?hidden=${!this.heading} id="dialog-label" level="1"
+            >${this.heading}
+          </fhi-headline>
+          <fhi-button
+            variant="text"
+            color="neutral"
+            size="small"
+            @click=${this.close}
+          >
+            ${this.closeButtonLabel}
+            <fhi-icon-x></fhi-icon-x>
+          </fhi-button>
+        </header>
         <slot name="body"></slot>
         <footer>
           <slot
