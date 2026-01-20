@@ -141,10 +141,10 @@ export class FhiDialog extends LitElement {
 
     window.removeEventListener('keydown', this._handleKeyPress);
 
-    this._triggerElement?.focus();
-
     this._dispatchToggleEvent();
     this._dispatchCloseEvent();
+
+    this._triggerElement?.focus();
   }
 
   private _focusDialog() {
@@ -354,10 +354,6 @@ export class FhiDialog extends LitElement {
 
     :host([open]) {
       display: block;
-    }
-
-    dialog:popover-open {
-      animation: var(--motion-transition) fhi-dialog-fade-in;
     }
 
     :host([size='small']) {
