@@ -86,8 +86,6 @@ class DialogPreviewWrapper extends HTMLElement {
       this._button.removeEventListener('click', this._toggle);
     }
 
-    console.log('Closing dialog on disconnect', this._dialog);
-
     if (this._dialog) {
       this._dialog.open = false;
     }
