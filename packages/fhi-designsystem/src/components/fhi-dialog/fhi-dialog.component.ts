@@ -99,11 +99,6 @@ export class FhiDialog extends LitElement {
     }
   }
 
-  disconnectedCallback(): void {
-    super.disconnectedCallback();
-    this._stopForcingFocus();
-  }
-
   protected firstUpdated(_changedProperties: PropertyValues): void {
     super.firstUpdated(_changedProperties);
     this._toggleFooter();
@@ -133,8 +128,6 @@ export class FhiDialog extends LitElement {
     }, 10);
 
     this._dispatchToggleEvent();
-
-    this._startForcingFocus();
   }
 
   /**
@@ -160,30 +153,6 @@ export class FhiDialog extends LitElement {
 
   private _focusDialog() {
     this._dialog.focus();
-  }
-
-  private _forceFocus(event: FocusEvent) {
-    const relatedTarget = event.relatedTarget as Node | null;
-    if (
-      relatedTarget &&
-      !this._dialog.contains(relatedTarget) &&
-      !this._bodySlot
-        ?.assignedNodes({ flatten: true })
-        .some(node => node === relatedTarget) &&
-      !this._footerSlot
-        ?.assignedNodes({ flatten: true })
-        .some(node => node === relatedTarget)
-    ) {
-      this._focusDialog();
-    }
-  }
-
-  private _startForcingFocus() {
-    this._dialog.addEventListener('focusout', this._forceFocus.bind(this));
-  }
-
-  private _stopForcingFocus() {
-    this._dialog.removeEventListener('focusout', this._forceFocus.bind(this));
   }
 
   private _dispatchToggleEvent() {
