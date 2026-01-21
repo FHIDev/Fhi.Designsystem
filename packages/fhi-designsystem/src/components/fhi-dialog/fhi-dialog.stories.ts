@@ -2,7 +2,6 @@ import type { Meta, StoryObj } from '@storybook/web-components';
 import { html } from 'lit';
 import { FhiDialog } from './fhi-dialog.component';
 import { FhiBody } from '../fhi-body/fhi-body.component';
-import { ifDefined } from 'lit/directives/if-defined.js';
 import { FhiButton } from '../fhi-button/fhi-button.component';
 import { FhiTextInput } from '../fhi-text-input/fhi-text-input.component';
 
@@ -39,15 +38,8 @@ const meta: Meta<FhiDialog> = {
     closeButtonLabel: {
       name: 'close-button-label',
       control: { type: 'text' },
-      description:
-        'Label for lukkeknappen. Om ikke gitt vil knappen bli icon-only.',
+      description: 'Label for lukkeknappen.',
       defaultValue: { summary: 'undefined' },
-    },
-    hideCloseButton: {
-      name: 'hide-close-button',
-      control: { type: 'boolean' },
-      description: 'Om `true`, vil lukkeknappen være skjult.',
-      defaultValue: { summary: false },
     },
     heading: {
       control: { type: 'text' },
@@ -119,9 +111,8 @@ export const Preview: Story = {
     html` <fhi-dialog
       ?open=${args.open}
       size=${args.size}
-      close-button-label=${ifDefined(args.closeButtonLabel)}
-      ?hide-close-button=${args.hideCloseButton}
-      heading=${ifDefined(args.heading)}
+      close-button-label=${args.closeButtonLabel}
+      heading=${args.heading}
     >
       <fhi-text-input slot="body" label="Navn på tabell"></fhi-text-input>
       <fhi-button slot="footer" variant="text">Avbryt</fhi-button>
@@ -131,7 +122,6 @@ export const Preview: Story = {
   args: {
     open: false,
     heading: 'Ny tabell',
-    hideCloseButton: false,
     size: 'medium',
   },
 };
