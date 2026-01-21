@@ -65,9 +65,6 @@ export class FhiDialog extends LitElement {
   @query('slot[name="footer"]')
   private _footerSlot!: HTMLSlotElement;
 
-  @query('slot[name="body"]')
-  private _bodySlot!: HTMLSlotElement;
-
   private _triggerElement: HTMLElement | null = null;
   private _bodyOverflowStyle: string = '';
   private _mouseDownInsideDialog: boolean = false;
@@ -118,8 +115,6 @@ export class FhiDialog extends LitElement {
 
     document.body.style.overflow = 'hidden';
 
-    window.addEventListener('keydown', this._handleKeyPress.bind(this));
-
     this._dialog.showModal();
 
     // Delay focus to make sure the windows screen reader properly detects the dialog
@@ -142,8 +137,6 @@ export class FhiDialog extends LitElement {
     document.body.style.overflow = this._bodyOverflowStyle;
 
     this._dialog.close();
-
-    window.removeEventListener('keydown', this._handleKeyPress);
 
     this._dispatchToggleEvent();
     this._dispatchCloseEvent();
@@ -191,16 +184,6 @@ export class FhiDialog extends LitElement {
 
   private _handleDialogContentMouseDown() {
     this._mouseDownInsideDialog = true;
-  }
-
-  private _handleKeyPress(event: KeyboardEvent) {
-    if (!this.open) {
-      return;
-    }
-
-    if (event.key === 'Escape') {
-      this.close();
-    }
   }
 
   private _handleFooterSlotChange() {
