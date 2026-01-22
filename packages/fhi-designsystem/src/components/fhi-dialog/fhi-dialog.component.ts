@@ -259,6 +259,7 @@ export class FhiDialog extends LitElement {
       --dimension-dialog-border-radius: var(--fhi-border-radius-200);
       --dimension-dialog-header-padding: var(--fhi-spacing-500)
         var(--fhi-spacing-500) 0 var(--fhi-spacing-500);
+      --dimension-dialog-header-gap: var(--fhi-spacing-050);
       --dimension-dialog-body-padding: var(--fhi-spacing-500);
       --dimension-dialog-footer-padding: 0 var(--fhi-spacing-500)
         var(--fhi-spacing-500) var(--fhi-spacing-500);
@@ -279,16 +280,22 @@ export class FhiDialog extends LitElement {
       position: absolute;
 
       dialog {
+        display: flex;
+        overflow: hidden;
         border: var(--dimension-dialog-border-width) solid
           var(--color-dialog-border);
         border-radius: var(--dimension-dialog-border-radius);
         animation: var(--motion-transition) fhi-dialog-fade-in;
         padding: 0;
+        .dialog-content {
+          overflow: auto;
+          flex: 1;
+        }
         header {
           display: flex;
           justify-content: space-between;
           align-items: center;
-          gap: var(--fhi-spacing-400);
+          gap: var(--dimension-dialog-header-gap);
           padding: var(--dimension-dialog-header-padding);
         }
         slot[name='body'] {

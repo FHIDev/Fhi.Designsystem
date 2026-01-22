@@ -29,8 +29,8 @@ const meta: Meta<FhiDialog> = {
       defaultValue: { summary: false },
     },
     size: {
-      name: 'max-width',
-      control: { type: 'text' },
+      options: ['medium', 'small'],
+      control: { type: 'select' },
       description:
         'Setter dialogen sin maksimum bredde. Det kan være en predefinert størrelse, (`small` eller `medium`) eller en egendefinert størrelse i rem (e.g `30rem`).',
       defaultValue: { summary: 'medium' },
@@ -81,7 +81,6 @@ class DialogPreviewWrapper extends HTMLElement {
   }
 
   disconnectedCallback() {
-    console.log('disconnectedCallback');
     if (this._button && this._toggle) {
       this._button.removeEventListener('click', this._toggle);
     }
