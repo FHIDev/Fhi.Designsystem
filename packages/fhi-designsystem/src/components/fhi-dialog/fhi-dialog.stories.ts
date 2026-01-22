@@ -119,6 +119,7 @@ export const Preview: Story = {
   args: {
     open: false,
     heading: 'Ny tabell',
+    closeButtonLabel: 'Lukk dialog',
     size: 'medium',
   },
 };
