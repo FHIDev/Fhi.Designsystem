@@ -57,7 +57,7 @@ describe('fhi-dialog', () => {
         html`<fhi-dialog
           heading="Dialog Heading"
           close-button-label="Close"
-          open=""
+          open
         ></fhi-dialog>`,
       );
 
@@ -137,7 +137,7 @@ describe('fhi-dialog', () => {
         html`<fhi-dialog
           heading="Dialog Heading"
           close-button-label="Close"
-          open=""
+          open
         ></fhi-dialog>`,
       );
 
@@ -156,7 +156,7 @@ describe('fhi-dialog', () => {
         html`<fhi-dialog
           heading="Dialog Heading"
           close-button-label="Close"
-          open=""
+          open
         ></fhi-dialog>`,
       );
 
@@ -184,14 +184,14 @@ describe('fhi-dialog', () => {
         html`<fhi-dialog
           heading="Dialog Heading"
           close-button-label="Close"
-          open=""
+          open
         ></fhi-dialog>`,
       );
 
       const escapeEvent = new KeyboardEvent('keydown', {
         key: 'Escape',
       });
-      window.dispatchEvent(escapeEvent);
+      component.dispatchEvent(escapeEvent);
       await component.updateComplete;
 
       expect(component.open).to.equal(false);
@@ -202,7 +202,7 @@ describe('fhi-dialog', () => {
         html`<fhi-dialog
           heading="Dialog Heading"
           close-button-label="Close"
-          open=""
+          open
         ></fhi-dialog>`,
       );
 
@@ -222,7 +222,7 @@ describe('fhi-dialog', () => {
         html`<fhi-dialog
           heading="Dialog Heading"
           close-button-label="Close"
-          open=""
+          open
         ></fhi-dialog>`,
       );
 
@@ -242,7 +242,7 @@ describe('fhi-dialog', () => {
         html`<fhi-dialog
           heading="Dialog Heading"
           close-button-label="Close"
-          open=""
+          open
         ></fhi-dialog>`,
       );
 

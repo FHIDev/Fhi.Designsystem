@@ -123,6 +123,8 @@ export class FhiDialog extends LitElement {
     }, 10);
 
     this._dispatchToggleEvent();
+
+    this.addEventListener('keydown', this.handleKeyPress.bind(this));
   }
 
   /**
@@ -142,6 +144,8 @@ export class FhiDialog extends LitElement {
     this._dispatchCloseEvent();
 
     this._triggerElement?.focus();
+
+    this.removeEventListener('keydown', this.handleKeyPress.bind(this));
   }
 
   private _focusDialog() {
@@ -188,6 +192,13 @@ export class FhiDialog extends LitElement {
 
   private _handleFooterSlotChange() {
     this._toggleFooter();
+  }
+
+  private handleKeyPress(event: KeyboardEvent) {
+    if (event.key === 'Escape') {
+      event.preventDefault();
+      this.close();
+    }
   }
 
   private _toggleFooter() {
