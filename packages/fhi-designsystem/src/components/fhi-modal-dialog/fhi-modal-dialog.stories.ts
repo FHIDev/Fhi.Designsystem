@@ -1,18 +1,18 @@
 import type { Meta, StoryObj } from '@storybook/web-components';
 import { html } from 'lit';
-import { FhiDialog } from './fhi-dialog.component';
+import { FhiModalDialog } from './fhi-modal-dialog.component';
 import { FhiBody } from '../fhi-body/fhi-body.component';
 import { FhiButton } from '../fhi-button/fhi-button.component';
 import { FhiTextInput } from '../fhi-text-input/fhi-text-input.component';
 
-new FhiDialog();
+new FhiModalDialog();
 new FhiBody();
 new FhiButton();
 new FhiTextInput();
 
-const meta: Meta<FhiDialog> = {
-  title: 'Komponenter/Dialog',
-  component: 'fhi-dialog',
+const meta: Meta<FhiModalDialog> = {
+  title: 'Komponenter/Modal Dialog',
+  component: 'fhi-modal-dialog',
   parameters: {
     docs: {
       source: {
@@ -50,20 +50,20 @@ const meta: Meta<FhiDialog> = {
   },
 };
 
-type Story = StoryObj<FhiDialog>;
+type Story = StoryObj<FhiModalDialog>;
 
 /**
  * Wrapper component to handle dialog open/close in the Preview story.
  * This is used to remove event listeners and automatically close the dialog when the story is re-rendered or unmounted.
  */
-class DialogPreviewWrapper extends HTMLElement {
+class ModalDialogPreviewWrapper extends HTMLElement {
   private _toggle: (() => void) | null = null;
   private _button: FhiButton | null = null;
-  private _dialog: FhiDialog | null = null;
+  private _dialog: FhiModalDialog | null = null;
 
   connectedCallback() {
     this._button = this.querySelector('fhi-button');
-    this._dialog = this.querySelector('fhi-dialog');
+    this._dialog = this.querySelector('fhi-modal-dialog');
 
     if (!this._button || !this._dialog) {
       return;
@@ -90,22 +90,25 @@ class DialogPreviewWrapper extends HTMLElement {
     }
   }
 }
-customElements.define('dialog-preview-wrapper', DialogPreviewWrapper);
+customElements.define(
+  'modal-dialog-preview-wrapper',
+  ModalDialogPreviewWrapper,
+);
 
 export const Preview: Story = {
   tags: ['!dev'],
   decorators: [
     Story => html`
-      <dialog-preview-wrapper>
+      <modal-dialog-preview-wrapper>
         <fhi-button>
           <span>Åpne Dialog</span>
         </fhi-button>
         ${Story()}
-      </dialog-preview-wrapper>
+      </modal-dialog-preview-wrapper>
     `,
   ],
   render: args =>
-    html` <fhi-dialog
+    html` <fhi-modal-dialog
       ?open=${args.open}
       size=${args.size}
       close-button-label=${args.closeButtonLabel}
@@ -114,7 +117,7 @@ export const Preview: Story = {
       <fhi-text-input slot="body" label="Navn på tabell"></fhi-text-input>
       <fhi-button slot="footer" variant="text">Avbryt</fhi-button>
       <fhi-button slot="footer">Opprett tabell</fhi-button>
-    </fhi-dialog>`,
+    </fhi-modal-dialog>`,
 
   args: {
     open: false,

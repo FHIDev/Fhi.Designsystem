@@ -1,19 +1,19 @@
 import { fixture, expect } from '@open-wc/testing';
 import { html } from 'lit/static-html.js';
-import { FhiDialog } from './fhi-dialog.component';
+import { FhiModalDialog } from './fhi-modal-dialog.component';
 
-describe('fhi-dialog', () => {
-  new FhiDialog();
+describe('fhi-modal-dialog', () => {
+  new FhiModalDialog();
 
-  let component: FhiDialog;
+  let component: FhiModalDialog;
 
   describe('accessibility', () => {
     beforeEach(async () => {
       component = await fixture(
-        html`<fhi-dialog
+        html`<fhi-modal-dialog
           heading="Dialog Heading"
           close-button-label="Close"
-        ></fhi-dialog>`,
+        ></fhi-modal-dialog>`,
       );
     });
 
@@ -54,11 +54,11 @@ describe('fhi-dialog', () => {
   describe('setting attributes', () => {
     it('has an attribute to set open', async () => {
       component = await fixture(
-        html`<fhi-dialog
+        html`<fhi-modal-dialog
           heading="Dialog Heading"
           close-button-label="Close"
           open
-        ></fhi-dialog>`,
+        ></fhi-modal-dialog>`,
       );
 
       expect(component.getAttribute('open')).to.equal('');
@@ -67,11 +67,11 @@ describe('fhi-dialog', () => {
 
     it('has an attribute to set size', async () => {
       component = await fixture(
-        html`<fhi-dialog
+        html`<fhi-modal-dialog
           heading="Dialog Heading"
           close-button-label="Close"
           size="small"
-        ></fhi-dialog>`,
+        ></fhi-modal-dialog>`,
       );
 
       expect(component.getAttribute('size')).to.equal('small');
@@ -80,10 +80,10 @@ describe('fhi-dialog', () => {
 
     it('has an attribute to set close-button-label', async () => {
       component = await fixture(
-        html`<fhi-dialog
+        html`<fhi-modal-dialog
           heading="Dialog Heading"
           close-button-label="Close me"
-        ></fhi-dialog>`,
+        ></fhi-modal-dialog>`,
       );
 
       expect(component.getAttribute('close-button-label')).to.equal('Close me');
@@ -92,10 +92,10 @@ describe('fhi-dialog', () => {
 
     it('has an attribute to set heading', async () => {
       component = await fixture(
-        html`<fhi-dialog
+        html`<fhi-modal-dialog
           heading="Dialog Heading"
           close-button-label="Close"
-        ></fhi-dialog>`,
+        ></fhi-modal-dialog>`,
       );
 
       expect(component.getAttribute('heading')).to.equal('Dialog Heading');
@@ -108,7 +108,9 @@ describe('fhi-dialog', () => {
       let shouldBeTypeError;
       try {
         component = await fixture(
-          html`<fhi-dialog close-button-label="Close"></fhi-dialog>`,
+          html`<fhi-modal-dialog
+            close-button-label="Close"
+          ></fhi-modal-dialog>`,
         );
       } catch (error) {
         shouldBeTypeError = error;
@@ -121,7 +123,7 @@ describe('fhi-dialog', () => {
       let shouldBeTypeError;
       try {
         component = await fixture(
-          html`<fhi-dialog heading="Dialog Heading"></fhi-dialog>`,
+          html`<fhi-modal-dialog heading="Dialog Heading"></fhi-modal-dialog>`,
         );
       } catch (error) {
         shouldBeTypeError = error;
@@ -134,11 +136,11 @@ describe('fhi-dialog', () => {
   describe('interaction', () => {
     it('will close when the close button is clicked', async () => {
       component = await fixture(
-        html`<fhi-dialog
+        html`<fhi-modal-dialog
           heading="Dialog Heading"
           close-button-label="Close"
           open
-        ></fhi-dialog>`,
+        ></fhi-modal-dialog>`,
       );
 
       const closeButton = component.shadowRoot?.querySelector(
@@ -153,11 +155,11 @@ describe('fhi-dialog', () => {
 
     it('will close when clicking on the backdrop', async () => {
       component = await fixture(
-        html`<fhi-dialog
+        html`<fhi-modal-dialog
           heading="Dialog Heading"
           close-button-label="Close"
           open
-        ></fhi-dialog>`,
+        ></fhi-modal-dialog>`,
       );
 
       const dialog = component.shadowRoot?.querySelector(
@@ -181,11 +183,11 @@ describe('fhi-dialog', () => {
 
     it('will close when pressing the Escape key', async () => {
       component = await fixture(
-        html`<fhi-dialog
+        html`<fhi-modal-dialog
           heading="Dialog Heading"
           close-button-label="Close"
           open
-        ></fhi-dialog>`,
+        ></fhi-modal-dialog>`,
       );
 
       const escapeEvent = new KeyboardEvent('keydown', {
@@ -199,11 +201,11 @@ describe('fhi-dialog', () => {
 
     it('will not close when pressing another key than Escape', async () => {
       component = await fixture(
-        html`<fhi-dialog
+        html`<fhi-modal-dialog
           heading="Dialog Heading"
           close-button-label="Close"
           open
-        ></fhi-dialog>`,
+        ></fhi-modal-dialog>`,
       );
 
       const enterEvent = new KeyboardEvent('keydown', {
@@ -219,11 +221,11 @@ describe('fhi-dialog', () => {
   describe('events', () => {
     it('will dispatch a close event when closed', async () => {
       component = await fixture(
-        html`<fhi-dialog
+        html`<fhi-modal-dialog
           heading="Dialog Heading"
           close-button-label="Close"
           open
-        ></fhi-dialog>`,
+        ></fhi-modal-dialog>`,
       );
 
       let closed = false;
@@ -239,11 +241,11 @@ describe('fhi-dialog', () => {
 
     it('will dispatch a toggle event when closed', async () => {
       component = await fixture(
-        html`<fhi-dialog
+        html`<fhi-modal-dialog
           heading="Dialog Heading"
           close-button-label="Close"
           open
-        ></fhi-dialog>`,
+        ></fhi-modal-dialog>`,
       );
 
       let toggled = false;
@@ -259,10 +261,10 @@ describe('fhi-dialog', () => {
 
     it('will dispatch a toggle event when opened', async () => {
       component = await fixture(
-        html`<fhi-dialog
+        html`<fhi-modal-dialog
           heading="Dialog Heading"
           close-button-label="Close"
-        ></fhi-dialog>`,
+        ></fhi-modal-dialog>`,
       );
 
       let toggled = false;

@@ -5,24 +5,24 @@ import '../fhi-button/fhi-button.component';
 import '../icons/fhi-icon-x.component';
 import '../fhi-headline/fhi-headline.component';
 
-export const FhiDialogSelector = 'fhi-dialog';
+export const FhiModalDialogSelector = 'fhi-modal-dialog';
 
 /**
- * ## FHI Dialog
+ * ## FHI Modal Dialog
  *
- * {@link https://designsystem.fhi.no/?path=/docs/komponenter-dialog--docs}
+ * {@link https://designsystem.fhi.no/?path=/docs/komponenter-modal-dialog--docs}
  *
- * The `fhi-dialog` component is used to display important information or prompt the user for input in a modal window.
+ * The `fhi-modal-dialog` component is used to display important information or prompt the user for input in a modal window.
  * It overlays the main content and usually requires user interaction before returning to the underlying page.
  *
- * @tag fhi-dialog
- * @element fhi-dialog
+ * @tag fhi-modal-dialog
+ * @element fhi-modal-dialog
  *
  * @slot body - The main content of the dialog. Typically contains text or form elements.
  * @slot footer - The footer content of the dialog, typically containing action buttons.
  */
-@customElement(FhiDialogSelector)
-export class FhiDialog extends LitElement {
+@customElement(FhiModalDialogSelector)
+export class FhiModalDialog extends LitElement {
   /**
    * Decides whether the dialog is open or closed.
    * By setting this property to true, the dialog will be shown. Setting it to false will close the dialog.
@@ -186,6 +186,10 @@ export class FhiDialog extends LitElement {
     event.stopPropagation();
   }
 
+  private _handleCloseButtonClick() {
+    this.close();
+  }
+
   private _handleDialogContentMouseDown() {
     this._mouseDownInsideDialog = true;
   }
@@ -231,7 +235,7 @@ export class FhiDialog extends LitElement {
             variant="text"
             color="neutral"
             size="small"
-            @click=${this.close}
+            @click=${this._handleCloseButtonClick}
           >
             ${this.closeButtonLabel}
             <fhi-icon-x></fhi-icon-x>
