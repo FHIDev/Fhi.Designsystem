@@ -226,6 +226,7 @@ export class FhiButton extends LitElement {
 
   render() {
     return html`<button
+      tabindex="0"
       ?disabled=${this.disabled}
       type=${this.type}
       @keyup=${this._handleKeyup}
