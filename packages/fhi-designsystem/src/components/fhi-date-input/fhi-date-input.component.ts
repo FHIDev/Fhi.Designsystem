@@ -22,7 +22,6 @@ export type FhiDateValue = `${number}-${number}-${number}` | undefined; // YYYY-
  */
 @customElement(FhiDateInputSelector)
 export class FhiDateInput extends LitElement {
-  /** @internal */
   static readonly formAssociated = true;
 
   /**

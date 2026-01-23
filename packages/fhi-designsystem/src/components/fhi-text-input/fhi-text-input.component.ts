@@ -17,7 +17,6 @@ export const FhiTextInputSelector = 'fhi-text-input';
  */
 @customElement(FhiTextInputSelector)
 export class FhiTextInput extends LitElement {
-  /** @internal */
   static readonly formAssociated = true;
 
   /**
