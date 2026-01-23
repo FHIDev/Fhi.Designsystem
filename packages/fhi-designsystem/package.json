@@ -45,7 +45,7 @@
     "storybook": "storybook dev -p 6006",
     "storybook:build": "pnpm analyze && storybook build",
     "generate:icons": "node ./scripts/generate-icon-components.js --input ./src/assets/icons/ --output ./src/components/icons --clean-output-folder",
-    "generate:angular-wrappers": "node ./scripts/wrapper-generators/angular/generate-angular-wrappers.js --manifest ../../../dist/npm/custom-elements.json --output ../../../dist/npm/angular-wrappers",
+    "generate:angular-wrappers": "node ./scripts/wrapper-generators/angular/generate-angular-wrappers.js --manifest ./dist/npm/custom-elements.json --output ./dist/npm/angular-wrappers",
     "test": "wtr ./**/*.test.ts --node-resolve --playwright --browsers chromium webkit",
     "lint": "pnpm lint:eslint && pnpm lint:prettier",
     "lint:eslint": "eslint \"**/*.{js,ts}\"",
