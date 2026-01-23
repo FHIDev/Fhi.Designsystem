@@ -216,6 +216,7 @@ export class FhiDialog extends LitElement {
       @mouseup=${this._handleDialogMouseUp}
       aria-modal="true"
       aria-labelledby="dialog-label"
+      closedby="none"
       role="dialog"
     >
       <section
