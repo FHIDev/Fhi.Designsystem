@@ -133,7 +133,7 @@ const main = ({ manifestPath, outputPath }) => {
       ${accessorInfo?.accessor ?? ''}
 
       @Component({
-        selector: '${tagName}-ng',
+        selector: '${tagName.split('fhi-').join('fhi-ng-')}',
         schemas: [CUSTOM_ELEMENTS_SCHEMA],
         standalone: true,
         imports: [${accessorInfo?.accessorName ?? ''}],
