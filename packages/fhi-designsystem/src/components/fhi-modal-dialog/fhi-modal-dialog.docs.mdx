@@ -5,12 +5,12 @@ import { Meta, Primary, Canvas, Controls } from '@storybook/blocks';
 <Meta of={FhiDialogStories} />
 
 # Modal dialog
-Modal dialog er et vindu som åpner og legger seg over annet innhold, hvor brukeren kan fokusere på en spesifikk oppgave eller informasjon. 
-Modal dialoger er modale; de tar over skjermen og hindrer brukeren å interagere med elementer i bakgrunnen. 
+Modal Dialog er et midlertidig vindu som åpner og legger seg over annet innhold, hvor brukeren kan fokusere på en spesifikk oppgave eller informasjon. 
+Den tar over skjermen og hindrer brukeren å interagere med elementer i bakgrunnen. Trykker man på bakgrunnen, lukkes vinduet.
 
 ## Passer til
 - Å gi brukeren fokus på sjeldne, men viktige oppgaver
-- Å sikre at brukeren får med seg kritisk informasjon
+- Å sikre at brukeren får med seg viktig informasjon
 
 <Canvas of={FhiDialogStories.Preview} />
 
@@ -22,3 +22,13 @@ Modal dialoger er modale; de tar over skjermen og hindrer brukeren å interagere
   Dette er et kjent problem med Safari sin "clean-up" av DOM-elementer, og vi jobber med en løsning.
   Om du opplever dette problemet, kan det hjelpe å wrappe den gjeldende teksten i en `<span>` eller lignende HTML-tag.
 </div>
+
+## Bruk
+Her er noen råd, tips og retningslinjer om bruk av Modal Dialog:
+
+- Modal Dialog er med vilje forstyrrende; den tar over skjermen og krever brukerens oppmerksomhet. Vei alltid opp bruk av modal mot å navigere til en egen side eller å kunne presentere innholdet som en del av hovedinnholdet.
+- Unngå for omfattende eller komplekst innhold. Jo tydeligere (og ofte mer avgrenset) formål, jo bedre.
+- Modal Dialog kan være nyttig som et ekstra sikkerslag mot å sette i gang kritiske handlinger, for eksempel som en ekstra bekreftelse på at brukeren faktisk ønsker å slette noe som ikke kan gjenopprettes.
+- Unngå flere dialoger oppå hverandre. Hvis du likevel trenger det, for eksempel for å bekrefte sletting av en oppføring om noe – allerede vist i en dialog - kan du bruke `size` for å sikre at den nye dialogen for å beholde mer av konteksten under.
+- Hold overskriften kort, konsis og tydelig på den nye konteksten.
+- "Lukk" passer som `close-button-label` i de fleste tilfeller.

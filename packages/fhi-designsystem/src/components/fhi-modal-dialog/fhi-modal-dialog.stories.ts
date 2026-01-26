@@ -38,13 +38,13 @@ const meta: Meta<FhiModalDialog> = {
     closeButtonLabel: {
       name: 'close-button-label',
       control: { type: 'text' },
-      description: 'Label for lukkeknappen.',
+      description: '**Påkrevd**. Label for lukkeknappen.',
       defaultValue: { summary: 'undefined' },
     },
     heading: {
       control: { type: 'text' },
       description:
-        'Tittelen på dialogen. Vises øverst, over resten av innholdet.',
+        '**Påkrevd**. Tittelen på dialogen. Vises øverst, over resten av innholdet.',
       defaultValue: { summary: 'undefined' },
     },
   },
@@ -101,7 +101,7 @@ export const Preview: Story = {
     Story => html`
       <modal-dialog-preview-wrapper>
         <fhi-button>
-          <span>Åpne Dialog</span>
+          <span>Åpne dialogen</span>
         </fhi-button>
         ${Story()}
       </modal-dialog-preview-wrapper>
