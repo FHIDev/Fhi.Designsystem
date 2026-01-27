@@ -162,6 +162,14 @@ export class FhiButton extends LitElement {
     event?.preventDefault();
     event?.stopPropagation();
 
+    this._dispatchFocusEvent();
+  }
+
+  private _dispatchFocusEvent(): void {
+    /**
+     * @type {Event} - Standard DOM event with the type `focus`.
+     * This event is dispatched when the button has received focus .
+     * */
     this.dispatchEvent(
       new FocusEvent('focus', { bubbles: true, composed: true }),
     );
@@ -171,6 +179,14 @@ export class FhiButton extends LitElement {
     event?.preventDefault();
     event?.stopPropagation();
 
+    this._dispatchBlurEvent();
+  }
+
+  private _dispatchBlurEvent(): void {
+    /**
+     * @type {Event} - Standard DOM event with the type `blur`.
+     * This event is dispatched when the button has lost focus .
+     * */
     this.dispatchEvent(
       new FocusEvent('blur', { bubbles: true, composed: true }),
     );
