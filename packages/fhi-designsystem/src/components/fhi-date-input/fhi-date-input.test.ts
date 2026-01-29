@@ -15,6 +15,7 @@ describe('fhi-date-input', () => {
           label="Dato"
           name="date"
           message="Message"
+          description="Description"
         ></fhi-date-input>
       `);
     });
@@ -35,6 +36,7 @@ describe('fhi-date-input', () => {
           label="Dato"
           name="date"
           message="Message"
+          description="Description"
           disabled
         ></fhi-date-input>
       `);
@@ -47,6 +49,7 @@ describe('fhi-date-input', () => {
           label="Dato"
           name="date"
           message="Message"
+          description="Description"
           readonly
         ></fhi-date-input>
       `);
@@ -107,6 +110,17 @@ describe('fhi-date-input', () => {
 
       expect(component.getAttribute('message')).to.equal('message text');
       expect(component.message).to.equal('message text');
+    });
+
+    it('has an attribute to set description', async () => {
+      component = await fixture(
+        html`<fhi-date-input description="description text"></fhi-date-input>`,
+      );
+
+      expect(component.getAttribute('description')).to.equal(
+        'description text',
+      );
+      expect(component.description).to.equal('description text');
     });
 
     it('has an attribute to set status', async () => {
@@ -339,7 +353,7 @@ describe('fhi-date-input', () => {
     });
   });
 
-  describe('label and message', () => {
+  describe('label, message & description', () => {
     it('displays a label', async () => {
       component = await fixture(
         html`<fhi-date-input label="label text"></fhi-date-input>`,
@@ -360,6 +374,17 @@ describe('fhi-date-input', () => {
 
       expect(message).to.not.equal(null);
       expect(message?.textContent).to.equal('message text');
+    });
+
+    it('displays a description', async () => {
+      component = await fixture(
+        html`<fhi-date-input description="description text"></fhi-date-input>`,
+      );
+
+      const description = component.shadowRoot!.querySelector('.description');
+
+      expect(description).to.not.equal(null);
+      expect(description?.textContent).to.equal('description text');
     });
   });
 

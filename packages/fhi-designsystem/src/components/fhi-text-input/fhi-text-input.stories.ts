@@ -59,7 +59,7 @@ const meta: Meta<FhiTextInput> = {
     message: {
       control: 'text',
       description:
-        'Vises under inputfeltet. Brukes til å gi tilbakemeldinger til brukere, for eksempel ved feil eller mangler i feltet. Ved Error skal det være en melding om hva som mangler eller må justeres.',
+        'Vises under inputfeltet. Brukes til å gi veiledning til brukere, for eksempel ved feil eller mangler i feltet. Ved Error skal det være en melding om hva som mangler eller må justeres.',
       defaultValue: { summary: 'undefined' },
     },
     description: {
