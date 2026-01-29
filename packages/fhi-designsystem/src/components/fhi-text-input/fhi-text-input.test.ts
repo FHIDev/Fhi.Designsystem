@@ -16,6 +16,7 @@ describe('fhi-text-input', () => {
           name="name"
           placeholder="placeholder"
           message="message"
+          description="description"
         ></fhi-text-input>`,
       );
     });
@@ -37,6 +38,7 @@ describe('fhi-text-input', () => {
           name="name"
           placeholder="placeholder"
           message="message"
+          description="description"
           disabled
         ></fhi-text-input>`,
       );
@@ -50,6 +52,7 @@ describe('fhi-text-input', () => {
           name="name"
           placeholder="placeholder"
           message="message"
+          description="description"
           readonly
         ></fhi-text-input>`,
       );
@@ -101,6 +104,15 @@ describe('fhi-text-input', () => {
 
       expect(component.getAttribute('message')).to.equal('my message');
       expect(component.message).to.equal('my message');
+    });
+
+    it('has an attribute to set the description', async () => {
+      component = await fixture(
+        html`<fhi-text-input description="my description"></fhi-text-input>`,
+      );
+
+      expect(component.getAttribute('description')).to.equal('my description');
+      expect(component.description).to.equal('my description');
     });
 
     it('has an attribute to set the status', async () => {
@@ -332,7 +344,7 @@ describe('fhi-text-input', () => {
     });
   });
 
-  describe('label & message', async () => {
+  describe('label, description & message', async () => {
     it('displays a label', async () => {
       component = await fixture(
         html`<fhi-text-input label="my label"></fhi-text-input>`,
@@ -353,6 +365,17 @@ describe('fhi-text-input', () => {
 
       expect(message).to.not.equal(null);
       expect(message!.textContent).to.equal('my message');
+    });
+
+    it('displays a description', async () => {
+      component = await fixture(
+        html`<fhi-text-input description="my description"></fhi-text-input>`,
+      );
+
+      const description = component.shadowRoot!.querySelector('.description');
+
+      expect(description).to.not.equal(null);
+      expect(description!.textContent).to.equal('my description');
     });
   });
 });

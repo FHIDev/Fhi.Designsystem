@@ -35,6 +35,13 @@ export class FhiTextInput extends LitElement {
   @property({ type: String }) message?: string = undefined;
 
   /**
+   * The message shown above the input field.
+   * This is often used to provide additional information to the user.
+   * @type {string}
+   */
+  @property({ type: String }) description?: string = undefined;
+
+  /**
    * Sets the placeholder text for the input field.
    * This text is displayed when the input field is empty, providing a hint to the user about the expected input.
    * @type {string}
@@ -178,6 +185,9 @@ export class FhiTextInput extends LitElement {
   render() {
     return html`
       ${this.label && html`<label for="input-element">${this.label}</label>`}
+      ${this.description
+        ? html`<p class="description">${this.description}</p>`
+        : ''}
       <input
         id="input-element"
         name=${ifDefined(this.name)}
@@ -214,7 +224,7 @@ export class FhiTextInput extends LitElement {
         --fhi-typography-label-small-letter-spacing
       );
 
-      --dimension-label-padding-bottom: var(--fhi-spacing-050);
+      --dimension-label-padding-bottom: var(--fhi-spacing-0);
 
       /* input */
       --color-input-placeholder: var(--fhi-color-neutral-base-default);
@@ -273,6 +283,24 @@ export class FhiTextInput extends LitElement {
       );
 
       --dimension-message-margin-top: var(--fhi-spacing-050);
+
+      /* description */
+      --color-description-text: var(--fhi-color-neutral-text-subtle);
+      --color-description-text-error: var(--fhi-color-danger-text-default);
+      --typography-description-font-weight: var(
+        --fhi-typography-body-small-font-weight
+      );
+      --typography-description-font-size: var(
+        --fhi-typography-body-small-font-size
+      );
+      --typography-description-line-height: var(
+        --fhi-typography-body-small-line-height
+      );
+      --typography-description-letter-spacing: var(
+        --fhi-typography-body-small-letter-spacing
+      );
+
+      --dimension-description-margin-top: var(--fhi-spacing-0);
     }
 
     :host {
@@ -327,6 +355,15 @@ export class FhiTextInput extends LitElement {
         line-height: var(--typography-message-line-height);
         letter-spacing: var(--typography-message-letter-spacing);
       }
+
+      .description {
+        margin: var(--dimension-description-margin-top) 0 0 0;
+        color: var(--color-description-text);
+        font-weight: var(--typography-description-font-weight);
+        font-size: var(--typography-description-font-size);
+        line-height: var(--typography-description-line-height);
+        letter-spacing: var(--typography-description-letter-spacing);
+      }
     }
 
     :host([disabled]) {
@@ -365,6 +402,9 @@ export class FhiTextInput extends LitElement {
       }
       .message {
         color: var(--color-message-text-error);
+      }
+      .description {
+        color: var(--color-description-text-error);
       }
     }
   `;
