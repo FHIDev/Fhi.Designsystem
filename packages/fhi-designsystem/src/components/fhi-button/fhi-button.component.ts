@@ -613,6 +613,7 @@ export class FhiButton extends LitElement {
         -webkit-font-smoothing: antialiased;
         transition: var(--motion-transition);
         width: 100%;
+        justify-items: center;
 
         cursor: pointer;
         &:disabled {
