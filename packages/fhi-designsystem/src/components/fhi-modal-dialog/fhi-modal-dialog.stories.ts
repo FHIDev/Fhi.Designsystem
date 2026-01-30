@@ -32,7 +32,7 @@ const meta: Meta<FhiModalDialog> = {
       options: ['medium', 'small'],
       control: { type: 'select' },
       description:
-        'Setter dialogen sin maksimum bredde. Det kan være en predefinert størrelse, (`small` eller `medium`) eller en egendefinert størrelse i rem (e.g `30rem`).',
+        'Setter dialogen sin maksimum bredde. Det kan være de predefinerte størrelsene `small` eller `medium`).',
       defaultValue: { summary: 'medium' },
     },
     closeButtonLabel: {
