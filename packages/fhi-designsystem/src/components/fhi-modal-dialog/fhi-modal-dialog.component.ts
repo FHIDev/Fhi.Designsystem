@@ -299,7 +299,7 @@ export class FhiModalDialog extends LitElement {
         header {
           display: flex;
           justify-content: space-between;
-          align-items: center;
+          align-items: start;
           gap: var(--dimension-dialog-header-gap);
           padding: var(--dimension-dialog-header-padding);
         }
