@@ -173,6 +173,10 @@ const main = ({ manifestPath, outputPath }) => {
       }
     `;
 
+    console.log(
+      `Generated Angular wrapper: ${tagName} - ${path.join(outputPath, `${tagName}.component.ts`)}`,
+    );
+
     fs.writeFileSync(
       `${path.join(outputPath, `${tagName}.component.ts`)}`,
       template,
