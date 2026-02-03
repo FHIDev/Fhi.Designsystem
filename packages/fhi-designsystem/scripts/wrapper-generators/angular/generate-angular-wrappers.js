@@ -105,9 +105,7 @@ const main = ({ manifestPath, outputPath }) => {
 
     const className = componentClass.name;
     const tagName = componentClass.tagName;
-    const attributes = (componentClass.attributes || []).filter(
-      maybeAttribute => maybeAttribute.attribute,
-    );
+    const attributes = componentClass.attributes || [];
     const events = componentClass.events || [];
     const slots = componentClass.slots || [];
     const isFormAssociated = componentClass.members.some(
@@ -173,10 +171,6 @@ const main = ({ manifestPath, outputPath }) => {
       }
     `;
 
-    console.log(
-      `Generated Angular wrapper: ${tagName} - ${path.join(outputPath, `${tagName}.component.ts`)}`,
-    );
-
     fs.writeFileSync(
       `${path.join(outputPath, `${tagName}.component.ts`)}`,
       template,
@@ -190,6 +184,10 @@ const main = ({ manifestPath, outputPath }) => {
     path.join(outputPath, 'index.ts'),
     indexTsFile.join('\n'),
     'utf8',
+  );
+
+  console.log(
+    `Successfully generated ${indexTsFile.length} Angular wrappers to ${outputPath}`,
   );
 };
 
