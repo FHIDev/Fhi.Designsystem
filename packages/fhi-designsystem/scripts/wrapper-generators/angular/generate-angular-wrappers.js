@@ -149,7 +149,7 @@ const main = ({ manifestPath, outputPath }) => {
           .map(
             attribute => `
             /** ${attribute.description || ''} */
-            @Input("${attribute.name}") ${attribute.fieldName}${attribute.default === 'undefined' ? '?' : ''}: ${attribute.type.text || 'string'}${
+            @Input("${attribute.name}") ${attribute.fieldName}${typeof attribute.default === 'undefined' ? '?' : ''}: ${attribute.type.text || 'string'}${
               attribute.default ? ` = ${attribute.default}` : ''
             };
         `,
