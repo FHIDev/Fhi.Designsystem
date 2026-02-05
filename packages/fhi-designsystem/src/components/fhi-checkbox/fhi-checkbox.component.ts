@@ -17,7 +17,6 @@ export const FhiCheckboxSelector = 'fhi-checkbox';
  */
 @customElement(FhiCheckboxSelector)
 export class FhiCheckbox extends LitElement {
-  /** @internal */
   static readonly formAssociated = true;
 
   /**
