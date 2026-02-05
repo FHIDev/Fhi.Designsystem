@@ -253,7 +253,7 @@ export class FhiDateInput extends LitElement {
       --typography-label-font-weight: var(
         --fhi-typography-label-small-font-weight
       );
-      --typography-label-font-size: var(--fhi-typography-label-small-size);
+      --typography-label-font-size: var(--fhi-typography-label-small-font-size);
       --typography-label-line-height: var(
         --fhi-typography-label-small-line-height
       );
