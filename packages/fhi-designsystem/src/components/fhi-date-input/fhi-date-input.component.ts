@@ -40,11 +40,12 @@ export class FhiDateInput extends LitElement {
   @property({ type: String }) message?: string = undefined;
 
   /**
-   * The description shown above the input field.
+   * The help-text shown above the input field.
    * This is often used to provide additional information to the user.
    * @type {string}
    */
-  @property({ type: String }) description?: string = undefined;
+  @property({ type: String, attribute: 'help-text' }) helpText?: string =
+    undefined;
 
   /**
    * Sets minium date available for selection in the input field. Format `YYYY-MM-DD`.
@@ -206,8 +207,7 @@ export class FhiDateInput extends LitElement {
   render() {
     return html`
       ${this.label && html`<label for="input-element">${this.label}</label>`}
-      ${this.description &&
-      html`<p class="description">${this.description}</p>`}
+      ${this.helpText && html`<p class="help-text">${this.helpText}</p>`}
       <div class="input-container">
         <input
           type="date"
@@ -261,8 +261,6 @@ export class FhiDateInput extends LitElement {
         --fhi-typography-label-small-letter-spacing
       );
 
-      --dimension-label-padding-bottom: var(--fhi-spacing-0);
-
       /* input */
       --color-input-text: var(--fhi-color-neutral-text-default);
       --color-input-text-error: var(--fhi-color-danger-text-default);
@@ -300,6 +298,7 @@ export class FhiDateInput extends LitElement {
       --dimension-input-border-radius: var(--fhi-border-radius-050);
       --dimension-input-padding-left: var(--fhi-spacing-150);
       --dimension-input-padding-right: var(--fhi-spacing-150);
+      --dimension-input-padding-top: var(--fhi-spacing-050);
 
       --motion-input-transition: all var(--fhi-motion-ease-default)
         var(--fhi-motion-duration-quick);
@@ -331,20 +330,20 @@ export class FhiDateInput extends LitElement {
 
       --dimension-message-margin-top: var(--fhi-spacing-050);
 
-      /* description */
-      --color-description-text: var(--fhi-color-neutral-text-subtle);
-      --color-description-text-error: var(--fhi-color-danger-text-default);
+      /* help-text */
+      --color-help-text-text: var(--fhi-color-neutral-text-subtle);
+      --color-help-text-text-error: var(--fhi-color-danger-text-default);
 
-      --typography-description-font-weight: var(
+      --typography-help-text-font-weight: var(
         --fhi-typography-body-small-font-weight
       );
-      --typography-description-font-size: var(
+      --typography-help-text-font-size: var(
         --fhi-typography-body-small-font-size
       );
-      --typography-description-line-height: var(
+      --typography-help-text-line-height: var(
         --fhi-typography-body-small-line-height
       );
-      --typography-description-letter-spacing: var(
+      --typography-help-text-letter-spacing: var(
         --fhi-typography-body-small-letter-spacing
       );
     }
@@ -362,7 +361,6 @@ export class FhiDateInput extends LitElement {
         line-height: var(--typography-label-line-height);
         letter-spacing: var(--typography-label-letter-spacing);
         color: var(--color-label-text);
-        padding-bottom: var(--dimension-label-padding-bottom);
       }
 
       input[type='date'] {
@@ -404,13 +402,14 @@ export class FhiDateInput extends LitElement {
         letter-spacing: var(--typography-message-letter-spacing);
       }
 
-      .description {
-        margin: var(--dimension-description-margin-top) 0 0 0;
-        color: var(--color-description-text);
-        font-weight: var(--typography-description-font-weight);
-        font-size: var(--typography-description-font-size);
-        line-height: var(--typography-description-line-height);
-        letter-spacing: var(--typography-description-letter-spacing);
+      .help-text {
+        margin: var(--dimension-help-text-margin-top) 0 0 0;
+        color: var(--color-help-text-text);
+        font-weight: var(--typography-help-text-font-weight);
+        font-size: var(--typography-help-text-font-size);
+        line-height: var(--typography-help-text-line-height);
+        letter-spacing: var(--typography-help-text-letter-spacing);
+        padding-bottom: var(--dimension-help-text-padding-bottom);
       }
       [type='date']::-webkit-inner-spin-button {
         opacity: 0;
@@ -494,8 +493,8 @@ export class FhiDateInput extends LitElement {
       .message {
         color: var(--color-message-text-error);
       }
-      .description {
-        color: var(--color-description-text-error);
+      .help-text {
+        color: var(--color-help-text-text-error);
       }
       .date-icon {
         background-color: var(--color-input-background-error);

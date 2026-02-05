@@ -29,7 +29,7 @@ const meta: Meta<FhiDateInput> = {
     html`<fhi-date-input
       label=${ifDefined(args.label)}
       message=${ifDefined(args.message)}
-      description=${ifDefined(args.description)}
+      help-text=${ifDefined(args.helpText)}
       status=${ifDefined(args.status)}
       name=${ifDefined(args.name)}
       value=${ifDefined(args.value)}
@@ -81,7 +81,8 @@ const meta: Meta<FhiDateInput> = {
         'Vises under inputfeltet. Brukes til å gi veiledning til brukeren. Brukes blant annet ved Error for å forklare hva som mangler eller må justeres.',
       defaultValue: { summary: 'undefined' },
     },
-    description: {
+    helpText: {
+      name: 'help-text',
       control: { type: 'text' },
       description:
         'Vises over inputfeltet. Brukes til å gi utvidede forklaringer eller hjelpsomme hint til utfylling.',
@@ -114,7 +115,7 @@ export const Preview: Story = {
   args: {
     label: 'Label',
     message: 'Message',
-    description: 'Description',
+    helpText: 'Help-text',
   },
 };
 

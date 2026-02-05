@@ -30,7 +30,7 @@ const meta: Meta<FhiTextInput> = {
       label=${ifDefined(args.label)}
       message=${ifDefined(args.message)}
       placeholder=${ifDefined(args.placeholder)}
-      description=${ifDefined(args.description)}
+      help-text=${ifDefined(args.helpText)}
       status=${ifDefined(args.status)}
       name=${ifDefined(args.name)}
       value=${ifDefined(args.value)}
@@ -62,7 +62,8 @@ const meta: Meta<FhiTextInput> = {
         'Vises under inputfeltet. Brukes til å gi veiledning til brukeren. Brukes blant annet ved Error for å forklare hva som mangler eller må justeres.',
       defaultValue: { summary: 'undefined' },
     },
-    description: {
+    helpText: {
+      name: 'help-text',
       control: 'text',
       description:
         'Vises over inputfeltet. Brukes til å gi utvidede forklaringer eller hjelpsomme hint til utfylling.',
@@ -101,7 +102,7 @@ export const Preview: Story = {
   args: {
     label: 'Label',
     message: 'Message',
-    description: 'Description',
+    helpText: 'Help text',
   },
 };
 
@@ -150,7 +151,7 @@ export const WithLabelMessageValueError: Story = {
   name: 'Error',
   args: {
     label: 'E-postadresse',
-    description: 'Eks: designsystemet@fhi.no',
+    helpText: 'Eks: designsystemet@fhi.no',
     message:
       'Ufullstendig adresse, sjekk at krøllalfa (@) og domene er med og riktig skrevet',
     value: 'designsystemet.fhi.no',
