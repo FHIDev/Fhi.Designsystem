@@ -128,6 +128,7 @@ export const Readonly: Story = {
   args: {
     label: 'Navn',
     value: 'Ola Nordmann',
+    helpText: 'Hentet fra Folkerigisteret',
     readonly: true,
   },
 };
@@ -137,11 +138,11 @@ export const WithNoAttributes: Story = {
   args: {},
 };
 
-export const WithLabelMessagePlaceholder: Story = {
-  name: 'Label and message',
+export const WithHelpText: Story = {
+  name: 'HelpText',
   args: {
     label: 'Adresse',
-    message: 'Vennligst skriv inn bostedsadresse',
+    helpText: 'Valgfritt',
   },
 };
 
@@ -157,21 +158,20 @@ export const WithLabelMessageValueError: Story = {
   },
 };
 
-export const WithReadonlyValueLabelMessage: Story = {
+export const WithReadonlyValueLabelHelpText: Story = {
   name: 'Readonly',
   args: {
     label: 'Navn',
-    message: 'Hentet fra Folkeregisteret',
+    helpText: 'Hentet fra Folkeregisteret',
     value: 'Ola Nordmann',
     readonly: true,
   },
 };
 
-export const WithDisabledLabelMessage: Story = {
+export const WithDisabledLabel: Story = {
   name: 'Disabled',
   args: {
     label: 'Navn',
-    message: 'Navn må være minst 2 bokstaver og kan ikke inneholde spesialtegn',
     disabled: true,
   },
 };

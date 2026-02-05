@@ -125,7 +125,7 @@ export const WithNoAttributes: Story = {
 export const MinMax: Story = {
   name: 'Min og Max',
   args: {
-    label: 'Label',
+    label: 'Dato',
     message: 'Field with min and max date',
     min: '2025-09-01',
     max: '2025-09-30',
@@ -135,8 +135,9 @@ export const MinMax: Story = {
 export const Error: Story = {
   name: 'Error',
   args: {
-    label: 'Label',
-    message: 'Informative error message',
+    label: 'Dato',
+    helpText: 'Må fylles ut',
+    message: 'Dato må fylles ut',
     status: 'error',
   },
 };
@@ -145,7 +146,6 @@ export const Disabled: Story = {
   name: 'Disabled',
   args: {
     label: 'Label',
-    message: 'This field is disabled',
     disabled: true,
   },
 };
@@ -153,7 +153,7 @@ export const Disabled: Story = {
 export const Readonly: Story = {
   name: 'ReadOnly',
   args: {
-    label: 'Set date',
+    label: 'Fødselsdato',
     value: '2025-09-26',
     readonly: true,
   },
