@@ -59,7 +59,7 @@ const meta: Meta<FhiTextInput> = {
     message: {
       control: 'text',
       description:
-        'Vises under inputfeltet. Brukes til å gi veiledning til brukere, for eksempel ved feil eller mangler i feltet. Ved Error skal det være en melding om hva som mangler eller må justeres.',
+        'Vises under inputfeltet. Brukes til å gi veiledning til brukeren. Brukes blant annet ved Error for å forklare hva som mangler eller må justeres.',
       defaultValue: { summary: 'undefined' },
     },
     description: {
@@ -152,7 +152,7 @@ export const WithLabelMessageValueError: Story = {
     label: 'E-postadresse',
     description: 'Eks: designsystemet@fhi.no',
     message:
-      'Ufullstendig adresse, sjekk at krøllalfa (@) og domene er med og riktig skrevet.',
+      'Ufullstendig adresse, sjekk at krøllalfa (@) og domene er med og riktig skrevet',
     value: 'designsystemet.fhi.no',
     status: 'error',
   },

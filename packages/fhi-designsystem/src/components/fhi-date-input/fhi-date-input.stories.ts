@@ -78,7 +78,7 @@ const meta: Meta<FhiDateInput> = {
     message: {
       control: { type: 'text' },
       description:
-        'Vises under inputfeltet. Brukes til å gi veiledning til brukeren, for eksempel ved feil eller mangler i feltet. Ved Error skal det være en melding om hva som mangler eller må justeres.',
+        'Vises under inputfeltet. Brukes til å gi veiledning til brukeren. Brukes blant annet ved Error for å forklare hva som mangler eller må justeres.',
       defaultValue: { summary: 'undefined' },
     },
     description: {
