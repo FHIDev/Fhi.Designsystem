@@ -100,8 +100,6 @@ export const Preview: Story = {
   tags: ['!dev'],
   args: {
     label: 'Label',
-    message: 'Message',
-    description: 'Description',
   },
 };
 
