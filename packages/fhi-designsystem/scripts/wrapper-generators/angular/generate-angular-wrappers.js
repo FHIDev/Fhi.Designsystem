@@ -136,7 +136,6 @@ const main = ({ manifestPath, outputPath }) => {
         selector: '${angularSelector}',
         schemas: [CUSTOM_ELEMENTS_SCHEMA],
         standalone: true,
-        imports: [${accessorInfo?.accessorName ?? ''}],
         template: ${`\`
             <${tagName}
               ${attributes.map(attribute => `[${attribute.name}]="${attribute.fieldName}"`).join(' ')}
