@@ -13,7 +13,7 @@ const snakeToCamel = text => {
 };
 
 // Value accessors for form elements are needed to integrate custom elements with Angular Forms. Without these, Angular Forms won't be able to read and write values to the custom elements.
-const getFormElementAccessor = tagName => {
+const getFormElementAccessor = (tagName, angularSelector) => {
   const accessorName = `${snakeToPascal(tagName)}ValueAccessor`;
 
   switch (tagName) {
@@ -25,7 +25,7 @@ const getFormElementAccessor = tagName => {
         accessorName,
         accessorImports: ['NG_VALUE_ACCESSOR', 'DefaultValueAccessor'],
         accessor: `
-          @Directive({ selector: '${tagName}[formControlName],${tagName}[formControl],${tagName}[ngModel]', standalone: true, providers: [{ provide: NG_VALUE_ACCESSOR, useExisting: forwardRef(() => ${accessorName}), multi: true }] })
+          @Directive({ selector: '${angularSelector}[formControlName],${angularSelector}[formControl],${angularSelector}[ngModel]', standalone: true, providers: [{ provide: NG_VALUE_ACCESSOR, useExisting: forwardRef(() => ${accessorName}), multi: true }] })
           export class ${accessorName} extends DefaultValueAccessor {}
           `,
       };
@@ -34,7 +34,7 @@ const getFormElementAccessor = tagName => {
         accessorName,
         accessorImports: ['NG_VALUE_ACCESSOR', 'CheckboxControlValueAccessor'],
         accessor: `
-          @Directive({ selector: '${tagName}[formControlName],${tagName}[formControl],${tagName}[ngModel]', standalone: true, providers: [{ provide: NG_VALUE_ACCESSOR, useExisting: forwardRef(() => ${accessorName}), multi: true }] })
+          @Directive({ selector: '${angularSelector}[formControlName],${angularSelector}[formControl],${angularSelector}[ngModel]', standalone: true, providers: [{ provide: NG_VALUE_ACCESSOR, useExisting: forwardRef(() => ${accessorName}), multi: true }] })
           export class ${accessorName} extends CheckboxControlValueAccessor {}
           `,
       };
@@ -43,7 +43,7 @@ const getFormElementAccessor = tagName => {
         accessorName,
         accessorImports: ['NG_VALUE_ACCESSOR', 'RadioControlValueAccessor'],
         accessor: `
-          @Directive({ selector: '${tagName}[formControlName],${tagName}[formControl],${tagName}[ngModel]', standalone: true, providers: [{ provide: NG_VALUE_ACCESSOR, useExisting: forwardRef(() => ${accessorName}), multi: true }] })
+          @Directive({ selector: '${angularSelector}[formControlName],${angularSelector}[formControl],${angularSelector}[ngModel]', standalone: true, providers: [{ provide: NG_VALUE_ACCESSOR, useExisting: forwardRef(() => ${accessorName}), multi: true }] })
           export class ${accessorName} extends RadioControlValueAccessor {}
           `,
       };
@@ -116,8 +116,10 @@ const main = ({ manifestPath, outputPath }) => {
       throw new Error(`No tagName found for component class ${className}`);
     }
 
+    const angularSelector = tagName.split('fhi-').join('fhi-ng-');
+
     const accessorInfo = isFormAssociated
-      ? getFormElementAccessor(tagName)
+      ? getFormElementAccessor(tagName, angularSelector)
       : null;
 
     const template = `
@@ -131,7 +133,7 @@ const main = ({ manifestPath, outputPath }) => {
       ${accessorInfo?.accessor ?? ''}
 
       @Component({
-        selector: '${tagName.split('fhi-').join('fhi-ng-')}',
+        selector: '${angularSelector}',
         schemas: [CUSTOM_ELEMENTS_SCHEMA],
         standalone: true,
         imports: [${accessorInfo?.accessorName ?? ''}],
