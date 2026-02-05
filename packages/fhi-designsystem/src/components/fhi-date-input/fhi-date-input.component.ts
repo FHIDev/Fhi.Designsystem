@@ -374,7 +374,8 @@ export class FhiDateInput extends LitElement {
         border: var(--dimension-input-border-width) solid
           var(--color-input-border);
         border-radius: var(--dimension-input-border-radius);
-        padding: 0 var(--dimension-input-padding-right) 0
+        padding: var(--dimension-input-padding-top)
+          var(--dimension-input-padding-right) 0
           var(--dimension-input-padding-left);
         color: var(--color-input-text);
         background-color: var(--color-input-background);
