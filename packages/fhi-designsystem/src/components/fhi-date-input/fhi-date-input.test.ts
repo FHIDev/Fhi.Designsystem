@@ -15,7 +15,7 @@ describe('fhi-date-input', () => {
           label="Dato"
           name="date"
           message="Message"
-          description="Description"
+          help-text="Help text"
         ></fhi-date-input>
       `);
     });
@@ -36,7 +36,7 @@ describe('fhi-date-input', () => {
           label="Dato"
           name="date"
           message="Message"
-          description="Description"
+          help-text="Help text"
           disabled
         ></fhi-date-input>
       `);
@@ -49,7 +49,7 @@ describe('fhi-date-input', () => {
           label="Dato"
           name="date"
           message="Message"
-          description="Description"
+          help-text="Help text"
           readonly
         ></fhi-date-input>
       `);
@@ -112,15 +112,13 @@ describe('fhi-date-input', () => {
       expect(component.message).to.equal('message text');
     });
 
-    it('has an attribute to set description', async () => {
+    it('has an attribute to set help-text', async () => {
       component = await fixture(
-        html`<fhi-date-input description="description text"></fhi-date-input>`,
+        html`<fhi-date-input help-text="help text"></fhi-date-input>`,
       );
 
-      expect(component.getAttribute('description')).to.equal(
-        'description text',
-      );
-      expect(component.description).to.equal('description text');
+      expect(component.getAttribute('help-text')).to.equal('help text');
+      expect(component.helpText).to.equal('help text');
     });
 
     it('has an attribute to set status', async () => {
@@ -353,7 +351,7 @@ describe('fhi-date-input', () => {
     });
   });
 
-  describe('label, message & description', () => {
+  describe('label, message & helpText', () => {
     it('displays a label', async () => {
       component = await fixture(
         html`<fhi-date-input label="label text"></fhi-date-input>`,
@@ -376,15 +374,15 @@ describe('fhi-date-input', () => {
       expect(message?.textContent).to.equal('message text');
     });
 
-    it('displays a description', async () => {
+    it('displays helpText', async () => {
       component = await fixture(
-        html`<fhi-date-input description="description text"></fhi-date-input>`,
+        html`<fhi-date-input help-text="help text"></fhi-date-input>`,
       );
 
-      const description = component.shadowRoot!.querySelector('.description');
+      const helpText = component.shadowRoot!.querySelector('.help-text');
 
-      expect(description).to.not.equal(null);
-      expect(description?.textContent).to.equal('description text');
+      expect(helpText).to.not.equal(null);
+      expect(helpText?.textContent).to.equal('help text');
     });
   });
 
