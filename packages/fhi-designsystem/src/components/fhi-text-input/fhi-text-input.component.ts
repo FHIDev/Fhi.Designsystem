@@ -258,7 +258,7 @@ export class FhiTextInput extends LitElement {
       --dimension-input-border-radius: var(--fhi-border-radius-050);
       --dimension-input-padding-left: var(--fhi-spacing-150);
       --dimension-input-padding-right: var(--fhi-spacing-150);
-      --dimension-input-padding-top: var(--fhi-spacing-050);
+      --dimension-input-margin-top: var(--fhi-spacing-050);
 
       --motion-input-transition: all var(--fhi-motion-ease-default)
         var(--fhi-motion-duration-quick);
@@ -311,7 +311,6 @@ export class FhiTextInput extends LitElement {
         line-height: var(--typography-label-line-height);
         letter-spacing: var(--typography-label-letter-spacing);
         color: var(--color-label-text);
-        padding-bottom: var(--dimension-label-padding-bottom);
       }
 
       input {
@@ -320,9 +319,9 @@ export class FhiTextInput extends LitElement {
         border: var(--dimension-input-border-width) solid
           var(--color-input-border);
         border-radius: var(--dimension-input-border-radius);
-        padding: var(--dimension-input-padding-top)
-          var(--dimension-input-padding-right) 0
+        padding: 0 var(--dimension-input-padding-right) 0
           var(--dimension-input-padding-left);
+        margin-top: var(--dimension-input-margin-top);
         color: var(--color-input-text);
         background-color: var(--color-input-background);
         font-family: var(--typography-font-family);
