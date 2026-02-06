@@ -15,6 +15,7 @@ describe('fhi-date-input', () => {
           label="Dato"
           name="date"
           message="Message"
+          help-text="Help text"
         ></fhi-date-input>
       `);
     });
@@ -35,6 +36,7 @@ describe('fhi-date-input', () => {
           label="Dato"
           name="date"
           message="Message"
+          help-text="Help text"
           disabled
         ></fhi-date-input>
       `);
@@ -47,6 +49,7 @@ describe('fhi-date-input', () => {
           label="Dato"
           name="date"
           message="Message"
+          help-text="Help text"
           readonly
         ></fhi-date-input>
       `);
@@ -107,6 +110,15 @@ describe('fhi-date-input', () => {
 
       expect(component.getAttribute('message')).to.equal('message text');
       expect(component.message).to.equal('message text');
+    });
+
+    it('has an attribute to set help-text', async () => {
+      component = await fixture(
+        html`<fhi-date-input help-text="help text"></fhi-date-input>`,
+      );
+
+      expect(component.getAttribute('help-text')).to.equal('help text');
+      expect(component.helpText).to.equal('help text');
     });
 
     it('has an attribute to set status', async () => {
@@ -339,7 +351,7 @@ describe('fhi-date-input', () => {
     });
   });
 
-  describe('label and message', () => {
+  describe('label, message & helpText', () => {
     it('displays a label', async () => {
       component = await fixture(
         html`<fhi-date-input label="label text"></fhi-date-input>`,
@@ -360,6 +372,17 @@ describe('fhi-date-input', () => {
 
       expect(message).to.not.equal(null);
       expect(message?.textContent).to.equal('message text');
+    });
+
+    it('displays helpText', async () => {
+      component = await fixture(
+        html`<fhi-date-input help-text="help text"></fhi-date-input>`,
+      );
+
+      const helpText = component.shadowRoot!.querySelector('.help-text');
+
+      expect(helpText).to.not.equal(null);
+      expect(helpText?.textContent).to.equal('help text');
     });
   });
 

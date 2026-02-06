@@ -16,6 +16,7 @@ describe('fhi-text-input', () => {
           name="name"
           placeholder="placeholder"
           message="message"
+          help-text="help text"
         ></fhi-text-input>`,
       );
     });
@@ -37,6 +38,7 @@ describe('fhi-text-input', () => {
           name="name"
           placeholder="placeholder"
           message="message"
+          help-text="help text"
           disabled
         ></fhi-text-input>`,
       );
@@ -50,6 +52,7 @@ describe('fhi-text-input', () => {
           name="name"
           placeholder="placeholder"
           message="message"
+          help-text="help text"
           readonly
         ></fhi-text-input>`,
       );
@@ -101,6 +104,15 @@ describe('fhi-text-input', () => {
 
       expect(component.getAttribute('message')).to.equal('my message');
       expect(component.message).to.equal('my message');
+    });
+
+    it('has an attribute to set helpText', async () => {
+      component = await fixture(
+        html`<fhi-text-input help-text="my help text"></fhi-text-input>`,
+      );
+
+      expect(component.getAttribute('help-text')).to.equal('my help text');
+      expect(component.helpText).to.equal('my help text');
     });
 
     it('has an attribute to set the status', async () => {
@@ -332,7 +344,7 @@ describe('fhi-text-input', () => {
     });
   });
 
-  describe('label & message', async () => {
+  describe('label, helpText & message', async () => {
     it('displays a label', async () => {
       component = await fixture(
         html`<fhi-text-input label="my label"></fhi-text-input>`,
@@ -353,6 +365,17 @@ describe('fhi-text-input', () => {
 
       expect(message).to.not.equal(null);
       expect(message!.textContent).to.equal('my message');
+    });
+
+    it('displays helpText', async () => {
+      component = await fixture(
+        html`<fhi-text-input help-text="my help text"></fhi-text-input>`,
+      );
+
+      const helpText = component.shadowRoot!.querySelector('.help-text');
+
+      expect(helpText).to.not.equal(null);
+      expect(helpText!.textContent).to.equal('my help text');
     });
   });
 });

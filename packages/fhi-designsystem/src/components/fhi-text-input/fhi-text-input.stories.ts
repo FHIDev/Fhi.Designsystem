@@ -30,6 +30,7 @@ const meta: Meta<FhiTextInput> = {
       label=${ifDefined(args.label)}
       message=${ifDefined(args.message)}
       placeholder=${ifDefined(args.placeholder)}
+      help-text=${ifDefined(args.helpText)}
       status=${ifDefined(args.status)}
       name=${ifDefined(args.name)}
       value=${ifDefined(args.value)}
@@ -58,7 +59,14 @@ const meta: Meta<FhiTextInput> = {
     message: {
       control: 'text',
       description:
-        'Setter melding som vises til brukeren. Dette vises under inputfeltet og er ment for å gi veiledning til brukeren.',
+        'Vises under inputfeltet. Brukes til å gi veiledning til brukeren. Brukes blant annet ved Error for å forklare hva som mangler eller må justeres.',
+      defaultValue: { summary: 'undefined' },
+    },
+    helpText: {
+      name: 'help-text',
+      control: 'text',
+      description:
+        'Vises over inputfeltet. Brukes til å gi utvidede forklaringer eller hjelpsomme hint til utfylling.',
       defaultValue: { summary: 'undefined' },
     },
     placeholder: {
@@ -93,7 +101,6 @@ export const Preview: Story = {
   tags: ['!dev'],
   args: {
     label: 'Label',
-    message: 'Message',
   },
 };
 
@@ -121,6 +128,7 @@ export const Readonly: Story = {
   args: {
     label: 'Navn',
     value: 'Ola Nordmann',
+    helpText: 'Hentet fra Folkerigisteret',
     readonly: true,
   },
 };
@@ -130,11 +138,11 @@ export const WithNoAttributes: Story = {
   args: {},
 };
 
-export const WithLabelMessagePlaceholder: Story = {
-  name: 'Label and message',
+export const WithHelpText: Story = {
+  name: 'HelpText',
   args: {
     label: 'Adresse',
-    message: 'Vennligst skriv inn bostedsadresse',
+    helpText: 'Valgfritt',
   },
 };
 
@@ -142,28 +150,28 @@ export const WithLabelMessageValueError: Story = {
   name: 'Error',
   args: {
     label: 'E-postadresse',
+    helpText: 'Eks: designsystemet@fhi.no',
     message:
-      'Ufullstendig adresse, sjekk at krøllalfa (@) og domene er med og riktig skrevet (f.eks: designsystemet@fhi.no)',
+      'Ufullstendig adresse, sjekk at krøllalfa (@) og domene er med og riktig skrevet',
     value: 'designsystemet.fhi.no',
     status: 'error',
   },
 };
 
-export const WithReadonlyValueLabelMessage: Story = {
+export const WithReadonlyValueLabelHelpText: Story = {
   name: 'Readonly',
   args: {
     label: 'Navn',
-    message: 'Hentet fra Folkeregisteret',
+    helpText: 'Hentet fra Folkeregisteret',
     value: 'Ola Nordmann',
     readonly: true,
   },
 };
 
-export const WithDisabledLabelMessage: Story = {
+export const WithDisabledLabel: Story = {
   name: 'Disabled',
   args: {
     label: 'Navn',
-    message: 'Navn må være minst 2 bokstaver og kan ikke inneholde spesialtegn',
     disabled: true,
   },
 };
