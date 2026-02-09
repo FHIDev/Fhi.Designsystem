@@ -53,6 +53,11 @@ const getFormElementAccessor = (tagName, angularSelector) => {
   }
 };
 
+const isOptionalAttribute = attribute =>
+  attribute.default === 'null' ||
+  attribute.default === 'undefined' ||
+  !attribute.default;
+
 const main = ({ manifestPath, outputPath }) => {
   const indexTsFile = [];
 
@@ -150,7 +155,7 @@ const main = ({ manifestPath, outputPath }) => {
           .map(
             attribute => `
             /** ${attribute.description || ''} */
-            @Input("${attribute.name}") ${attribute.fieldName}${!attribute.default || attribute.default === 'null' || attribute.default === 'undefined' ? '?' : ''}: ${`${attribute.type.text}${attribute.default === 'null' ? ' | null' : ''}` || 'string'}${
+            @Input("${attribute.name}") ${attribute.fieldName}${isOptionalAttribute(attribute) ? '?' : ''}: ${`${attribute.type.text}${attribute.default === 'null' ? ' | null' : ''}` || 'string'}${
               attribute.default ? ` = ${attribute.default}` : ''
             };
         `,
