@@ -141,7 +141,7 @@ const main = ({ manifestPath, outputPath }) => {
               ${attributes.map(attribute => `[${attribute.name}]="${attribute.fieldName}"`).join(' ')}
               ${events.map(event => `(${event.name})="handle${snakeToPascal(event.name)}($event)"`).join(' ')}
             >
-              ${slots.map(slot => `<ng-content ${slot.name ? `select="[${slot.name}]"` : ''}></ng-content>`).join('\n')}
+              ${slots.map(slot => `<ng-content ${slot.name ? `select="[slot='${slot.name}']"` : ''}></ng-content>`).join('\n')}
             </${tagName}>
           \``},
       })
