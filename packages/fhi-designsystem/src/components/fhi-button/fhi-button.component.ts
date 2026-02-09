@@ -158,40 +158,6 @@ export class FhiButton extends LitElement {
     return false;
   }
 
-  private _handleFocus(event: FocusEvent): void {
-    event?.preventDefault();
-    event?.stopPropagation();
-
-    this._dispatchFocusEvent();
-  }
-
-  private _dispatchFocusEvent(): void {
-    /**
-     * @type {Event} - Standard DOM event with the type `focus`.
-     * This event is dispatched when the button has received focus .
-     * */
-    this.dispatchEvent(
-      new FocusEvent('focus', { bubbles: true, composed: true }),
-    );
-  }
-
-  private _handleBlur(event: FocusEvent): void {
-    event?.preventDefault();
-    event?.stopPropagation();
-
-    this._dispatchBlurEvent();
-  }
-
-  private _dispatchBlurEvent(): void {
-    /**
-     * @type {Event} - Standard DOM event with the type `blur`.
-     * This event is dispatched when the button has lost focus .
-     * */
-    this.dispatchEvent(
-      new FocusEvent('blur', { bubbles: true, composed: true }),
-    );
-  }
-
   private _getIconSize(): string {
     switch (this.size) {
       case 'small':
@@ -265,8 +231,6 @@ export class FhiButton extends LitElement {
       @keyup=${this._handleKeyup}
       @keydown=${this._handleKeydown}
       @click=${this._handleClick}
-      @focus=${this._handleFocus}
-      @blur=${this._handleBlur}
     >
       <div class="slot-container">
         <slot @slotchange=${this._handleSlotChange}></slot>
