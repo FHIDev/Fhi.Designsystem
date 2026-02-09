@@ -222,6 +222,7 @@ export class FhiTextInput extends LitElement {
       --typography-label-letter-spacing: var(
         --fhi-typography-label-small-letter-spacing
       );
+      --dimension-label-margin-bottom: var(--fhi-spacing-050);
 
       /* input */
       --color-input-placeholder: var(--fhi-color-neutral-base-default);
@@ -258,7 +259,6 @@ export class FhiTextInput extends LitElement {
       --dimension-input-border-radius: var(--fhi-border-radius-050);
       --dimension-input-padding-left: var(--fhi-spacing-150);
       --dimension-input-padding-right: var(--fhi-spacing-150);
-      --dimension-input-margin-top: var(--fhi-spacing-050);
 
       --motion-input-transition: all var(--fhi-motion-ease-default)
         var(--fhi-motion-duration-quick);
@@ -297,6 +297,7 @@ export class FhiTextInput extends LitElement {
       --typography-help-text-letter-spacing: var(
         --fhi-typography-body-small-letter-spacing
       );
+      --dimension-help-text-margin-bottom: var(--fhi-spacing-050);
     }
 
     :host {
@@ -311,6 +312,11 @@ export class FhiTextInput extends LitElement {
         line-height: var(--typography-label-line-height);
         letter-spacing: var(--typography-label-letter-spacing);
         color: var(--color-label-text);
+        margin: 0 0 var(--dimension-label-margin-bottom) 0;
+      }
+
+      label:has(+ p) {
+        margin: 0 0 0 0;
       }
 
       input {
@@ -321,7 +327,6 @@ export class FhiTextInput extends LitElement {
         border-radius: var(--dimension-input-border-radius);
         padding: 0 var(--dimension-input-padding-right) 0
           var(--dimension-input-padding-left);
-        margin-top: var(--dimension-input-margin-top);
         color: var(--color-input-text);
         background-color: var(--color-input-background);
         font-family: var(--typography-font-family);
@@ -353,12 +358,12 @@ export class FhiTextInput extends LitElement {
       }
 
       .help-text {
-        margin: var(--dimension-help-text-margin-top) 0 0 0;
         color: var(--color-help-text-text);
         font-weight: var(--typography-help-text-font-weight);
         font-size: var(--typography-help-text-font-size);
         line-height: var(--typography-help-text-line-height);
         letter-spacing: var(--typography-help-text-letter-spacing);
+        margin: 0 0 var(--dimension-help-text-margin-bottom) 0;
       }
     }
 

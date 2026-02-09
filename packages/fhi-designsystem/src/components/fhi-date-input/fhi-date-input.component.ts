@@ -260,6 +260,7 @@ export class FhiDateInput extends LitElement {
       --typography-label-letter-spacing: var(
         --fhi-typography-label-small-letter-spacing
       );
+      --dimension-label-margin-bottom: var(--fhi-spacing-050);
 
       /* input */
       --color-input-text: var(--fhi-color-neutral-text-default);
@@ -298,7 +299,6 @@ export class FhiDateInput extends LitElement {
       --dimension-input-border-radius: var(--fhi-border-radius-050);
       --dimension-input-padding-left: var(--fhi-spacing-150);
       --dimension-input-padding-right: var(--fhi-spacing-150);
-      --dimension-input-margin-top: var(--fhi-spacing-050);
 
       --motion-input-transition: all var(--fhi-motion-ease-default)
         var(--fhi-motion-duration-quick);
@@ -346,6 +346,7 @@ export class FhiDateInput extends LitElement {
       --typography-help-text-letter-spacing: var(
         --fhi-typography-body-small-letter-spacing
       );
+      --dimension-help-text-margin-bottom: var(--fhi-spacing-050);
     }
 
     :host {
@@ -361,6 +362,10 @@ export class FhiDateInput extends LitElement {
         line-height: var(--typography-label-line-height);
         letter-spacing: var(--typography-label-letter-spacing);
         color: var(--color-label-text);
+        margin: 0 0 var(--dimension-label-margin-bottom) 0;
+      }
+      label:has(+ p) {
+        margin: 0 0 0 0;
       }
 
       input[type='date'] {
@@ -410,6 +415,7 @@ export class FhiDateInput extends LitElement {
         font-size: var(--typography-help-text-font-size);
         line-height: var(--typography-help-text-line-height);
         letter-spacing: var(--typography-help-text-letter-spacing);
+        margin: 0 0 var(--dimension-help-text-margin-bottom) 0;
       }
       [type='date']::-webkit-inner-spin-button {
         opacity: 0;
