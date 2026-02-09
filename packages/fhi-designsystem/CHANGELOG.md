@@ -1,5 +1,19 @@
 # Changelog
 
+## [0.29.0](https://github.com/FHIDev/Fhi/compare/v0.28.4...v0.29.0) (2026-02-02)
+
+### 🚀 Features
+
+* New Component - Dialog modal ([#315](https://github.com/FHIDev/Fhi/issues/315)) ([231a414](https://github.com/FHIDev/Fhi/commit/231a4144c6c6598929ea51236b6a200c453fd131))
+
+### 📑 Documentation
+
+* Add debug instructions to the docs ([#337](https://github.com/FHIDev/Fhi/issues/337)) ([1600f23](https://github.com/FHIDev/Fhi/commit/1600f23048718b0b4e16526d21237078fa1afc13))
+
+### Other
+
+* Fix audit issues ([#338](https://github.com/FHIDev/Fhi/issues/338)) ([48d791d](https://github.com/FHIDev/Fhi/commit/48d791d213eeb1524b4614c5838ba575c2aefc63))
+
 ## [0.28.4](https://github.com/FHIDev/Fhi.Designsystem/compare/v0.28.3...v0.28.4) (2026-01-12)
 
 
