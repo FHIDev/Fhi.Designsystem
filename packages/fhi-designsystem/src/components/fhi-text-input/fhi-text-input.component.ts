@@ -22,21 +22,21 @@ export class FhiTextInput extends LitElement {
   /**
    * The text that labels the input field.
    * An input field should always have a label to ensure accessibility.
-   * @type {string}
+   *
    */
   @property({ type: String }) label?: string = undefined;
 
   /**
    * The message shown beneath the input field.
    * This is often used to provide additional information or feedback to the user.
-   * @type {string}
+   *
    */
   @property({ type: String }) message?: string = undefined;
 
   /**
    * Sets the placeholder text for the input field.
    * This text is displayed when the input field is empty, providing a hint to the user about the expected input.
-   * @type {string}
+   *
    */
   @property({ type: String }) placeholder?: string | null = null;
 
@@ -45,21 +45,21 @@ export class FhiTextInput extends LitElement {
    *
    * The `error` status is used to indicate that there is an issue with the input, such as invalid or missing data.
    * @reflect
-   * @type {'error'}
+   *
    */
   @property({ type: String, reflect: true }) status?: 'error' = undefined;
 
   /**
    * Sets the input to read-only. A read-only field cannot be modified by the user but may be submitted with the form.
    * @reflect
-   * @type {boolean}
+   *
    */
   @property({ type: Boolean, reflect: true }) readonly? = false;
 
   /**
    * Disables the input.  This changes its appearance and makes it non-interactive.
    * @reflect
-   * @type {boolean}
+   *
    */
   @property({ type: Boolean, reflect: true }) disabled? = false;
 
@@ -75,7 +75,7 @@ export class FhiTextInput extends LitElement {
    * See: {@link https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input#name}
    *
    * @reflect
-   * @type {string}
+   *
    */
   @property({ type: String, reflect: true })
   get name(): string | undefined {
@@ -98,7 +98,7 @@ export class FhiTextInput extends LitElement {
    * This attribute conforms with the standard HTML `value` attribute for input fields.
    * See: {@link https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input#value}
    *
-   * @type {string}
+   *
    */
   @property({ type: String })
   get value(): string {
@@ -126,7 +126,7 @@ export class FhiTextInput extends LitElement {
 
   private _dispatchChangeEvent(): void {
     /**
-     * @type {Event} - Standard DOM event with the type `change`.
+     *   - Standard DOM event with the type `change`.
      * This event is dispatched when the value of the input changes.
      */
     this.dispatchEvent(
@@ -139,7 +139,7 @@ export class FhiTextInput extends LitElement {
 
   private _dispatchInputEvent(): void {
     /**
-     * @type {Event} - Standard DOM event with the type `input`.
+     *   - Standard DOM event with the type `input`.
      * This event is dispatched when the value of the input changes.
      */
     this.dispatchEvent(

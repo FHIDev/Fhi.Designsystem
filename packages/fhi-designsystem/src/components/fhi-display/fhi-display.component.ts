@@ -24,9 +24,9 @@ export class FhiDisplay extends LitElement {
   /**
    * Sets the font size of the given text.
    * @reflect
-   * @type {'large' | 'medium' | 'small'}
+   *
    */
-  @property({ type: String, reflect: true }) size:
+  @property({ type: String, reflect: true }) size?:
     | 'large'
     | 'medium'
     | 'small' = 'medium';
@@ -44,13 +44,13 @@ export class FhiDisplay extends LitElement {
    *  </fhi-display>
    * ```
    *
-   * @type {string}
+   *
    */
   @property({ type: String }) color?: string;
 
   /**
    * Sets the heading level for the text, corresponding to HTML heading elements `<h1>` to `<h6>`.
-   * @type {1 | 2 | 3 | 4 | 5 | 6}
+   *
    */
   @property({ type: Number }) level!: DisplayLevel;
 

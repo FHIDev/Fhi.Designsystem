@@ -24,7 +24,7 @@ export class FhiHeadline extends LitElement {
   /**
    * Sets the size of the text styles.
    * @reflect
-   * @type {'large' | 'medium' | 'small'}
+   *
    */
   @property({ type: String, reflect: true }) size:
     | 'large'
@@ -44,13 +44,13 @@ export class FhiHeadline extends LitElement {
    *  </fhi-headline>
    * ```
    *
-   * @type {string}
+   *
    */
   @property({ type: String }) color?: string;
 
   /**
    * Sets the heading level for the text, corresponding to HTML heading elements `<h1>` to `<h6>`.
-   * @type {1 | 2 | 3 | 4 | 5 | 6}
+   *
    */
   @property({ type: Number }) level!: HeadlineLevel;
 

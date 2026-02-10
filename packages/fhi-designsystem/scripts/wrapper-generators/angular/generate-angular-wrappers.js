@@ -54,9 +54,7 @@ const getFormElementAccessor = (tagName, angularSelector) => {
 };
 
 const isOptionalAttribute = attribute =>
-  attribute.default === 'null' ||
-  attribute.default === 'undefined' ||
-  !attribute.default;
+  attribute.type.text.includes('undefined') || attribute.default !== undefined;
 
 const main = ({ manifestPath, outputPath }) => {
   const indexTsFile = [];
@@ -155,7 +153,7 @@ const main = ({ manifestPath, outputPath }) => {
           .map(
             attribute => `
             /** ${attribute.description || ''} */
-            @Input("${attribute.name}") ${attribute.fieldName}${isOptionalAttribute(attribute) ? '?' : ''}: ${`${attribute.type.text}${attribute.default === 'null' ? ' | null' : ''}` || 'string'}${
+            @Input({alias: "${attribute.name}", required: ${!isOptionalAttribute(attribute)}}) ${attribute.fieldName}${isOptionalAttribute(attribute) ? '?' : '!'}: ${`${attribute.type.text}${attribute.default === 'null' ? ' | null' : ''}` || 'string'}${
               attribute.default ? ` = ${attribute.default}` : ''
             };
         `,
@@ -166,7 +164,7 @@ const main = ({ manifestPath, outputPath }) => {
           .map(
             event => `
             /** ${event.description || ''} */
-            @Output("${event.name}") ${snakeToCamel(event.name)} = new EventEmitter<${event.type.text || 'any'}>();
+            @Output({alias: "${event.name}"}) ${snakeToCamel(event.name)} = new EventEmitter<${event.type.text || 'any'}>();
             handle${snakeToPascal(event.name)}(event: Event) {
               event.stopPropagation();
               this.${snakeToCamel(event.name)}.emit(event);

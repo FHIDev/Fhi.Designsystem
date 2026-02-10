@@ -22,19 +22,19 @@ export class FhiCheckbox extends LitElement {
   /**
    * The text label assigned to and displayed next to the checkbox.
    * You should always provide a label.
-   * @type {string}
+   *
    */
   @property({ type: String }) label?: string = undefined;
 
   /**
    * The name of the checkbox. This is submitted with the form data as a `key` when the checkbox is checked.
-   * @type {string}
+   *
    */
   @property({ type: String }) name?: string = undefined;
 
   /**
    * The value of the checkbox. This is submitted with the form data as a `value` when the checkbox is checked.
-   * @type {string}
+   *
    */
   @property({ type: String }) value: string = 'on';
 
@@ -42,22 +42,22 @@ export class FhiCheckbox extends LitElement {
    * Sets the visual status of the checkbox. There is currently only one status available: `error`.
    * The `error` status is used to indicate that there is an issue with the checkbox, such as a required checkbox not being checked.
    * @reflect
-   * @type {'error' | undefined}
+   *
    */
-  @property({ type: String, reflect: true }) status?: 'error' | undefined;
+  @property({ type: String, reflect: true }) status?: 'error';
 
   /**
    * Whether the checkbox is checked or not.
-   * @type {boolean}
+   *
    */
-  @property({ type: Boolean }) checked? = false;
+  @property({ type: Boolean }) checked?: boolean = false;
 
   /**
    * Disables the checkbox. This changes its appearance and makes it non-interactive.
    * @reflect
-   * @type {boolean}
+   *
    */
-  @property({ type: Boolean, reflect: true }) disabled? = false;
+  @property({ type: Boolean, reflect: true }) disabled?: boolean = false;
 
   private _internals: ElementInternals;
 
@@ -90,7 +90,7 @@ export class FhiCheckbox extends LitElement {
 
   private _dispatchChangeEvent(): void {
     /**
-     * @type {Event} - Standard DOM event with the type `change`.
+     *   - Standard DOM event with the type `change`.
      * This event is dispatched when the checkbox is checked or unchecked.
      */
     this.dispatchEvent(new Event('change', { bubbles: true }));
@@ -98,7 +98,7 @@ export class FhiCheckbox extends LitElement {
 
   private _dispatchInputEvent(): void {
     /**
-     * @type {Event} - Standard DOM event with the type `input`.
+     *   - Standard DOM event with the type `input`.
      * This event is dispatched when the checkbox is checked or unchecked.
      */
     this.dispatchEvent(new Event('input', { bubbles: true, composed: true }));
