@@ -54,6 +54,10 @@ For eksempel, kan du bruke `fhi-button` – hvor som helst i Blazor-appen – so
 
 **Merk:** Eksempelet tar utgangspunkt i at du har brukt CDN for å installerte pakken.
 
+<div class="callout-warning">
+  På grunn av måten Blazor håndterer DOM event delegation vil ikke `@onfocus` eller `@onblur` virke med FHI Designsystemes komponenter. Ta i bruk `@onfocusin` / `@onfocusout` isteden. 
+</div>
+
 <style>{`
   .sbdocs-content a {
     text-decoration: underline;
