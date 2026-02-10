@@ -164,7 +164,7 @@ const main = ({ manifestPath, outputPath }) => {
           .map(
             event => `
             /** ${event.description || ''} */
-            @Output({alias: "${event.name}"}) ${snakeToCamel(event.name)} = new EventEmitter<${event.type.text || 'any'}>();
+            @Output("${event.name}") ${snakeToCamel(event.name)} = new EventEmitter<${event.type.text || 'any'}>();
             handle${snakeToPascal(event.name)}(event: Event) {
               event.stopPropagation();
               this.${snakeToCamel(event.name)}.emit(event);
