@@ -47,7 +47,7 @@ export class FhiTextInput extends LitElement {
    * This text is displayed when the input field is empty, providing a hint to the user about the expected input.
    * @type {string}
    */
-  @property({ type: String }) placeholder?: string | undefined = undefined;
+  @property({ type: String }) placeholder?: string = undefined;
 
   /**
    * Sets the visual status of the input. There is currently only one status available: `error`.
