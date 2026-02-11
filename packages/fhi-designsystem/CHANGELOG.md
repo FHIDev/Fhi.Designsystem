@@ -1,5 +1,15 @@
 # Changelog
 
+## [0.30.0](https://github.com/FHIDev/Fhi/compare/v0.29.0...v0.30.0) (2026-02-10)
+
+### 🚀 Features
+
+* make width 100% ([#357](https://github.com/FHIDev/Fhi/issues/357)) ([413d702](https://github.com/FHIDev/Fhi/commit/413d702b63de861f0f8f9abd301e482946cbe6c9))
+
+### 📑 Documentation
+
+* focus- og blurevent ([#352](https://github.com/FHIDev/Fhi/issues/352)) ([e86e891](https://github.com/FHIDev/Fhi/commit/e86e8918e68d318638eac928c77891dc117f74ef))
+
 ## [0.29.0](https://github.com/FHIDev/Fhi/compare/v0.28.4...v0.29.0) (2026-02-02)
 
 ### 🚀 Features
