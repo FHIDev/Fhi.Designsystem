@@ -126,7 +126,6 @@ export const MinMax: Story = {
   name: 'Min og Max',
   args: {
     label: 'Dato',
-    message: 'Field with min and max date',
     min: '2025-09-01',
     max: '2025-09-30',
   },
