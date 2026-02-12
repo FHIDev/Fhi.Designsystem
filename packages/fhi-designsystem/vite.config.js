@@ -1,6 +1,7 @@
 import { defineConfig, loadEnv } from 'vite';
 import { viteStaticCopy } from 'vite-plugin-static-copy';
 import generateFile from 'vite-plugin-generate-file';
+import dts from 'vite-plugin-dts';
 import fs from 'fs';
 import path from 'path';
 
@@ -126,6 +127,7 @@ export default defineConfig(({ mode }) => {
     case 'npm':
       return {
         plugins: [
+          dts(),
           resolveVirtualModule({
             moduleId: virtualLibraryModule.path,
             moduleContent: virtualLibraryModule.code,
