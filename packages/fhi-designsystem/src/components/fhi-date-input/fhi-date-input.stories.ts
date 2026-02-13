@@ -29,6 +29,7 @@ const meta: Meta<FhiDateInput> = {
     html`<fhi-date-input
       label=${ifDefined(args.label)}
       message=${ifDefined(args.message)}
+      help-text=${ifDefined(args.helpText)}
       status=${ifDefined(args.status)}
       name=${ifDefined(args.name)}
       value=${ifDefined(args.value)}
@@ -77,7 +78,14 @@ const meta: Meta<FhiDateInput> = {
     message: {
       control: { type: 'text' },
       description:
-        'Setter melding som vises til brukeren. Dette vises under inputfeltet og er ment for å gi veiledning til brukeren.',
+        'Vises under inputfeltet. Brukes til å gi veiledning til brukeren. Brukes blant annet ved Error for å forklare hva som mangler eller må justeres.',
+      defaultValue: { summary: 'undefined' },
+    },
+    helpText: {
+      name: 'help-text',
+      control: { type: 'text' },
+      description:
+        'Vises over inputfeltet. Brukes til å gi utvidede forklaringer eller hjelpsomme hint til utfylling.',
       defaultValue: { summary: 'undefined' },
     },
     readonly: {
@@ -105,8 +113,7 @@ type Story = StoryObj<FhiDateInput>;
 export const Preview: Story = {
   tags: ['!dev'],
   args: {
-    label: 'Label',
-    message: 'Message',
+    label: 'Dato',
   },
 };
 
@@ -118,8 +125,7 @@ export const WithNoAttributes: Story = {
 export const MinMax: Story = {
   name: 'Min og Max',
   args: {
-    label: 'Label',
-    message: 'Field with min and max date',
+    label: 'Dato',
     min: '2025-09-01',
     max: '2025-09-30',
   },
@@ -128,8 +134,9 @@ export const MinMax: Story = {
 export const Error: Story = {
   name: 'Error',
   args: {
-    label: 'Label',
-    message: 'Informative error message',
+    label: 'Dato',
+    helpText: 'Må fylles ut',
+    message: 'Dato må fylles ut',
     status: 'error',
   },
 };
@@ -138,7 +145,6 @@ export const Disabled: Story = {
   name: 'Disabled',
   args: {
     label: 'Label',
-    message: 'This field is disabled',
     disabled: true,
   },
 };
@@ -146,7 +152,7 @@ export const Disabled: Story = {
 export const Readonly: Story = {
   name: 'ReadOnly',
   args: {
-    label: 'Set date',
+    label: 'Fødselsdato',
     value: '2025-09-26',
     readonly: true,
   },
