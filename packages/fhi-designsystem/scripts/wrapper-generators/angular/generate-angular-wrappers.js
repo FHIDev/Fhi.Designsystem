@@ -165,7 +165,7 @@ const main = ({ manifestPath, outputPath }) => {
             event => `
             /** ${event.description || ''} */
             @Output("${event.name}") ${snakeToCamel(event.name)} = new EventEmitter<Event>();
-            handle${snakeToPascal(event.name)}Event(event: Event) {
+            handle${snakeToPascal(event.name)}(event: Event) {
               event.stopPropagation();
               this.${snakeToCamel(event.name)}.emit(event);
             }
