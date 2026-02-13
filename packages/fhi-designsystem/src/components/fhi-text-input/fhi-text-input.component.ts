@@ -22,21 +22,18 @@ export class FhiTextInput extends LitElement {
   /**
    * The text that labels the input field.
    * An input field should always have a label to ensure accessibility.
-   *
    */
   @property({ type: String }) label?: string = undefined;
 
   /**
    * The message shown beneath the input field.
    * This is often used to provide additional information or feedback to the user.
-   *
    */
   @property({ type: String }) message?: string = undefined;
 
   /**
    * The message shown above the input field.
    * This is often used to provide additional information to the user.
-   * @type {string}
    */
   @property({ type: String, attribute: 'help-text' }) helpText?: string =
     undefined;
@@ -44,7 +41,6 @@ export class FhiTextInput extends LitElement {
   /**
    * Sets the placeholder text for the input field.
    * This text is displayed when the input field is empty, providing a hint to the user about the expected input.
-   *
    */
   @property({ type: String }) placeholder?: string = undefined;
 
@@ -53,21 +49,18 @@ export class FhiTextInput extends LitElement {
    *
    * The `error` status is used to indicate that there is an issue with the input, such as invalid or missing data.
    * @reflect
-   *
    */
   @property({ type: String, reflect: true }) status?: 'error' = undefined;
 
   /**
    * Sets the input to read-only. A read-only field cannot be modified by the user but may be submitted with the form.
    * @reflect
-   *
    */
   @property({ type: Boolean, reflect: true }) readonly? = false;
 
   /**
    * Disables the input.  This changes its appearance and makes it non-interactive.
    * @reflect
-   *
    */
   @property({ type: Boolean, reflect: true }) disabled? = false;
 
