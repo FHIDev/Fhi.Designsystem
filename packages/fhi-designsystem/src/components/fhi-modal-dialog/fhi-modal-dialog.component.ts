@@ -170,7 +170,7 @@ export class FhiModalDialog extends LitElement {
      *   - Standard DOM event with the type `close`
      * This event is fired whenever the dialog is closed.
      * */
-    this.dispatchEvent(new CloseEvent('close'));
+    this.dispatchEvent(new Event('close'));
   }
 
   private _handleDialogMouseUp(event: MouseEvent) {
