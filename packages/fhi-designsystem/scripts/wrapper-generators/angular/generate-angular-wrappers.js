@@ -153,7 +153,7 @@ const main = ({ manifestPath, outputPath }) => {
           .map(
             attribute => `
             /** ${attribute.description || ''} */
-            @Input({alias: "${attribute.name}", required: ${!isOptionalAttribute(attribute)}}) ${attribute.fieldName}${isOptionalAttribute(attribute) ? '?' : '!'}: ${`${attribute.type.text}${attribute.default === 'null' ? ' | null' : ''}` || 'string'}${
+            @Input({alias: "${attribute.name}", required: ${!isOptionalAttribute(attribute)}}) ${attribute.fieldName}${isOptionalAttribute(attribute) ? '?' : '!'}: ${`${attribute.parsedType?.text ?? attribute.type.text}` || 'string'}${
               attribute.default ? ` = ${attribute.default}` : ''
             };
         `,
