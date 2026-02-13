@@ -141,7 +141,7 @@ const main = ({ manifestPath, outputPath }) => {
         standalone: true,
         template: ${`\`
             <${tagName}
-              ${attributes.map(attribute => `[${attribute.name}]="${attribute.fieldName}"`).join(' ')}
+              ${attributes.map(attribute => `[${attribute.fieldName}]="${attribute.fieldName}"`).join(' ')}
               ${events.map(event => `(${event.name})="handle${snakeToPascal(event.name)}($event)"`).join(' ')}
             >
               ${slots.map(slot => `<ng-content ${slot.name ? `select="[slot='${slot.name}']"` : ''}></ng-content>`).join('\n')}
