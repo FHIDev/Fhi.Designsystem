@@ -21,9 +21,8 @@ export class FhiBody extends LitElement {
   /**
    * Sets the font size of the given text.
    * @reflect
-   * @type {'large' | 'medium' | 'small'}
    */
-  @property({ type: String, reflect: true }) size:
+  @property({ type: String, reflect: true }) size?:
     | 'large'
     | 'medium'
     | 'small' = 'medium';
@@ -41,7 +40,6 @@ export class FhiBody extends LitElement {
    *  </fhi-body>
    * ```
    *
-   * @type {string}
    */
   @property({ type: String }) color?: string;
 
