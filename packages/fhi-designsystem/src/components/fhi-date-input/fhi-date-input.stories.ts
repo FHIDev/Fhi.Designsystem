@@ -1,4 +1,5 @@
-import type { Meta, StoryObj } from '@storybook/web-components';
+import type { Meta, StoryObj } from '@storybook/web-components-vite';
+
 import { withActions } from '@storybook/addon-actions/decorator';
 
 import { html } from 'lit';

@@ -1,8 +1,8 @@
-import type { Meta, StoryObj } from '@storybook/web-components';
+import type { Meta, StoryObj } from '@storybook/web-components-vite';
 import { html } from 'lit';
 import { FhiCheckbox } from './fhi-checkbox.component';
 import { ifDefined } from 'lit/directives/if-defined.js';
-import { withActions } from '@storybook/addon-actions/decorator';
+import { withActions } from 'storybook/actions/decorator';
 
 new FhiCheckbox();
 
