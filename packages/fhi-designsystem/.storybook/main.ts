@@ -7,7 +7,6 @@ const config: StorybookConfig = {
     '@storybook/addon-a11y',
     '@storybook/addon-docs',
     'storybook-design-token',
-    '@storybook/addon-actions',
   ],
   framework: '@storybook/web-components-vite',
 };
