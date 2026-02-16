@@ -258,7 +258,7 @@ export class FhiTooltip extends LitElement {
 
     :host {
       #tooltip-anchor {
-        width: max-content;
+        width: inherit;
         height: max-content;
       }
 

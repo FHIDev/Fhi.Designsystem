@@ -11,7 +11,9 @@ const meta: Meta<FhiTooltip> = {
   title: 'Komponenter/Tooltip',
   component: 'fhi-tooltip',
   parameters: {},
-  decorators: [],
+  decorators: [
+    Story => html` <div style="width: fit-content;">${Story()}</div> `,
+  ],
   render: args => html`
     <fhi-tooltip
       message=${ifDefined(args.message)}
