@@ -35,11 +35,19 @@ export class FhiTextInput extends LitElement {
   @property({ type: String }) message?: string = undefined;
 
   /**
+   * The message shown above the input field.
+   * This is often used to provide additional information to the user.
+   * @type {string}
+   */
+  @property({ type: String, attribute: 'help-text' }) helpText?: string =
+    undefined;
+
+  /**
    * Sets the placeholder text for the input field.
    * This text is displayed when the input field is empty, providing a hint to the user about the expected input.
    * @type {string}
    */
-  @property({ type: String }) placeholder?: string | null = null;
+  @property({ type: String }) placeholder?: string = undefined;
 
   /**
    * Sets the visual status of the input. There is currently only one status available: `error`.
@@ -178,6 +186,7 @@ export class FhiTextInput extends LitElement {
   render() {
     return html`
       ${this.label && html`<label for="input-element">${this.label}</label>`}
+      ${this.helpText ? html`<p class="help-text">${this.helpText}</p>` : ''}
       <input
         id="input-element"
         name=${ifDefined(this.name)}
@@ -213,8 +222,7 @@ export class FhiTextInput extends LitElement {
       --typography-label-letter-spacing: var(
         --fhi-typography-label-small-letter-spacing
       );
-
-      --dimension-label-padding-bottom: var(--fhi-spacing-050);
+      --dimension-label-margin-bottom: var(--fhi-spacing-050);
 
       /* input */
       --color-input-placeholder: var(--fhi-color-neutral-base-default);
@@ -273,6 +281,23 @@ export class FhiTextInput extends LitElement {
       );
 
       --dimension-message-margin-top: var(--fhi-spacing-050);
+
+      /* help-text */
+      --color-help-text-text: var(--fhi-color-neutral-text-subtle);
+      --color-help-text-text-error: var(--fhi-color-danger-text-default);
+      --typography-help-text-font-weight: var(
+        --fhi-typography-body-small-font-weight
+      );
+      --typography-help-text-font-size: var(
+        --fhi-typography-body-small-font-size
+      );
+      --typography-help-text-line-height: var(
+        --fhi-typography-body-small-line-height
+      );
+      --typography-help-text-letter-spacing: var(
+        --fhi-typography-body-small-letter-spacing
+      );
+      --dimension-help-text-margin-bottom: var(--fhi-spacing-050);
     }
 
     :host {
@@ -287,7 +312,11 @@ export class FhiTextInput extends LitElement {
         line-height: var(--typography-label-line-height);
         letter-spacing: var(--typography-label-letter-spacing);
         color: var(--color-label-text);
-        padding-bottom: var(--dimension-label-padding-bottom);
+        margin: 0 0 var(--dimension-label-margin-bottom) 0;
+      }
+
+      label:has(+ p) {
+        margin: 0 0 0 0;
       }
 
       input {
@@ -327,6 +356,15 @@ export class FhiTextInput extends LitElement {
         line-height: var(--typography-message-line-height);
         letter-spacing: var(--typography-message-letter-spacing);
       }
+
+      .help-text {
+        color: var(--color-help-text-text);
+        font-weight: var(--typography-help-text-font-weight);
+        font-size: var(--typography-help-text-font-size);
+        line-height: var(--typography-help-text-line-height);
+        letter-spacing: var(--typography-help-text-letter-spacing);
+        margin: 0 0 var(--dimension-help-text-margin-bottom) 0;
+      }
     }
 
     :host([disabled]) {
@@ -365,6 +403,9 @@ export class FhiTextInput extends LitElement {
       }
       .message {
         color: var(--color-message-text-error);
+      }
+      .help-text {
+        color: var(--color-help-text-text-error);
       }
     }
   `;
