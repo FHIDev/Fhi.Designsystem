@@ -1,5 +1,4 @@
 import type { Meta, StoryObj } from '@storybook/web-components-vite';
-import { withActions } from 'storybook/actions/decorator';
 
 import { html } from 'lit';
 
@@ -21,7 +20,6 @@ const meta: Meta<FhiFlex> = {
     },
   },
   decorators: [
-    withActions,
     Story =>
       html`<div
         style="display: flex; justify-content: start; align-items: center; gap: 1rem;"

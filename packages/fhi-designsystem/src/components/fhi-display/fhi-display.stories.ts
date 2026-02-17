@@ -1,7 +1,9 @@
 import type { Meta, StoryObj } from '@storybook/web-components-vite';
+
 import { html } from 'lit';
-import { FhiDisplay } from './fhi-display.component';
 import { ifDefined } from 'lit/directives/if-defined.js';
+
+import { FhiDisplay } from './fhi-display.component';
 
 new FhiDisplay();
 

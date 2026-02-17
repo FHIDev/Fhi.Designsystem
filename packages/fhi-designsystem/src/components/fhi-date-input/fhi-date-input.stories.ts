@@ -1,10 +1,10 @@
 import type { Meta, StoryObj } from '@storybook/web-components-vite';
-
-import { withActions } from '@storybook/addon-actions/decorator';
+import { action } from 'storybook/actions';
 
 import { html } from 'lit';
-import { FhiDateInput } from './fhi-date-input.component';
 import { ifDefined } from 'lit/directives/if-defined.js';
+
+import { FhiDateInput } from './fhi-date-input.component';
 
 new FhiDateInput();
 
@@ -12,9 +12,6 @@ const meta: Meta<FhiDateInput> = {
   title: 'Komponenter/Date Input',
   component: 'fhi-date-input',
   parameters: {
-    actions: {
-      handles: ['change', 'input'],
-    },
     options: { selectedPanel: 'addon-controls' },
     docs: {
       source: {
@@ -22,10 +19,7 @@ const meta: Meta<FhiDateInput> = {
       },
     },
   },
-  decorators: [
-    withActions,
-    story => html`<div style="max-width: 400px;">${story()}</div>`,
-  ],
+  decorators: [story => html`<div style="max-width: 400px;">${story()}</div>`],
   render: args =>
     html`<fhi-date-input
       label=${ifDefined(args.label)}
@@ -38,6 +32,8 @@ const meta: Meta<FhiDateInput> = {
       max=${ifDefined(args.max)}
       ?readonly=${args.readonly}
       ?disabled=${args.disabled}
+      @input=${action('input')}
+      @change=${action('change')}
     ></fhi-date-input>`,
   argTypes: {
     name: {
@@ -133,7 +129,6 @@ export const MinMax: Story = {
 };
 
 export const Error: Story = {
-  name: 'Error',
   args: {
     label: 'Dato',
     helpText: 'Må fylles ut',
@@ -143,7 +138,6 @@ export const Error: Story = {
 };
 
 export const Disabled: Story = {
-  name: 'Disabled',
   args: {
     label: 'Label',
     disabled: true,
@@ -151,7 +145,6 @@ export const Disabled: Story = {
 };
 
 export const Readonly: Story = {
-  name: 'ReadOnly',
   args: {
     label: 'Fødselsdato',
     value: '2025-09-26',

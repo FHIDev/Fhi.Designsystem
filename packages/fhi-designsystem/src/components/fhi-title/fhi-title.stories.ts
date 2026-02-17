@@ -1,6 +1,8 @@
 import type { Meta, StoryObj } from '@storybook/web-components-vite';
+
 import { html } from 'lit';
 import { FhiTitle } from './fhi-title.component';
+
 import { ifDefined } from 'lit/directives/if-defined.js';
 
 new FhiTitle();

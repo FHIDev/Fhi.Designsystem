@@ -1,8 +1,10 @@
 import type { Meta, StoryObj } from '@storybook/web-components-vite';
+import { action } from 'storybook/actions';
+
 import { html } from 'lit';
-import { FhiCheckbox } from './fhi-checkbox.component';
 import { ifDefined } from 'lit/directives/if-defined.js';
-import { withActions } from 'storybook/actions/decorator';
+
+import { FhiCheckbox } from './fhi-checkbox.component';
 
 new FhiCheckbox();
 
@@ -15,7 +17,6 @@ const meta: Meta<FhiCheckbox> = {
     },
     options: { selectedPanel: 'addon-controls' },
   },
-  decorators: [withActions],
   render: args =>
     html`<fhi-checkbox
       label=${ifDefined(args.label)}
@@ -24,6 +25,8 @@ const meta: Meta<FhiCheckbox> = {
       value=${ifDefined(args.value)}
       ?disabled=${args.disabled}
       ?checked=${args.checked}
+      @input=${action('input')}
+      @change=${action('change')}
     ></fhi-checkbox>`,
   argTypes: {
     name: {

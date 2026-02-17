@@ -1,8 +1,10 @@
 import type { Meta, StoryObj } from '@storybook/web-components-vite';
+
 import { html } from 'lit';
+import { ifDefined } from 'lit/directives/if-defined.js';
+
 import { FhiTooltip } from './fhi-tooltip.component';
 import { FhiButton } from '../fhi-button/fhi-button.component';
-import { ifDefined } from 'lit/directives/if-defined.js';
 
 new FhiTooltip();
 new FhiButton();

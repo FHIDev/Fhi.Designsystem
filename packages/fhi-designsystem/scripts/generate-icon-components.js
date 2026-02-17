@@ -210,7 +210,7 @@ const generateIconStory = iconSelector => {
   ${warning}
 */
 import { html } from 'lit';
-import type { Meta, StoryObj } from '@storybook/web-components';
+import type { Meta, StoryObj } from '@storybook/web-components-vite';
 import { ifDefined } from 'lit/directives/if-defined.js';
 
 import { ${iconKomponentName} } from './${iconSelector}.component';

@@ -1,9 +1,10 @@
 import type { Meta, StoryObj } from '@storybook/web-components-vite';
-import { withActions } from 'storybook/actions/decorator';
+import { action } from 'storybook/actions';
 
 import { html } from 'lit';
-import { FhiTextInput } from './fhi-text-input.component';
 import { ifDefined } from 'lit/directives/if-defined.js';
+
+import { FhiTextInput } from './fhi-text-input.component';
 
 new FhiTextInput();
 
@@ -11,9 +12,6 @@ const meta: Meta<FhiTextInput> = {
   title: 'Komponenter/Text Input',
   component: 'fhi-text-input',
   parameters: {
-    actions: {
-      handles: ['change', 'input'],
-    },
     options: { selectedPanel: 'addon-controls' },
     docs: {
       source: {
@@ -21,10 +19,7 @@ const meta: Meta<FhiTextInput> = {
       },
     },
   },
-  decorators: [
-    withActions,
-    story => html`<div style="max-width: 400px;">${story()}</div>`,
-  ],
+  decorators: [story => html`<div style="max-width: 400px;">${story()}</div>`],
   render: args =>
     html`<fhi-text-input
       label=${ifDefined(args.label)}
@@ -36,6 +31,8 @@ const meta: Meta<FhiTextInput> = {
       value=${ifDefined(args.value)}
       ?readonly=${args.readonly}
       ?disabled=${args.disabled}
+      @input=${action('input')}
+      @change=${action('change')}
     ></fhi-text-input>`,
   argTypes: {
     name: {

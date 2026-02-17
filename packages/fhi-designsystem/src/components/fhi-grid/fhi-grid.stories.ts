@@ -1,5 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/web-components-vite';
+
 import { html } from 'lit';
+
 import { FhiGrid } from './fhi-grid.component';
 
 new FhiGrid();
@@ -108,7 +110,7 @@ export const LargeGrid: Story = {
   `,
 };
 
-export const noSpan: Story = {
+export const NoSpan: Story = {
   tags: [],
   args: {
     gap: 'medium',
