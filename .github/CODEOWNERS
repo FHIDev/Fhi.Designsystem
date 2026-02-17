@@ -1,3 +1,5 @@
 * @FHIDev/Designsystem-team-developers
 
 *.md @FHIDev/Designsystem-team-ux
+*.mdx @FHIDev/Designsystem-team-ux
+*.stories.ts @FHIDev/Designsystem-team-ux
