@@ -1,5 +1,4 @@
 import type { Preview } from '@storybook/web-components';
-import '../src/theme/default.css';
 import FhiTheme from './FhiTheme';
 
 const preview: Preview = {

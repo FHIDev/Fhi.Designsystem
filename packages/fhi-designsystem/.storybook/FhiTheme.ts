@@ -1,4 +1,5 @@
 import { create } from '@storybook/theming/create';
+
 import '../src/theme/default.css';
 
 const getCssPropertyValue = property =>
