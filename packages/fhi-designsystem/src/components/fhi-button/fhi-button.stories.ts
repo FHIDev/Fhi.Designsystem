@@ -34,7 +34,15 @@ new FhiIconBell();
 new FhiIconUser();
 new FhiIconExpand();
 
-const meta: Meta<FhiButton> = {
+interface FhiStorybookMeta<T> extends Meta<T> {
+  events?: {
+    type: string;
+    // The location of the relevant value. e.g event.target.value, event.target.checked, event.detail.value etc.
+    valueLocation?: string;
+  };
+}
+
+const meta: FhiStorybookMeta<FhiButton> = {
   title: 'Komponenter/Button',
   component: 'fhi-button',
   parameters: {
@@ -47,6 +55,10 @@ const meta: Meta<FhiButton> = {
         excludeDecorators: true,
       },
     },
+  },
+  events: {
+    type: 'click',
+    valueLocation: 'event.target.value',
   },
   decorators: [
     withActions,

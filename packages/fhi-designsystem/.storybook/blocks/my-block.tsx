@@ -1,4 +1,7 @@
+import React from "react";
 import { useOf } from '@storybook/blocks';
+
+
 
 /**
  * A block that displays the story name or title from the of prop
@@ -8,6 +11,7 @@ import { useOf } from '@storybook/blocks';
  */
 export const StoryName = ({ of }) => {
   const resolvedOf = useOf(of || 'story', ['story', 'meta']);
+  console.log("------------------------------------------------------------------------------", resolvedOf);
   switch (resolvedOf.type) {
     case 'story': {
       return <h1>{resolvedOf.story.name}</h1>;
@@ -16,5 +20,5 @@ export const StoryName = ({ of }) => {
       return <h1>{resolvedOf.preparedMeta.title}</h1>;
     }
   }
-  return null;
+  return "hello world";
 };
