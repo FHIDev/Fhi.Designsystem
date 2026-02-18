@@ -110,7 +110,7 @@ export const Preview: Story = {
     `,
   ],
   render: args =>
-    html` <fhi-modal-dialog
+    html`<fhi-modal-dialog
       ?open=${args.open}
       size=${args.size}
       close-button-label=${args.closeButtonLabel}
