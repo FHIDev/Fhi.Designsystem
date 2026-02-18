@@ -12,7 +12,6 @@ const meta: Meta<FhiTextInput> = {
   title: 'Komponenter/Text Input',
   component: 'fhi-text-input',
   parameters: {
-    options: { selectedPanel: 'addon-controls' },
     docs: {
       source: {
         excludeDecorators: true,

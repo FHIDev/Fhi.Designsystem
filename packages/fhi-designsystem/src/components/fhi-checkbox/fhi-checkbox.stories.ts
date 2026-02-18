@@ -11,12 +11,7 @@ new FhiCheckbox();
 const meta: Meta<FhiCheckbox> = {
   title: 'Komponenter/Checkbox',
   component: 'fhi-checkbox',
-  parameters: {
-    actions: {
-      handles: ['change', 'input'],
-    },
-    options: { selectedPanel: 'addon-controls' },
-  },
+  parameters: {},
   render: args =>
     html`<fhi-checkbox
       label=${ifDefined(args.label)}

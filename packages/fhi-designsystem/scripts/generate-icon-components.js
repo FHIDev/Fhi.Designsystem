@@ -180,7 +180,7 @@ Hvert ikon er en web-komponent som kan brukes i HTML-koden din på denne måten:
 
 ### Eksempel
 <Canvas of={FhiIconStories.Preview} />
-<Controls />
+<Controls of={FhiIconStories.Preview} />
 
 <br />
 

@@ -12,7 +12,6 @@ const meta: Meta<FhiFlex> = {
   title: 'Komponenter/Flex',
   component: 'fhi-flex',
   parameters: {
-    options: { selectedPanel: 'addon-controls' },
     docs: {
       source: {
         excludeDecorators: true,

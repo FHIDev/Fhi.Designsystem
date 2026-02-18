@@ -38,7 +38,6 @@ const meta: Meta<FhiButton> = {
   title: 'Komponenter/Button',
   component: 'fhi-button',
   parameters: {
-    options: { selectedPanel: 'addon-controls' },
     docs: {
       source: {
         excludeDecorators: true,
@@ -109,7 +108,7 @@ type Story = StoryObj<FhiButton>;
 
 export const Preview: Story = {
   tags: ['!dev'],
-  args: { color: 'accent', variant: 'strong', size: 'medium' },
+  args: {},
 };
 
 export const Accent: Story = {

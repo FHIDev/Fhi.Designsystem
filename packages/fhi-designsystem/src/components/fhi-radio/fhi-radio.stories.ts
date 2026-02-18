@@ -12,7 +12,6 @@ const meta: Meta<FhiRadio> = {
   title: 'Komponenter/Radio',
   component: 'fhi-radio',
   parameters: {
-    options: { selectedPanel: 'addon-controls' },
     docs: {
       source: {
         excludeDecorators: true,

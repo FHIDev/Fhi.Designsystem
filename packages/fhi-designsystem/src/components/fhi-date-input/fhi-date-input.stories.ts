@@ -12,7 +12,6 @@ const meta: Meta<FhiDateInput> = {
   title: 'Komponenter/Date Input',
   component: 'fhi-date-input',
   parameters: {
-    options: { selectedPanel: 'addon-controls' },
     docs: {
       source: {
         excludeDecorators: true,

@@ -10,7 +10,6 @@ const meta: Meta<FhiGrid> = {
   title: 'Komponenter/Grid',
   component: 'fhi-grid',
   parameters: {
-    options: { selectedPanel: 'addon-controls' },
     docs: {
       source: {
         excludeDecorators: true,
