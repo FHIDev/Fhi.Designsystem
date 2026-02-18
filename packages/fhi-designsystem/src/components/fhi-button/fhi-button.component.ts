@@ -107,9 +107,11 @@ export class FhiButton extends LitElement {
     super.update(changedProperties);
 
     if (changedProperties.has('iconOnly')) {
-      console.warn(
-        "The 'iconOnly' property is deprecated and will be removed in a future release. The button automatically detects if it only contains an icon and applies the appropriate styling.",
-      );
+      if (this.getAttribute('icon-only') !== null) {
+        console.warn(
+          "The 'iconOnly' property is deprecated and will be removed in a future release. The button automatically detects if it only contains an icon and applies the appropriate styling.",
+        );
+      }
     }
   }
 
