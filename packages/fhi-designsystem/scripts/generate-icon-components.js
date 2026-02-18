@@ -157,7 +157,7 @@ export class ${webComponentName} extends LitElement {
 const generateIconDocs = iconSelectors => `
 [//]: # "${warning}"
 
-import { Meta, IconGallery, IconItem, Controls, Canvas } from '@storybook/blocks';
+import { Meta, IconGallery, IconItem, Controls, Canvas } from '@storybook/addon-docs/blocks';
 
 import * as FhiIconStories from './fhi-icon.stories';
 
