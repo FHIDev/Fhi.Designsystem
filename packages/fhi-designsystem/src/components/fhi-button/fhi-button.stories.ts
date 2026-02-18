@@ -102,7 +102,7 @@ const meta: Meta<FhiButton> = {
       name: 'icon-only',
       control: { type: 'boolean' },
       description:
-        'DEPREKERT: Knappen vil selv detektere om den kun inneholder et ikon og vil automatisk bruke riktig styling.',
+        'AVVIKLET: Knappen vil selv oppdage om den kun inneholder et ikon og få riktig styling automatisk.',
       defaultValue: { summary: 'false' },
     },
   },
