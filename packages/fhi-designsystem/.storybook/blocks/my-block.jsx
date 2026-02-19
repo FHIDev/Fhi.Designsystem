@@ -3,20 +3,24 @@ import { useOf } from '@storybook/blocks';
 
 import { FhiTag } from '../../src/components/fhi-tag/fhi-tag.component';
 import { FhiTitle } from '../../src/components/fhi-title/fhi-title.component';
+import { FhiHeadline } from '../../src/components/fhi-headline/fhi-headline.component';
 import { FhiBody } from '../../src/components/fhi-body/fhi-body.component';
+import { FhiFlex } from '../../src/components/fhi-flex/fhi-flex.component';
+import { FhiGrid } from '../../src/components/fhi-grid/fhi-grid.component';
+import { FhiTooltip } from '../../src/components/fhi-tooltip/fhi-tooltip.component';
+import { FhiIconCircleInfo } from '../../src/components/icons/fhi-icon-circle-info.component';
 
-/**
- * A block that displays the story name or title from the of prop
- * - if a story reference is passed, it renders the story name
- * - if a meta reference is passed, it renders the stories' title
- * - if nothing is passed, it defaults to the primary story
- */
-export const StoryName = ({ of }) => {
+new FhiTag();
+new FhiTitle();
+new FhiBody();
+new FhiFlex();
+new FhiGrid();
+new FhiTooltip();
+new FhiIconCircleInfo();
+new FhiHeadline();
+
+const getStory = of => {
   const resolvedOf = useOf(of || 'story', ['story', 'meta']);
-  console.log(
-    '------------------------------------------------------------------------------',
-    resolvedOf,
-  );
 
   if (!resolvedOf.story) {
     throw new Error(
@@ -24,21 +28,160 @@ export const StoryName = ({ of }) => {
     );
   }
 
-  const events = resolvedOf.story?.parameters?.eventTypes;
+  return resolvedOf.story;
+};
 
-  if (!events || events.length === 0) {
-    return null;
+const generateSection = (name, head, bodyItems) => {
+  let content;
+
+  if (bodyItems?.length > 0) {
+    content = (
+      <table
+        style={{
+          borderSpacing: '0px',
+          color: 'var(--fhi-color-neutral-text-default)',
+          textAlign: 'left',
+          width: '100%',
+        }}
+      >
+        <thead
+          style={{
+            color: 'var(--fhi-color-neutral-text-subtle)',
+            textAlign: 'left',
+          }}
+        >
+          <tr>{head}</tr>
+        </thead>
+        <tbody>{bodyItems}</tbody>
+      </table>
+    );
+  } else {
+    content = (
+      <fhi-body style={{ fontStyle: 'italic', padding: '1rem' }}>
+        Denne komponenten har ingen metoder
+      </fhi-body>
+    );
   }
 
   return (
     <section>
-      <fhi-title level="1">Events:</fhi-title>
-      {events.map((event, index) => (
-        <div key={`event-name-${index}`}>
-          <fhi-tag>{event.name}</fhi-tag>
-          <fhi-body level="1">{event.description}</fhi-body>
-        </div>
-      ))}
+      <fhi-title level="1">{name}:</fhi-title>
+      {content}
+      <br />
+    </section>
+  );
+};
+
+export const ApiDefinition = ({ of }) => {
+  const story = getStory(of);
+
+  const methods = story.parameters?.methodTypes || [];
+  const events = story.parameters?.eventTypes || [];
+  const slots = story.parameters?.slotTypes || [];
+  const attributes =
+    Object.entries(story.argTypes).map(([propName, props]) => {
+      return {
+        propertyName: propName,
+        attributeName: props.name,
+        description: props.description,
+      };
+    }) || [];
+
+  const mainTitle = (
+    <section style={{ display: 'flex', alignItems: 'center', gap: '.5rem' }}>
+      <fhi-headline level="1">API Definisjon</fhi-headline>
+      <fhi-tooltip
+        message="Denne seksjonen viser en oversikt over komponentens API utover det som er dekket av web-standarden."
+        placement="top"
+      >
+        <fhi-icon-circle-info />
+      </fhi-tooltip>
+    </section>
+  );
+
+  return (
+    <section
+      style={{
+        padding: 'var(--fhi-spacing-400)',
+        border:
+          'var(--fhi-dimension-border-width) solid var(--fhi-color-neutral-border-subtle)',
+        borderRadius: 'var(--fhi-border-radius-150)',
+      }}
+    >
+      {mainTitle}
+      <br />
+      {generateSection(
+        'Attributes',
+        <>
+          <th>Attributte navn</th>
+          <th>Property navn</th>
+          <th>Beskrivelse</th>
+        </>,
+        attributes.map((attribute, index) => (
+          <tr key={index}>
+            <td>{attribute.attributeName}</td>
+            <td>{attribute.propertyName}</td>
+            <td>{attribute.description}</td>
+          </tr>
+        )),
+      )}
+      {generateSection(
+        'Methods',
+        <>
+          <th>Navn</th>
+          <th>Beskrivelse</th>
+        </>,
+        methods.map((method, index) => (
+          <tr key={index}>
+            <td>{method.name}</td>
+            <td>{method.description}</td>
+          </tr>
+        )),
+      )}
+      {generateSection(
+        'Events',
+        <>
+          <th>Navn</th>
+          <th
+            style={{
+              display: 'flex',
+              alignItems: 'center',
+              gap: '.25rem',
+            }}
+          >
+            Verdilokasjon
+            <fhi-tooltip
+              message="Eventet inneholder en referanse til komponenten sin verdi. Verdilokasjonen beskriver hvor i eventobjektet denne referansen finnes."
+              placement="top"
+            >
+              <fhi-icon-circle-info size="small" />
+            </fhi-tooltip>
+          </th>
+          <th>Beskrivelse</th>
+        </>,
+        events.map((event, index) => (
+          <tr key={index}>
+            <td>{event.name}</td>
+            <td>
+              <fhi-tag>{event.valueLocation}</fhi-tag>
+            </td>
+            <td>{event.description}</td>
+          </tr>
+        )),
+      )}
+      {generateSection(
+        'Slots',
+        <>
+          <th>Navn</th>
+          <th>Beskrivelse</th>
+        </>,
+        slots.map((slot, index) => (
+          <tr key={index}>
+            <td>{slot.name}</td>
+            <td>{slot.description}</td>
+          </tr>
+        )),
+      )}
     </section>
   );
 };

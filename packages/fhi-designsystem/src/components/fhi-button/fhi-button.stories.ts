@@ -34,23 +34,7 @@ new FhiIconBell();
 new FhiIconUser();
 new FhiIconExpand();
 
-interface FhiStorybookMeta<T> extends Meta<T> {
-  parameters?: Meta['parameters'] & {
-    eventTypes?: [
-      {
-        name: string;
-        valueLocation?: string;
-        description: string;
-      },
-    ];
-    methodTypes?: {
-      name: string;
-      description: string;
-    };
-  };
-}
-
-const meta: FhiStorybookMeta<FhiButton> = {
+const meta: Meta<FhiButton> = {
   title: 'Komponenter/Button',
   component: 'fhi-button',
   parameters: {
@@ -63,14 +47,6 @@ const meta: FhiStorybookMeta<FhiButton> = {
         excludeDecorators: true,
       },
     },
-    eventTypes: [
-      {
-        name: 'click',
-        valueLocation: 'event.target.value',
-        description:
-          'Standard HTML click event som trigges når knappen trykkes på.',
-      },
-    ],
   },
   decorators: [
     withActions,

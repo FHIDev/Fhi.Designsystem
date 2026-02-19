@@ -6,7 +6,25 @@ import { withActions } from '@storybook/addon-actions/decorator';
 
 new FhiCheckbox();
 
-const meta: Meta<FhiCheckbox> = {
+interface FhiStorybookMeta<T> extends Meta<T> {
+  parameters?: Meta['parameters'] & {
+    eventTypes?: {
+      name: string;
+      valueLocation?: string;
+      description: string;
+    }[];
+    slotTypes?: {
+      name: string;
+      description: string;
+    }[];
+    methodTypes?: {
+      name: string;
+      description: string;
+    }[];
+  };
+}
+
+const meta: FhiStorybookMeta<FhiCheckbox> = {
   title: 'Komponenter/Checkbox',
   component: 'fhi-checkbox',
   parameters: {
@@ -14,6 +32,19 @@ const meta: Meta<FhiCheckbox> = {
       handles: ['change', 'input'],
     },
     options: { selectedPanel: 'addon-controls' },
+    eventTypes: [
+      {
+        name: 'change',
+        valueLocation: 'event.target.checked',
+        description: 'Blir utløst når avkrysningsboksen endrer tilstand.',
+      },
+      {
+        name: 'input',
+        valueLocation: 'event.target.checked',
+        description:
+          'Blir utløst når brukeren samhandler med avkrysningsboksen.',
+      },
+    ],
   },
   decorators: [withActions],
   render: args =>
