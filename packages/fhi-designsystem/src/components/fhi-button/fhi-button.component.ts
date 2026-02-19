@@ -74,6 +74,7 @@ export class FhiButton extends LitElement {
    * If you only have an icon as the child of the button, then you should set this property to `true`.
    *
    * @deprecated This property is deprecated and will be removed in a future release. The button will automatically detect if it only contains an icon and apply the appropriate styling.
+   *
    * @type {boolean}
    */
   @property({ type: Boolean, attribute: 'icon-only' })
