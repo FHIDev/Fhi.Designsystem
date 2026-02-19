@@ -35,10 +35,18 @@ new FhiIconUser();
 new FhiIconExpand();
 
 interface FhiStorybookMeta<T> extends Meta<T> {
-  events?: {
-    type: string;
-    // The location of the relevant value. e.g event.target.value, event.target.checked, event.detail.value etc.
-    valueLocation?: string;
+  parameters?: Meta['parameters'] & {
+    eventTypes?: [
+      {
+        name: string;
+        valueLocation?: string;
+        description: string;
+      },
+    ];
+    methodTypes?: {
+      name: string;
+      description: string;
+    };
   };
 }
 
@@ -55,10 +63,14 @@ const meta: FhiStorybookMeta<FhiButton> = {
         excludeDecorators: true,
       },
     },
-  },
-  events: {
-    type: 'click',
-    valueLocation: 'event.target.value',
+    eventTypes: [
+      {
+        name: 'click',
+        valueLocation: 'event.target.value',
+        description:
+          'Standard HTML click event som trigges når knappen trykkes på.',
+      },
+    ],
   },
   decorators: [
     withActions,
