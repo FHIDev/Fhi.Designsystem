@@ -2,6 +2,8 @@ import { FhiRadio } from './fhi-radio.component.ts';
 import * as FhiRadioStories from './fhi-radio.stories.ts';
 import { Meta, Primary, Canvas, Controls } from '@storybook/blocks';
 
+import { ApiDefinition } from '../../../.storybook/blocks/api-definition.jsx';
+
 <Meta of={FhiRadioStories} />
 
 # Radio
@@ -38,3 +40,5 @@ Radioknapper som ikke kan samhandles med, kan fortsatt vises med noe transparens
 `fhi-radio`-komponenter kan grupperes ved å bruke samme `name`-attributte. Bare én radioknapp i gruppen kan være valgt om gangen.
 
 <Canvas of={FhiRadioStories.Group} />
+
+<ApiDefinition />

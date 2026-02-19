@@ -1,28 +1,12 @@
-import type { Meta, StoryObj } from '@storybook/web-components';
+import type { StoryObj } from '@storybook/web-components';
 import { html } from 'lit';
 import { FhiCheckbox } from './fhi-checkbox.component';
 import { ifDefined } from 'lit/directives/if-defined.js';
 import { withActions } from '@storybook/addon-actions/decorator';
 
-new FhiCheckbox();
+import { FhiStorybookMeta } from '../../../.storybook/fhi-meta';
 
-interface FhiStorybookMeta<T> extends Meta<T> {
-  parameters?: Meta['parameters'] & {
-    eventTypes?: {
-      name: string;
-      valueLocation?: string;
-      description: string;
-    }[];
-    slotTypes?: {
-      name: string;
-      description: string;
-    }[];
-    methodTypes?: {
-      name: string;
-      description: string;
-    }[];
-  };
-}
+new FhiCheckbox();
 
 const meta: FhiStorybookMeta<FhiCheckbox> = {
   title: 'Komponenter/Checkbox',
@@ -36,13 +20,12 @@ const meta: FhiStorybookMeta<FhiCheckbox> = {
       {
         name: 'change',
         valueLocation: 'event.target.checked',
-        description: 'Blir utløst når avkrysningsboksen endrer tilstand.',
+        description: 'Utløses når avkrysningsboksen endrer tilstand.',
       },
       {
         name: 'input',
         valueLocation: 'event.target.checked',
-        description:
-          'Blir utløst når brukeren samhandler med avkrysningsboksen.',
+        description: 'Utløses når brukeren samhandler med avkrysningsboksen.',
       },
     ],
   },

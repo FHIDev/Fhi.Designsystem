@@ -1,13 +1,15 @@
-import type { Meta, StoryObj } from '@storybook/web-components';
+import type { StoryObj } from '@storybook/web-components';
 import { withActions } from '@storybook/addon-actions/decorator';
 
 import { html } from 'lit';
 import { FhiTextInput } from './fhi-text-input.component';
 import { ifDefined } from 'lit/directives/if-defined.js';
 
+import { FhiStorybookMeta } from '../../../.storybook/fhi-meta';
+
 new FhiTextInput();
 
-const meta: Meta<FhiTextInput> = {
+const meta: FhiStorybookMeta<FhiTextInput> = {
   title: 'Komponenter/Text Input',
   component: 'fhi-text-input',
   parameters: {
@@ -20,6 +22,20 @@ const meta: Meta<FhiTextInput> = {
         excludeDecorators: true,
       },
     },
+    eventTypes: [
+      {
+        name: 'change',
+        description:
+          'Blir utløst når verdien av inputfeltet endres og brukeren har forlatt feltet.',
+        valueLocation: 'event.target.value',
+      },
+      {
+        name: 'input',
+        description:
+          'Blir utløst når verdien av inputfeltet endres. Dette eventet utløses ved hver endring, inkludert mens brukeren skriver.',
+        valueLocation: 'event.target.value',
+      },
+    ],
   },
   decorators: [
     withActions,
@@ -53,7 +69,7 @@ const meta: Meta<FhiTextInput> = {
     label: {
       control: 'text',
       description:
-        'Setter label. Dette assosieres med inputfelted og vises over. Om dette er satt trenger du ikke å deklarere eget label-element.',
+        'Setter label. Dette assosieres med inputfeltet og vises over. Om dette er satt trenger du ikke å deklarere eget label-element.',
       defaultValue: { summary: 'undefined' },
     },
     message: {

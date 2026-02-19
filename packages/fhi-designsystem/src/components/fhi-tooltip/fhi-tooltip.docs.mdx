@@ -2,6 +2,8 @@ import { FhiTooltip } from './fhi-tooltip.component.ts';
 import * as FhiTooltipStories from './fhi-tooltip.stories.ts';
 import { Meta, Primary, Canvas, Controls } from '@storybook/blocks';
 
+import { ApiDefinition } from '../../../.storybook/blocks/api-definition.jsx';
+
 <Meta of={FhiTooltipStories} title='Docs' />
 
 # Tooltip
@@ -34,3 +36,5 @@ Forskjellige skjermstørrelser, særlig de mindre, er et typisk eksempel på det
 Tooltip vil gjøre det den kan for å holde seg på skjermen, og bytter posisjon hvis det ikke er plass i den angitte retningen. 
 
 <Canvas of={FhiTooltipStories.Placement} />
+
+<ApiDefinition />

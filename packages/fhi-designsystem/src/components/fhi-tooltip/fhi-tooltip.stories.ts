@@ -1,16 +1,25 @@
-import type { Meta, StoryObj } from '@storybook/web-components';
+import type { StoryObj } from '@storybook/web-components';
 import { html } from 'lit';
 import { FhiTooltip } from './fhi-tooltip.component';
 import { FhiButton } from '../fhi-button/fhi-button.component';
 import { ifDefined } from 'lit/directives/if-defined.js';
 
+import { FhiStorybookMeta } from '../../../.storybook/fhi-meta';
+
 new FhiTooltip();
 new FhiButton();
 
-const meta: Meta<FhiTooltip> = {
+const meta: FhiStorybookMeta<FhiTooltip> = {
   title: 'Komponenter/Tooltip',
   component: 'fhi-tooltip',
-  parameters: {},
+  parameters: {
+    slotTypes: [
+      {
+        description:
+          'Elementet som tooltip-en skal knyttes til. Dette er vanligvis et knapp- eller ikon-element.',
+      },
+    ],
+  },
   decorators: [],
   render: args => html`
     <fhi-tooltip

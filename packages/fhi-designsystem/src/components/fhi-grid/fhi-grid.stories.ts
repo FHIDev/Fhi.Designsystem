@@ -1,10 +1,12 @@
-import type { Meta, StoryObj } from '@storybook/web-components';
+import type { StoryObj } from '@storybook/web-components';
 import { html } from 'lit';
 import { FhiGrid } from './fhi-grid.component';
 
+import { FhiStorybookMeta } from '../../../.storybook/fhi-meta';
+
 new FhiGrid();
 
-const meta: Meta<FhiGrid> = {
+const meta: FhiStorybookMeta<FhiGrid> = {
   title: 'Komponenter/Grid',
   component: 'fhi-grid',
   parameters: {
@@ -14,6 +16,11 @@ const meta: Meta<FhiGrid> = {
         excludeDecorators: true,
       },
     },
+    slotTypes: [
+      {
+        description: 'Innholdet som skal plasseres i Grid.',
+      },
+    ],
   },
   decorators: [],
   render: args => html`<fhi-grid gap=${args.gap}></fhi-grid>`,
@@ -25,7 +32,7 @@ const meta: Meta<FhiGrid> = {
       defaultValue: { summary: 'medium' },
     },
     columns: {
-      controls: 'number',
+      control: 'number',
       description: 'Bestemmer antall kolonner',
       defaultValue: { summary: '12' },
     },

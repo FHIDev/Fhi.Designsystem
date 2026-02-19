@@ -2,6 +2,8 @@ import { FhiModalDialog } from './fhi-modal-dialog.component.ts';
 import * as FhiDialogStories from './fhi-modal-dialog.stories.ts';
 import { Meta, Primary, Canvas, Controls } from '@storybook/blocks';
 
+import { ApiDefinition } from '../../../.storybook/blocks/api-definition.jsx';
+
 <Meta of={FhiDialogStories} />
 
 # Modal Dialog
@@ -32,3 +34,5 @@ Her er noen råd, tips og retningslinjer om bruk av Modal Dialog:
 - Unngå flere dialoger oppå hverandre. Hvis du likevel trenger det, for eksempel for å bekrefte sletting av en oppføring om noe – allerede vist i en dialog - kan du bruke `size` for å sikre at den nye dialogen ikke fullstendig dekker over den forrige for å beholde mer av konteksten under.
 - Hold overskriften kort, konsis og tydelig på den nye konteksten.
 - "Lukk" passer som `close-button-label` i de fleste tilfeller.
+
+<ApiDefinition />

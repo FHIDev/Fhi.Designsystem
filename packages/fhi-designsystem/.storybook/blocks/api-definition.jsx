@@ -79,11 +79,11 @@ export const ApiDefinition = ({ of }) => {
   const events = story.parameters?.eventTypes || [];
   const slots = story.parameters?.slotTypes || [];
   const attributes =
-    Object.entries(story.argTypes).map(([propName, props]) => {
+    Object.entries(story.argTypes).map(([propName, attribute]) => {
       return {
         propertyName: propName,
-        attributeName: props.name,
-        description: props.description,
+        attributeName: attribute.name,
+        description: attribute.description,
       };
     }) || [];
 
@@ -163,7 +163,11 @@ export const ApiDefinition = ({ of }) => {
           <tr key={index}>
             <td>{event.name}</td>
             <td>
-              <fhi-tag>{event.valueLocation}</fhi-tag>
+              {event.valueLocation ? (
+                <fhi-tag>{event.valueLocation}</fhi-tag>
+              ) : (
+                '-'
+              )}
             </td>
             <td>{event.description}</td>
           </tr>
@@ -177,7 +181,7 @@ export const ApiDefinition = ({ of }) => {
         </>,
         slots.map((slot, index) => (
           <tr key={index}>
-            <td>{slot.name}</td>
+            <td>{slot.name || '-'}</td>
             <td>{slot.description}</td>
           </tr>
         )),

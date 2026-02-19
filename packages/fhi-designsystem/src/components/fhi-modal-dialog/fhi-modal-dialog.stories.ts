@@ -1,16 +1,18 @@
-import type { Meta, StoryObj } from '@storybook/web-components';
+import type { StoryObj } from '@storybook/web-components';
 import { html } from 'lit';
 import { FhiModalDialog } from './fhi-modal-dialog.component';
 import { FhiBody } from '../fhi-body/fhi-body.component';
 import { FhiButton } from '../fhi-button/fhi-button.component';
 import { FhiTextInput } from '../fhi-text-input/fhi-text-input.component';
 
+import { FhiStorybookMeta } from '../../../.storybook/fhi-meta';
+
 new FhiModalDialog();
 new FhiBody();
 new FhiButton();
 new FhiTextInput();
 
-const meta: Meta<FhiModalDialog> = {
+const meta: FhiStorybookMeta<FhiModalDialog> = {
   title: 'Komponenter/Modal Dialog',
   component: 'fhi-modal-dialog',
   parameters: {
@@ -19,6 +21,39 @@ const meta: Meta<FhiModalDialog> = {
         excludeDecorators: true,
       },
     },
+    eventTypes: [
+      {
+        name: 'toggle',
+        description: 'Utløses når dialogen åpnes eller lukkes.',
+        valueLocation: 'event.newState & event.oldState',
+      },
+      {
+        name: 'close',
+        description: 'Utløses når dialogen lukkes.',
+      },
+    ],
+    methodTypes: [
+      {
+        name: 'show()',
+        description: 'Viser dialogen.',
+      },
+      {
+        name: 'close()',
+        description: 'Lukker dialogen.',
+      },
+    ],
+    slotTypes: [
+      {
+        name: 'body',
+        description:
+          'Hovedinnholdet i dialogen. Inneholder vanligvis tekst eller form-elementer.',
+      },
+      {
+        name: 'footer',
+        description:
+          'Innholdet i dialogens footer, vanligvis handlingsknapper.',
+      },
+    ],
   },
   decorators: [],
   argTypes: {

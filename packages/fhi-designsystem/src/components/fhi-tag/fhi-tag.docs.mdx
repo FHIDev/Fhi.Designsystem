@@ -2,6 +2,8 @@ import { FhiTag } from './fhi-tag.component.ts';
 import * as FhiTagStories from './fhi-tag.stories.ts';
 import { Meta, Primary, Canvas, Controls } from '@storybook/blocks';
 
+import { ApiDefinition } from '../../../.storybook/blocks/api-definition.jsx';
+
 <Meta of={FhiTagStories} />
 
 # Tag
@@ -27,3 +29,5 @@ Tag er tilgjengelig i alle semantiske skalaer. Har man behov for en spesifikk ba
 Teksten skal være god nok for å forstå informasjonen. Ikoner kan brukes for å støtte teksten, samt skape gjenkjennelighet over tid. Ikonet plasseres før teksten.
 
 <Canvas of={FhiTagStories.Icon} />
+
+<ApiDefinition />

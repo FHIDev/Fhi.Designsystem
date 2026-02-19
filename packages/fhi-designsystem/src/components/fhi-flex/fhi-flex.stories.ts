@@ -1,4 +1,4 @@
-import type { Meta, StoryObj } from '@storybook/web-components';
+import type { StoryObj } from '@storybook/web-components';
 import { withActions } from '@storybook/addon-actions/decorator';
 
 import { html } from 'lit';
@@ -6,10 +6,12 @@ import { html } from 'lit';
 import { FhiFlex } from './fhi-flex.component';
 import { FhiButton } from '../fhi-button/fhi-button.component';
 
+import { FhiStorybookMeta } from '../../../.storybook/fhi-meta';
+
 new FhiFlex();
 new FhiButton();
 
-const meta: Meta<FhiFlex> = {
+const meta: FhiStorybookMeta<FhiFlex> = {
   title: 'Komponenter/Flex',
   component: 'fhi-flex',
   parameters: {
@@ -19,6 +21,11 @@ const meta: Meta<FhiFlex> = {
         excludeDecorators: true,
       },
     },
+    slotTypes: [
+      {
+        description: 'Innholdet som skal plasseres i Flex.',
+      },
+    ],
   },
   decorators: [
     withActions,

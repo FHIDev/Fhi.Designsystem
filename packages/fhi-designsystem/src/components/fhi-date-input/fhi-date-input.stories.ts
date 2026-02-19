@@ -1,13 +1,15 @@
-import type { Meta, StoryObj } from '@storybook/web-components';
+import type { StoryObj } from '@storybook/web-components';
 import { withActions } from '@storybook/addon-actions/decorator';
 
 import { html } from 'lit';
 import { FhiDateInput } from './fhi-date-input.component';
 import { ifDefined } from 'lit/directives/if-defined.js';
 
+import { FhiStorybookMeta } from '../../../.storybook/fhi-meta';
+
 new FhiDateInput();
 
-const meta: Meta<FhiDateInput> = {
+const meta: FhiStorybookMeta<FhiDateInput> = {
   title: 'Komponenter/Date Input',
   component: 'fhi-date-input',
   parameters: {
@@ -20,6 +22,20 @@ const meta: Meta<FhiDateInput> = {
         excludeDecorators: true,
       },
     },
+    eventTypes: [
+      {
+        name: 'change',
+        description:
+          'Blir utløst når verdien av inputfeltet endres og brukeren har forlatt feltet.',
+        valueLocation: 'event.target.value',
+      },
+      {
+        name: 'input',
+        description:
+          'Blir utløst når verdien av inputfeltet endres. Dette eventet utløses ved hver endring, inkludert mens brukeren skriver.',
+        valueLocation: 'event.target.value',
+      },
+    ],
   },
   decorators: [
     withActions,
