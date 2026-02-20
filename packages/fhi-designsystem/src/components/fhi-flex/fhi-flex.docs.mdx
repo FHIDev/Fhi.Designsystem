@@ -7,7 +7,7 @@ import {
     Canvas,
     Story,
     Controls,
-} from '@storybook/blocks';
+} from '@storybook/addon-docs/blocks';
 
 <Meta of={FhiFlexStories} />
 
@@ -23,8 +23,10 @@ Flex er en layoutkomponent som gjør det enkelt å lage fleksible og responsive 
 - Organisere innhold i rader eller kolonner med enkel konfigurasjon.
 
 <Canvas of={FhiFlexStories.Preview} />
+
 > *Eksempel på lignende elementer gruppert sammen med flexbox*
-<Controls />
+
+<Controls of={FhiFlexStories.Preview} />
 
 ## Retning
 

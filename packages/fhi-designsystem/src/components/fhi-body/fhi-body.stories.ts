@@ -1,7 +1,9 @@
-import type { Meta, StoryObj } from '@storybook/web-components';
+import type { Meta, StoryObj } from '@storybook/web-components-vite';
+
 import { html } from 'lit';
-import { FhiBody } from './fhi-body.component';
 import { ifDefined } from 'lit/directives/if-defined.js';
+
+import { FhiBody } from './fhi-body.component';
 
 new FhiBody();
 

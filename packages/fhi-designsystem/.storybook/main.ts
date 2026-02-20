@@ -3,16 +3,12 @@ import type { StorybookConfig } from '@storybook/web-components-vite';
 const config: StorybookConfig = {
   stories: ['../src/**/*.mdx', '../src/**/*.stories.@(js|jsx|mjs|ts|tsx)'],
   addons: [
-    '@storybook/addon-links',
-    '@storybook/addon-essentials',
-    '@chromatic-com/storybook',
+    '@storybook/addon-vitest',
+    '@storybook/addon-a11y',
+    '@storybook/addon-docs',
     'storybook-design-token',
   ],
-  framework: {
-    name: '@storybook/web-components-vite',
-    options: {},
-  },
-  staticDirs: ['./static'],
+  framework: '@storybook/web-components-vite',
 };
 
 export default config;

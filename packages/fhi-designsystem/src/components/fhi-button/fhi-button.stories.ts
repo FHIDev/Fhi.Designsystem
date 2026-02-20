@@ -1,5 +1,5 @@
-import type { Meta, StoryObj } from '@storybook/web-components';
-import { withActions } from '@storybook/addon-actions/decorator';
+import type { Meta, StoryObj } from '@storybook/web-components-vite';
+import { action } from 'storybook/actions';
 
 import { html } from 'lit';
 import { ifDefined } from 'lit/directives/if-defined.js';
@@ -38,10 +38,6 @@ const meta: Meta<FhiButton> = {
   title: 'Komponenter/Button',
   component: 'fhi-button',
   parameters: {
-    actions: {
-      handles: ['click'],
-    },
-    options: { selectedPanel: 'addon-controls' },
     docs: {
       source: {
         excludeDecorators: true,
@@ -49,7 +45,6 @@ const meta: Meta<FhiButton> = {
     },
   },
   decorators: [
-    withActions,
     Story =>
       html`<div
         style="display: flex; justify-content: start; align-items: center; gap: 0.5rem;"
@@ -65,6 +60,7 @@ const meta: Meta<FhiButton> = {
       type=${ifDefined(args.type)}
       ?disabled=${args.disabled}
       ?icon-only=${args.iconOnly}
+      @click=${action('click')}
     >
       Handling
     </fhi-button>`,
@@ -112,7 +108,7 @@ type Story = StoryObj<FhiButton>;
 
 export const Preview: Story = {
   tags: ['!dev'],
-  args: { color: 'accent', variant: 'strong', size: 'medium' },
+  args: {},
 };
 
 export const Accent: Story = {
@@ -144,6 +140,8 @@ export const IconButton: Story = {
       size="small"
       type=${ifDefined(args.type)}
       ?disabled=${args.disabled}
+      ?icon-only=${args.iconOnly}
+      @click=${action('click')}
     >
       <fhi-icon-x></fhi-icon-x>
     </fhi-button>
@@ -154,6 +152,8 @@ export const IconButton: Story = {
       size="medium"
       type=${ifDefined(args.type)}
       ?disabled=${args.disabled}
+      ?icon-only=${args.iconOnly}
+      @click=${action('click')}
     >
       <fhi-icon-x></fhi-icon-x>
     </fhi-button>
@@ -163,13 +163,15 @@ export const IconButton: Story = {
       size="large"
       type=${ifDefined(args.type)}
       ?disabled=${args.disabled}
+      ?icon-only=${args.iconOnly}
+      @click=${action('click')}
     >
       <fhi-icon-x></fhi-icon-x>
     </fhi-button>
   `,
 };
 
-export const showVariants: Story = {
+export const ShowVariants: Story = {
   tags: ['!dev'],
   render: () => html`
     <fhi-button variant="strong">Strong</fhi-button>
@@ -179,7 +181,7 @@ export const showVariants: Story = {
   `,
 };
 
-export const showColors: Story = {
+export const ShowColors: Story = {
   tags: ['!dev'],
   render: () => html`
     <fhi-button color="accent">Accent</fhi-button>
@@ -188,7 +190,7 @@ export const showColors: Story = {
   `,
 };
 
-export const showSizes: Story = {
+export const ShowSizes: Story = {
   tags: ['!dev'],
   render: () => html`
     <fhi-button size="large">Large</fhi-button>
@@ -197,7 +199,7 @@ export const showSizes: Story = {
   `,
 };
 
-export const showButtonsWithTextAndIcons: Story = {
+export const ShowButtonsWithTextAndIcons: Story = {
   tags: ['!dev'],
   decorators: [
     Story =>
@@ -240,7 +242,7 @@ export const showButtonsWithTextAndIcons: Story = {
   `,
 };
 
-export const showIconButtons: Story = {
+export const ShowIconButtons: Story = {
   tags: ['!dev'],
   decorators: [
     Story =>
@@ -285,7 +287,7 @@ export const showIconButtons: Story = {
   `,
 };
 
-export const showButtonsWithMixedColors: Story = {
+export const ShowButtonsWithMixedColors: Story = {
   tags: ['!dev'],
   decorators: [
     Story =>
