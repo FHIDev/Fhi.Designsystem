@@ -80,6 +80,13 @@ export class FhiModalDialog extends LitElement {
       }
     }
 
+    // if invalid size is provided, default to 'medium'
+    if (changedProperties.has('size')) {
+      if (this.size !== 'small' && this.size !== 'medium') {
+        this.size = 'medium';
+      }
+    }
+
     if (
       typeof this.closeButtonLabel !== 'string' ||
       this.closeButtonLabel.length === 0
@@ -327,8 +334,7 @@ export class FhiModalDialog extends LitElement {
       display: block;
     }
 
-    /* small by default */
-    :host {
+    :host([size='small']) {
       dialog {
         width: var(--dimension-dialog-width-small);
       }

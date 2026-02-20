@@ -100,7 +100,7 @@ export class FhiTooltip extends LitElement {
     // If an invalid value is provided, default to 'hover'.
     if (changedProperties.has('trigger')) {
       if (this.trigger !== 'click' && this.trigger !== 'hover') {
-        changedProperties.set('trigger', 'hover');
+        this.trigger = 'hover';
       }
     }
 
