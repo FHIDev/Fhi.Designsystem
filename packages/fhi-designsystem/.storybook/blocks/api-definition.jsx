@@ -97,10 +97,10 @@ export const ApiDefinition = ({ of }) => {
   return (
     <section
       style={{
+        margin: "var(--fhi-spacing-400) 0",
         padding: 'var(--fhi-spacing-400)',
-        border:
+        borderTop:
           'var(--fhi-dimension-border-width) solid var(--fhi-color-neutral-border-subtle)',
-        borderRadius: 'var(--fhi-border-radius-150)',
       }}
     >
       {mainTitle}
