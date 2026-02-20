@@ -19,12 +19,12 @@ const meta: FhiStorybookMeta<FhiCheckbox> = {
     eventTypes: [
       {
         name: 'change',
-        valueLocation: 'event.target.checked',
+        valueLocation: ['event.target.checked'],
         description: 'Utløses når avkrysningsboksen endrer tilstand.',
       },
       {
         name: 'input',
-        valueLocation: 'event.target.checked',
+        valueLocation: ['event.target.checked'],
         description: 'Utløses når brukeren samhandler med avkrysningsboksen.',
       },
     ],

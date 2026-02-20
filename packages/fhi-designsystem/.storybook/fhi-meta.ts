@@ -4,7 +4,7 @@ export interface FhiStorybookMeta<T> extends Meta<T> {
   parameters?: Meta['parameters'] & {
     eventTypes?: {
       name: string;
-      valueLocation?: string;
+      valueLocation?: string[];
       description: string;
     }[];
     slotTypes?: {

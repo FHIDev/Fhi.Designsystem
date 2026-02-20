@@ -25,7 +25,7 @@ const meta: FhiStorybookMeta<FhiModalDialog> = {
       {
         name: 'toggle',
         description: 'Utløses når dialogen åpnes eller lukkes.',
-        valueLocation: 'event.newState & event.oldState',
+        valueLocation: ['event.newState', 'event.oldState'],
       },
       {
         name: 'close',

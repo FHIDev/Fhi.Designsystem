@@ -27,13 +27,13 @@ const meta: FhiStorybookMeta<FhiDateInput> = {
         name: 'change',
         description:
           'Blir utløst når verdien av inputfeltet endres og brukeren har forlatt feltet.',
-        valueLocation: 'event.target.value',
+        valueLocation: ['event.target.value'],
       },
       {
         name: 'input',
         description:
           'Blir utløst når verdien av inputfeltet endres. Dette eventet utløses ved hver endring, inkludert mens brukeren skriver.',
-        valueLocation: 'event.target.value',
+        valueLocation: ['event.target.value'],
       },
     ],
   },

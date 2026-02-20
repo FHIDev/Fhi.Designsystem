@@ -88,15 +88,10 @@ export const ApiDefinition = ({ of }) => {
     }) || [];
 
   const mainTitle = (
-    <section style={{ display: 'flex', alignItems: 'center', gap: '.5rem' }}>
+    <section>
       <fhi-headline level="1">API Definisjon</fhi-headline>
-      <fhi-tooltip
-        message="Denne seksjonen viser en oversikt over komponentens API utover det som er dekket av web-standarden."
-        placement="top"
-      >
-        <fhi-icon-circle-info />
-      </fhi-tooltip>
-    </section>
+      <fhi-body>Denne seksjonen viser en oversikt over komponentens API utover det som er dekket av web-standarden.</fhi-body>
+    </section >
   );
 
   return (
@@ -141,7 +136,7 @@ export const ApiDefinition = ({ of }) => {
       {generateSection(
         'Events',
         <>
-          <th>Navn</th>
+          <th>Type</th>
           <th
             style={{
               display: 'flex',
@@ -163,8 +158,14 @@ export const ApiDefinition = ({ of }) => {
           <tr key={index}>
             <td>{event.name}</td>
             <td>
-              {event.valueLocation ? (
-                <fhi-tag>{event.valueLocation}</fhi-tag>
+              {event.valueLocation?.length > 0 ? (
+                <fhi-flex wrap>
+                  {
+                    event.valueLocation.map((location, index) => {
+                      return <fhi-tag key={`${event.name}-${index}`}>{location}</fhi-tag>
+                    })
+                  }
+                </fhi-flex>
               ) : (
                 '-'
               )}
