@@ -29,7 +29,7 @@ jobs:
             try {
               await github.rest.packages.deletePackageForOrg({
                 package_type: "npm",
-                package_name: `${{ env.PACKAGE_SCOPE }}/${{ env.PACKAGE_NAME }}`,
+                package_name: "${{ env.PACKAGE_NAME }}",
                 org: "FHIDev"
               })
             } catch (error) {
