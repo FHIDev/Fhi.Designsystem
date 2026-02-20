@@ -51,7 +51,8 @@ const meta: FhiStorybookMeta<FhiButton> = {
     },
     slotTypes: [
       {
-        description: 'the content displayed to the user',
+        description:
+          'Innholdet i knappen. Kan være tekst, ikon eller en kombinasjon av begge.',
       },
     ],
     eventTypes: [

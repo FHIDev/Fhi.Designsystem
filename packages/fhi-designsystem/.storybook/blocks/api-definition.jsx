@@ -151,7 +151,7 @@ export const ApiDefinition = ({ of }) => {
           >
             Verdilokasjon
             <fhi-tooltip
-              message="Eventet inneholder en referanse til komponenten sin verdi. Verdilokasjonen beskriver hvor i eventobjektet denne referansen finnes."
+              message="Eventet kan inneholde en referanse til komponenten sin verdi. Verdilokasjonen beskriver hvor i eventobjektet denne referansen finnes."
               placement="top"
             >
               <fhi-icon-circle-info size="small" />
