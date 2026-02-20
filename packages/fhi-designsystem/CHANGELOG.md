@@ -1,5 +1,11 @@
 # Changelog
 
+## [0.31.0](https://github.com/FHIDev/Fhi/compare/v0.30.0...v0.31.0) (2026-02-19)
+
+### 🚀 Features
+
+* Deprecate icon-only attribute ([#362](https://github.com/FHIDev/Fhi/issues/362)) ([ad7ec54](https://github.com/FHIDev/Fhi/commit/ad7ec54e074eebcfd659ae9522aadd1c128ab066))
+
 ## [0.30.0](https://github.com/FHIDev/Fhi/compare/v0.29.0...v0.30.0) (2026-02-10)
 
 ### 🚀 Features
