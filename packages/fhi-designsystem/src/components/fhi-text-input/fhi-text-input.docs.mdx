@@ -7,7 +7,7 @@ import {
     Canvas,
     Story,
     Controls,
-} from '@storybook/blocks';
+} from '@storybook/addon-docs/blocks';
 
 <Meta of={FhiTextInputStories} />
 
@@ -20,7 +20,7 @@ Text Input lar brukere skrive inn data, slik som navn, telefonnumre og e-postadr
 - Korte svar på én linje. 
 
 <Canvas of={FhiTextInputStories.Preview} />
-<Controls />
+<Controls of={FhiTextInputStories.Preview} />
 
 ### Status
 #### `error`
