@@ -327,7 +327,8 @@ export class FhiModalDialog extends LitElement {
       display: block;
     }
 
-    :host([size='small']) {
+    /* small by default */
+    :host {
       dialog {
         width: var(--dimension-dialog-width-small);
       }

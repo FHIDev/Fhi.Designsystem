@@ -57,8 +57,11 @@ export class FhiHeadline extends LitElement {
   updated(changedProperties: PropertyValues<this>) {
     super.updated(changedProperties);
 
-    if (changedProperties.has('color') && typeof this.color == 'string') {
-      this.style.color = this.color;
+    if (changedProperties.has('color')) {
+      this.style.color =
+        typeof this.color === 'string'
+          ? this.color
+          : 'var(--fhi-color-neutral-text-default)';
     }
   }
 

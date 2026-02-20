@@ -1,4 +1,4 @@
-import { html, css, LitElement } from 'lit';
+import { html, css, LitElement, PropertyValues } from 'lit';
 import { customElement, property, query, state } from 'lit/decorators.js';
 import {
   computePosition,
@@ -96,6 +96,17 @@ export class FhiTooltip extends LitElement {
     left: 0,
   };
 
+  protected update(changedProperties: PropertyValues): void {
+    // If an invalid value is provided, default to 'hover'.
+    if (changedProperties.has('trigger')) {
+      if (this.trigger !== 'click' && this.trigger !== 'hover') {
+        changedProperties.set('trigger', 'hover');
+      }
+    }
+
+    super.update(changedProperties);
+  }
+
   private _showTooltip() {
     if (this._isVisible) {
       return;
@@ -143,7 +154,7 @@ export class FhiTooltip extends LitElement {
       this._tooltip,
       () => {
         computePosition(this._anchor, this._tooltip, {
-          placement,
+          placement: placement || 'top',
           strategy: 'fixed',
           middleware: [
             flip({ fallbackAxisSideDirection: 'start' }),

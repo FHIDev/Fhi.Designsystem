@@ -680,7 +680,8 @@ export class FhiButton extends LitElement {
       padding: var(--dimension-padding-small-text);
     }
 
-    :host([color='accent'][variant='strong']) button {
+    /* accent, strong by default */
+    :host button {
       background-color: var(--color-accent-strong-background);
       border-color: var(--color-accent-strong-border);
       color: var(--color-accent-strong);
