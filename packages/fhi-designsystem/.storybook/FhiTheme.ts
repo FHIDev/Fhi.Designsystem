@@ -1,7 +1,8 @@
-import { create } from '@storybook/theming/create';
+import { create } from 'storybook/theming/create';
+
 import '../src/theme/default.css';
 
-const getCssPropertyValue = property =>
+const getCssPropertyValue = (property: string) =>
   getComputedStyle(document.querySelector(':root') as Element).getPropertyValue(
     property,
   );
