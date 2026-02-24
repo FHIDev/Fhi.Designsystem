@@ -1,4 +1,4 @@
-import type { Preview } from '@storybook/web-components';
+import type { Preview } from '@storybook/web-components-vite';
 import '../src/theme/default.css';
 import FhiTheme from './FhiTheme';
 

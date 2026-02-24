@@ -1,6 +1,6 @@
 import { FhiModalDialog } from './fhi-modal-dialog.component.ts';
 import * as FhiDialogStories from './fhi-modal-dialog.stories.ts';
-import { Meta, Primary, Canvas, Controls } from '@storybook/blocks';
+import { Meta, Primary, Canvas, Controls } from '@storybook/addon-docs/blocks';
 
 <Meta of={FhiDialogStories} />
 
@@ -14,7 +14,7 @@ Den tar over skjermen og hindrer brukeren å interagere med elementer i bakgrunn
 
 <Canvas of={FhiDialogStories.Preview} />
 
-<Controls />
+<Controls of={FhiDialogStories.Preview} />
 
 <div style={{marginBottom: '2rem', borderRadius: '2px', padding: ".25rem 1rem", backgroundColor: '#FFE7BA', borderBottom: '4px solid #F1A541'}}>
     **Kjente problemer:**
