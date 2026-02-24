@@ -1,5 +1,5 @@
 import React from 'react';
-import { useOf } from '@storybook/blocks';
+import { useOf } from '@storybook/addon-docs/blocks';
 
 import { FhiTag } from '../../src/components/fhi-tag/fhi-tag.component';
 import { FhiTitle } from '../../src/components/fhi-title/fhi-title.component';
@@ -90,14 +90,17 @@ export const ApiDefinition = ({ of }) => {
   const mainTitle = (
     <section>
       <fhi-headline level="1">API Definisjon</fhi-headline>
-      <fhi-body>Denne seksjonen viser en oversikt over komponentens API utover det som er dekket av web-standarden.</fhi-body>
-    </section >
+      <fhi-body>
+        Denne seksjonen viser en oversikt over komponentens API utover det som
+        er dekket av web-standarden.
+      </fhi-body>
+    </section>
   );
 
   return (
     <section
       style={{
-        margin: "var(--fhi-spacing-400) 0",
+        margin: 'var(--fhi-spacing-400) 0',
         padding: 'var(--fhi-spacing-400)',
         borderTop:
           'var(--fhi-dimension-border-width) solid var(--fhi-color-neutral-border-subtle)',
@@ -160,11 +163,13 @@ export const ApiDefinition = ({ of }) => {
             <td>
               {event.valueLocation?.length > 0 ? (
                 <fhi-flex wrap>
-                  {
-                    event.valueLocation.map((location, index) => {
-                      return <fhi-tag key={`${event.name}-${index}`}>{location}</fhi-tag>
-                    })
-                  }
+                  {event.valueLocation.map((location, index) => {
+                    return (
+                      <fhi-tag key={`${event.name}-${index}`}>
+                        {location}
+                      </fhi-tag>
+                    );
+                  })}
                 </fhi-flex>
               ) : (
                 '-'
