@@ -7,7 +7,7 @@ import {
     Canvas,
     Story,
     Controls,
-} from '@storybook/blocks';
+} from '@storybook/addon-docs/blocks';
 
 import { ApiDefinition } from '../../../.storybook/blocks/api-definition.jsx';
 
@@ -22,7 +22,7 @@ Text Input lar brukere skrive inn data, slik som navn, telefonnumre og e-postadr
 - Korte svar på én linje. 
 
 <Canvas of={FhiTextInputStories.Preview} />
-<Controls />
+<Controls of={FhiTextInputStories.Preview} />
 
 ### Status
 #### `error`

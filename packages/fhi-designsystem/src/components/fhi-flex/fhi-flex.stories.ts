@@ -1,5 +1,4 @@
-import type { StoryObj } from '@storybook/web-components';
-import { withActions } from '@storybook/addon-actions/decorator';
+import type { StoryObj } from '@storybook/web-components-vite';
 
 import { html } from 'lit';
 
@@ -15,7 +14,6 @@ const meta: FhiStorybookMeta<FhiFlex> = {
   title: 'Komponenter/Flex',
   component: 'fhi-flex',
   parameters: {
-    options: { selectedPanel: 'addon-controls' },
     docs: {
       source: {
         excludeDecorators: true,
@@ -28,7 +26,6 @@ const meta: FhiStorybookMeta<FhiFlex> = {
     ],
   },
   decorators: [
-    withActions,
     Story =>
       html`<div
         style="display: flex; justify-content: start; align-items: center; gap: 1rem;"

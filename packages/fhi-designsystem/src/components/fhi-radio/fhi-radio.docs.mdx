@@ -1,6 +1,6 @@
 import { FhiRadio } from './fhi-radio.component.ts';
 import * as FhiRadioStories from './fhi-radio.stories.ts';
-import { Meta, Primary, Canvas, Controls } from '@storybook/blocks';
+import { Meta, Primary, Canvas, Controls } from '@storybook/addon-docs/blocks';
 
 import { ApiDefinition } from '../../../.storybook/blocks/api-definition.jsx';
 
@@ -16,7 +16,7 @@ Radioknapp lar brukere velge ett enkelt valg blant to eller flere motstridende a
 
 <Canvas of={FhiRadioStories.Preview} />
 
-<Controls />
+<Controls of={FhiRadioStories.Preview} />
 
 ### Status
 

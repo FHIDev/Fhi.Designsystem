@@ -1,6 +1,6 @@
 import { FhiCheckbox } from './fhi-checkbox.component.ts';
 import * as FhiCheckboxStories from './fhi-checkbox.stories.ts';
-import { Meta, Primary, Canvas, Controls } from '@storybook/blocks';
+import { Meta, Primary, Canvas, Controls } from '@storybook/addon-docs/blocks';
 
 import { ApiDefinition } from '../../../.storybook/blocks/api-definition.jsx';
 
@@ -17,8 +17,7 @@ Checkbox lar brukere markere valg i lister med en eller flere alternativer. Bruk
 - Å velge en rad i en tabell.
 
 <Canvas of={FhiCheckboxStories.Preview} />
-
-<Controls />
+<Controls of={FhiCheckboxStories.Preview} />
 
 ### Status
 #### `error`

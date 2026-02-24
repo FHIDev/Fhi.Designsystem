@@ -7,7 +7,7 @@ import {
   Canvas,
   Story,
   Controls,
-} from '@storybook/blocks';
+} from '@storybook/addon-docs/blocks';
 
 import { ApiDefinition } from '../../../.storybook/blocks/api-definition.jsx';
 
@@ -24,7 +24,7 @@ Knapper lar brukere utføre handlinger.
 
 <Canvas of={FhiButtonStories.Preview} />
 
-<Controls />
+<Controls of={FhiButtonStories.Preview} />
 
 ## Valg
 
@@ -33,7 +33,7 @@ Ulike varianter og størrelser kan gi knappen ulike vekter av fremheving, for å
 ### Variant (`variant`)
 
 For å gi knappen riktig fremheving og visuell vekt bruker vi ulike varianter:
-<Canvas of={FhiButtonStories.showVariants} />
+<Canvas of={FhiButtonStories.ShowVariants} />
 
 - **`strong`** (default) til hovedhandlinger
 - **`subtle`** til sækundere handlinger som trenger litt ekstra vekt enn det `outlined` har
@@ -44,7 +44,7 @@ For å gi knappen riktig fremheving og visuell vekt bruker vi ulike varianter:
 
 Knapper er tilgjengelig i tre farger:
 
-<Canvas of={FhiButtonStories.showColors} />
+<Canvas of={FhiButtonStories.ShowColors} />
 
 - **`accent`** (default) står mest ut, gjerne for handlinger i en planlagt flyt
 - **`neutral`** brukes på handlinger som ikke trenger mye oppmerksomhet
@@ -54,7 +54,7 @@ Knapper er tilgjengelig i tre farger:
 
 Knapper kommer i tre størrelser:
 
-<Canvas of={FhiButtonStories.showSizes} />
+<Canvas of={FhiButtonStories.ShowSizes} />
 
 - **`large`** står ekstra ut og trekker til seg mye oppmerksomhet
 - **`medium`** (default) er utgangspunktet vårt og brukes i de fleste situasjoner
@@ -64,19 +64,19 @@ Knapper kommer i tre størrelser:
 
 Et ikon kan brukes for å tydeliggjøre meningen til en handling, eller gjøre den raskere å kjenne igjen. 
 
-<Canvas of={FhiButtonStories.showButtonsWithTextAndIcons} />
+<Canvas of={FhiButtonStories.ShowButtonsWithTextAndIcons} />
 
 Ikon settes som oftest til venstre for teksten. Vi setter ikon til høyre når det assosieres med en handling eller bevegelse til høyre eller ned, slik som en pil mot høyre for “gå videre” og “neste side” eller chevron som peker ned for “åpne nedtrekksmeny”.
 
 #### Knapp med _kun_ ikon
 
-<div class="callout-warning">
+<div className="callout-warning">
   **Obs:** `icon-only`-attributten er nå **avviklet** og vil bli fjernet i fremtiden. Knappen oppdager nå om den kun inneholder et ikon selv og får riktig styling automatisk.
 </div>
 
 Knapper med kun ikon brukes når ikonet er godt nok kjent, uten umiddelbar forklaring. Husk å legge til [en tilgjengelig, alternativ tittel](?path=/docs/universell-utforming--docs). Du kan også vurdere [å legge knappen i en Tooltip](?path=/docs/komponenter-tooltip--docs).
 
-<Canvas of={FhiButtonStories.showIconButtons} />
+<Canvas of={FhiButtonStories.ShowIconButtons} />
 
 ## Bruk
 
@@ -104,7 +104,7 @@ Vi bruker `variant` for å skape hierarki i en gruppe med relaterte handlinger, 
 
 Knappene bør ha samme størrelse og farge. Unntaket for farge er når vi må tydeliggjøre en handling som ikke kan angres, slik som "Slett".
 
-<Canvas of={FhiButtonStories.showButtonsWithMixedColors} />
+<Canvas of={FhiButtonStories.ShowButtonsWithMixedColors} />
 
 #### `accent` eller `neutral`?
 

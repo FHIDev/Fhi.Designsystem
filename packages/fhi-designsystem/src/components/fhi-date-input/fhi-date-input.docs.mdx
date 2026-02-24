@@ -7,7 +7,7 @@ import {
     Canvas,
     Story,
     Controls,
-} from '@storybook/blocks';
+} from '@storybook/addon-docs/blocks';
 
 import { ApiDefinition } from '../../../.storybook/blocks/api-definition.jsx';
 
@@ -25,7 +25,7 @@ Date Input er basert på HTML-elementet `input` med typen `date`. Dette betyr at
 - Å velge en dato.
 
 <Canvas of={FhiDateInputStories.Preview} />
-<Controls />
+<Controls of={FhiDateInputStories.Preview} />
 
 ### Status
 

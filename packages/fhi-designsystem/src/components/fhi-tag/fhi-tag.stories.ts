@@ -1,7 +1,9 @@
-import type { StoryObj } from '@storybook/web-components';
+import type { StoryObj } from '@storybook/web-components-vite';
+
 import { html } from 'lit';
-import { FhiTag } from './fhi-tag.component';
 import { ifDefined } from 'lit/directives/if-defined.js';
+
+import { FhiTag } from './fhi-tag.component';
 import { FhiIconRefresh } from '../icons/fhi-icon-refresh.component';
 import { FhiFlex } from '../fhi-flex/fhi-flex.component';
 import { FhiIconDownload } from '../icons/fhi-icon-download.component';

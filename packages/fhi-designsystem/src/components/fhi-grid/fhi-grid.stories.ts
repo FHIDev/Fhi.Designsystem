@@ -1,5 +1,7 @@
-import type { StoryObj } from '@storybook/web-components';
+import type { StoryObj } from '@storybook/web-components-vite';
+
 import { html } from 'lit';
+
 import { FhiGrid } from './fhi-grid.component';
 
 import { FhiStorybookMeta } from '../../../.storybook/fhi-meta';
@@ -10,7 +12,6 @@ const meta: FhiStorybookMeta<FhiGrid> = {
   title: 'Komponenter/Grid',
   component: 'fhi-grid',
   parameters: {
-    options: { selectedPanel: 'addon-controls' },
     docs: {
       source: {
         excludeDecorators: true,
@@ -115,7 +116,7 @@ export const LargeGrid: Story = {
   `,
 };
 
-export const noSpan: Story = {
+export const NoSpan: Story = {
   tags: [],
   args: {
     gap: 'medium',

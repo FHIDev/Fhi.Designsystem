@@ -1,11 +1,11 @@
-import type { StoryObj } from '@storybook/web-components';
-import { withActions } from '@storybook/addon-actions/decorator';
+import type { StoryObj } from '@storybook/web-components-vite';
+import { action } from 'storybook/actions';
 
 import { html } from 'lit';
-import { FhiTextInput } from './fhi-text-input.component';
 import { ifDefined } from 'lit/directives/if-defined.js';
 
 import { FhiStorybookMeta } from '../../../.storybook/fhi-meta';
+import { FhiTextInput } from './fhi-text-input.component';
 
 new FhiTextInput();
 
@@ -13,10 +13,6 @@ const meta: FhiStorybookMeta<FhiTextInput> = {
   title: 'Komponenter/Text Input',
   component: 'fhi-text-input',
   parameters: {
-    actions: {
-      handles: ['change', 'input'],
-    },
-    options: { selectedPanel: 'addon-controls' },
     docs: {
       source: {
         excludeDecorators: true,
@@ -27,20 +23,17 @@ const meta: FhiStorybookMeta<FhiTextInput> = {
         name: 'change',
         description:
           'Blir utløst når verdien av inputfeltet endres og brukeren har forlatt feltet.',
-        valueLocation: 'event.target.value',
+        valueLocation: ['event.target.value'],
       },
       {
         name: 'input',
         description:
           'Blir utløst når verdien av inputfeltet endres. Dette eventet utløses ved hver endring, inkludert mens brukeren skriver.',
-        valueLocation: 'event.target.value',
+        valueLocation: ['event.target.value'],
       },
     ],
   },
-  decorators: [
-    withActions,
-    story => html`<div style="max-width: 400px;">${story()}</div>`,
-  ],
+  decorators: [story => html`<div style="max-width: 400px;">${story()}</div>`],
   render: args =>
     html`<fhi-text-input
       label=${ifDefined(args.label)}
@@ -52,6 +45,8 @@ const meta: FhiStorybookMeta<FhiTextInput> = {
       value=${ifDefined(args.value)}
       ?readonly=${args.readonly}
       ?disabled=${args.disabled}
+      @input=${action('input')}
+      @change=${action('change')}
     ></fhi-text-input>`,
   argTypes: {
     name: {

@@ -1,8 +1,10 @@
-import type { StoryObj } from '@storybook/web-components';
+import type { StoryObj } from '@storybook/web-components-vite';
+import { action } from 'storybook/actions';
+
 import { html } from 'lit';
-import { FhiCheckbox } from './fhi-checkbox.component';
 import { ifDefined } from 'lit/directives/if-defined.js';
-import { withActions } from '@storybook/addon-actions/decorator';
+
+import { FhiCheckbox } from './fhi-checkbox.component';
 
 import { FhiStorybookMeta } from '../../../.storybook/fhi-meta';
 
@@ -12,10 +14,6 @@ const meta: FhiStorybookMeta<FhiCheckbox> = {
   title: 'Komponenter/Checkbox',
   component: 'fhi-checkbox',
   parameters: {
-    actions: {
-      handles: ['change', 'input'],
-    },
-    options: { selectedPanel: 'addon-controls' },
     eventTypes: [
       {
         name: 'change',
@@ -29,7 +27,6 @@ const meta: FhiStorybookMeta<FhiCheckbox> = {
       },
     ],
   },
-  decorators: [withActions],
   render: args =>
     html`<fhi-checkbox
       label=${ifDefined(args.label)}
@@ -38,6 +35,8 @@ const meta: FhiStorybookMeta<FhiCheckbox> = {
       value=${ifDefined(args.value)}
       ?disabled=${args.disabled}
       ?checked=${args.checked}
+      @input=${action('input')}
+      @change=${action('change')}
     ></fhi-checkbox>`,
   argTypes: {
     name: {

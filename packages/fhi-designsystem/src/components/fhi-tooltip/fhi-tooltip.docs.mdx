@@ -1,6 +1,6 @@
 import { FhiTooltip } from './fhi-tooltip.component.ts';
 import * as FhiTooltipStories from './fhi-tooltip.stories.ts';
-import { Meta, Primary, Canvas, Controls } from '@storybook/blocks';
+import { Meta, Primary, Canvas, Controls } from '@storybook/addon-docs/blocks';
 
 import { ApiDefinition } from '../../../.storybook/blocks/api-definition.jsx';
 
@@ -20,7 +20,7 @@ Vi bruker ikke tooltip til å gi brukeren kritisk informasjon.
 - Gi umiddelbar tilbakemelding på kjente handlinger
 
 <Canvas of={FhiTooltipStories.Preview} />
-<Controls />
+<Controls of={FhiTooltipStories.Preview} />
 
 ### Placement
 

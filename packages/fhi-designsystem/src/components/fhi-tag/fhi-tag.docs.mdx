@@ -1,6 +1,6 @@
 import { FhiTag } from './fhi-tag.component.ts';
 import * as FhiTagStories from './fhi-tag.stories.ts';
-import { Meta, Primary, Canvas, Controls } from '@storybook/blocks';
+import { Meta, Primary, Canvas, Controls } from '@storybook/addon-docs/blocks';
 
 import { ApiDefinition } from '../../../.storybook/blocks/api-definition.jsx';
 
@@ -17,7 +17,7 @@ Tag er en merkelapp for å organisere, kategorisere og utheve viktig data, slik 
 
 <Canvas of={FhiTagStories.Preview} />
 
-<Controls />
+<Controls of={FhiTagStories.Preview} />
 
 ## Farge
 

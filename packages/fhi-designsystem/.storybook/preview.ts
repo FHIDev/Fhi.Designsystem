@@ -1,5 +1,8 @@
-import type { Preview } from '@storybook/web-components';
+import type { Preview } from '@storybook/web-components-vite';
+
 import FhiTheme from './FhiTheme';
+
+import '../src/theme/default.css';
 
 const preview: Preview = {
   parameters: {
