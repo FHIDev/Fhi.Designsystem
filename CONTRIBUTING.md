@@ -69,16 +69,15 @@ Linting og prettier tar hånd om det meste, men en ting er viktig å merke seg: 
 
 ## Testdekning
 
-Alle komponenter skal ha unit tester.
+Alle komponenter skal ha enhetstester.
 
 Dette skal testes:
-- Alle attributter kan settes og den underliggende property blir også satt.
-- Om en attributte er reflektert skal det bekreftes at refleksjonen fungerer.
-- Feilhåndtering. Skal komponeneten respondere på feil bruk eller tekniske feil så bekreft dette.
-- Accessibility. Pass på at komponenten følger relevante accessibility krav.
-- Alle relevante eventer blir avfyrt som forventet.
-- Alle brukerinteraskjoner skal bekreftes at fungerer.
-  - Denne er spesielt viktig.
+- Alle attributter kan settes og den underliggende _property_ blir også satt.
+- Om en attributt er reflektert skal det bekreftes at refleksjonen fungerer.
+- Feilhåndtering. Om komponeneten skal respondere på feil bruk eller tekniske feil, så bekreft dette.
+- Tilgjengelighet. Pass på at komponenten følger relevante tilgjengelighetskrav.
+- Alle relevante _events_ blir avfyrt som forventet.
+- **Spesielt viktig:** Alle brukerinteraskjoner skal bekreftes at fungerer.
 
 Vi har ikke som mål å treffe så mange kodelinjer som mulig.
 Vi har en mer heuristisk tilnærming hvor vi prøver å bruke "sunn fornuft" når vi tester.
