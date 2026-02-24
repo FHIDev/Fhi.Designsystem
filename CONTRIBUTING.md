@@ -72,15 +72,16 @@ Linting og prettier tar hånd om det meste, men en ting er viktig å merke seg: 
 Alle komponenter skal ha unit tester.
 
 Dette skal testes:
-- Alle attributter kan settes og den underliggende property blir også satt
-- Om en attributte er reflektert skal det bekreftes at fungerer
-- feilhåndtering. Skal komponeneten respondere på feil bruk eller tekniske feil så bekreft dette.
+- Alle attributter kan settes og den underliggende property blir også satt.
+- Om en attributte er reflektert skal det bekreftes at refleksjonen fungerer.
+- Feilhåndtering. Skal komponeneten respondere på feil bruk eller tekniske feil så bekreft dette.
 - Accessibility. Pass på at komponenten følger relevante accessibility krav.
 - Alle relevante eventer blir avfyrt som forventet.
 - Alle brukerinteraskjoner skal bekreftes at fungerer.
   - Denne er spesielt viktig.
 
-Vi har ikke som mål å treffe så mange kodelinjer som mulig. Vi har en mer heuristisk tilnærming hvor vi prøver å bruke "sunn fornuft" når vi tester.
+Vi har ikke som mål å treffe så mange kodelinjer som mulig.
+Vi har en mer heuristisk tilnærming hvor vi prøver å bruke "sunn fornuft" når vi tester.
 
 ## Hvordan utvikle en ny komponent
 
