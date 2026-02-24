@@ -21,7 +21,6 @@ export class FhiTag extends LitElement {
   /**
    * Sets the color of the tag.
    * @reflect
-   *
    */
   @property({ type: String, reflect: true }) color:
     | 'neutral'

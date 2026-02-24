@@ -15,14 +15,12 @@ type FhiGapWidthUnit = `${number}${FhiUnitType}` | number;
  *
  * @tag fhi-grid
  * @element fhi-grid
- *
  */
 @customElement(FhiGridSelector)
 export class FhiGrid extends LitElement {
   /**
    * Sets the gap between items within the grid container. It can be one of the preset values, a rem or px value, or a number.
    * If you give a number, it will be treated as pixels.
-   *
    */
   @property({ type: String }) gap:
     | 'small'
@@ -32,7 +30,6 @@ export class FhiGrid extends LitElement {
 
   /**
    * Sets the number of columns in the grid layout.
-   *
    */
   @property({ type: Number }) columns = 12;
 

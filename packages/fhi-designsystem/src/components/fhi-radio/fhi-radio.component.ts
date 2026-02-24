@@ -22,7 +22,6 @@ export class FhiRadio extends LitElement {
   /**
    * The text label assigned to and displayed next to the radio.
    * You should always provide a label.
-   *
    */
   @property({ type: String }) label?: string = undefined;
 
@@ -30,7 +29,6 @@ export class FhiRadio extends LitElement {
    * The name of the radio. This is submitted with the form data as a `key` when the checkbox is checked.
    * All `<fhi-radio>` components with the same name belong to the same group.
    * @reflect
-   *
    */
   @property({ type: String, reflect: true }) name?: string = undefined;
 
@@ -38,26 +36,22 @@ export class FhiRadio extends LitElement {
    * Sets the visual status of the radio. There is currently only one status available: `error`.
    * The `error` status is used to indicate that there is an issue with the radio, such as a required radio not being checked.
    * @reflect
-   *
    */
   @property({ type: String, reflect: true }) status?: 'error' = undefined;
 
   /**
    * Disables the radio. This changes its appearance and makes it non-interactive.
    * @reflect
-   *
    */
   @property({ type: Boolean, reflect: true }) disabled? = false;
 
   /**
    * Whether the radio button is checked or not.
-   *
    */
   @property({ type: Boolean }) checked? = false;
 
   /**
    * The value of the radio. This is submitted with the form data as a `value` when the radio is checked.
-   *
    */
   @property({ type: String }) value: string = 'on';
 
@@ -204,7 +198,7 @@ export class FhiRadio extends LitElement {
 
   private _dispatchChangeEvent(): void {
     /**
-     *   - Standard DOM event with the type `change`.
+     * Standard DOM event with the type `change`.
      * This event is dispatched when the radio is checked or unchecked.
      */
     this.dispatchEvent(new Event('change', { bubbles: true }));
@@ -212,7 +206,7 @@ export class FhiRadio extends LitElement {
 
   private _dispatchInputEvent(): void {
     /**
-     *   - Standard DOM event with the type `input`.
+     * Standard DOM event with the type `input`.
      * This event is dispatched when the radio is checked or unchecked.
      */
     this.dispatchEvent(new Event('input', { bubbles: true, composed: true }));

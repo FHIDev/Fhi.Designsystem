@@ -25,7 +25,6 @@ export class FhiFlex extends LitElement {
    * Sets the flex direction to either row or column.
    * This determines the main axis along which the flex items are laid out.
    * @reflect
-   *
    */
   @property({ type: String, reflect: true }) direction?: 'row' | 'column' =
     'row';
@@ -35,7 +34,6 @@ export class FhiFlex extends LitElement {
    * It can be one of the preset values, a rem or px value, or a number.
    * If you give a number, it will be treated as pixels.
    * @reflect
-   *
    */
   @property({ type: String, reflect: true }) gap?:
     | 'small'
@@ -46,19 +44,16 @@ export class FhiFlex extends LitElement {
   /**
    * Enables wrapping of flex items onto multiple lines if they exceed the container's width.
    * @reflect
-   *
    */
   @property({ type: Boolean, reflect: true }) wrap?: boolean = false;
 
   /**
    * Justifies flex items along the main axis.
-   *
    */
   @property({ type: String }) justify?: 'start' | 'center' | 'end' = 'start';
 
   /**
    * Aligns flex items along the cross axis.
-   *
    */
   @property({ type: String }) align?:
     | 'stretch'

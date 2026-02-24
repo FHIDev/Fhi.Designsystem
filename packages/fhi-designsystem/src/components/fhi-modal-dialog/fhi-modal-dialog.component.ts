@@ -30,28 +30,24 @@ export class FhiModalDialog extends LitElement {
    * This property is reflected as an attribute and will therefor also change if the user toggles the dialog or
    * if you use the `show()` and `close()` methods.
    * @reflect
-   *
    */
   @property({ type: Boolean, reflect: true })
   open?: boolean = false;
 
   /**
    * Sets the maximum width of the dialog.
-   *
    */
   @property({ type: String, attribute: 'size', reflect: true })
   size?: 'small' | 'medium' = 'medium';
 
   /**
    * Label for the close button.
-   *
    */
   @property({ type: String, attribute: 'close-button-label' })
   closeButtonLabel!: string;
 
   /**
    * The heading text of the dialog. This is displayed at the top of the dialog.
-   *
    */
   @property({ type: String })
   heading!: string;
@@ -154,7 +150,7 @@ export class FhiModalDialog extends LitElement {
 
   private _dispatchToggleEvent() {
     /**
-     *   - Standard DOM event with the type `toggle`
+     * Standard DOM event with the type `toggle`
      * This event is fired whenever the dialog is opened or closed.
      * */
     this.dispatchEvent(
@@ -167,7 +163,7 @@ export class FhiModalDialog extends LitElement {
 
   private _dispatchCloseEvent() {
     /**
-     *   - Standard DOM event with the type `close`
+     * Standard DOM event with the type `close`
      * This event is fired whenever the dialog is closed.
      * */
     this.dispatchEvent(new Event('close'));

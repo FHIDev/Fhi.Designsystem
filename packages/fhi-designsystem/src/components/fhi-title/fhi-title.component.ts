@@ -24,7 +24,6 @@ export class FhiTitle extends LitElement {
   /**
    * Sets the size of the text styles.
    * @reflect
-   *
    */
   @property({ type: String, reflect: true }) size?:
     | 'large'
@@ -43,14 +42,11 @@ export class FhiTitle extends LitElement {
    *    This text will be in the primary text color.
    *  </fhi-title>
    * ```
-   *
-   *
    */
   @property({ type: String }) color?: string;
 
   /**
    * Sets the heading level for the text, corresponding to HTML heading elements `<h1>` to `<h6>`.
-   *
    */
   @property({ type: Number }) level!: TitleLevel;
 

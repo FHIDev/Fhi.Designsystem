@@ -76,7 +76,6 @@ export class FhiTextInput extends LitElement {
    * See: {@link https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input#name}
    *
    * @reflect
-   *
    */
   @property({ type: String, reflect: true })
   get name(): string | undefined {
@@ -98,8 +97,6 @@ export class FhiTextInput extends LitElement {
    *
    * This attribute conforms with the standard HTML `value` attribute for input fields.
    * See: {@link https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input#value}
-   *
-   *
    */
   @property({ type: String })
   get value(): string {
@@ -127,7 +124,7 @@ export class FhiTextInput extends LitElement {
 
   private _dispatchChangeEvent(): void {
     /**
-     *   - Standard DOM event with the type `change`.
+     * Standard DOM event with the type `change`.
      * This event is dispatched when the value of the input changes.
      */
     this.dispatchEvent(
@@ -140,7 +137,7 @@ export class FhiTextInput extends LitElement {
 
   private _dispatchInputEvent(): void {
     /**
-     *   - Standard DOM event with the type `input`.
+     * Standard DOM event with the type `input`.
      * This event is dispatched when the value of the input changes.
      */
     this.dispatchEvent(

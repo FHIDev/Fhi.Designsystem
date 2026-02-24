@@ -21,7 +21,6 @@ export class FhiLabel extends LitElement {
   /**
    * Sets the font size of the given text.
    * @reflect
-   *
    */
   @property({ type: String, reflect: true }) size:
     | 'large'
@@ -40,8 +39,6 @@ export class FhiLabel extends LitElement {
    *    This text will be in the primary text color.
    *  </fhi-label>
    * ```
-   *
-   *
    */
   @property({ type: String }) color?: string;
 

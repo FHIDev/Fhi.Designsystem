@@ -39,7 +39,6 @@ export class FhiBody extends LitElement {
    *    This text will be in the primary text color.
    *  </fhi-body>
    * ```
-   *
    */
   @property({ type: String }) color?: string;
 

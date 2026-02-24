@@ -41,31 +41,26 @@ export type TooltipPlacement =
 export class FhiTooltip extends LitElement {
   /**
    * The content displayed inside the tooltip. This should be a brief, informative message.
-   *
    */
   @property({ type: String }) message: string = '';
 
   /**
    * The placement of the tooltip relative to its trigger element.
-   *
    */
   @property({ type: String }) placement: TooltipPlacement = 'top';
 
   /**
    * The delay in milliseconds before the tooltip appears on hover.
-   *
    */
   @property({ type: Number }) delay: number = 500;
 
   /**
    * The event that triggers the tooltip to show. Can be 'hover' or 'click'.
-   *
    */
   @property({ type: String }) trigger: 'click' | 'hover' = 'hover';
 
   /**
    * The maximum width of the tooltip.
-   *
    */
   @property({ type: String, attribute: 'max-width' }) maxWidth? = '18.75rem';
 

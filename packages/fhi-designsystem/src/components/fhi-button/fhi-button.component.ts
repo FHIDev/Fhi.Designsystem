@@ -124,7 +124,7 @@ export class FhiButton extends LitElement {
 
   private _dispatchClickEvent(): void {
     /**
-     *   - Standard DOM event with the type `click`.
+     * Standard DOM event with the type `click`.
      * This event is dispatched when the button is clicked, either via mouse or keyboard interaction.
      * */
     this.dispatchEvent(

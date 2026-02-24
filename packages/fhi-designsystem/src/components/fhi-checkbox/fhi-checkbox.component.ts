@@ -22,19 +22,16 @@ export class FhiCheckbox extends LitElement {
   /**
    * The text label assigned to and displayed next to the checkbox.
    * You should always provide a label.
-   *
    */
   @property({ type: String }) label?: string = undefined;
 
   /**
    * The name of the checkbox. This is submitted with the form data as a `key` when the checkbox is checked.
-   *
    */
   @property({ type: String }) name?: string = undefined;
 
   /**
    * The value of the checkbox. This is submitted with the form data as a `value` when the checkbox is checked.
-   *
    */
   @property({ type: String }) value: string = 'on';
 
@@ -48,14 +45,12 @@ export class FhiCheckbox extends LitElement {
 
   /**
    * Whether the checkbox is checked or not.
-   *
    */
   @property({ type: Boolean }) checked?: boolean = false;
 
   /**
    * Disables the checkbox. This changes its appearance and makes it non-interactive.
    * @reflect
-   *
    */
   @property({ type: Boolean, reflect: true }) disabled?: boolean = false;
 
@@ -90,7 +85,7 @@ export class FhiCheckbox extends LitElement {
 
   private _dispatchChangeEvent(): void {
     /**
-     *   - Standard DOM event with the type `change`.
+     * Standard DOM event with the type `change`.
      * This event is dispatched when the checkbox is checked or unchecked.
      */
     this.dispatchEvent(new Event('change', { bubbles: true }));
@@ -98,7 +93,7 @@ export class FhiCheckbox extends LitElement {
 
   private _dispatchInputEvent(): void {
     /**
-     *   - Standard DOM event with the type `input`.
+     * Standard DOM event with the type `input`.
      * This event is dispatched when the checkbox is checked or unchecked.
      */
     this.dispatchEvent(new Event('input', { bubbles: true, composed: true }));
