@@ -1,7 +1,10 @@
-import type { Meta, StoryObj } from '@storybook/web-components';
+import type { Meta, StoryObj } from '@storybook/web-components-vite';
+import { action } from 'storybook/actions';
+
 import { html } from 'lit';
-import { FhiRadio } from './fhi-radio.component';
+
 import { ifDefined } from 'lit/directives/if-defined.js';
+import { FhiRadio } from './fhi-radio.component';
 
 new FhiRadio();
 
@@ -9,10 +12,6 @@ const meta: Meta<FhiRadio> = {
   title: 'Komponenter/Radio',
   component: 'fhi-radio',
   parameters: {
-    actions: {
-      handles: ['change', 'input'],
-    },
-    options: { selectedPanel: 'addon-controls' },
     docs: {
       source: {
         excludeDecorators: true,
@@ -24,10 +23,12 @@ const meta: Meta<FhiRadio> = {
     html`<fhi-radio
       name=${ifDefined(args.name)}
       label=${ifDefined(args.label)}
-      ?checked=${ifDefined(args.checked)}
-      ?disabled=${ifDefined(args.disabled)}
+      ?checked=${args.checked}
+      ?disabled=${args.disabled}
       status=${ifDefined(args.status)}
       value=${ifDefined(args.value)}
+      @input=${action('input')}
+      @change=${action('change')}
     ></fhi-radio>`,
   argTypes: {
     name: {
