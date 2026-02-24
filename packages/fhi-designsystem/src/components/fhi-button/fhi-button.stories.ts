@@ -102,7 +102,7 @@ const meta: Meta<FhiButton> = {
       name: 'icon-only',
       control: { type: 'boolean' },
       description:
-        'Bestemmer om knappen er en ikon-knapp. Ikon-knapper skal bare ha ett ikon og ingen tekst.',
+        'AVVIKLET: Knappen vil selv oppdage om den kun inneholder et ikon og få riktig styling automatisk.',
       defaultValue: { summary: 'false' },
     },
   },
@@ -136,9 +136,6 @@ export const Danger: Story = {
 };
 
 export const IconButton: Story = {
-  args: {
-    iconOnly: true,
-  },
   parameters: { controls: { exclude: ['size', 'icon-only'] } },
   render: args => html`
     <fhi-button
@@ -147,7 +144,6 @@ export const IconButton: Story = {
       size="small"
       type=${ifDefined(args.type)}
       ?disabled=${args.disabled}
-      ?icon-only=${args.iconOnly}
     >
       <fhi-icon-x></fhi-icon-x>
     </fhi-button>
@@ -158,7 +154,6 @@ export const IconButton: Story = {
       size="medium"
       type=${ifDefined(args.type)}
       ?disabled=${args.disabled}
-      ?icon-only=${args.iconOnly}
     >
       <fhi-icon-x></fhi-icon-x>
     </fhi-button>
@@ -168,7 +163,6 @@ export const IconButton: Story = {
       size="large"
       type=${ifDefined(args.type)}
       ?disabled=${args.disabled}
-      ?icon-only=${args.iconOnly}
     >
       <fhi-icon-x></fhi-icon-x>
     </fhi-button>
@@ -257,35 +251,35 @@ export const showIconButtons: Story = {
       </section>`,
   ],
   render: () => html`
-    <fhi-button icon-only>
+    <fhi-button>
       <fhi-icon-search></fhi-icon-search>
     </fhi-button>
 
-    <fhi-button icon-only variant="subtle">
+    <fhi-button variant="subtle">
       <fhi-icon-arrow-right></fhi-icon-arrow-right>
     </fhi-button>
 
-    <fhi-button icon-only variant="outlined">
+    <fhi-button variant="outlined">
       <fhi-icon-ellipsis-vertical></fhi-icon-ellipsis-vertical>
     </fhi-button>
 
-    <fhi-button icon-only variant="text">
+    <fhi-button variant="text">
       <fhi-icon-share></fhi-icon-share>
     </fhi-button>
 
-    <fhi-button icon-only color="neutral">
+    <fhi-button color="neutral">
       <fhi-icon-bell></fhi-icon-bell>
     </fhi-button>
 
-    <fhi-button icon-only color="neutral" variant="subtle">
+    <fhi-button color="neutral" variant="subtle">
       <fhi-icon-expand></fhi-icon-expand>
     </fhi-button>
 
-    <fhi-button icon-only color="neutral" variant="outlined">
+    <fhi-button color="neutral" variant="outlined">
       <fhi-icon-user></fhi-icon-user>
     </fhi-button>
 
-    <fhi-button icon-only color="neutral" variant="text">
+    <fhi-button color="neutral" variant="text">
       <fhi-icon-x></fhi-icon-x>
     </fhi-button>
   `,

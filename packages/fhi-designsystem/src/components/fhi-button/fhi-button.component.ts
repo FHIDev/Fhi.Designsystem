@@ -1,4 +1,4 @@
-import { html, css, LitElement } from 'lit';
+import { html, css, LitElement, PropertyValues } from 'lit';
 import { customElement, property } from 'lit/decorators.js';
 
 export const FhiButtonSelector = 'fhi-button';
@@ -96,6 +96,18 @@ export class FhiButton extends LitElement {
     this.onselectstart = this._handleSelectStart.bind(this);
   }
 
+  protected update(changedProperties: PropertyValues): void {
+    super.update(changedProperties);
+
+    if (changedProperties.has('iconOnly')) {
+      if (this.getAttribute('icon-only') !== null) {
+        console.warn(
+          "The 'iconOnly' property is deprecated and will be removed in a future release. The button automatically detects if it only contains an icon and applies the appropriate styling.",
+        );
+      }
+    }
+  }
+
   /**
    * Programmatically clicks the button.
    */
@@ -185,7 +197,11 @@ export class FhiButton extends LitElement {
     ) {
       const firstIcon = firstNode as HTMLElement;
 
-      if (this.iconOnly) {
+      if (this.iconOnly || validNodes.length === 1) {
+        if (!this.iconOnly) {
+          this.iconOnly = true;
+        }
+
         firstIcon.setAttribute('size', this._getIconSize());
         return;
       }
@@ -195,10 +211,6 @@ export class FhiButton extends LitElement {
       }
       firstIcon.style.marginLeft = 'var(--dimension-icon-margin-left-offset)';
       firstIcon.setAttribute('size', this._getIconSize());
-    }
-
-    if (validNodes.length === 1) {
-      return;
     }
 
     const lastNode: Node = validNodes[validNodes.length - 1];
@@ -225,6 +237,7 @@ export class FhiButton extends LitElement {
       @keyup=${this._handleKeyup}
       @keydown=${this._handleKeydown}
       @click=${this._handleClick}
+      ?data-icon-only=${this.iconOnly}
     >
       <div class="slot-container">
         <slot @slotchange=${this._handleSlotChange}></slot>
@@ -911,19 +924,19 @@ export class FhiButton extends LitElement {
       }
     }
 
-    :host([icon-only]) button {
+    button[data-icon-only] {
       border-radius: var(--dimension-icon-only-border-radius);
     }
 
-    :host([icon-only][size='small']) button {
+    :host([size='small']) button[data-icon-only] {
       padding: calc(0.375rem - var(--fhi-dimension-border-width));
     }
 
-    :host([icon-only][size='medium']) button {
+    :host([size='medium']) button[data-icon-only] {
       padding: calc(var(--fhi-spacing-100) - var(--fhi-dimension-border-width));
     }
 
-    :host([icon-only][size='large']) button {
+    :host([size='large']) button[data-icon-only] {
       padding: calc(var(--fhi-spacing-200) - var(--fhi-dimension-border-width));
     }
   `;
