@@ -57,7 +57,7 @@ const generateSection = (name, head, bodyItems) => {
     );
   } else {
     content = (
-      <fhi-body style={{ fontStyle: 'italic', padding: '1rem' }}>
+      <fhi-body style={{ fontStyle: 'italic', padding: '.75rem' }}>
         Denne komponenten har ingen metoder
       </fhi-body>
     );
