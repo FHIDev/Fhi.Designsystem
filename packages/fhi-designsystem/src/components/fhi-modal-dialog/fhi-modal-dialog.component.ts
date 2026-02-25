@@ -3,7 +3,7 @@ import { customElement, property, query } from 'lit/decorators.js';
 
 import '../fhi-button/fhi-button.component';
 import '../icons/fhi-icon-x.component';
-import '../fhi-headline/fhi-headline.component';
+import '../typography/fhi-headline/fhi-headline.component';
 
 export const FhiModalDialogSelector = 'fhi-modal-dialog';
 
