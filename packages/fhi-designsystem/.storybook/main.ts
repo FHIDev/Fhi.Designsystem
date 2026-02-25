@@ -2,17 +2,9 @@ import type { StorybookConfig } from '@storybook/web-components-vite';
 
 const config: StorybookConfig = {
   stories: ['../src/**/*.mdx', '../src/**/*.stories.@(js|jsx|mjs|ts|tsx)'],
-  addons: [
-    '@storybook/addon-links',
-    '@storybook/addon-essentials',
-    '@chromatic-com/storybook',
-    'storybook-design-token',
-  ],
-  framework: {
-    name: '@storybook/web-components-vite',
-    options: {},
-  },
-  staticDirs: ['./static'],
+  addons: ['@storybook/addon-docs', 'storybook-design-token'],
+  features: { interactions: false },
+  framework: '@storybook/web-components-vite',
 };
 
 export default config;

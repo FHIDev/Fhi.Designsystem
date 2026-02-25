@@ -155,7 +155,7 @@ export class ${webComponentName} extends LitElement {
 const generateIconDocs = iconSelectors => `
 [//]: # "${warning}"
 
-import { Meta, IconGallery, IconItem, Controls, Canvas } from '@storybook/blocks';
+import { Meta, IconGallery, IconItem, Controls, Canvas } from '@storybook/addon-docs/blocks';
 
 import * as FhiIconStories from './fhi-icon.stories';
 
@@ -178,7 +178,7 @@ Hvert ikon er en web-komponent som kan brukes i HTML-koden din på denne måten:
 
 ### Eksempel
 <Canvas of={FhiIconStories.Preview} />
-<Controls />
+<Controls of={FhiIconStories.Preview} />
 
 <br />
 
@@ -208,7 +208,7 @@ const generateIconStory = iconSelector => {
   ${warning}
 */
 import { html } from 'lit';
-import type { Meta, StoryObj } from '@storybook/web-components';
+import type { Meta, StoryObj } from '@storybook/web-components-vite';
 import { ifDefined } from 'lit/directives/if-defined.js';
 
 import { ${iconKomponentName} } from './${iconSelector}.component';

@@ -1,6 +1,6 @@
 import { html, css, LitElement } from 'lit';
 import { customElement, property } from 'lit/decorators.js';
-import '../fhi-body/fhi-body.component';
+import '../typography/fhi-body/fhi-body.component';
 
 export const FhiTagSelector = 'fhi-tag';
 

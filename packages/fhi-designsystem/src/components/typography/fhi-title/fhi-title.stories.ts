@@ -1,21 +1,23 @@
-import type { Meta, StoryObj } from '@storybook/web-components';
+import type { Meta, StoryObj } from '@storybook/web-components-vite';
+
 import { html } from 'lit';
-import { FhiDisplay } from './fhi-display.component';
+import { FhiTitle } from './fhi-title.component';
+
 import { ifDefined } from 'lit/directives/if-defined.js';
 
-new FhiDisplay();
+new FhiTitle();
 
-const meta: Meta<FhiDisplay> = {
-  title: 'Komponenter/Typography/Display',
-  component: 'fhi-display',
+const meta: Meta<FhiTitle> = {
+  title: 'Komponenter/Typography/Title',
+  component: 'fhi-title',
   parameters: {},
   decorators: [],
   render: args =>
-    html`<fhi-display
+    html`<fhi-title
       level=${args.level}
       size=${args.size}
       color=${ifDefined(args.color)}
-      >Eksempel</fhi-display
+      >Eksempel</fhi-title
     >`,
   argTypes: {
     size: {
@@ -38,7 +40,7 @@ const meta: Meta<FhiDisplay> = {
   },
 };
 
-type Story = StoryObj<FhiDisplay>;
+type Story = StoryObj<FhiTitle>;
 
 export const Preview: Story = {
   tags: [],
