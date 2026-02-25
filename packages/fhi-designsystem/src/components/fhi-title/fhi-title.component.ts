@@ -57,6 +57,14 @@ export class FhiTitle extends LitElement {
   updated(changedProperties: PropertyValues<this>) {
     super.updated(changedProperties);
 
+    if (changedProperties.has('level')) {
+      if (!this.level) {
+        throw new TypeError(
+          'The level property must be set to a valid value. This property determines the heading level for accessibility and semantic purposes.',
+        );
+      }
+    }
+
     if (changedProperties.has('color')) {
       this.style.color =
         typeof this.color === 'string'
