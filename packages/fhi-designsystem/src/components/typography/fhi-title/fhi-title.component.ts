@@ -58,9 +58,11 @@ export class FhiTitle extends LitElement {
     super.updated(changedProperties);
 
     if (changedProperties.has('level')) {
-      if (!this.level) {
-        throw new TypeError(
-          'The level property must be set to a valid value. This property determines the heading level for accessibility and semantic purposes.',
+      if (typeof this.level !== 'number' || this.level < 1 || this.level > 6) {
+        console.error(
+          new TypeError(
+            `The level property must be set to a valid value. invalid value: ${this.level}`,
+          ),
         );
       }
     }
