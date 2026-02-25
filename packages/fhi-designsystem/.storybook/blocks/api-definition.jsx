@@ -2,9 +2,9 @@ import React from 'react';
 import { useOf } from '@storybook/addon-docs/blocks';
 
 import { FhiTag } from '../../src/components/fhi-tag/fhi-tag.component';
-import { FhiTitle } from '../../src/components/fhi-title/fhi-title.component';
-import { FhiHeadline } from '../../src/components/fhi-headline/fhi-headline.component';
-import { FhiBody } from '../../src/components/fhi-body/fhi-body.component';
+import { FhiTitle } from '../../src/components/typography/fhi-title/fhi-title.component';
+import { FhiHeadline } from '../../src/components/typography/fhi-headline/fhi-headline.component';
+import { FhiBody } from '../../src/components/typography/fhi-body/fhi-body.component';
 import { FhiFlex } from '../../src/components/fhi-flex/fhi-flex.component';
 import { FhiGrid } from '../../src/components/fhi-grid/fhi-grid.component';
 import { FhiTooltip } from '../../src/components/fhi-tooltip/fhi-tooltip.component';
