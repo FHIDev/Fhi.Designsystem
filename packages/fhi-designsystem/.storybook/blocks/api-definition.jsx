@@ -58,14 +58,14 @@ const generateSection = (name, head, bodyItems) => {
   } else {
     content = (
       <fhi-body style={{ fontStyle: 'italic', padding: '.75rem' }}>
-        Denne komponenten har ingen metoder
+        Denne komponenten har ingen
       </fhi-body>
     );
   }
 
   return (
     <section>
-      <fhi-title level="1">{name}:</fhi-title>
+      <fhi-title level="3" size="large">{name}</fhi-title>
       {content}
       <br />
     </section>
@@ -89,7 +89,7 @@ export const ApiDefinition = ({ of }) => {
 
   const mainTitle = (
     <section>
-      <fhi-headline level="1">API Definisjon</fhi-headline>
+      <fhi-headline level="2">API-definisjon</fhi-headline>
       <fhi-body>
         Denne seksjonen viser en oversikt over komponentens API utover det som
         er dekket av web-standarden.
@@ -101,7 +101,7 @@ export const ApiDefinition = ({ of }) => {
     <section
       style={{
         margin: 'var(--fhi-spacing-400) 0',
-        padding: 'var(--fhi-spacing-400)',
+        padding: 'var(--fhi-spacing-400) 0',
         borderTop:
           'var(--fhi-dimension-border-width) solid var(--fhi-color-neutral-border-subtle)',
       }}
@@ -144,13 +144,12 @@ export const ApiDefinition = ({ of }) => {
             style={{
               display: 'flex',
               alignItems: 'center',
-              gap: '.25rem',
+              border: 'unset',
             }}
           >
             Verdilokasjon
             <fhi-tooltip
               message="Eventet kan inneholde en referanse til komponenten sin verdi. Verdilokasjonen beskriver hvor i eventobjektet denne referansen finnes."
-              placement="top"
             >
               <fhi-icon-circle-info size="small" />
             </fhi-tooltip>
@@ -172,7 +171,7 @@ export const ApiDefinition = ({ of }) => {
                   })}
                 </fhi-flex>
               ) : (
-                '-'
+                '—'
               )}
             </td>
             <td>{event.description}</td>
@@ -187,7 +186,7 @@ export const ApiDefinition = ({ of }) => {
         </>,
         slots.map((slot, index) => (
           <tr key={index}>
-            <td>{slot.name || '-'}</td>
+            <td>{slot.name || '—'}</td>
             <td>{slot.description}</td>
           </tr>
         )),
