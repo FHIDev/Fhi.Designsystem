@@ -3,7 +3,7 @@ import type { StoryObj } from '@storybook/web-components-vite';
 import { html } from 'lit';
 
 import { FhiModalDialog } from './fhi-modal-dialog.component';
-import { FhiBody } from '../fhi-body/fhi-body.component';
+import { FhiBody } from '../typography/fhi-body/fhi-body.component';
 import { FhiButton } from '../fhi-button/fhi-button.component';
 import { FhiTextInput } from '../fhi-text-input/fhi-text-input.component';
 
