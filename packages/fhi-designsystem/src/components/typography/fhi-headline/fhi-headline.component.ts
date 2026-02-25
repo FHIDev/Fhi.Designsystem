@@ -57,8 +57,21 @@ export class FhiHeadline extends LitElement {
   updated(changedProperties: PropertyValues<this>) {
     super.updated(changedProperties);
 
-    if (changedProperties.has('color') && typeof this.color == 'string') {
-      this.style.color = this.color;
+    if (changedProperties.has('level')) {
+      if (typeof this.level !== 'number' || this.level < 1 || this.level > 6) {
+        console.error(
+          new TypeError(
+            `The level property must be set to a valid value. invalid value: ${this.level}`,
+          ),
+        );
+      }
+    }
+
+    if (changedProperties.has('color')) {
+      this.style.color =
+        typeof this.color === 'string'
+          ? this.color
+          : 'var(--fhi-color-neutral-text-default)';
     }
   }
 

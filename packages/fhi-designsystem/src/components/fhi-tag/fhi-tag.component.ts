@@ -120,7 +120,7 @@ export class FhiTag extends LitElement {
       }
     }
 
-    :host([color='neutral']) {
+    :host {
       color: var(--color-neutral-text);
       background-color: var(--color-neutral-background);
     }
