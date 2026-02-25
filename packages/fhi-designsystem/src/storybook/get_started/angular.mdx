@@ -18,7 +18,7 @@ Pakkene inneholder komponentene, en CSS-fil med våre design tokens og font-file
 
 ## Bruk
 
-for full intellisense og typestøtte i ditt Angular-prosjekt, anbefaler vi at du bruker angular wrappers som ligger i `@folkehelseinstituttet/designsystem/angular-wrappers`.
+For full _Intellisense_ og typestøtte i ditt Angular-prosjekt, anbefaler vi at du bruker Angular-wrappers som ligger i `@folkehelseinstituttet/designsystem/angular-wrappers`.
 
 Angular wrappers må kompileres av Angular sin kompilator. Legg derfor til følgende i `tsconfig.app.json`-filen din for å inkludere wrapperne i kompileringen:
 
@@ -39,7 +39,7 @@ Angular wrappers må kompileres av Angular sin kompilator. Legg derfor til følg
 
 Her er et eksempel av bruk av `fhi-button`-komponenten i et Angular-prosjekt.
 
-Først importerer vi filen med [Design Tokens](?path=/docs/design-tokens-introduksjon--docs). Denne filen må importeres før du tar i bruk komponentbiblioteket, helst via angular.json, der en setter følgende property:
+Først importerer vi filen med [Design Tokens](?path=/docs/design-tokens-introduksjon--docs). Denne filen må importeres før du tar i bruk komponentbiblioteket, helst via `angular.json`, der en setter følgende property:
 ```json
 projects.[your-project].architect.build.options.styles: ["@folkehelseinstituttet/designsystem/theme/default.css"]
 ```
@@ -54,7 +54,7 @@ import { FhiButtonAngularWrapper } from "@folkehelseinstituttet/designsystem/ang
 })
 ```
 
-Webkomponentene bruker `fhi-` som prefix. I Angular-wrapperene bruker vi `fhi-ng-` som prefix for å unngå navnekonflikter.
+**Merk:** Webkomponentene bruker `fhi-` som prefix. I Angular-wrapperene bruker vi `fhi-ng-` som prefix for å unngå navnekonflikter.
 
 Du kan nå bruke wrapperen i Angular-komponentens HTML-mal slik:
 
