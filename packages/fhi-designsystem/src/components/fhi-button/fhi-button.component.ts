@@ -26,7 +26,6 @@ export class FhiButton extends LitElement {
    * See: {@link https://designsystem.fhi.no/?path=/docs/komponenter-button--docs#color-farge}
    *
    * @reflect
-   * @type {'accent' | 'neutral' | 'danger'}
    */
   @property({ type: String, reflect: true }) color:
     | 'accent'
@@ -40,9 +39,8 @@ export class FhiButton extends LitElement {
    * See: {@link https://designsystem.fhi.no/?path=/docs/komponenter-button--docs#variant}
    *
    * @reflect
-   * @type {'strong' | 'subtle' | 'outlined' | 'text'}
    */
-  @property({ type: String, reflect: true }) variant:
+  @property({ type: String, reflect: true }) variant?:
     | 'strong'
     | 'subtle'
     | 'outlined'
@@ -54,9 +52,8 @@ export class FhiButton extends LitElement {
    * See: {@link https://designsystem.fhi.no/?path=/docs/komponenter-button--docs#size-st%C3%B8rrelse}
    *
    * @reflect
-   * @type {'large' | 'medium' | 'small'}
    */
-  @property({ type: String, reflect: true }) size:
+  @property({ type: String, reflect: true }) size?:
     | 'large'
     | 'medium'
     | 'small' = 'medium';
@@ -64,30 +61,25 @@ export class FhiButton extends LitElement {
   /**
    * Disables the button. This changes its appearance and makes it non-interactive.
    * @reflect
-   * @type {boolean}
    */
-  @property({ type: Boolean, reflect: true }) disabled = false;
+  @property({ type: Boolean, reflect: true }) disabled?: boolean = false;
 
   /**
    * Styles the button for icon-only content.
    *
    * If you only have an icon as the child of the button, then you should set this property to `true`.
    *
-   * @deprecated This property is deprecated and will be removed in a future release. The button will automatically detect if it only contains an icon and apply the appropriate styling.
-   *
-   * @type {boolean}
    */
   @property({ type: Boolean, attribute: 'icon-only' })
-  iconOnly: boolean = false;
+  iconOnly?: boolean = false;
 
   /**
    * Sets the button's type. This determines the button's behavior when used within a form.
    * The predefined types conform to standard HTML button types.
    *
    * For more information about button types, see: {@link https://developer.mozilla.org/en-US/docs/Web/HTML/Element/button#attr-type}
-   * @type {'button' | 'submit' | 'reset'}
    */
-  @property({ type: String }) type: 'button' | 'submit' | 'reset' = 'submit';
+  @property({ type: String }) type?: 'button' | 'submit' | 'reset' = 'submit';
 
   private _internals: ElementInternals;
 
@@ -144,7 +136,7 @@ export class FhiButton extends LitElement {
 
   private _dispatchClickEvent(): void {
     /**
-     * @type {Event} - Standard DOM event with the type `click`.
+     * Standard DOM event with the type `click`.
      * This event is dispatched when the button is clicked, either via mouse or keyboard interaction.
      * */
     this.dispatchEvent(

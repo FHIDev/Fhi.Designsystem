@@ -22,40 +22,34 @@ export type FhiDateValue = `${number}-${number}-${number}` | undefined; // YYYY-
  */
 @customElement(FhiDateInputSelector)
 export class FhiDateInput extends LitElement {
-  /** @internal */
   static readonly formAssociated = true;
 
   /**
    * The text that labels the input field.
    * An input field should always have a label to ensure accessibility.
-   * @type {string}
    */
   @property({ type: String }) label?: string = undefined;
 
   /**
    * The message shown beneath the input field.
    * This is often used to provide additional information or feedback to the user.
-   * @type {string}
    */
   @property({ type: String }) message?: string = undefined;
 
   /**
    * The help-text shown above the input field.
    * This is often used to provide additional information to the user.
-   * @type {string}
    */
   @property({ type: String, attribute: 'help-text' }) helpText?: string =
     undefined;
 
   /**
    * Sets minium date available for selection in the input field. Format `YYYY-MM-DD`.
-   * @type {string}
    */
   @property({ type: String }) min?: FhiDateValue = undefined;
 
   /**
    * Sets maximum date available for selection in the input field. Format `YYYY-MM-DD`.
-   * @type {string}
    */
   @property({ type: String }) max?: FhiDateValue = undefined;
 
@@ -64,21 +58,19 @@ export class FhiDateInput extends LitElement {
    *
    * The `error` status is used to indicate that there is an issue with the input, such as invalid or missing data.
    * @reflect
-   * @type {'error'}
    */
   @property({ type: String, reflect: true }) status?: 'error' = undefined;
 
   /**
    * Sets the input to read-only. A read-only field cannot be modified by the user but may be submitted with the form.
    * @reflect
-   * @type {boolean}
+   *
    */
   @property({ type: Boolean, reflect: true }) readonly? = false;
 
   /**
    * Disables the input.  This changes its appearance and makes it non-interactive.
    * @reflect
-   * @type {boolean}
    */
   @property({ type: Boolean, reflect: true }) disabled? = false;
 
@@ -94,7 +86,6 @@ export class FhiDateInput extends LitElement {
    * See: {@link https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input#name}
    *
    * @reflect
-   * @type {string}
    */
   @property({ type: String, reflect: true })
   get name(): string | undefined {
@@ -117,8 +108,6 @@ export class FhiDateInput extends LitElement {
    *
    * This attribute conforms with the standard HTML `value` attribute for input fields.
    * See: {@link https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input#value}
-   *
-   * @type {string}
    */
   @property({ type: String })
   get value(): FhiDateValue {
@@ -150,7 +139,7 @@ export class FhiDateInput extends LitElement {
 
   private _dispatchChangeEvent(): void {
     /**
-     * @type {Event} - Standard DOM event with the type `change`.
+     * Standard DOM event with the type `change`.
      * This event is dispatched when the value of the input changes.
      */
     this.dispatchEvent(
@@ -170,7 +159,7 @@ export class FhiDateInput extends LitElement {
 
   private _dispatchInputEvent(): void {
     /**
-     * @type {Event} - Standard DOM event with the type `input`.
+     * Standard DOM event with the type `input`.
      * This event is dispatched when the value of the input changes.
      */
     this.dispatchEvent(
