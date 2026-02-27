@@ -144,6 +144,7 @@ export const ApiDefinition = ({ of }) => {
             style={{
               display: 'flex',
               alignItems: 'center',
+              gap: '0.25rem'
               border: 'unset',
             }}
           >
@@ -161,7 +162,7 @@ export const ApiDefinition = ({ of }) => {
             <td>{event.name}</td>
             <td>
               {event.valueLocation?.length > 0 ? (
-                <fhi-flex wrap>
+                <fhi-flex wrap gap="small">
                   {event.valueLocation.map((location, index) => {
                     return (
                       <fhi-tag key={`${event.name}-${index}`}>
