@@ -1,19 +1,28 @@
 import { html, css, LitElement } from 'lit';
-import { customElement } from 'lit/decorators.js';
+import { customElement, property } from 'lit/decorators.js';
+
+import '../../fhi-grid/fhi-grid.component';
 
 export const FhiTableSelector = 'fhi-table';
 
 @customElement(FhiTableSelector)
 export class FhiTable extends LitElement {
+  @property({ type: Number })
+  rows = 0;
+
+  @property({ type: Number })
+  colums = 0;
+
   render() {
     return html`
-      <div>
-        <slot name="header"></slot>
-        <slot name="body"></slot>
-        <slot name="footer"></slot>
-      </div>
+      <fhi-grid gap="small" rows="${this.rows}" colums="${this.colums}">
+        <slot></slot>
+      </fhi-grid>
     `;
   }
 
-  static styles = css``;
+  static styles = css`
+    :host {
+    }
+  `;
 }
