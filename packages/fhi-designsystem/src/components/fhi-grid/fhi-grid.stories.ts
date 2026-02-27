@@ -98,11 +98,10 @@ export const GridWithRowsAndColumns: Story = {
   tags: [],
   args: {
     gap: 'medium',
-    columns: 12,
     rows: 8,
   },
   render: args => html`
-    <fhi-grid gap=${args.gap} columns=${args.columns} rows=${args.rows}>
+    <fhi-grid rows=${args.rows}>
       <div style="grid-row: span 8; grid-column: 1;">Slot</div>
       <div style="grid-row: 1; grid-column: 2 / 13;">Slot</div>
       <div style="grid-row: 2 / 8; grid-column: 2 / 13;">Slot</div>
