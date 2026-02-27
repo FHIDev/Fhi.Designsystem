@@ -2,6 +2,8 @@ import { FhiCheckbox } from './fhi-checkbox.component.ts';
 import * as FhiCheckboxStories from './fhi-checkbox.stories.ts';
 import { Meta, Primary, Canvas, Controls } from '@storybook/addon-docs/blocks';
 
+import { ApiDefinition } from '../../../.storybook/blocks/api-definition.jsx';
+
 <Meta of={FhiCheckboxStories} />
 
 # Checkbox
@@ -40,3 +42,5 @@ Det finnes tilfeller der det ikke er plass eller behov for Label som en del av s
 Gjør at avkrysningsboksen som ikke kan samhandles med, fokuseres eller automatisk inkluderes i FormData, kan fortsatt vises med noe transparens. Unngås som regel. 
 
 <Canvas of={FhiCheckboxStories.Disabled} />
+
+<ApiDefinition />

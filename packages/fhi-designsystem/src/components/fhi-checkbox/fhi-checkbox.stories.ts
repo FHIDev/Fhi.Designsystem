@@ -1,4 +1,4 @@
-import type { Meta, StoryObj } from '@storybook/web-components-vite';
+import type { StoryObj } from '@storybook/web-components-vite';
 import { action } from 'storybook/actions';
 
 import { html } from 'lit';
@@ -6,12 +6,27 @@ import { ifDefined } from 'lit/directives/if-defined.js';
 
 import { FhiCheckbox } from './fhi-checkbox.component';
 
+import { FhiStorybookMeta } from '../../../.storybook/fhi-meta';
+
 new FhiCheckbox();
 
-const meta: Meta<FhiCheckbox> = {
+const meta: FhiStorybookMeta<FhiCheckbox> = {
   title: 'Komponenter/Checkbox',
   component: 'fhi-checkbox',
-  parameters: {},
+  parameters: {
+    eventTypes: [
+      {
+        name: 'change',
+        valueLocation: ['event.target.checked'],
+        description: 'Utløses når avkrysningsboksen endrer tilstand.',
+      },
+      {
+        name: 'input',
+        valueLocation: ['event.target.checked'],
+        description: 'Utløses når brukeren samhandler med avkrysningsboksen.',
+      },
+    ],
+  },
   render: args =>
     html`<fhi-checkbox
       label=${ifDefined(args.label)}

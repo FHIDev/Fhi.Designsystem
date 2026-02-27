@@ -1,4 +1,4 @@
-import type { Meta, StoryObj } from '@storybook/web-components-vite';
+import type { StoryObj } from '@storybook/web-components-vite';
 import { action } from 'storybook/actions';
 
 import { html } from 'lit';
@@ -6,9 +6,11 @@ import { html } from 'lit';
 import { ifDefined } from 'lit/directives/if-defined.js';
 import { FhiRadio } from './fhi-radio.component';
 
+import { FhiStorybookMeta } from '../../../.storybook/fhi-meta';
+
 new FhiRadio();
 
-const meta: Meta<FhiRadio> = {
+const meta: FhiStorybookMeta<FhiRadio> = {
   title: 'Komponenter/Radio',
   component: 'fhi-radio',
   parameters: {
@@ -17,6 +19,16 @@ const meta: Meta<FhiRadio> = {
         excludeDecorators: true,
       },
     },
+    eventTypes: [
+      {
+        name: 'change',
+        description: 'Utløses når radiofeltet endrer tilstand.',
+      },
+      {
+        name: 'input',
+        description: 'Utløses når brukeren samhandler med radiofeltet.',
+      },
+    ],
   },
   decorators: [],
   render: args =>
@@ -40,7 +52,7 @@ const meta: Meta<FhiRadio> = {
     label: {
       control: 'text',
       description:
-        'Setter label. Dette assosieres med radiofelted og vises til brukeren.',
+        'Setter label. Dette assosieres med radiofeltet og vises til brukeren.',
       defaultValue: { summary: 'undefined' },
     },
     checked: {
