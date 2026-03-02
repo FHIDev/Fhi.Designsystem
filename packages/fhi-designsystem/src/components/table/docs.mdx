@@ -1,0 +1,19 @@
+import { FhiTable } from './fhi-table/fhi-table.component.ts';
+import * as FhiTableStories from './fhi-table/fhi-table.stories.ts';
+import { Meta, Primary, Canvas, Controls } from '@storybook/addon-docs/blocks';
+
+<Meta of={FhiTableStories} />
+
+# Table
+
+Tabell brukes for å presentere data og informasjon på en ryddig måte. Brukeren kan raskt få oversikt og skanne innholdet effektivt.
+
+## Passer til
+
+- Å vise lister med større mengder strukturert data på en måte som er lett å lese og sammenligne
+
+<Canvas of={FhiTableStories.Preview} />
+<Controls of={FhiTableStories.Preview} />
+
+<Canvas of={FhiTableStories.MoreComplex} />
+<Canvas of={FhiTableStories.WithCheckboxes} />
