@@ -83,7 +83,7 @@ export const LargeGrid: Story = {
     rows: 1,
   },
   render: args => html`
-    <fhi-grid gap=${args.gap} columns=${args.columns}>
+    <fhi-grid gap=${args.gap} columns=${args.columns} rows=${args.rows}>
       <div style="grid-column: span 4;">Slot</div>
       <div style="grid-column: span 4;">Slot</div>
       <div style="grid-column: span 4;">Slot</div>
@@ -99,8 +99,8 @@ export const GridWithRowsAndColumns: Story = {
   tags: [],
   args: {
     gap: 'medium',
-    rows: 8,
     columns: 12,
+    rows: 8,
   },
   render: args => html`
     <fhi-grid rows=${args.rows} columns=${args.columns}>
