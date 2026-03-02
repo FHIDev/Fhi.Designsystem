@@ -8,14 +8,14 @@ export const FhiTableSelector = 'fhi-table';
 @customElement(FhiTableSelector)
 export class FhiTable extends LitElement {
   @property({ type: Number })
-  rows = 0;
+  rows = 1;
 
   @property({ type: Number })
-  colums = 0;
+  columns = 1;
 
   render() {
     return html`
-      <fhi-grid gap="small" rows="${this.rows}" colums="${this.colums}">
+      <fhi-grid gap="small" rows="${this.rows}" columns="${this.columns}">
         <slot></slot>
       </fhi-grid>
     `;
