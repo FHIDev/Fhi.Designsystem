@@ -39,13 +39,29 @@ export class FhiTableCell extends LitElement {
     :host {
       --justify-content: start;
       --align-items: center;
-      --padding: 1rem;
-      --border-bottom: 1px solid var(--fhi-color-neutral-border-subtle);
+      --padding: var(--fhi-spacing-200);
       --height: -webkit-fill-available;
+
+      --color: var(--fhi-color-neutral-text-default);
+      --letter-spacing: var(--letter-spacing-medium);
+
+      --border-bottom: var(--fhi-dimension-border-width) solid
+        var(--fhi-color-neutral-border-subtle);
+
+      --font: var(--fhi-typography-body-medium-font-weight)
+        var(--fhi-typography-body-medium-font-size) /
+        var(--fhi-typography-body-medium-line-height)
+        var(--fhi-font-family-default);
     }
 
     :host([variant='header']) {
-      --border-bottom: 1px solid var(--fhi-color-neutral-border-default);
+      --border-bottom: var(--fhi-dimension-border-width) solid
+        var(--fhi-color-neutral-border-default);
+
+      --font: var(--fhi-typography-label-medium-font-weight)
+        var(--fhi-typography-label-medium-font-size) /
+        var(--fhi-typography-label-medium-line-height)
+        var(--fhi-font-family-default);
     }
 
     :host {
@@ -56,6 +72,10 @@ export class FhiTableCell extends LitElement {
         padding: var(--padding);
         height: var(--height);
         border-bottom: var(--border-bottom);
+
+        font: var(--font);
+        color: var(--color);
+        letter-spacing: var(--letter-spacing);
       }
 
       div[role='columnheader'] {

@@ -1,4 +1,4 @@
-import { html, css, LitElement } from 'lit';
+import { html, css, LitElement, PropertyValues } from 'lit';
 import { customElement, property } from 'lit/decorators.js';
 
 import '../../fhi-grid/fhi-grid.component';
@@ -18,6 +18,22 @@ export class FhiTable extends LitElement {
 
   @property({ type: String, reflect: true })
   caption?: string;
+
+  protected update(changedProperties: PropertyValues): void {
+    if (changedProperties.has('rows')) {
+      if (!this.rows) {
+        this.rows = '1';
+      }
+    }
+
+    if (changedProperties.has('columns')) {
+      if (!this.columns) {
+        this.columns = '1';
+      }
+    }
+
+    super.update(changedProperties);
+  }
 
   render() {
     return html`

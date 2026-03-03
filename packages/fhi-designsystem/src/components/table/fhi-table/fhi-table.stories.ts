@@ -5,8 +5,6 @@ import { FhiTable } from './fhi-table.component';
 import { FhiTableCell } from '../fhi-table-cell/fhi-table-cell.component';
 import { FhiCheckbox } from '../../fhi-checkbox/fhi-checkbox.component';
 import { FhiButton } from '../../fhi-button/fhi-button.component';
-import { FhiBody } from '../../typography/fhi-body/fhi-body.component';
-import { FhiLabel } from '../../typography/fhi-label/fhi-label.component';
 
 import { FhiIconEye } from '../../icons/fhi-icon-eye.component';
 import { FhiIconDownload } from '../../icons/fhi-icon-download.component';
@@ -15,8 +13,6 @@ import { ifDefined } from 'lit/directives/if-defined.js';
 
 new FhiTable();
 new FhiTableCell();
-new FhiBody();
-new FhiLabel();
 new FhiCheckbox();
 new FhiButton();
 new FhiIconEye();
@@ -32,14 +28,20 @@ const meta: Meta<FhiTable> = {
     columns: {
       control: 'text',
       description:
-        'Definerer kolonnene i tabellen. Bruk CSS grid-syntaks, for eksempel "1fr 2fr 1fr" for tre kolonner med ulik bredde.',
+        'Definerer kolonnene i tabellen. Bruker CSS grid-template-columns i bakgrunnen. Bruke denne for å definere antall kolonner og deres bredder.',
+      defaultValue: { summary: '1' },
+    },
+    rows: {
+      control: 'text',
+      description:
+        'Definerer radene i tabellen. Bruker CSS grid-template-rows i bakgrunnen. Rader vil automatisk legges til om antall elementer er mer enn antall definerte kolonner. Bruk denne om du ønsker mer kontroll over radstørrelsene.',
       defaultValue: { summary: '1' },
     },
     caption: {
       control: 'text',
       description:
         'Valgfri tekst som beskriver innholdet. Dette fungerer som tabellen sin tittel og er visuelt plassert under tabellen',
-      defaultValue: { summary: '1' },
+      defaultValue: { summary: undefined },
     },
   },
 };
@@ -48,88 +50,63 @@ type Story = StoryObj<FhiTable>;
 
 export const Preview: Story = {
   tags: [],
-  args: {},
-  render: () => html`
-    <fhi-table
-      columns="3fr 1fr 1fr 1fr"
-      caption="Total forekomst: Utvalgte diagnoser, antall"
-    >
+  args: {
+    columns: '3fr 1fr 1fr 1fr',
+    caption: 'Total forekomst: Utvalgte diagnoser, antall',
+  },
+  render: args => html`
+    <fhi-table columns="${args.columns}" caption="${ifDefined(args.caption)}">
       <fhi-table-cell variant="header"></fhi-table-cell>
       <fhi-table-cell variant="header" style="--justify-content: end">
-        <fhi-label>2021</fhi-label>
+        2021
       </fhi-table-cell>
       <fhi-table-cell variant="header" style="--justify-content: end">
-        <fhi-label>2022</fhi-label>
+        2022
       </fhi-table-cell>
       <fhi-table-cell variant="header" style="--justify-content: end">
-        <fhi-label>2023</fhi-label>
+        2023
       </fhi-table-cell>
 
-      <fhi-table-cell>
-        <fhi-body>Pasienter totalt</fhi-body>
-      </fhi-table-cell>
-      <fhi-table-cell style="--justify-content: end">
-        <fhi-body>374 964</fhi-body>
-      </fhi-table-cell>
-      <fhi-table-cell style="--justify-content: end">
-        <fhi-body>383 347</fhi-body>
-      </fhi-table-cell>
-      <fhi-table-cell style="--justify-content: end">
-        <fhi-body>392 106</fhi-body>
-      </fhi-table-cell>
+      <fhi-table-cell> Pasienter totalt </fhi-table-cell>
+      <fhi-table-cell style="--justify-content: end"> 374 964 </fhi-table-cell>
+      <fhi-table-cell style="--justify-content: end"> 383 347 </fhi-table-cell>
+      <fhi-table-cell style="--justify-content: end"> 392 106 </fhi-table-cell>
 
       <fhi-table-cell>
-        <fhi-body>Sykdommer i sirkulasjonssystemet (I00-I99)</fhi-body>
+        Sykdommer i sirkulasjonssystemet (I00-I99)
       </fhi-table-cell>
-      <fhi-table-cell style="--justify-content: end">
-        <fhi-body>279 726</fhi-body>
-      </fhi-table-cell>
-      <fhi-table-cell style="--justify-content: end">
-        <fhi-body>289 149</fhi-body>
-      </fhi-table-cell>
-      <fhi-table-cell style="--justify-content: end">
-        <fhi-body>291 655</fhi-body>
-      </fhi-table-cell>
+      <fhi-table-cell style="--justify-content: end"> 279 726 </fhi-table-cell>
+      <fhi-table-cell style="--justify-content: end"> 289 149 </fhi-table-cell>
+      <fhi-table-cell style="--justify-content: end"> 291 655 </fhi-table-cell>
     </fhi-table>
   `,
 };
 
 export const MoreComplex: Story = {
   tags: [],
-  args: {},
-  render: () => html`
-    <fhi-table columns="1fr 8fr 3fr 3fr 2fr 3fr" caption="Litt mer data">
-      <fhi-table-cell variant="header">
-        <fhi-label>Nr. </fhi-label>
-      </fhi-table-cell>
-      <fhi-table-cell variant="header">
-        <fhi-label>Tittel</fhi-label>
-      </fhi-table-cell>
-      <fhi-table-cell variant="header">
-        <fhi-label>Institusjon</fhi-label>
-      </fhi-table-cell>
-      <fhi-table-cell variant="header">
-        <fhi-label>Prosjektleder</fhi-label>
-      </fhi-table-cell>
+  args: {
+    columns: '1fr 8fr 3fr 3fr 2fr 3fr',
+    caption: 'Tabell med flere kolonner og mer innhold.',
+  },
+  render: args => html`
+    <fhi-table columns="${args.columns}" caption="${ifDefined(args.caption)}">
+      <fhi-table-cell variant="header"> Nr. </fhi-table-cell>
+      <fhi-table-cell variant="header"> Tittel </fhi-table-cell>
+      <fhi-table-cell variant="header"> Institusjon </fhi-table-cell>
+      <fhi-table-cell variant="header"> Prosjektleder </fhi-table-cell>
       <fhi-table-cell variant="header" style="--justify-content: end">
-        <fhi-label>Sluttdato</fhi-label>
+        Sluttdato
       </fhi-table-cell>
       <fhi-table-cell variant="header"> </fhi-table-cell>
 
+      <fhi-table-cell> 3305 </fhi-table-cell>
       <fhi-table-cell>
-        <fhi-body>3305</fhi-body>
+        VKM - inntak av energidrikker hos 13-åringer
       </fhi-table-cell>
-      <fhi-table-cell>
-        <fhi-body>VKM - inntak av energidrikker hos 13-åringer</fhi-body>
-      </fhi-table-cell>
-      <fhi-table-cell>
-        <fhi-body>Hesle Vest RHF</fhi-body>
-      </fhi-table-cell>
-      <fhi-table-cell>
-        <fhi-body>Pelle Parafin</fhi-body>
-      </fhi-table-cell>
+      <fhi-table-cell> Hesle Vest RHF </fhi-table-cell>
+      <fhi-table-cell> Pelle Parafin </fhi-table-cell>
       <fhi-table-cell style="--justify-content: end">
-        <fhi-body>10.10.2027</fhi-body>
+        10.10.2027
       </fhi-table-cell>
       <fhi-table-cell style="--justify-content: end">
         <a href="#">Gå til prosjekt</a>
@@ -147,35 +124,23 @@ export const WithCheckboxes: Story = {
   render: args => html`
     <fhi-table columns="${args.columns}" caption="${ifDefined(args.caption)}">
       <fhi-table-cell variant="header"></fhi-table-cell>
-      <fhi-table-cell variant="header">
-        <fhi-label>Mal</fhi-label>
-      </fhi-table-cell>
-      <fhi-table-cell variant="header">
-        <fhi-label>Dimensjon</fhi-label>
-      </fhi-table-cell>
+      <fhi-table-cell variant="header"> Mal </fhi-table-cell>
+      <fhi-table-cell variant="header"> Dimensjon </fhi-table-cell>
       <fhi-table-cell variant="header" style="--justify-content: end">
-        <fhi-label>Opprettet</fhi-label>
+        Opprettet
       </fhi-table-cell>
-      <fhi-table-cell variant="header">
-        <fhi-label>Opprettet av</fhi-label>
-      </fhi-table-cell>
+      <fhi-table-cell variant="header"> Opprettet av </fhi-table-cell>
       <fhi-table-cell variant="header"> </fhi-table-cell>
 
       <fhi-table-cell>
         <fhi-checkbox></fhi-checkbox>
       </fhi-table-cell>
-      <fhi-table-cell>
-        <fhi-body>Geografi 2023 - norsk</fhi-body>
-      </fhi-table-cell>
-      <fhi-table-cell>
-        <fhi-body>GEO</fhi-body>
-      </fhi-table-cell>
+      <fhi-table-cell> Geografi 2023 - norsk </fhi-table-cell>
+      <fhi-table-cell> GEO </fhi-table-cell>
       <fhi-table-cell style="--justify-content: end">
-        <fhi-body>10.10.2027</fhi-body>
+        10.10.2027
       </fhi-table-cell>
-      <fhi-table-cell>
-        <fhi-body>Pelle Parafin</fhi-body>
-      </fhi-table-cell>
+      <fhi-table-cell> Pelle Parafin </fhi-table-cell>
       <fhi-table-cell style="--justify-content: end">
         <fhi-button color="neutral" variant="text">
           <fhi-icon-download></fhi-icon-download>
