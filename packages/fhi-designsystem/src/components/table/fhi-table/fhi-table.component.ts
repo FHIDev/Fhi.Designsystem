@@ -16,7 +16,7 @@ export class FhiTable extends LitElement {
   @property({ type: String })
   columns = '1';
 
-  @property({ type: String })
+  @property({ type: String, reflect: true })
   caption?: string;
 
   render() {
@@ -42,7 +42,7 @@ export class FhiTable extends LitElement {
         padding: 1rem;
       }
 
-      div {
+      div[role='table'] {
         display: grid;
       }
     }

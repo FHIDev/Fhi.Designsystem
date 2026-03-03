@@ -11,7 +11,7 @@ export class FhiTableCell extends LitElement {
   @property({ type: String })
   column = 'span 1';
 
-  @property({ type: String })
+  @property({ type: String, reflect: true })
   variant: 'header' | 'body' = 'body';
 
   protected update(changedProperties: PropertyValues): void {
@@ -39,6 +39,13 @@ export class FhiTableCell extends LitElement {
     :host {
       --justify-content: start;
       --align-items: center;
+      --padding: 1rem;
+      --border-bottom: 1px solid var(--fhi-color-neutral-border-subtle);
+      --height: -webkit-fill-available;
+    }
+
+    :host([variant='header']) {
+      --border-bottom: 1px solid var(--fhi-color-neutral-border-default);
     }
 
     :host {
@@ -46,16 +53,13 @@ export class FhiTableCell extends LitElement {
         display: flex;
         justify-content: var(--justify-content);
         align-items: var(--align-items);
-        padding: 1rem;
-        height: -webkit-fill-available;
-      }
-
-      div[role='cell'] {
-        border-bottom: 1px solid var(--fhi-color-neutral-border-subtle);
+        padding: var(--padding);
+        height: var(--height);
+        border-bottom: var(--border-bottom);
       }
 
       div[role='columnheader'] {
-        border-bottom: 1px solid var(--fhi-color-neutral-border-default);
+        border-bottom: var(--border-bottom);
       }
     }
   `;
