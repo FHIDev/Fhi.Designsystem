@@ -65,7 +65,9 @@ const generateSection = (name, head, bodyItems) => {
 
   return (
     <section>
-      <fhi-title level="3" size="large">{name}</fhi-title>
+      <fhi-title level="3" size="large">
+        {name}
+      </fhi-title>
       {content}
       <br />
     </section>
@@ -144,14 +146,12 @@ export const ApiDefinition = ({ of }) => {
             style={{
               display: 'flex',
               alignItems: 'center',
-              gap: '0.25rem'
+              gap: '0.25rem',
               border: 'unset',
             }}
           >
             Verdilokasjon
-            <fhi-tooltip
-              message="Eventet kan inneholde en referanse til komponenten sin verdi. Verdilokasjonen beskriver hvor i eventobjektet denne referansen finnes."
-            >
+            <fhi-tooltip message="Eventet kan inneholde en referanse til komponenten sin verdi. Verdilokasjonen beskriver hvor i eventobjektet denne referansen finnes.">
               <fhi-icon-circle-info size="small" />
             </fhi-tooltip>
           </th>
