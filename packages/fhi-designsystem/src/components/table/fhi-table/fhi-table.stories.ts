@@ -56,7 +56,7 @@ export const Preview: Story = {
   },
   render: args => html`
     <fhi-table columns="${args.columns}" caption="${ifDefined(args.caption)}">
-      <fhi-table-cell variant="header"></fhi-table-cell>
+      <fhi-table-cell></fhi-table-cell>
       <fhi-table-cell variant="header" style="--justify-content: end">
         2021
       </fhi-table-cell>
@@ -85,32 +85,83 @@ export const Preview: Story = {
 export const MoreComplex: Story = {
   tags: [],
   args: {
-    columns: '1fr 8fr 3fr 3fr 2fr 3fr',
+    columns: 'repeat(7, 1fr)',
     caption: 'Tabell med flere kolonner og mer innhold.',
   },
   render: args => html`
     <fhi-table columns="${args.columns}" caption="${ifDefined(args.caption)}">
+      <fhi-table-cell column="span 3"></fhi-table-cell>
       <fhi-table-cell variant="header"> Nr. </fhi-table-cell>
       <fhi-table-cell variant="header"> Tittel </fhi-table-cell>
       <fhi-table-cell variant="header"> Institusjon </fhi-table-cell>
       <fhi-table-cell variant="header"> Prosjektleder </fhi-table-cell>
-      <fhi-table-cell variant="header" style="--justify-content: end">
-        Sluttdato
-      </fhi-table-cell>
-      <fhi-table-cell variant="header"> </fhi-table-cell>
 
+      <fhi-table-cell
+        variant="header"
+        column="1"
+        row="2 / span 4"
+        style="background-color: red;"
+      ></fhi-table-cell>
+
+      <!-- Group 1 -->
+      <fhi-table-cell
+        variant="header"
+        column="2"
+        row="span 2"
+        style="background-color: green;"
+      ></fhi-table-cell>
+
+      <fhi-table-cell
+        variant="header"
+        style="background-color: HotPink;"
+      ></fhi-table-cell>
       <fhi-table-cell> 3305 </fhi-table-cell>
       <fhi-table-cell>
         VKM - inntak av energidrikker hos 13-åringer
       </fhi-table-cell>
       <fhi-table-cell> Hesle Vest RHF </fhi-table-cell>
       <fhi-table-cell> Pelle Parafin </fhi-table-cell>
-      <fhi-table-cell style="--justify-content: end">
-        10.10.2027
+
+      <fhi-table-cell
+        variant="header"
+        style="background-color: DarkViolet;"
+      ></fhi-table-cell>
+      <fhi-table-cell> 3305 </fhi-table-cell>
+      <fhi-table-cell>
+        VKM - inntak av energidrikker hos 13-åringer
       </fhi-table-cell>
-      <fhi-table-cell style="--justify-content: end">
-        <a href="#">Gå til prosjekt</a>
+      <fhi-table-cell> Hesle Vest RHF </fhi-table-cell>
+      <fhi-table-cell> Pelle Parafin </fhi-table-cell>
+
+      <!-- Group 2 -->
+      <fhi-table-cell
+        variant="header"
+        column="2"
+        row="span 2"
+        style="background-color: blue;"
+      ></fhi-table-cell>
+
+      <fhi-table-cell
+        variant="header"
+        style="background-color: HotPink;"
+      ></fhi-table-cell>
+      <fhi-table-cell> 3305 </fhi-table-cell>
+      <fhi-table-cell>
+        VKM - inntak av energidrikker hos 13-åringer
       </fhi-table-cell>
+      <fhi-table-cell> Hesle Vest RHF </fhi-table-cell>
+      <fhi-table-cell> Pelle Parafin </fhi-table-cell>
+
+      <fhi-table-cell
+        variant="header"
+        style="background-color: DarkViolet;"
+      ></fhi-table-cell>
+      <fhi-table-cell> 3305 </fhi-table-cell>
+      <fhi-table-cell>
+        VKM - inntak av energidrikker hos 13-åringer
+      </fhi-table-cell>
+      <fhi-table-cell> Hesle Vest RHF </fhi-table-cell>
+      <fhi-table-cell> Pelle Parafin </fhi-table-cell>
     </fhi-table>
   `,
 };
