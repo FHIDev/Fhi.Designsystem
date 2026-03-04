@@ -5,82 +5,63 @@ export const FhiTableCellSelector = 'fhi-table-cell';
 
 @customElement(FhiTableCellSelector)
 export class FhiTableCell extends LitElement {
-  @property({ type: String })
-  row = 'span 1';
-
-  @property({ type: String })
-  column = 'span 1';
-
   @property({ type: String, reflect: true })
   variant: 'header' | 'body' = 'body';
 
   protected update(changedProperties: PropertyValues): void {
-    this.style.gridRow = this.row;
-    this.style.gridColumn = this.column;
-
     if (changedProperties.has('variant')) {
-      if (this.variant != 'header' && this.variant != 'body') {
-        this.variant = 'body';
-      }
+      this.role = this.variant === 'header' ? 'columnheader' : 'cell';
     }
 
     super.update(changedProperties);
   }
 
   render() {
-    return html`<div
-      role="${this.variant === 'header' ? 'columnheader' : 'cell'}"
-    >
-      <slot></slot>
-    </div>`;
+    return html`<slot></slot>`;
   }
 
   static styles = css`
     :host {
-      --justify-content: start;
-      --align-items: center;
-      --padding: var(--fhi-spacing-200);
-      --height: -webkit-fill-available;
+      --fhi-table-cell-justify-content: end;
+      --fhi-table-cell-align-items: center;
+      --fhi-table-cell-padding: var(--fhi-spacing-200);
+      --fhi-table-cell-height: -webkit-fill-available;
+      --fhi-table-cell-background: initial;
 
-      --color: var(--fhi-color-neutral-text-default);
-      --letter-spacing: var(--letter-spacing-medium);
-
-      --border-bottom: var(--fhi-dimension-border-width) solid
-        var(--fhi-color-neutral-border-subtle);
-
-      --font: var(--fhi-typography-body-medium-font-weight)
+      --fhi-table-cell-color: var(--fhi-color-neutral-text-default);
+      --fhi-table-cell-letter-spacing: var(
+        --fhi-typography-body-medium-letter-spacing
+      );
+      --fhi-table-cell-font: var(--fhi-typography-body-medium-font-weight)
         var(--fhi-typography-body-medium-font-size) /
         var(--fhi-typography-body-medium-line-height)
         var(--fhi-font-family-default);
     }
 
     :host([variant='header']) {
-      --border-bottom: var(--fhi-dimension-border-width) solid
-        var(--fhi-color-neutral-border-default);
-
-      --font: var(--fhi-typography-label-medium-font-weight)
+      --fhi-table-cell-letter-spacing: var(
+        --fhi-typography-label-medium-letter-spacing
+      );
+      --fhi-table-cell-font: var(--fhi-typography-label-medium-font-weight)
         var(--fhi-typography-label-medium-font-size) /
         var(--fhi-typography-label-medium-line-height)
         var(--fhi-font-family-default);
     }
 
     :host {
-      div {
-        display: flex;
-        justify-content: var(--justify-content);
-        align-items: var(--align-items);
-        padding: var(--padding);
-        height: var(--height);
-        border-bottom: var(--border-bottom);
+      display: flex;
+      justify-content: var(--fhi-table-cell-justify-content);
+      align-items: var(--fhi-table-cell-align-items);
+      padding: var(--fhi-table-cell-padding);
+      height: var(--fhi-table-cell-height);
+      min-width: min-content;
+      overflow: hidden;
+      flex-wrap: wrap;
+      background: var(--fhi-table-cell-background);
 
-        font: var(--font);
-        color: var(--color);
-        letter-spacing: var(--letter-spacing);
-      }
-
-      div[role='columnheader'] {
-        border-bottom: var(--border-bottom);
-      }
+      font: var(--fhi-table-cell-font);
+      color: var(--fhi-table-cell-color);
+      letter-spacing: var(--fhi-table-cell-letter-spacing);
     }
   `;
 }
