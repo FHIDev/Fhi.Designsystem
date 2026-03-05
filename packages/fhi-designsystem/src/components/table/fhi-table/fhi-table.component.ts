@@ -9,9 +9,6 @@ export const FhiTableSelector = 'fhi-table';
 @customElement(FhiTableSelector)
 export class FhiTable extends LitElement {
   @property({ type: String, reflect: true })
-  columns = '1fr';
-
-  @property({ type: String, reflect: true })
   caption?: string;
 
   connectedCallback(): void {
@@ -30,7 +27,6 @@ export class FhiTable extends LitElement {
 
   render() {
     return html`
-      <div style="display: grid; grid-template-columns: ${this.columns};"></div>
       <slot></slot>
       ${this.caption
         ? html`<fhi-body id="caption" size="small">${this.caption}</fhi-body>`
@@ -40,6 +36,12 @@ export class FhiTable extends LitElement {
 
   static styles = css`
     :host {
+      --fhi-table-width: auto;
+    }
+
+    :host {
+      display: block;
+      width: var(--fhi-table-width);
       #caption {
         display: block;
         padding: 1rem;

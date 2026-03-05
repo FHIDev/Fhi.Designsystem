@@ -5,9 +5,6 @@ export const FhiTableRowSelector = 'fhi-table-row';
 
 @customElement(FhiTableRowSelector)
 export class FhiTableRow extends LitElement {
-  @property({ type: String, reflect: true, attribute: 'column-span' })
-  columnSpan = 'span 1';
-
   @property({ type: String, reflect: true })
   columns = '1fr';
 
@@ -23,10 +20,6 @@ export class FhiTableRow extends LitElement {
   protected update(changedProperties: PropertyValues): void {
     if (changedProperties.has('columns')) {
       this.style.gridTemplateColumns = this.columns;
-    }
-
-    if (changedProperties.has('columnSpan')) {
-      this.style.gridColumn = this.columnSpan;
     }
 
     super.update(changedProperties);

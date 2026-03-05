@@ -209,23 +209,44 @@ export const WithCheckboxes: Story = {
   },
   render: args => html`
     <fhi-table caption="${ifDefined(args.caption)}">
-      <fhi-table-row variant="header" columns="1fr 4fr 4fr 2fr 2fr 6fr">
+      <fhi-table-row variant="header" columns="2.5rem 4fr 4fr 2fr 2fr 6fr">
         <fhi-table-cell></fhi-table-cell>
-        <fhi-table-cell variant="header"> Mal </fhi-table-cell>
-        <fhi-table-cell variant="header"> Dimensjon </fhi-table-cell>
+        <fhi-table-cell
+          variant="header"
+          style="--fhi-table-cell-justify-content: start"
+        >
+          Mal
+        </fhi-table-cell>
+        <fhi-table-cell
+          variant="header"
+          style="--fhi-table-cell-justify-content: start"
+        >
+          Dimensjon
+        </fhi-table-cell>
         <fhi-table-cell variant="header"> Opprettet </fhi-table-cell>
-        <fhi-table-cell variant="header"> Opprettet av </fhi-table-cell>
-        <fhi-table-cell></fhi-table-cell>
+        <fhi-table-cell
+          variant="header"
+          style="--fhi-table-cell-justify-content: start"
+        >
+          Opprettet av
+        </fhi-table-cell>
+        <fhi-table-cell> </fhi-table-cell>
       </fhi-table-row>
 
-      <fhi-table-row columns="1fr 4fr 4fr 2fr 2fr 6fr">
-        <fhi-table-cell>
+      <fhi-table-row columns="2.5rem 4fr 4fr 2fr 2fr 6fr">
+        <fhi-table-cell style="--fhi-table-cell-justify-content: start">
           <fhi-checkbox></fhi-checkbox>
         </fhi-table-cell>
-        <fhi-table-cell> Geografi 2023 - norsk </fhi-table-cell>
-        <fhi-table-cell> GEO </fhi-table-cell>
+        <fhi-table-cell style="--fhi-table-cell-justify-content: start">
+          Geografi 2020
+        </fhi-table-cell>
+        <fhi-table-cell style="--fhi-table-cell-justify-content: start">
+          ATC_Verdi
+        </fhi-table-cell>
         <fhi-table-cell> 10.10.2027 </fhi-table-cell>
-        <fhi-table-cell> Pelle Parafin </fhi-table-cell>
+        <fhi-table-cell style="--fhi-table-cell-justify-content: start">
+          Pelle Parafin
+        </fhi-table-cell>
         <fhi-table-cell>
           <fhi-button color="neutral" variant="text">
             <fhi-icon-download></fhi-icon-download>
