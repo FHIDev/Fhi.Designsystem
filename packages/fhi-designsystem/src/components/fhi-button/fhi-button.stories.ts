@@ -1,5 +1,7 @@
-import type { Meta, StoryObj } from '@storybook/web-components-vite';
+import type { StoryObj } from '@storybook/web-components-vite';
 import { action } from 'storybook/actions';
+
+import { FhiStorybookMeta } from '../../../.storybook/fhi-meta';
 
 import { html } from 'lit';
 import { ifDefined } from 'lit/directives/if-defined.js';
@@ -34,7 +36,7 @@ new FhiIconBell();
 new FhiIconUser();
 new FhiIconExpand();
 
-const meta: Meta<FhiButton> = {
+const meta: FhiStorybookMeta<FhiButton> = {
   title: 'Komponenter/Button',
   component: 'fhi-button',
   parameters: {
@@ -43,6 +45,18 @@ const meta: Meta<FhiButton> = {
         excludeDecorators: true,
       },
     },
+    slotTypes: [
+      {
+        description:
+          'Innholdet i knappen. Kan være tekst, ikon eller en kombinasjon av begge.',
+      },
+    ],
+    eventTypes: [
+      {
+        name: 'click',
+        description: 'Blir utløst når knappen klikkes på.',
+      },
+    ],
   },
   decorators: [
     Story =>
