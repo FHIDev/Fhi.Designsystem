@@ -104,16 +104,37 @@ export class FhiButton extends LitElement {
     this.onselectstart = this._handleSelectStart.bind(this);
   }
 
-  protected update(changedProperties: PropertyValues): void {
-    super.update(changedProperties);
+  protected update(_changedProperties: PropertyValues): void {
+    // If a falsy value is provided, default to 'accent'.
+    if (_changedProperties.has('color')) {
+      if (!this.color) {
+        this.color = 'accent';
+      }
+    }
 
-    if (changedProperties.has('iconOnly')) {
+    // If a falsy value is provided, default to 'strong'.
+    if (_changedProperties.has('variant')) {
+      if (!this.variant) {
+        this.variant = 'strong';
+      }
+    }
+
+    // If an invalid value is provided, default to 'medium'.
+    if (_changedProperties.has('size')) {
+      if (!this.size) {
+        this.size = 'medium';
+      }
+    }
+
+    if (_changedProperties.has('iconOnly')) {
       if (this.getAttribute('icon-only') !== null) {
         console.warn(
           "The 'iconOnly' property is deprecated and will be removed in a future release. The button automatically detects if it only contains an icon and applies the appropriate styling.",
         );
       }
     }
+
+    super.update(_changedProperties);
   }
 
   /**
