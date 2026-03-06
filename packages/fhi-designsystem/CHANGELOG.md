@@ -1,5 +1,15 @@
 # Changelog
 
+## [0.33.0](https://github.com/FHIDev/Fhi/compare/v0.32.0...v0.33.0) (2026-03-06)
+
+### 🚀 Features
+
+* Add rows to fhi-grid ([#379](https://github.com/FHIDev/Fhi/issues/379)) ([58ed18c](https://github.com/FHIDev/Fhi/commit/58ed18c0337ae7ccf492d05179ef3a4b5e6de20a))
+
+### 📑 Documentation
+
+* Add API definition with attributes, properties, events and slots to the documentation ([#369](https://github.com/FHIDev/Fhi/issues/369)) ([d4e45a3](https://github.com/FHIDev/Fhi/commit/d4e45a33bdaa82d4662ac340d5ef901acbf372a6))
+
 ## [0.32.0](https://github.com/FHIDev/Fhi/compare/v0.31.0...v0.32.0) (2026-03-03)
 
 ### 🚀 Features
