@@ -36,11 +36,21 @@ export class FhiGrid extends LitElement {
    */
   @property({ type: Number }) columns = 12;
 
+  /**
+   * Sets the number of rows in the grid layout.
+   * @type {number}
+   */
+  @property({ type: Number }) rows = 1;
+
   updated(changedProperties: PropertyValues<this>) {
     super.updated(changedProperties);
 
     if (changedProperties.has('columns')) {
       this.style.gridTemplateColumns = `repeat( ${this.columns}, 1fr )`;
+    }
+
+    if (changedProperties.has('rows')) {
+      this.style.gridTemplateRows = `repeat( ${this.rows}, 1fr )`;
     }
 
     if (changedProperties.has('gap')) {
