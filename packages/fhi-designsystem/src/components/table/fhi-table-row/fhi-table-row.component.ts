@@ -1,5 +1,7 @@
 import { html, css, LitElement, PropertyValues } from 'lit';
 import { customElement, property } from 'lit/decorators.js';
+import { queryAssignedElements } from 'lit/decorators.js';
+import { FhiTableCell } from '../fhi-table-cell/fhi-table-cell.component';
 
 export const FhiTableRowSelector = 'fhi-table-row';
 
@@ -10,6 +12,9 @@ export class FhiTableRow extends LitElement {
 
   @property({ type: String, reflect: true })
   variant: 'header' | 'body' = 'body';
+
+  @queryAssignedElements()
+  slotElements!: Array<HTMLElement>;
 
   connectedCallback(): void {
     super.connectedCallback();
@@ -25,8 +30,18 @@ export class FhiTableRow extends LitElement {
     super.update(changedProperties);
   }
 
+  private handleSlotChange() {
+    console.log(this.slotElements);
+
+    this.slotElements.forEach(element => {
+      if (element.tagName.toLowerCase() === 'fhi-table-cell') {
+        (element as FhiTableCell).variant = this.variant;
+      }
+    });
+  }
+
   render() {
-    return html`<slot></slot>`;
+    return html`<slot @slotchange=${this.handleSlotChange}></slot>`;
   }
 
   static styles = css`

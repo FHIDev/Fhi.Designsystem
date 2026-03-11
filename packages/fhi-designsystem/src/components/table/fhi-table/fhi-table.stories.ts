@@ -56,9 +56,9 @@ export const Preview: Story = {
     <fhi-table caption="${ifDefined(args.caption)}">
       <fhi-table-row variant="header" columns="3fr 1fr 1fr 1fr">
         <fhi-table-cell></fhi-table-cell>
-        <fhi-table-cell variant="header"> 2021 </fhi-table-cell>
-        <fhi-table-cell variant="header"> 2022 </fhi-table-cell>
-        <fhi-table-cell variant="header"> 2023 </fhi-table-cell>
+        <fhi-table-cell> 2021 </fhi-table-cell>
+        <fhi-table-cell> 2022 </fhi-table-cell>
+        <fhi-table-cell> 2023 </fhi-table-cell>
       </fhi-table-row>
 
       <fhi-table-row columns="3fr 1fr 1fr 1fr">
