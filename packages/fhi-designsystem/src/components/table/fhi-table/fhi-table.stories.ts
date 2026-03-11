@@ -31,7 +31,7 @@ new FhiTitle();
 new FhiBody();
 
 const meta: Meta<FhiTable> = {
-  title: 'Komponenter/Table',
+  title: 'Komponenter/Table/Table',
   component: 'fhi-table',
   parameters: {},
   decorators: [],
@@ -83,7 +83,7 @@ export const Preview: Story = {
 };
 
 export const ComplexData: Story = {
-  tags: [],
+  tags: ['!dev'],
   args: {},
   render: args => html`
     <style>
@@ -203,13 +203,13 @@ export const ComplexData: Story = {
 };
 
 export const WithCheckboxes: Story = {
-  tags: [],
+  tags: ['!dev'],
   args: {
     caption: 'Avkrysningsbokser.',
   },
   render: args => html`
     <fhi-table caption="${ifDefined(args.caption)}">
-      <fhi-table-row variant="header" columns="2.5rem 4fr 4fr 2fr 2fr 6fr">
+      <fhi-table-row variant="header" columns="2.5rem 4fr 3fr 2fr 2fr 6fr">
         <fhi-table-cell></fhi-table-cell>
         <fhi-table-cell
           variant="header"
@@ -233,7 +233,7 @@ export const WithCheckboxes: Story = {
         <fhi-table-cell> </fhi-table-cell>
       </fhi-table-row>
 
-      <fhi-table-row columns="2.5rem 4fr 4fr 2fr 2fr 6fr">
+      <fhi-table-row columns="2.5rem 4fr 3fr 2fr 2fr 6fr">
         <fhi-table-cell style="--fhi-table-cell-justify-content: start">
           <fhi-checkbox></fhi-checkbox>
         </fhi-table-cell>
