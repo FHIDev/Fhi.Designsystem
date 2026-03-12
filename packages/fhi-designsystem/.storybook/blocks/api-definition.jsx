@@ -99,7 +99,7 @@ export const ApiDefinition = ({ of }) => {
         Denne seksjonen viser en oversikt over komponentens API utover det som
         er dekket av web-standarden.
       </fhi-body>
-    </section >
+    </section>
   );
 
   return (
