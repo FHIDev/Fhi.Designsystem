@@ -77,8 +77,6 @@ const generateSection = (name, head, bodyItems) => {
 export const ApiDefinition = ({ of }) => {
   const story = getStory(of);
 
-  console.log('story', story);
-
   const componentName = story?.component || '{ undefined }';
   const methods = story.parameters?.methodTypes || [];
   const events = story.parameters?.eventTypes || [];
