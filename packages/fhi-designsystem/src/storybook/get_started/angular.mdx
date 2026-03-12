@@ -37,6 +37,11 @@ Angular wrappers må kompileres av Angular sin kompilator. Legg derfor til følg
 }
 ```
 
+Bruker du `@angular/build:application` til å bygge applikasjonen din, må du ekskludere wrapperne fra `prebuild` i `angular.json`-filen din:
+
+```json
+  projects.[your-project].architect.serve.options.prebundle.exclude: ["@folkehelseinstituttet/designsystem/angular-wrappers/*"]
+```
 
 Her er et eksempel av bruk av `fhi-button`-komponenten i et Angular-prosjekt.
 
