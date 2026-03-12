@@ -2,6 +2,8 @@ import { FhiTable } from './fhi-table/fhi-table.component.ts';
 import * as FhiTableStories from './fhi-table/fhi-table.stories.ts';
 import { Meta, Primary, Canvas, Controls } from '@storybook/addon-docs/blocks';
 
+import { ApiDefinition } from '../../../.storybook/blocks/api-definition.jsx';
+
 <Meta of={FhiTableStories} />
 
 # Table
@@ -21,3 +23,5 @@ Tabellen bruker CSS grid for å definere rader og kolonner, og har støtte for b
 <Canvas of={FhiTableStories.ComplexData} />
 <br />
 <Canvas of={FhiTableStories.WithCheckboxes} />
+
+<ApiDefinition />

@@ -31,13 +31,13 @@ export class FhiTableRow extends LitElement {
   }
 
   private handleSlotChange() {
-    console.log(this.slotElements);
-
-    this.slotElements.forEach(element => {
-      if (element.tagName.toLowerCase() === 'fhi-table-cell') {
-        (element as FhiTableCell).variant = this.variant;
-      }
-    });
+    if (this.variant === 'header') {
+      this.slotElements.forEach(element => {
+        if (element.tagName.toLowerCase() === 'fhi-table-cell') {
+          (element as FhiTableCell).variant = this.variant;
+        }
+      });
+    }
   }
 
   render() {
