@@ -1,4 +1,4 @@
-import type { Meta, StoryObj } from '@storybook/web-components-vite';
+import type { StoryObj } from '@storybook/web-components-vite';
 import { html } from 'lit';
 
 import { FhiTable } from './fhi-table.component';
@@ -17,6 +17,8 @@ import { FhiIconDownload } from '../../icons/fhi-icon-download.component';
 import { FhiIconTrash } from '../../icons/fhi-icon-trash.component';
 import { ifDefined } from 'lit/directives/if-defined.js';
 
+import { FhiStorybookMeta } from '../../../../.storybook/fhi-meta';
+
 new FhiTable();
 new FhiTableCell();
 new FhiTableRow();
@@ -30,10 +32,18 @@ new FhiDisplay();
 new FhiTitle();
 new FhiBody();
 
-const meta: Meta<FhiTable> = {
+const meta: FhiStorybookMeta<FhiTable> = {
   title: 'Komponenter/Table',
   component: 'fhi-table',
-  parameters: {},
+  parameters: {
+    slotTypes: [
+      {
+        name: '-',
+        description:
+          'Alle rader i tabellen. Bruk fhi-table-row for å definere rader, og fhi-table-cell for å definere celler i radene.',
+      },
+    ],
+  },
   decorators: [],
   argTypes: {
     caption: {
