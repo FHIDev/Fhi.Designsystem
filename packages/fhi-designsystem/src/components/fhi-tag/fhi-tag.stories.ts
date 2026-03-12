@@ -1,4 +1,4 @@
-import type { Meta, StoryObj } from '@storybook/web-components-vite';
+import type { StoryObj } from '@storybook/web-components-vite';
 
 import { html } from 'lit';
 import { ifDefined } from 'lit/directives/if-defined.js';
@@ -9,13 +9,15 @@ import { FhiFlex } from '../fhi-flex/fhi-flex.component';
 import { FhiIconDownload } from '../icons/fhi-icon-download.component';
 import { FhiIconClock } from '../icons/fhi-icon-clock.component';
 
+import { FhiStorybookMeta } from '../../../.storybook/fhi-meta';
+
 new FhiTag();
 new FhiFlex();
 new FhiIconRefresh();
 new FhiIconDownload();
 new FhiIconClock();
 
-const meta: Meta<FhiTag> = {
+const meta: FhiStorybookMeta<FhiTag> = {
   title: 'Komponenter/Tag',
   component: 'fhi-tag',
   parameters: {},
