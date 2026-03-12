@@ -1,4 +1,4 @@
-import { html, css, LitElement } from 'lit';
+import { html, css, LitElement, PropertyValues } from 'lit';
 import { customElement, property, query } from 'lit/decorators.js';
 import { ifDefined } from 'lit/directives/if-defined.js';
 import '../icons/fhi-icon-calendar.component.js';
@@ -77,8 +77,6 @@ export class FhiDateInput extends LitElement {
   @query('#input-element')
   private _input!: HTMLInputElement;
 
-  private _name?: string | undefined = undefined;
-
   /**
    * The name of the input. This is submitted with the form data as a `key`.
    *
@@ -88,18 +86,7 @@ export class FhiDateInput extends LitElement {
    * @reflect
    */
   @property({ type: String, reflect: true })
-  get name(): string | undefined {
-    return this._name;
-  }
-
-  set name(newName: string | undefined) {
-    const oldName = this._name;
-    this._name = newName;
-    this.requestUpdate('name', oldName);
-    this._internals.setFormValue(this.value ?? null);
-  }
-
-  private _value?: string = '';
+  name?: string = '';
 
   /**
    * The default value of the input field, formatted as `YYYY-MM-DD`.
@@ -110,16 +97,7 @@ export class FhiDateInput extends LitElement {
    * See: {@link https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input#value}
    */
   @property({ type: String })
-  get value(): FhiDateValue {
-    return this._value as FhiDateValue;
-  }
-
-  set value(newValue: FhiDateValue) {
-    const oldValue = this._value;
-    this._value = newValue;
-    this.requestUpdate('value', oldValue);
-    this._internals.setFormValue(this._value ?? null);
-  }
+  value?: string = '';
 
   private _internals: ElementInternals;
 
@@ -131,6 +109,12 @@ export class FhiDateInput extends LitElement {
   public connectedCallback(): void {
     super.connectedCallback();
     this._internals.setFormValue(this.value ?? null);
+  }
+
+  protected updated(changedProperties: PropertyValues): void {
+    if (changedProperties.has('value') || changedProperties.has('name')) {
+      this._internals.setFormValue(this.value ?? null);
+    }
   }
 
   private _handleChange(): void {
@@ -152,7 +136,6 @@ export class FhiDateInput extends LitElement {
 
   private _handleInput(event: Event): void {
     this.value = this._input.value as FhiDateValue;
-    this._internals.setFormValue(this.value ?? null);
     event.stopPropagation();
     this._dispatchInputEvent();
   }
