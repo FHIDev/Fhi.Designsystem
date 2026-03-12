@@ -10,13 +10,27 @@ const meta: Meta<FhiTableRow> = {
   parameters: {},
   decorators: [],
   render: () => html`<fhi-table-row></fhi-table-row>`,
-  argTypes: {},
+  argTypes: {
+    columns: {
+      control: 'text',
+      description:
+        'Definerer kolonneoppsettet for raden. Bruk CSS grid-template-columns format, f.eks. "1fr 2fr 1fr".',
+      defaultValue: { summary: '1fr' },
+    },
+    variant: {
+      control: 'select',
+      options: ['header', 'body'],
+      description:
+        'Definerer om raden er en header-rad eller en vanlig rad. Header-rader har en annen stil og brukes for å definere kolonneoverskrifter.',
+      defaultValue: { summary: 'body' },
+    },
+  },
 };
 
 type Story = StoryObj<FhiTableRow>;
 
 export const Preview: Story = {
-  tags: [],
+  tags: ['!dev'],
   args: {},
 };
 

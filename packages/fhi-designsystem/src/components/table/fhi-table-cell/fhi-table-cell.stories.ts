@@ -18,7 +18,8 @@ const meta: Meta<FhiTableCell> = {
     variant: {
       control: 'select',
       options: ['header', 'body'],
-      description: 'Definerer om cellen er en header eller body celle',
+      description:
+        'Definerer om cellen er en header eller body celle. Når fhi-table-cell brukes i en fhi-table-row, vil variant automatisk arves fra fhi-table-row.',
       defaultValue: { summary: 'body' },
     },
   },
@@ -27,7 +28,7 @@ const meta: Meta<FhiTableCell> = {
 type Story = StoryObj<FhiTableCell>;
 
 export const Preview: Story = {
-  tags: [],
+  tags: ['!dev'],
   args: {},
 };
 

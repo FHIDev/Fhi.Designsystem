@@ -31,7 +31,7 @@ new FhiTitle();
 new FhiBody();
 
 const meta: Meta<FhiTable> = {
-  title: 'Komponenter/Table/Table',
+  title: 'Komponenter/Table',
   component: 'fhi-table',
   parameters: {},
   decorators: [],
@@ -87,8 +87,16 @@ export const ComplexData: Story = {
   args: {},
   render: args => html`
     <style>
-      .dense_table fhi-table-cell {
-        --fhi-table-cell-padding: 0.25rem;
+      .my_table {
+        --fhi-table-width: auto;
+        :nth-child(even) {
+          --fhi-table-row-background: var(
+            --fhi-color-neutral-background-subtle
+          );
+        }
+        fhi-table-cell {
+          --fhi-table-cell-padding: 0.25rem;
+        }
       }
     </style>
 
@@ -104,17 +112,15 @@ export const ComplexData: Story = {
     </fhi-body>
     <br />
 
-    <fhi-table class="dense_table" caption="${ifDefined(args.caption)}">
+    <fhi-table class="my_table" caption="${ifDefined(args.caption)}">
       <fhi-table-row variant="header" columns="2fr repeat(4, 1fr)">
-        <fhi-table-cell
-          variant="header"
-          style="--fhi-table-cell-justify-content: start"
-          >Oslo
+        <fhi-table-cell style="--fhi-table-cell-justify-content: start">
+          Oslo
         </fhi-table-cell>
-        <fhi-table-cell variant="header"> Januar </fhi-table-cell>
-        <fhi-table-cell variant="header"> Februar </fhi-table-cell>
-        <fhi-table-cell variant="header"> Mars </fhi-table-cell>
-        <fhi-table-cell variant="header"> April </fhi-table-cell>
+        <fhi-table-cell> Januar </fhi-table-cell>
+        <fhi-table-cell> Februar </fhi-table-cell>
+        <fhi-table-cell> Mars </fhi-table-cell>
+        <fhi-table-cell> April </fhi-table-cell>
       </fhi-table-row>
 
       <fhi-table-row columns="2fr repeat(4, 1fr)">
@@ -127,10 +133,7 @@ export const ComplexData: Story = {
         <fhi-table-cell> - </fhi-table-cell>
       </fhi-table-row>
 
-      <fhi-table-row
-        columns="2fr repeat(4, 1fr)"
-        style="--fhi-table-row-background: var(--fhi-color-neutral-background-subtle);"
-      >
+      <fhi-table-row columns="2fr repeat(4, 1fr)">
         <fhi-table-cell style="--fhi-table-cell-justify-content: start">
           Med fødselsmelding
         </fhi-table-cell>
@@ -153,12 +156,10 @@ export const ComplexData: Story = {
 
     <br />
 
-    <fhi-table class="dense_table" caption="${ifDefined(args.caption)}">
+    <fhi-table class="my_table" caption="${ifDefined(args.caption)}">
       <fhi-table-row variant="header" columns="2fr repeat(4, 1fr)">
-        <fhi-table-cell
-          variant="header"
-          style="--fhi-table-cell-justify-content: start"
-          >Østfold
+        <fhi-table-cell style="--fhi-table-cell-justify-content: start">
+          Østfold
         </fhi-table-cell>
         <fhi-table-cell></fhi-table-cell>
         <fhi-table-cell></fhi-table-cell>
@@ -176,10 +177,7 @@ export const ComplexData: Story = {
         <fhi-table-cell> - </fhi-table-cell>
       </fhi-table-row>
 
-      <fhi-table-row
-        columns="2fr repeat(4, 1fr)"
-        style="--fhi-table-row-background: var(--fhi-color-neutral-background-subtle);"
-      >
+      <fhi-table-row columns="2fr repeat(4, 1fr)">
         <fhi-table-cell style="--fhi-table-cell-justify-content: start">
           Med fødselsmelding
         </fhi-table-cell>
@@ -211,23 +209,14 @@ export const WithCheckboxes: Story = {
     <fhi-table caption="${ifDefined(args.caption)}">
       <fhi-table-row variant="header" columns="2.5rem 4fr 3fr 2fr 2fr 6fr">
         <fhi-table-cell></fhi-table-cell>
-        <fhi-table-cell
-          variant="header"
-          style="--fhi-table-cell-justify-content: start"
-        >
+        <fhi-table-cell style="--fhi-table-cell-justify-content: start">
           Mal
         </fhi-table-cell>
-        <fhi-table-cell
-          variant="header"
-          style="--fhi-table-cell-justify-content: start"
-        >
+        <fhi-table-cell style="--fhi-table-cell-justify-content: start">
           Dimensjon
         </fhi-table-cell>
-        <fhi-table-cell variant="header"> Opprettet </fhi-table-cell>
-        <fhi-table-cell
-          variant="header"
-          style="--fhi-table-cell-justify-content: start"
-        >
+        <fhi-table-cell> Opprettet </fhi-table-cell>
+        <fhi-table-cell style="--fhi-table-cell-justify-content: start">
           Opprettet av
         </fhi-table-cell>
         <fhi-table-cell> </fhi-table-cell>
