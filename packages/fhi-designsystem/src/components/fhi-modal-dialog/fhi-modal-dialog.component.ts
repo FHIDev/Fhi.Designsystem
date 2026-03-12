@@ -66,8 +66,6 @@ export class FhiModalDialog extends LitElement {
   private _mouseDownInsideDialog: boolean = false;
 
   updated(changedProperties: PropertyValues<this>) {
-    super.updated(changedProperties);
-
     if (changedProperties.has('open')) {
       if (this.open) {
         this.show();
@@ -83,24 +81,22 @@ export class FhiModalDialog extends LitElement {
       }
     }
 
-    if (changedProperties.has('closeButtonLabel')) {
-      if (
-        typeof this.closeButtonLabel !== 'string' ||
-        this.closeButtonLabel.length === 0
-      ) {
-        throw new TypeError(
-          'The close-button-label property must be set to a non-empty string. This label must describe the purpose of the close button for accessibility reasons.',
-        );
-      }
+    if (
+      typeof this.closeButtonLabel !== 'string' ||
+      this.closeButtonLabel.length === 0
+    ) {
+      throw new TypeError(
+        'The close-button-label property must be set to a non-empty string. This label must describe the purpose of the close button for accessibility reasons.',
+      );
     }
 
-    if (changedProperties.has('closeButtonLabel')) {
-      if (typeof this.heading !== 'string' || this.heading.length === 0) {
-        throw new TypeError(
-          'The heading property must be set to a non-empty string. This heading describes the purpose of the dialog.',
-        );
-      }
+    if (typeof this.heading !== 'string' || this.heading.length === 0) {
+      throw new TypeError(
+        'The heading property must be set to a non-empty string. This heading describes the purpose of the dialog.',
+      );
     }
+
+    super.updated(changedProperties);
   }
 
   protected firstUpdated(_changedProperties: PropertyValues): void {
