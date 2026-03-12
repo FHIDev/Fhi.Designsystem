@@ -1,12 +1,14 @@
-import type { Meta, StoryObj } from '@storybook/web-components-vite';
+import type { StoryObj } from '@storybook/web-components-vite';
 
 import { html } from 'lit/html.js';
 
 import { FhiGrid } from './fhi-grid.component';
 
+import { FhiStorybookMeta } from '../../../.storybook/fhi-meta';
+
 new FhiGrid();
 
-const meta: Meta<FhiGrid> = {
+const meta: FhiStorybookMeta<FhiGrid> = {
   title: 'Komponenter/Grid',
   component: 'fhi-grid',
   parameters: {
@@ -15,6 +17,11 @@ const meta: Meta<FhiGrid> = {
         excludeDecorators: true,
       },
     },
+    slotTypes: [
+      {
+        description: 'Innholdet som skal plasseres i Grid.',
+      },
+    ],
   },
   decorators: [
     Story =>
@@ -45,7 +52,7 @@ const meta: Meta<FhiGrid> = {
       defaultValue: { summary: 'medium' },
     },
     columns: {
-      controls: 'number',
+      control: 'number',
       description: 'Bestemmer antall kolonner',
       defaultValue: { summary: '12' },
     },
@@ -80,9 +87,10 @@ export const LargeGrid: Story = {
   args: {
     gap: 'medium',
     columns: 12,
+    rows: 1,
   },
   render: args => html`
-    <fhi-grid gap=${args.gap} columns=${args.columns}>
+    <fhi-grid gap=${args.gap} columns=${args.columns} rows=${args.rows}>
       <div style="grid-column: span 4;">Slot</div>
       <div style="grid-column: span 4;">Slot</div>
       <div style="grid-column: span 4;">Slot</div>
@@ -98,10 +106,11 @@ export const GridWithRowsAndColumns: Story = {
   tags: [],
   args: {
     gap: 'medium',
+    columns: 12,
     rows: 8,
   },
   render: args => html`
-    <fhi-grid rows=${args.rows}>
+    <fhi-grid rows=${args.rows} columns=${args.columns}>
       <div style="grid-row: span 8; grid-column: 1;">Slot</div>
       <div style="grid-row: 1; grid-column: 2 / 13;">Slot</div>
       <div style="grid-row: 2 / 8; grid-column: 2 / 13;">Slot</div>
@@ -115,9 +124,10 @@ export const NoSpan: Story = {
   args: {
     gap: 'medium',
     columns: 3,
+    rows: 1,
   },
   render: args => html`
-    <fhi-grid gap=${args.gap} columns=${args.columns}>
+    <fhi-grid gap=${args.gap} columns=${args.columns} rows=${args.rows}>
       <div>Slot</div>
       <div>Slot</div>
       <div>Slot</div>
