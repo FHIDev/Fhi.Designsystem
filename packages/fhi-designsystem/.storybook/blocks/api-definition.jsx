@@ -77,6 +77,9 @@ const generateSection = (name, head, bodyItems) => {
 export const ApiDefinition = ({ of }) => {
   const story = getStory(of);
 
+  console.log('story', story);
+
+  const componentName = story?.component || '{ undefined }';
   const methods = story.parameters?.methodTypes || [];
   const events = story.parameters?.eventTypes || [];
   const slots = story.parameters?.slotTypes || [];
@@ -91,12 +94,14 @@ export const ApiDefinition = ({ of }) => {
 
   const mainTitle = (
     <section>
-      <fhi-headline level="2">API-definisjon</fhi-headline>
+      <div style={{ display: "flex", alignItems: "center", gap: "0.5rem" }} >
+        <fhi-headline level="2"> API-definisjon: </fhi-headline><fhi-tag>{`<${componentName}>`}</fhi-tag>
+      </div>
       <fhi-body>
         Denne seksjonen viser en oversikt over komponentens API utover det som
         er dekket av web-standarden.
       </fhi-body>
-    </section>
+    </section >
   );
 
   return (
