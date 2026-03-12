@@ -1,5 +1,9 @@
 import { FhiTable } from './fhi-table/fhi-table.component.ts';
+
 import * as FhiTableStories from './fhi-table/fhi-table.stories.ts';
+import * as FhiTableRowStories from './fhi-table-row/fhi-table-row.stories.ts';
+import * as FhiTableCellStories from './fhi-table-cell/fhi-table-cell.stories.ts';
+
 import { Meta, Primary, Canvas, Controls } from '@storybook/addon-docs/blocks';
 
 import { ApiDefinition } from '../../../.storybook/blocks/api-definition.jsx';
@@ -24,4 +28,6 @@ Tabellen bruker CSS grid for å definere rader og kolonner, og har støtte for b
 <br />
 <Canvas of={FhiTableStories.WithCheckboxes} />
 
-<ApiDefinition />
+<ApiDefinition of={FhiTableStories.Preview} />
+<ApiDefinition of={FhiTableRowStories.Preview} />
+<ApiDefinition of={FhiTableCellStories.Preview} />
