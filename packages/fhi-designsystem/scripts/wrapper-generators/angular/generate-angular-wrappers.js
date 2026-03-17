@@ -1,6 +1,5 @@
 import * as fs from 'fs';
 import * as path from 'path';
-import { generateFormAccessor } from './generate_form_accessor';
 
 const snakeToPascal = text =>
   text
@@ -13,62 +12,69 @@ const snakeToCamel = text => {
   return pascal.charAt(0).toLowerCase() + pascal.slice(1);
 };
 
-// Value accessors for form elements are needed to integrate custom elements with Angular Forms. Without these, Angular Forms won't be able to read and write values to the custom elements.
-const getFormElementAccessor = (tagName, angularSelector) => {
-  const accessorName = `${snakeToPascal(tagName)}ValueAccessor`;
+const generateFormAccessor = (angularTagName, webComponentTagName) => {
+  const accessorName = `${snakeToPascal(webComponentTagName)}ValueAccessor`;
 
-  switch (tagName) {
-    case 'fhi-button':
-      break;
-    case 'fhi-text-input':
-    case 'fhi-date-input':
-      return {
-        accessorName,
-        accessorImports: ['NG_VALUE_ACCESSOR', 'DefaultValueAccessor'],
-        accessor: `
-          @Directive({ selector: '${angularSelector}[formControlName],${angularSelector}[formControl],${angularSelector}[ngModel]', standalone: true, providers: [{ provide: NG_VALUE_ACCESSOR, useExisting: forwardRef(() => ${accessorName}), multi: true }] })
-          export class ${accessorName} extends DefaultValueAccessor {}
-          `,
-      };
-    case 'fhi-checkbox':
-      return {
-        accessorName,
-        accessorImports: ['NG_VALUE_ACCESSOR', 'CheckboxControlValueAccessor'],
-        accessor: `
-          @Directive({ selector: '${angularSelector}[formControlName],${angularSelector}[formControl],${angularSelector}[ngModel]', standalone: true, providers: [{ provide: NG_VALUE_ACCESSOR, useExisting: forwardRef(() => ${accessorName}), multi: true }] })
-          export class ${accessorName} extends CheckboxControlValueAccessor {}
-          `,
-      };
-    case 'fhi-radio':
-      return {
-        accessorName,
-        accessorImports: ['NG_VALUE_ACCESSOR', 'RadioControlValueAccessor'],
-        accessor: `
-          @Directive({ selector: '${angularSelector}[formControlName],${angularSelector}[formControl],${angularSelector}[ngModel]', standalone: true, providers: [{ provide: NG_VALUE_ACCESSOR, useExisting: forwardRef(() => ${accessorName}), multi: true }] })
-          export class ${accessorName} extends RadioControlValueAccessor {}
-          `,
-      };
-    default:
-      throw new Error(`No form value accessor found for tagName ${tagName}.`);
-      break;
-  }
-};
-
-const getAccessorValue = webComponentTagName => {
+  let valueLocation;
   switch (webComponentTagName) {
     case 'fhi-text-input':
     case 'fhi-date-input':
-      return 'value';
+      valueLocation = 'value';
+      break;
     case 'fhi-checkbox':
-      return 'checked';
     case 'fhi-radio':
-      return 'checked';
+      valueLocation = 'checked';
+      break;
+    case 'fhi-button':
+      break;
     default:
       throw new Error(
-        `No value location found for tagName ${webComponentTagName}.`,
+        `No value location defined for web component ${webComponentTagName}`,
       );
-      break;
   }
+
+  // We do not need a value accessor if there is no value to control on the form-associated web component. e.g a button.
+  if (!valueLocation) {
+    return '';
+  }
+
+  return `
+    @Directive({ selector: '${angularTagName}[formControlName],${angularTagName}[formControl],${angularTagName}[ngModel]', standalone: true, providers: [{ provide: NG_VALUE_ACCESSOR, useExisting: forwardRef(() => ${accessorName}), multi: true }] })
+    export class ${accessorName} implements ControlValueAccessor, AfterViewInit {
+      private _onChange: (value: unknown) => void = () => { };
+      private _onTouched: () => void = () => { };
+
+      private _host = inject(ElementRef);
+
+      private _initialValue: unknown = null;
+      private _webComponent?: { [key: string]: unknown };
+
+      ngAfterViewInit(): void {
+        this._webComponent = this._host.nativeElement.querySelector('${webComponentTagName}');
+
+        if (this._webComponent && this._initialValue !== null) {
+          this._webComponent.${valueLocation} = this._initialValue;
+          this._initialValue = null;
+        }
+      }
+
+      writeValue(value: unknown): void {
+        if (this._webComponent) {
+          this._webComponent.${valueLocation} = value;
+        } else {
+          this._initialValue = value;
+        }
+      }
+
+      registerOnTouched(fn: () => void): void {
+        this._onTouched = fn;
+      }
+
+      registerOnChange(fn: (value: unknown) => void): void {
+        this._onChange = fn;
+      }
+    }
+  `;
 };
 
 const isOptionalAttribute = attribute =>
@@ -137,24 +143,20 @@ const main = ({ manifestPath, outputPath }) => {
       throw new Error(`No tagName found for component class ${className}`);
     }
 
-    const angularSelector = webComponentTagName.split('fhi-').join('fhi-ng-');
-
-    const accessorInfo = isFormAssociated
-      ? getFormElementAccessor(webComponentTagName, angularSelector)
-      : null;
+    const angularTagName = webComponentTagName.split('fhi-').join('fhi-ng-');
 
     const template = `
       /** This file is autogenerated. Do not edit directly. **/
-      import { Component${attributes.length > 0 ? ', input' : ''}${events.length > 0 ? ', output' : ''}${accessorInfo ? `, Directive, forwardRef, AfterViewInit, inject, ElementRef` : ''}, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
+      import { Component${attributes.length > 0 ? ', input' : ''}${events.length > 0 ? ', output' : ''}${isFormAssociated ? `, Directive, forwardRef, AfterViewInit, inject, ElementRef` : ''}, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 
       import { NG_VALUE_ACCESSOR, ControlValueAccessor } from '@angular/forms';
 
       import '../${webComponentTagName}';
 
-      ${accessorInfo?.accessor ?? generateFormAccessor(angularSelector, webComponentTagName, `${snakeToPascal(webComponentTagName)}ValueAccessor`, getAccessorValue(webComponentTagName))}
+      ${isFormAssociated ? generateFormAccessor(angularTagName, webComponentTagName) : ''}
 
       @Component({
-        selector: '${angularSelector}',
+        selector: '${angularTagName}',
         schemas: [CUSTOM_ELEMENTS_SCHEMA],
         standalone: true,
         template: ${`\`
