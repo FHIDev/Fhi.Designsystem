@@ -12,7 +12,11 @@ const snakeToCamel = text => {
   return pascal.charAt(0).toLowerCase() + pascal.slice(1);
 };
 
-const generateFormAccessor = (angularTagName, webComponentTagName) => {
+const generateFormAccessor = (
+  angularTagName,
+  webComponentTagName,
+  componentDescription,
+) => {
   const accessorName = `${snakeToPascal(webComponentTagName)}ValueAccessor`;
 
   let valueLocation;
@@ -39,6 +43,9 @@ const generateFormAccessor = (angularTagName, webComponentTagName) => {
   }
 
   return `
+    /** @description
+     * A ControlValueAccessor for writing a value and listening to changes on an ${webComponentTagName} element.
+     * ${componentDescription} */
     @Directive({
       selector: '${angularTagName}[formControlName],${angularTagName}[formControl],${angularTagName}[ngModel]',
       standalone: true,
@@ -150,6 +157,7 @@ const main = ({ manifestPath, outputPath }) => {
     }
 
     const className = componentClass.name;
+    const componentDescription = componentClass.description || '';
     const webComponentTagName = componentClass.tagName;
     const attributes = componentClass.attributes || [];
     const events = componentClass.events || [];
@@ -172,8 +180,9 @@ const main = ({ manifestPath, outputPath }) => {
 
       import '../${webComponentTagName}';
 
-      ${isFormAssociated ? generateFormAccessor(angularTagName, webComponentTagName) : ''}
+      ${isFormAssociated ? generateFormAccessor(angularTagName, webComponentTagName, componentDescription) : ''}
 
+      /** @description ${componentDescription} */
       @Component({
         selector: '${angularTagName}',
         schemas: [CUSTOM_ELEMENTS_SCHEMA],
