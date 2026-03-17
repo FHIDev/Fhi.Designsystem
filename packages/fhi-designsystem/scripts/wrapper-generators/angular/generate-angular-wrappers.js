@@ -33,45 +33,64 @@ const generateFormAccessor = (angularTagName, webComponentTagName) => {
       );
   }
 
-  // We do not need a value accessor if there is no value to control on the form-associated web component. e.g a button.
+  // We do not need a value accessor if there is no value to control on the form-associated web component. e.g fhi-button.
   if (!valueLocation) {
     return '';
   }
 
   return `
-    @Directive({ selector: '${angularTagName}[formControlName],${angularTagName}[formControl],${angularTagName}[ngModel]', standalone: true, providers: [{ provide: NG_VALUE_ACCESSOR, useExisting: forwardRef(() => ${accessorName}), multi: true }] })
+    @Directive({
+      selector: '${angularTagName}[formControlName],${angularTagName}[formControl],${angularTagName}[ngModel]',
+      standalone: true,
+      host: {'(change)': 'onChange($any($event.target).checked)', '(blur)': 'onTouched()'},
+      providers: [{ provide: NG_VALUE_ACCESSOR, useExisting: forwardRef(() => ${accessorName}), multi: true }]
+    })
     export class ${accessorName} implements ControlValueAccessor, AfterViewInit {
-      private _onChange: (value: unknown) => void = () => { };
-      private _onTouched: () => void = () => { };
+      onChange: (value: unknown) => void = () => { };
+      onTouched: () => void = () => { };
 
       private _host = inject(ElementRef);
 
       private _initialValue: unknown = null;
+      private _initialDisabledState: boolean = false;
       private _webComponent?: { [key: string]: unknown };
 
       ngAfterViewInit(): void {
         this._webComponent = this._host.nativeElement.querySelector('${webComponentTagName}');
 
-        if (this._webComponent && this._initialValue !== null) {
-          this._webComponent["${valueLocation}"] = this._initialValue;
-          this._initialValue = null;
+        if (!this._webComponent) {
+          console.error('Could not find ${webComponentTagName} web component within the ${angularTagName} host element.');
+          return;
         }
+
+        this._webComponent["${valueLocation}"] = this._initialValue;
+        this._webComponent["disabled"] = this._initialDisabledState;
       }
 
       writeValue(value: unknown): void {
-        if (this._webComponent) {
-          this._webComponent["${valueLocation}"] = value;
-        } else {
+        if (!this._webComponent) {
           this._initialValue = value;
+          return;
         }
+
+        this._webComponent["value"] = value;
+      }
+
+      setDisabledState(isDisabled: boolean): void {
+        if (!this._webComponent) {
+          this._initialDisabledState = isDisabled;
+          return;
+        }
+
+        this._webComponent["disabled"] = isDisabled;
       }
 
       registerOnTouched(fn: () => void): void {
-        this._onTouched = fn;
+        this.onTouched = fn;
       }
 
       registerOnChange(fn: (value: unknown) => void): void {
-        this._onChange = fn;
+        this.onChange = fn;
       }
     }
   `;
