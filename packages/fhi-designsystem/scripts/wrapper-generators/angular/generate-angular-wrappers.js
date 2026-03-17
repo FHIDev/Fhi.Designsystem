@@ -53,14 +53,14 @@ const generateFormAccessor = (angularTagName, webComponentTagName) => {
         this._webComponent = this._host.nativeElement.querySelector('${webComponentTagName}');
 
         if (this._webComponent && this._initialValue !== null) {
-          this._webComponent.${valueLocation} = this._initialValue;
+          this._webComponent["${valueLocation}"] = this._initialValue;
           this._initialValue = null;
         }
       }
 
       writeValue(value: unknown): void {
         if (this._webComponent) {
-          this._webComponent.${valueLocation} = value;
+          this._webComponent["${valueLocation}"] = value;
         } else {
           this._initialValue = value;
         }
