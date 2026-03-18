@@ -36,12 +36,15 @@ export class FhiTable extends LitElement {
 
   static styles = css`
     :host {
-      --fhi-table-width: max-content;
+      --fhi-table-width: unset;
     }
 
     :host {
+      --fhi-table-width: max-content;
+
       display: block;
       width: var(--fhi-table-width);
+
       #caption {
         display: block;
         padding: 1rem;

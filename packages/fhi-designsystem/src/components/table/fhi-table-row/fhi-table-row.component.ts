@@ -46,21 +46,27 @@ export class FhiTableRow extends LitElement {
 
   static styles = css`
     :host {
-      --fhi-table-row-background: initial;
-
-      --fhi-table-row-border-bottom: var(--fhi-dimension-border-width) solid
-        var(--fhi-color-neutral-border-subtle);
-    }
-
-    :host([variant='header']) {
-      --fhi-table-row-border-bottom: var(--fhi-dimension-border-width) solid
-        var(--fhi-color-neutral-border-default);
+      --fhi-table-row-border-style: unset;
+      --fhi-table-row-border-width: unset;
+      --fhi-table-row-border-color: unset;
     }
 
     :host {
+      --fhi-table-row-border-style: none none solid none;
+      --fhi-table-row-border-width: var(--fhi-dimension-border-width);
+
       display: grid;
-      border-bottom: var(--fhi-table-row-border-bottom);
-      background: var(--fhi-table-row-background);
+      border-style: var(--fhi-table-row-border-style);
+      border-width: var(--fhi-table-row-border-width);
+      border-color: var(--fhi-table-row-border-color);
+    }
+
+    :host([variant='body']) {
+      --fhi-table-row-border-color: var(--fhi-color-neutral-border-subtle);
+    }
+
+    :host([variant='header']) {
+      --fhi-table-row-border-color: var(--fhi-color-neutral-border-default);
     }
   `;
 }

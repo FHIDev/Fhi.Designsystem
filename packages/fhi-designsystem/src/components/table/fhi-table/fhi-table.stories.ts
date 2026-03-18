@@ -99,11 +99,6 @@ export const ComplexData: Story = {
     <style>
       .my_table {
         --fhi-table-width: auto;
-        :nth-child(even) {
-          --fhi-table-row-background: var(
-            --fhi-color-neutral-background-subtle
-          );
-        }
         fhi-table-cell {
           --fhi-table-cell-padding: 0.25rem;
         }
