@@ -6,8 +6,10 @@ import { ifDefined } from 'lit/directives/if-defined.js';
 
 import { FhiStorybookMeta } from '../../../.storybook/fhi-meta';
 import { FhiTextInput } from './fhi-text-input.component';
+import { FhiIconUser } from '../icons/fhi-icon-user.component';
 
 new FhiTextInput();
+new FhiIconUser();
 
 const meta: FhiStorybookMeta<FhiTextInput> = {
   title: 'Komponenter/Text Input',
@@ -185,6 +187,14 @@ export const WithDisabledLabel: Story = {
     label: 'Navn',
     disabled: true,
   },
+};
+
+export const WithIconFirst: Story = {
+  name: 'Icon',
+  render: () =>
+    html` <fhi-text-input label="Brukernavn"
+      ><fhi-icon-user slot="start"></fhi-icon-user
+    ></fhi-text-input>`,
 };
 
 export default meta;

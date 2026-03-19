@@ -182,7 +182,7 @@ export class FhiTextInput extends LitElement {
     this._internals.setFormValue(this.value);
   }
 
-  private _handleLeftSlotChange(event: Event): void {
+  private _handleStartSlotChange(event: Event): void {
     const nodes = (event.target as HTMLSlotElement).assignedNodes();
     if (nodes.length !== 1) {
       return;
@@ -194,9 +194,8 @@ export class FhiTextInput extends LitElement {
       (iconNode as Element).tagName.toLowerCase().startsWith('fhi-icon')
     ) {
       const icon = iconNode as HTMLElement;
-      this._input.style.paddingLeft = '36px';
+      this._input.style.paddingLeft = '40px';
       icon.setAttribute('size', '24px');
-      icon.setAttribute('color', 'var(--color-label-text)');
     }
   }
 
@@ -216,9 +215,8 @@ export class FhiTextInput extends LitElement {
           @input=${this.handleInput}
           @keydown=${this.handleKeyDown}
         />
-        <div class="left-slot-container">
-          <slot name="left-icon" @slotchange=${this._handleLeftSlotChange}>
-          </slot>
+        <div class="start-slot-container">
+          <slot name="start" @slotchange=${this._handleStartSlotChange}> </slot>
         </div>
       </div>
       ${this.message ? html`<p class="message">${this.message}</p>` : ''}
@@ -371,6 +369,10 @@ export class FhiTextInput extends LitElement {
         }
       }
 
+      ::slotted([slot='start']) {
+        color: var(--fhi-color-neutral-text-subtle);
+      }
+
       .message {
         margin: var(--dimension-message-margin-top) 0 0 0;
         color: var(--color-message-text);
@@ -392,14 +394,16 @@ export class FhiTextInput extends LitElement {
       .input-container {
         height: var(--dimension-input-height);
         position: relative;
+        width: fit-content;
       }
-      .left-slot-container {
+      .start-slot-container {
         position: absolute;
         left: 0;
         top: 50%;
         transform: translateY(-50%);
         margin-left: 8px;
         height: fit-content;
+        pointer-events: none;
       }
     }
 
@@ -442,6 +446,9 @@ export class FhiTextInput extends LitElement {
       }
       .help-text {
         color: var(--color-help-text-text-error);
+      }
+      ::slotted(*) {
+        color: var(--fhi-color-danger-text-subtle);
       }
     }
   `;
