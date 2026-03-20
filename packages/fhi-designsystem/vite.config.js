@@ -150,6 +150,23 @@ export default defineConfig(({ mode }) => {
               },
             ],
           }),
+          (() => {
+            let _outDir = null;
+            return {
+              name: 'vite-plugin-fhi-generate-types',
+              configResolved(resolvedConfig) {
+                _outDir = resolvedConfig.build.outDir;
+              },
+              closeBundle() {
+                Object.keys(listOfComponents).forEach(key => {
+                  // Quickfix. This will enable intellisense for the components when using the library in a project, without having tsc analysing and generating actual types for each component.
+                  const output = `${_outDir}/${key}.d.ts`;
+                  fs.writeFileSync(output, 'export {};');
+                  console.log(output);
+                });
+              },
+            };
+          })(),
         ],
         build: {
           cssCodeSplit: true,
