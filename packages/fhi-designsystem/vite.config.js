@@ -126,6 +126,17 @@ export default defineConfig(({ mode }) => {
     case 'npm':
       return {
         plugins: [
+          {
+            name: 'vite-plugin-fhi-generate-types',
+            buildStart() {
+              Object.keys(listOfComponents).forEach(key => {
+                // Quickfix. This will enable intellisense for the components when using the library in a project, without having tsc analysing and generating actual types for each component.
+                const output = `${OUTPUT_DIRECTORY}/${env.DEPLOY_TARGET}/${key}.d.ts`;
+                fs.writeFileSync(output, 'export {};');
+                console.log(output);
+              });
+            },
+          },
           resolveVirtualModule({
             moduleId: virtualLibraryModule.path,
             moduleContent: virtualLibraryModule.code,
@@ -150,17 +161,6 @@ export default defineConfig(({ mode }) => {
               },
             ],
           }),
-          {
-            name: 'vite-plugin-fhi-generate-types',
-            closeBundle() {
-              Object.keys(listOfComponents).forEach(key => {
-                // Quickfix. This will enable intellisense for the components when using the library in a project, without having tsc analysing and generating actual types for each component.
-                const output = `${OUTPUT_DIRECTORY}/${env.DEPLOY_TARGET}/${key}.d.ts`;
-                fs.writeFileSync(output, 'export {};');
-                console.log(output);
-              });
-            },
-          },
         ],
         build: {
           cssCodeSplit: true,
