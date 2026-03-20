@@ -215,9 +215,7 @@ export class FhiTextInput extends LitElement {
           @input=${this.handleInput}
           @keydown=${this.handleKeyDown}
         />
-        <div class="start-slot-container">
-          <slot name="start" @slotchange=${this._handleStartSlotChange}> </slot>
-        </div>
+        <slot name="start" @slotchange=${this._handleStartSlotChange}> </slot>
       </div>
       ${this.message ? html`<p class="message">${this.message}</p>` : ''}
     `;
@@ -373,6 +371,11 @@ export class FhiTextInput extends LitElement {
         color: var(--fhi-color-neutral-text-subtle);
       }
 
+      input:hover ~ ::slotted([slot='start']),
+      input:focus ~ ::slotted([slot='start']) {
+        color: red;
+      }
+
       .message {
         margin: var(--dimension-message-margin-top) 0 0 0;
         color: var(--color-message-text);
@@ -396,7 +399,8 @@ export class FhiTextInput extends LitElement {
         position: relative;
         width: fit-content;
       }
-      .start-slot-container {
+      slot[name='start'] {
+        display: block;
         position: absolute;
         left: 0;
         top: 50%;
@@ -446,9 +450,6 @@ export class FhiTextInput extends LitElement {
       }
       .help-text {
         color: var(--color-help-text-text-error);
-      }
-      ::slotted(*) {
-        color: var(--fhi-color-danger-text-subtle);
       }
     }
   `;
