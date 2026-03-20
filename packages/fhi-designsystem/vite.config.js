@@ -155,10 +155,9 @@ export default defineConfig(({ mode }) => {
             closeBundle() {
               Object.keys(listOfComponents).forEach(key => {
                 // Quickfix. This will enable intellisense for the components when using the library in a project, without having tsc analysing and generating actual types for each component.
-                fs.writeFileSync(
-                  `${OUTPUT_DIRECTORY}/${env.DEPLOY_TARGET}/${key}.d.ts`,
-                  'export {};',
-                );
+                const output = `${OUTPUT_DIRECTORY}/${env.DEPLOY_TARGET}/${key}.d.ts`;
+                fs.writeFileSync(output, 'export {};');
+                console.log(output);
               });
             },
           },
