@@ -182,21 +182,41 @@ export class FhiTextInput extends LitElement {
     this._internals.setFormValue(this.value);
   }
 
+  private _handleStartSlotChange(event: Event): void {
+    const nodes = (event.target as HTMLSlotElement).assignedNodes();
+    if (nodes.length !== 1) {
+      return;
+    }
+    const iconNode: Node = nodes[0];
+
+    if (
+      iconNode.nodeType === Node.ELEMENT_NODE &&
+      (iconNode as Element).tagName.toLowerCase().startsWith('fhi-icon')
+    ) {
+      const icon = iconNode as HTMLElement;
+      this._input.style.paddingLeft = '40px';
+      icon.setAttribute('size', '24px');
+    }
+  }
+
   render() {
     return html`
       ${this.label && html`<label for="input-element">${this.label}</label>`}
       ${this.helpText ? html`<p class="help-text">${this.helpText}</p>` : ''}
-      <input
-        id="input-element"
-        name=${ifDefined(this.name)}
-        placeholder=${ifDefined(this.placeholder)}
-        .value=${this.value}
-        ?readonly=${this.readonly}
-        ?disabled=${this.disabled}
-        @change=${this.handleChange}
-        @input=${this.handleInput}
-        @keydown=${this.handleKeyDown}
-      />
+      <div class="input-container">
+        <input
+          id="input-element"
+          name=${ifDefined(this.name)}
+          placeholder=${ifDefined(this.placeholder)}
+          .value=${this.value}
+          ?readonly=${this.readonly}
+          ?disabled=${this.disabled}
+          @change=${this.handleChange}
+          @input=${this.handleInput}
+          @keydown=${this.handleKeyDown}
+        />
+        <slot name="start" @slotchange=${this._handleStartSlotChange}> </slot>
+      </div>
       ${this.message ? html`<p class="message">${this.message}</p>` : ''}
     `;
   }
@@ -347,6 +367,15 @@ export class FhiTextInput extends LitElement {
         }
       }
 
+      ::slotted([slot='start']) {
+        color: var(--fhi-color-neutral-text-subtle);
+      }
+
+      input:hover ~ ::slotted([slot='start']),
+      input:focus ~ ::slotted([slot='start']) {
+        color: red;
+      }
+
       .message {
         margin: var(--dimension-message-margin-top) 0 0 0;
         color: var(--color-message-text);
@@ -363,6 +392,22 @@ export class FhiTextInput extends LitElement {
         line-height: var(--typography-help-text-line-height);
         letter-spacing: var(--typography-help-text-letter-spacing);
         margin: 0 0 var(--dimension-help-text-margin-bottom) 0;
+      }
+
+      .input-container {
+        height: var(--dimension-input-height);
+        position: relative;
+        width: fit-content;
+      }
+      slot[name='start'] {
+        display: block;
+        position: absolute;
+        left: 0;
+        top: 50%;
+        transform: translateY(-50%);
+        margin-left: 8px;
+        height: fit-content;
+        pointer-events: none;
       }
     }
 
