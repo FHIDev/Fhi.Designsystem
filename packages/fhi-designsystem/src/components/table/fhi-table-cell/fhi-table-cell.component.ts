@@ -24,25 +24,17 @@ export class FhiTableCell extends LitElement {
     :host {
       --fhi-table-cell-justify-content: unset;
       --fhi-table-cell-align-items: unset;
-      --fhi-table-cell-padding: unset;
-      --fhi-table-cell-height: unset;
-      --fhi-table-cell-letter-spacing: unset;
-      --fhi-table-cell-font: unset;
     }
 
     :host {
-      --fhi-table-cell-justify-content: end;
+      --fhi-table-cell-justify-content: start;
       --fhi-table-cell-align-items: center;
-      --fhi-table-cell-padding: var(--fhi-spacing-200);
-      --fhi-table-cell-height: -webkit-fill-available;
 
       display: flex;
       justify-content: var(--fhi-table-cell-justify-content);
       align-items: var(--fhi-table-cell-align-items);
-      padding: var(--fhi-table-cell-padding);
-      height: var(--fhi-table-cell-height);
-      color: var(--fhi-color-neutral-text-default);
-      letter-spacing: var(--fhi-table-cell-letter-spacing);
+      padding: var(--fhi-spacing-150);
+      height: -webkit-fill-available;
       min-width: min-content;
       overflow: hidden;
       flex-wrap: wrap;
@@ -50,9 +42,7 @@ export class FhiTableCell extends LitElement {
     }
 
     :host([variant='body']) {
-      --fhi-table-cell-letter-spacing: var(
-        --fhi-typography-body-medium-letter-spacing
-      );
+      letter-spacing: var(--fhi-typography-body-medium-letter-spacing);
 
       font: var(--fhi-typography-body-medium-font-weight)
         var(--fhi-typography-body-medium-font-size) /
@@ -61,9 +51,7 @@ export class FhiTableCell extends LitElement {
     }
 
     :host([variant='header']) {
-      --fhi-table-cell-letter-spacing: var(
-        --fhi-typography-label-medium-letter-spacing
-      );
+      letter-spacing: var(--fhi-typography-label-medium-letter-spacing);
 
       font: var(--fhi-typography-label-medium-font-weight)
         var(--fhi-typography-label-medium-font-size) /

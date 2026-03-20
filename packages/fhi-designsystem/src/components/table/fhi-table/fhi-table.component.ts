@@ -13,8 +13,7 @@ export class FhiTable extends LitElement {
 
   connectedCallback(): void {
     super.connectedCallback();
-
-    this.setAttribute('role', 'table');
+    this.role = 'table';
   }
 
   protected update(changedProperties: PropertyValues): void {
@@ -44,10 +43,18 @@ export class FhiTable extends LitElement {
 
       display: block;
       width: var(--fhi-table-width);
+      color: var(--fhi-color-neutral-text-default);
 
       #caption {
         display: block;
         padding: 1rem;
+        color: var(--fhi-color-neutral-text-default);
+      }
+    }
+
+    :host([zebra]) {
+      ::slotted(fhi-table-row:nth-child(even)) {
+        --fhi-table-row-background: var(--fhi-color-neutral-background-subtle);
       }
     }
   `;

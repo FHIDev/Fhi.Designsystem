@@ -49,6 +49,8 @@ export class FhiTableRow extends LitElement {
       --fhi-table-row-border-style: unset;
       --fhi-table-row-border-width: unset;
       --fhi-table-row-border-color: unset;
+
+      --fhi-table-row-background: unset;
     }
 
     :host {
@@ -59,6 +61,7 @@ export class FhiTableRow extends LitElement {
       border-style: var(--fhi-table-row-border-style);
       border-width: var(--fhi-table-row-border-width);
       border-color: var(--fhi-table-row-border-color);
+      background: var(--fhi-table-row-background);
     }
 
     :host([variant='body']) {

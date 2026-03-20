@@ -96,15 +96,6 @@ export const ComplexData: Story = {
   tags: ['!dev'],
   args: {},
   render: args => html`
-    <style>
-      .my_table {
-        --fhi-table-width: auto;
-        fhi-table-cell {
-          --fhi-table-cell-padding: 0.25rem;
-        }
-      }
-    </style>
-
     <fhi-title size="large" level="2">
       P0a: Fødte per måned og mors bosted (med og uten fødselsmelding i MFR)
     </fhi-title>
@@ -117,55 +108,84 @@ export const ComplexData: Story = {
     </fhi-body>
     <br />
 
-    <fhi-table class="my_table" caption="${ifDefined(args.caption)}">
+    <fhi-table
+      caption="${ifDefined(args.caption)}"
+      style="--fhi-table-width: auto"
+      zebra
+    >
       <fhi-table-row variant="header" columns="2fr repeat(4, 1fr)">
-        <fhi-table-cell style="--fhi-table-cell-justify-content: start">
-          Oslo
+        <fhi-table-cell> Oslo </fhi-table-cell>
+        <fhi-table-cell style="--fhi-table-cell-justify-content: end">
+          Januar
         </fhi-table-cell>
-        <fhi-table-cell> Januar </fhi-table-cell>
-        <fhi-table-cell> Februar </fhi-table-cell>
-        <fhi-table-cell> Mars </fhi-table-cell>
-        <fhi-table-cell> April </fhi-table-cell>
+        <fhi-table-cell style="--fhi-table-cell-justify-content: end">
+          Februar
+        </fhi-table-cell>
+        <fhi-table-cell style="--fhi-table-cell-justify-content: end">
+          Mars
+        </fhi-table-cell>
+        <fhi-table-cell style="--fhi-table-cell-justify-content: end">
+          April
+        </fhi-table-cell>
       </fhi-table-row>
 
       <fhi-table-row columns="2fr repeat(4, 1fr)">
-        <fhi-table-cell style="--fhi-table-cell-justify-content: start">
-          Alle fødte
+        <fhi-table-cell> Alle fødte </fhi-table-cell>
+        <fhi-table-cell style="--fhi-table-cell-justify-content: end">
+          685
         </fhi-table-cell>
-        <fhi-table-cell> 685 </fhi-table-cell>
-        <fhi-table-cell> - </fhi-table-cell>
-        <fhi-table-cell> - </fhi-table-cell>
-        <fhi-table-cell> - </fhi-table-cell>
+        <fhi-table-cell style="--fhi-table-cell-justify-content: end">
+          -
+        </fhi-table-cell>
+        <fhi-table-cell style="--fhi-table-cell-justify-content: end">
+          -
+        </fhi-table-cell>
+        <fhi-table-cell style="--fhi-table-cell-justify-content: end">
+          -
+        </fhi-table-cell>
       </fhi-table-row>
 
       <fhi-table-row columns="2fr repeat(4, 1fr)">
-        <fhi-table-cell style="--fhi-table-cell-justify-content: start">
-          Med fødselsmelding
+        <fhi-table-cell> Med fødselsmelding </fhi-table-cell>
+        <fhi-table-cell style="--fhi-table-cell-justify-content: end">
+          662
         </fhi-table-cell>
-        <fhi-table-cell> 662 </fhi-table-cell>
-        <fhi-table-cell> - </fhi-table-cell>
-        <fhi-table-cell> - </fhi-table-cell>
-        <fhi-table-cell> - </fhi-table-cell>
+        <fhi-table-cell style="--fhi-table-cell-justify-content: end">
+          -
+        </fhi-table-cell>
+        <fhi-table-cell style="--fhi-table-cell-justify-content: end">
+          -
+        </fhi-table-cell>
+        <fhi-table-cell style="--fhi-table-cell-justify-content: end">
+          -
+        </fhi-table-cell>
       </fhi-table-row>
 
       <fhi-table-row columns="2fr repeat(4, 1fr)">
-        <fhi-table-cell style="--fhi-table-cell-justify-content: start">
-          Uten fødselsmelding
+        <fhi-table-cell> Uten fødselsmelding </fhi-table-cell>
+        <fhi-table-cell style="--fhi-table-cell-justify-content: end">
+          23
         </fhi-table-cell>
-        <fhi-table-cell> 23 </fhi-table-cell>
-        <fhi-table-cell> - </fhi-table-cell>
-        <fhi-table-cell> - </fhi-table-cell>
-        <fhi-table-cell> - </fhi-table-cell>
+        <fhi-table-cell style="--fhi-table-cell-justify-content: end">
+          -
+        </fhi-table-cell>
+        <fhi-table-cell style="--fhi-table-cell-justify-content: end">
+          -
+        </fhi-table-cell>
+        <fhi-table-cell style="--fhi-table-cell-justify-content: end">
+          -
+        </fhi-table-cell>
       </fhi-table-row>
     </fhi-table>
 
     <br />
 
-    <fhi-table class="my_table" caption="${ifDefined(args.caption)}">
+    <fhi-table
+      caption="${ifDefined(args.caption)}"
+      style="--fhi-table-width: auto"
+    >
       <fhi-table-row variant="header" columns="2fr repeat(4, 1fr)">
-        <fhi-table-cell style="--fhi-table-cell-justify-content: start">
-          Østfold
-        </fhi-table-cell>
+        <fhi-table-cell> Østfold </fhi-table-cell>
         <fhi-table-cell></fhi-table-cell>
         <fhi-table-cell></fhi-table-cell>
         <fhi-table-cell></fhi-table-cell>
@@ -173,33 +193,51 @@ export const ComplexData: Story = {
       </fhi-table-row>
 
       <fhi-table-row columns="2fr repeat(4, 1fr)">
-        <fhi-table-cell style="--fhi-table-cell-justify-content: start">
-          Alle fødte
+        <fhi-table-cell> Alle fødte </fhi-table-cell>
+        <fhi-table-cell style="--fhi-table-cell-justify-content: end">
+          230
         </fhi-table-cell>
-        <fhi-table-cell> 230 </fhi-table-cell>
-        <fhi-table-cell> - </fhi-table-cell>
-        <fhi-table-cell> - </fhi-table-cell>
-        <fhi-table-cell> - </fhi-table-cell>
+        <fhi-table-cell style="--fhi-table-cell-justify-content: end">
+          -
+        </fhi-table-cell>
+        <fhi-table-cell style="--fhi-table-cell-justify-content: end">
+          -
+        </fhi-table-cell>
+        <fhi-table-cell style="--fhi-table-cell-justify-content: end">
+          -
+        </fhi-table-cell>
       </fhi-table-row>
 
       <fhi-table-row columns="2fr repeat(4, 1fr)">
-        <fhi-table-cell style="--fhi-table-cell-justify-content: start">
-          Med fødselsmelding
+        <fhi-table-cell> Med fødselsmelding </fhi-table-cell>
+        <fhi-table-cell style="--fhi-table-cell-justify-content: end">
+          229
         </fhi-table-cell>
-        <fhi-table-cell> 229 </fhi-table-cell>
-        <fhi-table-cell> - </fhi-table-cell>
-        <fhi-table-cell> - </fhi-table-cell>
-        <fhi-table-cell> - </fhi-table-cell>
+        <fhi-table-cell style="--fhi-table-cell-justify-content: end">
+          -
+        </fhi-table-cell>
+        <fhi-table-cell style="--fhi-table-cell-justify-content: end">
+          -
+        </fhi-table-cell>
+        <fhi-table-cell style="--fhi-table-cell-justify-content: end">
+          -
+        </fhi-table-cell>
       </fhi-table-row>
 
       <fhi-table-row columns="2fr repeat(4, 1fr)">
-        <fhi-table-cell style="--fhi-table-cell-justify-content: start">
-          Uten fødselsmelding
+        <fhi-table-cell> Uten fødselsmelding </fhi-table-cell>
+        <fhi-table-cell style="--fhi-table-cell-justify-content: end">
+          1
         </fhi-table-cell>
-        <fhi-table-cell> 1 </fhi-table-cell>
-        <fhi-table-cell> - </fhi-table-cell>
-        <fhi-table-cell> - </fhi-table-cell>
-        <fhi-table-cell> - </fhi-table-cell>
+        <fhi-table-cell style="--fhi-table-cell-justify-content: end">
+          -
+        </fhi-table-cell>
+        <fhi-table-cell style="--fhi-table-cell-justify-content: end">
+          -
+        </fhi-table-cell>
+        <fhi-table-cell style="--fhi-table-cell-justify-content: end">
+          -
+        </fhi-table-cell>
       </fhi-table-row>
     </fhi-table>
   `,
@@ -214,34 +252,22 @@ export const WithCheckboxes: Story = {
     <fhi-table caption="${ifDefined(args.caption)}">
       <fhi-table-row variant="header" columns="2.5rem 4fr 3fr 2fr 2fr 6fr">
         <fhi-table-cell></fhi-table-cell>
-        <fhi-table-cell style="--fhi-table-cell-justify-content: start">
-          Mal
-        </fhi-table-cell>
-        <fhi-table-cell style="--fhi-table-cell-justify-content: start">
-          Dimensjon
-        </fhi-table-cell>
+        <fhi-table-cell> Mal </fhi-table-cell>
+        <fhi-table-cell> Dimensjon </fhi-table-cell>
         <fhi-table-cell> Opprettet </fhi-table-cell>
-        <fhi-table-cell style="--fhi-table-cell-justify-content: start">
-          Opprettet av
-        </fhi-table-cell>
+        <fhi-table-cell> Opprettet av </fhi-table-cell>
         <fhi-table-cell> </fhi-table-cell>
       </fhi-table-row>
 
       <fhi-table-row columns="2.5rem 4fr 3fr 2fr 2fr 6fr">
-        <fhi-table-cell style="--fhi-table-cell-justify-content: start">
+        <fhi-table-cell>
           <fhi-checkbox></fhi-checkbox>
         </fhi-table-cell>
-        <fhi-table-cell style="--fhi-table-cell-justify-content: start">
-          Geografi 2020
-        </fhi-table-cell>
-        <fhi-table-cell style="--fhi-table-cell-justify-content: start">
-          ATC_Verdi
-        </fhi-table-cell>
+        <fhi-table-cell> Geografi 2020 </fhi-table-cell>
+        <fhi-table-cell> ATC_Verdi </fhi-table-cell>
         <fhi-table-cell> 10.10.2027 </fhi-table-cell>
-        <fhi-table-cell style="--fhi-table-cell-justify-content: start">
-          Pelle Parafin
-        </fhi-table-cell>
-        <fhi-table-cell>
+        <fhi-table-cell> Pelle Parafin </fhi-table-cell>
+        <fhi-table-cell style="--fhi-table-cell-justify-content: end">
           <fhi-button color="neutral" variant="text">
             <fhi-icon-download></fhi-icon-download>
             Eksportèr
