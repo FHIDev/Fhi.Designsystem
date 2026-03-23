@@ -189,8 +189,8 @@ export class FhiTextInput extends LitElement {
       (iconNode as Element).tagName.toLowerCase().startsWith('fhi-icon')
     ) {
       const icon = iconNode as HTMLElement;
-      this._input.style.paddingLeft = '40px';
-      icon.setAttribute('size', '24px');
+      this._input.style.paddingLeft = 'var(--fhi-spacing-500)';
+      icon.setAttribute('size', '1.5rem');
     } else {
       console.error(
         'Ivalid slot input. Fhi-text-input only accepts FHI Designsystem icons.',
@@ -206,8 +206,8 @@ export class FhiTextInput extends LitElement {
       (iconNode as Element).tagName.toLowerCase().startsWith('fhi-icon')
     ) {
       const icon = iconNode as HTMLElement;
-      this._input.style.paddingRight = '40px';
-      icon.setAttribute('size', '24px');
+      this._input.style.paddingRight = 'var(--fhi-spacing-500)';
+      icon.setAttribute('size', '1.5rem');
     } else {
       console.error(
         'Ivalid slot input. Fhi-text-input only accepts FHI Designsystem icons.',

@@ -7,9 +7,11 @@ import { ifDefined } from 'lit/directives/if-defined.js';
 import { FhiStorybookMeta } from '../../../.storybook/fhi-meta';
 import { FhiTextInput } from './fhi-text-input.component';
 import { FhiIconUser } from '../icons/fhi-icon-user.component';
+import { FhiIconSearch } from '../icons/fhi-icon-search.component';
 
 new FhiTextInput();
 new FhiIconUser();
+new FhiIconSearch();
 
 const meta: FhiStorybookMeta<FhiTextInput> = {
   title: 'Komponenter/Text Input',
@@ -199,12 +201,24 @@ export const WithDisabledLabel: Story = {
   },
 };
 
-export const WithIconFirst: Story = {
+export const WithIcon: Story = {
   name: 'Icon',
-  render: () =>
-    html` <fhi-text-input label="Brukernavn"
+  decorators: [
+    Story =>
+      html`<section
+        style="display: flex; gap: 2rem; justify-content: start; align-items: center;"
+      >
+        ${Story()}
+      </section>`,
+  ],
+  render: () => html`
+    <fhi-text-input label="Brukernavn"
       ><fhi-icon-user slot="start"></fhi-icon-user
-    ></fhi-text-input>`,
+    ></fhi-text-input>
+    <fhi-text-input label="Søk"
+      ><fhi-icon-search slot="end"></fhi-icon-search
+    ></fhi-text-input>
+  `,
 };
 
 export default meta;
