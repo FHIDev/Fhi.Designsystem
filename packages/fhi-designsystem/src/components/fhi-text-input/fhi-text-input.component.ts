@@ -373,7 +373,10 @@ export class FhiTextInput extends LitElement {
 
       input:hover ~ ::slotted([slot='start']),
       input:focus ~ ::slotted([slot='start']) {
-        color: red;
+        color: var(--fhi-color-accent-text-subtle);
+      }
+      input:active ~ ::slotted([slot='start']) {
+        color: var(--fhi-color-accent-text-default);
       }
 
       .message {
@@ -450,6 +453,9 @@ export class FhiTextInput extends LitElement {
       }
       .help-text {
         color: var(--color-help-text-text-error);
+      }
+      ::slotted([slot='start']) {
+        color: var(--fhi-color-danger-text-subtle);
       }
     }
   `;
