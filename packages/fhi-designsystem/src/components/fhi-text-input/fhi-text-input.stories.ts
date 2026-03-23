@@ -34,6 +34,16 @@ const meta: FhiStorybookMeta<FhiTextInput> = {
         valueLocation: ['event.target.value'],
       },
     ],
+    slotTypes: [
+      {
+        name: 'start',
+        description: 'Ikon på venstre side i inputfeltet.',
+      },
+      {
+        name: 'end',
+        description: 'Ikon på høyre side i inputfeltet.',
+      },
+    ],
   },
   decorators: [story => html`<div style="max-width: 400px;">${story()}</div>`],
   render: args =>

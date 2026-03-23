@@ -183,12 +183,7 @@ export class FhiTextInput extends LitElement {
   }
 
   private _handleStartSlotChange(event: Event): void {
-    const nodes = (event.target as HTMLSlotElement).assignedNodes();
-    if (nodes.length !== 1) {
-      return;
-    }
-    const iconNode: Node = nodes[0];
-
+    const iconNode: Node = (event.target as HTMLSlotElement).assignedNodes()[0];
     if (
       iconNode.nodeType === Node.ELEMENT_NODE &&
       (iconNode as Element).tagName.toLowerCase().startsWith('fhi-icon')
@@ -196,6 +191,27 @@ export class FhiTextInput extends LitElement {
       const icon = iconNode as HTMLElement;
       this._input.style.paddingLeft = '40px';
       icon.setAttribute('size', '24px');
+    } else {
+      console.error(
+        'Ivalid slot input. Fhi-text-input only accepts FHI Designsystem icons.',
+      );
+    }
+  }
+
+  private _handleEndSlotChange(event: Event): void {
+    const iconNode: Node = (event.target as HTMLSlotElement).assignedNodes()[0];
+
+    if (
+      iconNode.nodeType === Node.ELEMENT_NODE &&
+      (iconNode as Element).tagName.toLowerCase().startsWith('fhi-icon')
+    ) {
+      const icon = iconNode as HTMLElement;
+      this._input.style.paddingRight = '40px';
+      icon.setAttribute('size', '24px');
+    } else {
+      console.error(
+        'Ivalid slot input. Fhi-text-input only accepts FHI Designsystem icons.',
+      );
     }
   }
 
@@ -216,6 +232,7 @@ export class FhiTextInput extends LitElement {
           @keydown=${this.handleKeyDown}
         />
         <slot name="start" @slotchange=${this._handleStartSlotChange}> </slot>
+        <slot name="end" @slotchange=${this._handleEndSlotChange}> </slot>
       </div>
       ${this.message ? html`<p class="message">${this.message}</p>` : ''}
     `;
@@ -379,6 +396,10 @@ export class FhiTextInput extends LitElement {
         color: var(--fhi-color-accent-text-default);
       }
 
+      ::slotted([slot='end']) {
+        color: var(--fhi-color-neutral-text-subtle);
+      }
+
       .message {
         margin: var(--dimension-message-margin-top) 0 0 0;
         color: var(--color-message-text);
@@ -402,6 +423,7 @@ export class FhiTextInput extends LitElement {
         position: relative;
         width: fit-content;
       }
+
       slot[name='start'] {
         display: block;
         position: absolute;
@@ -409,6 +431,17 @@ export class FhiTextInput extends LitElement {
         top: 50%;
         transform: translateY(-50%);
         margin-left: 8px;
+        height: fit-content;
+        pointer-events: none;
+      }
+
+      slot[name='end'] {
+        display: block;
+        position: absolute;
+        right: 0;
+        top: 50%;
+        transform: translateY(-50%);
+        margin-right: 8px;
         height: fit-content;
         pointer-events: none;
       }
