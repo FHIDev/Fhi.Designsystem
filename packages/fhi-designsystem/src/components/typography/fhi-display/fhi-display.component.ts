@@ -58,10 +58,11 @@ export class FhiDisplay extends LitElement {
     super.updated(changedProperties);
 
     if (changedProperties.has('level')) {
-      if (typeof this.level !== 'number' || this.level < 1 || this.level > 6) {
+      const num = Number(this.level);
+      if (isNaN(num) || num < 1 || num > 6) {
         console.error(
           new TypeError(
-            `The level property must be set to a valid value. invalid value: ${this.level}`,
+            `The level property must be set to a valid value. Invalid value: ${this.level}`,
           ),
         );
       }
