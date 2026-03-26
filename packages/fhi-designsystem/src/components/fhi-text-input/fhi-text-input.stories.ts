@@ -47,7 +47,14 @@ const meta: FhiStorybookMeta<FhiTextInput> = {
       },
     ],
   },
-  decorators: [story => html`<div style="max-width: 400px;">${story()}</div>`],
+  decorators: [
+    story =>
+      html`<div
+        style="max-width: 400px; display: flex; gap: 2rem; justify-content: start; align-items: center;"
+      >
+        ${story()}
+      </div>`,
+  ],
   render: args =>
     html`<fhi-text-input
       label=${ifDefined(args.label)}
@@ -203,19 +210,32 @@ export const WithDisabledLabel: Story = {
 
 export const WithIcon: Story = {
   name: 'Icon',
-  decorators: [
-    Story =>
-      html`<section
-        style="display: flex; gap: 2rem; justify-content: start; align-items: center;"
-      >
-        ${Story()}
-      </section>`,
-  ],
-  render: () => html`
-    <fhi-text-input label="Brukernavn"
+
+  parameters: {
+    controls: {
+      exclude: [
+        'name',
+        'value',
+        'label',
+        'message',
+        'help-text',
+        'placeholder',
+      ],
+    },
+  },
+  render: args => html`
+    <fhi-text-input
+      label="Brukernavn"
+      status=${ifDefined(args.status)}
+      ?disabled=${args.disabled}
+      ?readonly=${args.readonly}
       ><fhi-icon-user slot="start"></fhi-icon-user
     ></fhi-text-input>
-    <fhi-text-input label="Søk"
+    <fhi-text-input
+      label="Søk"
+      status=${ifDefined(args.status)}
+      ?disabled=${args.disabled}
+      ?readonly=${args.readonly}
       ><fhi-icon-search slot="end"></fhi-icon-search
     ></fhi-text-input>
   `,

@@ -388,11 +388,11 @@ export class FhiTextInput extends LitElement {
         color: var(--fhi-color-neutral-text-subtle);
       }
 
-      input:hover ~ ::slotted([slot='start']),
-      input:focus ~ ::slotted([slot='start']) {
+      input:not([disabled]):not([readonly]):hover ~ ::slotted([slot='start']),
+      input:not([disabled]):not([readonly]):focus ~ ::slotted([slot='start']) {
         color: var(--fhi-color-accent-text-subtle);
       }
-      input:active ~ ::slotted([slot='start']) {
+      input:not([disabled]):not([readonly]):active ~ ::slotted([slot='start']) {
         color: var(--fhi-color-accent-text-default);
       }
 
@@ -419,9 +419,7 @@ export class FhiTextInput extends LitElement {
       }
 
       .input-container {
-        height: var(--dimension-input-height);
         position: relative;
-        width: fit-content;
       }
 
       slot[name='start'] {
@@ -488,6 +486,13 @@ export class FhiTextInput extends LitElement {
         color: var(--color-help-text-text-error);
       }
       ::slotted([slot='start']) {
+        color: var(--fhi-color-danger-text-subtle);
+      }
+
+      input:not([disabled]):not([readonly]):hover ~ ::slotted([slot='start']) {
+        color: var(--fhi-color-danger-text-subtle);
+      }
+      input:not([disabled]):not([readonly]):focus ~ ::slotted([slot='start']) {
         color: var(--fhi-color-danger-text-subtle);
       }
     }
