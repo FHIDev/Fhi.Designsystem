@@ -50,7 +50,7 @@ const meta: FhiStorybookMeta<FhiTextInput> = {
   decorators: [
     story =>
       html`<div
-        style="max-width: 400px; display: flex; gap: 2rem; justify-content: start; align-items: center;"
+        style="max-width: 400px; display: flex; flex-wrap: wrap; justify-content: start; align-items: center;"
       >
         ${story()}
       </div>`,
