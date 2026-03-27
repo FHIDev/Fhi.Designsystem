@@ -80,6 +80,66 @@ export default defineConfig(({ mode }) => {
     };
   }
 
+  function addExportsToPackageJson() {
+    let _outDir = null;
+
+    return {
+      name: 'vite-plugin-fhi-add-exports-to-package-json',
+      configResolved(resolvedConfig) {
+        _outDir = resolvedConfig.build.outDir;
+      },
+      closeBundle() {
+        const packageJson = JSON.parse(
+          fs.readFileSync('./package.json', 'utf-8'),
+        );
+
+        packageJson.exports = packageJson.exports || {};
+
+        // Make sure the intellisense in the consuming project can find the components when importing from the package.
+        Object.keys(listOfComponents).forEach(key => {
+          packageJson.exports[`./${key}`] = {
+            default: `./${key}.js`,
+            types: `./${key}.d.ts`,
+          };
+        });
+
+        packageJson.exports['.'] = {
+          default: './index.js',
+        };
+
+        packageJson.exports['./theme/default.css'] = {
+          style: './theme/default.css',
+        };
+
+        packageJson.exports['./custom-elements.json'] = {
+          default: './custom-elements.json',
+        };
+
+        fs.writeFileSync(
+          `${_outDir}/package.json`,
+          JSON.stringify(packageJson),
+        );
+      },
+    };
+  }
+
+  function generateDummyTypes() {
+    let _outDir = null;
+
+    return {
+      name: 'vite-plugin-fhi-generate-dummy-types',
+      configResolved(resolvedConfig) {
+        _outDir = resolvedConfig.build.outDir;
+      },
+      closeBundle() {
+        // This will allow the consuming project to import the components as modules.
+        Object.keys(listOfComponents).forEach(key => {
+          fs.writeFileSync(`${_outDir}/${key}.d.ts`, `export {};`);
+        });
+      },
+    };
+  }
+
   switch (env.DEPLOY_TARGET) {
     case 'cdn':
       return {
@@ -133,10 +193,6 @@ export default defineConfig(({ mode }) => {
           viteStaticCopy({
             targets: [
               {
-                src: 'package.json',
-                dest: './',
-              },
-              {
                 src: 'README.md',
                 dest: './',
               },
@@ -150,6 +206,8 @@ export default defineConfig(({ mode }) => {
               },
             ],
           }),
+          generateDummyTypes(),
+          addExportsToPackageJson(),
         ],
         build: {
           cssCodeSplit: true,

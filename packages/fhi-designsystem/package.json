@@ -31,9 +31,6 @@
     "> 0.5%",
     "last 2 versions"
   ],
-  "files": [
-    "*"
-  ],
   "main": "index.js",
   "type": "module",
   "scripts": {
