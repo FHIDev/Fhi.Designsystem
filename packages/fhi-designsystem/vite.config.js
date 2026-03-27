@@ -108,7 +108,7 @@ export default defineConfig(({ mode }) => {
         };
 
         packageJson.exports['./theme/default.css'] = {
-          default: './theme/default.css',
+          style: './theme/default.css',
         };
 
         packageJson.exports['./custom-elements.json'] = {
