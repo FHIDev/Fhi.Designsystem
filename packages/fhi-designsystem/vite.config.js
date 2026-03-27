@@ -99,6 +99,7 @@ export default defineConfig(({ mode }) => {
         Object.keys(listOfComponents).forEach(key => {
           packageJson.exports[`./${key}`] = {
             default: `./${key}.js`,
+            types: `./${key}.d.ts`,
           };
         });
 
@@ -110,6 +111,22 @@ export default defineConfig(({ mode }) => {
           `${_outDir}/package.json`,
           JSON.stringify(packageJson),
         );
+      },
+    };
+  }
+
+  function generateDummyTypes() {
+    let _outDir = null;
+
+    return {
+      name: 'vite-plugin-fhi-generate-dummy-types',
+      configResolved(resolvedConfig) {
+        _outDir = resolvedConfig.build.outDir;
+      },
+      closeBundle() {
+        Object.keys(listOfComponents).forEach(key => {
+          fs.writeFileSync(`${_outDir}/${key}.d.ts`, `export {};`);
+        });
       },
     };
   }
@@ -180,6 +197,7 @@ export default defineConfig(({ mode }) => {
               },
             ],
           }),
+          generateDummyTypes(),
           finalizePackageJson(),
         ],
         build: {
