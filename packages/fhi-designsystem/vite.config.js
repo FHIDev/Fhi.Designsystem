@@ -80,11 +80,11 @@ export default defineConfig(({ mode }) => {
     };
   }
 
-  function finalizePackageJson() {
+  function addExportsToPackageJson() {
     let _outDir = null;
 
     return {
-      name: 'vite-plugin-fhi-finalize-package-json',
+      name: 'vite-plugin-fhi-add-exports-to-package-json',
       configResolved(resolvedConfig) {
         _outDir = resolvedConfig.build.outDir;
       },
@@ -107,6 +107,14 @@ export default defineConfig(({ mode }) => {
           default: './index.js',
         };
 
+        packageJson.exports['./theme/default.css'] = {
+          default: './theme/default.css',
+        };
+
+        packageJson.exports['./custom-elements.json'] = {
+          default: './custom-elements.json',
+        };
+
         fs.writeFileSync(
           `${_outDir}/package.json`,
           JSON.stringify(packageJson),
@@ -124,6 +132,7 @@ export default defineConfig(({ mode }) => {
         _outDir = resolvedConfig.build.outDir;
       },
       closeBundle() {
+        // This will allow the consuming project to import the components as modules.
         Object.keys(listOfComponents).forEach(key => {
           fs.writeFileSync(`${_outDir}/${key}.d.ts`, `export {};`);
         });
@@ -198,7 +207,7 @@ export default defineConfig(({ mode }) => {
             ],
           }),
           generateDummyTypes(),
-          finalizePackageJson(),
+          addExportsToPackageJson(),
         ],
         build: {
           cssCodeSplit: true,
