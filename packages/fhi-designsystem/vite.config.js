@@ -102,7 +102,7 @@ export default defineConfig(({ mode }) => {
           };
         });
 
-        packageJson.exports['./index'] = {
+        packageJson.exports['.'] = {
           default: './index.js',
         };
 
