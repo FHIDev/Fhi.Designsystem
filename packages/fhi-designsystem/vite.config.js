@@ -80,6 +80,40 @@ export default defineConfig(({ mode }) => {
     };
   }
 
+  function finalizePackageJson() {
+    let _outDir = null;
+
+    return {
+      name: 'vite-plugin-fhi-finalize-package-json',
+      configResolved(resolvedConfig) {
+        _outDir = resolvedConfig.build.outDir;
+      },
+      closeBundle() {
+        const packageJson = JSON.parse(
+          fs.readFileSync('./package.json', 'utf-8'),
+        );
+
+        packageJson.exports = packageJson.exports || {};
+
+        // Make sure the intellisense in the consuming project can find the components when importing from the package.
+        Object.keys(listOfComponents).forEach(key => {
+          packageJson.exports[`./${key}`] = {
+            default: `./${key}.js`,
+          };
+        });
+
+        packageJson.exports['./index'] = {
+          default: './index.js',
+        };
+
+        fs.writeFileSync(
+          `${_outDir}/package.json`,
+          JSON.stringify(packageJson),
+        );
+      },
+    };
+  }
+
   switch (env.DEPLOY_TARGET) {
     case 'cdn':
       return {
@@ -146,33 +180,7 @@ export default defineConfig(({ mode }) => {
               },
             ],
           }),
-          (() => {
-            let _outDir = null;
-            return {
-              name: 'vite-plugin-fhi-generate-types',
-              configResolved(resolvedConfig) {
-                _outDir = resolvedConfig.build.outDir;
-              },
-              closeBundle() {
-                const packageJson = JSON.parse(
-                  fs.readFileSync('./package.json', 'utf-8'),
-                );
-
-                packageJson.exports = {};
-
-                Object.keys(listOfComponents).forEach(key => {
-                  packageJson.exports[`./${key}`] = {
-                    default: `./${key}.js`,
-                  };
-                });
-
-                fs.writeFileSync(
-                  `${_outDir}/package.json`,
-                  JSON.stringify(packageJson, null, 2),
-                );
-              },
-            };
-          })(),
+          finalizePackageJson(),
         ],
         build: {
           cssCodeSplit: true,
