@@ -14,7 +14,6 @@ export const FhiCheckboxSelector = 'fhi-checkbox';
  *
  * @tag fhi-checkbox
  * @element fhi-checkbox
- *
  */
 @customElement(FhiCheckboxSelector)
 export class FhiCheckbox extends LitElement {
