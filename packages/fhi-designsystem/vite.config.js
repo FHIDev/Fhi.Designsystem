@@ -133,10 +133,6 @@ export default defineConfig(({ mode }) => {
           viteStaticCopy({
             targets: [
               {
-                src: 'package.json',
-                dest: './',
-              },
-              {
                 src: 'README.md',
                 dest: './',
               },
@@ -158,12 +154,22 @@ export default defineConfig(({ mode }) => {
                 _outDir = resolvedConfig.build.outDir;
               },
               closeBundle() {
+                const packageJson = JSON.parse(
+                  fs.readFileSync('./package.json', 'utf-8'),
+                );
+
+                packageJson.exports = {};
+
                 Object.keys(listOfComponents).forEach(key => {
-                  // Quickfix. This will enable intellisense for the components when using the library in a project, without having tsc analysing and generating actual types for each component.
-                  const output = `${_outDir}/${key}.d.ts`;
-                  fs.writeFileSync(output, 'export {};');
-                  console.log(output);
+                  packageJson.exports[`./${key}`] = {
+                    default: `./${key}.js`,
+                  };
                 });
+
+                fs.writeFileSync(
+                  `${_outDir}/package.json`,
+                  JSON.stringify(packageJson, null, 2),
+                );
               },
             };
           })(),
