@@ -1,5 +1,9 @@
 import { html, css, LitElement, PropertyValues } from 'lit';
-import { customElement, property } from 'lit/decorators.js';
+import {
+  customElement,
+  property,
+  queryAssignedElements,
+} from 'lit/decorators.js';
 
 import '../../fhi-grid/fhi-grid.component';
 import '../../typography/fhi-body/fhi-body.component';
@@ -51,6 +55,9 @@ export class FhiTable extends LitElement {
   @property({ type: Boolean, reflect: true })
   striped?: boolean;
 
+  @queryAssignedElements()
+  slotElements!: Array<HTMLElement>;
+
   connectedCallback(): void {
     super.connectedCallback();
     this.role = 'table';
@@ -68,9 +75,25 @@ export class FhiTable extends LitElement {
     }
   }
 
+  private handleSlotChange() {
+    const rows = this.slotElements.filter(
+      el => el.tagName.toLowerCase() === 'fhi-table-row',
+    );
+
+    if (rows.length === 0) {
+      return;
+    }
+
+    const finalRow = rows[rows.length - 1];
+
+    finalRow.style.borderBottom = 'none';
+    finalRow.style.borderRadius =
+      '0 0 var(--fhi-table-row-border-radius) var(--fhi-table-row-border-radius)';
+  }
+
   render() {
     return html`
-      <slot></slot>
+      <slot @slotchange=${this.handleSlotChange}></slot>
       ${this.caption
         ? html`<fhi-body class="caption" size="small"
             >${this.caption}</fhi-body
@@ -82,10 +105,20 @@ export class FhiTable extends LitElement {
   static styles = css`
     :host {
       --fhi-table-width: unset;
+
+      --fhi-table-row-border-style: unset;
+      --fhi-table-row-border-width: unset;
+      --fhi-table-row-border-color: unset;
+      --fhi-table-row-border-radius: unset;
     }
 
     :host {
       --fhi-table-width: max-content;
+
+      --fhi-table-row-border-style: solid;
+      --fhi-table-row-border-width: var(--fhi-dimension-border-width);
+      --fhi-table-row-border-color: var(--fhi-color-neutral-surface-active);
+      --fhi-table-row-border-radius: var(--fhi-border-radius-100);
 
       display: block;
       width: var(--fhi-table-width);
@@ -93,8 +126,10 @@ export class FhiTable extends LitElement {
 
       slot {
         display: block;
-        border: 1px solid var(--fhi-color-neutral-surface-active);
-        border-radius: var(--fhi-border-radius-100);
+        border-style: var(--fhi-table-row-border-style);
+        border-width: var(--fhi-table-row-border-width);
+        border-color: var(--fhi-table-row-border-color);
+        border-radius: var(--fhi-table-row-border-radius);
       }
 
       .caption {

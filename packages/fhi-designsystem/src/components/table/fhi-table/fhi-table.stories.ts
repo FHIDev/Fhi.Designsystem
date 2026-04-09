@@ -191,6 +191,7 @@ export const ComplexData: Story = {
     <fhi-table
       caption="${ifDefined(args.caption)}"
       style="--fhi-table-width: auto"
+      ?striped="${args.striped}"
     >
       <fhi-table-row variant="header" columns="2fr repeat(4, 1fr)">
         <fhi-table-cell> Østfold </fhi-table-cell>
