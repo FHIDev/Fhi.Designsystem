@@ -79,7 +79,6 @@ export default defineConfig(({ mode }) => {
 
     packageJson.exports = packageJson.exports || {};
 
-    // Make sure the intellisense in the consuming project can find the components when importing from the package.
     Object.keys(listOfComponents).forEach(key => {
       packageJson.exports[`./${key}`] = {
         default: `./${key}.js`,
