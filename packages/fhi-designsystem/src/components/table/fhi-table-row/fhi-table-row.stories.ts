@@ -14,7 +14,7 @@ const meta: FhiStorybookMeta<FhiTableRow> = {
       {
         name: '-',
         description:
-          'Alle celler i raden. Bruk fhi-table-cell for å definere celler i raden.',
+          'Alle celler i raden. Bruk <fhi-table-cell> for å definere celler i raden.',
       },
     ],
   },
@@ -31,7 +31,7 @@ const meta: FhiStorybookMeta<FhiTableRow> = {
       control: 'select',
       options: ['header', 'body'],
       description:
-        'Definerer om raden er en header-rad eller en vanlig rad. Header-rader har en annen stil og brukes for å definere kolonneoverskrifter. All fhi-table-cell elementer i en header fhi-table-row vil automatisk få variant satt til header.',
+        'Definerer om raden er en header-rad eller en vanlig rad. Header-rader har en annen stil og brukes for å definere kolonneoverskrifter. Alle <fhi-table-cell> elementer i en header <fhi-table-row> vil automatisk få variant satt til header.',
       defaultValue: { summary: 'body' },
     },
   },

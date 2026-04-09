@@ -40,7 +40,7 @@ const meta: FhiStorybookMeta<FhiTable> = {
       {
         name: '-',
         description:
-          'Alle rader i tabellen. Bruk fhi-table-row for å definere rader, og fhi-table-cell for å definere celler i radene.',
+          'Alle rader i tabellen. Bruk <fhi-table-row> for å definere rader, og <fhi-table-cell> for å definere celler i radene.',
       },
     ],
   },
@@ -52,6 +52,11 @@ const meta: FhiStorybookMeta<FhiTable> = {
         'Valgfri tekst som beskriver innholdet. Dette fungerer som tabellen sin tittel og er visuelt plassert under tabellen',
       defaultValue: { summary: undefined },
     },
+    striped: {
+      control: 'boolean',
+      description: 'Om tabellen skal ha vekslende radfarger (stripete effekt).',
+      defaultValue: { summary: false },
+    },
   },
 };
 
@@ -61,9 +66,10 @@ export const Preview: Story = {
   tags: [],
   args: {
     caption: 'Total forekomst: Utvalgte diagnoser, antall',
+    striped: false,
   },
   render: args => html`
-    <fhi-table caption="${ifDefined(args.caption)}">
+    <fhi-table caption="${ifDefined(args.caption)}" ?striped="${args.striped}">
       <fhi-table-row variant="header" columns="3fr 1fr 1fr 1fr">
         <fhi-table-cell></fhi-table-cell>
         <fhi-table-cell> 2021 </fhi-table-cell>
@@ -249,9 +255,10 @@ export const WithCheckboxes: Story = {
   tags: ['!dev'],
   args: {
     caption: 'Avkrysningsbokser.',
+    striped: false,
   },
   render: args => html`
-    <fhi-table caption="${ifDefined(args.caption)}">
+    <fhi-table caption="${ifDefined(args.caption)}" ?striped="${args.striped}">
       <fhi-table-row variant="header" columns="2.5rem 4fr 3fr 2fr 2fr 6fr">
         <fhi-table-cell></fhi-table-cell>
         <fhi-table-cell> Mal </fhi-table-cell>

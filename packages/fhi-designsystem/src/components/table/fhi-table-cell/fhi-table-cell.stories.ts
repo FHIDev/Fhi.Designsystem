@@ -29,7 +29,7 @@ const meta: FhiStorybookMeta<FhiTableCell> = {
       control: 'select',
       options: ['header', 'body'],
       description:
-        'Definerer om cellen er en header eller body celle. Når fhi-table-cell brukes i en header fhi-table-row, vil variant automatisk bli satt til header.',
+        'Definerer om cellen er en header eller body celle. Når <fhi-table-cell> brukes i en header <fhi-table-row>, vil variant automatisk bli satt til header.',
       defaultValue: { summary: 'body' },
     },
   },
