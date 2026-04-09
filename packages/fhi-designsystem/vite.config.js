@@ -1,6 +1,5 @@
 import { defineConfig, loadEnv } from 'vite';
 import { viteStaticCopy } from 'vite-plugin-static-copy';
-import generateFile from 'vite-plugin-generate-file';
 import fs from 'fs';
 import path from 'path';
 
@@ -60,6 +59,49 @@ export default defineConfig(({ mode }) => {
     };
   })();
 
+  /**
+   * We need to generate dummy .d.ts files for each component in order for the intellisense in the consuming project to treat the components as modules.
+   * The content of the .d.ts files is not important, as long as they exist and export something (in this case, an empty object).
+   */
+  const dummyTypes = Object.keys(listOfComponents).map(key => ({
+    fileName: `${key}.d.ts`,
+    content: `export {};`,
+  }));
+
+  /**
+   * read the package.json file for the project and add necessary changes to it.
+   * right now it only adds exports for each component and the main entry point so that the consumers intellisense works correctly.
+   *
+   * @returns package.json ready for deployment as an npm package
+   */
+  const preparedPackageJson = (() => {
+    const packageJson = JSON.parse(fs.readFileSync('./package.json', 'utf-8'));
+
+    packageJson.exports = packageJson.exports || {};
+
+    // Make sure the intellisense in the consuming project can find the components when importing from the package.
+    Object.keys(listOfComponents).forEach(key => {
+      packageJson.exports[`./${key}`] = {
+        default: `./${key}.js`,
+        types: `./${key}.d.ts`,
+      };
+    });
+
+    packageJson.exports['.'] = {
+      default: './index.js',
+    };
+
+    packageJson.exports['./theme/default.css'] = {
+      style: './theme/default.css',
+    };
+
+    packageJson.exports['./custom-elements.json'] = {
+      default: './custom-elements.json',
+    };
+
+    return packageJson;
+  })();
+
   // https://vite.dev/guide/api-plugin.html#virtual-modules-convention
   function resolveVirtualModule({ moduleId, moduleContent }) {
     const virtualModuleId = moduleId;
@@ -80,62 +122,26 @@ export default defineConfig(({ mode }) => {
     };
   }
 
-  function addExportsToPackageJson() {
+  /**
+   * Vite plugin that writes files to the output directory after the bundle is closed.
+   * @param {*} files an array of objects with the following structure: { path: string, content: string }. The path is relative to the output directory and the content is the content of the file to be written.
+   */
+  function writeFileOnCloseBundle(files) {
     let _outDir = null;
 
     return {
-      name: 'vite-plugin-fhi-add-exports-to-package-json',
+      name: 'vite-plugin-fhi-write-file-on-close-bundle',
       configResolved(resolvedConfig) {
         _outDir = resolvedConfig.build.outDir;
       },
       closeBundle() {
-        const packageJson = JSON.parse(
-          fs.readFileSync('./package.json', 'utf-8'),
-        );
+        for (const file of files) {
+          if (!file.path) {
+            throw Error('"path" is required');
+          }
 
-        packageJson.exports = packageJson.exports || {};
-
-        // Make sure the intellisense in the consuming project can find the components when importing from the package.
-        Object.keys(listOfComponents).forEach(key => {
-          packageJson.exports[`./${key}`] = {
-            default: `./${key}.js`,
-            types: `./${key}.d.ts`,
-          };
-        });
-
-        packageJson.exports['.'] = {
-          default: './index.js',
-        };
-
-        packageJson.exports['./theme/default.css'] = {
-          style: './theme/default.css',
-        };
-
-        packageJson.exports['./custom-elements.json'] = {
-          default: './custom-elements.json',
-        };
-
-        fs.writeFileSync(
-          `${_outDir}/package.json`,
-          JSON.stringify(packageJson),
-        );
-      },
-    };
-  }
-
-  function generateDummyTypes() {
-    let _outDir = null;
-
-    return {
-      name: 'vite-plugin-fhi-generate-dummy-types',
-      configResolved(resolvedConfig) {
-        _outDir = resolvedConfig.build.outDir;
-      },
-      closeBundle() {
-        // This will allow the consuming project to import the components as modules.
-        Object.keys(listOfComponents).forEach(key => {
-          fs.writeFileSync(`${_outDir}/${key}.d.ts`, `export {};`);
-        });
+          fs.writeFileSync(`${_outDir}/${file.path}`, file.content || '');
+        }
       },
     };
   }
@@ -148,9 +154,11 @@ export default defineConfig(({ mode }) => {
             moduleId: virtualLibraryModule.path,
             moduleContent: virtualLibraryModule.code,
           }),
-          generateFile({
-            output: './index.html',
-          }),
+          writeFileOnCloseBundle([
+            {
+              path: 'index.html',
+            },
+          ]),
           viteStaticCopy({
             targets: [
               {
@@ -206,8 +214,16 @@ export default defineConfig(({ mode }) => {
               },
             ],
           }),
-          generateDummyTypes(),
-          addExportsToPackageJson(),
+          writeFileOnCloseBundle([
+            {
+              path: 'package.json',
+              content: JSON.stringify(preparedPackageJson, null, 2),
+            },
+            ...dummyTypes.map(({ fileName, content }) => ({
+              path: fileName,
+              content,
+            })),
+          ]),
         ],
         build: {
           cssCodeSplit: true,
