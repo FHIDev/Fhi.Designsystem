@@ -72,6 +72,7 @@ export class FhiTableRow extends LitElement {
       --fhi-table-row-border-style: unset;
       --fhi-table-row-border-width: unset;
       --fhi-table-row-border-color: unset;
+      --fhi-table-row-border-radius: unset;
 
       --fhi-table-row-background: unset;
     }
@@ -85,6 +86,7 @@ export class FhiTableRow extends LitElement {
       border-style: var(--fhi-table-row-border-style);
       border-width: var(--fhi-table-row-border-width);
       border-color: var(--fhi-table-row-border-color);
+      border-radius: var(--fhi-table-row-border-radius);
       background: var(--fhi-table-row-background);
     }
   `;
