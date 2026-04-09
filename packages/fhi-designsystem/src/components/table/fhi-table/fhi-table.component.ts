@@ -44,6 +44,13 @@ export class FhiTable extends LitElement {
   @property({ type: String, reflect: true })
   caption?: string;
 
+  /**
+   * If set to true, the table will have alternating row colors (striped effect) for better readability.
+   * @type {boolean}
+   */
+  @property({ type: Boolean, reflect: true })
+  striped?: boolean;
+
   connectedCallback(): void {
     super.connectedCallback();
     this.role = 'table';
@@ -85,7 +92,7 @@ export class FhiTable extends LitElement {
       }
     }
 
-    :host([zebra]) {
+    :host([striped]) {
       ::slotted(fhi-table-row:nth-child(even)) {
         --fhi-table-row-background: var(--fhi-color-neutral-background-subtle);
       }

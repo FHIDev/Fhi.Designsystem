@@ -94,7 +94,9 @@ export const Preview: Story = {
 
 export const ComplexData: Story = {
   tags: ['!dev'],
-  args: {},
+  args: {
+    striped: true,
+  },
   render: args => html`
     <fhi-title size="large" level="2">
       P0a: Fødte per måned og mors bosted (med og uten fødselsmelding i MFR)
@@ -111,7 +113,7 @@ export const ComplexData: Story = {
     <fhi-table
       caption="${ifDefined(args.caption)}"
       style="--fhi-table-width: auto"
-      zebra
+      ?striped="${args.striped}"
     >
       <fhi-table-row variant="header" columns="2fr repeat(4, 1fr)">
         <fhi-table-cell> Oslo </fhi-table-cell>
