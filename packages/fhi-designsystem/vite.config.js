@@ -216,7 +216,7 @@ export default defineConfig(({ mode }) => {
           writeFileOnCloseBundle([
             {
               path: 'package.json',
-              content: JSON.stringify(preparedPackageJson, null, 2),
+              content: JSON.stringify(preparedPackageJson),
             },
             ...dummyTypes.map(({ fileName, content }) => ({
               path: fileName,
