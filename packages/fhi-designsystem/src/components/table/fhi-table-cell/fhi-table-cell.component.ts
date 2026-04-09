@@ -3,8 +3,25 @@ import { customElement, property } from 'lit/decorators.js';
 
 export const FhiTableCellSelector = 'fhi-table-cell';
 
+/**
+ * ## FHI Table Cell
+ *
+ * {@link https://designsystem.fhi.no/?path=/docs/komponenter-table--docs}
+ *
+ * The `<fhi-table-cell>` component is an implementation of a table cell according to the FHI Design System guidelines.
+ * It allows users to properly display data within a `<fhi-table-row>`.
+ *
+ * For various reasons, the `<fhi-table-cell>` component does not use the native HTML `<td>` or `<th>` elements. Instead, it relies on CSS Grid to achieve the desired layout and styling.
+ *
+ * @tag fhi-table-cell
+ * @element fhi-table-cell
+ */
 @customElement(FhiTableCellSelector)
 export class FhiTableCell extends LitElement {
+  /**
+   * Defines the variant of the table cell, which can be either 'header' or 'body'. This determines the styling and role of the cell within the table.
+   * @type {'header' | 'body'}
+   */
   @property({ type: String, reflect: true })
   variant: 'header' | 'body' = 'body';
 
