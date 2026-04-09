@@ -91,6 +91,12 @@ export class FhiTable extends LitElement {
       width: var(--fhi-table-width);
       color: var(--fhi-color-neutral-text-default);
 
+      slot {
+        display: block;
+        border: 1px solid var(--fhi-color-neutral-surface-active);
+        border-radius: var(--fhi-border-radius-100);
+      }
+
       .caption {
         display: block;
         padding: 1rem;
