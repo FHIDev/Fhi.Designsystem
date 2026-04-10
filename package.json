@@ -19,6 +19,7 @@
     "eslint": "~9.39.2",
     "eslint-config-prettier": "~9.1.2",
     "eslint-plugin-lit": "~1.15.0",
+    "eslint-plugin-storybook": "10.2.8",
     "husky": "~9.1.7",
     "lint-staged": "~15.2.11",
     "prettier": "~3.3.3",
