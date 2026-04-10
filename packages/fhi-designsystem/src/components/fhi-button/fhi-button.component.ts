@@ -15,6 +15,7 @@ export const FhiButtonSelector = 'fhi-button';
  * @element fhi-button
  *
  * @slot - The content of the button. This should be pure text, an icon or both.
+ *
  */
 @customElement(FhiButtonSelector)
 export class FhiButton extends LitElement {
