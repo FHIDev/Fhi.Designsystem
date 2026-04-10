@@ -21,12 +21,6 @@ const meta: FhiStorybookMeta<FhiTableRow> = {
   decorators: [],
   render: () => html`<fhi-table-row></fhi-table-row>`,
   argTypes: {
-    columns: {
-      control: 'text',
-      description:
-        'Definerer kolonneoppsettet for raden. Bruk CSS grid-template-columns format, f.eks. "3fr repeat(4, 1fr)".',
-      defaultValue: { summary: '1fr' },
-    },
     variant: {
       control: 'select',
       options: ['header', 'body'],

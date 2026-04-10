@@ -51,7 +51,19 @@ export class FhiTable extends LitElement {
   @property({ type: Boolean, reflect: true })
   striped?: boolean;
 
-  public role = 'table';
+  /**
+   * Defines the column structure of the table using CSS Grid syntax. This should be a string that specifies the width of each column, such as '1fr 2fr 1fr' for three columns with different widths.
+   * All `<fhi-table-row>` elements within the table will inherit this column structure.
+   * The number of columns defined here should match the number of `<fhi-table-cell>` elements within a `<fhi-table-row>` for proper alignment.
+   * @type {string}
+   */
+  @property({ type: String, reflect: true })
+  columns = '1fr';
+
+  connectedCallback(): void {
+    super.connectedCallback();
+    this.role = 'table';
+  }
 
   protected updated(changedProperties: PropertyValues): void {
     super.updated(changedProperties);
@@ -62,6 +74,10 @@ export class FhiTable extends LitElement {
       } else {
         this.removeAttribute('aria-label');
       }
+    }
+
+    if (changedProperties.has('columns')) {
+      this.style.setProperty('--fhi-table-grid-template-columns', this.columns);
     }
   }
 
@@ -81,6 +97,8 @@ export class FhiTable extends LitElement {
       --fhi-table-width: unset;
 
       --fhi-table-caption-width: unset;
+
+      --fhi-table-grid-template-columns: unset;
 
       --fhi-table-border-style: unset;
       --fhi-table-border-width: unset;
@@ -112,6 +130,12 @@ export class FhiTable extends LitElement {
         display: block;
         padding: var(--fhi-spacing-150);
         width: var(--fhi-table-caption-width);
+      }
+
+      ::slotted(fhi-table-row) {
+        --fhi-table-row-grid-template-columns: var(
+          --fhi-table-grid-template-columns
+        );
       }
 
       ::slotted(fhi-table-row:last-child) {

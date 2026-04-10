@@ -21,14 +21,6 @@ export const FhiTableRowSelector = 'fhi-table-row';
 @customElement(FhiTableRowSelector)
 export class FhiTableRow extends LitElement {
   /**
-   * Defines the column structure of the table row using CSS Grid syntax. This should be a string that specifies the width of each column, such as '1fr 2fr 1fr' for three columns with different widths.
-   * The number of columns defined here should match the number of `<fhi-table-cell>` elements within the row for proper alignment.
-   * @type {string}
-   */
-  @property({ type: String, reflect: true })
-  columns = '1fr';
-
-  /**
    * Defines the variant of the table row, which can be either 'header' or 'body'. This determines the styling and role of the row within the table.
    * If the variant is set to 'header', all child `<fhi-table-cell>` elements will also be set to the 'header' variant to ensure consistent styling.
    * @type {'header' | 'body'}
@@ -41,26 +33,41 @@ export class FhiTableRow extends LitElement {
 
   connectedCallback(): void {
     super.connectedCallback();
-
-    this.setAttribute('role', 'row');
+    this.role = 'row';
   }
 
   protected update(changedProperties: PropertyValues): void {
-    if (changedProperties.has('columns')) {
-      this.style.gridTemplateColumns = this.columns;
+    if (changedProperties.has('variant')) {
+      if (this.variant !== 'body' && this.variant !== 'header') {
+        this.variant = 'body';
+      }
     }
 
     super.update(changedProperties);
   }
 
-  private handleSlotChange() {
-    if (this.variant === 'header') {
-      this.slotElements.forEach(element => {
-        if (element.tagName.toLowerCase() === 'fhi-table-cell') {
-          (element as FhiTableCell).variant = this.variant;
-        }
-      });
+  protected updated(changedProperties: PropertyValues): void {
+    if (changedProperties.has('variant')) {
+      this.setCellVariants();
     }
+
+    super.updated(changedProperties);
+  }
+
+  private handleSlotChange() {
+    this.setCellVariants();
+  }
+
+  private setCellVariants() {
+    this.slotElements.forEach(element => {
+      if (element.tagName.toLowerCase() === 'fhi-table-cell') {
+        const tableCell = element as FhiTableCell;
+
+        if (tableCell.variant !== this.variant) {
+          tableCell.variant = this.variant;
+        }
+      }
+    });
   }
 
   render() {
@@ -75,6 +82,8 @@ export class FhiTableRow extends LitElement {
       --fhi-table-row-border-radius: unset;
 
       --fhi-table-row-background: unset;
+
+      --fhi-table-row-grid-template-columns: unset;
     }
 
     :host {
@@ -83,6 +92,8 @@ export class FhiTableRow extends LitElement {
       --fhi-table-row-border-color: var(--fhi-color-neutral-surface-active);
 
       display: grid;
+      grid-template-columns: var(--fhi-table-row-grid-template-columns);
+
       border-style: var(--fhi-table-row-border-style);
       border-width: var(--fhi-table-row-border-width);
       border-color: var(--fhi-table-row-border-color);
