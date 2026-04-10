@@ -51,10 +51,7 @@ export class FhiTable extends LitElement {
   @property({ type: Boolean, reflect: true })
   striped?: boolean;
 
-  connectedCallback(): void {
-    super.connectedCallback();
-    this.role = 'table';
-  }
+  public role = 'table';
 
   protected updated(changedProperties: PropertyValues): void {
     super.updated(changedProperties);
@@ -83,6 +80,8 @@ export class FhiTable extends LitElement {
     :host {
       --fhi-table-width: unset;
 
+      --fhi-table-caption-width: unset;
+
       --fhi-table-border-style: unset;
       --fhi-table-border-width: unset;
       --fhi-table-border-color: unset;
@@ -98,11 +97,11 @@ export class FhiTable extends LitElement {
       --fhi-table-border-radius: var(--fhi-border-radius-100);
 
       display: block;
-      width: var(--fhi-table-width);
       color: var(--fhi-color-neutral-text-default);
 
       slot {
         display: block;
+        width: var(--fhi-table-width);
         border-style: var(--fhi-table-border-style);
         border-width: var(--fhi-table-border-width);
         border-color: var(--fhi-table-border-color);
@@ -111,8 +110,8 @@ export class FhiTable extends LitElement {
 
       .caption {
         display: block;
-        padding: 1rem;
-        color: var(--fhi-color-neutral-text-default);
+        padding: var(--fhi-spacing-150);
+        width: var(--fhi-table-caption-width);
       }
 
       ::slotted(fhi-table-row:last-child) {

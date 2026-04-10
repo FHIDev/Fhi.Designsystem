@@ -72,27 +72,43 @@ export const Preview: Story = {
     <fhi-table caption="${ifDefined(args.caption)}" ?striped="${args.striped}">
       <fhi-table-row variant="header" columns="3fr 1fr 1fr 1fr">
         <fhi-table-cell></fhi-table-cell>
-        <fhi-table-cell> 2021 </fhi-table-cell>
-        <fhi-table-cell> 2022 </fhi-table-cell>
-        <fhi-table-cell> 2023 </fhi-table-cell>
-      </fhi-table-row>
-
-      <fhi-table-row columns="3fr 1fr 1fr 1fr">
-        <fhi-table-cell style="--fhi-table-cell-justify-content: start">
-          Pasienter totalt
+        <fhi-table-cell style="--fhi-table-cell-justify-content: end">
+          2021
         </fhi-table-cell>
-        <fhi-table-cell> 374 964 </fhi-table-cell>
-        <fhi-table-cell> 383 347 </fhi-table-cell>
-        <fhi-table-cell> 392 106 </fhi-table-cell>
+        <fhi-table-cell style="--fhi-table-cell-justify-content: end">
+          2022
+        </fhi-table-cell>
+        <fhi-table-cell style="--fhi-table-cell-justify-content: end">
+          2023
+        </fhi-table-cell>
       </fhi-table-row>
 
       <fhi-table-row columns="3fr 1fr 1fr 1fr">
-        <fhi-table-cell style="--fhi-table-cell-justify-content: start">
+        <fhi-table-cell> Pasienter totalt </fhi-table-cell>
+        <fhi-table-cell style="--fhi-table-cell-justify-content: end">
+          374 964
+        </fhi-table-cell>
+        <fhi-table-cell style="--fhi-table-cell-justify-content: end">
+          383 347
+        </fhi-table-cell>
+        <fhi-table-cell style="--fhi-table-cell-justify-content: end">
+          392 106
+        </fhi-table-cell>
+      </fhi-table-row>
+
+      <fhi-table-row columns="3fr 1fr 1fr 1fr">
+        <fhi-table-cell>
           Sykdommer i sirkulasjonssystemet (I00-I99)
         </fhi-table-cell>
-        <fhi-table-cell> 279 726 </fhi-table-cell>
-        <fhi-table-cell> 289 149 </fhi-table-cell>
-        <fhi-table-cell> 291 655 </fhi-table-cell>
+        <fhi-table-cell style="--fhi-table-cell-justify-content: end">
+          279 726
+        </fhi-table-cell>
+        <fhi-table-cell style="--fhi-table-cell-justify-content: end">
+          289 149
+        </fhi-table-cell>
+        <fhi-table-cell style="--fhi-table-cell-justify-content: end">
+          291 655
+        </fhi-table-cell>
       </fhi-table-row>
     </fhi-table>
   `,
