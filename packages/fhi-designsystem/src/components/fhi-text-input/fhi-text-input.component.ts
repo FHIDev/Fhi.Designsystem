@@ -341,7 +341,6 @@ export class FhiTextInput extends LitElement {
       flex-direction: column;
       font-family: var(--typography-font-family);
       -webkit-font-smoothing: antialiased;
-      width: 100%;
 
       label {
         font-weight: var(--typography-label-font-weight);
@@ -359,7 +358,6 @@ export class FhiTextInput extends LitElement {
       input {
         box-sizing: border-box;
         height: var(--dimension-input-height);
-        width: 100%;
         border: var(--dimension-input-border-width) solid
           var(--color-input-border);
         border-radius: var(--dimension-input-border-radius);
@@ -422,6 +420,7 @@ export class FhiTextInput extends LitElement {
 
       .input-container {
         position: relative;
+        width: fit-content;
       }
 
       slot[name='start'] {
