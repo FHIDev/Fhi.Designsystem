@@ -58,10 +58,11 @@ export class FhiTable extends LitElement {
    * @type {string}
    */
   @property({ type: String, reflect: true })
-  columns = '1fr';
+  columns?: string = '1fr';
 
   connectedCallback(): void {
     super.connectedCallback();
+
     this.role = 'table';
   }
 
