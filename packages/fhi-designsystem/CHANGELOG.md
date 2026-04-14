@@ -1,5 +1,25 @@
 # Changelog
 
+## [0.34.0](https://github.com/FHIDev/Fhi/compare/v0.33.1...v0.34.0) (2026-04-13)
+
+### 🚀 Features
+
+* Support Intellisense for web component import-statements  ([#390](https://github.com/FHIDev/Fhi/issues/390)) ([9811032](https://github.com/FHIDev/Fhi/commit/9811032af904dffd62266924e6d36e511985ae43))
+
+## [0.33.1](https://github.com/FHIDev/Fhi/compare/v0.33.0...v0.33.1) (2026-04-09)
+
+### 🛠️ Bug Fixes
+
+* Støtte for nummer som string for level ([#393](https://github.com/FHIDev/Fhi/issues/393)) ([6a96592](https://github.com/FHIDev/Fhi/commit/6a96592cf9868d532eaa8103e328fa136025efa4))
+
+### 📑 Documentation
+
+* add component name to api definition ([#385](https://github.com/FHIDev/Fhi/issues/385)) ([7aca03e](https://github.com/FHIDev/Fhi/commit/7aca03eea257478714d3c4bfabf570dcff11e056))
+
+### Other
+
+* Flyttet eslint-plugin-storybook ([#395](https://github.com/FHIDev/Fhi/issues/395)) ([d25ff2c](https://github.com/FHIDev/Fhi/commit/d25ff2cf8784145f9f8a65b174e29c6afa4a5463))
+
 ## [0.33.0](https://github.com/FHIDev/Fhi/compare/v0.32.0...v0.33.0) (2026-03-06)
 
 ### 🚀 Features
