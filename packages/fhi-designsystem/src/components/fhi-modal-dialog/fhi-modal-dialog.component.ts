@@ -3,7 +3,7 @@ import { customElement, property, query } from 'lit/decorators.js';
 
 import '../fhi-button/fhi-button.component';
 import '../icons/fhi-icon-x.component';
-import '../fhi-headline/fhi-headline.component';
+import '../typography/fhi-headline/fhi-headline.component';
 
 export const FhiModalDialogSelector = 'fhi-modal-dialog';
 
@@ -80,19 +80,30 @@ export class FhiModalDialog extends LitElement {
       }
     }
 
-    if (
-      typeof this.closeButtonLabel !== 'string' ||
-      this.closeButtonLabel.length === 0
-    ) {
-      throw new TypeError(
-        'The close-button-label property must be set to a non-empty string. This label must describe the purpose of the close button for accessibility reasons.',
-      );
+    // if invalid size is provided, default to 'medium'
+    if (changedProperties.has('size')) {
+      if (this.size !== 'small' && this.size !== 'medium') {
+        this.size = 'medium';
+      }
     }
 
-    if (typeof this.heading !== 'string' || this.heading.length === 0) {
-      throw new TypeError(
-        'The heading property must be set to a non-empty string. This heading describes the purpose of the dialog.',
-      );
+    if (changedProperties.has('closeButtonLabel')) {
+      if (
+        typeof this.closeButtonLabel !== 'string' ||
+        this.closeButtonLabel.length === 0
+      ) {
+        throw new TypeError(
+          'The close-button-label property must be set to a non-empty string. This label must describe the purpose of the close button for accessibility reasons.',
+        );
+      }
+    }
+
+    if (changedProperties.has('closeButtonLabel')) {
+      if (typeof this.heading !== 'string' || this.heading.length === 0) {
+        throw new TypeError(
+          'The heading property must be set to a non-empty string. This heading describes the purpose of the dialog.',
+        );
+      }
     }
   }
 

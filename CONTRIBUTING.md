@@ -69,8 +69,18 @@ Linting og prettier tar hånd om det meste, men en ting er viktig å merke seg: 
 
 ## Testdekning
 
-Som et minimum skal API-et til komponenten testes.  
-_Mer utfyllende informasjon om testdekning kommer._
+Alle komponenter skal ha enhetstester.
+
+Dette skal testes:
+- Alle attributter kan settes og den underliggende _property_ blir også satt.
+- Om en attributt er reflektert skal det bekreftes at refleksjonen fungerer.
+- Feilhåndtering. Om komponeneten skal respondere på feil bruk eller tekniske feil, så bekreft dette.
+- Tilgjengelighet. Pass på at komponenten følger relevante tilgjengelighetskrav.
+- Alle relevante _events_ blir avfyrt som forventet.
+- **Spesielt viktig:** Alle brukerinteraskjoner skal bekreftes at fungerer.
+
+Vi har ikke som mål å treffe så mange kodelinjer som mulig.
+Vi har en mer heuristisk tilnærming hvor vi prøver å bruke "sunn fornuft" når vi tester.
 
 ## Hvordan utvikle en ny komponent
 

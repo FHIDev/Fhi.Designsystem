@@ -1,6 +1,6 @@
 import { html, css, LitElement } from 'lit';
 import { customElement, property } from 'lit/decorators.js';
-import '../fhi-body/fhi-body.component';
+import '../typography/fhi-body/fhi-body.component';
 
 export const FhiTagSelector = 'fhi-tag';
 
@@ -120,7 +120,7 @@ export class FhiTag extends LitElement {
       }
     }
 
-    :host([color='neutral']) {
+    :host {
       color: var(--color-neutral-text);
       background-color: var(--color-neutral-background);
     }

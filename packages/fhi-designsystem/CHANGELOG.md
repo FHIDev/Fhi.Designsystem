@@ -1,5 +1,51 @@
 # Changelog
 
+## [0.34.0](https://github.com/FHIDev/Fhi/compare/v0.33.1...v0.34.0) (2026-04-13)
+
+### 🚀 Features
+
+* Support Intellisense for web component import-statements  ([#390](https://github.com/FHIDev/Fhi/issues/390)) ([9811032](https://github.com/FHIDev/Fhi/commit/9811032af904dffd62266924e6d36e511985ae43))
+
+## [0.33.1](https://github.com/FHIDev/Fhi/compare/v0.33.0...v0.33.1) (2026-04-09)
+
+### 🛠️ Bug Fixes
+
+* Støtte for nummer som string for level ([#393](https://github.com/FHIDev/Fhi/issues/393)) ([6a96592](https://github.com/FHIDev/Fhi/commit/6a96592cf9868d532eaa8103e328fa136025efa4))
+
+### 📑 Documentation
+
+* add component name to api definition ([#385](https://github.com/FHIDev/Fhi/issues/385)) ([7aca03e](https://github.com/FHIDev/Fhi/commit/7aca03eea257478714d3c4bfabf570dcff11e056))
+
+### Other
+
+* Flyttet eslint-plugin-storybook ([#395](https://github.com/FHIDev/Fhi/issues/395)) ([d25ff2c](https://github.com/FHIDev/Fhi/commit/d25ff2cf8784145f9f8a65b174e29c6afa4a5463))
+
+## [0.33.0](https://github.com/FHIDev/Fhi/compare/v0.32.0...v0.33.0) (2026-03-06)
+
+### 🚀 Features
+
+* Add rows to fhi-grid ([#379](https://github.com/FHIDev/Fhi/issues/379)) ([58ed18c](https://github.com/FHIDev/Fhi/commit/58ed18c0337ae7ccf492d05179ef3a4b5e6de20a))
+
+### 📑 Documentation
+
+* Add API definition with attributes, properties, events and slots to the documentation ([#369](https://github.com/FHIDev/Fhi/issues/369)) ([d4e45a3](https://github.com/FHIDev/Fhi/commit/d4e45a33bdaa82d4662ac340d5ef901acbf372a6))
+
+## [0.32.0](https://github.com/FHIDev/Fhi/compare/v0.31.0...v0.32.0) (2026-03-03)
+
+### 🚀 Features
+
+* Add more robust null pointer and invalid value handeling in components ([#374](https://github.com/FHIDev/Fhi/issues/374)) ([b9935d6](https://github.com/FHIDev/Fhi/commit/b9935d6e772adc7ee42103028c322ded00e00c32))
+
+### 📑 Documentation
+
+* Update Storybook from v8 to v10 ([#360](https://github.com/FHIDev/Fhi/issues/360)) ([0c6dcc3](https://github.com/FHIDev/Fhi/commit/0c6dcc310d4b144ad09d7c1f547cfabe0300fd73))
+
+### Other
+
+* 341 update contributing docs with test coverage ([#372](https://github.com/FHIDev/Fhi/issues/372)) ([12ab738](https://github.com/FHIDev/Fhi/commit/12ab738937519c05c3192f9cf8aa700c142c1e3d))
+* 371 move typography components to same folder ([#373](https://github.com/FHIDev/Fhi/issues/373)) ([15c91d5](https://github.com/FHIDev/Fhi/commit/15c91d509850ab2f3644b5723c1504b8c23f8f2d))
+* Make ux owner of .mdx and .stories.ts files ([#364](https://github.com/FHIDev/Fhi/issues/364)) ([8fbc550](https://github.com/FHIDev/Fhi/commit/8fbc55023f83c2d18260af7b8c028f9d18f1b97d))
+
 ## [0.31.0](https://github.com/FHIDev/Fhi/compare/v0.30.0...v0.31.0) (2026-02-19)
 
 ### 🚀 Features

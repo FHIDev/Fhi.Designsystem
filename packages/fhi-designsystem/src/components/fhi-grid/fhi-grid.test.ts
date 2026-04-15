@@ -32,6 +32,14 @@ describe('fhi-grid', () => {
       expect(component.columns).to.equal(8);
     });
 
+    it('has an attribute to set rows', async () => {
+      const component = await fixture<FhiGrid>(
+        html`<fhi-grid rows="4"></fhi-grid>`,
+      );
+      expect(component.getAttribute('rows')).to.equal('4');
+      expect(component.rows).to.equal(4);
+    });
+
     it('has an attribute to set gap', async () => {
       const component = await fixture<FhiGrid>(
         html`<fhi-grid gap="small"></fhi-grid>`,
