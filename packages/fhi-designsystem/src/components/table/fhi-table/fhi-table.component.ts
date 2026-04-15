@@ -18,13 +18,13 @@ export const FhiTableSelector = 'fhi-table';
  *
  * Example usage:
  * ```html
- * <fhi-table caption="Example Table">
- *   <fhi-table-row variant="header" columns="2fr 1fr 1fr">
- *     <fhi-table-cell variant="header">Header 1</fhi-table-cell>
- *     <fhi-table-cell variant="header">Header 2</fhi-table-cell>
- *     <fhi-table-cell variant="header">Header 3</fhi-table-cell>
+ * <fhi-table caption="Example Table" columns="2fr 1fr 1fr">
+ *   <fhi-table-row variant="header">
+ *     <fhi-table-cell>Header 1</fhi-table-cell>
+ *     <fhi-table-cell>Header 2</fhi-table-cell>
+ *     <fhi-table-cell>Header 3</fhi-table-cell>
  *   </fhi-table-row>
- *  <fhi-table-row columns="2fr 1fr 1fr">
+ *  <fhi-table-row>
  *    <fhi-table-cell>Data 1</fhi-table-cell>
  *    <fhi-table-cell>Data 2</fhi-table-cell>
  *    <fhi-table-cell>Data 3</fhi-table-cell>
