@@ -211,6 +211,10 @@ export default defineConfig(({ mode }) => {
                 src: '.temp/web-types.json',
                 dest: './',
               },
+              {
+                src: 'ai/skills/*',
+                dest: './skills',
+              },
             ],
           }),
           writeFileOnCloseBundle([
