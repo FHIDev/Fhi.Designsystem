@@ -147,6 +147,11 @@ export class FhiTable extends LitElement {
         );
       }
 
+      ::slotted(fhi-table-row:first-child) {
+        --fhi-table-row-border-radius: var(--fhi-table-border-radius)
+          var(--fhi-table-border-radius) 0 0;
+      }
+
       ::slotted(fhi-table-row:last-child) {
         --fhi-table-row-border-style: none none none none;
         --fhi-table-row-border-width: unset;
@@ -159,6 +164,10 @@ export class FhiTable extends LitElement {
     :host([striped]) {
       ::slotted(fhi-table-row:nth-child(even)) {
         --fhi-table-row-background: var(--fhi-color-neutral-background-subtle);
+      }
+
+      ::slotted(fhi-table-row:nth-child(odd)) {
+        --fhi-table-row-background: var(--fhi-color-neutral-background-default);
       }
     }
   `;
