@@ -14,7 +14,7 @@ export const FhiTableSelector = 'fhi-table';
  * The `<fhi-table>` component is an implementation of a table according to the FHI Design System guidelines.
  * It allows users to display tabular data in a structured format using `<fhi-table-row>` and `<fhi-table-cell>` components.
  *
- * For various reasons, the `<fhi-table>` component does not use the native HTML `<table>` element. Instead, it relies on CSS Grid to achieve the desired layout and styling.
+ * The `<fhi-table>` component does not use the native HTML `<table>` element. Instead, it relies on CSS Grid to achieve the desired layout and styling.
  *
  * Example usage:
  * ```html
