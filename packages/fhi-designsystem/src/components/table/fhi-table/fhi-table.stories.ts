@@ -299,7 +299,7 @@ export const WithCheckboxes: Story = {
         <fhi-table-cell></fhi-table-cell>
         <fhi-table-cell> Mal </fhi-table-cell>
         <fhi-table-cell> Dimensjon </fhi-table-cell>
-        <fhi-table-cell style="--fhi-table-cell-justify-content: end">
+        <fhi-table-cell>
           Opprettet
         </fhi-table-cell>
         <fhi-table-cell> Opprettet av </fhi-table-cell>
@@ -312,7 +312,7 @@ export const WithCheckboxes: Story = {
         </fhi-table-cell>
         <fhi-table-cell> Geografi 2020 </fhi-table-cell>
         <fhi-table-cell> ATC_Verdi </fhi-table-cell>
-        <fhi-table-cell style="--fhi-table-cell-justify-content: end">
+        <fhi-table-cell>
           10.10.2027
         </fhi-table-cell>
         <fhi-table-cell> Pelle Parafin </fhi-table-cell>
