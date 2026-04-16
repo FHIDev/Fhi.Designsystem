@@ -384,20 +384,16 @@ export class FhiTextInput extends LitElement {
         }
       }
 
-      ::slotted([slot='start']) {
+      slot[name='start'] {
         color: var(--fhi-color-neutral-text-subtle);
       }
 
-      input:not([disabled]):not([readonly]):hover ~ ::slotted([slot='start']),
-      input:not([disabled]):not([readonly]):focus ~ ::slotted([slot='start']) {
+      input:not([disabled]):not([readonly]):hover ~ slot[name='start'],
+      input:not([disabled]):not([readonly]):focus ~ slot[name='start'] {
         color: var(--fhi-color-accent-text-subtle);
       }
-      input:not([disabled]):not([readonly]):active ~ ::slotted([slot='start']) {
+      input:not([disabled]):not([readonly]):active ~ slot[name='start'] {
         color: var(--fhi-color-accent-text-default);
-      }
-
-      ::slotted([slot='end']) {
-        color: var(--fhi-color-neutral-text-subtle);
       }
 
       .message {
@@ -443,6 +439,7 @@ export class FhiTextInput extends LitElement {
         margin-right: 8px;
         height: fit-content;
         pointer-events: none;
+        color: var(--fhi-color-neutral-text-subtle);
       }
     }
 
@@ -486,14 +483,14 @@ export class FhiTextInput extends LitElement {
       .help-text {
         color: var(--color-help-text-text-error);
       }
-      ::slotted([slot='start']) {
+      slot[name='start'] {
         color: var(--fhi-color-danger-text-subtle);
       }
 
-      input:not([disabled]):not([readonly]):hover ~ ::slotted([slot='start']) {
+      input:not([disabled]):not([readonly]):hover ~ slot[name='start'] {
         color: var(--fhi-color-danger-text-subtle);
       }
-      input:not([disabled]):not([readonly]):focus ~ ::slotted([slot='start']) {
+      input:not([disabled]):not([readonly]):focus ~ slot[name='start'] {
         color: var(--fhi-color-danger-text-subtle);
       }
     }
