@@ -388,11 +388,11 @@ export class FhiTextInput extends LitElement {
         color: var(--fhi-color-neutral-text-subtle);
       }
 
-      input:not([disabled]):not([readonly]):hover ~ slot[name='start'],
-      input:not([disabled]):not([readonly]):focus ~ slot[name='start'] {
+      input:not([disabled]):not([readonly]):hover ~ slot[name='start'] {
         color: var(--fhi-color-accent-text-subtle);
       }
-      input:not([disabled]):not([readonly]):active ~ slot[name='start'] {
+      input:not([disabled]):not([readonly]):active ~ slot[name='start'],
+      input:not([disabled]):not([readonly]):focus ~ slot[name='start'] {
         color: var(--fhi-color-accent-text-default);
       }
 
