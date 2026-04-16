@@ -17,6 +17,7 @@ const preview: Preview = {
         order: [
           'Oversikt',
           'Kom i gang',
+          'KI Verktøy',
           'Komponenter',
           [
             '*',
