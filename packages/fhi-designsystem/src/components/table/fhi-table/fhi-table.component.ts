@@ -116,7 +116,7 @@ export class FhiTable extends LitElement {
     }
 
     :host {
-      --fhi-table-width: max-content;
+      --fhi-table-width: unset;
 
       --fhi-table-border-style: solid;
       --fhi-table-border-width: var(--fhi-dimension-border-width);

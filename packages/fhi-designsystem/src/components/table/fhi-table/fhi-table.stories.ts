@@ -146,7 +146,6 @@ export const ComplexData: Story = {
 
     <fhi-table
       caption="${ifDefined(args.caption)}"
-      style="--fhi-table-width: auto"
       ?striped="${args.striped}"
       columns="${args.columns}"
     >
@@ -299,9 +298,7 @@ export const WithCheckboxes: Story = {
         <fhi-table-cell></fhi-table-cell>
         <fhi-table-cell> Mal </fhi-table-cell>
         <fhi-table-cell> Dimensjon </fhi-table-cell>
-        <fhi-table-cell>
-          Opprettet
-        </fhi-table-cell>
+        <fhi-table-cell> Opprettet </fhi-table-cell>
         <fhi-table-cell> Opprettet av </fhi-table-cell>
         <fhi-table-cell> </fhi-table-cell>
       </fhi-table-row>
@@ -312,9 +309,7 @@ export const WithCheckboxes: Story = {
         </fhi-table-cell>
         <fhi-table-cell> Geografi 2020 </fhi-table-cell>
         <fhi-table-cell> ATC_Verdi </fhi-table-cell>
-        <fhi-table-cell>
-          10.10.2027
-        </fhi-table-cell>
+        <fhi-table-cell> 10.10.2027 </fhi-table-cell>
         <fhi-table-cell> Pelle Parafin </fhi-table-cell>
         <fhi-table-cell style="--fhi-table-cell-justify-content: end">
           <fhi-button color="neutral" variant="text">

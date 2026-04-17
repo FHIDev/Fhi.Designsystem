@@ -52,7 +52,6 @@ export class FhiTableCell extends LitElement {
       align-items: var(--fhi-table-cell-align-items);
       padding: var(--fhi-spacing-150);
       color: var(--fhi-color-neutral-text-default);
-      min-width: min-content;
       overflow: hidden;
       background: initial;
       flex-wrap: wrap;
