@@ -212,8 +212,8 @@ export default defineConfig(({ mode }) => {
                 dest: './',
               },
               {
-                src: 'ai/skills/*',
-                dest: './skills',
+                src: 'ai/skills/fhi-designsystem/SKILL.md',
+                dest: './ai-tooling',
               },
             ],
           }),
