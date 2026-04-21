@@ -129,6 +129,7 @@ export class FhiTable extends LitElement {
       slot {
         display: block;
         width: var(--fhi-table-width);
+        min-width: min-content;
         border-style: var(--fhi-table-border-style);
         border-width: var(--fhi-table-border-width);
         border-color: var(--fhi-table-border-color);

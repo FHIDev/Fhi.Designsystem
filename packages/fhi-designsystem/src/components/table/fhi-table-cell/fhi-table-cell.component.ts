@@ -52,11 +52,13 @@ export class FhiTableCell extends LitElement {
       align-items: var(--fhi-table-cell-align-items);
       padding: var(--fhi-spacing-150);
       color: var(--fhi-color-neutral-text-default);
-      overflow: hidden;
       background: initial;
-      flex-wrap: wrap;
-      text-overflow: ellipsis;
-      font-variant-numeric: lining-nums proportional-nums;
+
+      slot {
+        display: block;
+        overflow: hidden;
+        text-overflow: ellipsis;
+      }
     }
 
     :host([variant='body']) {
