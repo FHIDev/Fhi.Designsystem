@@ -487,10 +487,10 @@ export class FhiTextInput extends LitElement {
         color: var(--fhi-color-danger-text-subtle);
       }
 
-      input:not([disabled]):not([readonly]):hover ~ slot[name='start'] {
+      input:hover ~ slot[name='start'] {
         color: var(--fhi-color-danger-text-subtle);
       }
-      input:not([disabled]):not([readonly]):focus ~ slot[name='start'] {
+      input:focus ~ slot[name='start'] {
         color: var(--fhi-color-danger-text-subtle);
       }
     }
