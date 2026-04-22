@@ -1,0 +1,33 @@
+import { FhiTable } from './fhi-table/fhi-table.component.ts';
+
+import * as FhiTableStories from './fhi-table/fhi-table.stories.ts';
+import * as FhiTableRowStories from './fhi-table-row/fhi-table-row.stories.ts';
+import * as FhiTableCellStories from './fhi-table-cell/fhi-table-cell.stories.ts';
+
+import { Meta, Primary, Canvas, Controls } from '@storybook/addon-docs/blocks';
+
+import { ApiDefinition } from '../../../.storybook/blocks/api-definition.jsx';
+
+<Meta of={FhiTableStories} />
+
+# Table
+
+Tabell brukes for å presentere data og informasjon på en ryddig måte. Brukeren kan raskt få oversikt og skanne innholdet effektivt.
+
+Tabellen bruker CSS Grid for å definere rader og kolonner, og har støtte for både enkle og mer komplekse tabeller. Det er også mulig å legge til `caption` som fungerer som en tittel for tabellen.
+
+## Passer til
+
+- Å vise lister med større mengder strukturert data på en måte som er lett å lese og sammenligne.
+
+<Canvas of={FhiTableStories.Preview} />
+<Controls of={FhiTableStories.Preview} />
+
+## Eksempler
+<Canvas of={FhiTableStories.ComplexData} />
+<br />
+<Canvas of={FhiTableStories.WithCheckboxes} />
+
+<ApiDefinition of={FhiTableStories.Preview} />
+<ApiDefinition of={FhiTableRowStories.Preview} />
+<ApiDefinition of={FhiTableCellStories.Preview} />
