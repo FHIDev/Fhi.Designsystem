@@ -1,5 +1,11 @@
 # Changelog
 
+## [0.34.0](https://github.com/FHIDev/Fhi/compare/v0.33.1...v0.34.0) (2026-04-13)
+
+### 🚀 Features
+
+* Support Intellisense for web component import-statements  ([#390](https://github.com/FHIDev/Fhi/issues/390)) ([9811032](https://github.com/FHIDev/Fhi/commit/9811032af904dffd62266924e6d36e511985ae43))
+
 ## [0.33.1](https://github.com/FHIDev/Fhi/compare/v0.33.0...v0.33.1) (2026-04-09)
 
 ### 🛠️ Bug Fixes
