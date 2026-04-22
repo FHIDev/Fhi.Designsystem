@@ -204,11 +204,7 @@ export default defineConfig(({ mode }) => {
                 dest: './',
               },
               {
-                src: '.temp/custom-elements.json',
-                dest: './',
-              },
-              {
-                src: '.temp/web-types.json',
+                src: '.temp/*',
                 dest: './',
               },
             ],

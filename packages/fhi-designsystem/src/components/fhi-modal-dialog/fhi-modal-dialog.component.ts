@@ -30,31 +30,27 @@ export class FhiModalDialog extends LitElement {
    * This property is reflected as an attribute and will therefor also change if the user toggles the dialog or
    * if you use the `show()` and `close()` methods.
    * @reflect
-   * @type {boolean}
    */
   @property({ type: Boolean, reflect: true })
-  open: boolean = false;
+  open?: boolean = false;
 
   /**
    * Sets the maximum width of the dialog.
-   * @type {'small' | 'medium'`}
    */
   @property({ type: String, attribute: 'size', reflect: true })
-  size: 'small' | 'medium' = 'medium';
+  size?: 'small' | 'medium' = 'medium';
 
   /**
    * Label for the close button.
-   * @type {string}
    */
   @property({ type: String, attribute: 'close-button-label' })
-  closeButtonLabel: string = '';
+  closeButtonLabel!: string;
 
   /**
    * The heading text of the dialog. This is displayed at the top of the dialog.
-   * @type {string}
    */
   @property({ type: String })
-  heading: string = '';
+  heading!: string;
 
   @query('dialog')
   private _dialog!: HTMLDialogElement;
@@ -70,8 +66,6 @@ export class FhiModalDialog extends LitElement {
   private _mouseDownInsideDialog: boolean = false;
 
   updated(changedProperties: PropertyValues<this>) {
-    super.updated(changedProperties);
-
     if (changedProperties.has('open')) {
       if (this.open) {
         this.show();
@@ -87,24 +81,22 @@ export class FhiModalDialog extends LitElement {
       }
     }
 
-    if (changedProperties.has('closeButtonLabel')) {
-      if (
-        typeof this.closeButtonLabel !== 'string' ||
-        this.closeButtonLabel.length === 0
-      ) {
-        throw new TypeError(
-          'The close-button-label property must be set to a non-empty string. This label must describe the purpose of the close button for accessibility reasons.',
-        );
-      }
+    if (
+      typeof this.closeButtonLabel !== 'string' ||
+      this.closeButtonLabel.length === 0
+    ) {
+      throw new TypeError(
+        'The close-button-label property must be set to a non-empty string. This label must describe the purpose of the close button for accessibility reasons.',
+      );
     }
 
-    if (changedProperties.has('closeButtonLabel')) {
-      if (typeof this.heading !== 'string' || this.heading.length === 0) {
-        throw new TypeError(
-          'The heading property must be set to a non-empty string. This heading describes the purpose of the dialog.',
-        );
-      }
+    if (typeof this.heading !== 'string' || this.heading.length === 0) {
+      throw new TypeError(
+        'The heading property must be set to a non-empty string. This heading describes the purpose of the dialog.',
+      );
     }
+
+    super.updated(changedProperties);
   }
 
   protected firstUpdated(_changedProperties: PropertyValues): void {
@@ -165,7 +157,7 @@ export class FhiModalDialog extends LitElement {
 
   private _dispatchToggleEvent() {
     /**
-     * @type {Event} - Standard DOM event with the type `toggle`
+     * Standard DOM event with the type `toggle`
      * This event is fired whenever the dialog is opened or closed.
      * */
     this.dispatchEvent(
@@ -178,10 +170,10 @@ export class FhiModalDialog extends LitElement {
 
   private _dispatchCloseEvent() {
     /**
-     * @type {Event} - Standard DOM event with the type `close`
+     * Standard DOM event with the type `close`
      * This event is fired whenever the dialog is closed.
      * */
-    this.dispatchEvent(new CloseEvent('close'));
+    this.dispatchEvent(new Event('close'));
   }
 
   private _handleDialogMouseUp(event: MouseEvent) {
