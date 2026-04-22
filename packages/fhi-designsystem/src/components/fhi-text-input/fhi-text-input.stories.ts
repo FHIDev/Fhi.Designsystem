@@ -6,8 +6,12 @@ import { ifDefined } from 'lit/directives/if-defined.js';
 
 import { FhiStorybookMeta } from '../../../.storybook/fhi-meta';
 import { FhiTextInput } from './fhi-text-input.component';
+import { FhiIconUser } from '../icons/fhi-icon-user.component';
+import { FhiIconSearch } from '../icons/fhi-icon-search.component';
 
 new FhiTextInput();
+new FhiIconUser();
+new FhiIconSearch();
 
 const meta: FhiStorybookMeta<FhiTextInput> = {
   title: 'Komponenter/Text Input',
@@ -32,8 +36,25 @@ const meta: FhiStorybookMeta<FhiTextInput> = {
         valueLocation: ['event.target.value'],
       },
     ],
+    slotTypes: [
+      {
+        name: 'start',
+        description: 'Ikon på venstre side i inputfeltet.',
+      },
+      {
+        name: 'end',
+        description: 'Ikon på høyre side i inputfeltet.',
+      },
+    ],
   },
-  decorators: [story => html`<div style="max-width: 400px;">${story()}</div>`],
+  decorators: [
+    story =>
+      html`<div
+        style="max-width: 400px; display: flex; flex-wrap: wrap; gap: 10px;"
+      >
+        ${story()}
+      </div>`,
+  ],
   render: args =>
     html`<fhi-text-input
       label=${ifDefined(args.label)}
@@ -185,6 +206,39 @@ export const WithDisabledLabel: Story = {
     label: 'Navn',
     disabled: true,
   },
+};
+
+export const WithIcon: Story = {
+  name: 'Icon',
+
+  parameters: {
+    controls: {
+      exclude: [
+        'name',
+        'value',
+        'label',
+        'message',
+        'help-text',
+        'placeholder',
+      ],
+    },
+  },
+  render: args => html`
+    <fhi-text-input
+      label="Brukernavn"
+      status=${ifDefined(args.status)}
+      ?disabled=${args.disabled}
+      ?readonly=${args.readonly}
+      ><fhi-icon-user slot="start"></fhi-icon-user
+    ></fhi-text-input>
+    <fhi-text-input
+      label="Søk"
+      status=${ifDefined(args.status)}
+      ?disabled=${args.disabled}
+      ?readonly=${args.readonly}
+      ><fhi-icon-search slot="end"></fhi-icon-search
+    ></fhi-text-input>
+  `,
 };
 
 export default meta;
