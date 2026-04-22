@@ -34,30 +34,42 @@ export class FhiTableCell extends LitElement {
   }
 
   render() {
-    return html`<slot></slot>`;
+    return html`
+      <div class="cell-content">
+        <slot></slot>
+      </div>
+    `;
   }
 
   static styles = css`
     :host {
       --fhi-table-cell-justify-content: unset;
       --fhi-table-cell-align-items: unset;
+
+      --fhi-table-cell-border-style: unset;
+      --fhi-table-cell-border-width: unset;
+      --fhi-table-cell-border-color: unset;
+
+      --fhi-table-cell-background: unset;
     }
 
     :host {
       --fhi-table-cell-justify-content: start;
       --fhi-table-cell-align-items: center;
 
-      display: flex;
-      justify-content: var(--fhi-table-cell-justify-content);
-      align-items: var(--fhi-table-cell-align-items);
+      display: table-cell;
+
       padding: var(--fhi-spacing-150);
       color: var(--fhi-color-neutral-text-default);
-      background: initial;
 
-      slot {
-        display: block;
-        overflow: hidden;
-        text-overflow: ellipsis;
+      border-style: var(--fhi-table-cell-border-style);
+      border-width: var(--fhi-table-cell-border-width);
+      border-color: var(--fhi-table-cell-border-color);
+
+      .cell-content {
+        display: flex;
+        justify-content: var(--fhi-table-cell-justify-content);
+        align-items: var(--fhi-table-cell-align-items);
       }
     }
 

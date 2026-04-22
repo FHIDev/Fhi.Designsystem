@@ -51,15 +51,6 @@ export class FhiTable extends LitElement {
   @property({ type: Boolean, reflect: true })
   striped?: boolean;
 
-  /**
-   * Defines the column structure of the table using CSS Grid syntax. This should be a string that specifies the width of each column, such as '1fr 2fr 1fr' for three columns with different widths.
-   * All `<fhi-table-row>` elements within the table will inherit this column structure.
-   * The number of columns defined here should match the number of `<fhi-table-cell>` elements within a `<fhi-table-row>` for proper alignment.
-   * @type {string}
-   */
-  @property({ type: String, reflect: true })
-  columns: string = '1fr';
-
   connectedCallback(): void {
     super.connectedCallback();
 
@@ -67,10 +58,6 @@ export class FhiTable extends LitElement {
   }
 
   protected update(changedProperties: PropertyValues): void {
-    if (!this.columns) {
-      this.columns = '1fr';
-    }
-
     super.update(changedProperties);
   }
 
@@ -84,15 +71,13 @@ export class FhiTable extends LitElement {
         this.removeAttribute('aria-label');
       }
     }
-
-    if (changedProperties.has('columns')) {
-      this.style.setProperty('--fhi-table-grid-template-columns', this.columns);
-    }
   }
 
   render() {
     return html`
-      <slot></slot>
+      <div class="table-content">
+        <slot></slot>
+      </div>
       ${this.caption
         ? html`<fhi-body class="caption" size="small"
             >${this.caption}</fhi-body
@@ -103,11 +88,7 @@ export class FhiTable extends LitElement {
 
   static styles = css`
     :host {
-      --fhi-table-width: unset;
-
       --fhi-table-caption-width: unset;
-
-      --fhi-table-grid-template-columns: unset;
 
       --fhi-table-border-style: unset;
       --fhi-table-border-width: unset;
@@ -116,25 +97,12 @@ export class FhiTable extends LitElement {
     }
 
     :host {
-      --fhi-table-width: unset;
-
       --fhi-table-border-style: solid;
       --fhi-table-border-width: var(--fhi-dimension-border-width);
       --fhi-table-border-color: var(--fhi-color-neutral-surface-active);
       --fhi-table-border-radius: var(--fhi-border-radius-100);
 
-      display: block;
       color: var(--fhi-color-neutral-text-default);
-
-      slot {
-        display: block;
-        width: var(--fhi-table-width);
-        min-width: min-content;
-        border-style: var(--fhi-table-border-style);
-        border-width: var(--fhi-table-border-width);
-        border-color: var(--fhi-table-border-color);
-        border-radius: var(--fhi-table-border-radius);
-      }
 
       .caption {
         display: block;
@@ -142,23 +110,20 @@ export class FhiTable extends LitElement {
         width: var(--fhi-table-caption-width);
       }
 
-      ::slotted(fhi-table-row) {
-        --fhi-table-row-grid-template-columns: var(
-          --fhi-table-grid-template-columns
-        );
-      }
-
-      ::slotted(fhi-table-row:first-child) {
-        --fhi-table-row-border-radius: var(--fhi-table-border-radius)
-          var(--fhi-table-border-radius) 0 0;
+      .table-content {
+        display: table;
+        width: 100%;
+        overflow: hidden;
+        border-style: var(--fhi-table-border-style);
+        border-width: var(--fhi-table-border-width);
+        border-color: var(--fhi-table-border-color);
+        border-radius: var(--fhi-table-border-radius);
       }
 
       ::slotted(fhi-table-row:last-child) {
         --fhi-table-row-border-style: none none none none;
         --fhi-table-row-border-width: unset;
         --fhi-table-row-border-color: unset;
-        --fhi-table-row-border-radius: 0 0 var(--fhi-table-border-radius)
-          var(--fhi-table-border-radius);
       }
     }
 

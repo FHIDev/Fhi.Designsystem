@@ -57,12 +57,6 @@ const meta: FhiStorybookMeta<FhiTable> = {
       description: 'Om tabellen skal ha vekslende radfarger (stripete effekt).',
       defaultValue: { summary: false },
     },
-    columns: {
-      control: 'text',
-      description:
-        'Definerer kolonnene i tabellen ved hjelp av CSS Grid-syntaks. Dette bør være en streng som spesifiserer antall kolonner og bredden på hver kolonne, for eksempel "1fr 2fr 1fr" for tre kolonner med forskjellige bredder. Alle <fhi-table-row>-elementer i tabellen vil arve denne kolonnedefinisjonen. Antallet kolonner definert her bør samsvare med antallet <fhi-table-cell>-elementer i en <fhi-table-row> for riktig justering.',
-      defaultValue: { summary: '1fr' },
-    },
   },
 };
 
@@ -73,14 +67,9 @@ export const Preview: Story = {
   args: {
     caption: 'Total forekomst: Utvalgte diagnoser, antall',
     striped: false,
-    columns: '3fr 1fr 1fr 1fr',
   },
   render: args => html`
-    <fhi-table
-      caption="${ifDefined(args.caption)}"
-      ?striped="${args.striped}"
-      columns="${args.columns}"
-    >
+    <fhi-table caption="${ifDefined(args.caption)}" ?striped="${args.striped}">
       <fhi-table-row variant="header">
         <fhi-table-cell></fhi-table-cell>
         <fhi-table-cell style="--fhi-table-cell-justify-content: end">
@@ -129,7 +118,6 @@ export const ComplexData: Story = {
   tags: ['!dev'],
   args: {
     striped: true,
-    columns: '2fr repeat(4, 1fr)',
   },
   render: args => html`
     <fhi-title size="large" level="2">
@@ -144,11 +132,7 @@ export const ComplexData: Story = {
     </fhi-body>
     <br />
 
-    <fhi-table
-      caption="${ifDefined(args.caption)}"
-      ?striped="${args.striped}"
-      columns="${args.columns}"
-    >
+    <fhi-table caption="${ifDefined(args.caption)}" ?striped="${args.striped}">
       <fhi-table-row variant="header">
         <fhi-table-cell> Oslo </fhi-table-cell>
         <fhi-table-cell style="--fhi-table-cell-justify-content: end">
@@ -220,7 +204,6 @@ export const ComplexData: Story = {
       caption="${ifDefined(args.caption)}"
       style="--fhi-table-width: auto"
       ?striped="${args.striped}"
-      columns="${args.columns}"
     >
       <fhi-table-row variant="header">
         <fhi-table-cell> Østfold </fhi-table-cell>
@@ -286,14 +269,9 @@ export const WithCheckboxes: Story = {
   args: {
     caption: 'Avkrysningsbokser.',
     striped: false,
-    columns: '2.5rem 4fr 3fr 2fr 2fr 6fr',
   },
   render: args => html`
-    <fhi-table
-      caption="${ifDefined(args.caption)}"
-      ?striped="${args.striped}"
-      columns="${args.columns}"
-    >
+    <fhi-table caption="${ifDefined(args.caption)}" ?striped="${args.striped}">
       <fhi-table-row variant="header">
         <fhi-table-cell></fhi-table-cell>
         <fhi-table-cell> Mal </fhi-table-cell>
