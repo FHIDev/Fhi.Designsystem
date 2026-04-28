@@ -13,7 +13,7 @@ export const FhiTableRowSelector = 'fhi-table-row';
  * The `<fhi-table-row>` component is an implementation of a table row according to the FHI Design System guidelines.
  * It allows users to properly display data within a `<fhi-table>` using `<fhi-table-cell>` components.
  *
- * For various reasons, the `<fhi-table-row>` component does not use the native HTML `<tr>` element. Instead, it relies on CSS Grid to achieve the desired layout and styling.
+ * The `<fhi-table-row>` component does not use the native HTML `<tr>` element. Instead, it relies on CSS Grid to achieve the desired layout and styling.
  *
  * @tag fhi-table-row
  * @element fhi-table-row

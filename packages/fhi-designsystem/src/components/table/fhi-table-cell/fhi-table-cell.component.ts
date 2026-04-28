@@ -11,7 +11,7 @@ export const FhiTableCellSelector = 'fhi-table-cell';
  * The `<fhi-table-cell>` component is an implementation of a table cell according to the FHI Design System guidelines.
  * It allows users to properly display data within a `<fhi-table-row>`.
  *
- * For various reasons, the `<fhi-table-cell>` component does not use the native HTML `<td>` or `<th>` elements. Instead, it relies on CSS Grid to achieve the desired layout and styling.
+ * The `<fhi-table-cell>` component does not use the native HTML `<td>` or `<th>` elements. Instead, it relies on CSS Grid to achieve the desired layout and styling.
  *
  * @tag fhi-table-cell
  * @element fhi-table-cell
