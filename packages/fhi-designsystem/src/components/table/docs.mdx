@@ -1,0 +1,33 @@
+import { FhiDataTable } from './fhi-data-table/fhi-data-table.component.ts';
+
+import * as FhiDataTableStories from './fhi-data-table/fhi-data-table.stories.ts';
+import * as FhiDataTableRowStories from './fhi-data-table-row/fhi-data-table-row.stories.ts';
+import * as FhiDataTableCellStories from './fhi-data-table-cell/fhi-data-table-cell.stories.ts';
+
+import { Meta, Primary, Canvas, Controls } from '@storybook/addon-docs/blocks';
+
+import { ApiDefinition } from '../../../.storybook/blocks/api-definition.jsx';
+
+<Meta of={FhiDataTableStories} />
+
+# Data Table
+
+Data babell brukes for å presentere data og informasjon på en ryddig måte. Brukeren kan raskt få oversikt og skanne innholdet effektivt.
+
+Tabellen består av rader med celler som inneholder data. Rader defineres med `<fhi-data-table-row>`, og celler med `<fhi-data-table-cell>`.
+
+## Passer til
+
+- Å vise lister med større mengder strukturert data på en måte som er lett å lese og sammenligne.
+
+<Canvas of={FhiDataTableStories.Preview} />
+<Controls of={FhiDataTableStories.Preview} />
+
+## Eksempler
+<Canvas of={FhiDataTableStories.ComplexData} />
+<br />
+<Canvas of={FhiDataTableStories.WithCheckboxes} />
+
+<ApiDefinition of={FhiDataTableStories.Preview} />
+<ApiDefinition of={FhiDataTableRowStories.Preview} />
+<ApiDefinition of={FhiDataTableCellStories.Preview} />
