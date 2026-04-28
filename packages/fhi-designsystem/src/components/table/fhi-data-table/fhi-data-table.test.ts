@@ -1,15 +1,15 @@
 import { fixture, expect } from '@open-wc/testing';
 import { html } from 'lit/static-html.js';
-import { FhiTable } from './fhi-table.component';
+import { FhiDataTable } from './fhi-data-table.component';
 
-describe('fhi-table', () => {
-  new FhiTable();
+describe('fhi-data-table', () => {
+  new FhiDataTable();
 
-  let component: FhiTable;
+  let component: FhiDataTable;
 
   describe('accessibility', () => {
     beforeEach(async () => {
-      component = await fixture(html`<fhi-table></fhi-table>`);
+      component = await fixture(html`<fhi-data-table></fhi-data-table>`);
     });
 
     it('is accessible', async () => {
@@ -31,7 +31,7 @@ describe('fhi-table', () => {
   describe('setting attributes', () => {
     it('has an attribute to set the caption', async () => {
       component = await fixture(
-        html`<fhi-table caption="Table Caption"></fhi-table>`,
+        html`<fhi-data-table caption="Table Caption"></fhi-data-table>`,
       );
 
       expect(component.getAttribute('caption')).to.equal('Table Caption');
@@ -39,19 +39,12 @@ describe('fhi-table', () => {
     });
 
     it('has an attribute to set striped', async () => {
-      component = await fixture(html`<fhi-table striped></fhi-table>`);
+      component = await fixture(
+        html`<fhi-data-table striped></fhi-data-table>`,
+      );
 
       expect(component.hasAttribute('striped')).to.equal(true);
       expect(component.striped).to.equal(true);
-    });
-
-    it('has an attribute to set columns', async () => {
-      component = await fixture(
-        html`<fhi-table columns="1fr 2fr 1fr"></fhi-table>`,
-      );
-
-      expect(component.getAttribute('columns')).to.equal('1fr 2fr 1fr');
-      expect(component.columns).to.equal('1fr 2fr 1fr');
     });
   });
 });

@@ -1,31 +1,33 @@
 import { fixture, expect } from '@open-wc/testing';
 import { html } from 'lit/static-html.js';
-import { FhiTableCell } from './fhi-table-cell.component';
-import { FhiTableRow } from '../fhi-table-row/fhi-table-row.component';
-import { FhiTable } from '../fhi-table/fhi-table.component';
+import { FhiDataTableCell } from './fhi-data-table-cell.component';
+import { FhiDataTableRow } from '../fhi-data-table-row/fhi-data-table-row.component';
+import { FhiDataTable } from '../fhi-data-table/fhi-data-table.component';
 
-describe('fhi-table-cell', () => {
-  new FhiTableCell();
-  new FhiTableRow();
-  new FhiTable();
+describe('fhi-data-table-cell', () => {
+  new FhiDataTableCell();
+  new FhiDataTableRow();
+  new FhiDataTable();
 
-  let component: FhiTableCell;
+  let component: FhiDataTableCell;
 
   describe('accessibility', () => {
     beforeEach(async () => {
-      component = await fixture(html`<fhi-table-cell></fhi-table-cell>`);
+      component = await fixture(
+        html`<fhi-data-table-cell></fhi-data-table-cell>`,
+      );
     });
 
     it('is accessible when it has a correct parent structure', async () => {
       const table = await fixture(
-        html` <fhi-table>
-          <fhi-table-row>
-            <fhi-table-cell></fhi-table-cell>
-          </fhi-table-row>
-        </fhi-table>`,
+        html` <fhi-data-table>
+          <fhi-data-table-row>
+            <fhi-data-table-cell></fhi-data-table-cell>
+          </fhi-data-table-row>
+        </fhi-data-table>`,
       );
 
-      const cell = table.querySelector('fhi-table-cell');
+      const cell = table.querySelector('fhi-data-table-cell');
       await expect(cell).to.be.accessible();
     });
 
@@ -48,7 +50,7 @@ describe('fhi-table-cell', () => {
   describe('setting attributes', () => {
     it('has an attribute to set the variant', async () => {
       component = await fixture(
-        html`<fhi-table-cell variant="header"></fhi-table-cell>`,
+        html`<fhi-data-table-cell variant="header"></fhi-data-table-cell>`,
       );
 
       expect(component.getAttribute('variant')).to.equal('header');

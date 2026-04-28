@@ -1,15 +1,15 @@
 import type { StoryObj } from '@storybook/web-components-vite';
 import { html } from 'lit';
-import { FhiTableCell } from './fhi-table-cell.component';
+import { FhiDataTableCell } from './fhi-data-table-cell.component';
 import { ifDefined } from 'lit/directives/if-defined.js';
 
 import { FhiStorybookMeta } from '../../../../.storybook/fhi-meta';
 
-new FhiTableCell();
+new FhiDataTableCell();
 
-const meta: FhiStorybookMeta<FhiTableCell> = {
+const meta: FhiStorybookMeta<FhiDataTableCell> = {
   title: 'Komponenter/Table/Cell',
-  component: 'fhi-table-cell',
+  component: 'fhi-data-table-cell',
   parameters: {
     slotTypes: [
       {
@@ -21,21 +21,21 @@ const meta: FhiStorybookMeta<FhiTableCell> = {
   },
   decorators: [],
   render: args =>
-    html`<fhi-table-cell variant="${ifDefined(args.variant)}">
+    html`<fhi-data-table-cell variant="${ifDefined(args.variant)}">
       374 964
-    </fhi-table-cell>`,
+    </fhi-data-table-cell>`,
   argTypes: {
     variant: {
       control: 'select',
       options: ['header', 'body'],
       description:
-        'Definerer om cellen er en header eller body celle. Når <fhi-table-cell> brukes i en header <fhi-table-row>, vil variant automatisk bli satt til header.',
+        'Definerer om cellen er en header eller body celle. Når <fhi-data-table-cell> brukes i en header <fhi-data-table-row>, vil variant automatisk bli satt til header.',
       defaultValue: { summary: 'body' },
     },
   },
 };
 
-type Story = StoryObj<FhiTableCell>;
+type Story = StoryObj<FhiDataTableCell>;
 
 export const Preview: Story = {
   tags: ['!dev'],

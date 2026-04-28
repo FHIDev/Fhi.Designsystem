@@ -1,23 +1,23 @@
 import { html, css, LitElement, PropertyValues } from 'lit';
 import { customElement, property } from 'lit/decorators.js';
 
-export const FhiTableCellSelector = 'fhi-table-cell';
+export const FhiDataTableCellSelector = 'fhi-data-table-cell';
 
 /**
  * ## FHI Table Cell
  *
- * {@link https://designsystem.fhi.no/?path=/docs/komponenter-table--docs}
+ * {@link https://designsystem.fhi.no/?path=/docs/komponenter-data-table--docs}
  *
- * The `<fhi-table-cell>` component is an implementation of a table cell according to the FHI Design System guidelines.
- * It allows users to properly display data within a `<fhi-table-row>`.
+ * The `<fhi-data-table-cell>` component is an implementation of a table cell according to the FHI Design System guidelines.
+ * It allows users to properly display data within a `<fhi-data-table-row>`.
  *
- * For various reasons, the `<fhi-table-cell>` component does not use the native HTML `<td>` or `<th>` elements. Instead, it relies on CSS Grid to achieve the desired layout and styling.
+ * For various reasons, the `<fhi-data-table-cell>` component does not use the native HTML `<td>` or `<th>` elements. Instead, it relies on CSS Grid to achieve the desired layout and styling.
  *
- * @tag fhi-table-cell
- * @element fhi-table-cell
+ * @tag fhi-data-table-cell
+ * @element fhi-data-table-cell
  */
-@customElement(FhiTableCellSelector)
-export class FhiTableCell extends LitElement {
+@customElement(FhiDataTableCellSelector)
+export class FhiDataTableCell extends LitElement {
   /**
    * Defines the variant of the table cell, which can be either 'header' or 'body'. This determines the styling and role of the cell within the table.
    * @type {'header' | 'body'}
@@ -43,33 +43,31 @@ export class FhiTableCell extends LitElement {
 
   static styles = css`
     :host {
-      --fhi-table-cell-justify-content: unset;
-      --fhi-table-cell-align-items: unset;
+      --fhi-data-table-cell-justify-content: unset;
+      --fhi-data-table-cell-align-items: unset;
 
-      --fhi-table-cell-border-style: unset;
-      --fhi-table-cell-border-width: unset;
-      --fhi-table-cell-border-color: unset;
-
-      --fhi-table-cell-background: unset;
+      --fhi-data-table-cell-border-style: unset;
+      --fhi-data-table-cell-border-width: unset;
+      --fhi-data-table-cell-border-color: unset;
     }
 
     :host {
-      --fhi-table-cell-justify-content: start;
-      --fhi-table-cell-align-items: center;
+      --fhi-data-table-cell-justify-content: start;
+      --fhi-data-table-cell-align-items: center;
 
       display: table-cell;
 
       padding: var(--fhi-spacing-150);
       color: var(--fhi-color-neutral-text-default);
 
-      border-style: var(--fhi-table-cell-border-style);
-      border-width: var(--fhi-table-cell-border-width);
-      border-color: var(--fhi-table-cell-border-color);
+      border-style: var(--fhi-data-table-cell-border-style);
+      border-width: var(--fhi-data-table-cell-border-width);
+      border-color: var(--fhi-data-table-cell-border-color);
 
       .cell-content {
         display: flex;
-        justify-content: var(--fhi-table-cell-justify-content);
-        align-items: var(--fhi-table-cell-align-items);
+        justify-content: var(--fhi-data-table-cell-justify-content);
+        align-items: var(--fhi-data-table-cell-align-items);
       }
     }
 

@@ -1,33 +1,33 @@
-import { FhiTable } from './fhi-table/fhi-table.component.ts';
+import { FhiDataTable } from './fhi-data-table/fhi-data-table.component.ts';
 
-import * as FhiTableStories from './fhi-table/fhi-table.stories.ts';
-import * as FhiTableRowStories from './fhi-table-row/fhi-table-row.stories.ts';
-import * as FhiTableCellStories from './fhi-table-cell/fhi-table-cell.stories.ts';
+import * as FhiDataTableStories from './fhi-data-table/fhi-data-table.stories.ts';
+import * as FhiDataTableRowStories from './fhi-data-table-row/fhi-data-table-row.stories.ts';
+import * as FhiDataTableCellStories from './fhi-data-table-cell/fhi-data-table-cell.stories.ts';
 
 import { Meta, Primary, Canvas, Controls } from '@storybook/addon-docs/blocks';
 
 import { ApiDefinition } from '../../../.storybook/blocks/api-definition.jsx';
 
-<Meta of={FhiTableStories} />
+<Meta of={FhiDataTableStories} />
 
-# Table
+# Data Table
 
-Tabell brukes for å presentere data og informasjon på en ryddig måte. Brukeren kan raskt få oversikt og skanne innholdet effektivt.
+Data babell brukes for å presentere data og informasjon på en ryddig måte. Brukeren kan raskt få oversikt og skanne innholdet effektivt.
 
-Tabellen bruker CSS Grid for å definere rader og kolonner, og har støtte for både enkle og mer komplekse tabeller. Det er også mulig å legge til `caption` som fungerer som en tittel for tabellen.
+Tabellen består av rader med celler som inneholder data. Rader defineres med `<fhi-data-table-row>`, og celler med `<fhi-data-table-cell>`.
 
 ## Passer til
 
 - Å vise lister med større mengder strukturert data på en måte som er lett å lese og sammenligne.
 
-<Canvas of={FhiTableStories.Preview} />
-<Controls of={FhiTableStories.Preview} />
+<Canvas of={FhiDataTableStories.Preview} />
+<Controls of={FhiDataTableStories.Preview} />
 
 ## Eksempler
-<Canvas of={FhiTableStories.ComplexData} />
+<Canvas of={FhiDataTableStories.ComplexData} />
 <br />
-<Canvas of={FhiTableStories.WithCheckboxes} />
+<Canvas of={FhiDataTableStories.WithCheckboxes} />
 
-<ApiDefinition of={FhiTableStories.Preview} />
-<ApiDefinition of={FhiTableRowStories.Preview} />
-<ApiDefinition of={FhiTableCellStories.Preview} />
+<ApiDefinition of={FhiDataTableStories.Preview} />
+<ApiDefinition of={FhiDataTableRowStories.Preview} />
+<ApiDefinition of={FhiDataTableCellStories.Preview} />
