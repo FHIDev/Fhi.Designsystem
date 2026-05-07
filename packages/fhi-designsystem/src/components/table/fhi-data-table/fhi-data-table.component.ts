@@ -90,15 +90,13 @@ export class FhiDataTable extends LitElement {
     :host {
       --fhi-data-table-caption-width: unset;
 
-      --fhi-data-table-border-style: unset;
-      --fhi-data-table-border-width: unset;
       --fhi-data-table-border-color: unset;
       --fhi-data-table-border-radius: unset;
+
+      --fhi-data-table-background: unset;
     }
 
     :host {
-      --fhi-data-table-border-style: solid;
-      --fhi-data-table-border-width: var(--fhi-dimension-border-width);
       --fhi-data-table-border-color: var(--fhi-color-neutral-surface-active);
       --fhi-data-table-border-radius: var(--fhi-border-radius-100);
 
@@ -114,10 +112,10 @@ export class FhiDataTable extends LitElement {
         display: table;
         width: 100%;
         overflow: hidden;
-        border-style: var(--fhi-data-table-border-style);
-        border-width: var(--fhi-data-table-border-width);
-        border-color: var(--fhi-data-table-border-color);
+        border: var(--fhi-dimension-border-width) solid
+          var(--fhi-data-table-border-color);
         border-radius: var(--fhi-data-table-border-radius);
+        background: var(--fhi-data-table-background);
       }
 
       ::slotted(fhi-data-table-row:last-child) {
