@@ -161,13 +161,13 @@ export const ComplexData: Story = {
           685
         </fhi-data-table-cell>
         <fhi-data-table-cell style="--fhi-data-table-cell-justify-content: end">
-          -
+          643
         </fhi-data-table-cell>
         <fhi-data-table-cell style="--fhi-data-table-cell-justify-content: end">
-          -
+          710
         </fhi-data-table-cell>
         <fhi-data-table-cell style="--fhi-data-table-cell-justify-content: end">
-          -
+          —
         </fhi-data-table-cell>
       </fhi-data-table-row>
 
@@ -177,13 +177,13 @@ export const ComplexData: Story = {
           662
         </fhi-data-table-cell>
         <fhi-data-table-cell style="--fhi-data-table-cell-justify-content: end">
-          -
+          626
         </fhi-data-table-cell>
         <fhi-data-table-cell style="--fhi-data-table-cell-justify-content: end">
-          -
+          688
         </fhi-data-table-cell>
         <fhi-data-table-cell style="--fhi-data-table-cell-justify-content: end">
-          -
+          —
         </fhi-data-table-cell>
       </fhi-data-table-row>
 
@@ -193,13 +193,13 @@ export const ComplexData: Story = {
           23
         </fhi-data-table-cell>
         <fhi-data-table-cell style="--fhi-data-table-cell-justify-content: end">
-          -
+          17
         </fhi-data-table-cell>
         <fhi-data-table-cell style="--fhi-data-table-cell-justify-content: end">
-          -
+          22
         </fhi-data-table-cell>
         <fhi-data-table-cell style="--fhi-data-table-cell-justify-content: end">
-          -
+          —
         </fhi-data-table-cell>
       </fhi-data-table-row>
     </fhi-data-table>
