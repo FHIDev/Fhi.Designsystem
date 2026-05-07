@@ -7,6 +7,7 @@ import { FhiDataTableRow } from '../fhi-data-table-row/fhi-data-table-row.compon
 
 import { FhiCheckbox } from '../../fhi-checkbox/fhi-checkbox.component';
 import { FhiButton } from '../../fhi-button/fhi-button.component';
+import { FhiTag } from '../../fhi-tag/fhi-tag.component';
 
 import { FhiDisplay } from '../../typography/fhi-display/fhi-display.component';
 import { FhiTitle } from '../../typography/fhi-title/fhi-title.component';
@@ -22,8 +23,11 @@ import { FhiStorybookMeta } from '../../../../.storybook/fhi-meta';
 new FhiDataTable();
 new FhiDataTableCell();
 new FhiDataTableRow();
+
 new FhiCheckbox();
 new FhiButton();
+new FhiTag();
+
 new FhiIconEye();
 new FhiIconDownload();
 new FhiIconTrash();
@@ -117,10 +121,48 @@ export const Preview: Story = {
   `,
 };
 
+export const Simple: Story = {
+  tags: [],
+  args: {},
+  render: args => html`
+    <fhi-data-table
+      caption="${ifDefined(args.caption)}"
+      ?striped="${args.striped}"
+    >
+      <fhi-data-table-row variant="header">
+        <fhi-data-table-cell></fhi-data-table-cell>
+        <fhi-data-table-cell style="--fhi-data-table-cell-justify-content: end">
+          2021
+        </fhi-data-table-cell>
+        <fhi-data-table-cell style="--fhi-data-table-cell-justify-content: end">
+          2022
+        </fhi-data-table-cell>
+        <fhi-data-table-cell style="--fhi-data-table-cell-justify-content: end">
+          2023
+        </fhi-data-table-cell>
+      </fhi-data-table-row>
+
+      <fhi-data-table-row>
+        <fhi-data-table-cell> Pasienter totalt </fhi-data-table-cell>
+        <fhi-data-table-cell style="--fhi-data-table-cell-justify-content: end">
+          374 964
+        </fhi-data-table-cell>
+        <fhi-data-table-cell style="--fhi-data-table-cell-justify-content: end">
+          383 347
+        </fhi-data-table-cell>
+        <fhi-data-table-cell style="--fhi-data-table-cell-justify-content: end">
+          392 106
+        </fhi-data-table-cell>
+      </fhi-data-table-row>
+    </fhi-data-table>
+  `,
+};
+
 export const ComplexData: Story = {
   tags: ['!dev'],
   args: {
     striped: true,
+    caption: 'Kilde: Medisinsk fødselsregister (MFR)',
   },
   render: args => html`
     <fhi-title size="large" level="2">
@@ -209,7 +251,6 @@ export const ComplexData: Story = {
 export const WithCheckboxes: Story = {
   tags: ['!dev'],
   args: {
-    caption: 'Avkrysningsbokser.',
     striped: false,
   },
   render: args => html`
@@ -223,6 +264,7 @@ export const WithCheckboxes: Story = {
         <fhi-data-table-cell> Dimensjon </fhi-data-table-cell>
         <fhi-data-table-cell> Opprettet </fhi-data-table-cell>
         <fhi-data-table-cell> Opprettet av </fhi-data-table-cell>
+        <fhi-data-table-cell> Status </fhi-data-table-cell>
         <fhi-data-table-cell> </fhi-data-table-cell>
       </fhi-data-table-row>
 
@@ -234,6 +276,61 @@ export const WithCheckboxes: Story = {
         <fhi-data-table-cell> ATC_Verdi </fhi-data-table-cell>
         <fhi-data-table-cell> 10.10.2027 </fhi-data-table-cell>
         <fhi-data-table-cell> Pelle Parafin </fhi-data-table-cell>
+        <fhi-data-table-cell>
+          <fhi-tag>Utkast</fhi-tag>
+        </fhi-data-table-cell>
+        <fhi-data-table-cell style="--fhi-data-table-cell-justify-content: end">
+          <fhi-button color="neutral" variant="text">
+            <fhi-icon-download></fhi-icon-download>
+            Eksportèr
+          </fhi-button>
+          <fhi-button color="neutral" variant="text">
+            <fhi-icon-eye></fhi-icon-eye>
+            Vis
+          </fhi-button>
+          <fhi-button color="neutral" variant="text">
+            <fhi-icon-trash></fhi-icon-trash>
+          </fhi-button>
+        </fhi-data-table-cell>
+      </fhi-data-table-row>
+
+      <fhi-data-table-row>
+        <fhi-data-table-cell>
+          <fhi-checkbox></fhi-checkbox>
+        </fhi-data-table-cell>
+        <fhi-data-table-cell> Master Oppgave </fhi-data-table-cell>
+        <fhi-data-table-cell> ATC_Verdi </fhi-data-table-cell>
+        <fhi-data-table-cell> 04.12.2027 </fhi-data-table-cell>
+        <fhi-data-table-cell> Tett Klovn </fhi-data-table-cell>
+        <fhi-data-table-cell>
+          <fhi-tag color="success">Publisert</fhi-tag>
+        </fhi-data-table-cell>
+        <fhi-data-table-cell style="--fhi-data-table-cell-justify-content: end">
+          <fhi-button color="neutral" variant="text">
+            <fhi-icon-download></fhi-icon-download>
+            Eksportèr
+          </fhi-button>
+          <fhi-button color="neutral" variant="text">
+            <fhi-icon-eye></fhi-icon-eye>
+            Vis
+          </fhi-button>
+          <fhi-button color="neutral" variant="text">
+            <fhi-icon-trash></fhi-icon-trash>
+          </fhi-button>
+        </fhi-data-table-cell>
+      </fhi-data-table-row>
+
+      <fhi-data-table-row>
+        <fhi-data-table-cell>
+          <fhi-checkbox></fhi-checkbox>
+        </fhi-data-table-cell>
+        <fhi-data-table-cell> Medisin - Vest </fhi-data-table-cell>
+        <fhi-data-table-cell> ATC_Verdi </fhi-data-table-cell>
+        <fhi-data-table-cell> 01.05.2026 </fhi-data-table-cell>
+        <fhi-data-table-cell> Ujevn AI </fhi-data-table-cell>
+        <fhi-data-table-cell>
+          <fhi-tag>Utkast</fhi-tag>
+        </fhi-data-table-cell>
         <fhi-data-table-cell style="--fhi-data-table-cell-justify-content: end">
           <fhi-button color="neutral" variant="text">
             <fhi-icon-download></fhi-icon-download>

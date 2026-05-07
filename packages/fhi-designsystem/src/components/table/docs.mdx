@@ -23,9 +23,20 @@ Tabellen (`<fhi-data-table>`) bygges opp av rader (`<fhi-data-table-row>`) med c
 <Canvas of={FhiDataTableStories.Preview} />
 <Controls of={FhiDataTableStories.Preview} />
 
-## Eksempler
+## Eksempler og bruk
+
+Tabellen (`<fhi-data-table>`) bygges opp av rader (`<fhi-data-table-row>`) med celler (`<fhi-data-table-cell>`).
+
+Gir du første rad `variant="header"`, vil cellene arve dette og få riktig overskriftstil.
+
+<Canvas of={FhiDataTableStories.Simple} />
+
+Bruk `striped` for å gi tabellen sebrastriper, noe som kan hjelpe brukernes øyne å følge radene. 
+
 <Canvas of={FhiDataTableStories.ComplexData} />
-<br />
+
+Cellene kan inneholde alt slags innhold, som avkrysningsbokser, tagger og handlinger.  
+
 <Canvas of={FhiDataTableStories.WithCheckboxes} />
 
 <ApiDefinition of={FhiDataTableStories.Preview} />
