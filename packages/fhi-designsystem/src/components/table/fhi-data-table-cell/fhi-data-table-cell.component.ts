@@ -56,6 +56,7 @@ export class FhiDataTableCell extends LitElement {
       --fhi-data-table-cell-align-items: center;
 
       display: table-cell;
+      vertical-align: middle;
 
       padding: var(--fhi-spacing-150);
       color: var(--fhi-color-neutral-text-default);
@@ -66,8 +67,8 @@ export class FhiDataTableCell extends LitElement {
 
       .cell-content {
         display: flex;
-        justify-content: var(--fhi-data-table-cell-justify-content);
         align-items: var(--fhi-data-table-cell-align-items);
+        justify-content: var(--fhi-data-table-cell-justify-content);
       }
     }
 
