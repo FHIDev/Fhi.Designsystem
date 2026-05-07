@@ -88,8 +88,6 @@ export class FhiDataTable extends LitElement {
 
   static styles = css`
     :host {
-      --fhi-data-table-caption-width: unset;
-
       --fhi-data-table-border-color: unset;
       --fhi-data-table-border-radius: unset;
 
@@ -105,7 +103,6 @@ export class FhiDataTable extends LitElement {
       .caption {
         display: block;
         padding: var(--fhi-spacing-150);
-        width: var(--fhi-data-table-caption-width);
       }
 
       .table-content {
