@@ -13,7 +13,9 @@ export type TitleLevel = 1 | 2 | 3 | 4 | 5 | 6;
  *
  * The `<fhi-title>` component is used to display smaller, less prominent title text in accordance with the FHI Design System guidelines.
  *
- * For larger, more prominent headline text, use the `<fhi-display>` or `<fhi-headline>` components instead.
+ * For standard headline text, use the `<fhi-headline>` component instead.
+ *
+ * For larger, more prominent headline text, use the `<fhi-display>` component instead.
  *
  * Use this component instead of the standard HTML heading elements, `<h1>` - `<h6>`, to ensure consistent styling across your application.
  *
