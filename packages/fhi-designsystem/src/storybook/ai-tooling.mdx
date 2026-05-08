@@ -1,26 +1,25 @@
 import { Meta } from '@storybook/addon-docs/blocks';
 
-<Meta title="KI Verktøy" />
+<Meta title="KI-verktøy" />
 
 # Agent Skills
 
 <div className="callout-warning">
   Resultatet av å bruke `SKILL.md`-filen vil variere avhengig av hvilket KI-verktøy du bruker, hvordan prosjektet ditt er satt opp, og hvilke innstillinger du har satt.
-  Det er derfor viktig å teste og evaluere resultatet nøye for å sikre at det oppfyller dine behov og forventninger.
-
-  Alltid gjør en grundig gjennomgang av koden som genereres av ditt KI-verktøy og henvend deg til dokumentasjonen for designsystemet for å sikre at du bruker komponentene riktig og i tråd med beste praksis.
+  Det er derfor viktig å teste og evaluere resultatet nøye, for å sikre at det oppfyller dine behov og forventninger.
+  Gå alltid gjennom koden som genereres og se til dokumentasjonen for designsystemet for å sikre at du bruker komponentene riktig, i tråd med god praksis.
 </div>
 
 FHI Designsystemet tilbyr en [Agent Skill](https://agentskills.io/home) for bruk i KI-verktøy som Github Copilot.
 
 `SKILL.md`-filen inneholder enkle instruksjoner som hjelper KI-verktøyet å forstå hvordan det skal bruke designsystemet og hvor dokumentasjonen finnes.
-Denne filen er nyttig for utviklere som ønsker å dra nytte av KI-assistenter sammen med FHI Designsystemet.
+Denne filen er nyttig for utviklere som ønsker å dra nytte av KI-assistenter sammen med FHI Designsystem.
 
-Filen ligger i npm pakken under `@folkehelseinstituttet/designsystem/ai-tooling/SKILL.md`.
+Filen ligger i npm-pakken under `@folkehelseinstituttet/designsystem/ai-tooling/SKILL.md`.
 
-Skillen er testet til å fungere med GPT 5.4 og Claude Sonnet 4.6.
+Skill-en er testet til å fungere med GPT 5.4 og Claude Sonnet 4.6.
 
-Bruker du VSCode med Copilot, skal du kopiere `SKILL.md`-filen inn til `.github/skills/fhi-designsystem/` i prosjektet ditt. Da vil Copilot automatisk finne filen.
+Bruker du VSCode med Copilot, kopierer du `SKILL.md`-filen inn til `.github/skills/fhi-designsystem/` i prosjektet ditt. Da vil Copilot automatisk finne filen.
 Bruker du en annen IDE bør du sjekke dokumentasjonen for det KI-verktøyet du bruker for å se hvor det forventer at `SKILL.md`-filen skal være plassert.
 
 <style>{`
