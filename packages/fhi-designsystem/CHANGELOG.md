@@ -1,5 +1,15 @@
 # Changelog
 
+## [0.35.0](https://github.com/FHIDev/Fhi/compare/v0.34.0...v0.35.0) (2026-05-08)
+
+### 🚀 Features
+
+* Support for icons in text input ([#389](https://github.com/FHIDev/Fhi/issues/389)) ([cf802a0](https://github.com/FHIDev/Fhi/commit/cf802a0f5e02151058af2f975731b0c779aaa2ec))
+
+### 🛠️ Bug Fixes
+
+* Fix behaviour of input width ([#419](https://github.com/FHIDev/Fhi/issues/419)) ([851e2f3](https://github.com/FHIDev/Fhi/commit/851e2f36231d741f47528f919ef5b44006cb6d94))
+
 ## [0.34.0](https://github.com/FHIDev/Fhi/compare/v0.33.1...v0.34.0) (2026-04-13)
 
 ### 🚀 Features
