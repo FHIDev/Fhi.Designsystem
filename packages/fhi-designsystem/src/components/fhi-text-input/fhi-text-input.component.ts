@@ -357,6 +357,7 @@ export class FhiTextInput extends LitElement {
 
       input {
         box-sizing: border-box;
+        flex: 1 1 auto;
         height: var(--dimension-input-height);
         border: var(--dimension-input-border-width) solid
           var(--color-input-border);
@@ -416,7 +417,7 @@ export class FhiTextInput extends LitElement {
 
       .input-container {
         position: relative;
-        width: fit-content;
+        display: flex;
       }
 
       slot[name='start'] {
