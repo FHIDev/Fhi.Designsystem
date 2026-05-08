@@ -11,7 +11,10 @@ export type TitleLevel = 1 | 2 | 3 | 4 | 5 | 6;
  *
  * {@link https://designsystem.fhi.no/?path=/story/komponenter-typography-title--preview}
  *
- * The `<fhi-title>` component is used to display title text in accordance with the FHI Design System guidelines.
+ * The `<fhi-title>` component is used to display smaller, less prominent title text in accordance with the FHI Design System guidelines.
+ *
+ * For larger, more prominent headline text, use the `<fhi-display>` or `<fhi-headline>` components instead.
+ *
  * Use this component instead of the standard HTML heading elements, `<h1>` - `<h6>`, to ensure consistent styling across your application.
  *
  * @tag fhi-title
