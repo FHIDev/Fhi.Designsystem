@@ -19,6 +19,7 @@ export type FhiDateValue = `${number}-${number}-${number}` | undefined; // YYYY-
  *
  * @tag fhi-date-input
  * @element fhi-date-input
+ *
  */
 @customElement(FhiDateInputSelector)
 export class FhiDateInput extends LitElement {
