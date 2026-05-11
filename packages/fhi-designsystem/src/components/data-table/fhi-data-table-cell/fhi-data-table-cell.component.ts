@@ -82,8 +82,6 @@ export class FhiDataTableCell extends LitElement {
     }
 
     :host([variant='header']) {
-      white-space: nowrap;
-
       letter-spacing: var(--fhi-typography-label-medium-letter-spacing);
 
       font: var(--fhi-typography-label-medium-font-weight)
