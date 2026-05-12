@@ -82,11 +82,11 @@ export class FhiDataTableCell extends LitElement {
     }
 
     :host([variant='header']) {
-      letter-spacing: var(--fhi-typography-label-medium-letter-spacing);
+      letter-spacing: var(--fhi-typography-title-medium-letter-spacing);
 
-      font: var(--fhi-typography-label-medium-font-weight)
-        var(--fhi-typography-label-medium-font-size) /
-        var(--fhi-typography-label-medium-line-height)
+      font: var(--fhi-typography-title-medium-font-weight)
+        var(--fhi-typography-title-medium-font-size) /
+        var(--fhi-typography-title-medium-line-height)
         var(--fhi-font-family-default);
     }
   `;
