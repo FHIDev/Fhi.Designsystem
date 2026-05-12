@@ -1,5 +1,11 @@
 # Changelog
 
+## [0.37.0](https://github.com/FHIDev/Fhi/compare/v0.36.0...v0.37.0) (2026-05-12)
+
+### 🚀 Features
+
+* New Component - Table ([#406](https://github.com/FHIDev/Fhi/issues/406)) ([042fcac](https://github.com/FHIDev/Fhi/commit/042fcac2ab8be4ec764cab6e9d4200f8e7a4f1f8))
+
 ## [0.36.0](https://github.com/FHIDev/Fhi/compare/v0.35.0...v0.36.0) (2026-05-11)
 
 ### 🚀 Features
