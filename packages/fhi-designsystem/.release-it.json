@@ -1,5 +1,5 @@
 {
-  "$schema": "https://unpkg.com/release-it@17.6.0/schema/release-it.json",
+  "$schema": "https://unpkg.com/release-it@20.0.1/schema/release-it.json",
   "git": {
     "commitMessage": "chore: release v${version}",
     "requireCleanWorkingDir": true,
@@ -10,7 +10,11 @@
     "draft": false,
     "release": true,
     "releaseName": "v${version}",
-    "assets": ["dist/cdn/fhi-designsystem.js", "dist/cdn/theme/default.css", "dist/cdn/custom-elements.json"]
+    "assets": [
+      "dist/cdn/fhi-designsystem.js",
+      "dist/cdn/theme/default.css",
+      "dist/cdn/custom-elements.json"
+    ]
   },
   "npm": {
     "publish": false
