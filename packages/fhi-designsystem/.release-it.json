@@ -25,6 +25,12 @@
   "plugins": {
     "@release-it/conventional-changelog": {
       "header": "# Changelog",
+      "context": {
+        "host": "https://github.com",
+        "owner": "FHIDev",
+        "repository": "Fhi.Designsystem",
+        "repoUrl": "https://github.com/FHIDev/Fhi.Designsystem"
+      },
       "preset": {
         "name": "conventionalcommits",
         "types": [
