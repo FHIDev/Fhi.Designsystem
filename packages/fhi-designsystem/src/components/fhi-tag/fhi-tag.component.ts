@@ -53,7 +53,7 @@ export class FhiTag extends LitElement {
       const icon = firstNode as HTMLElement;
 
       icon.setAttribute('size', '1rem');
-      icon.style.marginLeft = 'var(--dimension-icon-offset)';
+      icon.style.marginLeft = 'calc(-1 * var(--fhi-spacing-050))';
     }
   }
 
@@ -70,23 +70,10 @@ export class FhiTag extends LitElement {
 
   static styles = css`
     :host {
-      --dimension-icon-offset: calc(-1 * var(--fhi-spacing-050));
-      --fhi-tag-border-radius: unset;
-      --fhi-tag-gap: unset;
-      --fhi-tag-padding: unset;
-      --fhi-tag-height: unset;
-
       --fhi-tag-border-color: unset;
-
-      --fhi-tag-color: unset;
-      --fhi-tag-background-color: unset;
     }
 
     :host {
-      --fhi-tag-border-radius: var(--fhi-border-radius-050);
-      --fhi-tag-gap: var(--fhi-spacing-050);
-      --fhi-tag-padding: 0 calc(var(--fhi-spacing-100) - 1px);
-      --fhi-tag-height: calc(var(--fhi-spacing-300) - 2px);
       --fhi-tag-border-color: transparent;
 
       display: flex;
@@ -94,18 +81,16 @@ export class FhiTag extends LitElement {
       align-items: center;
 
       border: 1px solid var(--fhi-tag-border-color);
-      border-radius: var(--fhi-tag-border-radius);
+      border-radius: var(--fhi-border-radius-050);
 
-      height: var(--fhi-tag-height);
-      padding: var(--fhi-tag-padding);
-      color: var(--fhi-tag-color);
-      background-color: var(--fhi-tag-background-color);
+      height: calc(var(--fhi-spacing-300) - 2px);
+      padding: 0 calc(var(--fhi-spacing-100) - 1px);
 
       .slot-container {
         display: flex;
         align-items: center;
 
-        gap: var(--fhi-tag-gap);
+        gap: var(--fhi-spacing-050);
       }
 
       & fhi-body {
@@ -114,33 +99,33 @@ export class FhiTag extends LitElement {
     }
 
     :host([color='neutral']) {
-      --fhi-tag-color: var(--fhi-color-neutral-text-default);
-      --fhi-tag-background-color: var(--fhi-color-neutral-surface-default);
+      color: var(--fhi-color-neutral-text-default);
+      background-color: var(--fhi-color-neutral-surface-default);
     }
 
     :host([color='accent']) {
-      --fhi-tag-color: var(--fhi-color-accent-text-default);
-      --fhi-tag-background-color: var(--fhi-color-accent-surface-default);
+      color: var(--fhi-color-accent-text-default);
+      background-color: var(--fhi-color-accent-surface-default);
     }
 
     :host([color='success']) {
-      --fhi-tag-color: var(--fhi-color-success-text-default);
-      --fhi-tag-background-color: var(--fhi-color-success-surface-default);
+      color: var(--fhi-color-success-text-default);
+      background-color: var(--fhi-color-success-surface-default);
     }
 
     :host([color='warning']) {
-      --fhi-tag-color: var(--fhi-color-warning-text-default);
-      --fhi-tag-background-color: var(--fhi-color-warning-surface-default);
+      color: var(--fhi-color-warning-text-default);
+      background-color: var(--fhi-color-warning-surface-default);
     }
 
     :host([color='danger']) {
-      --fhi-tag-color: var(--fhi-color-danger-text-default);
-      --fhi-tag-background-color: var(--fhi-color-danger-surface-default);
+      color: var(--fhi-color-danger-text-default);
+      background-color: var(--fhi-color-danger-surface-default);
     }
 
     :host([color='info']) {
-      --fhi-tag-color: var(--fhi-color-info-text-default);
-      --fhi-tag-background-color: var(--fhi-color-info-surface-default);
+      color: var(--fhi-color-info-text-default);
+      background-color: var(--fhi-color-info-surface-default);
     }
   `;
 }
