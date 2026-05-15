@@ -1,19 +1,17 @@
 import { Meta } from '@storybook/addon-docs/blocks';
 import { DesignTokenDocBlock } from 'storybook-design-token';
 
-<Meta title="Ofte stilte spørsmål/Kan jeg bruke Designsystemet i et prosjekt med SSR?" />
+<Meta title="Ofte stilte spørsmål/Kan jeg bruke designsystemet i et prosjekt med SSR?" />
 
-## Designsystemet og Server Side Rendering (SSR)
+## Kan jeg bruke FHI Designsystem i et prosjekt med Server Side Rendering (SSR)?
 
-Ja du kan bruke FHI Designsystemet i et prosjekt som benytter Server Side Rendering (SSR).
+Ja, du kan bruke FHI Designsystem i et prosjekt som bruker Server Side Rendering (SSR).
 
-Komponentene i FHI Designsystemet er bygget for med forventning om at de kjører i en nettleser. Dette må ditt SSR-oppsett ta hensyn til.
+Komponentene er bygget med forventningen om at de kjører i en nettleser. SSR-oppsettet ditt må ta hensyn til dette.
 
 For eksempel, om du bruker NEXT.js vil ikke komponentene kunne bli rendret på serveren.
 Men du kan fortelle NEXT.js at den skal rendere komponentene på klientsiden ved å bruke `dynamic import` med `ssr: false`, eller `use client`.
 Da vil komponentene kun bli rendret i nettleseren, og du kan fortsatt dra nytte av SSR for resten av applikasjonen din.
 
-<div style={{padding: ".25rem 1rem", background: "#D3E3F5", borderRadius: "2px", borderBottom: "4px solid #3283CE", marginBottom: "1rem"}}>
-Det er vanlig for SSR-oppsett å ha instruksjoner for å håndtere kode som skal kjøres på klientsiden.
+SSR-rammeverk har vanligvis instruksjonen for å håndtere kode som skal kjøres på klientsiden.
 Sørg for å følge dokumentasjonen for ditt SSR-rammeverk for å konfigurere dette riktig.
-</div>
