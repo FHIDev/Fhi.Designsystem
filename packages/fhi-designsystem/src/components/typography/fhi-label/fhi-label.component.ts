@@ -66,22 +66,10 @@ export class FhiLabel extends LitElement {
 
   static styles = css`
     :host {
-      --font-size-large: var(--fhi-typography-label-large-font-size);
-      --font-weight-large: var(--fhi-typography-label-large-font-weight);
-      --line-height-large: var(--fhi-typography-label-large-line-height);
-      --letter-spacing-large: var(--fhi-typography-label-large-letter-spacing);
-
-      --font-size-medium: var(--fhi-typography-label-medium-font-size);
-      --font-weight-medium: var(--fhi-typography-label-medium-font-weight);
-      --line-height-medium: var(--fhi-typography-label-medium-line-height);
-      --letter-spacing-medium: var(
-        --fhi-typography-label-medium-letter-spacing
-      );
-
-      --font-size-small: var(--fhi-typography-label-small-font-size);
-      --font-weight-small: var(--fhi-typography-label-small-font-weight);
-      --line-height-small: var(--fhi-typography-label-small-line-height);
-      --letter-spacing-small: var(--fhi-typography-label-small-letter-spacing);
+      --fhi-label-font-size: unset;
+      --fhi-label-font-weight: unset;
+      --fhi-label-line-height: unset;
+      --fhi-label-letter-spacing: unset;
     }
 
     :host {
@@ -92,33 +80,43 @@ export class FhiLabel extends LitElement {
         font-family: var(--fhi-font-family-default);
         -webkit-font-smoothing: antialiased;
         margin: 0;
+        font-size: var(--fhi-label-font-size);
+        font-weight: var(--fhi-label-font-weight);
+        line-height: var(--fhi-label-line-height);
+        letter-spacing: var(--fhi-label-letter-spacing);
       }
     }
 
     :host([size='large']) {
       .label {
-        font-size: var(--font-size-large);
-        font-weight: var(--font-weight-large);
-        line-height: var(--line-height-large);
-        letter-spacing: var(--letter-spacing-large);
+        --fhi-label-font-size: var(--fhi-typography-label-large-font-size);
+        --fhi-label-font-weight: var(--fhi-typography-label-large-font-weight);
+        --fhi-label-line-height: var(--fhi-typography-label-large-line-height);
+        --fhi-label-letter-spacing: var(
+          --fhi-typography-label-large-letter-spacing
+        );
       }
     }
 
     :host([size='medium']) {
       .label {
-        font-size: var(--font-size-medium);
-        font-weight: var(--font-weight-medium);
-        line-height: var(--line-height-medium);
-        letter-spacing: var(--letter-spacing-medium);
+        --fhi-label-font-size: var(--fhi-typography-label-medium-font-size);
+        --fhi-label-font-weight: var(--fhi-typography-label-medium-font-weight);
+        --fhi-label-line-height: var(--fhi-typography-label-medium-line-height);
+        --fhi-label-letter-spacing: var(
+          --fhi-typography-label-medium-letter-spacing
+        );
       }
     }
 
     :host([size='small']) {
       .label {
-        font-size: var(--font-size-small);
-        font-weight: var(--font-weight-small);
-        line-height: var(--line-height-small);
-        letter-spacing: var(--letter-spacing-small);
+        --fhi-label-font-size: var(--fhi-typography-label-small-font-size);
+        --fhi-label-font-weight: var(--fhi-typography-label-small-font-weight);
+        --fhi-label-line-height: var(--fhi-typography-label-small-line-height);
+        --fhi-label-letter-spacing: var(
+          --fhi-typography-label-small-letter-spacing
+        );
       }
     }
   `;
