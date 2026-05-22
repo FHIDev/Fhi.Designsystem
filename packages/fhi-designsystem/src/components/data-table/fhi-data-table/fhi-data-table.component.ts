@@ -34,6 +34,9 @@ export const FhiDataTableSelector = 'fhi-data-table';
  *
  * @tag fhi-data-table
  * @element fhi-data-table
+ *
+ * @slot - The content of the table, consisting of `<fhi-data-table-row>` elements which in turn contain `<fhi-data-table-cell>` elements.
+ *
  */
 @customElement(FhiDataTableSelector)
 export class FhiDataTable extends LitElement {

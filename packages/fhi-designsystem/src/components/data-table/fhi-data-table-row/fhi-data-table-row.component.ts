@@ -17,6 +17,8 @@ export const FhiDataTableRowSelector = 'fhi-data-table-row';
  *
  * @tag fhi-data-table-row
  * @element fhi-data-table-row
+ *
+ * @slot - The content of the table row, consisting of `<fhi-data-table-cell>` elements which represent individual cells within the row.
  */
 @customElement(FhiDataTableRowSelector)
 export class FhiDataTableRow extends LitElement {

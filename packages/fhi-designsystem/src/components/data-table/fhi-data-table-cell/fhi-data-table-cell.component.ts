@@ -15,6 +15,8 @@ export const FhiDataTableCellSelector = 'fhi-data-table-cell';
  *
  * @tag fhi-data-table-cell
  * @element fhi-data-table-cell
+ *
+ * @slot - The content of the table cell, which can be any valid HTML content such as text, images, or other elements.
  */
 @customElement(FhiDataTableCellSelector)
 export class FhiDataTableCell extends LitElement {
