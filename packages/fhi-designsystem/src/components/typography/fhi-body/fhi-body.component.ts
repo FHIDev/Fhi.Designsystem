@@ -66,13 +66,6 @@ export class FhiBody extends LitElement {
 
   static styles = css`
     :host {
-      --fhi-body-font-size: unset;
-      --fhi-body-font-weight: unset;
-      --fhi-body-line-height: unset;
-      --fhi-body-letter-spacing: unset;
-    }
-
-    :host {
       display: block;
       contain: layout;
       color: var(--fhi-color-neutral-text-default);
@@ -80,43 +73,33 @@ export class FhiBody extends LitElement {
         font-family: var(--fhi-font-family-default);
         -webkit-font-smoothing: antialiased;
         margin: 0;
-        font-size: var(--fhi-body-font-size);
-        font-weight: var(--fhi-body-font-weight);
-        line-height: var(--fhi-body-line-height);
-        letter-spacing: var(--fhi-body-letter-spacing);
       }
     }
 
     :host([size='large']) {
       .body {
-        --fhi-body-font-size: var(--fhi-typography-body-large-font-size);
-        --fhi-body-font-weight: var(--fhi-typography-body-large-font-weight);
-        --fhi-body-line-height: var(--fhi-typography-body-large-line-height);
-        --fhi-body-letter-spacing: var(
-          --fhi-typography-body-large-letter-spacing
-        );
+        font-size: var(--fhi-typography-body-large-font-size);
+        font-weight: var(--fhi-typography-body-large-font-weight);
+        line-height: var(--fhi-typography-body-large-line-height);
+        letter-spacing: var(--fhi-typography-body-large-letter-spacing);
       }
     }
 
     :host([size='medium']) {
       .body {
-        --fhi-body-font-size: var(--fhi-typography-body-medium-font-size);
-        --fhi-body-font-weight: var(--fhi-typography-body-medium-font-weight);
-        --fhi-body-line-height: var(--fhi-typography-body-medium-line-height);
-        --fhi-body-letter-spacing: var(
-          --fhi-typography-body-medium-letter-spacing
-        );
+        font-size: var(--fhi-typography-body-medium-font-size);
+        font-weight: var(--fhi-typography-body-medium-font-weight);
+        line-height: var(--fhi-typography-body-medium-line-height);
+        letter-spacing: var(--fhi-typography-body-medium-letter-spacing);
       }
     }
 
     :host([size='small']) {
       .body {
-        --fhi-body-font-size: var(--fhi-typography-body-small-font-size);
-        --fhi-body-font-weight: var(--fhi-typography-body-small-font-weight);
-        --fhi-body-line-height: var(--fhi-typography-body-small-line-height);
-        --fhi-body-letter-spacing: var(
-          --fhi-typography-body-small-letter-spacing
-        );
+        font-size: var(--fhi-typography-body-small-font-size);
+        font-weight: var(--fhi-typography-body-small-font-weight);
+        line-height: var(--fhi-typography-body-small-line-height);
+        letter-spacing: var(--fhi-typography-body-small-letter-spacing);
       }
     }
   `;

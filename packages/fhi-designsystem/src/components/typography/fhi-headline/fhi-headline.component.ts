@@ -92,13 +92,6 @@ export class FhiHeadline extends LitElement {
 
   static styles = css`
     :host {
-      --fhi-headline-font-size: unset;
-      --fhi-headline-font-weight: unset;
-      --fhi-headline-line-height: unset;
-      --fhi-headline-letter-spacing: unset;
-    }
-
-    :host {
       display: block;
       contain: layout;
       color: var(--fhi-color-neutral-text-default);
@@ -106,61 +99,33 @@ export class FhiHeadline extends LitElement {
         font-family: var(--fhi-font-family-default);
         -webkit-font-smoothing: antialiased;
         margin: 0;
-        font-size: var(--fhi-headline-font-size);
-        font-weight: var(--fhi-headline-font-weight);
-        line-height: var(--fhi-headline-line-height);
-        letter-spacing: var(--fhi-headline-letter-spacing);
       }
     }
 
     :host([size='large']) {
       .headline {
-        --fhi-headline-font-size: var(
-          --fhi-typography-headline-large-font-size
-        );
-        --fhi-headline-font-weight: var(
-          --fhi-typography-headline-large-font-weight
-        );
-        --fhi-headline-line-height: var(
-          --fhi-typography-headline-large-line-height
-        );
-        --fhi-headline-letter-spacing: var(
-          --fhi-typography-headline-large-letter-spacing
-        );
+        font-size: var(--fhi-typography-headline-large-font-size);
+        font-weight: var(--fhi-typography-headline-large-font-weight);
+        line-height: var(--fhi-typography-headline-large-line-height);
+        letter-spacing: var(--fhi-typography-headline-large-letter-spacing);
       }
     }
 
     :host([size='medium']) {
       .headline {
-        --fhi-headline-font-size: var(
-          --fhi-typography-headline-medium-font-size
-        );
-        --fhi-headline-font-weight: var(
-          --fhi-typography-headline-medium-font-weight
-        );
-        --fhi-headline-line-height: var(
-          --fhi-typography-headline-medium-line-height
-        );
-        --fhi-headline-letter-spacing: var(
-          --fhi-typography-headline-medium-letter-spacing
-        );
+        font-size: var(--fhi-typography-headline-medium-font-size);
+        font-weight: var(--fhi-typography-headline-medium-font-weight);
+        line-height: var(--fhi-typography-headline-medium-line-height);
+        letter-spacing: var(--fhi-typography-headline-medium-letter-spacing);
       }
     }
 
     :host([size='small']) {
       .headline {
-        --fhi-headline-font-size: var(
-          --fhi-typography-headline-small-font-size
-        );
-        --fhi-headline-font-weight: var(
-          --fhi-typography-headline-small-font-weight
-        );
-        --fhi-headline-line-height: var(
-          --fhi-typography-headline-small-line-height
-        );
-        --fhi-headline-letter-spacing: var(
-          --fhi-typography-headline-small-letter-spacing
-        );
+        font-size: var(--fhi-typography-headline-small-font-size);
+        font-weight: var(--fhi-typography-headline-small-font-weight);
+        line-height: var(--fhi-typography-headline-small-line-height);
+        letter-spacing: var(--fhi-typography-headline-small-letter-spacing);
       }
     }
   `;
