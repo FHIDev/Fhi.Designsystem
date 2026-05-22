@@ -18,7 +18,7 @@ export const FhiDataTableSelector = 'fhi-data-table';
  *
  * Example usage:
  * ```html
- * <fhi-data-table caption="Example Table" columns="2fr 1fr 1fr">
+ * <fhi-data-table caption="Example Table">
  *   <fhi-data-table-row variant="header">
  *     <fhi-data-table-cell>Header 1</fhi-data-table-cell>
  *     <fhi-data-table-cell>Header 2</fhi-data-table-cell>
