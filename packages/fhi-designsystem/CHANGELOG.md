@@ -1,5 +1,31 @@
 # Changelog
 
+## [0.38.0](https://github.com/FHIDev/Fhi.Designsystem/compare/v0.37.0...v0.38.0) (2026-05-22)
+
+### 🚀 Features
+
+* New File Text icon ([#428](https://github.com/FHIDev/Fhi.Designsystem/issues/428)) ([7422079](https://github.com/FHIDev/Fhi.Designsystem/commit/7422079f7db92428d8c90e39ed2937241e68b650))
+
+### 📑 Documentation
+
+* La til dokumentasjon om SSR ([fc779c2](https://github.com/FHIDev/Fhi.Designsystem/commit/fc779c2afbbad201a089b9f015c6eb0514809ca6))
+
+### Other
+
+* Update release-it and fix broken links in the changelog ([#425](https://github.com/FHIDev/Fhi.Designsystem/issues/425)) ([b0b02df](https://github.com/FHIDev/Fhi.Designsystem/commit/b0b02dfcbc61b2f98ef9384874298a80d134dbca))
+
+## [0.37.0](https://github.com/FHIDev/Fhi/compare/v0.36.0...v0.37.0) (2026-05-12)
+
+### 🚀 Features
+
+* New Component - Table ([#406](https://github.com/FHIDev/Fhi/issues/406)) ([042fcac](https://github.com/FHIDev/Fhi/commit/042fcac2ab8be4ec764cab6e9d4200f8e7a4f1f8))
+
+## [0.36.0](https://github.com/FHIDev/Fhi/compare/v0.35.0...v0.36.0) (2026-05-11)
+
+### 🚀 Features
+
+* Add Agent Skill ([#412](https://github.com/FHIDev/Fhi/issues/412)) ([439cda9](https://github.com/FHIDev/Fhi/commit/439cda9cab87ab41a4b6b53e506a91da9a60d9ae))
+
 ## [0.35.0](https://github.com/FHIDev/Fhi/compare/v0.34.0...v0.35.0) (2026-05-08)
 
 ### 🚀 Features

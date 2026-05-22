@@ -1,0 +1,33 @@
+import { Meta } from '@storybook/addon-docs/blocks';
+
+<Meta title="KI-verktøy" />
+
+# Agent Skills
+
+<div className="callout-warning">
+  Resultatet av å bruke `SKILL.md`-filen vil variere avhengig av hvilket KI-verktøy du bruker, hvordan prosjektet ditt er satt opp, og hvilke innstillinger du har satt.
+  Det er derfor viktig å teste og evaluere resultatet nøye, for å sikre at det oppfyller dine behov og forventninger.
+  Gå alltid gjennom koden som genereres og se til dokumentasjonen for designsystemet for å sikre at du bruker komponentene riktig, i tråd med god praksis.
+</div>
+
+FHI Designsystemet tilbyr en [Agent Skill](https://agentskills.io/home) for bruk i KI-verktøy som Github Copilot.
+
+`SKILL.md`-filen inneholder enkle instruksjoner som hjelper KI-verktøyet å forstå hvordan det skal bruke designsystemet og hvor dokumentasjonen finnes.
+Denne filen er nyttig for utviklere som ønsker å dra nytte av KI-assistenter sammen med FHI Designsystem.
+
+Filen ligger i npm-pakken under `@folkehelseinstituttet/designsystem/ai-tooling/SKILL.md`.
+
+Skill-en er testet til å fungere med GPT 5.4 og Claude Sonnet 4.6.
+
+Bruker du VSCode med Copilot, kopierer du `SKILL.md`-filen inn til `.github/skills/fhi-designsystem/` i prosjektet ditt. Da vil Copilot automatisk finne filen.
+Bruker du en annen IDE bør du sjekke dokumentasjonen for det KI-verktøyet du bruker for å se hvor det forventer at `SKILL.md`-filen skal være plassert.
+
+<style>{`
+  .callout-warning {
+    border-radius: 2px;
+    padding: .25rem 1rem;
+    margin-bottom: 2rem;
+    background-color: #FFE7BA;
+    border-bottom: 4px solid #F1A541;
+  }
+`}</style>
