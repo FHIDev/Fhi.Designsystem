@@ -27,23 +27,23 @@ jobs:
 
       - name: Guard - BREAKING CHANGE should not be in body
         id: guard_breaking_change
+        env:
+          LAST_COMMIT_MESSAGE: ${{ github.event.head_commit.message }}
         run: |
-          LAST_COMMIT_MESSAGE="${{ github.event.head_commit.message }}"
-          echo "Commit message: \"$LAST_COMMIT_MESSAGE\""
           if [[ "$LAST_COMMIT_MESSAGE" == *"BREAKING CHANGE"* ]]; then
-              echo "ERROR: Commit message should not include 'BREAKING CHANGE'."
-              exit 1
+            echo "ERROR: Commit message should not include 'BREAKING CHANGE'."
+            exit 1
           fi
         shell: bash
 
       - name: Guard - Commit message should have valid prefix
         id: guard_prefix
+        env:
+          LAST_COMMIT_MESSAGE: ${{ github.event.head_commit.message }}
         run: |
-          LAST_COMMIT_MESSAGE="${{ github.event.head_commit.message }}"
-          echo "Commit message: \"$LAST_COMMIT_MESSAGE\""
-          if [[ "$LAST_COMMIT_MESSAGE" != feat:\ * && "$LAST_COMMIT_MESSAGE" != fix:\ * && "$LAST_COMMIT_MESSAGE" != docs:\ * && "$LAST_COMMIT_MESSAGE" != chore:\ * ]]; then
-              echo "Commit message does not include a valid prefix."
-              echo "Valid prefixes are: feat:, fix:, docs:, chore:."
-              exit 1
+          if [[ ! "$LAST_COMMIT_MESSAGE" =~ ^(feat|fix|docs|chore):[[:space:]] ]]; then
+            echo "Commit message does not include a valid prefix."
+            echo "Valid prefixes are: feat:, fix:, docs:, chore:."
+            exit 1
           fi
         shell: bash
