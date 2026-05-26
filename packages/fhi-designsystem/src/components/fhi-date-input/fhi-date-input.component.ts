@@ -284,7 +284,6 @@ export class FhiDateInput extends LitElement {
           background-color: var(--fhi-color-accent-background-subtle);
         }
         &:focus {
-          outline: none;
           border-color: var(--fhi-color-accent-border-strong);
           background-color: var(--fhi-color-accent-background-default);
         }
