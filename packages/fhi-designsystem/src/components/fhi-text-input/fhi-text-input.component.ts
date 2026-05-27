@@ -215,115 +215,24 @@ export class FhiTextInput extends LitElement {
 
   static styles = css`
     :host {
-      --typography-font-family: var(--fhi-font-family-default);
-
-      --opacity-disabled: var(--fhi-opacity-disabled);
-
-      /* label */
-      --color-label-text: var(--fhi-color-neutral-text-default);
-      --color-label-text-error: var(--fhi-color-danger-text-default);
-
-      --typography-label-font-weight: var(
-        --fhi-typography-label-small-font-weight
-      );
-      --typography-label-font-size: var(--fhi-typography-label-small-font-size);
-      --typography-label-line-height: var(
-        --fhi-typography-label-small-line-height
-      );
-      --typography-label-letter-spacing: var(
-        --fhi-typography-label-small-letter-spacing
-      );
-      --dimension-label-margin-bottom: var(--fhi-spacing-050);
-
-      /* input */
-      --color-input-placeholder: var(--fhi-color-neutral-base-default);
-      --color-input-text: var(--fhi-color-neutral-text-default);
-      --color-input-text-error: var(--fhi-color-danger-text-default);
-      --color-input-background: var(--fhi-color-neutral-background-default);
-      --color-input-background-active: var(
-        --fhi-color-accent-background-default
-      );
-      --color-input-background-hover: var(--fhi-color-accent-background-subtle);
-      --color-input-background-error: var(
-        --fhi-color-danger-background-default
-      );
-      --color-input-border: var(--fhi-color-neutral-border-default);
-      --color-input-border-hover: var(--fhi-color-accent-border-default);
-      --color-input-border-active: var(--fhi-color-accent-border-strong);
-      --color-input-border-error: var(--fhi-color-danger-border-strong);
-      --color-input-border-disabled: var(--fhi-color-neutral-border-default);
-
-      --typography-input-font-weight: var(
-        --fhi-typography-body-medium-font-weight
-      );
-      --typography-input-font-size: var(--fhi-typography-body-medium-font-size);
-      --typography-input-line-height: var(
-        --fhi-typography-body-medium-line-height
-      );
-      --typography-input-letter-spacing: var(
-        --fhi-typography-body-medium-letter-spacing
-      );
-
-      --dimension-input-border-width: var(--fhi-dimension-border-width);
-
-      --dimension-input-height: var(--fhi-spacing-500);
-      --dimension-input-border-radius: var(--fhi-border-radius-050);
-      --dimension-input-padding-left: var(--fhi-spacing-150);
-      --dimension-input-padding-right: var(--fhi-spacing-150);
-
-      --motion-input-transition: all var(--fhi-motion-ease-default)
-        var(--fhi-motion-duration-quick);
-
-      /* message */
-      --color-message-text: var(--fhi-color-neutral-text-default);
-      --color-message-text-error: var(--fhi-color-danger-text-subtle);
-
-      --typography-message-font-weight: var(
-        --fhi-typography-body-small-font-weight
-      );
-      --typography-message-font-size: var(
-        --fhi-typography-body-small-font-size
-      );
-      --typography-message-line-height: var(
-        --fhi-typography-body-small-line-height
-      );
-      --typography-message-letter-spacing: var(
-        --fhi-typography-body-small-letter-spacing
-      );
-
-      --dimension-message-margin-top: var(--fhi-spacing-050);
-
-      /* help-text */
-      --color-help-text-text: var(--fhi-color-neutral-text-subtle);
-      --color-help-text-text-error: var(--fhi-color-danger-text-default);
-      --typography-help-text-font-weight: var(
-        --fhi-typography-body-small-font-weight
-      );
-      --typography-help-text-font-size: var(
-        --fhi-typography-body-small-font-size
-      );
-      --typography-help-text-line-height: var(
-        --fhi-typography-body-small-line-height
-      );
-      --typography-help-text-letter-spacing: var(
-        --fhi-typography-body-small-letter-spacing
-      );
-      --dimension-help-text-margin-bottom: var(--fhi-spacing-050);
+      --fhi-text-input-placeholder-color: unset;
     }
 
     :host {
       display: flex;
       flex-direction: column;
-      font-family: var(--typography-font-family);
+      font-family: var(--fhi-font-family-default);
       -webkit-font-smoothing: antialiased;
 
+      --fhi-text-input-placeholder-color: var(--fhi-color-neutral-base-default);
+
       label {
-        font-weight: var(--typography-label-font-weight);
-        font-size: var(--typography-label-font-size);
-        line-height: var(--typography-label-line-height);
-        letter-spacing: var(--typography-label-letter-spacing);
-        color: var(--color-label-text);
-        margin: 0 0 var(--dimension-label-margin-bottom) 0;
+        font-weight: var(--fhi-typography-label-small-font-weight);
+        font-size: var(--fhi-typography-label-small-font-size);
+        line-height: var(--fhi-typography-label-small-line-height);
+        letter-spacing: var(--fhi-typography-label-small-letter-spacing);
+        color: var(--fhi-color-neutral-text-default);
+        margin: 0 0 var(--fhi-spacing-050) 0;
       }
 
       label:has(+ p) {
@@ -333,30 +242,30 @@ export class FhiTextInput extends LitElement {
       input {
         box-sizing: border-box;
         flex: 1 1 auto;
-        height: var(--dimension-input-height);
-        border: var(--dimension-input-border-width) solid
-          var(--color-input-border);
-        border-radius: var(--dimension-input-border-radius);
-        padding: 0 var(--dimension-input-padding-right) 0
-          var(--dimension-input-padding-left);
-        color: var(--color-input-text);
-        background-color: var(--color-input-background);
-        font-family: var(--typography-font-family);
-        font-weight: var(--typography-input-font-weight);
-        font-size: var(--typography-input-font-size);
-        line-height: var(--typography-input-line-height);
-        letter-spacing: var(--typography-input-letter-spacing);
-        transition: var(--motion-input-transition);
+        height: var(--fhi-spacing-500);
+        border: var(--fhi-dimension-border-width) solid
+          var(--fhi-color-neutral-border-default);
+        border-radius: var(--fhi-border-radius-050);
+        padding: 0 var(--fhi-spacing-150) 0 var(--fhi-spacing-150);
+        color: var(--fhi-color-neutral-text-default);
+        background-color: var(--fhi-color-neutral-background-default);
+        font-family: var(--fhi-font-family-default);
+        font-weight: var(--fhi-typography-body-medium-font-weight);
+        font-size: var(--fhi-typography-body-medium-font-size);
+        line-height: var(--fhi-typography-body-medium-line-height);
+        letter-spacing: var(--fhi-typography-body-medium-letter-spacing);
+        transition: all var(--fhi-motion-ease-default)
+          var(--fhi-motion-duration-quick);
         &:hover {
-          border-color: var(--color-input-border-hover);
-          background-color: var(--color-input-background-hover);
+          border-color: var(--fhi-color-accent-border-default);
+          background-color: var(--fhi-color-accent-background-subtle);
         }
         &:focus {
-          border-color: var(--color-input-border-active);
-          background-color: var(--color-input-background-active);
+          border-color: var(--fhi-color-accent-border-strong);
+          background-color: var(--fhi-color-accent-background-default);
         }
         &::placeholder {
-          color: var(--color-input-placeholder);
+          color: var(--fhi-text-input-placeholder-color);
         }
       }
 
@@ -373,21 +282,21 @@ export class FhiTextInput extends LitElement {
       }
 
       .message {
-        margin: var(--dimension-message-margin-top) 0 0 0;
-        color: var(--color-message-text);
-        font-weight: var(--typography-message-font-weight);
-        font-size: var(--typography-message-font-size);
-        line-height: var(--typography-message-line-height);
-        letter-spacing: var(--typography-message-letter-spacing);
+        margin: var(--fhi-spacing-050) 0 0 0;
+        color: var(--fhi-color-neutral-text-default);
+        font-weight: var(--fhi-typography-body-small-font-weight);
+        font-size: var(--fhi-typography-body-small-font-size);
+        line-height: var(--fhi-typography-body-small-line-height);
+        letter-spacing: var(--fhi-typography-body-small-letter-spacing);
       }
 
       .help-text {
-        color: var(--color-help-text-text);
-        font-weight: var(--typography-help-text-font-weight);
-        font-size: var(--typography-help-text-font-size);
-        line-height: var(--typography-help-text-line-height);
-        letter-spacing: var(--typography-help-text-letter-spacing);
-        margin: 0 0 var(--dimension-help-text-margin-bottom) 0;
+        color: var(--fhi-color-neutral-text-subtle);
+        font-weight: var(--fhi-typography-body-small-font-weight);
+        font-size: var(--fhi-typography-body-small-font-size);
+        line-height: var(--fhi-typography-body-small-line-height);
+        letter-spacing: var(--fhi-typography-body-small-letter-spacing);
+        margin: 0 0 var(--fhi-spacing-050) 0;
       }
 
       .input-container {
@@ -420,7 +329,7 @@ export class FhiTextInput extends LitElement {
     }
 
     :host([disabled]) {
-      opacity: var(--opacity-disabled);
+      opacity: var(--fhi-opacity-disabled);
       cursor: not-allowed;
       label,
       input {
@@ -428,8 +337,8 @@ export class FhiTextInput extends LitElement {
       }
       input {
         &:hover {
-          border-color: var(--color-input-border);
-          background-color: var(--color-input-background);
+          border-color: var(--fhi-color-neutral-border-default);
+          background-color: var(--fhi-color-neutral-background-default);
         }
       }
     }
@@ -439,25 +348,25 @@ export class FhiTextInput extends LitElement {
         border: unset;
         border-radius: unset;
         background-color: unset;
-        border-left: var(--dimension-input-border-width) solid
-          var(--color-input-border);
+        border-left: var(--fhi-dimension-border-width) solid
+          var(--fhi-color-neutral-border-default);
       }
     }
 
     :host([status='error']:not([disabled]):not([readonly])) {
       label {
-        color: var(--color-label-text-error);
+        color: var(--fhi-color-danger-text-default);
       }
       input {
-        border-color: var(--color-input-border-error);
-        background-color: var(--color-input-background-error);
-        color: var(--color-input-text-error);
+        border-color: var(--fhi-color-danger-border-strong);
+        background-color: var(--fhi-color-danger-background-default);
+        color: var(--fhi-color-danger-text-default);
       }
       .message {
-        color: var(--color-message-text-error);
+        color: var(--fhi-color-danger-text-subtle);
       }
       .help-text {
-        color: var(--color-help-text-text-error);
+        color: var(--fhi-color-danger-text-default);
       }
       slot[name='start'] {
         color: var(--fhi-color-danger-text-subtle);
