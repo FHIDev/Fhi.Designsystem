@@ -19,7 +19,7 @@ export const FhiTagSelector = 'fhi-tag';
 @customElement(FhiTagSelector)
 export class FhiTag extends LitElement {
   /**
-   * Sets the color of the tag.
+   * Sets the color theme of the tag.
    * @reflect
    * @type {'neutral' | 'accent' | 'success' | 'warning' | 'danger' | 'info'}
    */
@@ -53,7 +53,7 @@ export class FhiTag extends LitElement {
       const icon = firstNode as HTMLElement;
 
       icon.setAttribute('size', '1rem');
-      icon.style.marginLeft = 'var(--dimension-icon-offset)';
+      icon.style.marginLeft = 'calc(-1 * var(--fhi-spacing-050))';
     }
   }
 
@@ -70,49 +70,27 @@ export class FhiTag extends LitElement {
 
   static styles = css`
     :host {
-      --dimension-icon-offset: calc(-1 * var(--fhi-spacing-050));
-      --dimension-border-radius: var(--fhi-border-radius-050);
-      --dimension-gap: var(--fhi-spacing-050);
-      --dimension-padding: 0 calc(var(--fhi-spacing-100) - 1px);
-      --dimension-height: calc(var(--fhi-spacing-300) - 2px);
-
-      --color-border: transparent;
-
-      --color-neutral-text: var(--fhi-color-neutral-text-default);
-      --color-neutral-background: var(--fhi-color-neutral-surface-default);
-
-      --color-accent-text: var(--fhi-color-accent-text-default);
-      --color-accent-background: var(--fhi-color-accent-surface-default);
-
-      --color-success-text: var(--fhi-color-success-text-default);
-      --color-success-background: var(--fhi-color-success-surface-default);
-
-      --color-warning-text: var(--fhi-color-warning-text-default);
-      --color-warning-background: var(--fhi-color-warning-surface-default);
-
-      --color-danger-text: var(--fhi-color-danger-text-default);
-      --color-danger-background: var(--fhi-color-danger-surface-default);
-
-      --color-info-text: var(--fhi-color-info-text-default);
-      --color-info-background: var(--fhi-color-info-surface-default);
+      --fhi-tag-border-color: unset;
     }
 
     :host {
+      --fhi-tag-border-color: transparent;
+
       display: flex;
       width: fit-content;
       align-items: center;
 
-      border: 1px solid var(--color-border);
-      border-radius: var(--dimension-border-radius);
+      border: 1px solid var(--fhi-tag-border-color);
+      border-radius: var(--fhi-border-radius-050);
 
-      height: var(--dimension-height);
-      padding: var(--dimension-padding);
+      height: calc(var(--fhi-spacing-300) - 2px);
+      padding: 0 calc(var(--fhi-spacing-100) - 1px);
 
       .slot-container {
         display: flex;
         align-items: center;
 
-        gap: var(--dimension-gap);
+        gap: var(--fhi-spacing-050);
       }
 
       & fhi-body {
@@ -120,34 +98,34 @@ export class FhiTag extends LitElement {
       }
     }
 
-    :host {
-      color: var(--color-neutral-text);
-      background-color: var(--color-neutral-background);
+    :host([color='neutral']) {
+      color: var(--fhi-color-neutral-text-default);
+      background-color: var(--fhi-color-neutral-surface-default);
     }
 
     :host([color='accent']) {
-      color: var(--color-accent-text);
-      background-color: var(--color-accent-background);
+      color: var(--fhi-color-accent-text-default);
+      background-color: var(--fhi-color-accent-surface-default);
     }
 
     :host([color='success']) {
-      color: var(--color-success-text);
-      background-color: var(--color-success-background);
+      color: var(--fhi-color-success-text-default);
+      background-color: var(--fhi-color-success-surface-default);
     }
 
     :host([color='warning']) {
-      color: var(--color-warning-text);
-      background-color: var(--color-warning-background);
+      color: var(--fhi-color-warning-text-default);
+      background-color: var(--fhi-color-warning-surface-default);
     }
 
     :host([color='danger']) {
-      color: var(--color-danger-text);
-      background-color: var(--color-danger-background);
+      color: var(--fhi-color-danger-text-default);
+      background-color: var(--fhi-color-danger-surface-default);
     }
 
     :host([color='info']) {
-      color: var(--color-info-text);
-      background-color: var(--color-info-background);
+      color: var(--fhi-color-info-text-default);
+      background-color: var(--fhi-color-info-surface-default);
     }
   `;
 }
