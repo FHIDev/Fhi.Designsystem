@@ -1,5 +1,15 @@
 # Changelog
 
+## [0.38.1](https://github.com/FHIDev/Fhi.Designsystem/compare/v0.38.0...v0.38.1) (2026-05-27)
+
+### 🛠️ Bug Fixes
+
+* ny token struktur fhi text input og fhi date input ([#429](https://github.com/FHIDev/Fhi.Designsystem/issues/429)) ([3f13623](https://github.com/FHIDev/Fhi.Designsystem/commit/3f136239d11e9dca425ef6f270e9300e77df29d5))
+
+### Other
+
+* Fix pipeline issue related to quotes in the commit message ([#424](https://github.com/FHIDev/Fhi.Designsystem/issues/424)) ([ebd7f9e](https://github.com/FHIDev/Fhi.Designsystem/commit/ebd7f9e3e37d8d8105e148b60184305849ec9665))
+
 ## [0.38.0](https://github.com/FHIDev/Fhi.Designsystem/compare/v0.37.0...v0.38.0) (2026-05-22)
 
 ### 🚀 Features
