@@ -1,5 +1,11 @@
 # Changelog
 
+## [0.38.3](https://github.com/FHIDev/Fhi.Designsystem/compare/v0.38.2...v0.38.3) (2026-05-27)
+
+### 🛠️ Bug Fixes
+
+* Endret komponent tokens for fhi-tag ([#423](https://github.com/FHIDev/Fhi.Designsystem/issues/423)) ([1d0e334](https://github.com/FHIDev/Fhi.Designsystem/commit/1d0e3345fbc93b04232b1fbc271cd55bbec8c543))
+
 ## [0.38.2](https://github.com/FHIDev/Fhi.Designsystem/compare/v0.38.1...v0.38.2) (2026-05-27)
 
 ### 🛠️ Bug Fixes
