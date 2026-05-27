@@ -49,7 +49,7 @@ const generateFormAccessor = (
     @Directive({
       selector: '${angularTagName}[formControlName],${angularTagName}[formControl],${angularTagName}[ngModel]',
       standalone: true,
-      host: {'(change)': 'onChange($any($event.target).checked)', '(blur)': 'onTouched()'},
+      host: {'(change)': 'onChange($any($event.target).${valueLocation})', '(blur)': 'onTouched()'},
       providers: [{ provide: NG_VALUE_ACCESSOR, useExisting: forwardRef(() => ${accessorName}), multi: true }]
     })
     export class ${accessorName} implements ControlValueAccessor, AfterViewInit {
@@ -63,7 +63,7 @@ const generateFormAccessor = (
       private _webComponent?: { [key: string]: unknown };
 
       ngAfterViewInit(): void {
-        this._webComponent = this._host.nativeElement.querySelector('${webComponentTagName}');
+        this._webComponent = this._host.nativeElement;
 
         if (!this._webComponent) {
           console.error('Could not find ${webComponentTagName} web component within the ${angularTagName} host element.');
@@ -80,7 +80,7 @@ const generateFormAccessor = (
           return;
         }
 
-        this._webComponent["value"] = value;
+        this._webComponent["${valueLocation}"] = value;
       }
 
       setDisabledState(isDisabled: boolean): void {
@@ -193,12 +193,6 @@ const main = ({ manifestPath, outputPath }) => {
               attribute => `"[${attribute.name}]": "${attribute.fieldName}()",`,
             )
             .join('\n')}
-          ${events
-            .map(
-              event =>
-                `"(${event.name})": "handle${snakeToPascal(event.name)}($event)",`,
-            )
-            .join('\n')}
         },
         template: ${`\`
               ${slots.map(slot => `<ng-content ${slot.name ? `select="[slot='${slot.name}']"` : ''}></ng-content>`).join('\n')}
@@ -219,10 +213,6 @@ const main = ({ manifestPath, outputPath }) => {
             event => `
             /** ${event.description || ''} */
             ${snakeToCamel(event.name)}Output = output<Event>( { alias: "${event.name}" } )
-            handle${snakeToPascal(event.name)}(event: Event) {
-              event.stopPropagation();
-              this.${snakeToCamel(event.name)}Output.emit(event);
-            }
         `,
           )
           .join('')}
