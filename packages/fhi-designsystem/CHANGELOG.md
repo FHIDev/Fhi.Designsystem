@@ -1,5 +1,11 @@
 # Changelog
 
+## [0.38.4](https://github.com/FHIDev/Fhi.Designsystem/compare/v0.38.3...v0.38.4) (2026-05-27)
+
+### 🛠️ Bug Fixes
+
+* Update JSDoc for Table with slot documentation ([#431](https://github.com/FHIDev/Fhi.Designsystem/issues/431)) ([e6db8fe](https://github.com/FHIDev/Fhi.Designsystem/commit/e6db8fe59cfd7b6f093eb5cb0dc6b7e67e71a3c4))
+
 ## [0.38.3](https://github.com/FHIDev/Fhi.Designsystem/compare/v0.38.2...v0.38.3) (2026-05-27)
 
 ### 🛠️ Bug Fixes
