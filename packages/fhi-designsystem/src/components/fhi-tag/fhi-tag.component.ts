@@ -95,6 +95,7 @@ export class FhiTag extends LitElement {
 
       & fhi-body {
         color: inherit;
+        text-wrap: nowrap;
       }
     }
 
