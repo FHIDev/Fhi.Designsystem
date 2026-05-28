@@ -1,5 +1,11 @@
 # Changelog
 
+## [0.38.5](https://github.com/FHIDev/Fhi.Designsystem/compare/v0.38.4...v0.38.5) (2026-05-28)
+
+### 🛠️ Bug Fixes
+
+* Added nowrap to Tag ([#433](https://github.com/FHIDev/Fhi.Designsystem/issues/433)) ([cd006d1](https://github.com/FHIDev/Fhi.Designsystem/commit/cd006d11ff878e6af72e82eb8100a15ee736f3ec))
+
 ## [0.38.4](https://github.com/FHIDev/Fhi.Designsystem/compare/v0.38.3...v0.38.4) (2026-05-27)
 
 ### 🛠️ Bug Fixes
