@@ -20,8 +20,17 @@ export class FhiSelect extends LitElement {
    */
   @property({ type: String, reflect: true }) name: string = '';
 
-  @property({ type: String })
-  value = '';
+  /**
+   * The value attribute of the select element. This property is used to identify the selected option when submitting a form.
+   * @type {string}
+   */
+  @property({ type: String, reflect: true }) value: string = '';
+
+  /**
+   * The disabled attribute of the select element. This property is used to disable the select element.
+   * @type {boolean}
+   */
+  @property({ type: Boolean, reflect: true }) disabled: boolean = false;
 
   @query('select')
   selectElement!: HTMLSelectElement;
@@ -140,6 +149,7 @@ export class FhiSelect extends LitElement {
         .value="${this.value}"
         @change="${this._handleSelectChange}"
         @input="${this._handleSelectInput}"
+        ?disabled="${this.disabled}"
       >
         ${this._renderOptionElements()}
       </select>
