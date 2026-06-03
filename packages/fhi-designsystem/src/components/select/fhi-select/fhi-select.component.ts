@@ -58,7 +58,7 @@ export class FhiSelect extends LitElement {
    * The message attribute of the select element. This property is used to provide a validation message for the select element.
    * @type {string}
    */
-  @property({ type: String, reflect: true })
+  @property({ type: String })
   message?: string;
 
   @query('select')
