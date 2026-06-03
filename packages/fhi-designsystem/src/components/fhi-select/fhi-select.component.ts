@@ -47,7 +47,7 @@ export class FhiSelect extends LitElement {
   slotElements!: Array<HTMLElement>;
 
   private _internals: ElementInternals;
-  private _initialSelectedElement: FhiSelectItem | null = null;
+  private _initialSelectedElement: HTMLOptionElement | null = null;
 
   constructor() {
     super();
@@ -58,6 +58,18 @@ export class FhiSelect extends LitElement {
     if (changedProperties.has('name')) {
       this._internals.setFormValue(this.value);
     }
+
+    if (!this._initialSelectedElement) {
+      this._setInitialSelectedElement();
+    }
+  }
+
+  private _setInitialSelectedElement() {
+    this.selectElement.querySelectorAll('option').forEach(option => {
+      if (option.selected) {
+        this._initialSelectedElement = option;
+      }
+    });
   }
 
   public formResetCallback(): void {
@@ -77,7 +89,6 @@ export class FhiSelect extends LitElement {
   }
 
   private _dispatchChangeEvent(): void {
-    console.log('Dispatching change event');
     /**
      * @type {Event} - Standard DOM event with the type `change`.
      * This event is dispatched when the chosen option of the select changes.
@@ -90,7 +101,6 @@ export class FhiSelect extends LitElement {
   }
 
   private _dispatchInputEvent(): void {
-    console.log('Dispatching input event');
     /**
      * @type {Event} - Standard DOM event with the type `input`.
      * This event is dispatched when the chosen option of the select changes.
@@ -112,14 +122,8 @@ export class FhiSelect extends LitElement {
       return html``;
     }
 
-    let selectedElement: FhiSelectItem | undefined = undefined;
-
     const options = html`
       ${items.map(item => {
-        if (item.hasAttribute('selected')) {
-          selectedElement = item;
-        }
-
         return html`<option
           value="${item.getAttribute('value') ?? item.textContent}"
           label="${item.getAttribute('label') ?? ''}"
@@ -129,13 +133,6 @@ export class FhiSelect extends LitElement {
         </option>`;
       })}
     `;
-
-    if (selectedElement !== undefined) {
-      this._initialSelectedElement = selectedElement;
-    } else {
-      this._initialSelectedElement =
-        items.find(item => item.hasAttribute('selected')) ?? null;
-    }
 
     return options;
   }
