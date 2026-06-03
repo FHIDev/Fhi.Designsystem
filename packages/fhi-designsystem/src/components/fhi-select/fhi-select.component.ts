@@ -256,12 +256,13 @@ export class FhiSelect extends LitElement {
     }
 
     :host([status='error']:not([disabled])) {
-      fhi-label {
+      .label,
+      .message,
+      select {
         color: var(--fhi-color-danger-text-default);
       }
 
       select {
-        color: var(--fhi-color-danger-text-default);
         border-color: var(--fhi-color-danger-border-strong);
         background-color: var(--fhi-color-danger-background-default);
       }

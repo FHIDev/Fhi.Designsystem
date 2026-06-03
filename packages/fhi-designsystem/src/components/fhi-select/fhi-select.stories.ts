@@ -4,6 +4,7 @@ import { FhiSelect } from './fhi-select.component';
 import { FhiSelectItem } from './fhi-select-item.component';
 
 import { FhiStorybookMeta } from '../../../.storybook/fhi-meta';
+import { ifDefined } from 'lit/directives/if-defined.js';
 
 new FhiSelect();
 new FhiSelectItem();
@@ -29,7 +30,7 @@ const meta: FhiStorybookMeta<FhiSelect> = {
       {
         name: '-',
         description:
-          'The default slot used to pass `<fhi-select-item>` elements as options to the select component.',
+          'Innholdet i select-elementet. Dette skal være <fhi-select-item>-elementer som representerer de ulike valgene i select-elementet.',
       },
     ],
   },
@@ -39,6 +40,8 @@ const meta: FhiStorybookMeta<FhiSelect> = {
       name=${args.name}
       label=${args.label}
       ?disabled=${args.disabled}
+      status=${ifDefined(args.status)}
+      message=${ifDefined(args.message)}
     >
       <fhi-select-item>Velg Alternativ</fhi-select-item>
       <fhi-select-item>Norge</fhi-select-item>
@@ -49,23 +52,27 @@ const meta: FhiStorybookMeta<FhiSelect> = {
     name: {
       control: 'text',
       description:
-        'The name attribute of the select element. This property is used to identify the selected option when submitting a form.',
+        'Setter navn på inputfeltet. Dette brukes typisk av assosierte form-elementer for å identifisere feltet i FormData.',
     },
     label: {
       control: 'text',
       description:
-        'The label attribute of the select element. This property is used to provide a descriptive label for the select element.',
+        'Setter label. Dette assosieres med select-elementet og vises over. Om dette er satt trenger du ikke å deklarere eget label-element.',
     },
     disabled: {
       control: 'boolean',
-      description:
-        'When true, the select element is disabled and non-interactive.',
+      description: 'Bestemmer om bruker kan samhandle med feltet.',
     },
     status: {
       control: 'select',
       options: ['error', undefined],
       description:
-        'The status of the select element. When set to "error", the select element is styled to indicate an error state.',
+        'Bestemmer om feltet har en status. Dette vil endre utseende på feltet.',
+    },
+    message: {
+      control: 'text',
+      description:
+        'Vises under select-elementet. Brukes til å gi veiledning til brukeren. Brukes blant annet ved Error for å forklare hva som mangler eller må justeres.',
     },
   },
 };
@@ -73,13 +80,35 @@ const meta: FhiStorybookMeta<FhiSelect> = {
 type Story = StoryObj<FhiSelect>;
 
 export const Preview: Story = {
-  tags: [],
+  tags: ['!dev'],
   args: {
     name: 'my-select',
     label: 'Land',
     disabled: false,
     status: undefined,
+    message: 'Dette er en valideringsmelding',
   },
 };
 
+export const Error: Story = {
+  tags: [],
+  args: {
+    name: 'my-select',
+    label: 'Land',
+    disabled: false,
+    status: 'error',
+    message: 'Dette er en valideringsmelding',
+  },
+};
+
+export const Disabled: Story = {
+  tags: [],
+  args: {
+    name: 'my-select',
+    label: 'Land',
+    disabled: true,
+    status: undefined,
+    message: 'Dette er en valideringsmelding',
+  },
+};
 export default meta;

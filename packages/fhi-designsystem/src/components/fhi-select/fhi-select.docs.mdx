@@ -1,5 +1,6 @@
 import { FhiSelect } from './fhi-select.component.ts';
 import * as FhiSelectStories from './fhi-select.stories.ts';
+import * as FhiSelectItemStories from './fhi-select-item.stories.ts';
 
 import { Meta, Primary, Canvas, Controls } from '@storybook/addon-docs/blocks';
 
@@ -17,7 +18,17 @@ Når man trykker dukker det opp en liste med de forshåndsdefinerte alternativen
 - Å velge fra en liste som ikke har plass i en gitt kontekst
 
 <Canvas of={FhiSelectStories.Preview} />
-
 <Controls of={FhiSelectStories.Preview} />
 
-<ApiDefinition />
+### Status
+#### `error`
+Uttrykker at noe mangler eller er skrevet feil.
+<Canvas of={FhiSelectStories.Error} />
+
+### Form Controls
+#### `disabled`
+Gjør at feltet ikke kan endres, fokuseres eller automatisk inkluderes i FormData. Unngås hvis man kan.
+<Canvas of={FhiSelectStories.Disabled} />
+
+<ApiDefinition of={FhiSelectStories.Preview} />
+<ApiDefinition of={FhiSelectItemStories.Preview} />
