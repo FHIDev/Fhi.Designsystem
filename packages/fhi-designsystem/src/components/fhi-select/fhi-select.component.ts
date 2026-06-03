@@ -176,7 +176,7 @@ export class FhiSelect extends LitElement {
       /* TODO: Use customizable select styling when available. */
       /* https://developer.mozilla.org/en-US/docs/Learn_web_development/Extensions/Forms/Customizable_select#browser_compatibility */
       select {
-        min-width: 15rem;
+        box-sizing: border-box;
 
         font: normal var(--fhi-typography-body-medium-font-weight)
           var(--fhi-typography-body-small-font-size) /
@@ -188,7 +188,7 @@ export class FhiSelect extends LitElement {
         border: var(--fhi-dimension-border-width) solid
           var(--fhi-color-neutral-border-default);
         border-radius: var(--fhi-border-radius-050);
-        padding: var(--fhi-spacing-100) var(--fhi-spacing-100)
+        padding: var(--fhi-spacing-100) var(--fhi-spacing-500)
           var(--fhi-spacing-100) var(--fhi-spacing-150);
 
         appearance: none;

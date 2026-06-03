@@ -1,0 +1,23 @@
+import { FhiSelect } from './fhi-select.component.ts';
+import * as FhiSelectStories from './fhi-select.stories.ts';
+
+import { Meta, Primary, Canvas, Controls } from '@storybook/addon-docs/blocks';
+
+import { ApiDefinition } from '../../../.storybook/blocks/api-definition.jsx';
+
+<Meta of={FhiSelectStories} />
+
+# Select
+Select lar brukere velge fra en liste med alternativer.
+Når man trykker dukker det opp en liste med de forshåndsdefinerte alternativene.
+
+## Passer til
+
+- Å velge fra en liste større enn det som passer å bruke Radio til
+- Å velge fra en liste som ikke har plass i en gitt kontekst
+
+<Canvas of={FhiSelectStories.Preview} />
+
+<Controls of={FhiSelectStories.Preview} />
+
+<ApiDefinition />
