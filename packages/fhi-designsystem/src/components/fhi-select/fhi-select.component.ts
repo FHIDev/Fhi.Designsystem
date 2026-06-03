@@ -9,6 +9,7 @@ import {
 import { FhiSelectItem } from './fhi-select-item.component';
 
 import '../typography/fhi-label/fhi-label.component';
+import '../typography/fhi-body/fhi-body.component';
 import '../icons/fhi-icon-chevron-down.component';
 
 export const FhiSelectSelector = 'fhi-select';
@@ -22,32 +23,43 @@ export class FhiSelect extends LitElement {
    * The name attribute of the select element. This property is used to identify the select element when submitting a form.
    * @type {string}
    */
-  @property({ type: String, reflect: true }) name: string = '';
+  @property({ type: String, reflect: true })
+  name: string = '';
 
   /**
    * The label attribute of the select element. This property is used to provide a descriptive label for the select element.
    * @type {string}
    */
-  @property({ type: String }) label: string = '';
+  @property({ type: String })
+  label: string = '';
 
   /**
    * The value attribute of the select element. This property is used to identify the selected option when submitting a form.
    * @type {string}
    */
-  @property({ type: String, reflect: true }) value: string = '';
+  @property({ type: String, reflect: true })
+  value: string = '';
 
   /**
    * The disabled attribute of the select element. This property is used to disable the select element.
    * @type {boolean}
    */
-  @property({ type: Boolean, reflect: true }) disabled: boolean = false;
+  @property({ type: Boolean, reflect: true })
+  disabled: boolean = false;
 
   /**
    * The status attribute of the select element. This property is used to indicate the validation status of the select element.
    * @type {'error' | undefined}
    */
-  @property({ type: String, reflect: true }) status: 'error' | undefined =
-    undefined;
+  @property({ type: String, reflect: true })
+  status?: 'error';
+
+  /**
+   * The message attribute of the select element. This property is used to provide a validation message for the select element.
+   * @type {string}
+   */
+  @property({ type: String, reflect: true })
+  message?: string;
 
   @query('select')
   selectElement!: HTMLSelectElement;
@@ -157,21 +169,27 @@ export class FhiSelect extends LitElement {
 
   render() {
     return html`
-      <slot hidden @slotchange=${this._handleSlotChange}></slot>
       <label for="select">
-        <fhi-label size="small">${this.label}</fhi-label>
+        <fhi-label class="label" size="small">${this.label}</fhi-label>
       </label>
-      <fhi-icon-chevron-down aria-hidden="true"></fhi-icon-chevron-down>
-      <select
-        id="select"
-        name="${this.name}"
-        .value="${this.value}"
-        @change="${this._handleSelectChange}"
-        @input="${this._handleSelectInput}"
-        ?disabled="${this.disabled}"
-      >
-        ${this._renderOptionElements()}
-      </select>
+
+      <div class="select-wrapper">
+        <fhi-icon-chevron-down aria-hidden="true"></fhi-icon-chevron-down>
+        <select
+          id="select"
+          name="${this.name}"
+          .value="${this.value}"
+          @change="${this._handleSelectChange}"
+          @input="${this._handleSelectInput}"
+          ?disabled="${this.disabled}"
+        >
+          ${this._renderOptionElements()}
+        </select>
+      </div>
+
+      <fhi-body class="message" size="small">${this.message}</fhi-body>
+
+      <slot hidden @slotchange=${this._handleSlotChange}></slot>
     `;
   }
 
@@ -181,20 +199,31 @@ export class FhiSelect extends LitElement {
 
     :host {
       display: block;
-      position: relative;
       width: fit-content;
       color: var(--fhi-color-neutral-text-default);
 
-      fhi-label {
+      .label {
         color: inherit;
         width: fit-content;
+        padding-bottom: var(--fhi-spacing-050);
+      }
+
+      .message {
+        color: inherit;
+        width: fit-content;
+        padding-top: var(--fhi-spacing-050);
+      }
+
+      .select-wrapper {
+        position: relative;
+        display: inline-block;
       }
 
       fhi-icon-chevron-down {
         color: inherit;
         position: absolute;
         pointer-events: none;
-        top: 48%;
+        top: 20%;
         right: 6%;
       }
 
