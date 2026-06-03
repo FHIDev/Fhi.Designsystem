@@ -6,11 +6,11 @@ export const FhiSelectItemSelector = 'fhi-select-item';
 @customElement(FhiSelectItemSelector)
 export class FhiSelectItem extends LitElement {
   @property({ type: String, reflect: true })
-  label = '';
+  label: string | null = null;
 
   @property({ type: Boolean, reflect: true })
   selected = false;
 
   @property({ type: String, reflect: true })
-  value = '';
+  value: string | null = null;
 }
