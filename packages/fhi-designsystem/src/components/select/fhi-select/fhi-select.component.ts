@@ -6,11 +6,11 @@ import {
   query,
 } from 'lit/decorators.js';
 
-import { FhiSelectItem } from './fhi-select-item.component';
+import { FhiSelectItem } from '../fhi-select-item/fhi-select-item.component';
 
-import '../typography/fhi-label/fhi-label.component';
-import '../typography/fhi-body/fhi-body.component';
-import '../icons/fhi-icon-chevron-down.component';
+import '../../typography/fhi-label/fhi-label.component';
+import '../../typography/fhi-body/fhi-body.component';
+import '../../icons/fhi-icon-chevron-down.component';
 
 export const FhiSelectSelector = 'fhi-select';
 

@@ -2,7 +2,7 @@ import type { StoryObj } from '@storybook/web-components-vite';
 import { html } from 'lit';
 import { FhiSelectItem } from './fhi-select-item.component';
 
-import { FhiStorybookMeta } from '../../../.storybook/fhi-meta';
+import { FhiStorybookMeta } from '../../../../.storybook/fhi-meta';
 
 new FhiSelectItem();
 

@@ -1,9 +1,9 @@
 import type { StoryObj } from '@storybook/web-components-vite';
 import { html } from 'lit';
 import { FhiSelect } from './fhi-select.component';
-import { FhiSelectItem } from './fhi-select-item.component';
+import { FhiSelectItem } from '../fhi-select-item/fhi-select-item.component';
 
-import { FhiStorybookMeta } from '../../../.storybook/fhi-meta';
+import { FhiStorybookMeta } from '../../../../.storybook/fhi-meta';
 import { ifDefined } from 'lit/directives/if-defined.js';
 
 new FhiSelect();
