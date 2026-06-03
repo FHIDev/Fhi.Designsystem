@@ -7,7 +7,9 @@ import {
 } from 'lit/decorators.js';
 
 import { FhiSelectItem } from './fhi-select-item.component';
+
 import '../typography/fhi-label/fhi-label.component';
+import '../icons/fhi-icon-chevron-down.component';
 
 export const FhiSelectSelector = 'fhi-select';
 
@@ -26,7 +28,7 @@ export class FhiSelect extends LitElement {
    * The label attribute of the select element. This property is used to provide a descriptive label for the select element.
    * @type {string}
    */
-  @property({ type: String, reflect: true }) label: string = '';
+  @property({ type: String }) label: string = '';
 
   /**
    * The value attribute of the select element. This property is used to identify the selected option when submitting a form.
@@ -39,6 +41,13 @@ export class FhiSelect extends LitElement {
    * @type {boolean}
    */
   @property({ type: Boolean, reflect: true }) disabled: boolean = false;
+
+  /**
+   * The status attribute of the select element. This property is used to indicate the validation status of the select element.
+   * @type {'error' | undefined}
+   */
+  @property({ type: String, reflect: true }) status: 'error' | undefined =
+    undefined;
 
   @query('select')
   selectElement!: HTMLSelectElement;
@@ -152,6 +161,7 @@ export class FhiSelect extends LitElement {
       <label for="select">
         <fhi-label size="small">${this.label}</fhi-label>
       </label>
+      <fhi-icon-chevron-down aria-hidden="true"></fhi-icon-chevron-down>
       <select
         id="select"
         name="${this.name}"
@@ -171,11 +181,27 @@ export class FhiSelect extends LitElement {
 
     :host {
       display: block;
+      position: relative;
       width: fit-content;
+      color: var(--fhi-color-neutral-text-default);
+
+      fhi-label {
+        color: inherit;
+        width: fit-content;
+      }
+
+      fhi-icon-chevron-down {
+        color: inherit;
+        position: absolute;
+        pointer-events: none;
+        top: 48%;
+        right: 6%;
+      }
 
       /* TODO: Use customizable select styling when available. */
       /* https://developer.mozilla.org/en-US/docs/Learn_web_development/Extensions/Forms/Customizable_select#browser_compatibility */
       select {
+        color: inherit;
         box-sizing: border-box;
 
         font: normal var(--fhi-typography-body-medium-font-weight)
@@ -192,19 +218,30 @@ export class FhiSelect extends LitElement {
           var(--fhi-spacing-100) var(--fhi-spacing-150);
 
         appearance: none;
-        background-image: url('src/assets/icons/chevron-down.svg');
-        background-repeat: no-repeat;
-        background-position: right var(--fhi-spacing-100) center;
         field-sizing: content;
+      }
+    }
 
-        &:hover:not(:open) {
-          border-color: var(--fhi-color-accent-border-default);
-          background-color: var(--fhi-color-accent-background-subtle);
-        }
+    :host([disabled]) {
+      opacity: var(--fhi-opacity-disabled);
+    }
+
+    :host([status='error']:not([disabled])) {
+      fhi-label {
+        color: var(--fhi-color-danger-text-default);
       }
 
-      fhi-label {
-        width: fit-content;
+      select {
+        color: var(--fhi-color-danger-text-default);
+        border-color: var(--fhi-color-danger-border-strong);
+        background-color: var(--fhi-color-danger-background-default);
+      }
+    }
+
+    :host(:hover:not([status]):not([disabled])) {
+      select:not(:open) {
+        border-color: var(--fhi-color-accent-border-default);
+        background-color: var(--fhi-color-accent-background-subtle);
       }
     }
   `;

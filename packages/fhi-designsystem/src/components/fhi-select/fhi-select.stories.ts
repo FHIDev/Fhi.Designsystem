@@ -48,15 +48,24 @@ const meta: FhiStorybookMeta<FhiSelect> = {
   argTypes: {
     name: {
       control: 'text',
-      description: 'The name attribute of the select element.',
+      description:
+        'The name attribute of the select element. This property is used to identify the selected option when submitting a form.',
     },
     label: {
       control: 'text',
-      description: 'The label attribute of the select element.',
+      description:
+        'The label attribute of the select element. This property is used to provide a descriptive label for the select element.',
     },
     disabled: {
       control: 'boolean',
-      description: 'The disabled attribute of the select element.',
+      description:
+        'When true, the select element is disabled and non-interactive.',
+    },
+    status: {
+      control: 'select',
+      options: ['error', undefined],
+      description:
+        'The status of the select element. When set to "error", the select element is styled to indicate an error state.',
     },
   },
 };
@@ -69,6 +78,7 @@ export const Preview: Story = {
     name: 'my-select',
     label: 'Land',
     disabled: false,
+    status: undefined,
   },
 };
 
