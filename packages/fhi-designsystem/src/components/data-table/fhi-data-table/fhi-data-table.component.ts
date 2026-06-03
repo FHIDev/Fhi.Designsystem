@@ -14,11 +14,11 @@ export const FhiDataTableSelector = 'fhi-data-table';
  * The `<fhi-data-table>` component is an implementation of a table according to the FHI Design System guidelines.
  * It allows users to display tabular data in a structured format using `<fhi-data-table-row>` and `<fhi-data-table-cell>` components.
  *
- * The `<fhi-data-table>` component does not use the native HTML `<table>` element. Instead, it relies on CSS Grid to achieve the desired layout and styling.
+ * The `<fhi-data-table>` component does not use the native HTML `<table>` element. Instead, it relies on CSS `display: table` to achieve the desired layout and styling.
  *
  * Example usage:
  * ```html
- * <fhi-data-table caption="Example Table" columns="2fr 1fr 1fr">
+ * <fhi-data-table caption="Example Table">
  *   <fhi-data-table-row variant="header">
  *     <fhi-data-table-cell>Header 1</fhi-data-table-cell>
  *     <fhi-data-table-cell>Header 2</fhi-data-table-cell>
@@ -34,6 +34,9 @@ export const FhiDataTableSelector = 'fhi-data-table';
  *
  * @tag fhi-data-table
  * @element fhi-data-table
+ *
+ * @slot - The content of the table, consisting of `<fhi-data-table-row>` elements which in turn contain `<fhi-data-table-cell>` elements.
+ *
  */
 @customElement(FhiDataTableSelector)
 export class FhiDataTable extends LitElement {

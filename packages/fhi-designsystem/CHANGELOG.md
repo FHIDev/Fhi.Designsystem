@@ -1,5 +1,53 @@
 # Changelog
 
+## [0.38.5](https://github.com/FHIDev/Fhi.Designsystem/compare/v0.38.4...v0.38.5) (2026-05-28)
+
+### 🛠️ Bug Fixes
+
+* Added nowrap to Tag ([#433](https://github.com/FHIDev/Fhi.Designsystem/issues/433)) ([cd006d1](https://github.com/FHIDev/Fhi.Designsystem/commit/cd006d11ff878e6af72e82eb8100a15ee736f3ec))
+
+## [0.38.4](https://github.com/FHIDev/Fhi.Designsystem/compare/v0.38.3...v0.38.4) (2026-05-27)
+
+### 🛠️ Bug Fixes
+
+* Update JSDoc for Table with slot documentation ([#431](https://github.com/FHIDev/Fhi.Designsystem/issues/431)) ([e6db8fe](https://github.com/FHIDev/Fhi.Designsystem/commit/e6db8fe59cfd7b6f093eb5cb0dc6b7e67e71a3c4))
+
+## [0.38.3](https://github.com/FHIDev/Fhi.Designsystem/compare/v0.38.2...v0.38.3) (2026-05-27)
+
+### 🛠️ Bug Fixes
+
+* Endret komponent tokens for fhi-tag ([#423](https://github.com/FHIDev/Fhi.Designsystem/issues/423)) ([1d0e334](https://github.com/FHIDev/Fhi.Designsystem/commit/1d0e3345fbc93b04232b1fbc271cd55bbec8c543))
+
+## [0.38.2](https://github.com/FHIDev/Fhi.Designsystem/compare/v0.38.1...v0.38.2) (2026-05-27)
+
+### 🛠️ Bug Fixes
+
+* Endret tokens til ny struktur for typografikomponenter ([#427](https://github.com/FHIDev/Fhi.Designsystem/issues/427)) ([9e55329](https://github.com/FHIDev/Fhi.Designsystem/commit/9e55329da36e508d369348c16b0f8746a0206a9a))
+
+## [0.38.1](https://github.com/FHIDev/Fhi.Designsystem/compare/v0.38.0...v0.38.1) (2026-05-27)
+
+### 🛠️ Bug Fixes
+
+* ny token struktur fhi text input og fhi date input ([#429](https://github.com/FHIDev/Fhi.Designsystem/issues/429)) ([3f13623](https://github.com/FHIDev/Fhi.Designsystem/commit/3f136239d11e9dca425ef6f270e9300e77df29d5))
+
+### Other
+
+* Fix pipeline issue related to quotes in the commit message ([#424](https://github.com/FHIDev/Fhi.Designsystem/issues/424)) ([ebd7f9e](https://github.com/FHIDev/Fhi.Designsystem/commit/ebd7f9e3e37d8d8105e148b60184305849ec9665))
+
+## [0.38.0](https://github.com/FHIDev/Fhi.Designsystem/compare/v0.37.0...v0.38.0) (2026-05-22)
+
+### 🚀 Features
+
+* New File Text icon ([#428](https://github.com/FHIDev/Fhi.Designsystem/issues/428)) ([7422079](https://github.com/FHIDev/Fhi.Designsystem/commit/7422079f7db92428d8c90e39ed2937241e68b650))
+
+### 📑 Documentation
+
+* La til dokumentasjon om SSR ([fc779c2](https://github.com/FHIDev/Fhi.Designsystem/commit/fc779c2afbbad201a089b9f015c6eb0514809ca6))
+
+### Other
+
+* Update release-it and fix broken links in the changelog ([#425](https://github.com/FHIDev/Fhi.Designsystem/issues/425)) ([b0b02df](https://github.com/FHIDev/Fhi.Designsystem/commit/b0b02dfcbc61b2f98ef9384874298a80d134dbca))
+
 ## [0.37.0](https://github.com/FHIDev/Fhi/compare/v0.36.0...v0.37.0) (2026-05-12)
 
 ### 🚀 Features

@@ -57,7 +57,7 @@ describe('fhi-tag', () => {
 
       await expect(icon.getAttribute('size')).to.equal('1rem');
       await expect(icon.style.marginLeft).to.equal(
-        'var(--dimension-icon-offset)',
+        'calc(-1 * var(--fhi-spacing-050))',
       );
     });
   });

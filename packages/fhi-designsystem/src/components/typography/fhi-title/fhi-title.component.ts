@@ -92,25 +92,6 @@ export class FhiTitle extends LitElement {
 
   static styles = css`
     :host {
-      --font-size-large: var(--fhi-typography-title-large-font-size);
-      --font-weight-large: var(--fhi-typography-title-large-font-weight);
-      --line-height-large: var(--fhi-typography-title-large-line-height);
-      --letter-spacing-large: var(--fhi-typography-title-large-letter-spacing);
-
-      --font-size-medium: var(--fhi-typography-title-medium-font-size);
-      --font-weight-medium: var(--fhi-typography-title-medium-font-weight);
-      --line-height-medium: var(--fhi-typography-title-medium-line-height);
-      --letter-spacing-medium: var(
-        --fhi-typography-title-medium-letter-spacing
-      );
-
-      --font-size-small: var(--fhi-typography-title-small-font-size);
-      --font-weight-small: var(--fhi-typography-title-small-font-weight);
-      --line-height-small: var(--fhi-typography-title-small-line-height);
-      --letter-spacing-small: var(--fhi-typography-title-small-letter-spacing);
-    }
-
-    :host {
       display: block;
       contain: layout;
       color: var(--fhi-color-neutral-text-default);
@@ -123,28 +104,28 @@ export class FhiTitle extends LitElement {
 
     :host([size='large']) {
       .title {
-        font-size: var(--font-size-large);
-        font-weight: var(--font-weight-large);
-        line-height: var(--line-height-large);
-        letter-spacing: var(--letter-spacing-large);
+        font-size: var(--fhi-typography-title-large-font-size);
+        font-weight: var(--fhi-typography-title-large-font-weight);
+        line-height: var(--fhi-typography-title-large-line-height);
+        letter-spacing: var(--fhi-typography-title-large-letter-spacing);
       }
     }
 
     :host([size='medium']) {
       .title {
-        font-size: var(--font-size-medium);
-        font-weight: var(--font-weight-medium);
-        line-height: var(--line-height-medium);
-        letter-spacing: var(--letter-spacing-medium);
+        font-size: var(--fhi-typography-title-medium-font-size);
+        font-weight: var(--fhi-typography-title-medium-font-weight);
+        line-height: var(--fhi-typography-title-medium-line-height);
+        letter-spacing: var(--fhi-typography-title-medium-letter-spacing);
       }
     }
 
     :host([size='small']) {
       .title {
-        font-size: var(--font-size-small);
-        font-weight: var(--font-weight-small);
-        line-height: var(--line-height-small);
-        letter-spacing: var(--letter-spacing-small);
+        font-size: var(--fhi-typography-title-small-font-size);
+        font-weight: var(--fhi-typography-title-small-font-weight);
+        line-height: var(--fhi-typography-title-small-line-height);
+        letter-spacing: var(--fhi-typography-title-small-letter-spacing);
       }
     }
   `;
