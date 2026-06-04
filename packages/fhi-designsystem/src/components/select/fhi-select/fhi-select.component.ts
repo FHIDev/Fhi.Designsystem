@@ -169,9 +169,13 @@ export class FhiSelect extends LitElement {
 
   render() {
     return html`
-      <label for="select">
-        <fhi-label class="label" size="small">${this.label}</fhi-label>
-      </label>
+      ${this.label
+        ? html`
+            <label for="select">
+              <fhi-label class="label" size="small">${this.label}</fhi-label>
+            </label>
+          `
+        : null}
 
       <div class="select-wrapper">
         <fhi-icon-chevron-down aria-hidden="true"></fhi-icon-chevron-down>
@@ -187,7 +191,11 @@ export class FhiSelect extends LitElement {
         </select>
       </div>
 
-      <fhi-body class="message" size="small">${this.message}</fhi-body>
+      ${this.message
+        ? html`<fhi-body class="message" size="small"
+            >${this.message}</fhi-body
+          >`
+        : null}
 
       <slot hidden @slotchange=${this._handleSlotChange}></slot>
     `;
