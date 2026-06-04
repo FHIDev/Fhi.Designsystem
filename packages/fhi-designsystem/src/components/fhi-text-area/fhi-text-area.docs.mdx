@@ -14,12 +14,26 @@ Text Area lar brukere skrive inn lengre tekster, slik som beskrivelser og søkna
  - Svar som kan gå over flere linjer
 
 <Canvas of={FhiTextAreaStories.Preview} />
-
 <Controls of={FhiTextAreaStories.Preview} />
+
+### Status
+#### `error`
+Uttrykker at noe mangler eller er skrevet feil.
+<Canvas of={FhiTextAreaStories.Error} />
 
 ### Ikon
 
 Text Area har ikke valg for ikon før feltets verdi.
 Ikon til høyre brukes der den er tilgjengelige handlinger, slik som å nullstille verdien. 
+
+
+
+### Form Controls
+#### `readonly`
+Gjør at feltet ikke kan endres. Feltet vil fortsatt kunne fokuseres og vil automatisk bli inkludert i FormData.
+<Canvas of={FhiTextAreaStories.Readonly} />
+#### `disabled`
+Gjør at feltet ikke kan endres, fokuseres eller automatisk inkluderes i FormData. Unngås hvis man kan.
+<Canvas of={FhiTextAreaStories.Disabled} />
 
 <ApiDefinition />

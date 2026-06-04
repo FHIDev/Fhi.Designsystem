@@ -6,14 +6,34 @@ import { FhiStorybookMeta } from '../../../.storybook/fhi-meta';
 import { action } from 'storybook/actions';
 import { ifDefined } from 'lit/directives/if-defined.js';
 
+import { FhiIconX } from '../icons/fhi-icon-x.component';
+
 new FhiTextArea();
+new FhiIconX();
 
 const meta: FhiStorybookMeta<FhiTextArea> = {
   title: 'Komponenter/Text Area',
   component: 'fhi-text-area',
   parameters: {
-    eventTypes: [],
-    methodTypes: [],
+    docs: {
+      source: {
+        excludeDecorators: true,
+      },
+    },
+    eventTypes: [
+      {
+        name: 'change',
+        description:
+          'Blir utløst når verdien av inputfeltet endres og brukeren har forlatt feltet.',
+        valueLocation: ['event.target.value'],
+      },
+      {
+        name: 'input',
+        description:
+          'Blir utløst når verdien av inputfeltet endres. Dette eventet utløses ved hver endring, inkludert mens brukeren skriver.',
+        valueLocation: ['event.target.value'],
+      },
+    ],
     slotTypes: [],
   },
   decorators: [],
@@ -98,8 +118,39 @@ const meta: FhiStorybookMeta<FhiTextArea> = {
 type Story = StoryObj<FhiTextArea>;
 
 export const Preview: Story = {
-  tags: [],
-  args: {},
+  tags: ['!dev'],
+  args: {
+    label: 'Label',
+  },
+};
+
+export const Error: Story = {
+  tags: ['!dev'],
+  args: {
+    label: 'Label',
+    message: 'Informative error message',
+    status: 'error',
+    value: 'This field has an error',
+  },
+};
+
+export const Disabled: Story = {
+  tags: ['!dev'],
+  args: {
+    label: 'Label',
+    value: 'This field is disabled',
+    disabled: true,
+  },
+};
+
+export const Readonly: Story = {
+  tags: ['!dev'],
+  args: {
+    label: 'Navn',
+    value: 'Ola Nordmann',
+    helpText: 'Hentet fra Folkerigisteret',
+    readonly: true,
+  },
 };
 
 export default meta;
