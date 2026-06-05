@@ -276,8 +276,8 @@ export class FhiSelect extends LitElement {
       }
     }
 
-    :host(:hover:not([status]):not([disabled])) {
-      select:not(:open) {
+    :host(:not([status]):not([disabled])) {
+      select:hover:not(:open) {
         border-color: var(--fhi-color-accent-border-default);
         background-color: var(--fhi-color-accent-background-subtle);
       }
