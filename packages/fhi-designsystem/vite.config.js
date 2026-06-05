@@ -104,6 +104,10 @@ export default defineConfig(({ command, mode }) => {
       default: './custom-elements.json',
     };
 
+    packageJson.exports['./angular-wrappers'] = {
+      default: './angular-wrappers/index.ts',
+    };
+
     return packageJson;
   })();
 
