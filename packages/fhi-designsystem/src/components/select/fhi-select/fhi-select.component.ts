@@ -245,7 +245,6 @@ export class FhiSelect extends LitElement {
           var(--fhi-typography-body-small-font-size) /
           var(--fhi-typography-body-small-line-height)
           var(--fhi-font-family-default);
-        letter-spacing: var(--fhi-typography-body-small-letter-spacing);
 
         background-color: var(--fhi-color-neutral-background-default);
         border: var(--fhi-dimension-border-width) solid

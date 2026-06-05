@@ -33,7 +33,7 @@ const meta: FhiStorybookMeta<FhiSelectItem> = {
     value: {
       control: 'text',
       description:
-        'Verdien til valget. Om ikke satt, vil teksten i valget brukes som verdi. Det er denne verdien som sendes med i formData',
+        'Verdien til valget. Om ikke satt, vil tekst innholdet i valget brukes som verdi. Det er denne verdien som sendes med i formData',
     },
   },
 };
