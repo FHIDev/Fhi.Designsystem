@@ -5,9 +5,14 @@ import { FhiSelectItem } from '../fhi-select-item/fhi-select-item.component';
 
 import { FhiStorybookMeta } from '../../../../.storybook/fhi-meta';
 import { ifDefined } from 'lit/directives/if-defined.js';
+import { FhiBody } from '../../typography/fhi-body/fhi-body.component';
+import { FhiFlex } from '../../fhi-flex/fhi-flex.component';
 
 new FhiSelect();
 new FhiSelectItem();
+
+new FhiBody();
+new FhiFlex();
 
 const meta: FhiStorybookMeta<FhiSelect> = {
   title: 'Komponenter/Select',
@@ -17,12 +22,12 @@ const meta: FhiStorybookMeta<FhiSelect> = {
       {
         name: 'change',
         valueLocation: ['event.target.value'],
-        description: 'Emitted when the selected option changes.',
+        description: 'Blir utløst når det valgte alternativet endres.',
       },
       {
         name: 'input',
         valueLocation: ['event.target.value'],
-        description: 'Emitted when the selected option changes.',
+        description: 'Blir utløst når det valgte alternativet endres.',
       },
     ],
     methodTypes: [],
@@ -84,8 +89,6 @@ export const Preview: Story = {
   args: {
     name: 'my-select',
     label: 'Land',
-    disabled: false,
-    status: undefined,
     message: 'Dette er en valideringsmelding',
   },
 };
@@ -95,7 +98,6 @@ export const Error: Story = {
   args: {
     name: 'my-select',
     label: 'Land',
-    disabled: false,
     status: 'error',
     message: 'Dette er en valideringsmelding',
   },
@@ -107,8 +109,83 @@ export const Disabled: Story = {
     name: 'my-select',
     label: 'Land',
     disabled: true,
-    status: undefined,
     message: 'Dette er en valideringsmelding',
   },
 };
+
+export const WithValue: Story = {
+  tags: ['!dev'],
+  render: args =>
+    html`<fhi-select
+      name=${args.name}
+      label=${args.label}
+      ?disabled=${args.disabled}
+      status=${ifDefined(args.status)}
+      message=${ifDefined(args.message)}
+    >
+      <fhi-select-item value="">Velg Alternativ</fhi-select-item>
+      <fhi-select-item value="1">Volvo</fhi-select-item>
+      <fhi-select-item value="2">X-Peng</fhi-select-item>
+      <fhi-select-item value="3">Mercedes</fhi-select-item>
+    </fhi-select>`,
+  args: {
+    name: 'my-car-select',
+    label: 'Bilmerke',
+  },
+};
+
+export const WithLabel: Story = {
+  tags: ['!dev'],
+  render: args =>
+    html`<fhi-select
+      name=${args.name}
+      label=${args.label}
+      ?disabled=${args.disabled}
+      status=${ifDefined(args.status)}
+      message=${ifDefined(args.message)}
+    >
+      <fhi-select-item value="" label="Velg Alternativ"></fhi-select-item>
+      <fhi-select-item
+        value="Kinesisk"
+        label="Mapo Tofu - 麻婆豆腐"
+      ></fhi-select-item>
+      <fhi-select-item
+        value="Italiensk"
+        label="Tagliatelle (al Ragù) Bolognese"
+      ></fhi-select-item>
+      <fhi-select-item
+        value="Japansk"
+        label="Shoyu Ramen - 醤油ラーメン"
+      ></fhi-select-item>
+    </fhi-select>`,
+  args: {
+    name: 'my-dinner-select',
+    label: 'Favoritt middag',
+  },
+};
+
+export const Pagination: Story = {
+  tags: ['!dev'],
+  render: args => html`
+    <fhi-flex gap="small" align="center">
+      <fhi-select
+        name=${args.name}
+        label=${ifDefined(args.label)}
+        ?disabled=${args.disabled}
+        status=${ifDefined(args.status)}
+        message=${ifDefined(args.message)}
+        aria-label="Velg side"
+      >
+        <fhi-select-item>1</fhi-select-item>
+        <fhi-select-item>2</fhi-select-item>
+        <fhi-select-item>3</fhi-select-item>
+      </fhi-select>
+      <fhi-body>av 3</fhi-body>
+    </fhi-flex>
+  `,
+  args: {
+    name: 'my-pagination-select',
+  },
+};
+
 export default meta;

@@ -32,5 +32,26 @@ Uttrykker at noe mangler eller er skrevet feil.
 Gjør at feltet ikke kan endres, fokuseres eller automatisk inkluderes i FormData. Unngås hvis man kan.
 <Canvas of={FhiSelectStories.Disabled} />
 
+## Eksempler og bruk
+
+Select består av `<fhi-select>` og `<fhi-select-item>`.
+`<fhi-select>` er selve select-elementet, mens `<fhi-select-item>` er de ulike alternativene i listen.
+
+Verdien som blir sendt ved submit er verdien i `value`-attributten på det valgte `<fhi-select-item>`.
+Denne verdien blir satt til tekst innholdet til `<fhi-select-item>` hvis `value`-attributten ikke er satt.
+
+Du kan sette `value` til å være noe annet enn tekst innholdet.
+
+<Canvas of={FhiSelectStories.WithValue} />
+
+Om du bruker `label`-attributten på `<fhi-select>`, vil denne vises i valget, selv om valget har tekst innhold.
+
+<Canvas of={FhiSelectStories.WithLabel} />
+
+Det finnes tilfeller der det ikke er plass eller behov for Label som en del av selve komponenten, slik som i tabeller eller der Select er en del av en setning.
+I disse filfellene skal man brukes `aria-label` eller `aria-labelledby` for å gi en beskrivelse av hva Select-en handler om.
+
+<Canvas of={FhiSelectStories.Pagination} />
+
 <ApiDefinition of={FhiSelectStories.Preview} />
 <ApiDefinition of={FhiSelectItemStories.Preview} />

@@ -15,7 +15,8 @@ const meta: FhiStorybookMeta<FhiSelectItem> = {
     slotTypes: [
       {
         name: '-',
-        description: 'Innholdet i valget. Skal være ren tekst.',
+        description:
+          'Innholdet som vises i valget. Skal være ren tekst. Dette blir overskrevet av `label`-attributten om den er satt.',
       },
     ],
   },
@@ -24,7 +25,8 @@ const meta: FhiStorybookMeta<FhiSelectItem> = {
   argTypes: {
     label: {
       control: 'text',
-      description: 'Teksten som vises i valget.',
+      description:
+        'Teksten som vises i valget. Om ikke satt, vil innholdet i `value` brukes.',
     },
     selected: {
       control: 'boolean',
@@ -33,7 +35,7 @@ const meta: FhiStorybookMeta<FhiSelectItem> = {
     value: {
       control: 'text',
       description:
-        'Verdien til valget. Om ikke satt, vil tekst innholdet i valget brukes som verdi. Det er denne verdien som sendes med i formData',
+        'Verdien til valget som blir sendt med i formData. Om ikke satt, vil tekst innholdet brukes som verdi.',
     },
   },
 };
