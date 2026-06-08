@@ -203,9 +203,6 @@ export class FhiSelect extends LitElement {
 
   static styles = css`
     :host {
-    }
-
-    :host {
       display: block;
       width: fit-content;
       color: var(--fhi-color-neutral-text-default);
@@ -260,6 +257,10 @@ export class FhiSelect extends LitElement {
 
     :host([disabled]) {
       opacity: var(--fhi-opacity-disabled);
+
+      * {
+        cursor: not-allowed;
+      }
     }
 
     :host([status='error']:not([disabled])) {
@@ -276,9 +277,13 @@ export class FhiSelect extends LitElement {
     }
 
     :host(:not([status]):not([disabled])) {
-      select:hover:not(:open) {
-        border-color: var(--fhi-color-accent-border-default);
-        background-color: var(--fhi-color-accent-background-subtle);
+      select:not(:open) {
+        transition: all var(--fhi-motion-ease-default)
+          var(--fhi-motion-duration-quick);
+        &:hover {
+          border-color: var(--fhi-color-accent-border-default);
+          background-color: var(--fhi-color-accent-background-subtle);
+        }
       }
     }
   `;
