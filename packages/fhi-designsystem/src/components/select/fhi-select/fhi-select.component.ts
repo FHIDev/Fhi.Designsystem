@@ -14,6 +14,19 @@ import '../../icons/fhi-icon-chevron-down.component';
 
 export const FhiSelectSelector = 'fhi-select';
 
+/**
+ * ## FHI Select
+ *
+ * {@link https://designsystem.fhi.no/?path=/docs/komponenter-select--docs}
+ *
+ * The `<fhi-select>` component is used to create a dropdown list of options for users to choose from.
+ * It provides a labeled select element (`fhi-select-item`) with optional placeholder text, status indication, and a message area for additional information or validation feedback.
+ *
+ * @tag fhi-select
+ * @element fhi-select
+ *
+ * @slot - The default slot is used to provide the options for the select element. Each option should be represented by a `<fhi-select-item>` element.
+ */
 @customElement(FhiSelectSelector)
 export class FhiSelect extends LitElement {
   /** @internal */
