@@ -222,7 +222,6 @@ export default defineConfig(({ command, mode }) => {
             formats: ['es'],
             entry: {
               'theme/default.css': './src/theme/default.css',
-              'fonts/RobotoFlex.ttf': './fonts/RobotoFlex.ttf',
               'fhi-designsystem': virtualLibraryModule.path,
             },
           },
@@ -253,6 +252,14 @@ export default defineConfig(({ command, mode }) => {
                 dest: './',
               },
               {
+                src: 'src/theme/*',
+                dest: './theme/',
+              },
+              {
+                src: 'src/fonts/*',
+                dest: './fonts/',
+              },
+              {
                 src: 'ai/skills/fhi-designsystem/SKILL.md',
                 dest: './ai-tooling',
               },
@@ -280,8 +287,6 @@ export default defineConfig(({ command, mode }) => {
           lib: {
             formats: ['es'],
             entry: {
-              'theme/default.css': './src/theme/default.css',
-              'fonts/RobotoFlex.ttf': './fonts/RobotoFlex.ttf',
               index: virtualLibraryModule.path,
               ...listOfComponents,
             },
