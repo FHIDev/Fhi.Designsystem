@@ -60,14 +60,27 @@ import { FhiButtonAngularWrapper } from "@folkehelseinstituttet/designsystem/ang
 })
 ```
 
-**Merk:** Webkomponentene bruker `fhi-` som prefix. I Angular-wrapperene bruker vi `fhi-ng-` som prefix for å unngå navnekonflikter.
-
 Du kan nå bruke wrapperen i Angular-komponentens HTML-mal slik:
 
 ```html
-<fhi-ng-button (click)="handleClick($event)">Click me!</fhi-ng-button>
+<fhi-button (click)="handleClick($event)">Click me!</fhi-button>
 ```
 _Obs: `handleClick` er brukt her som et eksempel. Du må selv lage en metode i Angular-komponenten som håndterer klikk-eventet._
+
+### Angular Forms
+
+Ønsker du å bruke form-komponentene til FHi Designsystem (e.g fhi-text-input, fhi-checkbox etc..) med Angular Forms må du huske å importere de respektive ValueAccessor-ene.
+Eksempel med `fhi-text-input`:
+
+```ts
+import { FhiTextInputAngularWrapper, FhiTextInputValueAccessor } from "@folkehelseinstituttet/designsystem/angular-wrappers/fhi-text-input.component";
+
+@Component({
+  ...
+  imports: [FhiTextInputAngularWrapper, FhiTextInputValueAccessor],
+})
+
+````
 
 <style>{`
   .sbdocs-content a {
