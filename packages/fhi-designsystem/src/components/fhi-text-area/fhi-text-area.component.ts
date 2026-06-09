@@ -173,6 +173,23 @@ export class FhiTextArea extends LitElement {
     this._internals.setFormValue(this.value);
   }
 
+  private _handleEndSlotChange(event: Event): void {
+    const iconNode: Node = (event.target as HTMLSlotElement).assignedNodes()[0];
+
+    if (
+      iconNode.nodeType === Node.ELEMENT_NODE &&
+      (iconNode as Element).tagName.toLowerCase().startsWith('fhi-icon')
+    ) {
+      const icon = iconNode as HTMLElement;
+      this._textarea.style.paddingRight = 'var(--fhi-spacing-500)';
+      icon.setAttribute('size', '1.5rem');
+    } else {
+      console.error(
+        'Invalid slot input. Fhi-text-area only accepts FHI Designsystem icons.',
+      );
+    }
+  }
+
   render() {
     return html`
       ${this.label && html`<label for="textarea-element">${this.label}</label>`}
@@ -190,6 +207,7 @@ export class FhiTextArea extends LitElement {
           @input=${this.handleInput}
           @keydown=${this.handleKeyDown}
         ></textarea>
+        <slot name="end" @slotchange=${this._handleEndSlotChange}> </slot>
       </div>
       ${this.message ? html`<p class="message">${this.message}</p>` : ''}
     `;
@@ -204,6 +222,7 @@ export class FhiTextArea extends LitElement {
 
       textarea {
         box-sizing: border-box;
+        width: auto;
         border: var(--fhi-dimension-border-width) solid
           var(--fhi-color-neutral-border-default);
         border-radius: var(--fhi-border-radius-050);
@@ -226,8 +245,14 @@ export class FhiTextArea extends LitElement {
           background-color: var(--fhi-color-accent-background-default);
         }
         &::placeholder {
-          color: var(--fhi-text-input-placeholder-color);
+          color: var(--fhi-color-neutral-base-default);
         }
+      }
+
+      .textarea-container {
+        position: relative;
+        display: flex;
+        width: fit-content;
       }
 
       label {
@@ -302,6 +327,16 @@ export class FhiTextArea extends LitElement {
       .help-text {
         color: var(--fhi-color-danger-text-default);
       }
+    }
+
+    slot[name='end'] {
+      position: absolute;
+      display: block;
+      right: var(--fhi-spacing-100);
+      top: var(--fhi-spacing-200);
+      transform: translateY(-50%);
+      pointer-events: none;
+      color: var(--fhi-color-neutral-text-subtle);
     }
   `;
 }
