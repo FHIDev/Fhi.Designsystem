@@ -23,11 +23,9 @@ const generateFormAccessor = (
   switch (webComponentTagName) {
     case 'fhi-text-input':
     case 'fhi-date-input':
-      valueLocation = 'value';
-      break;
     case 'fhi-checkbox':
     case 'fhi-radio':
-      valueLocation = 'checked';
+      valueLocation = 'value';
       break;
     case 'fhi-button':
       break;
