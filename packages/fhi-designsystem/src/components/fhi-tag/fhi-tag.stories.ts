@@ -22,13 +22,21 @@ const meta: FhiStorybookMeta<FhiTag> = {
   component: 'fhi-tag',
   parameters: {},
   decorators: [],
-  render: args => html`<fhi-tag color=${ifDefined(args.color)}>Tag</fhi-tag>`,
+  render: args =>
+    html`<fhi-tag color=${ifDefined(args.color)} ?outlined=${args.outlined}
+      >Tag</fhi-tag
+    >`,
   argTypes: {
     color: {
       options: ['neutral', 'accent', 'success', 'warning', 'danger', 'info'],
       control: { type: 'select' },
       description: 'Bestemmer fargetema.',
       defaultValue: { summary: 'neutral' },
+    },
+    outlined: {
+      control: { type: 'boolean' },
+      description: 'Bestemmer om taggen skal ha en kantlinje.',
+      defaultValue: { summary: false },
     },
   },
 };
@@ -56,6 +64,25 @@ export const Icon: Story = {
       >
       <fhi-tag color="danger">Ugyldig</fhi-tag>
       <fhi-tag color="info">Offisiell statistikk</fhi-tag>
+    </fhi-flex>`,
+};
+
+export const Outlined: Story = {
+  tags: ['!dev'],
+  render: () =>
+    html`<fhi-flex direction="row" gap="small" wrap>
+      <fhi-tag color="neutral" outlined
+        ><fhi-icon-download></fhi-icon-download>Fra Folkeregisteret</fhi-tag
+      >
+      <fhi-tag color="accent" outlined
+        ><fhi-icon-refresh></fhi-icon-refresh>Pågår</fhi-tag
+      >
+      <fhi-tag color="success" outlined>Publisert</fhi-tag>
+      <fhi-tag color="warning" outlined
+        ><fhi-icon-clock></fhi-icon-clock>Utløper snart</fhi-tag
+      >
+      <fhi-tag color="danger" outlined>Ugyldig</fhi-tag>
+      <fhi-tag color="info" outlined>Offisiell statistikk</fhi-tag>
     </fhi-flex>`,
 };
 
