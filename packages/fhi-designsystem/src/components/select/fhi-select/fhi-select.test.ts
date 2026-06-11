@@ -15,7 +15,7 @@ describe('fhi-select', () => {
           label="Test Label"
           message="This is a test message."
         >
-          <fhi-select-item>Velg Alternativ</fhi-select-item>
+          <fhi-select-item>Velg alternativ</fhi-select-item>
           <fhi-select-item>Norge</fhi-select-item>
           <fhi-select-item>Sverige</fhi-select-item>
           <fhi-select-item>Danmark</fhi-select-item>

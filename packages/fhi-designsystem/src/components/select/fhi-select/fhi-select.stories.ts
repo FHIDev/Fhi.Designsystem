@@ -48,7 +48,7 @@ const meta: FhiStorybookMeta<FhiSelect> = {
       status=${ifDefined(args.status)}
       message=${ifDefined(args.message)}
     >
-      <fhi-select-item>Velg Alternativ</fhi-select-item>
+      <fhi-select-item>Velg alternativ</fhi-select-item>
       <fhi-select-item>Norge</fhi-select-item>
       <fhi-select-item>Sverige</fhi-select-item>
       <fhi-select-item>Danmark</fhi-select-item>
@@ -123,7 +123,7 @@ export const WithValue: Story = {
       status=${ifDefined(args.status)}
       message=${ifDefined(args.message)}
     >
-      <fhi-select-item value="">Velg Alternativ</fhi-select-item>
+      <fhi-select-item value="">Velg alternativ</fhi-select-item>
       <fhi-select-item value="1">Volvo</fhi-select-item>
       <fhi-select-item value="2">X-Peng</fhi-select-item>
       <fhi-select-item value="3">Mercedes</fhi-select-item>
@@ -144,10 +144,10 @@ export const WithLabel: Story = {
       status=${ifDefined(args.status)}
       message=${ifDefined(args.message)}
     >
-      <fhi-select-item value="" label="Velg Alternativ"></fhi-select-item>
+      <fhi-select-item value="" label="Velg alternativ"></fhi-select-item>
       <fhi-select-item
         value="Kinesisk"
-        label="Mapo Tofu - 麻婆豆腐"
+        label="Mapo Tofu – 麻婆豆腐"
       ></fhi-select-item>
       <fhi-select-item
         value="Italiensk"
@@ -160,7 +160,7 @@ export const WithLabel: Story = {
     </fhi-select>`,
   args: {
     name: 'my-dinner-select',
-    label: 'Favoritt middag',
+    label: 'Favorittmiddag',
   },
 };
 

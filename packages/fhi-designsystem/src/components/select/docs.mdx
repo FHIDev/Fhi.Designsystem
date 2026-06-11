@@ -12,7 +12,7 @@ import { ApiDefinition } from '../../../.storybook/blocks/api-definition.jsx';
 Select lar brukere velge fra en liste med alternativer.
 Når man trykker dukker det opp en liste med de forshåndsdefinerte alternativene.
 
-**Obs: I designet er det satt `letter-spacing` på Select-en, men dette er ikke enda implementert i koden. `letter-spacing` blir implementert på et senere tidspunkt.**
+**Obs:** I designet er det satt `letter-spacing` på Select-en. På grunn av enkelte nettlesere er ikke dette implementert i koden ennå. Vi følger utviklingen hos nettleserne det gjelder, og implementerer `letter-spacing` så snart det er mulig.
 
 ## Passer til
 
@@ -38,18 +38,18 @@ Select består av `<fhi-select>` og `<fhi-select-item>`.
 `<fhi-select>` er selve select-elementet, mens `<fhi-select-item>` er de ulike alternativene i listen.
 
 Verdien som blir sendt ved submit er verdien i `value`-attributten på det valgte `<fhi-select-item>`.
-Denne verdien blir satt til tekst innholdet til `<fhi-select-item>` hvis `value`-attributten ikke er satt.
+Denne verdien blir satt til tekstinnholdet til `<fhi-select-item>` hvis `value`-attributten ikke er satt.
 
-Du kan sette `value` til å være noe annet enn tekst innholdet.
+Du kan sette `value` til å være noe annet enn tekstinnholdet.
 
 <Canvas of={FhiSelectStories.WithValue} />
 
-Om du bruker `label`-attributten på `<fhi-select>`, vil denne vises i valget, selv om valget har tekst innhold.
+Bruker du `label`-attributten på `<fhi-select>`, vil denne vises i valget, selv om valget har tekstinnhold.
 
 <Canvas of={FhiSelectStories.WithLabel} />
 
 Det finnes tilfeller der det ikke er plass eller behov for Label som en del av selve komponenten, slik som i tabeller eller der Select er en del av en setning.
-I disse filfellene skal man brukes `aria-label` eller `aria-labelledby` for å gi en beskrivelse av hva Select-en handler om.
+I disse tilfellene skal man brukes `aria-label` eller `aria-labelledby` for å gi en beskrivelse av hva Select-en handler om.
 
 <Canvas of={FhiSelectStories.Pagination} />
 

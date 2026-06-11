@@ -241,8 +241,8 @@ export class FhiSelect extends LitElement {
         color: inherit;
         position: absolute;
         pointer-events: none;
-        top: 20%;
-        right: 6%;
+        align-self: center;
+        right: 8px;
       }
 
       /* TODO: Use customizable select styling when available. */
@@ -252,8 +252,8 @@ export class FhiSelect extends LitElement {
         box-sizing: border-box;
 
         font: normal var(--fhi-typography-body-medium-font-weight)
-          var(--fhi-typography-body-small-font-size) /
-          var(--fhi-typography-body-small-line-height)
+          var(--fhi-typography-body-medium-font-size) /
+          var(--fhi-typography-body-medium-line-height)
           var(--fhi-font-family-default);
 
         background-color: var(--fhi-color-neutral-background-default);
