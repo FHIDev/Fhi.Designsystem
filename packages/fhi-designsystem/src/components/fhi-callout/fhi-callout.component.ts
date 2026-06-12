@@ -1,4 +1,4 @@
-import { html, css, LitElement } from 'lit';
+import { html, css, LitElement, PropertyValues } from 'lit';
 import { customElement, property } from 'lit/decorators.js';
 
 export const FhiCalloutSelector = 'fhi-callout';
@@ -50,7 +50,7 @@ export class FhiCallout extends LitElement {
   @property({ type: String, reflect: true })
   variant: 'subtle' | 'bordered' = 'subtle';
 
-  update(changedProperties: Map<string, unknown>) {
+  update(changedProperties: PropertyValues) {
     if (changedProperties.has('color')) {
       switch (this.color) {
         case 'neutral':
@@ -96,7 +96,7 @@ export class FhiCallout extends LitElement {
       align-items: center;
       padding: var(--fhi-spacing-200);
       border-radius: var(--fhi-border-radius-100);
-      border: 1px solid transparent;
+      border: var(--fhi-dimension-border-width) solid transparent;
 
       div {
         display: flex;
