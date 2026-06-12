@@ -7,11 +7,13 @@ import { FhiBody } from '../typography/fhi-body/fhi-body.component';
 import { FhiIconCircleInfo } from '../icons/fhi-icon-circle-info.component';
 import { FhiIconOctagonAlert } from '../icons/fhi-icon-octagon-alert.component';
 import { ifDefined } from 'lit/directives/if-defined.js';
+import { FhiFlex } from '../fhi-flex/fhi-flex.component';
 
 new FhiCallout();
 new FhiBody();
 new FhiIconCircleInfo();
 new FhiIconOctagonAlert();
+new FhiFlex();
 
 const meta: FhiStorybookMeta<FhiCallout> = {
   title: 'Komponenter/Callout',
@@ -136,7 +138,7 @@ export const Variant: Story = {
 
     <fhi-callout color="success" heading="bordered" variant="bordered">
       <fhi-body slot="message">
-        En subtil kant rundt taggen kan bidra til å få komponenten (og dets
+        En subtil kant rundt callout-en kan bidra til å få komponenten (og dets
         fargeassosiasjon) til å stå ut mer.
       </fhi-body>
     </fhi-callout>
@@ -150,7 +152,7 @@ export const Icon: Story = {
       <fhi-icon-octagon-alert slot="icon"></fhi-icon-octagon-alert>
       <fhi-body slot="message">
         Upublisert data skal kun brukes som avtalt med avsender. Denne
-        forhåndsvisningen utløper 23. mars 2024 kl. 15.36.
+        forhåndsvisningen utløper 23. mars 2039 kl. 15.36.
       </fhi-body>
     </fhi-callout>
 
