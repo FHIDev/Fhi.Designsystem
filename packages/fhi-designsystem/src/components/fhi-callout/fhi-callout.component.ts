@@ -95,7 +95,6 @@ export class FhiCallout extends LitElement {
       display: flex;
       align-items: center;
       padding: var(--fhi-spacing-200);
-      gap: var(--fhi-spacing-050);
       border-radius: var(--fhi-border-radius-100);
       border: 1px solid transparent;
 
@@ -108,6 +107,10 @@ export class FhiCallout extends LitElement {
         display: flex;
         justify-content: center;
         align-self: stretch;
+      }
+
+      ::slotted([slot='icon']) {
+        margin-inline-end: var(--fhi-spacing-050);
       }
     }
 
