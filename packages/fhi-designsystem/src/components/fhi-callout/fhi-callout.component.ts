@@ -81,9 +81,6 @@ export class FhiCallout extends LitElement {
 
   static styles = css`
     :host {
-    }
-
-    :host {
       display: flex;
       align-items: center;
       padding: var(--fhi-spacing-200);
