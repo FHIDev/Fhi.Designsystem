@@ -22,12 +22,12 @@ const meta: FhiStorybookMeta<FhiCallout> = {
     slotTypes: [
       {
         name: 'icon',
-        description: 'Valgfritt ikon som skal vises i callouten.',
+        description: 'Valgfritt ikon som skal vises i callout-en.',
       },
       {
         name: 'message',
         description:
-          'Hovedinnholdet i callouten. Dette er beskjeden eller statusen som skal kommuniseres til brukeren.',
+          'Hovedinnholdet i callout-en. Dette er beskjeden eller statusen som skal kommuniseres til brukeren.',
       },
     ],
     docs: {
@@ -47,7 +47,7 @@ const meta: FhiStorybookMeta<FhiCallout> = {
       },
       options: ['neutral', 'success', 'warning', 'danger'],
       description:
-        'Bestemmer fargen på callouten. Dette formidler typen informasjon som kommuniseres.',
+        'Bestemmer fargen på callout-en. Dette formidler typen informasjon som kommuniseres.',
     },
     variant: {
       control: 'select',
@@ -56,7 +56,7 @@ const meta: FhiStorybookMeta<FhiCallout> = {
       },
       options: ['subtle', 'bordered'],
       description:
-        'Bestemmer varianten på callouten. Dette påvirker utseendet og stilen.',
+        'Bestemmer varianten på callout-en. Dette påvirker utseendet og stilen.',
     },
     heading: {
       control: 'text',
@@ -64,7 +64,7 @@ const meta: FhiStorybookMeta<FhiCallout> = {
         summary: undefined,
       },
       description:
-        'Bestemmer overskriften på callouten. Dette skal gi en kort oppsummering av innholdet.',
+        'Bestemmer overskriften på callout-en. Dette skal gi en kort oppsummering av innholdet.',
     },
   },
 };
@@ -85,10 +85,10 @@ export const Preview: Story = {
       heading=${ifDefined(heading)}
     >
       <fhi-icon-circle-info slot="icon"></fhi-icon-circle-info>
-      <fhi-body slot="message"
-        >Dette er en callout. Brukes for å fremheve viktig informasjon til
-        brukeren.</fhi-body
-      >
+      <fhi-body slot="message">
+        Dette er en callout. Brukes for å fremheve viktig informasjon til
+        brukeren.
+      </fhi-body>
     </fhi-callout>
   `,
 };
@@ -99,27 +99,27 @@ export const Color: Story = {
   render: () => html`
     <fhi-callout color="neutral" heading="Nøytral (neutral)">
       <fhi-body slot="message">
-        (default) for nøytral informasjon til brukeren</fhi-body
-      >
+        (default) for nøytral informasjon til brukeren
+      </fhi-body>
     </fhi-callout>
 
     <fhi-callout color="success" heading="Suksess (success)">
-      <fhi-body slot="message"
-        >som bekreftelse at en oppgave er fullført som forventet</fhi-body
-      >
+      <fhi-body slot="message">
+        Som bekreftelse at en oppgave er fullført som forventet
+      </fhi-body>
     </fhi-callout>
 
     <fhi-callout color="warning" heading="Advarsel (warning)">
-      <fhi-body slot="message"
-        >for å advare brukeren om noe viktig eller at handling kreves</fhi-body
-      >
+      <fhi-body slot="message">
+        For å advare brukeren om noe viktig eller at handling kreves
+      </fhi-body>
     </fhi-callout>
 
     <fhi-callout color="danger" heading="Fare (danger)">
-      <fhi-body slot="message"
-        >for å si ifra om at noe kritisk har skjedd, ofte noe som hindrer
-        brukeren i å fortsette</fhi-body
-      >
+      <fhi-body slot="message">
+        For å si ifra om at noe kritisk har skjedd, ofte noe som hindrer
+        brukeren i å fortsette
+      </fhi-body>
     </fhi-callout>
   `,
 };
@@ -130,15 +130,15 @@ export const Variant: Story = {
   render: () => html`
     <fhi-callout color="success" heading="subtle">
       <fhi-body slot="message">
-        (default) Standardvarianten og fungerer på de fleste flater.</fhi-body
-      >
+        (default) Standardvarianten og fungerer på de fleste flater.
+      </fhi-body>
     </fhi-callout>
 
     <fhi-callout color="success" heading="bordered" variant="bordered">
-      <fhi-body slot="message"
-        >En subtil kant rundt taggen kan bidra til å få komponenten (og dets
-        fargeassosiasjon) til å stå ut mer.</fhi-body
-      >
+      <fhi-body slot="message">
+        En subtil kant rundt taggen kan bidra til å få komponenten (og dets
+        fargeassosiasjon) til å stå ut mer.
+      </fhi-body>
     </fhi-callout>
   `,
 };
@@ -148,18 +148,18 @@ export const Icon: Story = {
   render: () => html`
     <fhi-callout color="warning">
       <fhi-icon-octagon-alert slot="icon"></fhi-icon-octagon-alert>
-      <fhi-body slot="message"
-        >Upublisert data skal kun brukes som avtalt med avsender. Denne
-        forhåndsvisningen utløper 23. mars 2024 kl. 15.36.</fhi-body
-      >
+      <fhi-body slot="message">
+        Upublisert data skal kun brukes som avtalt med avsender. Denne
+        forhåndsvisningen utløper 23. mars 2024 kl. 15.36.
+      </fhi-body>
     </fhi-callout>
 
     <fhi-callout color="neutral" heading="En ny oppdatering er tilgjengelig">
       <fhi-icon-circle-info slot="icon"></fhi-icon-circle-info>
       <fhi-body slot="message">
         Vennligst oppdater til den nyeste versjonen for å få tilgang til de
-        nyeste funksjonene og forbedringene.</fhi-body
-      >
+        nyeste funksjonene og forbedringene.
+      </fhi-body>
     </fhi-callout>
   `,
 };
