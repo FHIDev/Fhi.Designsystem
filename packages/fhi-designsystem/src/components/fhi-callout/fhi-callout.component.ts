@@ -64,6 +64,17 @@ export class FhiCallout extends LitElement {
       }
     }
 
+    if (changedProperties.has('variant')) {
+      switch (this.variant) {
+        case 'subtle':
+        case 'bordered':
+          break;
+        default:
+          this.variant = 'subtle';
+          break;
+      }
+    }
+
     super.update(changedProperties);
   }
 
