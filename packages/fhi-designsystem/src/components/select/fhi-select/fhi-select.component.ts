@@ -234,7 +234,7 @@ export class FhiSelect extends LitElement {
 
       .select-wrapper {
         position: relative;
-        display: inline-block;
+        display: inline-flex;
       }
 
       fhi-icon-chevron-down {
