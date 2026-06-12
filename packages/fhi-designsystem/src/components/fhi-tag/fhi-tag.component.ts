@@ -32,9 +32,9 @@ export class FhiTag extends LitElement {
     | 'info' = 'neutral';
 
   /**
-   * If true, the tag will have an outline.
+   * Sets the variant of the tag, which determines its visual style.
    * @reflect
-   * @type {boolean}
+   * @type {'subtle' | 'bordered'}
    */
   @property({ type: String, reflect: true })
   variant: 'subtle' | 'bordered' = 'subtle';

@@ -38,7 +38,7 @@ const meta: FhiStorybookMeta<FhiTag> = {
     variant: {
       options: ['subtle', 'bordered'],
       control: { type: 'select' },
-      description: 'Bestemmer om taggen skal ha en kantlinje.',
+      description: 'Bestemmer visuell stil.',
       defaultValue: { summary: 'subtle' },
     },
   },
