@@ -6,17 +6,47 @@ export const FhiCalloutSelector = 'fhi-callout';
 import '../typography/fhi-title/fhi-title.component';
 import '../typography/fhi-body/fhi-body.component';
 
+/**
+ * ## FHI Callout
+ *
+ * {@link https://designsystem.fhi.no/?path=/docs/komponenter-callout--docs}
+ *
+ * The `<fhi-callout>` component represents a callout message.
+ * It should be used to highlight important information or warnings.
+ *
+ * @tag fhi-callout
+ * @element fhi-callout
+ *
+ * @slot icon - Optional icon to be displayed in the callout.
+ * @slot message - The main message content of the callout.
+ *
+ */
 @customElement(FhiCalloutSelector)
 export class FhiCallout extends LitElement {
+  /**
+   * The heading of the callout. This is optional and can be used to provide a title for the callout message.
+   *
+   * @reflect
+   * @type {string}
+   */
   @property({ type: String, reflect: true })
   heading?: string;
 
-  @property({ type: String })
-  message = '';
-
+  /**
+   * The color of the callout, which indicates the type of message being conveyed.
+   *
+   * @reflect
+   * @type {string}
+   */
   @property({ type: String, reflect: true })
   color: 'neutral' | 'success' | 'warning' | 'danger' = 'neutral';
 
+  /**
+   * The variant of the callout, which determines the visual style of the callout.
+   *
+   * @reflect
+   * @type {string}
+   */
   @property({ type: String, reflect: true })
   variant: 'subtle' | 'bordered' = 'subtle';
 
@@ -31,12 +61,6 @@ export class FhiCallout extends LitElement {
         default:
           this.color = 'neutral';
           break;
-      }
-    }
-
-    if (changedProperties.has('heading')) {
-      if (this.heading === '') {
-        this.heading = undefined;
       }
     }
 
