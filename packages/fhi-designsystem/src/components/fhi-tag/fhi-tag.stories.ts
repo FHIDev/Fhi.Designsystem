@@ -23,7 +23,9 @@ const meta: FhiStorybookMeta<FhiTag> = {
   parameters: {},
   decorators: [],
   render: args =>
-    html`<fhi-tag color=${ifDefined(args.color)} ?outlined=${args.outlined}
+    html`<fhi-tag
+      color=${ifDefined(args.color)}
+      variant=${ifDefined(args.variant)}
       >Tag</fhi-tag
     >`,
   argTypes: {
@@ -33,10 +35,11 @@ const meta: FhiStorybookMeta<FhiTag> = {
       description: 'Bestemmer fargetema.',
       defaultValue: { summary: 'neutral' },
     },
-    outlined: {
-      control: { type: 'boolean' },
+    variant: {
+      options: ['subtle', 'bordered'],
+      control: { type: 'select' },
       description: 'Bestemmer om taggen skal ha en kantlinje.',
-      defaultValue: { summary: false },
+      defaultValue: { summary: 'subtle' },
     },
   },
 };
@@ -67,22 +70,42 @@ export const Icon: Story = {
     </fhi-flex>`,
 };
 
-export const Outlined: Story = {
+export const Subtle: Story = {
   tags: ['!dev'],
   render: () =>
     html`<fhi-flex direction="row" gap="small" wrap>
-      <fhi-tag color="neutral" outlined
-        ><fhi-icon-download></fhi-icon-download>Fra Folkeregisteret</fhi-tag
-      >
-      <fhi-tag color="accent" outlined
-        ><fhi-icon-refresh></fhi-icon-refresh>Pågår</fhi-tag
-      >
-      <fhi-tag color="success" outlined>Publisert</fhi-tag>
-      <fhi-tag color="warning" outlined
-        ><fhi-icon-clock></fhi-icon-clock>Utløper snart</fhi-tag
-      >
-      <fhi-tag color="danger" outlined>Ugyldig</fhi-tag>
-      <fhi-tag color="info" outlined>Offisiell statistikk</fhi-tag>
+      <fhi-tag color="accent"> subtle </fhi-tag>
+      <fhi-tag color="danger"> subtle </fhi-tag>
+      <fhi-tag color="info"> subtle </fhi-tag>
+      <fhi-tag color="neutral"> subtle </fhi-tag>
+      <fhi-tag color="success"> subtle </fhi-tag>
+      <fhi-tag color="warning"> subtle </fhi-tag>
+    </fhi-flex>`,
+};
+
+export const Bordered: Story = {
+  tags: ['!dev'],
+  render: () =>
+    html`<fhi-flex direction="row" gap="small" wrap>
+      <fhi-tag color="accent" variant="bordered">
+        bordered
+      </fhi-tag>
+      </fhi-tag>
+      <fhi-tag color="danger" variant="bordered">
+        bordered
+      </fhi-tag>
+      <fhi-tag color="info" variant="bordered">
+        bordered
+      </fhi-tag>
+      <fhi-tag color="neutral" variant="bordered">
+        bordered
+      </fhi-tag>
+      <fhi-tag color="success" variant="bordered">
+        bordered
+      </fhi-tag>
+      <fhi-tag color="warning" variant="bordered">
+        bordered
+      </fhi-tag>
     </fhi-flex>`,
 };
 
