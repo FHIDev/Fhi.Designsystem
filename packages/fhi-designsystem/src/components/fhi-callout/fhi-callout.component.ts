@@ -101,6 +101,7 @@ export class FhiCallout extends LitElement {
       div {
         display: flex;
         flex-direction: column;
+        padding: 0 var(--fhi-spacing-050);
       }
 
       slot[name='icon'] {
