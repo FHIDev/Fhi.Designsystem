@@ -15,7 +15,10 @@ export class FhiCallout extends LitElement {
   message = '';
 
   @property({ type: String, reflect: true })
-  color: 'neutral' | 'success' | 'warning' | 'error' = 'neutral';
+  color: 'neutral' | 'success' | 'warning' | 'danger' = 'neutral';
+
+  @property({ type: String, reflect: true })
+  variant: 'subtle' | 'bordered' = 'subtle';
 
   update(changedProperties: Map<string, unknown>) {
     if (changedProperties.has('color')) {
@@ -23,7 +26,7 @@ export class FhiCallout extends LitElement {
         case 'neutral':
         case 'success':
         case 'warning':
-        case 'error':
+        case 'danger':
           break;
         default:
           this.color = 'neutral';
@@ -62,6 +65,7 @@ export class FhiCallout extends LitElement {
       padding: var(--fhi-spacing-200);
       gap: var(--fhi-spacing-050);
       border-radius: var(--fhi-border-radius-100);
+      border: 1px solid transparent;
 
       div {
         display: flex;
@@ -87,6 +91,10 @@ export class FhiCallout extends LitElement {
       slot[name='icon'] {
         color: var(--fhi-color-neutral-base-default);
       }
+
+      &:host([variant='bordered']) {
+        border-color: var(--fhi-color-neutral-surface-active);
+      }
     }
 
     :host([color='success']) {
@@ -94,6 +102,10 @@ export class FhiCallout extends LitElement {
       color: var(--fhi-color-success-text-default);
       slot[name='icon'] {
         color: var(--fhi-color-success-base-default);
+      }
+
+      &:host([variant='bordered']) {
+        border-color: var(--fhi-color-success-surface-active);
       }
     }
 
@@ -103,13 +115,21 @@ export class FhiCallout extends LitElement {
       slot[name='icon'] {
         color: var(--fhi-color-warning-text-subtle);
       }
+
+      &:host([variant='bordered']) {
+        border-color: var(--fhi-color-warning-surface-active);
+      }
     }
 
-    :host([color='error']) {
+    :host([color='danger']) {
       background-color: var(--fhi-color-danger-surface-default);
       color: var(--fhi-color-danger-text-default);
       slot[name='icon'] {
         color: var(--fhi-color-danger-base-default);
+      }
+
+      &:host([variant='bordered']) {
+        border-color: var(--fhi-color-danger-surface-active);
       }
     }
   `;
