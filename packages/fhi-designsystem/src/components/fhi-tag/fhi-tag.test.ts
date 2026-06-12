@@ -30,10 +30,12 @@ describe('fhi-tag', () => {
       expect(component.color).to.equal('danger');
     });
 
-    it('has an attribute to set outlined', async () => {
-      component = await fixture(html`<fhi-tag outlined>Test Tag</fhi-tag>`);
+    it('has an attribute to set variant', async () => {
+      component = await fixture(
+        html`<fhi-tag variant="bordered">Test Tag</fhi-tag>`,
+      );
 
-      expect(component.outlined).to.equal(true);
+      expect(component.variant).to.equal('bordered');
     });
 
     it('should reflect the color property to the attribute', async () => {
@@ -44,12 +46,12 @@ describe('fhi-tag', () => {
       expect(component.getAttribute('color')).to.equal('warning');
     });
 
-    it('should reflect the outlined property to the attribute', async () => {
+    it('should reflect the variant property to the attribute', async () => {
       component = await fixture(html`<fhi-tag>Test Tag</fhi-tag>`);
-      component.outlined = true;
+      component.variant = 'bordered';
       await component.updateComplete;
 
-      expect(component.hasAttribute('outlined')).to.equal(true);
+      expect(component.getAttribute('variant')).to.equal('bordered');
     });
 
     it('sets default value for color attribute', async () => {
@@ -58,10 +60,10 @@ describe('fhi-tag', () => {
       expect(component.color).to.equal('neutral');
     });
 
-    it('sets default value for outlined attribute', async () => {
+    it('sets default value for variant attribute', async () => {
       component = await fixture(html`<fhi-tag>Test Tag</fhi-tag>`);
 
-      expect(component.outlined).to.equal(false);
+      expect(component.variant).to.equal('subtle');
     });
   });
 
