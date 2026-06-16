@@ -44,9 +44,10 @@ const meta: FhiStorybookMeta<FhiSelect> = {
     html`<fhi-select
       name=${args.name}
       label=${args.label}
-      ?disabled=${args.disabled}
       status=${ifDefined(args.status)}
       message=${ifDefined(args.message)}
+      help-text=${ifDefined(args.helpText)}
+      ?disabled=${args.disabled}
     >
       <fhi-select-item>Velg alternativ</fhi-select-item>
       <fhi-select-item>Norge</fhi-select-item>
@@ -74,6 +75,11 @@ const meta: FhiStorybookMeta<FhiSelect> = {
       description:
         'Bestemmer om feltet har en status. Dette vil endre utseende på feltet.',
     },
+    helpText: {
+      control: 'text',
+      description:
+        'Vises mellom label og select-elementet. Brukes til å gi utvidede forklaringer eller hjelpsomme hint til utfylling.',
+    },
     message: {
       control: 'text',
       description:
@@ -90,6 +96,7 @@ export const Preview: Story = {
     name: 'my-select',
     label: 'Land',
     message: 'Dette er en valideringsmelding',
+    helpText: 'Dette er hjelpeteksten',
   },
 };
 

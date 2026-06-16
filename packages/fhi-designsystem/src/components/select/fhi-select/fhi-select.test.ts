@@ -93,6 +93,17 @@ describe('fhi-select', () => {
       expect(component.getAttribute('message')).to.equal(message);
       expect(component.message).to.equal(message);
     });
+
+    it('has an attribute to set the help text', async () => {
+      const helpText = 'This is some help text.';
+
+      component = await fixture(
+        html`<fhi-select help-text="${helpText}"></fhi-select>`,
+      );
+
+      expect(component.getAttribute('help-text')).to.equal(helpText);
+      expect(component.helpText).to.equal(helpText);
+    });
   });
 
   describe('property-attribute reflection', () => {

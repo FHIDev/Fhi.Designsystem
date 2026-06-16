@@ -47,6 +47,14 @@ export class FhiSelect extends LitElement {
   label: string = '';
 
   /**
+   * The message shown above the Select.
+   * This is often used to provide additional information to the user.
+   * @type {string}
+   */
+  @property({ type: String, attribute: 'help-text' })
+  helpText?: string;
+
+  /**
    * The value attribute of the select element. This property is used to identify the selected option when submitting a form.
    * @type {string}
    */
@@ -98,17 +106,17 @@ export class FhiSelect extends LitElement {
     }
   }
 
+  public formResetCallback(): void {
+    this.value = this._initialSelectedElement?.value ?? '';
+    this._internals.setFormValue(this.value);
+  }
+
   private _setInitialSelectedElement() {
     this.selectElement.querySelectorAll('option').forEach(option => {
       if (option.selected) {
         this._initialSelectedElement = option;
       }
     });
-  }
-
-  public formResetCallback(): void {
-    this.value = this._initialSelectedElement?.value ?? '';
-    this._internals.setFormValue(this.value);
   }
 
   private _handleSelectChange(): void {
@@ -189,6 +197,11 @@ export class FhiSelect extends LitElement {
             </label>
           `
         : null}
+      ${this.helpText
+        ? html`<fhi-body class="help-text" size="small"
+            >${this.helpText}</fhi-body
+          >`
+        : null}
 
       <div class="select-wrapper">
         <fhi-icon-chevron-down aria-hidden="true"></fhi-icon-chevron-down>
@@ -205,9 +218,9 @@ export class FhiSelect extends LitElement {
       </div>
 
       ${this.message
-        ? html`<fhi-body class="message" size="small"
-            >${this.message}</fhi-body
-          >`
+        ? html` <fhi-body class="message" size="small">
+            ${this.message}
+          </fhi-body>`
         : null}
 
       <slot hidden @slotchange=${this._handleSlotChange}></slot>
@@ -222,6 +235,18 @@ export class FhiSelect extends LitElement {
 
       .label {
         color: inherit;
+        width: fit-content;
+        padding-bottom: var(--fhi-spacing-050);
+      }
+
+      label:has(+ .help-text) {
+        .label {
+          padding-bottom: 0;
+        }
+      }
+
+      .help-text {
+        color: var(--fhi-color-neutral-text-subtle);
         width: fit-content;
         padding-bottom: var(--fhi-spacing-050);
       }
@@ -279,6 +304,7 @@ export class FhiSelect extends LitElement {
     :host([status='error']:not([disabled])) {
       .label,
       .message,
+      .help-text,
       select {
         color: var(--fhi-color-danger-text-default);
       }
