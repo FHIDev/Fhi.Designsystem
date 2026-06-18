@@ -229,7 +229,8 @@ export class FhiSelect extends LitElement {
 
   static styles = css`
     :host {
-      display: block;
+      display: flex;
+      flex-direction: column;
       width: fit-content;
       color: var(--fhi-color-neutral-text-default);
 
@@ -275,6 +276,7 @@ export class FhiSelect extends LitElement {
       select {
         color: inherit;
         box-sizing: border-box;
+        flex: 1 1 auto;
 
         font: normal var(--fhi-typography-body-medium-font-weight)
           var(--fhi-typography-body-medium-font-size) /
@@ -289,7 +291,6 @@ export class FhiSelect extends LitElement {
           var(--fhi-spacing-100) var(--fhi-spacing-150);
 
         appearance: none;
-        field-sizing: content;
       }
     }
 
