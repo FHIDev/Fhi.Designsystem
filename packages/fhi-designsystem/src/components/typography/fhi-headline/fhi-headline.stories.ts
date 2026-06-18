@@ -35,7 +35,7 @@ const meta: Meta<FhiHeadline> = {
     color: {
       control: { type: 'text' },
       description: 'Tekstfarge.',
-      defaultValue: { summary: 'var(--fhi-color-neutral-text-default)' },
+      defaultValue: { summary: 'currentcolor' },
     },
   },
 };

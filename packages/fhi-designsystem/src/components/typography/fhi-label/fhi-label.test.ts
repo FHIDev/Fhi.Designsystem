@@ -43,4 +43,17 @@ describe('fhi-label', () => {
       expect(component.size).to.equal('small');
     });
   });
+
+  describe('Inheritance', () => {
+    it('inherits color from parent', async () => {
+      const component = await fixture(html`
+        <div style="color: red;">
+          <fhi-label>Test</fhi-label>
+        </div>
+      `);
+
+      const label = component.querySelector('fhi-label')!;
+      expect(getComputedStyle(label).color).to.equal('rgb(255, 0, 0)');
+    });
+  });
 });
