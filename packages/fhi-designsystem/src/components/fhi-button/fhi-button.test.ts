@@ -306,11 +306,9 @@ describe('fhi-button', () => {
 
       const icon: HTMLElement = component.querySelector('fhi-icon-x')!;
 
-      await expect(icon.style.marginRight).to.equal(
-        'var(--dimension-icon-margin-right)',
-      );
+      await expect(icon.style.marginRight).to.equal('var(--fhi-spacing-050)');
       await expect(icon.style.marginLeft).to.equal(
-        'var(--dimension-icon-margin-left-offset)',
+        'calc(-1 * var(--fhi-spacing-050))',
       );
     });
 
@@ -322,11 +320,9 @@ describe('fhi-button', () => {
       const icon: HTMLElement = component.querySelector('fhi-icon-x')!;
 
       await expect(icon.style.marginRight).to.equal(
-        'var(--dimension-icon-margin-right-offset)',
+        'calc(-1 * var(--fhi-spacing-050))',
       );
-      await expect(icon.style.marginLeft).to.equal(
-        'var(--dimension-icon-margin-left)',
-      );
+      await expect(icon.style.marginLeft).to.equal('var(--fhi-spacing-050)');
     });
   });
 });
