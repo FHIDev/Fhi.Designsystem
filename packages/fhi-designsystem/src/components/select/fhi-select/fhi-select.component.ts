@@ -289,6 +289,7 @@ export class FhiSelect extends LitElement {
         border-radius: var(--fhi-border-radius-050);
         padding: var(--fhi-spacing-100) var(--fhi-spacing-500)
           var(--fhi-spacing-100) var(--fhi-spacing-150);
+        height: var(--fhi-spacing-500);
 
         appearance: none;
       }
