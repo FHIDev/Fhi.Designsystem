@@ -329,7 +329,7 @@ describe('fhi-select', () => {
       ) as HTMLElement;
 
       expect(messageElement).to.not.equal(null);
-      expect(messageElement.textContent).to.equal(message);
+      expect(messageElement.textContent?.trim()).to.equal(message);
     });
   });
 });
