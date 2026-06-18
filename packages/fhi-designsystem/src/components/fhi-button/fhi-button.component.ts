@@ -276,11 +276,18 @@ export class FhiButton extends LitElement {
 
   static styles = css`
     :host {
+      --fhi-button-padding: unset;
+      --fhi-button-border-radius: unset;
+    }
+
+    :host {
+      --fhi-button-border-radius: var(--fhi-border-radius-full);
+
       display: block;
       width: fit-content;
 
       button {
-        border-radius: var(--fhi-border-radius-full);
+        border-radius: var(--fhi-button-border-radius);
         border: solid var(--fhi-dimension-border-width);
         font-family: var(--fhi-font-family-default);
         -webkit-font-smoothing: antialiased;
@@ -609,20 +616,26 @@ export class FhiButton extends LitElement {
       }
     }
 
-    button[data-icon-only] {
-      border-radius: var(--fhi-border-radius-full);
-    }
-
     :host([size='small']) button[data-icon-only] {
-      padding: calc(0.375rem - var(--fhi-dimension-border-width));
+      --fhi-button-padding: calc(0.375rem - var(--fhi-dimension-border-width));
+
+      padding: var(--fhi-button-padding);
     }
 
     :host([size='medium']) button[data-icon-only] {
-      padding: calc(var(--fhi-spacing-100) - var(--fhi-dimension-border-width));
+      --fhi-button-padding: calc(
+        var(--fhi-spacing-100) - var(--fhi-dimension-border-width)
+      );
+
+      padding: var(--fhi-button-padding);
     }
 
     :host([size='large']) button[data-icon-only] {
-      padding: calc(var(--fhi-spacing-200) - var(--fhi-dimension-border-width));
+      --fhi-button-padding: calc(
+        var(--fhi-spacing-200) - var(--fhi-dimension-border-width)
+      );
+
+      padding: var(--fhi-button-padding);
     }
   `;
 }
