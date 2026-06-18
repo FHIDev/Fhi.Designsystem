@@ -1,5 +1,11 @@
 # Changelog
 
+## [0.39.0](https://github.com/FHIDev/Fhi.Designsystem/compare/v0.38.5...v0.39.0) (2026-06-18)
+
+### 🚀 Features
+
+* Change default color for typography components to currentcolor ([#442](https://github.com/FHIDev/Fhi.Designsystem/issues/442)) ([00f00da](https://github.com/FHIDev/Fhi.Designsystem/commit/00f00da3cb23937fa0f9581eec0f22444e8af58b))
+
 ## [0.38.5](https://github.com/FHIDev/Fhi.Designsystem/compare/v0.38.4...v0.38.5) (2026-05-28)
 
 ### 🛠️ Bug Fixes

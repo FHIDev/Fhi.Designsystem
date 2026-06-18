@@ -61,4 +61,17 @@ describe('fhi-title', () => {
     `);
     });
   });
+
+  describe('Inheritance', () => {
+    it('inherits color from parent', async () => {
+      const component = await fixture(html`
+        <div style="color: red;">
+          <fhi-title level="1">Test</fhi-title>
+        </div>
+      `);
+
+      const title = component.querySelector('fhi-title')!;
+      expect(getComputedStyle(title).color).to.equal('rgb(255, 0, 0)');
+    });
+  });
 });

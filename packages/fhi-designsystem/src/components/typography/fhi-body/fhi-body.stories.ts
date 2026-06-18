@@ -26,7 +26,7 @@ const meta: Meta<FhiBody> = {
     color: {
       control: { type: 'text' },
       description: 'Tekstfarge.',
-      defaultValue: { summary: 'var(--fhi-color-neutral-text-default)' },
+      defaultValue: { summary: 'currentcolor' },
     },
   },
 };
