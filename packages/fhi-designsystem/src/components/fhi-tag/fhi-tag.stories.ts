@@ -22,13 +22,24 @@ const meta: FhiStorybookMeta<FhiTag> = {
   component: 'fhi-tag',
   parameters: {},
   decorators: [],
-  render: args => html`<fhi-tag color=${ifDefined(args.color)}>Tag</fhi-tag>`,
+  render: args =>
+    html`<fhi-tag
+      color=${ifDefined(args.color)}
+      variant=${ifDefined(args.variant)}
+      >Tag</fhi-tag
+    >`,
   argTypes: {
     color: {
       options: ['neutral', 'accent', 'success', 'warning', 'danger', 'info'],
       control: { type: 'select' },
       description: 'Bestemmer fargetema.',
       defaultValue: { summary: 'neutral' },
+    },
+    variant: {
+      options: ['subtle', 'bordered'],
+      control: { type: 'select' },
+      description: 'Bestemmer visuell stil.',
+      defaultValue: { summary: 'subtle' },
     },
   },
 };
@@ -56,6 +67,45 @@ export const Icon: Story = {
       >
       <fhi-tag color="danger">Ugyldig</fhi-tag>
       <fhi-tag color="info">Offisiell statistikk</fhi-tag>
+    </fhi-flex>`,
+};
+
+export const Subtle: Story = {
+  tags: ['!dev'],
+  render: () =>
+    html`<fhi-flex direction="row" gap="small" wrap>
+      <fhi-tag color="accent"> subtle </fhi-tag>
+      <fhi-tag color="danger"> subtle </fhi-tag>
+      <fhi-tag color="info"> subtle </fhi-tag>
+      <fhi-tag color="neutral"> subtle </fhi-tag>
+      <fhi-tag color="success"> subtle </fhi-tag>
+      <fhi-tag color="warning"> subtle </fhi-tag>
+    </fhi-flex>`,
+};
+
+export const Bordered: Story = {
+  tags: ['!dev'],
+  render: () =>
+    html`<fhi-flex direction="row" gap="small" wrap>
+      <fhi-tag color="accent" variant="bordered">
+        bordered
+      </fhi-tag>
+      </fhi-tag>
+      <fhi-tag color="danger" variant="bordered">
+        bordered
+      </fhi-tag>
+      <fhi-tag color="info" variant="bordered">
+        bordered
+      </fhi-tag>
+      <fhi-tag color="neutral" variant="bordered">
+        bordered
+      </fhi-tag>
+      <fhi-tag color="success" variant="bordered">
+        bordered
+      </fhi-tag>
+      <fhi-tag color="warning" variant="bordered">
+        bordered
+      </fhi-tag>
     </fhi-flex>`,
 };
 
