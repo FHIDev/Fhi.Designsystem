@@ -279,6 +279,10 @@ export class FhiRadio extends LitElement {
 
   static styles = css`
     :host {
+      --fhi-radio-color: currentcolor;
+    }
+
+    :host {
       display: flex;
       align-items: center;
       width: max-content;
@@ -287,7 +291,7 @@ export class FhiRadio extends LitElement {
         display: flex;
         position: relative;
         gap: var(--fhi-spacing-050);
-        color: var(--fhi-color-neutral-text-default);
+        color: var(--fhi-radio-color);
         font-family: var(--fhi-font-family-default);
         -webkit-font-smoothing: antialiased;
         font-size: var(--fhi-typography-body-medium-font-size);
