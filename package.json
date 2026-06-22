@@ -16,7 +16,7 @@
     ]
   },
   "devDependencies": {
-    "eslint": "~9.39.2",
+    "eslint": "~9.39.4",
     "eslint-config-prettier": "~9.1.2",
     "eslint-plugin-lit": "~1.15.0",
     "eslint-plugin-storybook": "10.2.8",
@@ -24,6 +24,6 @@
     "lint-staged": "~15.2.11",
     "prettier": "~3.3.3",
     "typescript": "~5.5.4",
-    "typescript-eslint": "~8.50.0"
+    "typescript-eslint": "~8.50.1"
   }
 }
