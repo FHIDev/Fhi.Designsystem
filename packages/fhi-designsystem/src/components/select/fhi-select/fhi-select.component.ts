@@ -305,10 +305,13 @@ export class FhiSelect extends LitElement {
 
     :host([status='error']:not([disabled])) {
       .label,
-      .message,
       .help-text,
       select {
         color: var(--fhi-color-danger-text-default);
+      }
+      
+      .message {
+        color: var(--fhi-color-danger-text-subtle);
       }
 
       select {
