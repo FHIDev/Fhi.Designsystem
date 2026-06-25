@@ -1,9 +1,22 @@
 import { html, css, LitElement } from 'lit';
 import { customElement, property, query } from 'lit/decorators.js';
 import { ifDefined } from 'lit/directives/if-defined.js';
+import '../typography/fhi-body/fhi-body.component';
+import '../typography/fhi-label/fhi-label.component';
 
 export const FhiTextAreaSelector = 'fhi-text-area';
 
+/**
+ * ## FHI Text Area
+ *
+ * {@link https://designsystem.fhi.no/?path=/docs/komponenter-text-area--docs}
+ *
+ * The `<fhi-text-area>` component is used to collect user input in forms.
+ * It provides a labeled text area with optional placeholder text, status indication, and a message area for additional information or validation feedback.
+ *
+ * @tag fhi-text-area
+ * @element fhi-text-area
+ */
 @customElement(FhiTextAreaSelector)
 export class FhiTextArea extends LitElement {
   static readonly formAssociated = true;
@@ -173,7 +186,7 @@ export class FhiTextArea extends LitElement {
     this._internals.setFormValue(this.value);
   }
 
-  private _handleEndSlotChange(event: Event): void {
+  private _handleActionIconSlotChange(event: Event): void {
     const iconNode: Node = (event.target as HTMLSlotElement).assignedNodes()[0];
 
     if (
@@ -192,8 +205,15 @@ export class FhiTextArea extends LitElement {
 
   render() {
     return html`
-      ${this.label && html`<label for="textarea-element">${this.label}</label>`}
-      ${this.helpText ? html`<p class="help-text">${this.helpText}</p>` : ''}
+      ${this.label &&
+      html`<fhi-label size="small"
+        ><label for="textarea-element">${this.label}</label></fhi-label
+      >`}
+      ${this.helpText
+        ? html`<fhi-body size="small" class="help-text"
+            >${this.helpText}</fhi-body
+          >`
+        : ''}
       <div class="textarea-container">
         <textarea
           id="textarea-element"
@@ -207,9 +227,17 @@ export class FhiTextArea extends LitElement {
           @input=${this.handleInput}
           @keydown=${this.handleKeyDown}
         ></textarea>
-        <slot name="end" @slotchange=${this._handleEndSlotChange}> </slot>
+        <slot
+          name="action-icon"
+          @slotchange=${this._handleActionIconSlotChange}
+        >
+        </slot>
       </div>
-      ${this.message ? html`<p class="message">${this.message}</p>` : ''}
+      ${this.message
+        ? html`<fhi-body size="small" class="message"
+            >${this.message}</fhi-body
+          >`
+        : ''}
     `;
   }
 
@@ -234,8 +262,7 @@ export class FhiTextArea extends LitElement {
         font-size: var(--fhi-typography-body-medium-font-size);
         line-height: var(--fhi-typography-body-medium-line-height);
         letter-spacing: var(--fhi-typography-body-medium-letter-spacing);
-        transition: all var(--fhi-motion-ease-default)
-          var(--fhi-motion-duration-quick);
+
         &:hover {
           border-color: var(--fhi-color-accent-border-default);
           background-color: var(--fhi-color-accent-background-subtle);
@@ -256,10 +283,6 @@ export class FhiTextArea extends LitElement {
       }
 
       label {
-        font-weight: var(--fhi-typography-label-small-font-weight);
-        font-size: var(--fhi-typography-label-small-font-size);
-        line-height: var(--fhi-typography-label-small-line-height);
-        letter-spacing: var(--fhi-typography-label-small-letter-spacing);
         color: var(--fhi-color-neutral-text-default);
         margin: 0 0 var(--fhi-spacing-050) 0;
       }
@@ -270,20 +293,12 @@ export class FhiTextArea extends LitElement {
 
       .help-text {
         color: var(--fhi-color-neutral-text-subtle);
-        font-weight: var(--fhi-typography-body-small-font-weight);
-        font-size: var(--fhi-typography-body-small-font-size);
-        line-height: var(--fhi-typography-body-small-line-height);
-        letter-spacing: var(--fhi-typography-body-small-letter-spacing);
         margin: 0 0 var(--fhi-spacing-050) 0;
       }
 
       .message {
         margin: var(--fhi-spacing-050) 0 0 0;
         color: var(--fhi-color-neutral-text-default);
-        font-weight: var(--fhi-typography-body-small-font-weight);
-        font-size: var(--fhi-typography-body-small-font-size);
-        line-height: var(--fhi-typography-body-small-line-height);
-        letter-spacing: var(--fhi-typography-body-small-letter-spacing);
       }
     }
 
@@ -329,7 +344,7 @@ export class FhiTextArea extends LitElement {
       }
     }
 
-    slot[name='end'] {
+    slot[name='action-icon'] {
       position: absolute;
       display: block;
       right: var(--fhi-spacing-100);

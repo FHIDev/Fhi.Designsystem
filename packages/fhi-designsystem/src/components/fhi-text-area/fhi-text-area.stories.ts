@@ -35,7 +35,7 @@ const meta: FhiStorybookMeta<FhiTextArea> = {
     ],
     slotTypes: [
       {
-        name: 'end',
+        name: 'action-icon',
         description:
           'Ikon som er knyttet til en handling, for eksempel å tømme boksen. I øvre høyre hjørne av boksen.',
       },
@@ -163,7 +163,7 @@ export const WithIcon: Story = {
   args: {},
   render: args =>
     html`<fhi-text-area label=${ifDefined(args.label)}>
-      <fhi-icon-x name="close" slot="end"></fhi-icon-x>
+      <fhi-icon-x name="close" slot="action-icon"></fhi-icon-x>
     </fhi-text-area>`,
 };
 
