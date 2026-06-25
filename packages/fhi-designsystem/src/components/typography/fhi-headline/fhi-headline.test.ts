@@ -65,4 +65,16 @@ describe('fhi-headline', () => {
     `);
     });
   });
+
+  describe('Inheritance', () => {
+    it('inherits color from parent', async () => {
+      const parent = await fixture(html`
+        <div style="color: red;">
+          <fhi-headline level="1">Test</fhi-headline>
+        </div>
+      `);
+      const headline = parent.querySelector('fhi-headline')!;
+      expect(getComputedStyle(headline).color).to.equal('rgb(255, 0, 0)');
+    });
+  });
 });
