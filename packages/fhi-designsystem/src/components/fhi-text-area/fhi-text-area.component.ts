@@ -206,13 +206,13 @@ export class FhiTextArea extends LitElement {
   render() {
     return html`
       ${this.label &&
-      html`<fhi-label size="small"
-        ><label for="textarea-element">${this.label}</label></fhi-label
-      >`}
+      html`<label for="textarea-element"
+        ><fhi-label size="small">${this.label}</fhi-label></label
+      > `}
       ${this.helpText
-        ? html`<fhi-body size="small" class="help-text"
-            >${this.helpText}</fhi-body
-          >`
+        ? html`<p class="help-text">
+            <fhi-body size="small">${this.helpText}</fhi-body>
+          </p>`
         : ''}
       <div class="textarea-container">
         <textarea
@@ -234,9 +234,9 @@ export class FhiTextArea extends LitElement {
         </slot>
       </div>
       ${this.message
-        ? html`<fhi-body size="small" class="message"
-            >${this.message}</fhi-body
-          >`
+        ? html`<p class="message">
+            <fhi-body size="small">${this.message}</fhi-body>
+          </p>`
         : ''}
     `;
   }
@@ -254,7 +254,7 @@ export class FhiTextArea extends LitElement {
         border: var(--fhi-dimension-border-width) solid
           var(--fhi-color-neutral-border-default);
         border-radius: var(--fhi-border-radius-050);
-        padding: var(--fhi-spacing-100);
+        padding: var(--fhi-spacing-100) var(--fhi-spacing-150);
         color: var(--fhi-color-neutral-text-default);
         background-color: var(--fhi-color-neutral-background-default);
         font-family: var(--fhi-font-family-default);
