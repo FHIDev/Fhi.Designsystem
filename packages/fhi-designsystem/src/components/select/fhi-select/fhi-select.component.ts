@@ -203,7 +203,7 @@ export class FhiSelect extends LitElement {
           >`
         : null}
 
-      <div class="select-wrapper">
+      <div class="select-container">
         <fhi-icon-chevron-down aria-hidden="true"></fhi-icon-chevron-down>
         <select
           id="select"
@@ -231,8 +231,8 @@ export class FhiSelect extends LitElement {
     :host {
       display: flex;
       flex-direction: column;
-      width: fit-content;
       color: var(--fhi-color-neutral-text-default);
+      -webkit-font-smoothing: antialiased;
 
       .label {
         color: inherit;
@@ -258,9 +258,9 @@ export class FhiSelect extends LitElement {
         padding-top: var(--fhi-spacing-050);
       }
 
-      .select-wrapper {
+      .select-container {
         position: relative;
-        display: inline-flex;
+        display: flex;
       }
 
       fhi-icon-chevron-down {
@@ -309,7 +309,7 @@ export class FhiSelect extends LitElement {
       select {
         color: var(--fhi-color-danger-text-default);
       }
-      
+
       .message {
         color: var(--fhi-color-danger-text-subtle);
       }
