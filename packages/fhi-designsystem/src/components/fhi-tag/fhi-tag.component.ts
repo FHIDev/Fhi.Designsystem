@@ -31,6 +31,14 @@ export class FhiTag extends LitElement {
     | 'danger'
     | 'info' = 'neutral';
 
+  /**
+   * Sets the variant of the tag, which determines its visual style.
+   * @reflect
+   * @type {'subtle' | 'bordered'}
+   */
+  @property({ type: String, reflect: true })
+  variant: 'subtle' | 'bordered' = 'subtle';
+
   private _handleSlotChange(event: Event): void {
     const nodes = (event.target as HTMLSlotElement).assignedNodes();
 
@@ -102,31 +110,50 @@ export class FhiTag extends LitElement {
     :host([color='neutral']) {
       color: var(--fhi-color-neutral-text-default);
       background-color: var(--fhi-color-neutral-surface-default);
+      &:host([variant='bordered']) {
+        border-color: var(--fhi-color-neutral-surface-active);
+      }
     }
 
     :host([color='accent']) {
       color: var(--fhi-color-accent-text-default);
       background-color: var(--fhi-color-accent-surface-default);
+      &:host([variant='bordered']) {
+        border-color: var(--fhi-color-accent-surface-active);
+      }
     }
 
     :host([color='success']) {
       color: var(--fhi-color-success-text-default);
       background-color: var(--fhi-color-success-surface-default);
+
+      &:host([variant='bordered']) {
+        border-color: var(--fhi-color-success-surface-active);
+      }
     }
 
     :host([color='warning']) {
       color: var(--fhi-color-warning-text-default);
       background-color: var(--fhi-color-warning-surface-default);
+      &:host([variant='bordered']) {
+        border-color: var(--fhi-color-warning-surface-active);
+      }
     }
 
     :host([color='danger']) {
       color: var(--fhi-color-danger-text-default);
       background-color: var(--fhi-color-danger-surface-default);
+      &:host([variant='bordered']) {
+        border-color: var(--fhi-color-danger-surface-active);
+      }
     }
 
     :host([color='info']) {
       color: var(--fhi-color-info-text-default);
       background-color: var(--fhi-color-info-surface-default);
+      &:host([variant='bordered']) {
+        border-color: var(--fhi-color-info-surface-active);
+      }
     }
   `;
 }

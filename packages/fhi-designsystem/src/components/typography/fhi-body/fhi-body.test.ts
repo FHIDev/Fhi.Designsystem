@@ -41,4 +41,17 @@ describe('fhi-body', () => {
       expect(component.size).to.equal('small');
     });
   });
+
+  describe('Inheritance', () => {
+    it('inherits color from parent', async () => {
+      const component = await fixture(html`
+        <div style="color: red;">
+          <fhi-body>Test</fhi-body>
+        </div>
+      `);
+
+      const body = component.querySelector('fhi-body')!;
+      expect(getComputedStyle(body).color).to.equal('rgb(255, 0, 0)');
+    });
+  });
 });

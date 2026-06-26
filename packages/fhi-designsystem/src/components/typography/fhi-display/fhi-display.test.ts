@@ -65,4 +65,17 @@ describe('fhi-display', () => {
     `);
     });
   });
+
+  describe('Inheritance', () => {
+    it('inherits color from parent', async () => {
+      const parent = await fixture(html`
+        <div style="color: red;">
+          <fhi-display level="1">Test</fhi-display>
+        </div>
+      `);
+
+      const display = parent.querySelector('fhi-display')!;
+      expect(getComputedStyle(display).color).to.equal('rgb(255, 0, 0)');
+    });
+  });
 });
