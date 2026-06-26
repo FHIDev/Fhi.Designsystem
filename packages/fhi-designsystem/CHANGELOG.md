@@ -1,5 +1,11 @@
 # Changelog
 
+## [0.40.0](https://github.com/FHIDev/Fhi.Designsystem/compare/v0.39.0...v0.40.0) (2026-06-19)
+
+### 🚀 Features
+
+* Add option for bordered Tag ([#439](https://github.com/FHIDev/Fhi.Designsystem/issues/439)) ([29fdd26](https://github.com/FHIDev/Fhi.Designsystem/commit/29fdd260095b82dcd32b9f3f8b3f9005488acfbc))
+
 ## [0.39.0](https://github.com/FHIDev/Fhi.Designsystem/compare/v0.38.5...v0.39.0) (2026-06-18)
 
 ### 🚀 Features
