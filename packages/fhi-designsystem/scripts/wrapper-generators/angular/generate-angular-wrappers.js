@@ -1,0 +1,249 @@
+import * as fs from 'fs';
+import * as path from 'path';
+
+const snakeToPascal = text =>
+  text
+    .split('-')
+    .map(part => part.charAt(0).toUpperCase() + part.slice(1))
+    .join('');
+
+const snakeToCamel = text => {
+  const pascal = snakeToPascal(text);
+  return pascal.charAt(0).toLowerCase() + pascal.slice(1);
+};
+
+const generateFormAccessor = (
+  angularTagName,
+  webComponentTagName,
+  componentDescription,
+) => {
+  const accessorName = `${snakeToPascal(webComponentTagName)}ValueAccessor`;
+
+  let valueLocation;
+  switch (webComponentTagName) {
+    case 'fhi-text-input':
+    case 'fhi-date-input':
+    case 'fhi-checkbox':
+    case 'fhi-radio':
+      valueLocation = 'value';
+      break;
+    case 'fhi-button':
+      break;
+    default:
+      throw new Error(
+        `No value location defined for web component ${webComponentTagName}`,
+      );
+  }
+
+  // We do not need a value accessor if there is no value to control on the form-associated web component. e.g fhi-button.
+  if (!valueLocation) {
+    return '';
+  }
+
+  return `
+    /** @description
+     * A ControlValueAccessor for writing a value and listening to changes on an ${webComponentTagName} element.
+     * ${componentDescription} */
+    @Directive({
+      selector: '${angularTagName}[formControlName],${angularTagName}[formControl],${angularTagName}[ngModel]',
+      standalone: true,
+      host: {'(change)': 'onChange($any($event.target).${valueLocation})', '(blur)': 'onTouched()'},
+      providers: [{ provide: NG_VALUE_ACCESSOR, useExisting: forwardRef(() => ${accessorName}), multi: true }]
+    })
+    export class ${accessorName} implements ControlValueAccessor, AfterViewInit {
+      onChange: (value: unknown) => void = () => { };
+      onTouched: () => void = () => { };
+
+      private _host = inject(ElementRef);
+
+      private _initialValue: unknown = null;
+      private _initialDisabledState: boolean = false;
+      private _webComponent?: { [key: string]: unknown };
+
+      ngAfterViewInit(): void {
+        this._webComponent = this._host.nativeElement;
+
+        if (!this._webComponent) {
+          console.error('Could not find ${webComponentTagName} web component within the ${angularTagName} host element.');
+          return;
+        }
+
+        this._webComponent["${valueLocation}"] = this._initialValue;
+        this._webComponent["disabled"] = this._initialDisabledState;
+      }
+
+      writeValue(value: unknown): void {
+        if (!this._webComponent) {
+          this._initialValue = value;
+          return;
+        }
+
+        this._webComponent["${valueLocation}"] = value;
+      }
+
+      setDisabledState(isDisabled: boolean): void {
+        if (!this._webComponent) {
+          this._initialDisabledState = isDisabled;
+          return;
+        }
+
+        this._webComponent["disabled"] = isDisabled;
+      }
+
+      registerOnTouched(fn: () => void): void {
+        this.onTouched = fn;
+      }
+
+      registerOnChange(fn: (value: unknown) => void): void {
+        this.onChange = fn;
+      }
+    }
+  `;
+};
+
+const isOptionalAttribute = attribute =>
+  attribute.type.text.includes('undefined') || attribute.default !== undefined;
+
+const main = ({ manifestPath, outputPath }) => {
+  const indexTsFile = [];
+
+  if (!manifestPath) {
+    console.error(
+      'Please provide the --manifest argument with the path to the custom element manifest file.',
+    );
+    process.exit(1);
+  }
+
+  if (!outputPath) {
+    console.error(
+      'Please provide the --output argument with the path to the output directory.',
+    );
+    process.exit(1);
+  }
+
+  if (!fs.existsSync(outputPath)) {
+    fs.mkdirSync(outputPath, { recursive: true });
+  }
+
+  const folderContent = fs.readdirSync(outputPath);
+
+  if (folderContent.length > 0) {
+    const folderContent = fs.readdirSync(outputPath);
+
+    folderContent.forEach(file => {
+      const filePath = path.join(outputPath, file);
+      if (fs.lstatSync(filePath).isFile()) {
+        fs.unlinkSync(filePath);
+      }
+    });
+  }
+
+  let manifest;
+  try {
+    manifest = JSON.parse(fs.readFileSync(manifestPath, 'utf-8'));
+  } catch (error) {
+    console.error('Error reading manifest file:', error);
+  }
+
+  manifest.modules.forEach(module => {
+    const componentClass = module.declarations.find(
+      declaration => declaration.kind === 'class',
+    );
+
+    if (!componentClass || !componentClass.customElement) {
+      return;
+    }
+
+    const className = componentClass.name;
+    const componentDescription = componentClass.description || '';
+    const webComponentTagName = componentClass.tagName;
+    const attributes = componentClass.attributes || [];
+    const events = componentClass.events || [];
+    const slots = componentClass.slots || [];
+    const isFormAssociated = componentClass.members.some(
+      member => member.name === 'formAssociated',
+    );
+
+    if (!webComponentTagName) {
+      throw new Error(`No tagName found for component class ${className}`);
+    }
+
+    const angularTagName = webComponentTagName;
+
+    const template = `
+      /** This file is autogenerated. Do not edit directly. **/
+      import { Component${attributes.length > 0 ? ', input' : ''}${events.length > 0 ? ', output' : ''}${isFormAssociated ? `, Directive, forwardRef, AfterViewInit, inject, ElementRef` : ''}, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
+
+      ${isFormAssociated ? `import { NG_VALUE_ACCESSOR, ControlValueAccessor } from '@angular/forms';` : ''}
+
+      import '../${webComponentTagName}';
+
+      ${isFormAssociated ? generateFormAccessor(angularTagName, webComponentTagName, componentDescription) : ''}
+
+      /** @description ${componentDescription} */
+      @Component({
+        selector: '${angularTagName}',
+        schemas: [CUSTOM_ELEMENTS_SCHEMA],
+        standalone: true,
+        host: {
+          ${attributes
+            .map(
+              attribute => `"[${attribute.name}]": "${attribute.fieldName}()",`,
+            )
+            .join('\n')}
+        },
+        template: ${`\`
+              ${slots.map(slot => `<ng-content ${slot.name ? `select="[slot='${slot.name}']"` : ''}></ng-content>`).join('\n')}
+          \``},
+      })
+      export class ${className}AngularWrapper {
+        ${attributes
+          .map(
+            attribute => `
+            /** ${attribute.description || ''} */
+            ${attribute.fieldName} = input${isOptionalAttribute(attribute) ? '' : '.required'}<${attribute.parsedType?.text ?? attribute.type.text}>( ${isOptionalAttribute(attribute) ? `${attribute.default}, ` : ''}{ alias: "${attribute.name}" })
+        `,
+          )
+          .join('')}
+        
+        ${events
+          .map(
+            event => `
+            /** ${event.description || ''} */
+            ${snakeToCamel(event.name)}Output = output<Event>( { alias: "${event.name}" } )
+        `,
+          )
+          .join('')}
+      }
+    `;
+
+    fs.writeFileSync(
+      `${path.join(outputPath, `${webComponentTagName}.component.ts`)}`,
+      template,
+      'utf8',
+    );
+
+    indexTsFile.push(`export * from './${webComponentTagName}.component';`);
+  });
+
+  fs.writeFileSync(
+    path.join(outputPath, 'index.ts'),
+    indexTsFile.join('\n'),
+    'utf8',
+  );
+
+  console.log(
+    `Successfully generated ${indexTsFile.length} Angular wrappers to ${outputPath}`,
+  );
+};
+
+main({
+  manifestPath:
+    process.argv.indexOf('--manifest') !== -1
+      ? process.argv[process.argv.indexOf('--manifest') + 1]
+      : undefined,
+  outputPath:
+    process.argv.indexOf('--output') !== -1
+      ? process.argv[process.argv.indexOf('--output') + 1]
+      : undefined,
+});
