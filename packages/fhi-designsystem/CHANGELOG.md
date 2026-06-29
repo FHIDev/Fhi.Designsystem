@@ -1,5 +1,11 @@
 # Changelog
 
+## [0.40.3](https://github.com/FHIDev/Fhi.Designsystem/compare/v0.40.2...v0.40.3) (2026-06-29)
+
+### 🛠️ Bug Fixes
+
+* implement new token structure for fhi-button ([#448](https://github.com/FHIDev/Fhi.Designsystem/issues/448)) ([d4d41ea](https://github.com/FHIDev/Fhi.Designsystem/commit/d4d41ead3d9df0918059cc751088a676b59c2fc0))
+
 ## [0.40.2](https://github.com/FHIDev/Fhi.Designsystem/compare/v0.40.1...v0.40.2) (2026-06-29)
 
 ### 🛠️ Bug Fixes
