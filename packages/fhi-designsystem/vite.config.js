@@ -96,6 +96,7 @@ export default defineConfig(({ command, mode }) => {
     };
 
     packageJson.exports['./theme/default.css'] = {
+      default: './theme/default.css',
       style: './theme/default.css',
     };
 
@@ -205,6 +206,7 @@ export default defineConfig(({ command, mode }) => {
               },
               {
                 src: '.temp/web-types.json',
+                rename: { stripBase: 1 },
                 dest: './',
               },
             ],
@@ -222,7 +224,6 @@ export default defineConfig(({ command, mode }) => {
             formats: ['es'],
             entry: {
               'theme/default.css': './src/theme/default.css',
-              'fonts/RobotoFlex.ttf': './fonts/RobotoFlex.ttf',
               'fhi-designsystem': virtualLibraryModule.path,
             },
           },
@@ -246,14 +247,27 @@ export default defineConfig(({ command, mode }) => {
               },
               {
                 src: '.temp/custom-elements.json',
+                rename: { stripBase: 1 },
                 dest: './',
               },
               {
                 src: '.temp/web-types.json',
+                rename: { stripBase: 1 },
                 dest: './',
               },
               {
+                src: 'src/theme/*',
+                rename: { stripBase: 2 },
+                dest: './theme/',
+              },
+              {
+                src: 'src/fonts/*',
+                rename: { stripBase: 2 },
+                dest: './fonts/',
+              },
+              {
                 src: 'ai/skills/fhi-designsystem/SKILL.md',
+                rename: { stripBase: 3 },
                 dest: './ai-tooling',
               },
             ],
@@ -280,8 +294,6 @@ export default defineConfig(({ command, mode }) => {
           lib: {
             formats: ['es'],
             entry: {
-              'theme/default.css': './src/theme/default.css',
-              'fonts/RobotoFlex.ttf': './fonts/RobotoFlex.ttf',
               index: virtualLibraryModule.path,
               ...listOfComponents,
             },

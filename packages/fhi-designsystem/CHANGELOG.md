@@ -1,5 +1,21 @@
 # Changelog
 
+## [0.40.2](https://github.com/FHIDev/Fhi.Designsystem/compare/v0.40.1...v0.40.2) (2026-06-29)
+
+### 🛠️ Bug Fixes
+
+* Reference the font instead of compiling it into default.css ([#437](https://github.com/FHIDev/Fhi.Designsystem/issues/437)) ([cb8faf7](https://github.com/FHIDev/Fhi.Designsystem/commit/cb8faf763918effb169145e7dff3893aa7f892f8))
+
+## [0.40.1](https://github.com/FHIDev/Fhi.Designsystem/compare/v0.40.0...v0.40.1) (2026-06-29)
+
+### 🛠️ Bug Fixes
+
+* Fix path issue for some files in package ([725bf75](https://github.com/FHIDev/Fhi.Designsystem/commit/725bf75bec8517dcbc0652b3a4749f23b3886099))
+
+### Other
+
+* Update dependencies ([#451](https://github.com/FHIDev/Fhi.Designsystem/issues/451)) ([76f0baa](https://github.com/FHIDev/Fhi.Designsystem/commit/76f0baa4be7aa98da3a207d8be03527ddbdcb160))
+
 ## [0.40.0](https://github.com/FHIDev/Fhi.Designsystem/compare/v0.39.0...v0.40.0) (2026-06-19)
 
 ### 🚀 Features
