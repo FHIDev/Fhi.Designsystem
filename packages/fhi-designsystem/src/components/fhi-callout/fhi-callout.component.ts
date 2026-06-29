@@ -98,6 +98,13 @@ export class FhiCallout extends LitElement {
       border-radius: var(--fhi-border-radius-100);
       border: var(--fhi-dimension-border-width) solid transparent;
 
+      letter-spacing: var(--fhi-typography-body-medium-letter-spacing);
+
+      font: var(--fhi-typography-body-medium-font-weight)
+        var(--fhi-typography-body-medium-font-size) /
+        var(--fhi-typography-body-medium-line-height)
+        var(--fhi-font-family-default);
+
       div {
         display: flex;
         flex-direction: column;
