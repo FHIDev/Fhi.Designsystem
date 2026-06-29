@@ -85,7 +85,7 @@ export class FhiCallout extends LitElement {
         ${this.heading
           ? html`<fhi-title level="2">${this.heading}</fhi-title>`
           : null}
-        <slot name="message"></slot>
+        <slot></slot>
       </div>
     `;
   }

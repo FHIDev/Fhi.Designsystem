@@ -23,13 +23,12 @@ const meta: FhiStorybookMeta<FhiCallout> = {
     methodTypes: [],
     slotTypes: [
       {
-        name: 'icon',
-        description: 'Valgfritt ikon som skal vises i Callout-en.',
-      },
-      {
-        name: 'message',
         description:
           'Hovedinnholdet i Callout-en. Dette er beskjeden eller statusen som skal kommuniseres til brukeren.',
+      },
+      {
+        name: 'icon',
+        description: 'Valgfritt ikon som skal vises i Callout-en.',
       },
     ],
     docs: {
@@ -87,9 +86,8 @@ export const Preview: Story = {
       heading=${ifDefined(heading)}
     >
       <fhi-icon-circle-info slot="icon"></fhi-icon-circle-info>
-      <fhi-body slot="message">
-        Callout kan brukes for å fremheve viktig informasjon til
-        brukeren
+      <fhi-body>
+        Callout kan brukes for å fremheve viktig informasjon til brukeren
       </fhi-body>
     </fhi-callout>
   `,
@@ -100,27 +98,29 @@ export const Color: Story = {
   args: {},
   render: () => html`
     <fhi-callout color="neutral" heading="Neutral (default)">
-      <fhi-body slot="message">
+      <fhi-body>
         For nøytral informasjon til brukeren som må stå litt ekstra ut
       </fhi-body>
     </fhi-callout>
 
     <fhi-callout color="success" heading="Success">
-      <fhi-body slot="message">
-        For å melde at noe var en suksess, for eksempel en bekreftelse at en oppgave er fullført som forventet
+      <fhi-body>
+        For å melde at noe var en suksess, for eksempel en bekreftelse at en
+        oppgave er fullført som forventet
       </fhi-body>
     </fhi-callout>
 
     <fhi-callout color="warning" heading="Warning">
-      <fhi-body slot="message">
-        For å advare brukeren om noe viktig, at handling kreves eller at man må trø videre varsomt
+      <fhi-body>
+        For å advare brukeren om noe viktig, at handling kreves eller at man må
+        trø videre varsomt
       </fhi-body>
     </fhi-callout>
 
     <fhi-callout color="danger" heading="Danger">
-      <fhi-body slot="message">
-        For å si ifra om at noe kritisk har skjedd eller kan skje, ofte noe som hindrer
-        brukeren i å fortsette eller ikke kan angres
+      <fhi-body>
+        For å si ifra om at noe kritisk har skjedd eller kan skje, ofte noe som
+        hindrer brukeren i å fortsette eller ikke kan angres
       </fhi-body>
     </fhi-callout>
   `,
@@ -131,13 +131,11 @@ export const Variant: Story = {
   args: {},
   render: () => html`
     <fhi-callout color="success" heading="Subtle (default)">
-      <fhi-body slot="message">
-        Standardvarianten og fungerer på de fleste flater.
-      </fhi-body>
+      <fhi-body> Standardvarianten og fungerer på de fleste flater. </fhi-body>
     </fhi-callout>
 
     <fhi-callout color="success" heading="Bordered" variant="bordered">
-      <fhi-body slot="message">
+      <fhi-body>
         En subtil kant som kan bidra til å få komponenten (og dens
         fargeassosiasjon) til å stå ut mer
       </fhi-body>
@@ -150,7 +148,7 @@ export const Icon: Story = {
   render: () => html`
     <fhi-callout color="warning">
       <fhi-icon-octagon-alert slot="icon"></fhi-icon-octagon-alert>
-      <fhi-body slot="message">
+      <fhi-body>
         Upublisert data skal kun brukes som avtalt med avsender. Denne
         forhåndsvisningen utløper 23. mars 2039 kl. 15.36.
       </fhi-body>
@@ -158,7 +156,7 @@ export const Icon: Story = {
 
     <fhi-callout color="neutral" heading="En ny oppdatering er tilgjengelig">
       <fhi-icon-circle-info slot="icon"></fhi-icon-circle-info>
-      <fhi-body slot="message">
+      <fhi-body>
         Vennligst oppdater til den nyeste versjonen for å få tilgang til de
         nyeste funksjonene og forbedringene.
       </fhi-body>
