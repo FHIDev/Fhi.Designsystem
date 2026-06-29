@@ -96,6 +96,7 @@ export default defineConfig(({ command, mode }) => {
     };
 
     packageJson.exports['./theme/default.css'] = {
+      default: './theme/default.css',
       style: './theme/default.css',
     };
 
