@@ -205,6 +205,7 @@ export default defineConfig(({ command, mode }) => {
               },
               {
                 src: '.temp/web-types.json',
+                rename: { stripBase: 1 },
                 dest: './',
               },
             ],
@@ -245,10 +246,12 @@ export default defineConfig(({ command, mode }) => {
               },
               {
                 src: '.temp/custom-elements.json',
+                rename: { stripBase: 1 },
                 dest: './',
               },
               {
                 src: '.temp/web-types.json',
+                rename: { stripBase: 1 },
                 dest: './',
               },
               {
@@ -261,6 +264,7 @@ export default defineConfig(({ command, mode }) => {
               },
               {
                 src: 'ai/skills/fhi-designsystem/SKILL.md',
+                rename: { stripBase: 3 },
                 dest: './ai-tooling',
               },
             ],
