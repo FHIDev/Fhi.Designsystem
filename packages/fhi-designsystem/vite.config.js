@@ -256,10 +256,12 @@ export default defineConfig(({ command, mode }) => {
               },
               {
                 src: 'src/theme/*',
+                rename: { stripBase: 2 },
                 dest: './theme/',
               },
               {
                 src: 'src/fonts/*',
+                rename: { stripBase: 2 },
                 dest: './fonts/',
               },
               {
