@@ -1,5 +1,11 @@
 # Changelog
 
+## [0.40.2](https://github.com/FHIDev/Fhi.Designsystem/compare/v0.40.1...v0.40.2) (2026-06-29)
+
+### 🛠️ Bug Fixes
+
+* Reference the font instead of compiling it into default.css ([#437](https://github.com/FHIDev/Fhi.Designsystem/issues/437)) ([cb8faf7](https://github.com/FHIDev/Fhi.Designsystem/commit/cb8faf763918effb169145e7dff3893aa7f892f8))
+
 ## [0.40.1](https://github.com/FHIDev/Fhi.Designsystem/compare/v0.40.0...v0.40.1) (2026-06-29)
 
 ### 🛠️ Bug Fixes
