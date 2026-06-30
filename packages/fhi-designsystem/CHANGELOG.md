@@ -1,5 +1,11 @@
 # Changelog
 
+## [0.40.6](https://github.com/FHIDev/Fhi.Designsystem/compare/v0.40.5...v0.40.6) (2026-06-30)
+
+### 🛠️ Bug Fixes
+
+* Add correct styling for when fhi-radio is disabled while having the error status ([#460](https://github.com/FHIDev/Fhi.Designsystem/issues/460)) ([3d6b115](https://github.com/FHIDev/Fhi.Designsystem/commit/3d6b11507cd4e4c09960ad60043fb68bac775c77))
+
 ## [0.40.5](https://github.com/FHIDev/Fhi.Designsystem/compare/v0.40.4...v0.40.5) (2026-06-30)
 
 ### 🛠️ Bug Fixes
