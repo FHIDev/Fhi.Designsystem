@@ -279,69 +279,7 @@ export class FhiRadio extends LitElement {
 
   static styles = css`
     :host {
-      --motion-radio-transition: var(--fhi-motion-ease-default)
-        var(--fhi-motion-duration-quick);
-
-      --color-radio-label: var(--fhi-color-neutral-text-default);
-      --color-radio-border: var(--fhi-color-neutral-border-default);
-      --color-radio-background: var(--fhi-color-neutral-background-default);
-
-      --color-radio-border-hover: var(--fhi-color-accent-border-strong);
-      --color-radio-background-hover: var(--fhi-color-accent-background-subtle);
-
-      --color-radio-background-active: var(--fhi-color-accent-surface-default);
-
-      --color-radio-outline: var(--fhi-color-accent-surface-hover);
-
-      --typography-radio-label-font-family: var(--fhi-font-family-default);
-      -webkit-font-smoothing: antialiased;
-      --typography-radio-label-font-size: var(
-        --fhi-typography-body-medium-font-size
-      );
-
-      --typography-radio-label-font-weight: var(
-        --fhi-typography-body-medium-font-weight
-      );
-
-      --typography-radio-label-line-height: var(
-        --fhi-typography-body-medium-line-height
-      );
-      --typography-radio-label-letter-spacing: var(
-        --fhi-typography-body-medium-letter-spacing
-      );
-
-      --dimension-radio-label-gap: var(--fhi-spacing-050);
-      --dimension-radio-width: var(--fhi-spacing-250);
-      --dimension-radio-height: var(--fhi-spacing-250);
-      --dimension-radio-margin: 0.125rem;
-      --dimension-radio-border-width: var(--fhi-dimension-border-width);
-
-      --dimension-radio-dot-size: 1.125rem;
-
-      /* Checked state */
-      --dimension-radio-border-width-checked: var(
-        --fhi-dimension-border-width-active
-      );
-
-      /* Error state */
-      --color-radio-border-error: var(--fhi-color-danger-border-default);
-      --color-radio-background-error: var(
-        --fhi-color-danger-background-default
-      );
-
-      --color-radio-border-error-hover: var(--fhi-color-danger-border-strong);
-      --color-radio-background-error-hover: var(
-        --fhi-color-danger-background-subtle
-      );
-
-      --color-radio-background-error-active: var(
-        --fhi-color-danger-surface-default
-      );
-
-      --color-radio-outline-error: var(--fhi-color-danger-surface-hover);
-
-      /* Disabled state */
-      --opacity-disabled: var(--fhi-opacity-disabled);
+      --fhi-radio-color: currentcolor;
     }
 
     :host {
@@ -352,13 +290,14 @@ export class FhiRadio extends LitElement {
       label {
         display: flex;
         position: relative;
-        gap: var(--dimension-radio-label-gap);
-        color: var(--color-radio-label);
-        font-family: var(--typography-radio-label-font-family);
-        font-size: var(--typography-radio-label-font-size);
-        font-weight: var(--typography-radio-label-font-weight);
-        line-height: var(--typography-radio-label-line-height);
-        letter-spacing: var(--typography-radio-label-letter-spacing);
+        gap: var(--fhi-spacing-050);
+        color: var(--fhi-radio-color);
+        font-family: var(--fhi-font-family-default);
+        -webkit-font-smoothing: antialiased;
+        font-size: var(--fhi-typography-body-medium-font-size);
+        font-weight: var(--fhi-typography-body-medium-font-weight);
+        line-height: var(--fhi-typography-body-medium-line-height);
+        letter-spacing: var(--fhi-typography-body-medium-letter-spacing);
       }
 
       .radio-container {
@@ -368,33 +307,35 @@ export class FhiRadio extends LitElement {
 
       input {
         appearance: none;
-        margin: var(--dimension-radio-margin);
-        width: var(--dimension-radio-width);
-        height: var(--dimension-radio-height);
-        background-color: var(--color-radio-background);
-        border: var(--dimension-radio-border-width) solid
-          var(--color-radio-border);
+        margin: 0.125rem;
+        width: var(--fhi-spacing-250);
+        height: var(--fhi-spacing-250);
+        background-color: var(--fhi-color-neutral-background-default);
+        border: var(--fhi-dimension-border-width) solid
+          var(--fhi-color-neutral-border-default);
         border-radius: var(--fhi-border-radius-full);
-        transition: all var(--motion-radio-transition);
+        transition: all var(--fhi-motion-ease-default)
+          var(--fhi-motion-duration-quick);
       }
 
       .radio-dot {
         visibility: hidden;
         opacity: 0;
-        transition: opacity var(--motion-radio-transition);
+        transition: opacity var(--fhi-motion-ease-default)
+          var(--fhi-motion-duration-quick);
         position: absolute;
         top: 50%;
         left: 50%;
         transform: translate(-50%, -50%);
-        height: var(--dimension-radio-dot-size);
-        width: var(--dimension-radio-dot-size);
+        height: 1.125rem;
+        width: 1.125rem;
       }
 
       input:checked {
-        border-width: var(--dimension-radio-border-width-checked);
+        border-width: var(--fhi-dimension-border-width-active);
         ~ .radio-dot {
           circle {
-            fill: var(--color-radio-border);
+            fill: var(--fhi-color-neutral-border-default);
           }
           visibility: visible;
           opacity: 1;
@@ -403,7 +344,7 @@ export class FhiRadio extends LitElement {
     }
 
     :host([disabled]) {
-      opacity: var(--opacity-disabled);
+      opacity: var(--fhi-opacity-disabled);
       label,
       input {
         cursor: not-allowed;
@@ -412,40 +353,40 @@ export class FhiRadio extends LitElement {
 
     :host(:not(:disabled)) {
       input:hover:not(:checked) {
-        border-color: var(--color-radio-border-hover);
-        background-color: var(--color-radio-background-hover);
+        border-color: var(--fhi-color-accent-border-strong);
+        background-color: var(--fhi-color-accent-background-subtle);
       }
 
       input:active:not(:checked) {
-        border-color: var(--color-radio-border-hover);
-        background-color: var(--color-radio-background-active);
+        border-color: var(--fhi-color-accent-border-strong);
+        background-color: var(--fhi-color-accent-surface-default);
         outline: var(--fhi-dimension-border-width-focus) solid
-          var(--color-radio-outline);
+          var(--fhi-color-accent-surface-hover);
       }
 
       &:host([status='error']) {
         input {
-          border-color: var(--color-radio-border-error);
-          background-color: var(--color-radio-background-error);
+          border-color: var(--fhi-color-danger-border-default);
+          background-color: var(--fhi-color-danger-background-default);
         }
 
         input:checked {
           ~ .radio-dot {
             circle {
-              fill: var(--color-radio-border-error);
+              fill: var(--fhi-color-danger-border-default);
             }
           }
         }
 
         input:hover:not(:checked) {
-          border-color: var(--color-radio-border-error-hover);
-          background-color: var(--color-radio-background-error-hover);
+          border-color: var(--fhi-color-danger-border-strong);
+          background-color: var(--fhi-color-danger-background-subtle);
         }
 
         input:active:not(:checked) {
-          border-color: var(--color-radio-border-error-hover);
-          background-color: var(--color-radio-background-error-active);
-          outline-color: var(--color-radio-outline-error);
+          border-color: var(--fhi-color-danger-border-strong);
+          background-color: var(--fhi-color-danger-surface-default);
+          outline-color: var(--fhi-color-danger-surface-hover);
         }
       }
     }
