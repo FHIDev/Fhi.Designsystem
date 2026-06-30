@@ -1,5 +1,11 @@
 # Changelog
 
+## [0.40.4](https://github.com/FHIDev/Fhi.Designsystem/compare/v0.40.3...v0.40.4) (2026-06-30)
+
+### 🛠️ Bug Fixes
+
+* Implement new token structure for fhi-checkbox ([#449](https://github.com/FHIDev/Fhi.Designsystem/issues/449)) ([1f510f8](https://github.com/FHIDev/Fhi.Designsystem/commit/1f510f8874029dc8b5d893c90da93d50c559901f))
+
 ## [0.40.3](https://github.com/FHIDev/Fhi.Designsystem/compare/v0.40.2...v0.40.3) (2026-06-29)
 
 ### 🛠️ Bug Fixes
