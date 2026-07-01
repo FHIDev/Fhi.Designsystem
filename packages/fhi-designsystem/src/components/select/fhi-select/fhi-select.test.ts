@@ -331,5 +331,20 @@ describe('fhi-select', () => {
       expect(messageElement).to.not.equal(null);
       expect(messageElement.textContent?.trim()).to.equal(message);
     });
+
+    it('displays help text', async () => {
+      const helpText = 'This is a test help text.';
+
+      component = await fixture(
+        html`<fhi-select help-text="${helpText}"></fhi-select>`,
+      );
+
+      const helpTextElement = component.shadowRoot!.querySelector(
+        '.help-text',
+      ) as HTMLElement;
+
+      expect(helpTextElement).to.not.equal(null);
+      expect(helpTextElement.textContent?.trim()).to.equal(helpText);
+    });
   });
 });
