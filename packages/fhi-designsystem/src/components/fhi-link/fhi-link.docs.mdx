@@ -1,0 +1,42 @@
+import { FhiLink } from './fhi-link.component.ts';
+import * as FhiLinkStories from './fhi-link.stories.ts';
+import { Meta, Primary, Canvas, Controls } from '@storybook/addon-docs/blocks';
+
+import { ApiDefinition } from '../../../.storybook/blocks/api-definition.jsx';
+
+<Meta of={FhiLinkStories} />
+
+# Link
+
+Link er en klikkbar tekst som lar brukeren navigere videre til andre sider eller dokumenter.
+
+## Passer til
+- Å sende brukeren til en annen side i løsningen
+- Å sende brukeren til en annen del av samme side
+- Filer man kan laste ned
+
+<Canvas of={FhiLinkStories.Preview} />
+
+<Controls of={FhiLinkStories.Preview} />
+
+## Bruk
+
+Her er noen råd, tips og retningslinjer for bruk av lenker:
+- Lenketeksten skal beskrive målet (“Retningslinjer for persondatahåndtering”), ikke handlingen (“Klikk her”).
+- Selv om lenken er del av en setning, må teksten gi like god mening som om den skulle stå alene.
+- Lenker åpner som hovedregel i samme fane, men i noen tilfeller kan det vurderes å åpne den i en ny fane, slik som når brukeren er i en lengre prosess og det er fare for å miste utfylt informasjon.
+- Går lenken til en ekstern side er det best å skrive hvor den går (eks: “Du kan lese mer om offisiell statistikk på ssb.no”)
+
+## Eksempel
+<Canvas of={FhiLinkStories.Example} />
+
+### `Target`
+
+`Target`-attributten bestemmer hvordan lenken åpnes. Som standard åpnes lenken i følge konteksten den er i, da vanligvis i samme fane.
+Dette kan overstyres. For eksempel, setter du ved `target` til `_blank`, åpnes lenken i en ny fane (eller nytt vindu om brukeren har konfigurert nettleseren slik).
+
+Om `target` settes til noe annet enn `_self`, som er standardverdien, vil en intern `rel`-attributte automatisk settes til `noopener noreferrer` av sikkerhetsmessige årsaker for å hindre at den nye siden får tilgang til vinduet som åpnet den.
+
+<Canvas of={FhiLinkStories.Target} />
+
+<ApiDefinition of={FhiLinkStories.Preview} />
