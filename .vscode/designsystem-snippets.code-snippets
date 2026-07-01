@@ -49,7 +49,7 @@
     "scope": "typescript",
     "prefix": "story",
     "body": [
-      "import type { StoryObj } from '@storybook/web-components';",
+      "import type { StoryObj } from '@storybook/web-components-vite';",
       "import { html } from 'lit';",
       "import { Fhi${1:ComponentName} } from './fhi-${2:component-name}.component';",
       "",
@@ -86,7 +86,9 @@
     "body": [
       "import { Fhi${1:ComponentName} } from './fhi-${2:component-name}.component.ts';",
       "import * as Fhi${1:ComponentName}Stories from './fhi-${2:component-name}.stories.ts';",
-      "import { Meta, Primary, Canvas, Controls } from '@storybook/blocks';",
+      "import { Meta, Primary, Canvas, Controls } from '@storybook/addon-docs/blocks';",
+      "",
+      "import { ApiDefinition } from '../../../.storybook/blocks/api-definition.jsx';",
       "",
       "<Meta of={Fhi${1:ComponentName}Stories} />",
       "",
@@ -96,9 +98,9 @@
       "",
       "<Canvas of={Fhi${1:ComponentName}Stories.Preview} />",
       "",
-      "<Controls />",
+      "<Controls of={Fhi${1:ComponentName}Stories.Preview} />",
       "",
-      "<ApiDefinition />"
+      "<ApiDefinition of={Fhi${1:ComponentName}Stories.Preview} />"
     ],
     "description": "template for documentation in mdx for new lit component",
   },
