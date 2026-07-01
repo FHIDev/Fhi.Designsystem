@@ -18,7 +18,7 @@ import '../typography/fhi-body/fhi-body.component';
  * @element fhi-callout
  *
  * @slot icon - Optional icon to be displayed in the callout.
- * @slot message - The main message content of the callout.
+ * @slot - The main content of the callout. This is typically plain text or other inline elements.
  *
  */
 @customElement(FhiCalloutSelector)
