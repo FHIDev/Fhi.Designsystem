@@ -84,20 +84,14 @@ export class FhiGrid extends LitElement {
     }
     :host([gap='small']) {
       --fhi-grid-gap: var(--fhi-spacing-100);
-
-     
     }
 
     :host([gap='medium']) {
       --fhi-grid-gap: var(--fhi-spacing-200);
-
-    
     }
 
     :host([gap='large']) {
       --fhi-grid-gap: var(--fhi-spacing-300);
-
-   
     }
   `;
 }
