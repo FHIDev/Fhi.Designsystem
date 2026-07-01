@@ -15,7 +15,11 @@ const meta: FhiStorybookMeta<FhiLink> = {
   parameters: {
     eventTypes: [],
     methodTypes: [],
-    slotTypes: [],
+    slotTypes: [
+      {
+        description: 'Innholdet som vises i lenken. Typisk ren tekst.',
+      },
+    ],
   },
   decorators: [],
   render: args =>
