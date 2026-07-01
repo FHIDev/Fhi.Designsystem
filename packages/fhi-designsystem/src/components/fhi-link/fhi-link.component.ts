@@ -38,6 +38,8 @@ export class FhiLink extends LitElement {
     :host {
       --fhi-link-color: currentcolor;
 
+      color: var(--fhi-link-color);
+
       letter-spacing: var(--fhi-typography-body-medium-letter-spacing);
 
       font: var(--fhi-typography-body-medium-font-weight)
@@ -46,7 +48,7 @@ export class FhiLink extends LitElement {
         var(--fhi-font-family-default);
 
       a {
-        color: var(--fhi-link-color);
+        color: inherit;
         transition: color var(--fhi-motion-duration-quick)
           var(--fhi-motion-ease-default);
 
@@ -58,7 +60,6 @@ export class FhiLink extends LitElement {
         --fhi-link-color: var(--fhi-color-accent-text-subtle);
 
         a {
-          color: var(--fhi-color-accent-text-subtle);
           text-decoration-thickness: 0.125rem;
         }
       }
@@ -67,7 +68,6 @@ export class FhiLink extends LitElement {
         --fhi-link-color: currentcolor;
 
         a {
-          color: var(--fhi-link-color);
           text-underline-offset: 0.25rem;
         }
       }
