@@ -4,11 +4,38 @@ import { ifDefined } from 'lit/directives/if-defined.js';
 
 export const FhiLinkSelector = 'fhi-link';
 
+/**
+ * ## FHI Link
+ *
+ * {@link https://designsystem.fhi.no/?path=/docs/komponenter-link--docs}
+ *
+ * The `<fhi-link>` component is used to create hyperlinks styled according to the FHI Design System.
+ * It is usefull for navigation within the application or to external resources, providing a consistent look and feel for links across the application.
+ *
+ * @tag fhi-link
+ * @element fhi-link
+ *
+ */
 @customElement(FhiLinkSelector)
 export class FhiLink extends LitElement {
+  /**
+   * The URL for the link.
+   *
+   * It follows the same behavior as the standard HTML `<a>` element's href attribute.
+   *
+   * For more information, see: {@link https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/a#href}
+   * @type {string}
+   */
   @property({ type: String })
   href?: string;
 
+  /**
+   * The target attribute specifies where to open the linked document.
+   *
+   * It follows the same behavior as the standard HTML `<a>` element's target attribute.
+   *
+   * For more information, see: {@link https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/a#target}
+   */
   @property({ type: String })
   target?: '_self' | '_blank' | '_parent' | '_top' = '_self';
 

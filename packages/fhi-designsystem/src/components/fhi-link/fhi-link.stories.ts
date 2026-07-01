@@ -31,13 +31,14 @@ const meta: FhiStorybookMeta<FhiLink> = {
   argTypes: {
     href: {
       name: 'href',
-      description: 'URL for lenken.',
+      description:
+        'URL for lenken. Denne følger samme oppførsel som standard HTML `<a>` sin attributte. For mer informasjon, se: [MDN - href](https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/a#href)',
       control: { type: 'text' },
     },
     target: {
       name: 'target',
       description:
-        'Angir hvor lenken skal åpnes. For mer informasjon, se: [MDN Target Docs](https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/a#target)',
+        'Angir hvor lenken skal åpnes. Denne følger samme oppførsel som standard HTML `<a>` sin attributte. For mer informasjon, se: [MDN - target](https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/a#target)',
       control: { type: 'select' },
       options: ['_self', '_blank', '_parent', '_top'],
       defaultValue: { summary: '_self' },
