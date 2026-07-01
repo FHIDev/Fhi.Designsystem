@@ -43,14 +43,14 @@ export class FhiLabel extends LitElement {
    *
    * @type {string}
    */
-  @property({ type: String }) color?: string = 'currentcolor';
+  @property({ type: String }) color?: string;
 
   updated(changedProperties: PropertyValues<this>) {
     super.updated(changedProperties);
 
     if (changedProperties.has('color')) {
       this.style.color =
-        typeof this.color === 'string' ? this.color : 'currentcolor';
+        typeof this.color === 'string' ? this.color : 'var(--fhi-label-color)';
     }
   }
 
@@ -64,8 +64,15 @@ export class FhiLabel extends LitElement {
 
   static styles = css`
     :host {
+      --fhi-label-color: unset;
+    }
+
+    :host {
+      --fhi-label-color: currentcolor;
+
       display: block;
       contain: layout;
+      color: var(--fhi-label-color);
       .label {
         font-family: var(--fhi-font-family-default);
         -webkit-font-smoothing: antialiased;

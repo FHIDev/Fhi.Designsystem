@@ -43,14 +43,14 @@ export class FhiBody extends LitElement {
    *
    * @type {string}
    */
-  @property({ type: String }) color?: string = 'currentcolor';
+  @property({ type: String }) color?: string;
 
   updated(changedProperties: PropertyValues<this>) {
     super.updated(changedProperties);
 
     if (changedProperties.has('color')) {
       this.style.color =
-        typeof this.color === 'string' ? this.color : 'currentcolor';
+        typeof this.color === 'string' ? this.color : 'var(--fhi-body-color)';
     }
   }
 
@@ -64,8 +64,15 @@ export class FhiBody extends LitElement {
 
   static styles = css`
     :host {
+      --fhi-body-color: unset;
+    }
+
+    :host {
+      --fhi-body-color: currentcolor;
+
       display: block;
       contain: layout;
+      color: var(--fhi-body-color);
       .body {
         font-family: var(--fhi-font-family-default);
         -webkit-font-smoothing: antialiased;

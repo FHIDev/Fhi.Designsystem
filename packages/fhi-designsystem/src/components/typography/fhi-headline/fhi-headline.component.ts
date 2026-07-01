@@ -51,7 +51,7 @@ export class FhiHeadline extends LitElement {
    *
    * @type {string}
    */
-  @property({ type: String }) color?: string = 'currentcolor';
+  @property({ type: String }) color?: string;
 
   /**
    * Sets the heading level for the text, corresponding to HTML heading elements `<h1>` to `<h6>`.
@@ -75,7 +75,9 @@ export class FhiHeadline extends LitElement {
 
     if (changedProperties.has('color')) {
       this.style.color =
-        typeof this.color === 'string' ? this.color : 'currentcolor';
+        typeof this.color === 'string'
+          ? this.color
+          : 'var(--fhi-headline-color)';
     }
   }
 
@@ -90,8 +92,15 @@ export class FhiHeadline extends LitElement {
 
   static styles = css`
     :host {
+      --fhi-headline-color: unset;
+    }
+
+    :host {
+      --fhi-headline-color: currentcolor;
+
       display: block;
       contain: layout;
+      color: var(--fhi-headline-color);
       .headline {
         font-family: var(--fhi-font-family-default);
         -webkit-font-smoothing: antialiased;
