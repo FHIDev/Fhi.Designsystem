@@ -363,33 +363,31 @@ export class FhiRadio extends LitElement {
         outline: var(--fhi-dimension-border-width-focus) solid
           var(--fhi-color-accent-surface-hover);
       }
-    }
 
-    :host([status='error']) {
-      input {
-        border-color: var(--fhi-color-danger-border-default);
-        background-color: var(--fhi-color-danger-background-default);
-      }
+      &:host([status='error']) {
+        input {
+          border-color: var(--fhi-color-danger-border-default);
+          background-color: var(--fhi-color-danger-background-default);
+        }
 
-      input:checked {
-        ~ .radio-dot {
-          circle {
-            fill: var(--fhi-color-danger-border-default);
+        input:checked {
+          ~ .radio-dot {
+            circle {
+              fill: var(--fhi-color-danger-border-default);
+            }
           }
         }
-      }
-    }
 
-    :host([status='error']:not(:disabled)) {
-      input:hover:not(:checked) {
-        border-color: var(--fhi-color-danger-border-strong);
-        background-color: var(--fhi-color-danger-background-subtle);
-      }
+        input:hover:not(:checked) {
+          border-color: var(--fhi-color-danger-border-strong);
+          background-color: var(--fhi-color-danger-background-subtle);
+        }
 
-      input:active:not(:checked) {
-        border-color: var(--fhi-color-danger-border-strong);
-        background-color: var(--fhi-color-danger-surface-default);
-        outline-color: var(--fhi-color-danger-surface-hover);
+        input:active:not(:checked) {
+          border-color: var(--fhi-color-danger-border-strong);
+          background-color: var(--fhi-color-danger-surface-default);
+          outline-color: var(--fhi-color-danger-surface-hover);
+        }
       }
     }
   `;
