@@ -6,10 +6,10 @@ export const FhiLinkSelector = 'fhi-link';
 
 @customElement(FhiLinkSelector)
 export class FhiLink extends LitElement {
-  @property({ type: String, reflect: true })
+  @property({ type: String })
   href?: string;
 
-  @property({ type: String, reflect: true })
+  @property({ type: String })
   target?: '_self' | '_blank' | '_parent' | '_top' = '_self';
 
   get rel() {

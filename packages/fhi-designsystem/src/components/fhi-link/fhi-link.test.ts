@@ -35,32 +35,6 @@ describe('fhi-link', () => {
     });
   });
 
-  describe('property-attribute reflection', () => {
-    beforeEach(async () => {
-      component = await fixture(
-        html`<fhi-link href="https://www.fhi.no" target="_blank"></fhi-link>`,
-      );
-    });
-
-    it('reflects the href property to the attribute', async () => {
-      component.href = 'https://www.example.com';
-
-      await component.updateComplete;
-
-      expect(component.getAttribute('href')).to.equal(
-        'https://www.example.com',
-      );
-    });
-
-    it('reflects the target property to the attribute', async () => {
-      component.target = '_self';
-
-      await component.updateComplete;
-
-      expect(component.getAttribute('target')).to.equal('_self');
-    });
-  });
-
   describe('automatic rel attribute', () => {
     it('sets rel to "noopener noreferrer" when target is not "_self"', async () => {
       component = await fixture(
