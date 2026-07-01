@@ -1,5 +1,6 @@
 import { html, css, LitElement, PropertyValues } from 'lit';
 import { customElement, property } from 'lit/decorators.js';
+import { ifDefined } from 'lit/directives/if-defined.js';
 import { unsafeHTML } from 'lit/directives/unsafe-html.js';
 
 export const FhiDisplaySelector = 'fhi-display';
@@ -51,7 +52,7 @@ export class FhiDisplay extends LitElement {
    *
    * @type {string}
    */
-  @property({ type: String }) color?: string = 'currentcolor';
+  @property({ type: String }) color?: string;
 
   /**
    * Sets the heading level for the text, corresponding to HTML heading elements `<h1>` to `<h6>`.
@@ -72,11 +73,6 @@ export class FhiDisplay extends LitElement {
         );
       }
     }
-
-    if (changedProperties.has('color')) {
-      this.style.color =
-        typeof this.color === 'string' ? this.color : 'currentcolor';
-    }
   }
 
   render() {
@@ -85,13 +81,24 @@ export class FhiDisplay extends LitElement {
         <slot></slot>
       </h${this.level}>
     `;
-    return html`${unsafeHTML(template)}`;
+    return html`
+      <div style=${ifDefined(this.color ? `color: ${this.color}` : undefined)}>
+        ${unsafeHTML(template)}
+      </div>
+    `;
   }
 
   static styles = css`
     :host {
+      --fhi-display-color: unset;
+    }
+
+    :host {
+      --fhi-display-color: currentcolor;
+
       display: block;
       contain: layout;
+      color: var(--fhi-display-color);
       .display {
         font-family: var(--fhi-font-family-default);
         -webkit-font-smoothing: antialiased;
