@@ -1,5 +1,6 @@
 import { html, css, LitElement, PropertyValues } from 'lit';
 import { customElement, property } from 'lit/decorators.js';
+import { ifDefined } from 'lit/directives/if-defined.js';
 import { unsafeHTML } from 'lit/directives/unsafe-html.js';
 
 export const FhiDisplaySelector = 'fhi-display';
@@ -72,13 +73,6 @@ export class FhiDisplay extends LitElement {
         );
       }
     }
-
-    if (changedProperties.has('color')) {
-      this.style.color =
-        typeof this.color === 'string'
-          ? this.color
-          : 'var(--fhi-display-color)';
-    }
   }
 
   render() {
@@ -87,7 +81,11 @@ export class FhiDisplay extends LitElement {
         <slot></slot>
       </h${this.level}>
     `;
-    return html`${unsafeHTML(template)}`;
+    return html`
+      <div style=${ifDefined(this.color ? `color: ${this.color}` : undefined)}>
+        ${unsafeHTML(template)}
+      </div>
+    `;
   }
 
   static styles = css`
