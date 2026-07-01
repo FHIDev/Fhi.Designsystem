@@ -30,4 +30,13 @@ Her er noen råd, tips og retningslinjer for bruk av lenker:
 ## Eksempel
 <Canvas of={FhiLinkStories.Example} />
 
+### `Target`
+
+`Target`-attributten bestemmer hvordan lenken åpnes. Som standard åpnes lenken i følge konteksten den er i, da vanligvis i samme fane.
+Dette kan overstyres. For eksempel, setter du ved `target` til `_blank`, åpnes lenken i en ny fane (eller nytt vindu om brukeren har konfigurert nettleseren slik).
+
+Om `target` settes til noe annet enn `_self`, som er standardverdien, vil en intern `rel`-attributte automatisk settes til `noopener noreferrer` av sikkerhetsmessige årsaker for å hindre at den nye siden får tilgang til vinduet som åpnet den.
+
+<Canvas of={FhiLinkStories.Target} />
+
 <ApiDefinition of={FhiLinkStories.Preview} />

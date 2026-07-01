@@ -33,7 +33,7 @@ const meta: FhiStorybookMeta<FhiLink> = {
     target: {
       name: 'target',
       description:
-        'Angir hvor lenken skal åpnes. Se: [MDN Target Docs](https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/a#target) for mer informasjon',
+        'Angir hvor lenken skal åpnes. For mer informasjon, se: [MDN Target Docs](https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/a#target)',
       control: { type: 'select' },
       options: ['_self', '_blank', '_parent', '_top'],
       defaultValue: { summary: '_self' },
@@ -67,6 +67,21 @@ export const Example: Story = {
     </fhi-body> `,
   args: {
     href: 'https://github.com/FHIDev/Fhi.Designsystem/issues',
+    target: '_blank',
+  },
+};
+
+export const Target: Story = {
+  tags: ['!dev'],
+  render: args =>
+    html`<fhi-link
+      href="${ifDefined(args.href)}"
+      target="${ifDefined(args.target)}"
+    >
+      Denne lenken åpner SSB.no i en ny fane
+    </fhi-link>`,
+  args: {
+    href: 'https://www.ssb.no/',
     target: '_blank',
   },
 };
