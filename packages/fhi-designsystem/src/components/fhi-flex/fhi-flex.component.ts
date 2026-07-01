@@ -102,20 +102,14 @@ export class FhiFlex extends LitElement {
 
     :host([gap='small']) {
       --fhi-flex-gap: var(--fhi-spacing-100);
-
-      gap: var(--fhi-flex-gap);
     }
 
     :host([gap='medium']) {
       --fhi-flex-gap: var(--fhi-spacing-200);
-
-      gap: var(--fhi-flex-gap);
     }
 
     :host([gap='large']) {
       --fhi-flex-gap: var(--fhi-spacing-300);
-
-      gap: var(--fhi-flex-gap);
     }
 
     :host([wrap]) {
