@@ -15,6 +15,8 @@ export const FhiLinkSelector = 'fhi-link';
  * @tag fhi-link
  * @element fhi-link
  *
+ * @slot - The content of the link. This is typically plain text.
+ *
  */
 @customElement(FhiLinkSelector)
 export class FhiLink extends LitElement {
