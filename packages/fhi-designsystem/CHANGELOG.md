@@ -1,5 +1,11 @@
 # Changelog
 
+## [0.41.1](https://github.com/FHIDev/Fhi.Designsystem/compare/v0.41.0...v0.41.1) (2026-07-01)
+
+### 🛠️ Bug Fixes
+
+* implement new token structure for fhi-grid ([#466](https://github.com/FHIDev/Fhi.Designsystem/issues/466)) ([34c9d8c](https://github.com/FHIDev/Fhi.Designsystem/commit/34c9d8c4b1c244345416876edd5c3f679442a4d6))
+
 ## [0.41.0](https://github.com/FHIDev/Fhi.Designsystem/compare/v0.40.7...v0.41.0) (2026-07-01)
 
 ### 🚀 Features
