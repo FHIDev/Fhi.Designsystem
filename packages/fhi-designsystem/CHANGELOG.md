@@ -1,5 +1,11 @@
 # Changelog
 
+## [0.41.2](https://github.com/FHIDev/Fhi.Designsystem/compare/v0.41.1...v0.41.2) (2026-07-02)
+
+### 🛠️ Bug Fixes
+
+* implement new token structure for fhi-flex ([#467](https://github.com/FHIDev/Fhi.Designsystem/issues/467)) ([de91aae](https://github.com/FHIDev/Fhi.Designsystem/commit/de91aaecc36e01760fa7599008b2bf1ae92e9164))
+
 ## [0.41.1](https://github.com/FHIDev/Fhi.Designsystem/compare/v0.41.0...v0.41.1) (2026-07-01)
 
 ### 🛠️ Bug Fixes
