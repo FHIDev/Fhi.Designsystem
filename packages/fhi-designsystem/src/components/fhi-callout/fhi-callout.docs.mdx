@@ -1,0 +1,40 @@
+import { FhiCallout } from './fhi-callout.component.ts';
+import * as FhiCalloutStories from './fhi-callout.stories.ts';
+import { Meta, Primary, Canvas, Controls } from '@storybook/addon-docs/blocks';
+
+import { ApiDefinition } from '../../../.storybook/blocks/api-definition.jsx';
+
+<Meta of={FhiCalloutStories} />
+
+# Callout
+Callout brukes for å trekke brukerens oppmerksomhet til ekstra viktige beskjeder eller statusendringer i grensesnittet.
+Den kan benyttes for å vise informasjon, suksess, advarsler eller feil.
+
+## Passer til
+- Å utheve viktig informasjon til brukeren
+- Tilbakemeldinger om noe som er blitt gjort riktig eller galt
+
+<Canvas of={FhiCalloutStories.Preview} />
+
+<Controls of={FhiCalloutStories.Preview}/>
+
+## Color (`color`)
+
+<Canvas of={FhiCalloutStories.Color} />
+
+## Variant (`variant`)
+
+<Canvas of={FhiCalloutStories.Variant} />
+
+## Ikon
+
+Ikon kan gjøre det enklere å skille mellom ulike typer beskjeder og raskt signalisere alvorlighetsgrad.
+Det gir ekstra visuell støtte, særlig for brukere som ikke får med seg farger.
+
+Ikon er ofte nyttig, men ikke alltid nødvendig. Ønsker du et roligere grensesnitt, kan det lønne seg å vise Callout uten.
+Vurdér å utelate ikon dersom meldingen er enkel, nøytral og ikke krever ekstra oppmerksomhet, eller hvis mange Callouts vises samtidig.
+Innholdet skal uansett være tydelig, uavhengig av ikon og farge.
+
+<Canvas of={FhiCalloutStories.Icon} />
+
+<ApiDefinition of={FhiCalloutStories.Preview}/>
