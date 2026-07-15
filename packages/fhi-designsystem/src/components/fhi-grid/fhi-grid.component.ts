@@ -74,24 +74,24 @@ export class FhiGrid extends LitElement {
 
   static styles = css`
     :host {
-      --dimension-grid-gap-small: var(--fhi-spacing-100);
-      --dimension-grid-gap-medium: var(--fhi-spacing-200);
-      --dimension-grid-gap-large: var(--fhi-spacing-300);
+      --fhi-grid-gap: unset;
     }
     :host {
+      --fhi-grid-gap: var(--fhi-spacing-200);
+
       display: grid;
-      gap: var(--dimension-grid-gap-medium);
+      gap: var(--fhi-grid-gap);
     }
     :host([gap='small']) {
-      gap: var(--dimension-grid-gap-small);
+      --fhi-grid-gap: var(--fhi-spacing-100);
     }
 
     :host([gap='medium']) {
-      gap: var(--dimension-grid-gap-medium);
+      --fhi-grid-gap: var(--fhi-spacing-200);
     }
 
     :host([gap='large']) {
-      gap: var(--dimension-grid-gap-large);
+      --fhi-grid-gap: var(--fhi-spacing-300);
     }
   `;
 }
