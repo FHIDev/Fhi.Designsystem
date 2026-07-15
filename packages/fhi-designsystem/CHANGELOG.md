@@ -1,5 +1,11 @@
 # Changelog
 
+## [0.41.3](https://github.com/FHIDev/Fhi.Designsystem/compare/v0.41.2...v0.41.3) (2026-07-13)
+
+### 🛠️ Bug Fixes
+
+* implement new token structure ([#465](https://github.com/FHIDev/Fhi.Designsystem/issues/465)) ([d7cbe5b](https://github.com/FHIDev/Fhi.Designsystem/commit/d7cbe5b874727337bc8fae34bf8e9384b1296c47))
+
 ## [0.41.2](https://github.com/FHIDev/Fhi.Designsystem/compare/v0.41.1...v0.41.2) (2026-07-02)
 
 ### 🛠️ Bug Fixes
