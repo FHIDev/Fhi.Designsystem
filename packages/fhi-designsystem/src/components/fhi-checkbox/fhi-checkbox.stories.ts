@@ -33,6 +33,7 @@ const meta: FhiStorybookMeta<FhiCheckbox> = {
       id=${ifDefined(args.id)}
       status=${ifDefined(args.status)}
       value=${ifDefined(args.value)}
+      help-text=${ifDefined(args.helpText)}
       ?disabled=${args.disabled}
       ?checked=${args.checked}
       @input=${action('input')}
@@ -48,6 +49,11 @@ const meta: FhiStorybookMeta<FhiCheckbox> = {
       control: { type: 'text' },
       description: 'Informerer om hvilket valg avkrysningsboksen tilsvarer.',
       defaultValue: { summary: 'undefined' },
+    },
+    helpText: {
+      control: { type: 'text' },
+      description:
+        'Melding som vises under avkrysningsboksen. Brukes ofte for å gi tilleggsinformasjon eller tilbakemelding til brukeren.',
     },
     value: {
       control: { type: 'text' },
@@ -81,6 +87,7 @@ export const Preview: Story = {
   tags: ['!dev'],
   args: {
     label: 'Checkbox',
+    helpText: 'Dette er en melding som vises under avkrysningsboksen.',
   },
 };
 

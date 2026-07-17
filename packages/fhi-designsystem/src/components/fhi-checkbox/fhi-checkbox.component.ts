@@ -40,6 +40,14 @@ export class FhiCheckbox extends LitElement {
   @property({ type: String }) value: string = 'on';
 
   /**
+   * The message shown above the input field.
+   * This is often used to provide additional information to the user.
+   * @type {string}
+   */
+  @property({ type: String, attribute: 'help-text' }) helpText?: string =
+    undefined;
+
+  /**
    * Sets the visual status of the checkbox. There is currently only one status available: `error`.
    * The `error` status is used to indicate that there is an issue with the checkbox, such as a required checkbox not being checked.
    * @reflect
@@ -133,9 +141,13 @@ export class FhiCheckbox extends LitElement {
             d="M12.043 6.04295C12.4335 5.65243 13.0666 5.65243 13.4571 6.04295C13.8476 6.43348 13.8476 7.06649 13.4571 7.45702L8.95708 11.957C8.56655 12.3475 7.93354 12.3475 7.54302 11.957L5.29302 9.70702C4.90249 9.31649 4.90249 8.68348 5.29302 8.29295C5.65913 7.92684 6.23813 7.90424 6.63091 8.22459L6.70708 8.29295L8.25005 9.83592L12.043 6.04295Z"
           />
         </svg>
-
         ${this.label}
       </label>
+      ${this.helpText
+        ? html`<fhi-body size="small" class="help-text"
+            >${this.helpText}</fhi-body
+          >`
+        : ''}
     `;
   }
 
@@ -146,8 +158,8 @@ export class FhiCheckbox extends LitElement {
 
     :host {
       display: flex;
-      align-items: center;
       width: max-content;
+      flex-direction: column;
 
       label {
         align-items: center;
@@ -215,6 +227,11 @@ export class FhiCheckbox extends LitElement {
         height: 1.125rem;
         width: 1.125rem;
         margin-left: 3px;
+      }
+
+      .help-text {
+        margin: var(--fhi-spacing-050) 0 0 0;
+        color: var(--fhi-color-neutral-text-subtle);
       }
     }
 
