@@ -249,25 +249,6 @@ export class FhiTooltip extends LitElement {
 
   static styles = css`
     :host {
-      --color-background: var(--fhi-color-neutral-base-active);
-      --color-text: var(--fhi-color-neutral-text-inverted);
-      --color-border: none;
-
-      --typography-font-family: var(--fhi-font-family-default);
-      --typography-font-size: var(--fhi-typography-body-small-font-size);
-      --typography-font-style: normal;
-      --typography-font-weight: var(--fhi-typography-body-small-font-weight);
-      --typography-line-height: var(--fhi-typography-body-small-line-height);
-      --typography-letter-spacing: var(
-        --fhi-typography-body-small-letter-spacing
-      );
-
-      --dimension-border-radius: var(--fhi-border-radius-050);
-      --dimension-border-width: none;
-      --dimension-padding: var(--fhi-spacing-050) var(--fhi-spacing-100);
-    }
-
-    :host {
       #tooltip-anchor {
         width: max-content;
         height: max-content;
@@ -277,33 +258,35 @@ export class FhiTooltip extends LitElement {
         top: 0;
         left: 0;
         position: fixed;
-        border: var(--dimension-border-width) solid var(--color-border);
         visibility: hidden;
         opacity: 0;
         margin: 0;
         transition: opacity 0.15s ease-in-out;
         width: max-content;
-        padding: var(--dimension-padding);
-        border-radius: var(--dimension-border-radius);
-        background-color: var(--color-background);
-        color: var(--color-text);
-        font-family: var(--typography-font-family);
+        padding: var(--fhi-spacing-050) var(--fhi-spacing-100);
+        border-radius: var(--fhi-border-radius-050);
+        background-color: var(--fhi-color-neutral-base-active);
+        color: var(--fhi-color-neutral-text-inverted);
+        font-family: var(--fhi-font-family-default);
         -webkit-font-smoothing: antialiased;
-        font-size: var(--typography-font-size);
-        font-weight: var(--typography-font-weight);
-        line-height: var(--typography-line-height);
-        letter-spacing: var(--typography-letter-spacing);
+        font-size: var(--fhi-typography-body-small-font-size);
+        font-weight: var(--fhi-typography-body-small-font-weight);
+        line-height: var(--fhi-typography-body-small-line-height);
+        letter-spacing: var(--fhi-typography-body-small-letter-spacing);
         font-variant-numeric: lining-nums proportional-nums;
         font-style: normal;
         cursor: default;
+
         &[aria-hidden='false'] {
           z-index: 1000;
           visibility: visible;
           opacity: 1;
         }
+
         &[fading-out] {
           opacity: 0;
         }
+
         &::after {
           content: '';
           position: absolute;
