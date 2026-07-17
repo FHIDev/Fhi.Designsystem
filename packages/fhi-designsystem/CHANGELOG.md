@@ -1,5 +1,53 @@
 # Changelog
 
+## [0.41.3](https://github.com/FHIDev/Fhi.Designsystem/compare/v0.41.2...v0.41.3) (2026-07-13)
+
+### 🛠️ Bug Fixes
+
+* implement new token structure ([#465](https://github.com/FHIDev/Fhi.Designsystem/issues/465)) ([d7cbe5b](https://github.com/FHIDev/Fhi.Designsystem/commit/d7cbe5b874727337bc8fae34bf8e9384b1296c47))
+
+## [0.41.2](https://github.com/FHIDev/Fhi.Designsystem/compare/v0.41.1...v0.41.2) (2026-07-02)
+
+### 🛠️ Bug Fixes
+
+* implement new token structure for fhi-flex ([#467](https://github.com/FHIDev/Fhi.Designsystem/issues/467)) ([de91aae](https://github.com/FHIDev/Fhi.Designsystem/commit/de91aaecc36e01760fa7599008b2bf1ae92e9164))
+
+## [0.41.1](https://github.com/FHIDev/Fhi.Designsystem/compare/v0.41.0...v0.41.1) (2026-07-01)
+
+### 🛠️ Bug Fixes
+
+* implement new token structure for fhi-grid ([#466](https://github.com/FHIDev/Fhi.Designsystem/issues/466)) ([34c9d8c](https://github.com/FHIDev/Fhi.Designsystem/commit/34c9d8c4b1c244345416876edd5c3f679442a4d6))
+
+## [0.41.0](https://github.com/FHIDev/Fhi.Designsystem/compare/v0.40.7...v0.41.0) (2026-07-01)
+
+### 🚀 Features
+
+* New Component - Select ([#434](https://github.com/FHIDev/Fhi.Designsystem/issues/434)) ([9b21779](https://github.com/FHIDev/Fhi.Designsystem/commit/9b2177946a2f84db3193e8207b9b0875ddafb3a9))
+
+## [0.40.7](https://github.com/FHIDev/Fhi.Designsystem/compare/v0.40.6...v0.40.7) (2026-07-01)
+
+### 🛠️ Bug Fixes
+
+* css can now be a fallback is color property is not set ([#472](https://github.com/FHIDev/Fhi.Designsystem/issues/472)) ([9eb6e5e](https://github.com/FHIDev/Fhi.Designsystem/commit/9eb6e5e8f3be4d95118a12e8d75200a9e865f9f5))
+
+## [0.40.6](https://github.com/FHIDev/Fhi.Designsystem/compare/v0.40.5...v0.40.6) (2026-06-30)
+
+### 🛠️ Bug Fixes
+
+* Add correct styling for when fhi-radio is disabled while having the error status ([#460](https://github.com/FHIDev/Fhi.Designsystem/issues/460)) ([3d6b115](https://github.com/FHIDev/Fhi.Designsystem/commit/3d6b11507cd4e4c09960ad60043fb68bac775c77))
+
+## [0.40.5](https://github.com/FHIDev/Fhi.Designsystem/compare/v0.40.4...v0.40.5) (2026-06-30)
+
+### 🛠️ Bug Fixes
+
+* implement new token structure for fhi-radio ([#401](https://github.com/FHIDev/Fhi.Designsystem/issues/401)) ([e727ce0](https://github.com/FHIDev/Fhi.Designsystem/commit/e727ce0d5d281712d15d238450913773c97b1d74))
+
+## [0.40.4](https://github.com/FHIDev/Fhi.Designsystem/compare/v0.40.3...v0.40.4) (2026-06-30)
+
+### 🛠️ Bug Fixes
+
+* Implement new token structure for fhi-checkbox ([#449](https://github.com/FHIDev/Fhi.Designsystem/issues/449)) ([1f510f8](https://github.com/FHIDev/Fhi.Designsystem/commit/1f510f8874029dc8b5d893c90da93d50c559901f))
+
 ## [0.40.3](https://github.com/FHIDev/Fhi.Designsystem/compare/v0.40.2...v0.40.3) (2026-06-29)
 
 ### 🛠️ Bug Fixes

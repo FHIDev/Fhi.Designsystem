@@ -141,49 +141,7 @@ export class FhiCheckbox extends LitElement {
 
   static styles = css`
     :host {
-      --typography-font-family: var(--fhi-font-family-default);
-      --typography-font-size: var(--fhi-typography-body-medium-font-size);
-      --typography-font-weight: var(--fhi-typography-body-medium-font-weight);
-      --typography-line-height: var(--fhi-typography-body-medium-line-height);
-      --typography-letter-spacing: var(
-        --fhi-typography-body-medium-letter-spacing
-      );
-
-      --color-text: var(--fhi-color-neutral-text-default);
-      --color-checkbox-checkmark: var(--fhi-color-neutral-text-inverted);
-      --color-checkbox: var(--fhi-color-neutral-background-default);
-      --color-checkbox-border: var(--fhi-color-neutral-border-default);
-      --color-checkbox-hover: var(--fhi-color-accent-background-subtle);
-      --color-checkbox-border-hover: var(--fhi-color-accent-border-strong);
-      --color-checkbox-border-active: var(--fhi-color-accent-border-strong);
-      --color-checkbox-active: var(--fhi-color-accent-surface-default);
-      --color-checkbox-checked: var(--fhi-color-neutral-base-default);
-      --color-checkbox-checked-hover: var(--fhi-color-accent-base-hover);
-      --color-checkbox-checked-active: var(--fhi-color-accent-base-active);
-      --color-checkbox-error: var(--fhi-color-danger-background-default);
-      --color-checkbox-border-error: var(--fhi-color-danger-border-default);
-      --color-checkbox-error-hover: var(--fhi-color-danger-background-subtle);
-      --color-checkbox-border-error-hover: var(
-        --fhi-color-danger-border-strong
-      );
-      --color-checkbox-error-active: var(--fhi-color-danger-surface-default);
-      --color-checkbox-error-checked: var(--fhi-color-danger-base-default);
-      --color-checkbox-checked-error-hover: var(--fhi-color-danger-base-hover);
-      --color-checkbox-checked-error-active: var(
-        --fhi-color-danger-base-active
-      );
-      --color-checkbox-outline: var(--fhi-color-accent-surface-hover);
-      --color-checkbox-outline-error: var(--fhi-color-danger-surface-hover);
-
-      --dimension-checkbox-gap: var(--fhi-spacing-050);
-      --dimension-checkbox-border-radius: var(--fhi-border-radius-050);
-      --dimension-checkbox-border-width: var(--fhi-dimension-border-width);
-      --dimension-checkbox-size: 1.125rem;
-      --dimension-checkbox-margin: 3px;
-
-      --opacity-disabled: var(--fhi-opacity-disabled);
-      --motion-checkbox-transition: var(--fhi-motion-ease-default)
-        var(--fhi-motion-duration-quick);
+      --fhi-checkbox-color: currentcolor;
     }
 
     :host {
@@ -195,54 +153,55 @@ export class FhiCheckbox extends LitElement {
         align-items: center;
         display: flex;
         position: relative;
-        color: var(--color-text);
-        font-family: var(--typography-font-family);
+        color: var(--fhi-checkbox-color);
+        font-family: var(--fhi-font-family-default);
         -webkit-font-smoothing: antialiased;
-        font-size: var(--typography-font-size);
-        font-weight: var(--typography-font-weight);
-        line-height: var(--typography-line-height);
-        letter-spacing: var(--typography-letter-spacing);
-        gap: var(--dimension-checkbox-gap);
+        font-size: var(--fhi-typography-body-medium-font-size);
+        font-weight: var(--fhi-typography-body-medium-font-weight);
+        line-height: var(--fhi-typography-body-medium-line-height);
+        letter-spacing: var(--fhi-typography-body-medium-letter-spacing);
+        gap: var(--fhi-spacing-050);
       }
 
       input[type='checkbox'] {
-        margin: var(--dimension-checkbox-margin);
+        margin: 3px;
         appearance: none;
-        width: var(--dimension-checkbox-size);
-        height: var(--dimension-checkbox-size);
-        background-color: var(--color-checkbox);
-        border: var(--dimension-checkbox-border-width) solid
-          var(--color-checkbox-border);
-        border-radius: var(--dimension-checkbox-border-radius);
-        transition: var(--motion-checkbox-transition);
+        width: 1.125rem;
+        height: 1.125rem;
+        background-color: var(--fhi-color-neutral-background-default);
+        border: var(--fhi-dimension-border-width) solid
+          var(--fhi-color-neutral-border-default);
+        border-radius: var(--fhi-border-radius-050);
+        transition: var(--fhi-motion-ease-default)
+          var(--fhi-motion-duration-quick);
 
         &:hover {
-          background-color: var(--color-checkbox-hover);
-          border-color: var(--color-checkbox-border-hover);
+          background-color: var(--fhi-color-accent-background-subtle);
+          border-color: var(--fhi-color-accent-border-strong);
         }
 
         &:active {
-          background-color: var(--color-checkbox-active);
-          outline: solid 5px var(--color-checkbox-outline);
-          border-color: var(--color-checkbox-border-active);
+          background-color: var(--fhi-color-accent-surface-default);
+          outline: solid 5px var(--fhi-color-accent-surface-hover);
+          border-color: var(--fhi-color-accent-border-strong);
         }
 
         &:checked {
-          background-color: var(--color-checkbox-checked);
-          border-color: var(--color-checkbox-checked);
+          background-color: var(--fhi-color-neutral-base-default);
+          border-color: var(--fhi-color-neutral-base-default);
           ~ .checkmark {
-            fill: var(--color-checkbox-checkmark);
+            fill: var(--fhi-color-neutral-text-inverted);
             visibility: visible;
             opacity: 1;
           }
 
           &:hover {
-            background-color: var(--color-checkbox-checked-hover);
-            border-color: var(--color-checkbox-checked-hover);
+            background-color: var(--fhi-color-accent-base-hover);
+            border-color: var(--fhi-color-accent-base-hover);
           }
           &:active {
-            background-color: var(--color-checkbox-checked-active);
-            border-color: var(--color-checkbox-checked-active);
+            background-color: var(--fhi-color-accent-base-active);
+            border-color: var(--fhi-color-accent-base-active);
           }
         }
       }
@@ -250,16 +209,17 @@ export class FhiCheckbox extends LitElement {
       .checkmark {
         visibility: hidden;
         opacity: 0;
-        transition: opacity var(--motion-checkbox-transition);
+        transition: opacity var(--fhi-motion-ease-default)
+          var(--fhi-motion-duration-quick);
         position: absolute;
-        height: var(--dimension-checkbox-size);
-        width: var(--dimension-checkbox-size);
-        margin-left: var(--dimension-checkbox-margin);
+        height: 1.125rem;
+        width: 1.125rem;
+        margin-left: 3px;
       }
     }
 
     :host([disabled]) {
-      opacity: var(--opacity-disabled);
+      opacity: var(--fhi-opacity-disabled);
       label,
       input {
         cursor: not-allowed;
@@ -267,55 +227,55 @@ export class FhiCheckbox extends LitElement {
 
       input {
         &:hover {
-          background-color: var(--color-checkbox);
-          border-color: var(--color-checkbox-border);
+          background-color: var(--fhi-color-neutral-background-default);
+          border-color: var(--fhi-color-neutral-border-default);
         }
 
         &:active {
           outline: none;
-          background-color: var(--color-checkbox);
-          border-color: var(--color-checkbox-border);
+          background-color: var(--fhi-color-neutral-background-default);
+          border-color: var(--fhi-color-neutral-border-default);
         }
 
         &:checked:hover {
-          background-color: var(--color-checkbox-checked);
-          border-color: var(--color-checkbox-checked);
+          background-color: var(--fhi-color-neutral-base-default);
+          border-color: var(--fhi-color-neutral-base-default);
         }
 
         &:checked:active {
-          background-color: var(--color-checkbox-checked);
-          border-color: var(--color-checkbox-checked);
+          background-color: var(--fhi-color-neutral-base-default);
+          border-color: var(--fhi-color-neutral-base-default);
         }
       }
     }
 
     :host([status='error']:not([disabled])) {
       input[type='checkbox'] {
-        background-color: var(--color-checkbox-error);
-        border-color: var(--color-checkbox-border-error);
+        background-color: var(--fhi-color-danger-background-default);
+        border-color: var(--fhi-color-danger-border-default);
 
         &:hover {
-          background-color: var(--color-checkbox-error-hover);
-          border-color: var(--color-checkbox-border-error-hover);
+          background-color: var(--fhi-color-danger-background-subtle);
+          border-color: var(--fhi-color-danger-border-strong);
         }
 
         &:active {
-          background-color: var(--color-checkbox-error-active);
-          outline: solid 5px var(--color-checkbox-outline-error);
-          border-color: var(--color-checkbox-border-error-hover);
+          background-color: var(--fhi-color-danger-surface-default);
+          outline: solid 5px var(--fhi-color-danger-surface-hover);
+          border-color: var(--fhi-color-danger-border-strong);
         }
 
         &:checked {
-          background-color: var(--color-checkbox-error-checked);
-          border-color: var(--color-checkbox-error-checked);
+          background-color: var(--fhi-color-danger-base-default);
+          border-color: var(--fhi-color-danger-base-default);
           &:hover {
-            background-color: var(--color-checkbox-checked-error-hover);
-            border-color: var(--color-checkbox-checked-error-hover);
+            background-color: var(--fhi-color-danger-base-hover);
+            border-color: var(--fhi-color-danger-base-hover);
           }
 
           &:active {
-            background-color: var(--color-checkbox-checked-error-active);
-            border-color: var(--color-checkbox-checked-error-active);
+            background-color: var(--fhi-color-danger-base-active);
+            border-color: var(--fhi-color-danger-base-active);
           }
         }
       }
