@@ -271,24 +271,7 @@ export class FhiModalDialog extends LitElement {
     }
 
     :host {
-      --dimension-dialog-border-width: var(--fhi-dimension-border-width);
-      --dimension-dialog-border-radius: var(--fhi-border-radius-200);
-      --dimension-dialog-header-padding: var(--fhi-spacing-500)
-        var(--fhi-spacing-500) 0 var(--fhi-spacing-500);
-      --dimension-dialog-header-gap: var(--fhi-spacing-050);
-      --dimension-dialog-body-padding: var(--fhi-spacing-500);
-      --dimension-dialog-footer-padding: 0 var(--fhi-spacing-500)
-        var(--fhi-spacing-500) var(--fhi-spacing-500);
-      --dimension-dialog-footer-gap: var(--fhi-spacing-050);
-
-      --dimension-dialog-width-small: 28rem;
-      --dimension-dialog-width-medium: 40rem;
-
-      --color-backdrop: var(--fhi-color-neutral-surface-active);
-      --color-dialog-border: var(--fhi-color-neutral-border-subtle);
-
-      --motion-transition: var(--fhi-motion-duration-quick)
-        var(--fhi-motion-ease-default);
+      --fhi-modal-dialog-width: unset;
     }
 
     :host {
@@ -298,10 +281,11 @@ export class FhiModalDialog extends LitElement {
       dialog {
         display: flex;
         overflow: hidden;
-        border: var(--dimension-dialog-border-width) solid
-          var(--color-dialog-border);
-        border-radius: var(--dimension-dialog-border-radius);
-        animation: var(--motion-transition) fhi-dialog-fade-in;
+        border: var(--fhi-dimension-border-width) solid
+          var(--fhi-color-neutral-border-subtle);
+        border-radius: var(--fhi-border-radius-200);
+        animation: var(--fhi-motion-duration-quick)
+          var(--fhi-motion-ease-default) fhi-dialog-fade-in;
         padding: 0;
         .dialog-content {
           overflow: auto;
@@ -311,25 +295,28 @@ export class FhiModalDialog extends LitElement {
           display: flex;
           justify-content: space-between;
           align-items: start;
-          gap: var(--dimension-dialog-header-gap);
-          padding: var(--dimension-dialog-header-padding);
+          gap: var(--fhi-spacing-050);
+          padding: var(--fhi-spacing-500) var(--fhi-spacing-500) 0
+            var(--fhi-spacing-500);
         }
         slot[name='body'] {
           display: block;
-          padding: var(--dimension-dialog-body-padding);
+          padding: var(--fhi-spacing-500);
         }
         footer {
           display: flex;
           justify-content: flex-end;
           align-items: center;
-          gap: var(--dimension-dialog-footer-gap);
+          gap: var(--fhi-spacing-050);
           flex-wrap: wrap;
-          padding: var(--dimension-dialog-footer-padding);
+          padding: 0 var(--fhi-spacing-500) var(--fhi-spacing-500)
+            var(--fhi-spacing-500);
         }
         &::backdrop {
-          background-color: var(--color-backdrop);
+          background-color: var(--fhi-color-neutral-surface-active);
           opacity: var(--fhi-opacity-disabled);
-          animation: var(--motion-transition) fhi-dialog-fade-in;
+          animation: var(--fhi-motion-duration-quick)
+            var(--fhi-motion-ease-default) fhi-dialog-fade-in;
         }
       }
     }
@@ -339,14 +326,18 @@ export class FhiModalDialog extends LitElement {
     }
 
     :host([size='small']) {
+      --fhi-modal-dialog-width: 28rem;
+
       dialog {
-        width: var(--dimension-dialog-width-small);
+        width: var(--fhi-modal-dialog-width);
       }
     }
 
     :host([size='medium']) {
+      --fhi-modal-dialog-width: 40rem;
+
       dialog {
-        width: var(--dimension-dialog-width-medium);
+        width: var(--fhi-modal-dialog-width);
       }
     }
   `;
