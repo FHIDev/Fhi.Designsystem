@@ -123,6 +123,9 @@ export class FhiCallout extends LitElement {
     }
 
     :host([heading]) {
+      fhi-title {
+        padding: 0.125rem 0;
+      }
       slot[name='icon'] {
         align-items: flex-start;
       }
