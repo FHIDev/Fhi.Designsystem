@@ -10,7 +10,7 @@ export const FhiLinkSelector = 'fhi-link';
  * {@link https://designsystem.fhi.no/?path=/docs/komponenter-link--docs}
  *
  * The `<fhi-link>` component is used to create hyperlinks styled according to the FHI Design System.
- * It is usefull for navigation within the application or to external resources, providing a consistent look and feel for links across the application.
+ * It is useful for navigation within the application or to external resources, providing a consistent look and feel for links across the application.
  *
  * @tag fhi-link
  * @element fhi-link
@@ -75,6 +75,7 @@ export class FhiLink extends LitElement {
         var(--fhi-typography-body-medium-font-size) /
         var(--fhi-typography-body-medium-line-height)
         var(--fhi-font-family-default);
+-webkit-font-smoothing: antialiased;
 
       a {
         color: inherit;
