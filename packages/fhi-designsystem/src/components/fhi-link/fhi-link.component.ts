@@ -39,7 +39,7 @@ export class FhiLink extends LitElement {
    * For more information, see: {@link https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/a#target}
    */
   @property({ type: String })
-  target?: '_self' | '_blank' | '_parent' | '_top' = '_self';
+  target?: '_self' | '_blank' | '_parent' | '_top';
 
   get rel() {
     return this.target && this.target !== '_self'
@@ -75,7 +75,7 @@ export class FhiLink extends LitElement {
         var(--fhi-typography-body-medium-font-size) /
         var(--fhi-typography-body-medium-line-height)
         var(--fhi-font-family-default);
--webkit-font-smoothing: antialiased;
+      -webkit-font-smoothing: antialiased;
 
       a {
         color: inherit;

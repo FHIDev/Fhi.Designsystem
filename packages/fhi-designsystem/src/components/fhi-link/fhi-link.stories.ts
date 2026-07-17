@@ -41,7 +41,6 @@ const meta: FhiStorybookMeta<FhiLink> = {
         'Angir hvor lenken skal åpnes. Denne følger samme oppførsel som standard HTML `<a>` sin attributte. For mer informasjon, se: [MDN - target](https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/a#target)',
       control: { type: 'select' },
       options: ['_self', '_blank', '_parent', '_top'],
-      defaultValue: { summary: '_self' },
     },
   },
 };
@@ -52,7 +51,6 @@ export const Preview: Story = {
   tags: [],
   args: {
     href: 'https://www.fhi.no/',
-    target: '_blank',
   },
 };
 
