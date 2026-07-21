@@ -186,23 +186,6 @@ export class FhiTextArea extends LitElement {
     this._internals.setFormValue(this.value);
   }
 
-  private _handleActionIconSlotChange(event: Event): void {
-    const iconNode: Node = (event.target as HTMLSlotElement).assignedNodes()[0];
-
-    if (
-      iconNode.nodeType === Node.ELEMENT_NODE &&
-      (iconNode as Element).tagName.toLowerCase().startsWith('fhi-icon')
-    ) {
-      const icon = iconNode as HTMLElement;
-      this._textarea.style.paddingRight = 'var(--fhi-spacing-500)';
-      icon.setAttribute('size', '1.5rem');
-    } else {
-      console.error(
-        'Invalid slot input. Fhi-text-area only accepts FHI Designsystem icons.',
-      );
-    }
-  }
-
   render() {
     return html`
       ${this.label &&
@@ -214,25 +197,18 @@ export class FhiTextArea extends LitElement {
             <fhi-body size="small">${this.helpText}</fhi-body>
           </p>`
         : ''}
-      <div class="textarea-container">
-        <textarea
-          id="textarea-element"
-          name=${ifDefined(this.name)}
-          placeholder=${ifDefined(this.placeholder)}
-          .value=${this.value}
-          ?readonly=${this.readonly}
-          ?disabled=${this.disabled}
-          rows=${ifDefined(this.rows)}
-          @change=${this.handleChange}
-          @input=${this.handleInput}
-          @keydown=${this.handleKeyDown}
-        ></textarea>
-        <slot
-          name="action-icon"
-          @slotchange=${this._handleActionIconSlotChange}
-        >
-        </slot>
-      </div>
+      <textarea
+        id="textarea-element"
+        name=${ifDefined(this.name)}
+        placeholder=${ifDefined(this.placeholder)}
+        .value=${this.value}
+        ?readonly=${this.readonly}
+        ?disabled=${this.disabled}
+        rows=${ifDefined(this.rows)}
+        @change=${this.handleChange}
+        @input=${this.handleInput}
+        @keydown=${this.handleKeyDown}
+      ></textarea>
       ${this.message
         ? html`<p class="message">
             <fhi-body size="small">${this.message}</fhi-body>
@@ -250,7 +226,9 @@ export class FhiTextArea extends LitElement {
 
       textarea {
         box-sizing: border-box;
-        width: auto;
+        width: 100%;
+        resize: vertical;
+        scrollbar-width: thin;
         border: var(--fhi-dimension-border-width) solid
           var(--fhi-color-neutral-border-default);
         border-radius: var(--fhi-border-radius-050);
@@ -274,12 +252,6 @@ export class FhiTextArea extends LitElement {
         &::placeholder {
           color: var(--fhi-color-neutral-base-default);
         }
-      }
-
-      .textarea-container {
-        position: relative;
-        display: flex;
-        width: fit-content;
       }
 
       label {
@@ -342,16 +314,6 @@ export class FhiTextArea extends LitElement {
       .help-text {
         color: var(--fhi-color-danger-text-default);
       }
-    }
-
-    slot[name='action-icon'] {
-      position: absolute;
-      display: block;
-      right: var(--fhi-spacing-100);
-      top: var(--fhi-spacing-200);
-      transform: translateY(-50%);
-      pointer-events: none;
-      color: var(--fhi-color-neutral-text-subtle);
     }
   `;
 }

@@ -5,10 +5,8 @@ import { FhiStorybookMeta } from '../../../.storybook/fhi-meta';
 import { action } from 'storybook/actions';
 import { ifDefined } from 'lit/directives/if-defined.js';
 import { FhiTextArea } from './fhi-text-area.component';
-import { FhiIconX } from '../icons/fhi-icon-x.component';
 
 new FhiTextArea();
-new FhiIconX();
 
 const meta: FhiStorybookMeta<FhiTextArea> = {
   title: 'Komponenter/Text Area',
@@ -33,15 +31,12 @@ const meta: FhiStorybookMeta<FhiTextArea> = {
         valueLocation: ['event.target.value'],
       },
     ],
-    slotTypes: [
-      {
-        name: 'action-icon',
-        description:
-          'Ikon som er knyttet til en handling, for eksempel å tømme boksen. I øvre høyre hjørne av boksen.',
-      },
-    ],
+    slotTypes: [],
   },
-  decorators: [],
+  decorators: [
+    story =>
+      html`<div style="max-width: 400px; display: flex;">${story()}</div>`,
+  ],
   render: args =>
     html`<fhi-text-area
       label=${ifDefined(args.label)}
@@ -130,7 +125,7 @@ export const Preview: Story = {
 };
 
 export const Error: Story = {
-  tags: ['!dev'],
+  tags: [],
   args: {
     label: 'Label',
     message: 'Informative error message',
@@ -140,7 +135,7 @@ export const Error: Story = {
 };
 
 export const Disabled: Story = {
-  tags: ['!dev'],
+  tags: [],
   args: {
     label: 'Label',
     value: 'This field is disabled',
@@ -149,22 +144,13 @@ export const Disabled: Story = {
 };
 
 export const Readonly: Story = {
-  tags: ['!dev'],
+  tags: [],
   args: {
     label: 'Kommentar',
     value: 'Verdi',
     helpText: 'Hentet fra forrige side',
     readonly: true,
   },
-};
-
-export const WithIcon: Story = {
-  tags: ['!dev'],
-  args: {},
-  render: args =>
-    html`<fhi-text-area label=${ifDefined(args.label)}>
-      <fhi-icon-x name="close" slot="action-icon"></fhi-icon-x>
-    </fhi-text-area>`,
 };
 
 export default meta;
