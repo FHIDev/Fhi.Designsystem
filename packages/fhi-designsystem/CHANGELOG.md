@@ -1,5 +1,15 @@
 # Changelog
 
+## [0.42.0](https://github.com/FHIDev/Fhi.Designsystem/compare/v0.41.3...v0.42.0) (2026-07-17)
+
+### 🚀 Features
+
+* New Component - Callout ([#445](https://github.com/FHIDev/Fhi.Designsystem/issues/445)) ([ec360f0](https://github.com/FHIDev/Fhi.Designsystem/commit/ec360f07deb40af9efff978747d795b39b7c8dfa))
+
+### Other
+
+* Add mocha types to tsconfig ([#474](https://github.com/FHIDev/Fhi.Designsystem/issues/474)) ([af48416](https://github.com/FHIDev/Fhi.Designsystem/commit/af4841687c440ef18ead3e539a069e9824179d0e))
+
 ## [0.41.3](https://github.com/FHIDev/Fhi.Designsystem/compare/v0.41.2...v0.41.3) (2026-07-13)
 
 ### 🛠️ Bug Fixes
