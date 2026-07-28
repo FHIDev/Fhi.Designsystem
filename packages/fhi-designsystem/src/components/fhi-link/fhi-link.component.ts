@@ -79,8 +79,10 @@ export class FhiLink extends LitElement {
 
       a {
         color: inherit;
-        transition: color var(--fhi-motion-duration-quick)
-          var(--fhi-motion-ease-default);
+        transition:
+          color var(--fhi-motion-duration-quick) var(--fhi-motion-ease-default),
+          text-underline-offset var(--fhi-motion-duration-quick)
+            var(--fhi-motion-ease-default);
 
         text-decoration: underline;
         text-underline-offset: 0.125rem;
