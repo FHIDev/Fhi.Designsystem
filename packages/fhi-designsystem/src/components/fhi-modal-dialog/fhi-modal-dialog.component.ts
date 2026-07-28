@@ -117,10 +117,9 @@ export class FhiModalDialog extends LitElement {
    * You can also open the dialog by instead setting the `open` property to `true`.
    */
   public show() {
-    this._triggerElement = document.activeElement as HTMLElement | null;
-    this._bodyOverflowStyle = document.body.style.overflow;
-
     if (!this.open) {
+      this._triggerElement = document.activeElement as HTMLElement | null;
+      this._bodyOverflowStyle = document.body.style.overflow;
       this.open = true;
     }
 
