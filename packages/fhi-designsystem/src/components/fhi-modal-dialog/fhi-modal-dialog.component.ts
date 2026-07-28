@@ -280,6 +280,7 @@ export class FhiModalDialog extends LitElement {
 
       dialog {
         display: flex;
+        width: var(--fhi-modal-dialog-width);
         overflow: hidden;
         border: var(--fhi-dimension-border-width) solid
           var(--fhi-color-neutral-border-subtle);
@@ -327,18 +328,10 @@ export class FhiModalDialog extends LitElement {
 
     :host([size='small']) {
       --fhi-modal-dialog-width: 28rem;
-
-      dialog {
-        width: var(--fhi-modal-dialog-width);
-      }
     }
 
     :host([size='medium']) {
       --fhi-modal-dialog-width: 40rem;
-
-      dialog {
-        width: var(--fhi-modal-dialog-width);
-      }
     }
   `;
 }
