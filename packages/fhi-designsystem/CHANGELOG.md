@@ -1,5 +1,11 @@
 # Changelog
 
+## [0.42.2](https://github.com/FHIDev/Fhi.Designsystem/compare/v0.42.1...v0.42.2) (2026-07-29)
+
+### 🛠️ Bug Fixes
+
+* implement new token structure for fhi-modal-dialog ([#467](https://github.com/FHIDev/Fhi.Designsystem/issues/467)) ([ea8bf44](https://github.com/FHIDev/Fhi.Designsystem/commit/ea8bf44f9c4b73b1972526e3366f9c45c914d1bf))
+
 ## [0.42.1](https://github.com/FHIDev/Fhi.Designsystem/compare/v0.42.0...v0.42.1) (2026-07-27)
 
 ### 🛠️ Bug Fixes
