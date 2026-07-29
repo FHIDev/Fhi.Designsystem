@@ -48,15 +48,12 @@ export class FhiLink extends LitElement {
   }
 
   render() {
-    return html`
-      <a
-        href="${ifDefined(this.href)}"
-        target="${ifDefined(this.target)}"
-        rel="${ifDefined(this.rel)}"
-      >
-        <slot></slot>
-      </a>
-    `;
+    return html` <a
+      href="${ifDefined(this.href)}"
+      target="${ifDefined(this.target)}"
+      rel="${ifDefined(this.rel)}"
+      ><slot></slot
+    ></a>`;
   }
 
   static styles = css`
@@ -68,7 +65,6 @@ export class FhiLink extends LitElement {
       --fhi-link-color: currentcolor;
 
       color: var(--fhi-link-color);
-
       letter-spacing: var(--fhi-typography-body-medium-letter-spacing);
 
       font: var(--fhi-typography-body-medium-font-weight)
