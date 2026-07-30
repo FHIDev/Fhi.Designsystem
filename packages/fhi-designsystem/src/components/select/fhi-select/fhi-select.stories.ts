@@ -76,6 +76,7 @@ const meta: FhiStorybookMeta<FhiSelect> = {
         'Bestemmer om feltet har en status. Dette vil endre utseende på feltet.',
     },
     helpText: {
+      name: 'help-text',
       control: 'text',
       description:
         'Vises mellom label og select-elementet. Brukes til å gi utvidede forklaringer eller hjelpsomme hint til utfylling.',
