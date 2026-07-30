@@ -1,5 +1,11 @@
 # Changelog
 
+## [0.43.0](https://github.com/FHIDev/Fhi.Designsystem/compare/v0.42.2...v0.43.0) (2026-07-30)
+
+### 🚀 Features
+
+* New Component - Link ([#473](https://github.com/FHIDev/Fhi.Designsystem/issues/473)) ([1413409](https://github.com/FHIDev/Fhi.Designsystem/commit/1413409adb773aa620261032109ea907cda3189d))
+
 ## [0.42.2](https://github.com/FHIDev/Fhi.Designsystem/compare/v0.42.1...v0.42.2) (2026-07-29)
 
 ### 🛠️ Bug Fixes
