@@ -228,7 +228,7 @@ export class FhiTextArea extends LitElement {
         box-sizing: border-box;
         width: 100%;
         resize: vertical;
-        scrollbar-width: thin;
+        min-height: var(--fhi-spacing-500);
         border: var(--fhi-dimension-border-width) solid
           var(--fhi-color-neutral-border-default);
         border-radius: var(--fhi-border-radius-050);
