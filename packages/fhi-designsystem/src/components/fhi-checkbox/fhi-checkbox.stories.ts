@@ -51,6 +51,7 @@ const meta: FhiStorybookMeta<FhiCheckbox> = {
       defaultValue: { summary: 'undefined' },
     },
     helpText: {
+      name: 'help-text',
       control: { type: 'text' },
       description:
         'Melding som vises under avkrysningsboksen. Brukes ofte for å gi tilleggsinformasjon eller tilbakemelding til brukeren.',
@@ -96,6 +97,15 @@ export const Label: Story = {
   args: {
     label: 'Agree',
     name: 'newsletter',
+  },
+};
+
+export const HelpText: Story = {
+  tags: [],
+  args: {
+    label: 'Hjemmehjelp',
+    name: 'home-help',
+    helpText: 'Om du har behov for hjemmehjelp, kryss av her.',
   },
 };
 
