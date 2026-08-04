@@ -39,14 +39,14 @@ export function ColorPresenter({ token }) {
 
 ## Navnestruktur
 
-Navnet på hver Design Token forteller hva den skal brukes til. Her bryter vi opp navnestrukturen, med en forklaring av hvert ledd:
+Navnet på hver Design Token forteller hva den skal brukes til. Slik kan du lese navnestrukturen:
 
 <img
   src={colorNameStructure}
   alt="Token delt opp i fem: FHI, Color, Neutral, Background og Default"
 />
 
-I tillegg til en prefiks for å vise eierskap til Folkehelseinstituttet (`fhi`), og hvilken kategori med Design Tokens de tilhører (`color`), har hver farge tre ledd i navnet sitt:
+I tillegg til et prefiks for å vise eierskap til Folkehelseinstituttet (`fhi`), og hvilken kategori med Design Tokens de tilhører (`color`), har hver farge tre ledd i navnet sitt:
 
 1. **Navn:** hvilken rolle skalaen har
 2. **Gruppe:** hvilke elementer fargen er tiltenkt å fargelegge
@@ -97,15 +97,15 @@ Hver skala inneholder like mange farger. De er gruppert etter hva slags innhold 
   </fhi-data-table-row>
   <fhi-data-table-row>
     <fhi-data-table-cell>Background</fhi-data-table-cell>
-    <fhi-data-table-cell>Generelle bakgrunnsfarger brukes om hverandre på hele flater og skjermer, men også mindre statiske kort</fhi-data-table-cell>
+    <fhi-data-table-cell>Generelle bakgrunnsfarger brukes på hele flater og skjermer, samt mindre statiske kort/fliser</fhi-data-table-cell>
   </fhi-data-table-row>
   <fhi-data-table-row>
     <fhi-data-table-cell>Surface</fhi-data-table-cell>
-    <fhi-data-table-cell>Bakgrunnsfarger til elementer som fordrer noe handling eller oppmerksomhet, som knapper, tagger og meldinger</fhi-data-table-cell>
+    <fhi-data-table-cell>Bakgrunnsfarger til elementer som fremmer handling eller oppmerksomhet, som knapper, tagger og meldinger</fhi-data-table-cell>
   </fhi-data-table-row>
   <fhi-data-table-row>
     <fhi-data-table-cell>Border</fhi-data-table-cell>
-    <fhi-data-table-cell>Farger for kanter, streker, rammer og skygger som ligner dem</fhi-data-table-cell>
+    <fhi-data-table-cell>Farger for kanter, streker og rammer</fhi-data-table-cell>
   </fhi-data-table-row>
   <fhi-data-table-row>
     <fhi-data-table-cell>Text</fhi-data-table-cell>
@@ -119,16 +119,16 @@ Hver skala inneholder like mange farger. De er gruppert etter hva slags innhold 
 
 ### Variant
 
-Siste ledd i fargenavnet beskriver hvordan fargen ser ut eller skal brukes. Det varierer mellom gruppene i hvilke varianter de har. Alle fargene har `default`, standardfargen i hver gruppe.
+Siste ledd i fargenavnet beskriver hvordan fargen ser ut eller skal brukes. Alle fargene har `default`, standardfargen i hver gruppe.
 
-Noen av variantene er kun tiltenkt interaktive elementer. Disse er `hover`, når musepekeren svever over elementet, og `active`, som vises når man klikker eller på noe (også kjent som «pressed»).
+Noen av variantene er for interaktive elementer. Disse er `hover`, når musepekeren svever over elementet, og `active`, som vises når man klikker på noe (også kjent som «pressed»).
 
 Enkelte varianter beskriver hvilken fremheving fargen har. For eksempel er `subtle` noe nedtonet, eller har et hint av farge i seg, mens `strong` har sterkere kontrast, for elementer som skal fremheves ekstra.
 
 `text`-gruppen har `inverted` som alltid har god kontrast til solide bakgrunner som bruker `base`-fargene.
 
 ## Bruk
-Alle komponenter leveres ferdige med farger, ofte med innstillinger for å endre fremheving (f.eks. `subtle` og `strong`) eller hvilken rolle den har (f.eks. `neutral` og `danger`). Design Tokens er tilgjengelige, som CSS-variabler, når du skal fargelegge andre elementer, slik som bakgrunner og egne komponenter. 
+Alle komponenter leveres ferdige med farger, ofte med innstillinger for å endre fremheving (f.eks. `subtle` og `strong`) eller hvilken rolle den har (f.eks. `neutral` og `danger`). Design Tokens er representert i koden som CSS-variabler, og brukes når du skal fargelegge andre elementer, slik som bakgrunner og egne komponenter. 
 
 Her er et eksempel på hvordan farger kan brukes:
 
@@ -206,15 +206,15 @@ Her er et eksempel på hvordan farger kan brukes:
 Fargene er navngitt etter deres tiltenkte rolle og bruk. Det kan likevel være situasjoner der det gir mening å vurdere en annen grad i skalaen.
 
 Noen eksempler på dette er: 
-- Interaktive elementer uten bakgrunnsfarge bruker gjerne `surface-default` ved Hover, i stedet for å gå helt opp til `surface-hover`. Dette skaper en roligere opplevelse ved å beholde i større grad samme «kontrasthopp» mellom tilstandene, som på komponenter med bakgrunnsfarge,
+- Interaktive elementer uten bakgrunnsfarge bruker gjerne `surface-default` ved Hover, i stedet for å gå helt opp til `surface-hover`. Dette skaper en roligere opplevelse ved å beholde i større grad samme «kontrasthopp» mellom tilstandene, som på komponenter med bakgrunnsfarge.
 - Enkelte ikke-interaktive komponenter med bakgrunnsfarger bruker `surface-active` i deres `bordered`-variant, for å subtilt dyttes ut fra bakgrunnen og uten å fremstå som interaktiv (les: klikkbar).
 
 ## Kontrast
-Måten Design Tokens er satt opp på skal gjøre det enkelt å sikre kontrastkrav og generell god lesbarhet, i tilfellene du ikke bruker komponentene direkte. WCAG-kravene, i regelverket vi følger, kan utforskes hos [Tilsynet for universell utforming av ikt](https://www.uutilsynet.no/wcag-standarden/wcag-standarden/86?f%5B0%5D=t3:212).
+Strukturen skal gjøre det enkelt å sikre kontrastkrav og generell god lesbarhet, i tilfellene du ikke bruker komponentene direkte. WCAG-kravene, i regelverket vi følger, kan utforskes hos [Tilsynet for universell utforming av ikt](https://www.uutilsynet.no/wcag-standarden/wcag-standarden/86?f%5B0%5D=t3:212).
 
 Enkelte farger har minst så og så mye kontrast til enkelte andre farger i skalaen. For eksempel har `text-subtle` god nok kontrast til `background`-fargene og `surface-default`, mens `text-default` god nok kontrast til alle `background`- og `surface`-fargene. `border-subtle` har ikke god nok kontrast til å brukes alene, men må støttes av andre elementer, slik som tekst og ikoner, mens `border-default` og `border-strong` vil innfri kontrastkravet. 
 
-Vi bruker ikke fargetonen (om fargen er mer rød, blå eller grønn) alene for å skille elementer og tilstander, men kontrasten i lyshetsgrad (hvor mørk eller lys fargen er) og eventuelle andre elementer. En advarsel kan støttes av et lite «varselstrekant»-ikon og suksess kan oppfattes raskere med en liten hake før beskjeden.
+Vi bruker ikke fargetonen (om fargen er mer rød, blå eller grønn) alene for å skille elementer og tilstander, men kontrasten i lyshetsgrad (hvor mørk eller lys fargen er) – og eventuelle andre elementer. En advarsel kan støttes av et lite «varselstrekant»-ikon og suksess kan oppfattes raskere med en liten hake før beskjeden.
 
 <style> {`
   fhi-data-table-row fhi-data-table-cell:first-of-type {
