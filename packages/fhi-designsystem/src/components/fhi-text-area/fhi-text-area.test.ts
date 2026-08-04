@@ -1,7 +1,6 @@
 import { fixture, expect } from '@open-wc/testing';
 import { html } from 'lit/static-html.js';
 import { FhiTextArea } from './fhi-text-area.component';
-import { beforeEach, describe, it } from 'node:test';
 
 describe('fhi-text-area', () => {
   new FhiTextArea();
@@ -136,6 +135,13 @@ describe('fhi-text-area', () => {
 
       expect(component.hasAttribute('disabled')).to.equal(true);
       expect(component.disabled).to.equal(true);
+    });
+
+    it('has an attribute to set the rows', async () => {
+      component = await fixture(html`<fhi-text-area rows="5"></fhi-text-area>`);
+
+      expect(component.getAttribute('rows')).to.equal('5');
+      expect(component.rows).to.equal(5);
     });
   });
 
@@ -282,27 +288,6 @@ describe('fhi-text-area', () => {
       expect(form.get('myText')).to.equal('hello');
     });
 
-    it('implicitly submits the form when the Enter key is pressed', async () => {
-      let count = 0;
-
-      const form = document.createElement('form');
-      form.addEventListener('submit', function (event) {
-        event.preventDefault();
-        count++;
-      });
-
-      component = await fixture(
-        html`<fhi-text-area name="myText" value="hello"></fhi-text-area>`,
-        { parentNode: form },
-      );
-
-      component['_textarea'].dispatchEvent(
-        new KeyboardEvent('keydown', { key: 'Enter' }),
-      );
-
-      expect(count).to.equal(1);
-    });
-
     it('resets its value when the form is reset', async () => {
       component = await fixture(
         html`<fhi-text-area name="myText" value="hello"></fhi-text-area>`,
@@ -359,19 +344,38 @@ describe('fhi-text-area', () => {
   });
 
   describe('property-attribute reflection', () => {
+    beforeEach(async () => {
+      component = await fixture(html`<fhi-text-area></fhi-text-area>`);
+    });
+
     it('reflects the "name" property with the "name" attribute', async () => {
-      component = await fixture(
-        html`<fhi-text-area name="hello"></fhi-text-area>`,
-      );
-
-      expect(component.getAttribute('name')).to.equal('hello');
-      expect(component.name).to.equal('hello');
-
       component.name = 'world';
       await component.updateComplete;
 
       expect(component.getAttribute('name')).to.equal('world');
       expect(component.name).to.equal('world');
+    });
+
+    it('reflects the disabled property to an attribute', async () => {
+      component.disabled = true;
+      await component.updateComplete;
+
+      expect(component.hasAttribute('disabled')).to.equal(true);
+    });
+
+    it('reflects the status property to an attribute', async () => {
+      component.status = 'error';
+      await component.updateComplete;
+
+      expect(component.getAttribute('status')).to.equal('error');
+    });
+
+    it('reflects the "helpText" property with the "help-text" attribute', async () => {
+      component.helpText = 'some help text';
+      await component.updateComplete;
+
+      expect(component.getAttribute('help-text')).to.equal('some help text');
+      expect(component.helpText).to.equal('some help text');
     });
   });
 });

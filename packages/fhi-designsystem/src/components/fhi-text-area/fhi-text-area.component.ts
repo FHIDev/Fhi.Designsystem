@@ -149,36 +149,9 @@ export class FhiTextArea extends LitElement {
     );
   }
 
-  private _dispatchInputEvent(): void {
-    /**
-     * @type {Event} - Standard DOM event with the type `input`.
-     * This event is dispatched when the value of the text area changes.
-     */
-    this.dispatchEvent(
-      new Event('input', {
-        bubbles: true,
-        composed: true,
-      }),
-    );
-  }
-
   private handleChange(event: Event): void {
     event.stopPropagation();
     this._dispatchChangeEvent();
-  }
-
-  private handleInput(event: Event): void {
-    this.value = this._textarea.value;
-    this._internals.setFormValue(this.value);
-
-    event.stopPropagation();
-    this._dispatchInputEvent();
-  }
-
-  private handleKeyDown(event: KeyboardEvent): void {
-    if (event.key === 'Enter' && this._internals.form) {
-      this._internals.form!.requestSubmit();
-    }
   }
 
   public formResetCallback(): void {
@@ -206,8 +179,6 @@ export class FhiTextArea extends LitElement {
         ?disabled=${this.disabled}
         rows=${ifDefined(this.rows)}
         @change=${this.handleChange}
-        @input=${this.handleInput}
-        @keydown=${this.handleKeyDown}
       ></textarea>
       ${this.message
         ? html`<p class="message">
