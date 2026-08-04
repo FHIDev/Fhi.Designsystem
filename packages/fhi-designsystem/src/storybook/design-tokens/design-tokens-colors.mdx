@@ -2,9 +2,16 @@ import { Meta } from '@storybook/addon-docs/blocks';
 import { DesignTokenDocBlock } from 'storybook-design-token';
 import '../../theme/default.css';
 
+import '../../components/data-table/fhi-data-table/fhi-data-table.component.ts';
+import '../../components/data-table/fhi-data-table-row/fhi-data-table-row.component.ts';
+import '../../components/data-table/fhi-data-table-cell/fhi-data-table-cell.component.ts';
+
+
 <Meta title="Design Tokens/Farger" />
 
-### Token for farger
+# Farger
+
+Fargesystemet vårt skal gjøre det enkelt å skape gjenkjennelige og brukervennlige løsninger på tvers av Folkehelseinstituttet. Her kan du utforske fargepaletten og lære mer hvordan du tar fargene i bruk.
 
 <DesignTokenDocBlock
   categoryName="SemanticColors"
@@ -27,3 +34,181 @@ export function ColorPresenter({ token }) {
     ></div>
   );
 }
+
+## Navnestruktur
+
+Navnet på hver Design Token forteller hva den skal brukes til. Her bryter vi opp navnestrukturen, med en forklaring av hvert ledd:
+
+I tillegg til en prefiks for å vise eierskap til Folkehelseinstituttet (`fhi`), og hvilken kategori med Design Tokens de tilhører (`color`), har hver farge tre ledd i navnet sitt:
+
+1. **Navn:** hvilken rolle skalaen har
+2. **Gruppe:** hvilke elementer fargen er tiltenkt å fargelegge
+3. **Variant:** hvordan farger ser ut eller skal brukes
+
+### Navn
+Skalaene er navngitt etter intensjonen som ligger bak fargen, hvilken rolle den skal ta og hva den skal uttrykke.
+
+<fhi-data-table>
+  <fhi-data-table-row variant="header">
+    <fhi-data-table-cell>Navn</fhi-data-table-cell>
+    <fhi-data-table-cell>Rolle</fhi-data-table-cell>
+  </fhi-data-table-row>
+  <fhi-data-table-row>
+    <fhi-data-table-cell>Neutral</fhi-data-table-cell>
+    <fhi-data-table-cell>Standard farge uten bestemt mening som gir andre farger rom til å stikke ut og signalisere det de skal.</fhi-data-table-cell>
+  </fhi-data-table-row>
+  <fhi-data-table-row>
+    <fhi-data-table-cell>Accent</fhi-data-table-cell>
+    <fhi-data-table-cell>Standard farge for handlinger.</fhi-data-table-cell>
+  </fhi-data-table-row>
+  <fhi-data-table-row>
+    <fhi-data-table-cell>Success</fhi-data-table-cell>
+    <fhi-data-table-cell>Positiv farge som uttrykker at noe har gått som det skal.</fhi-data-table-cell>
+  </fhi-data-table-row>
+  <fhi-data-table-row>
+    <fhi-data-table-cell>Warning</fhi-data-table-cell>
+    <fhi-data-table-cell>Farge for å kommunisere varsomhet, i situasjoner hvor man vil unngå feil.</fhi-data-table-cell>
+  </fhi-data-table-row>
+  <fhi-data-table-row>
+    <fhi-data-table-cell>Danger</fhi-data-table-cell>
+    <fhi-data-table-cell>Negativ farge for å kommunisere feil eller “farlige” handlinger.</fhi-data-table-cell>
+  </fhi-data-table-row>
+  <fhi-data-table-row>
+    <fhi-data-table-cell>Info</fhi-data-table-cell>
+    <fhi-data-table-cell>Farge for informasjon som trenger oppmerksomhet.</fhi-data-table-cell>
+  </fhi-data-table-row>
+</fhi-data-table>
+
+### Gruppe
+
+Hver skala inneholder like mange farger. De er gruppert etter hva slags innhold de er ment å brukes på:
+
+<fhi-data-table>
+  <fhi-data-table-row variant="header">
+    <fhi-data-table-cell>Gruppe</fhi-data-table-cell>
+    <fhi-data-table-cell>Rolle</fhi-data-table-cell>
+  </fhi-data-table-row>
+  <fhi-data-table-row>
+    <fhi-data-table-cell>Background</fhi-data-table-cell>
+    <fhi-data-table-cell>Generelle bakgrunnsfarger brukes om hverandre på hele flater og skjermer, men også mindre statiske kort</fhi-data-table-cell>
+  </fhi-data-table-row>
+  <fhi-data-table-row>
+    <fhi-data-table-cell>Surface</fhi-data-table-cell>
+    <fhi-data-table-cell>Bakgrunnsfarger til elementer som fordrer noe handling eller oppmerksomhet, som knapper, tagger og meldinger</fhi-data-table-cell>
+  </fhi-data-table-row>
+  <fhi-data-table-row>
+    <fhi-data-table-cell>Border</fhi-data-table-cell>
+    <fhi-data-table-cell>Farger for kanter, streker, rammer og skygger som ligner dem</fhi-data-table-cell>
+  </fhi-data-table-row>
+  <fhi-data-table-row>
+    <fhi-data-table-cell>Text</fhi-data-table-cell>
+    <fhi-data-table-cell>Tekst, samt ikoner i tilfeller der de erstatter tekst</fhi-data-table-cell>
+  </fhi-data-table-row>
+  <fhi-data-table-row>
+    <fhi-data-table-cell>Base</fhi-data-table-cell>
+    <fhi-data-table-cell>Farger med høy kontrast som står ut, som brukes på handlingsdrivende elementer og der man vil formidle en bestemt mening</fhi-data-table-cell>
+  </fhi-data-table-row>
+</fhi-data-table>
+
+### Variant
+
+Siste ledd i fargenavnet beskriver hvordan fargen ser ut eller skal brukes. Det varierer mellom gruppene i hvilke varianter de har. Alle fargene har `default`, standardfargen i hver gruppe.
+
+Noen av variantene er kun tiltenkt interaktive elementer. Disse er `hover`, når musepekeren svever over elementet, og `active`, som vises når man klikker eller på noe (også kjent som «pressed»).
+
+Enkelte varianter beskriver hvilken fremheving fargen har. For eksempel er `subtle` noe nedtonet, eller har et hint av farge i seg, mens `strong` har sterkere kontrast, for elementer som skal fremheves ekstra.
+
+`text`-gruppen har `inverted` som alltid har god kontrast til solide bakgrunner som bruker `base`-fargene.
+
+## Bruk
+Alle komponenter leveres ferdige med farger, ofte med innstillinger for å endre fremheving (f.eks. `subtle` og `strong`) eller hvilken rolle den har (f.eks. `neutral` og `danger`). Design Tokens er tilgjengelige, som CSS-variabler, når du skal fargelegge andre elementer, slik som bakgrunner og egne komponenter. 
+
+Her er et eksempel på hvordan farger kan brukes:
+
+[Eksempelbilde med hvilke farger som er brukt hvor]
+
+### Forenklet oversikt
+
+<fhi-data-table>
+  <fhi-data-table-row variant="header">
+    <fhi-data-table-cell>Farge</fhi-data-table-cell>
+    <fhi-data-table-cell>Bruk</fhi-data-table-cell>
+  </fhi-data-table-row>
+  <fhi-data-table-row>
+    <fhi-data-table-cell>Background Default</fhi-data-table-cell>
+    <fhi-data-table-cell>Store bakgrunner tilnærmet hvit, som også kan brukes på mindre flater, slik som kort og tekstfelt</fhi-data-table-cell>
+  </fhi-data-table-row>
+  <fhi-data-table-row>
+    <fhi-data-table-cell>Background Subtle</fhi-data-table-cell>
+    <fhi-data-table-cell>Store bakgrunner med et hint av farge i seg</fhi-data-table-cell>
+  </fhi-data-table-row>
+  <fhi-data-table-row>
+    <fhi-data-table-cell>Surface Default</fhi-data-table-cell>
+    <fhi-data-table-cell>Bakgrunnsfarge til elementer og komponenter som ligger oppå Background-fargene</fhi-data-table-cell>
+  </fhi-data-table-row>
+  <fhi-data-table-row>
+    <fhi-data-table-cell>Surface Hover</fhi-data-table-cell>
+    <fhi-data-table-cell>Fargen når musepekeren svever over et interaktivt element (Hover)</fhi-data-table-cell>
+  </fhi-data-table-row>
+  <fhi-data-table-row>
+    <fhi-data-table-cell>Surface Active</fhi-data-table-cell>
+    <fhi-data-table-cell>Fargen når man klikker på et element (Active/Pressed)</fhi-data-table-cell>
+  </fhi-data-table-row>
+  <fhi-data-table-row>
+    <fhi-data-table-cell>Border Subtle</fhi-data-table-cell>
+    <fhi-data-table-cell>Svak kantlinjefarge som kan brukes dekorativt, eller i kombinasjon med andre elementer som signaliserer interaksjon</fhi-data-table-cell>
+  </fhi-data-table-row>
+  <fhi-data-table-row>
+    <fhi-data-table-cell>Border Default</fhi-data-table-cell>
+    <fhi-data-table-cell>Standard kantlinjefarge</fhi-data-table-cell>
+  </fhi-data-table-row>
+  <fhi-data-table-row>
+    <fhi-data-table-cell>Border Strong</fhi-data-table-cell>
+    <fhi-data-table-cell>Sterk kantlinjefarge, som også kan brukes til Hover- og Active-tilstander</fhi-data-table-cell>
+  </fhi-data-table-row>
+  <fhi-data-table-row>
+    <fhi-data-table-cell>Text Subtle</fhi-data-table-cell>
+    <fhi-data-table-cell>Tekst- og ikonfarge med lavere kontrast</fhi-data-table-cell>
+  </fhi-data-table-row>
+  <fhi-data-table-row>
+    <fhi-data-table-cell>Text Default</fhi-data-table-cell>
+    <fhi-data-table-cell>Tekst- og ikonfarge med høy kontrast</fhi-data-table-cell>
+  </fhi-data-table-row>
+  <fhi-data-table-row>
+    <fhi-data-table-cell>Text Inverted</fhi-data-table-cell>
+    <fhi-data-table-cell>Tekst- og ikonfarge med god kontrast mot Base-fargene</fhi-data-table-cell>
+  </fhi-data-table-row>
+  <fhi-data-table-row>
+    <fhi-data-table-cell>Base Default</fhi-data-table-cell>
+    <fhi-data-table-cell>Sterk bakgrunnsfarge for elementer som skal fremheves, slik som solide knapper</fhi-data-table-cell>
+  </fhi-data-table-row>
+  <fhi-data-table-row>
+    <fhi-data-table-cell>Base Hover</fhi-data-table-cell>
+    <fhi-data-table-cell>Sterk bakgrunnsfarge for Hover-tilstand</fhi-data-table-cell>
+  </fhi-data-table-row>
+  <fhi-data-table-row>
+    <fhi-data-table-cell>Base Active</fhi-data-table-cell>
+    <fhi-data-table-cell>Sterk bakgrunnsfarge for Active-tilstand</fhi-data-table-cell>
+  </fhi-data-table-row>
+</fhi-data-table>
+
+### Annet
+Fargene er navngitt etter deres tiltenkte rolle og bruk. Det kan likevel være situasjoner der det gir mening å vurdere en annen grad i skalaen.
+
+Noen eksempler på dette er: 
+- Interaktive elementer uten bakgrunnsfarge bruker gjerne `surface-default` ved Hover, i stedet for å gå helt opp til `surface-hover`. Dette skaper en roligere opplevelse ved å beholde i større grad samme «kontrasthopp» mellom tilstandene, som på komponenter med bakgrunnsfarge,
+- Enkelte ikke-interaktive komponenter med bakgrunnsfarger bruker `surface-active` i deres `bordered`-variant, for å subtilt dyttes ut fra bakgrunnen og uten å fremstå som interaktiv (les: klikkbar).
+
+## Kontrast
+Måten Design Tokens er satt opp på skal gjøre det enkelt å sikre kontrastkrav og generell god lesbarhet, i tilfellene du ikke bruker komponentene direkte. WCAG-kravene, i regelverket vi følger, kan utforskes hos [Tilsynet for universell utforming av ikt](https://www.uutilsynet.no/wcag-standarden/wcag-standarden/86?f%5B0%5D=t3:212).
+
+Enkelte farger har minst så og så mye kontrast til enkelte andre farger i skalaen. For eksempel har `text-subtle` god nok kontrast til `background`-fargene og `surface-default`, mens `text-default` god nok kontrast til alle `background`- og `surface`-fargene. `border-subtle` har ikke god nok kontrast til å brukes alene, men må støttes av andre elementer, slik som tekst og ikoner, mens `border-default` og `border-strong` vil innfri kontrastkravet. 
+
+Vi bruker ikke fargetonen (om fargen er mer rød, blå eller grønn) alene for å skille elementer og tilstander, men kontrasten i lyshetsgrad (hvor mørk eller lys fargen er) og eventuelle andre elementer. En advarsel kan støttes av et lite «varselstrekant»-ikon og suksess kan oppfattes raskere med en liten hake før beskjeden.
+
+<style> {`
+  fhi-data-table-row fhi-data-table-cell:first-of-type {
+    text-wrap: nowrap;
+  }
+  `}
+</style>
