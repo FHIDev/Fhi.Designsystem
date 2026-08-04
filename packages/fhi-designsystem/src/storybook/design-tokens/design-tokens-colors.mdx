@@ -6,6 +6,8 @@ import '../../components/data-table/fhi-data-table/fhi-data-table.component.ts';
 import '../../components/data-table/fhi-data-table-row/fhi-data-table-row.component.ts';
 import '../../components/data-table/fhi-data-table-cell/fhi-data-table-cell.component.ts';
 
+import colorNameStructure from '../images/design-tokens-color-name-structure.png';
+import colorExampleUsage from '../images/design-tokens-color-example-usage.png';
 
 <Meta title="Design Tokens/Farger" />
 
@@ -38,6 +40,11 @@ export function ColorPresenter({ token }) {
 ## Navnestruktur
 
 Navnet på hver Design Token forteller hva den skal brukes til. Her bryter vi opp navnestrukturen, med en forklaring av hvert ledd:
+
+<img
+  src={colorNameStructure}
+  alt="Token delt opp i fem: FHI, Color, Neutral, Background og Default"
+/>
 
 I tillegg til en prefiks for å vise eierskap til Folkehelseinstituttet (`fhi`), og hvilken kategori med Design Tokens de tilhører (`color`), har hver farge tre ledd i navnet sitt:
 
@@ -125,7 +132,10 @@ Alle komponenter leveres ferdige med farger, ofte med innstillinger for å endre
 
 Her er et eksempel på hvordan farger kan brukes:
 
-[Eksempelbilde med hvilke farger som er brukt hvor]
+<img
+  src={colorExampleUsage}
+  alt="Eksempel med enkelte komponenter, hvor for eksempel tekst bruker Neutral Text Default eller Subtle og knapper bruker Accent Base Default som bakgrunn og Accent Text Inverted til teksten"
+/>
 
 ### Forenklet oversikt
 
@@ -209,6 +219,11 @@ Vi bruker ikke fargetonen (om fargen er mer rød, blå eller grønn) alene for �
 <style> {`
   fhi-data-table-row fhi-data-table-cell:first-of-type {
     text-wrap: nowrap;
+  }
+
+  img {
+    border: var(--fhi-color-neutral-border-subtle) solid var(--fhi-dimension-border-width);
+    border-radius: var(--fhi-border-radius-100);
   }
   `}
 </style>
