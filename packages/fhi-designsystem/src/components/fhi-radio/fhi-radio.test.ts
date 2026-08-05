@@ -51,6 +51,15 @@ describe('fhi-radio', () => {
       expect(component.label).to.equal(label);
     });
 
+    it('has an attribute to set help-text', async () => {
+      component = await fixture(
+        html`<fhi-radio help-text="my help text"></fhi-radio>`,
+      );
+
+      expect(component.getAttribute('help-text')).to.equal('my help text');
+      expect(component.helpText).to.equal('my help text');
+    });
+
     it('has an attribute to set the name', async () => {
       const name = 'My Name';
 
