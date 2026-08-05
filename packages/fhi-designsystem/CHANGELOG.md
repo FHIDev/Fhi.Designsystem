@@ -1,5 +1,27 @@
 # Changelog
 
+## [0.43.0](https://github.com/FHIDev/Fhi.Designsystem/compare/v0.42.2...v0.43.0) (2026-07-30)
+
+### 🚀 Features
+
+* New Component - Link ([#473](https://github.com/FHIDev/Fhi.Designsystem/issues/473)) ([1413409](https://github.com/FHIDev/Fhi.Designsystem/commit/1413409adb773aa620261032109ea907cda3189d))
+
+## [0.42.2](https://github.com/FHIDev/Fhi.Designsystem/compare/v0.42.1...v0.42.2) (2026-07-29)
+
+### 🛠️ Bug Fixes
+
+* implement new token structure for fhi-modal-dialog ([#467](https://github.com/FHIDev/Fhi.Designsystem/issues/467)) ([ea8bf44](https://github.com/FHIDev/Fhi.Designsystem/commit/ea8bf44f9c4b73b1972526e3366f9c45c914d1bf))
+
+## [0.42.1](https://github.com/FHIDev/Fhi.Designsystem/compare/v0.42.0...v0.42.1) (2026-07-27)
+
+### 🛠️ Bug Fixes
+
+* Make sure the page can scroll after modal is toggled using the methods ([#477](https://github.com/FHIDev/Fhi.Designsystem/issues/477)) ([0c174ec](https://github.com/FHIDev/Fhi.Designsystem/commit/0c174ec9364bf7d8acabbcf5a27995bfe4f64044))
+
+### Other
+
+* Update vs code snippets ([#458](https://github.com/FHIDev/Fhi.Designsystem/issues/458)) ([cc7d164](https://github.com/FHIDev/Fhi.Designsystem/commit/cc7d164be81da701d90149920dddbb78b3b63306))
+
 ## [0.42.0](https://github.com/FHIDev/Fhi.Designsystem/compare/v0.41.3...v0.42.0) (2026-07-17)
 
 ### 🚀 Features
