@@ -238,13 +238,8 @@ export class FhiModalDialog extends LitElement {
         @mousedown=${this._handleDialogContentMouseDown}
       >
         <header>
-          <fhi-headline 
-            ?hidden=${!this.heading} 
-            id="dialog-label" 
-            level="1"
-            color="var(--fhi-color-neutral-text-default)"
-          >
-            ${this.heading}
+          <fhi-headline ?hidden=${!this.heading} id="dialog-label" level="1"
+            >${this.heading}
           </fhi-headline>
           <fhi-button
             variant="text"
@@ -303,6 +298,7 @@ export class FhiModalDialog extends LitElement {
           gap: var(--fhi-spacing-050);
           padding: var(--fhi-spacing-500) var(--fhi-spacing-500) 0
             var(--fhi-spacing-500);
+          color: var(--fhi-color-neutral-text-default);
         }
         slot[name='body'] {
           display: block;
