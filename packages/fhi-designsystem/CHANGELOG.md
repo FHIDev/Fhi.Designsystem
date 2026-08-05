@@ -1,5 +1,15 @@
 # Changelog
 
+## [0.43.1](https://github.com/FHIDev/Fhi.Designsystem/compare/v0.43.0...v0.43.1) (2026-08-05)
+
+### 🛠️ Bug Fixes
+
+* Modal Dialog Heading to use Text Default color ([#487](https://github.com/FHIDev/Fhi.Designsystem/issues/487)) ([a10002a](https://github.com/FHIDev/Fhi.Designsystem/commit/a10002a41d8c6aff85996da679c2ec27934ad385))
+
+### 📑 Documentation
+
+* Correct Help Text Attribute in Select Docs ([#481](https://github.com/FHIDev/Fhi.Designsystem/issues/481)) ([03ef380](https://github.com/FHIDev/Fhi.Designsystem/commit/03ef380beb983546e9fff8f909e9d207cdea1dda))
+
 ## [0.43.0](https://github.com/FHIDev/Fhi.Designsystem/compare/v0.42.2...v0.43.0) (2026-07-30)
 
 ### 🚀 Features
