@@ -238,8 +238,13 @@ export class FhiModalDialog extends LitElement {
         @mousedown=${this._handleDialogContentMouseDown}
       >
         <header>
-          <fhi-headline ?hidden=${!this.heading} id="dialog-label" level="1"
-            >${this.heading}
+          <fhi-headline 
+            ?hidden=${!this.heading} 
+            id="dialog-label" 
+            level="1"
+            color="var(--fhi-color-neutral-text-default)"
+          >
+            ${this.heading}
           </fhi-headline>
           <fhi-button
             variant="text"
