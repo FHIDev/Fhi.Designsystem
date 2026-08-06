@@ -64,7 +64,7 @@ export class FhiRadio extends LitElement {
   @property({ type: String }) value: string = 'on';
 
   /**
-   * The message shown above the input field.
+   * The message shown below the label.
    * This is often used to provide additional information to the user.
    * @type {string}
    */
