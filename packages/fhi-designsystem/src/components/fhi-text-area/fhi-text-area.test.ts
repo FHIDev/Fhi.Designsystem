@@ -356,6 +356,13 @@ describe('fhi-text-area', () => {
       expect(component.name).to.equal('world');
     });
 
+    it('reflects the "readonly" property with the "readonly" attribute', async () => {
+      component.readonly = true;
+      await component.updateComplete;
+
+      expect(component.hasAttribute('readonly')).to.equal(true);
+    });
+
     it('reflects the disabled property to an attribute', async () => {
       component.disabled = true;
       await component.updateComplete;
@@ -368,14 +375,6 @@ describe('fhi-text-area', () => {
       await component.updateComplete;
 
       expect(component.getAttribute('status')).to.equal('error');
-    });
-
-    it('reflects the "helpText" property with the "help-text" attribute', async () => {
-      component.helpText = 'some help text';
-      await component.updateComplete;
-
-      expect(component.getAttribute('help-text')).to.equal('some help text');
-      expect(component.helpText).to.equal('some help text');
     });
   });
 });

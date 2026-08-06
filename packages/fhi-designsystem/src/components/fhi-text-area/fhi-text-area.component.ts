@@ -78,7 +78,7 @@ export class FhiTextArea extends LitElement {
    * @reflect
    * @type {number}
    */
-  @property({ type: Number, reflect: true }) rows? = 2;
+  @property({ type: Number }) rows? = 2;
 
   private _name?: string = undefined;
 
