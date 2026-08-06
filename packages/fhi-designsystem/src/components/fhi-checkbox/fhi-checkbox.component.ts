@@ -83,7 +83,7 @@ export class FhiCheckbox extends LitElement {
 
   protected updated(_changedProperties: PropertyValues<FhiCheckbox>): void {
     if (_changedProperties.has('helpText') || _changedProperties.has('label')) {
-      if (!this.label && this.helpText) {
+      if ((this.label === undefined || this.label === '') && this.helpText) {
         console.error(
           'The "help-text" property is set, but the "label" property is not. It is required to provide a label when using help text.',
         );
