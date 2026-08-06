@@ -128,9 +128,8 @@ export const Error: Story = {
   tags: [],
   args: {
     label: 'Label',
-    message: 'Informative error message',
+    message: 'Dette feltet er påkrevd',
     status: 'error',
-    value: 'This field has an error',
   },
 };
 
@@ -147,9 +146,9 @@ export const Readonly: Story = {
   tags: [],
   args: {
     label: 'Kommentar',
-    value: 'Verdi',
     helpText: 'Hentet fra forrige side',
     readonly: true,
+    value: 'This field is readonly',
   },
 };
 
