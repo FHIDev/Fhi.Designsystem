@@ -1,5 +1,5 @@
 import { html, css, LitElement } from 'lit';
-import { customElement, property, query } from 'lit/decorators.js';
+import { customElement, property } from 'lit/decorators.js';
 import { ifDefined } from 'lit/directives/if-defined.js';
 import '../typography/fhi-body/fhi-body.component';
 import '../typography/fhi-label/fhi-label.component';
@@ -79,9 +79,6 @@ export class FhiTextArea extends LitElement {
    * @type {number}
    */
   @property({ type: Number, reflect: true }) rows? = 2;
-
-  @query('#textarea-element')
-  private _textarea!: HTMLTextAreaElement;
 
   private _name?: string = undefined;
 
