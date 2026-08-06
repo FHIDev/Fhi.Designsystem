@@ -87,6 +87,19 @@ describe('fhi-checkbox', () => {
       expect(component.hasAttribute('checked')).to.equal(true);
       expect(component.checked).to.equal(true);
     });
+
+    it('logs error when setting help-text without label', async () => {
+      let errorMessage = null;
+      console.error = message => {
+        errorMessage = message;
+      };
+
+      component = await fixture(
+        html`<fhi-checkbox help-text="my help text"></fhi-checkbox>`,
+      );
+
+      expect(errorMessage).to.not.equal(null);
+    });
   });
 
   describe('form association', () => {

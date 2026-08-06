@@ -160,7 +160,7 @@ export class FhiRadio extends LitElement {
     }
 
     if (changedProperties.has('helpText') || changedProperties.has('label')) {
-      if ((this.label === undefined || this.label === '') && this.helpText) {
+      if (!this.label && this.helpText) {
         console.error(
           'The "help-text" property is set, but the "label" property is not. It is required to provide a label when using help text.',
         );
