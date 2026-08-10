@@ -54,11 +54,23 @@ describe('fhi-title', () => {
 
     it('renders the correct h level', async () => {
       component = await fixture(html` <fhi-title level="2">Test</fhi-title> `);
-      expect(component).shadowDom.to.equal(`
-      <h2 class="title">
-        <slot></slot>
-      </h2>
-    `);
+
+      const heading = component.shadowRoot?.querySelector('h2');
+
+      expect(heading?.tagName).to.equal('H2');
+    });
+  });
+
+  describe('Inheritance', () => {
+    it('inherits color from parent', async () => {
+      const component = await fixture(html`
+        <div style="color: red;">
+          <fhi-title level="1">Test</fhi-title>
+        </div>
+      `);
+
+      const title = component.querySelector('fhi-title')!;
+      expect(getComputedStyle(title).color).to.equal('rgb(255, 0, 0)');
     });
   });
 });

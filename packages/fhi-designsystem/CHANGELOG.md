@@ -1,5 +1,135 @@
 # Changelog
 
+## [0.43.1](https://github.com/FHIDev/Fhi.Designsystem/compare/v0.43.0...v0.43.1) (2026-08-05)
+
+### 🛠️ Bug Fixes
+
+* Modal Dialog Heading to use Text Default color ([#487](https://github.com/FHIDev/Fhi.Designsystem/issues/487)) ([a10002a](https://github.com/FHIDev/Fhi.Designsystem/commit/a10002a41d8c6aff85996da679c2ec27934ad385))
+
+### 📑 Documentation
+
+* Correct Help Text Attribute in Select Docs ([#481](https://github.com/FHIDev/Fhi.Designsystem/issues/481)) ([03ef380](https://github.com/FHIDev/Fhi.Designsystem/commit/03ef380beb983546e9fff8f909e9d207cdea1dda))
+
+## [0.43.0](https://github.com/FHIDev/Fhi.Designsystem/compare/v0.42.2...v0.43.0) (2026-07-30)
+
+### 🚀 Features
+
+* New Component - Link ([#473](https://github.com/FHIDev/Fhi.Designsystem/issues/473)) ([1413409](https://github.com/FHIDev/Fhi.Designsystem/commit/1413409adb773aa620261032109ea907cda3189d))
+
+## [0.42.2](https://github.com/FHIDev/Fhi.Designsystem/compare/v0.42.1...v0.42.2) (2026-07-29)
+
+### 🛠️ Bug Fixes
+
+* implement new token structure for fhi-modal-dialog ([#467](https://github.com/FHIDev/Fhi.Designsystem/issues/467)) ([ea8bf44](https://github.com/FHIDev/Fhi.Designsystem/commit/ea8bf44f9c4b73b1972526e3366f9c45c914d1bf))
+
+## [0.42.1](https://github.com/FHIDev/Fhi.Designsystem/compare/v0.42.0...v0.42.1) (2026-07-27)
+
+### 🛠️ Bug Fixes
+
+* Make sure the page can scroll after modal is toggled using the methods ([#477](https://github.com/FHIDev/Fhi.Designsystem/issues/477)) ([0c174ec](https://github.com/FHIDev/Fhi.Designsystem/commit/0c174ec9364bf7d8acabbcf5a27995bfe4f64044))
+
+### Other
+
+* Update vs code snippets ([#458](https://github.com/FHIDev/Fhi.Designsystem/issues/458)) ([cc7d164](https://github.com/FHIDev/Fhi.Designsystem/commit/cc7d164be81da701d90149920dddbb78b3b63306))
+
+## [0.42.0](https://github.com/FHIDev/Fhi.Designsystem/compare/v0.41.3...v0.42.0) (2026-07-17)
+
+### 🚀 Features
+
+* New Component - Callout ([#445](https://github.com/FHIDev/Fhi.Designsystem/issues/445)) ([ec360f0](https://github.com/FHIDev/Fhi.Designsystem/commit/ec360f07deb40af9efff978747d795b39b7c8dfa))
+
+### Other
+
+* Add mocha types to tsconfig ([#474](https://github.com/FHIDev/Fhi.Designsystem/issues/474)) ([af48416](https://github.com/FHIDev/Fhi.Designsystem/commit/af4841687c440ef18ead3e539a069e9824179d0e))
+
+## [0.41.3](https://github.com/FHIDev/Fhi.Designsystem/compare/v0.41.2...v0.41.3) (2026-07-13)
+
+### 🛠️ Bug Fixes
+
+* implement new token structure ([#465](https://github.com/FHIDev/Fhi.Designsystem/issues/465)) ([d7cbe5b](https://github.com/FHIDev/Fhi.Designsystem/commit/d7cbe5b874727337bc8fae34bf8e9384b1296c47))
+
+## [0.41.2](https://github.com/FHIDev/Fhi.Designsystem/compare/v0.41.1...v0.41.2) (2026-07-02)
+
+### 🛠️ Bug Fixes
+
+* implement new token structure for fhi-flex ([#467](https://github.com/FHIDev/Fhi.Designsystem/issues/467)) ([de91aae](https://github.com/FHIDev/Fhi.Designsystem/commit/de91aaecc36e01760fa7599008b2bf1ae92e9164))
+
+## [0.41.1](https://github.com/FHIDev/Fhi.Designsystem/compare/v0.41.0...v0.41.1) (2026-07-01)
+
+### 🛠️ Bug Fixes
+
+* implement new token structure for fhi-grid ([#466](https://github.com/FHIDev/Fhi.Designsystem/issues/466)) ([34c9d8c](https://github.com/FHIDev/Fhi.Designsystem/commit/34c9d8c4b1c244345416876edd5c3f679442a4d6))
+
+## [0.41.0](https://github.com/FHIDev/Fhi.Designsystem/compare/v0.40.7...v0.41.0) (2026-07-01)
+
+### 🚀 Features
+
+* New Component - Select ([#434](https://github.com/FHIDev/Fhi.Designsystem/issues/434)) ([9b21779](https://github.com/FHIDev/Fhi.Designsystem/commit/9b2177946a2f84db3193e8207b9b0875ddafb3a9))
+
+## [0.40.7](https://github.com/FHIDev/Fhi.Designsystem/compare/v0.40.6...v0.40.7) (2026-07-01)
+
+### 🛠️ Bug Fixes
+
+* css can now be a fallback is color property is not set ([#472](https://github.com/FHIDev/Fhi.Designsystem/issues/472)) ([9eb6e5e](https://github.com/FHIDev/Fhi.Designsystem/commit/9eb6e5e8f3be4d95118a12e8d75200a9e865f9f5))
+
+## [0.40.6](https://github.com/FHIDev/Fhi.Designsystem/compare/v0.40.5...v0.40.6) (2026-06-30)
+
+### 🛠️ Bug Fixes
+
+* Add correct styling for when fhi-radio is disabled while having the error status ([#460](https://github.com/FHIDev/Fhi.Designsystem/issues/460)) ([3d6b115](https://github.com/FHIDev/Fhi.Designsystem/commit/3d6b11507cd4e4c09960ad60043fb68bac775c77))
+
+## [0.40.5](https://github.com/FHIDev/Fhi.Designsystem/compare/v0.40.4...v0.40.5) (2026-06-30)
+
+### 🛠️ Bug Fixes
+
+* implement new token structure for fhi-radio ([#401](https://github.com/FHIDev/Fhi.Designsystem/issues/401)) ([e727ce0](https://github.com/FHIDev/Fhi.Designsystem/commit/e727ce0d5d281712d15d238450913773c97b1d74))
+
+## [0.40.4](https://github.com/FHIDev/Fhi.Designsystem/compare/v0.40.3...v0.40.4) (2026-06-30)
+
+### 🛠️ Bug Fixes
+
+* Implement new token structure for fhi-checkbox ([#449](https://github.com/FHIDev/Fhi.Designsystem/issues/449)) ([1f510f8](https://github.com/FHIDev/Fhi.Designsystem/commit/1f510f8874029dc8b5d893c90da93d50c559901f))
+
+## [0.40.3](https://github.com/FHIDev/Fhi.Designsystem/compare/v0.40.2...v0.40.3) (2026-06-29)
+
+### 🛠️ Bug Fixes
+
+* implement new token structure for fhi-button ([#448](https://github.com/FHIDev/Fhi.Designsystem/issues/448)) ([d4d41ea](https://github.com/FHIDev/Fhi.Designsystem/commit/d4d41ead3d9df0918059cc751088a676b59c2fc0))
+
+## [0.40.2](https://github.com/FHIDev/Fhi.Designsystem/compare/v0.40.1...v0.40.2) (2026-06-29)
+
+### 🛠️ Bug Fixes
+
+* Reference the font instead of compiling it into default.css ([#437](https://github.com/FHIDev/Fhi.Designsystem/issues/437)) ([cb8faf7](https://github.com/FHIDev/Fhi.Designsystem/commit/cb8faf763918effb169145e7dff3893aa7f892f8))
+
+## [0.40.1](https://github.com/FHIDev/Fhi.Designsystem/compare/v0.40.0...v0.40.1) (2026-06-29)
+
+### 🛠️ Bug Fixes
+
+* Fix path issue for some files in package ([725bf75](https://github.com/FHIDev/Fhi.Designsystem/commit/725bf75bec8517dcbc0652b3a4749f23b3886099))
+
+### Other
+
+* Update dependencies ([#451](https://github.com/FHIDev/Fhi.Designsystem/issues/451)) ([76f0baa](https://github.com/FHIDev/Fhi.Designsystem/commit/76f0baa4be7aa98da3a207d8be03527ddbdcb160))
+
+## [0.40.0](https://github.com/FHIDev/Fhi.Designsystem/compare/v0.39.0...v0.40.0) (2026-06-19)
+
+### 🚀 Features
+
+* Add option for bordered Tag ([#439](https://github.com/FHIDev/Fhi.Designsystem/issues/439)) ([29fdd26](https://github.com/FHIDev/Fhi.Designsystem/commit/29fdd260095b82dcd32b9f3f8b3f9005488acfbc))
+
+## [0.39.0](https://github.com/FHIDev/Fhi.Designsystem/compare/v0.38.5...v0.39.0) (2026-06-18)
+
+### 🚀 Features
+
+* Change default color for typography components to currentcolor ([#442](https://github.com/FHIDev/Fhi.Designsystem/issues/442)) ([00f00da](https://github.com/FHIDev/Fhi.Designsystem/commit/00f00da3cb23937fa0f9581eec0f22444e8af58b))
+
+## [0.38.5](https://github.com/FHIDev/Fhi.Designsystem/compare/v0.38.4...v0.38.5) (2026-05-28)
+
+### 🛠️ Bug Fixes
+
+* Added nowrap to Tag ([#433](https://github.com/FHIDev/Fhi.Designsystem/issues/433)) ([cd006d1](https://github.com/FHIDev/Fhi.Designsystem/commit/cd006d11ff878e6af72e82eb8100a15ee736f3ec))
+
 ## [0.38.4](https://github.com/FHIDev/Fhi.Designsystem/compare/v0.38.3...v0.38.4) (2026-05-27)
 
 ### 🛠️ Bug Fixes

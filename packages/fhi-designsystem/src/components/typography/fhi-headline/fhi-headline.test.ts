@@ -58,11 +58,22 @@ describe('fhi-headline', () => {
       component = await fixture(html`
         <fhi-headline level="2">Test</fhi-headline>
       `);
-      expect(component).shadowDom.to.equal(`
-      <h2 class="headline">
-        <slot></slot>
-      </h2>
-    `);
+
+      const heading = component.shadowRoot?.querySelector('h2');
+
+      expect(heading?.tagName).to.equal('H2');
+    });
+  });
+
+  describe('Inheritance', () => {
+    it('inherits color from parent', async () => {
+      const parent = await fixture(html`
+        <div style="color: red;">
+          <fhi-headline level="1">Test</fhi-headline>
+        </div>
+      `);
+      const headline = parent.querySelector('fhi-headline')!;
+      expect(getComputedStyle(headline).color).to.equal('rgb(255, 0, 0)');
     });
   });
 });

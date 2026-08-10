@@ -1,5 +1,6 @@
-import { html, css, LitElement, PropertyValues } from 'lit';
+import { html, css, LitElement } from 'lit';
 import { customElement, property } from 'lit/decorators.js';
+import { ifDefined } from 'lit/directives/if-defined.js';
 
 export const FhiBodySelector = 'fhi-body';
 
@@ -42,20 +43,12 @@ export class FhiBody extends LitElement {
    */
   @property({ type: String }) color?: string;
 
-  updated(changedProperties: PropertyValues<this>) {
-    super.updated(changedProperties);
-
-    if (changedProperties.has('color')) {
-      this.style.color =
-        typeof this.color === 'string'
-          ? this.color
-          : 'var(--fhi-color-neutral-text-default)';
-    }
-  }
-
   render() {
     return html`
-      <span class="body">
+      <span
+        class="body"
+        style=${ifDefined(this.color ? `color: ${this.color}` : undefined)}
+      >
         <slot></slot>
       </span>
     `;
@@ -63,9 +56,15 @@ export class FhiBody extends LitElement {
 
   static styles = css`
     :host {
+      --fhi-body-color: unset;
+    }
+
+    :host {
+      --fhi-body-color: currentcolor;
+
       display: block;
       contain: layout;
-      color: var(--fhi-color-neutral-text-default);
+      color: var(--fhi-body-color);
       .body {
         font-family: var(--fhi-font-family-default);
         -webkit-font-smoothing: antialiased;

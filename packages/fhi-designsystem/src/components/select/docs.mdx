@@ -1,0 +1,57 @@
+import { FhiSelect } from './fhi-select/fhi-select.component.ts';
+import * as FhiSelectStories from './fhi-select/fhi-select.stories.ts';
+import * as FhiSelectItemStories from './fhi-select-item/fhi-select-item.stories.ts';
+
+import { Meta, Primary, Canvas, Controls } from '@storybook/addon-docs/blocks';
+
+import { ApiDefinition } from '../../../.storybook/blocks/api-definition.jsx';
+
+<Meta of={FhiSelectStories} />
+
+# Select
+Select lar brukere velge fra en liste med alternativer.
+Når man trykker dukker det opp en liste med de forshåndsdefinerte alternativene.
+
+**Obs:** I designet er det satt `letter-spacing` på Select-en. På grunn av enkelte nettlesere er ikke dette implementert i koden ennå. Vi følger utviklingen hos nettleserne det gjelder, og implementerer `letter-spacing` så snart det er mulig.
+
+## Passer til
+
+- Å velge fra en liste større enn det som passer å bruke Radio til
+- Å velge fra en liste som ikke har plass i en gitt kontekst
+
+<Canvas of={FhiSelectStories.Preview} />
+<Controls of={FhiSelectStories.Preview} />
+
+### Status
+#### `error`
+Uttrykker at noe mangler eller er skrevet feil.
+<Canvas of={FhiSelectStories.Error} />
+
+### Form Controls
+#### `disabled`
+Gjør at feltet ikke kan endres, fokuseres eller automatisk inkluderes i FormData. Unngås hvis man kan.
+<Canvas of={FhiSelectStories.Disabled} />
+
+## Eksempler og bruk
+
+Select består av `<fhi-select>` og `<fhi-select-item>`.
+`<fhi-select>` er selve select-elementet, mens `<fhi-select-item>` er de ulike alternativene i listen.
+
+Verdien som blir sendt ved submit er verdien i `value`-attributten på det valgte `<fhi-select-item>`.
+Denne verdien blir satt til tekstinnholdet til `<fhi-select-item>` hvis `value`-attributten ikke er satt.
+
+Du kan sette `value` til å være noe annet enn tekstinnholdet.
+
+<Canvas of={FhiSelectStories.WithValue} />
+
+Bruker du `label`-attributten på `<fhi-select-item>`, vil denne vises i valget, selv om valget har tekstinnhold.
+
+<Canvas of={FhiSelectStories.WithLabel} />
+
+Det finnes tilfeller der det ikke er plass eller behov for Label som en del av selve komponenten, slik som i tabeller eller der Select er en del av en setning.
+I disse tilfellene skal man brukes `aria-label` eller `aria-labelledby` for å gi en beskrivelse av hva Select-en handler om.
+
+<Canvas of={FhiSelectStories.Pagination} />
+
+<ApiDefinition of={FhiSelectStories.Preview} />
+<ApiDefinition of={FhiSelectItemStories.Preview} />
