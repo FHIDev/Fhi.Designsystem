@@ -65,6 +65,9 @@ export class FhiButton extends LitElement {
   @property({ type: Boolean, reflect: true }) disabled?: boolean = false;
 
   /**
+   *
+   * @deprecated This property is deprecated and will be removed in a future release...
+   *
    * Styles the button for icon-only content.
    *
    * If you only have an icon as the child of the button, then you should set this property to `true`.

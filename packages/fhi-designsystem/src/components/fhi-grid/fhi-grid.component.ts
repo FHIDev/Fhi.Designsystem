@@ -15,6 +15,8 @@ type FhiGapWidthUnit = `${number}${FhiUnitType}` | number;
  *
  * @tag fhi-grid
  * @element fhi-grid
+ *
+ * @slot - The grid items.
  */
 @customElement(FhiGridSelector)
 export class FhiGrid extends LitElement {

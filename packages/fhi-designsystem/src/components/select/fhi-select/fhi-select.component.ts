@@ -29,19 +29,16 @@ export const FhiSelectSelector = 'fhi-select';
  */
 @customElement(FhiSelectSelector)
 export class FhiSelect extends LitElement {
-  /** @internal */
   static readonly formAssociated = true;
 
   /**
    * The name attribute of the select element. This property is used to identify the select element when submitting a form.
-   * @type {string}
    */
   @property({ type: String, reflect: true })
   name: string = '';
 
   /**
    * The label attribute of the select element. This property is used to provide a descriptive label for the select element.
-   * @type {string}
    */
   @property({ type: String })
   label: string = '';
@@ -49,35 +46,30 @@ export class FhiSelect extends LitElement {
   /**
    * The message shown above the Select.
    * This is often used to provide additional information to the user.
-   * @type {string}
    */
   @property({ type: String, attribute: 'help-text' })
   helpText?: string;
 
   /**
    * The value attribute of the select element. This property is used to identify the selected option when submitting a form.
-   * @type {string}
    */
   @property({ type: String, reflect: true })
   value: string = '';
 
   /**
    * The disabled attribute of the select element. This property is used to disable the select element.
-   * @type {boolean}
    */
   @property({ type: Boolean, reflect: true })
   disabled: boolean = false;
 
   /**
    * The status attribute of the select element. This property is used to indicate the validation status of the select element.
-   * @type {'error' | undefined}
    */
   @property({ type: String, reflect: true })
   status?: 'error';
 
   /**
    * The message attribute of the select element. This property is used to provide a validation message for the select element.
-   * @type {string}
    */
   @property({ type: String })
   message?: string;
@@ -132,7 +124,7 @@ export class FhiSelect extends LitElement {
 
   private _dispatchChangeEvent(): void {
     /**
-     * @type {Event} - Standard DOM event with the type `change`.
+     * Standard DOM event with the type `change`.
      * This event is dispatched when the chosen option of the select changes.
      */
     this.dispatchEvent(
@@ -144,7 +136,7 @@ export class FhiSelect extends LitElement {
 
   private _dispatchInputEvent(): void {
     /**
-     * @type {Event} - Standard DOM event with the type `input`.
+     * Standard DOM event with the type `input`.
      * This event is dispatched when the chosen option of the select changes.
      */
     this.dispatchEvent(

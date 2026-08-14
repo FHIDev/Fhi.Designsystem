@@ -14,6 +14,9 @@ export const FhiTextInputSelector = 'fhi-text-input';
  *
  * @tag fhi-text-input
  * @element fhi-text-input
+ *
+ * @slot start - An FHI icon displayed at the start of the input field.
+ * @slot end - An FHI icon displayed at the end of the input field.
  */
 @customElement(FhiTextInputSelector)
 export class FhiTextInput extends LitElement {
