@@ -25,6 +25,7 @@ const generateFormAccessor = (
     case 'fhi-date-input':
     case 'fhi-checkbox':
     case 'fhi-radio':
+    case 'fhi-select':
       valueLocation = 'value';
       break;
     case 'fhi-button':
