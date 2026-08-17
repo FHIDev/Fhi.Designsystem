@@ -90,10 +90,19 @@ export class FhiSelect extends LitElement {
 
   private _internals: ElementInternals;
   private _initialSelectedElement: HTMLOptionElement | null = null;
+  private _mutationObserver: MutationObserver | null = null;
 
   constructor() {
     super();
     this._internals = this.attachInternals();
+    this._mutationObserver = new MutationObserver(() =>
+      this._handleSlotChange(),
+    );
+  }
+
+  public disconnectedCallback() {
+    super.disconnectedCallback();
+    this._mutationObserver?.disconnect();
   }
 
   public updated(changedProperties: Map<string, unknown>) {
@@ -167,9 +176,9 @@ export class FhiSelect extends LitElement {
     const options = html`
       ${items.map(item => {
         return html`<option
-          value="${item.getAttribute('value') ?? item.textContent}"
-          label="${item.getAttribute('label') ?? ''}"
-          ?selected="${item.hasAttribute('selected')}"
+          value="${item.value ?? item.textContent}"
+          label="${item.label ?? item.value ?? item.textContent ?? ''}"
+          ?selected="${item.selected}"
         >
           ${item.textContent}
         </option>`;
@@ -180,12 +189,24 @@ export class FhiSelect extends LitElement {
   }
 
   private _handleSlotChange() {
+    this._observeItems();
     this.requestUpdate();
 
     this.updateComplete.then(() => {
       this.value = this.selectElement.value;
       this._internals.setFormValue(this.value);
     });
+  }
+
+  private _observeItems() {
+    this._mutationObserver?.disconnect();
+
+    for (const item of this.slotElements) {
+      this._mutationObserver?.observe(item, {
+        attributes: true,
+        attributeFilter: ['selected', 'value', 'label'],
+      });
+    }
   }
 
   render() {
