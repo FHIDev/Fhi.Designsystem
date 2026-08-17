@@ -298,6 +298,7 @@ export class FhiModalDialog extends LitElement {
           gap: var(--fhi-spacing-050);
           padding: var(--fhi-spacing-500) var(--fhi-spacing-500) 0
             var(--fhi-spacing-500);
+          color: var(--fhi-color-neutral-text-default);
         }
         slot[name='body'] {
           display: block;
