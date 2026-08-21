@@ -175,10 +175,12 @@ export class FhiSelect extends LitElement {
 
     const options = html`
       ${items.map(item => {
+        const optionValue = item.value ?? item.textContent?.trim() ?? '';
+
         return html`<option
-          value="${item.value ?? item.textContent}"
-          label="${item.label ?? item.value ?? item.textContent ?? ''}"
-          ?selected="${item.selected}"
+          value="${optionValue}"
+          label="${item.label ?? optionValue ?? ''}"
+          ?selected="${this.value ? optionValue === this.value : item.selected}"
         >
           ${item.textContent}
         </option>`;
