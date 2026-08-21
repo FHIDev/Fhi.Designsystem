@@ -163,9 +163,9 @@ export class FhiTextArea extends LitElement {
         ><fhi-label size="small">${this.label}</fhi-label></label
       > `}
       ${this.helpText
-        ? html`<p class="help-text">
-            <fhi-body size="small">${this.helpText}</fhi-body>
-          </p>`
+        ? html`
+            <fhi-body class="help-text" size="small">${this.helpText}</fhi-body>
+          `
         : ''}
       <textarea
         id="textarea-element"
@@ -178,9 +178,9 @@ export class FhiTextArea extends LitElement {
         @change=${this.handleChange}
       ></textarea>
       ${this.message
-        ? html`<p class="message">
-            <fhi-body size="small">${this.message}</fhi-body>
-          </p>`
+        ? html`
+            <fhi-body size="small" class="message">${this.message}</fhi-body>
+          `
         : ''}
     `;
   }
