@@ -14,6 +14,7 @@ const preview: Preview = {
     },
     options: {
       storySort: {
+        method: 'alphabetical',
         order: [
           'Oversikt',
           'Kom i gang',
@@ -21,7 +22,6 @@ const preview: Preview = {
           'Komponenter',
           [
             '*',
-            'Typography',
             ['Docs', 'Body', 'Label', 'Display', 'Headline', 'Title'],
           ],
           'Design Tokens',
