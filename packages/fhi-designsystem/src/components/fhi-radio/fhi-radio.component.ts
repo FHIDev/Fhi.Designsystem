@@ -64,8 +64,8 @@ export class FhiRadio extends LitElement {
   @property({ type: String }) value: string = 'on';
 
   /**
-   * The message shown below the label.
-   * This is often used to provide additional information to the user.
+   * The help text shown below the label.
+   * This is used to provide additional information or descriptions to the user.
    * @type {string}
    */
   @property({ type: String, attribute: 'help-text' }) helpText?: string;

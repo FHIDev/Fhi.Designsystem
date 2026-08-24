@@ -84,7 +84,7 @@ const meta: FhiStorybookMeta<FhiRadio> = {
       name: 'help-text',
       control: { type: 'text' },
       description:
-        'Melding som vises under radiofeltet. Brukes ofte for å gi tilleggsinformasjon til brukeren.',
+        'Melding som vises under radiofeltet. Kan brukes for å gi tilleggsinformasjon til brukeren.',
     },
   },
 };
@@ -95,7 +95,6 @@ export const Preview: Story = {
   tags: ['!dev'],
   args: {
     label: 'Label',
-    helpText: 'Dette er en melding som vises under radiofeltet.',
   },
 };
 
@@ -109,8 +108,8 @@ export const Default: Story = {
 export const HelpText: Story = {
   tags: [],
   args: {
-    label: 'Label',
-    helpText: 'Dette er en melding som vises under radiofeltet.',
+    label: 'Ekstern koblingsnøkkel',
+    helpText: 'Nøkkelen skal importeres',
   },
 };
 

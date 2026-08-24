@@ -42,8 +42,8 @@ export class FhiCheckbox extends LitElement {
   @property({ type: String }) value: string = 'on';
 
   /**
-   * The message shown below the label.
-   * This is often used to provide additional information to the user.
+   * The help text shown below the label.
+   * This is used to provide additional information or descriptions to the user.
    * @type {string}
    */
   @property({ type: String, attribute: 'help-text' }) helpText?: string;
@@ -197,7 +197,7 @@ export class FhiCheckbox extends LitElement {
       }
 
       input[type='checkbox'] {
-        margin: 3px 0 3px 3px;
+        margin: 3px;
         appearance: none;
         width: 1.125rem;
         height: 1.125rem;

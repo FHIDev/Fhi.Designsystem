@@ -54,7 +54,7 @@ const meta: FhiStorybookMeta<FhiCheckbox> = {
       name: 'help-text',
       control: { type: 'text' },
       description:
-        'Melding som vises under avkrysningsboksen. Brukes ofte for å gi tilleggsinformasjon eller tilbakemelding til brukeren.',
+        'Melding som vises under avkrysningsboksen. Kan brukes for å gi tilleggsinformasjon eller tilbakemelding til brukeren.',
     },
     value: {
       control: { type: 'text' },
@@ -88,7 +88,6 @@ export const Preview: Story = {
   tags: ['!dev'],
   args: {
     label: 'Checkbox',
-    helpText: 'Dette er en melding som vises under avkrysningsboksen.',
   },
 };
 
@@ -103,9 +102,9 @@ export const Label: Story = {
 export const HelpText: Story = {
   tags: [],
   args: {
-    label: 'Hjemmehjelp',
-    name: 'home-help',
-    helpText: 'Om du har behov for hjemmehjelp, kryss av her.',
+    label: 'Databehandler',
+    name: 'access-role',
+    helpText: 'Kan lese og redigere data og søknader',
   },
 };
 
