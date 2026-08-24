@@ -319,7 +319,7 @@ export class FhiRadio extends LitElement {
       }
 
       .text-wrapper * {
-        padding-left: calc(var(--fhi-spacing-100) - 1px);
+        padding-left: var(--fhi-spacing-050);
       }
 
       label {
