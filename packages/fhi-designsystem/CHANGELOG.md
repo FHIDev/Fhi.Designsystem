@@ -1,5 +1,15 @@
 # Changelog
 
+## [0.43.2](https://github.com/FHIDev/Fhi.Designsystem/compare/v0.43.1...v0.43.2) (2026-08-24)
+
+### 🛠️ Bug Fixes
+
+* Make sure the user can programatically change the selected attribute after first render ([#492](https://github.com/FHIDev/Fhi.Designsystem/issues/492)) ([df26ab7](https://github.com/FHIDev/Fhi.Designsystem/commit/df26ab759327ba60f3043cacc30ba83810122052))
+
+### 📑 Documentation
+
+* 483 rewrite and expand color tokens documentation ([#485](https://github.com/FHIDev/Fhi.Designsystem/issues/485)) ([3468230](https://github.com/FHIDev/Fhi.Designsystem/commit/34682303c12800abf337694a08338b4004460e30))
+
 ## [0.43.1](https://github.com/FHIDev/Fhi.Designsystem/compare/v0.43.0...v0.43.1) (2026-08-05)
 
 ### 🛠️ Bug Fixes
