@@ -227,7 +227,7 @@ export class FhiTextArea extends LitElement {
         margin: 0 0 var(--fhi-spacing-050) 0;
       }
 
-      label:has(+ p) {
+      label:has(+ .help-text) {
         margin: 0 0 0 0;
       }
 
