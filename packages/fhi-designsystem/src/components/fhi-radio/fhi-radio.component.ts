@@ -374,7 +374,6 @@ export class FhiRadio extends LitElement {
       }
 
       .help-text {
-        margin: var(--fhi-spacing-050) 0 0 0;
         color: var(--fhi-color-neutral-text-subtle);
       }
     }

@@ -184,7 +184,7 @@ export class FhiCheckbox extends LitElement {
       }
 
       .text-wrapper * {
-        padding-left: calc(var(--fhi-spacing-100) - 1px);
+        padding-left: var(--fhi-spacing-050);
       }
 
       label {
@@ -253,7 +253,6 @@ export class FhiCheckbox extends LitElement {
       }
 
       .help-text {
-        margin: var(--fhi-spacing-050) 0 0 0;
         color: var(--fhi-color-neutral-text-subtle);
       }
     }
