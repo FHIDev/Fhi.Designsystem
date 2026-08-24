@@ -90,7 +90,7 @@ const meta: FhiStorybookMeta<FhiSelect> = {
     value: {
       control: 'text',
       description:
-        'Verdien til select-elementet. Dette er verdien som sendes med i FormData når select-elementet er en del av et form-element. Denne settes typisk av select-elementet selv når brukeren velger et alternativ, men kan også settes programmatisk.',
+        'Verdien til select-elementet, som sendes med i FormData når den er en del av et form-element. Denne settes typisk av select-elementet selv når brukeren velger et alternativ, men kan også settes programmatisk.',
     },
   },
 };
@@ -218,7 +218,7 @@ export const WithItemSelected: Story = {
     </fhi-select>
   `,
   args: {
-    name: 'my-pagination-select',
+    name: 'my-location-select',
     label: 'Lokasjon',
   },
 };
@@ -240,7 +240,7 @@ export const WithValue: Story = {
     </fhi-select>
   `,
   args: {
-    name: 'my-pagination-select',
+    name: 'my-location-select',
     label: 'Lokasjon',
     value: 'Bergen',
   },
