@@ -1,5 +1,15 @@
 # Changelog
 
+## [0.43.3](https://github.com/FHIDev/Fhi.Designsystem/compare/v0.43.2...v0.43.3) (2026-08-25)
+
+### 🛠️ Bug Fixes
+
+* Forhåndsvalgt value på fhi-select vises ikke korrekt når value og fhi-select-item barna settes på initial render ([#495](https://github.com/FHIDev/Fhi.Designsystem/issues/495)) ([598b7a0](https://github.com/FHIDev/Fhi.Designsystem/commit/598b7a00a6ae0fc41067f432f6084bf992d3ab15))
+
+### 📑 Documentation
+
+* Sort components alphabetically in Storybook ([#496](https://github.com/FHIDev/Fhi.Designsystem/issues/496)) ([d2aa409](https://github.com/FHIDev/Fhi.Designsystem/commit/d2aa4090a15c8d2a34e436255608bad5b7554c45))
+
 ## [0.43.2](https://github.com/FHIDev/Fhi.Designsystem/compare/v0.43.1...v0.43.2) (2026-08-24)
 
 ### 🛠️ Bug Fixes
