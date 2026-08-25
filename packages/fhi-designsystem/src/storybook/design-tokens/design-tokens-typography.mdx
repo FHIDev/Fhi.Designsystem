@@ -1,0 +1,94 @@
+import { Meta } from '@storybook/addon-docs/blocks';
+import { DesignTokenDocBlock } from 'storybook-design-token';
+import '../../theme/default.css';
+
+import '../../components/fhi-callout/fhi-callout.component.ts';
+import '../../components/fhi-link/fhi-link.component.ts';
+import '../../components/icons/fhi-icon-circle-info.component.ts';
+import '../../components/icons/fhi-icon-triangle-alert.component.ts';
+
+<Meta title="Design Tokens/Typografi" />
+
+# Typografi
+Typografi skaper hierarki, organiserer innhold og loser brukeren  gjennom innholdet. Vi leverer et sett komponenter med tekstiler for ulike bruksområder, samt Design Tokens med definerte skalaer og valg for skrittftype, størrelse, vekt, linjehøyde og mer.
+
+## Komponenter
+
+Tekststilene våre leveres som egne typografikomponenter. Dette sikrer konsekvent visuell stil og riktig bruk av Tokens.
+
+[Boks med eksempler på typografikomponentene våre:
+
+- Display for store, iøynefallende overskrifter
+- Headline for overskrifter
+- Title for mindre titler og underoverskrifter
+- Body for brødtekst, avsnitt og beskrivelser
+- Label for knapper, handlinger, navn på felt og lignende
+
+]
+
+[Les om og bruk typografikomponentene](https://designsystem.fhi.no/?path=/docs/komponenter-typography--docs)
+
+<fhi-callout color="neutral">
+    <fhi-icon-circle-info slot="icon"></fhi-icon-circle-info>
+    <span>I Figma er tekststilene tilgjengelig som Text Styles</span>
+</fhi-callout>
+
+## Design Tokens
+
+Som hovedregel bruker vi typografikomponenter i løsningene våre. Design Tokens er en supplerende ressurs og brukes i hovedsak kun direkte når komponenter ikke kan brukes.
+
+### Font Family
+
+Vi tar kun i bruk én skrifttype gjennomgående i løsningene våre. Denne kan du hente inn med følgende Token:
+
+<DesignTokenDocBlock
+    categoryName="FontFamily"
+    viewType="card"
+    showSearch={false}
+    showValueColumn={false}
+/>
+
+Pakkene våre inkluderer de nødvendige font-filene og tas i bruk på komponentene våre. Du trenger ikke å gjøre noe mer utover dette for å ta den i bruk. Design Token-et har også definerte backupfonter, hvis noe uforutsett skjer når filene lastes inn.
+
+<fhi-callout color="warning">
+    <fhi-icon-triangle-alert slot="icon"></fhi-icon-triangle-alert>
+    <span>Fonten er kun ment for interne løsninger hos FHI. Rådgi deg med <fhi-link href="https://www.fhi.no/om/fhi/visuell-profil/innhold/fonter/">FHIs Visuell profil</fhi-link> hvis du utvikler en allment åpen løsning</span>
+</fhi-callout>
+
+### Font Size
+
+«Rampen» vår med definerte størrelser har jevn rytme mellom stegene:
+
+<DesignTokenDocBlock
+    categoryName="PrimitiveFontSize"
+    viewType="card"
+    showSearch={false}
+    showValueColumn={false}
+/>
+
+Skriftstørrelsene er regnet ut med [Precise Type](https://precise-type.com/metric-scale.html) med en *Metric Scale*-utregning. Variabler brukt: Base Size: 14px; Letter Spacing 1%; Module Size 4 steps; Step unit 2px; Line Grid 4px; Line Height 20px.
+
+### Font Weight
+
+<DesignTokenDocBlock
+    categoryName="FontWeight"
+    viewType="card"
+    showSearch={false}
+    showValueColumn={false}
+/>
+
+### Tekststiler
+
+Typografikomponentene har hver sitt sett Design Tokens for størrelse, linjehøyde, vekt og tegnavstand. I tillegg har de også enkelte andre CSS-egenskaper – for bedre lesbarhet eller konsekvent gjengivelse på tvers av nettlesere og operativsystem – som du selv må sette der komponenter ikke brukes.
+
+<DesignTokenDocBlock
+    categoryName="TextStyles"
+    viewType="table"
+    showValueColumn={false}
+/>
+
+<style>{`
+    .css-3ng40s td:nth-of-type(2), .css-3ng40s th:nth-of-type(2) {
+        display: none;
+        }
+`}</style>
