@@ -20,10 +20,7 @@ const preview: Preview = {
           'Kom i gang',
           'KI-verktøy',
           'Komponenter',
-          [
-            '*',
-            ['Docs', 'Body', 'Label', 'Display', 'Headline', 'Title'],
-          ],
+          ['*', ['Docs', 'Body', 'Label', 'Display', 'Headline', 'Title']],
           'Design Tokens',
           ['Introduksjon'],
           'Ofte stilte spørsmål',

@@ -179,7 +179,7 @@ export class FhiSelect extends LitElement {
 
         return html`<option
           value="${optionValue}"
-          label="${item.label ?? optionValue ?? ''}"
+          label="${item.label ?? item.textContent?.trim() ?? null}"
           ?selected="${this.value ? optionValue === this.value : item.selected}"
         >
           ${item.textContent}
