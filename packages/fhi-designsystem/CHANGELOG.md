@@ -1,5 +1,25 @@
 # Changelog
 
+## [0.43.3](https://github.com/FHIDev/Fhi.Designsystem/compare/v0.43.2...v0.43.3) (2026-08-25)
+
+### 🛠️ Bug Fixes
+
+* Forhåndsvalgt value på fhi-select vises ikke korrekt når value og fhi-select-item barna settes på initial render ([#495](https://github.com/FHIDev/Fhi.Designsystem/issues/495)) ([598b7a0](https://github.com/FHIDev/Fhi.Designsystem/commit/598b7a00a6ae0fc41067f432f6084bf992d3ab15))
+
+### 📑 Documentation
+
+* Sort components alphabetically in Storybook ([#496](https://github.com/FHIDev/Fhi.Designsystem/issues/496)) ([d2aa409](https://github.com/FHIDev/Fhi.Designsystem/commit/d2aa4090a15c8d2a34e436255608bad5b7554c45))
+
+## [0.43.2](https://github.com/FHIDev/Fhi.Designsystem/compare/v0.43.1...v0.43.2) (2026-08-24)
+
+### 🛠️ Bug Fixes
+
+* Make sure the user can programatically change the selected attribute after first render ([#492](https://github.com/FHIDev/Fhi.Designsystem/issues/492)) ([df26ab7](https://github.com/FHIDev/Fhi.Designsystem/commit/df26ab759327ba60f3043cacc30ba83810122052))
+
+### 📑 Documentation
+
+* 483 rewrite and expand color tokens documentation ([#485](https://github.com/FHIDev/Fhi.Designsystem/issues/485)) ([3468230](https://github.com/FHIDev/Fhi.Designsystem/commit/34682303c12800abf337694a08338b4004460e30))
+
 ## [0.43.1](https://github.com/FHIDev/Fhi.Designsystem/compare/v0.43.0...v0.43.1) (2026-08-05)
 
 ### 🛠️ Bug Fixes

@@ -48,6 +48,7 @@ const meta: FhiStorybookMeta<FhiSelect> = {
       message=${ifDefined(args.message)}
       help-text=${ifDefined(args.helpText)}
       ?disabled=${args.disabled}
+      value=${ifDefined(args.value)}
     >
       <fhi-select-item>Velg alternativ</fhi-select-item>
       <fhi-select-item>Norge</fhi-select-item>
@@ -86,6 +87,11 @@ const meta: FhiStorybookMeta<FhiSelect> = {
       description:
         'Vises under select-elementet. Brukes til å gi veiledning til brukeren. Brukes blant annet ved Error for å forklare hva som mangler eller må justeres.',
     },
+    value: {
+      control: 'text',
+      description:
+        'Verdien til select-elementet, som sendes med i FormData når den er en del av et form-element. Denne settes typisk av select-elementet selv når brukeren velger et alternativ, men kan også settes programmatisk.',
+    },
   },
 };
 
@@ -121,7 +127,7 @@ export const Disabled: Story = {
   },
 };
 
-export const WithValue: Story = {
+export const WithItemValue: Story = {
   tags: ['!dev'],
   render: args =>
     html`<fhi-select
@@ -193,6 +199,50 @@ export const Pagination: Story = {
   `,
   args: {
     name: 'my-pagination-select',
+  },
+};
+
+export const WithItemSelected: Story = {
+  tags: ['!dev'],
+  render: args => html`
+    <fhi-select
+      name=${args.name}
+      label=${ifDefined(args.label)}
+      ?disabled=${args.disabled}
+      status=${ifDefined(args.status)}
+      message=${ifDefined(args.message)}
+    >
+      <fhi-select-item>Oslo</fhi-select-item>
+      <fhi-select-item selected>Bergen</fhi-select-item>
+      <fhi-select-item>Trondheim</fhi-select-item>
+    </fhi-select>
+  `,
+  args: {
+    name: 'my-location-select',
+    label: 'Lokasjon',
+  },
+};
+
+export const WithValue: Story = {
+  tags: ['!dev'],
+  render: args => html`
+    <fhi-select
+      name=${args.name}
+      label=${ifDefined(args.label)}
+      ?disabled=${args.disabled}
+      status=${ifDefined(args.status)}
+      message=${ifDefined(args.message)}
+      value=${ifDefined(args.value)}
+    >
+      <fhi-select-item>Oslo</fhi-select-item>
+      <fhi-select-item>Bergen</fhi-select-item>
+      <fhi-select-item>Trondheim</fhi-select-item>
+    </fhi-select>
+  `,
+  args: {
+    name: 'my-location-select',
+    label: 'Lokasjon',
+    value: 'Bergen',
   },
 };
 
