@@ -174,6 +174,7 @@ export class FhiCheckbox extends LitElement {
         border-radius: var(--fhi-border-radius-050);
         transition: var(--fhi-motion-ease-default)
           var(--fhi-motion-duration-quick);
+        outline-color: var(--fhi-color-accent-surface-hover);
 
         &:hover {
           background-color: var(--fhi-color-accent-background-subtle);
@@ -253,6 +254,7 @@ export class FhiCheckbox extends LitElement {
       input[type='checkbox'] {
         background-color: var(--fhi-color-danger-background-default);
         border-color: var(--fhi-color-danger-border-default);
+        outline-color: var(--fhi-color-danger-surface-hover);
 
         &:hover {
           background-color: var(--fhi-color-danger-background-subtle);
@@ -261,7 +263,6 @@ export class FhiCheckbox extends LitElement {
 
         &:active {
           background-color: var(--fhi-color-danger-surface-default);
-          outline: solid 5px var(--fhi-color-danger-surface-hover);
           border-color: var(--fhi-color-danger-border-strong);
         }
 
