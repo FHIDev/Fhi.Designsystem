@@ -269,12 +269,11 @@ export class FhiRadio extends LitElement {
 
   render() {
     return html`
-      <label class="radio-wrapper" role="presentation">
+      <label class="radio-wrapper">
         <div class="radio-container">
           <input
             type="radio"
             id="input-element"
-            aria-describedby="help-text"
             name="${ifDefined(this.name)}"
             value="${this.value}"
             ?checked=${this.checked}
@@ -294,7 +293,7 @@ export class FhiRadio extends LitElement {
           ${this.label &&
           html`<label for="input-element">${this.label}</label>`}
           ${this.helpText
-            ? html`<fhi-body id="help-text" size="small" class="help-text"
+            ? html`<fhi-body size="small" class="help-text"
                 >${this.helpText}</fhi-body
               >`
             : ''}

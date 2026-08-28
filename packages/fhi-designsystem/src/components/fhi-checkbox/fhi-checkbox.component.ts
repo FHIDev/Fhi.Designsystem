@@ -131,7 +131,7 @@ export class FhiCheckbox extends LitElement {
 
   render() {
     return html`
-      <label class="checkbox-wrapper" role="presentation">
+      <label class="checkbox-wrapper">
         <input
           type="checkbox"
           id="checkbox-element"
@@ -141,7 +141,6 @@ export class FhiCheckbox extends LitElement {
           ?checked=${this.checked}
           @change=${this._handleChange}
           @input=${this._handleInput}
-          aria-describedby="help-text"
         />
         <svg
           class="checkmark"
@@ -158,7 +157,7 @@ export class FhiCheckbox extends LitElement {
           ${this.label &&
           html`<label for="checkbox-element">${this.label}</label>`}
           ${this.helpText
-            ? html`<fhi-body id="help-text" size="small" class="help-text"
+            ? html`<fhi-body size="small" class="help-text"
                 >${this.helpText}</fhi-body
               >`
             : ''}
