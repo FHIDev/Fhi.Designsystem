@@ -141,6 +141,7 @@ export class FhiCheckbox extends LitElement {
           ?checked=${this.checked}
           @change=${this._handleChange}
           @input=${this._handleInput}
+          aria-describedby="help-text"
         />
         <svg
           class="checkmark"
@@ -157,7 +158,7 @@ export class FhiCheckbox extends LitElement {
           ${this.label &&
           html`<label for="checkbox-element">${this.label}</label>`}
           ${this.helpText
-            ? html`<fhi-body size="small" class="help-text"
+            ? html`<fhi-body id="help-text" size="small" class="help-text"
                 >${this.helpText}</fhi-body
               >`
             : ''}
