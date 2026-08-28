@@ -314,8 +314,11 @@ export class FhiRadio extends LitElement {
         border: var(--fhi-dimension-border-width) solid
           var(--fhi-color-neutral-border-default);
         border-radius: var(--fhi-border-radius-full);
-        transition: border-color var(--fhi-motion-ease-default)
+        transition: all var(--fhi-motion-ease-default)
           var(--fhi-motion-duration-quick);
+        &:not(:focus-visible) {
+          outline-color: var(--fhi-color-accent-surface-hover);
+        }
       }
 
       .radio-dot {
@@ -368,6 +371,9 @@ export class FhiRadio extends LitElement {
         input {
           border-color: var(--fhi-color-danger-border-default);
           background-color: var(--fhi-color-danger-background-default);
+          &:not(:focus-visible) {
+            outline-color: var(--fhi-color-danger-surface-hover);
+          }
         }
 
         input:checked {
