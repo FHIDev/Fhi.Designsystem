@@ -131,7 +131,7 @@ export class FhiCheckbox extends LitElement {
 
   render() {
     return html`
-      <div class="checkbox-wrapper">
+      <label class="checkbox-wrapper" role="presentation">
         <input
           type="checkbox"
           id="checkbox-element"
@@ -162,7 +162,7 @@ export class FhiCheckbox extends LitElement {
               >`
             : ''}
         </div>
-      </div>
+      </label>
     `;
   }
 
