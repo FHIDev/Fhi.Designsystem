@@ -1,5 +1,5 @@
 import { html, css, LitElement } from 'lit';
-import { customElement, property } from 'lit/decorators.js';
+import { customElement, property, query } from 'lit/decorators.js';
 import { ifDefined } from 'lit/directives/if-defined.js';
 import '../typography/fhi-body/fhi-body.component';
 import '../typography/fhi-label/fhi-label.component';
@@ -80,6 +80,9 @@ export class FhiTextArea extends LitElement {
    */
   @property({ type: Number }) rows? = 2;
 
+  @query('#textarea-element')
+  private _textarea!: HTMLTextAreaElement;
+
   private _name?: string = undefined;
 
   /**
@@ -146,9 +149,30 @@ export class FhiTextArea extends LitElement {
     );
   }
 
+  private _dispatchInputEvent(): void {
+    /**
+     * @type {Event} - Standard DOM event with the type `input`.
+     * This event is dispatched when the value of the input changes.
+     */
+    this.dispatchEvent(
+      new Event('input', {
+        bubbles: true,
+        composed: true,
+      }),
+    );
+  }
+
   private handleChange(event: Event): void {
     event.stopPropagation();
     this._dispatchChangeEvent();
+  }
+
+  private handleInput(event: Event): void {
+    this.value = this._textarea.value;
+    this._internals.setFormValue(this.value);
+
+    event.stopPropagation();
+    this._dispatchInputEvent();
   }
 
   public formResetCallback(): void {
@@ -176,6 +200,7 @@ export class FhiTextArea extends LitElement {
         ?disabled=${this.disabled}
         rows=${ifDefined(this.rows)}
         @change=${this.handleChange}
+        @input=${this.handleInput}
       ></textarea>
       ${this.message
         ? html`
