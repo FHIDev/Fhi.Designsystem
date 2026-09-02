@@ -1,5 +1,15 @@
 # Changelog
 
+## [0.43.4](https://github.com/FHIDev/Fhi.Designsystem/compare/v0.43.3...v0.43.4) (2026-09-02)
+
+### 🛠️ Bug Fixes
+
+* Endret fra section til div ([#501](https://github.com/FHIDev/Fhi.Designsystem/issues/501)) ([79281af](https://github.com/FHIDev/Fhi.Designsystem/commit/79281af5985a04dbf6de0dd573c17772d7ad9ab5))
+
+### 📑 Documentation
+
+* 497 update typography token documentation ([#498](https://github.com/FHIDev/Fhi.Designsystem/issues/498)) ([7198701](https://github.com/FHIDev/Fhi.Designsystem/commit/7198701051a6008f2aacf43ab96a950b9e8d78ac))
+
 ## [0.43.3](https://github.com/FHIDev/Fhi.Designsystem/compare/v0.43.2...v0.43.3) (2026-08-25)
 
 ### 🛠️ Bug Fixes
