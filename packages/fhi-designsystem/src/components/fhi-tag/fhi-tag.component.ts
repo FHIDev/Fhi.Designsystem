@@ -14,7 +14,8 @@ export const FhiTagSelector = 'fhi-tag';
  * @tag fhi-tag
  * @element fhi-tag
  *
- * @slot - The content of the tag. This should be pure text with, or without, an icon.
+ * @slot icon - Optional icon to be displayed in the tag.
+ * @slot - The content of the tag. This should be pure text.
  */
 @customElement(FhiTagSelector)
 export class FhiTag extends LitElement {
@@ -58,6 +59,35 @@ export class FhiTag extends LitElement {
       firstNode.nodeType === Node.ELEMENT_NODE &&
       (firstNode as Element).tagName.toLowerCase().startsWith('fhi-icon')
     ) {
+      console.warn(
+        "Icon have been moved to the 'icon' slot. The current usage is deprecated and will no longer be supported in a future release.",
+      );
+      const icon = firstNode as HTMLElement;
+
+      icon.setAttribute('size', '1rem');
+      icon.style.marginLeft = 'calc(-1 * var(--fhi-spacing-050))';
+    }
+  }
+
+  private _handleSlotChangeIcon(event: Event): void {
+    const nodes = (event.target as HTMLSlotElement).assignedNodes();
+
+    const validNodes = nodes.filter(
+      node =>
+        node.nodeType === Node.ELEMENT_NODE ||
+        (node.nodeType === Node.TEXT_NODE && node.textContent?.trim()),
+    );
+
+    if (validNodes.length === 0) {
+      return;
+    }
+
+    const firstNode: Node = validNodes[0];
+
+    if (
+      firstNode.nodeType === Node.ELEMENT_NODE &&
+      (firstNode as Element).tagName.toLowerCase().startsWith('fhi-icon')
+    ) {
       const icon = firstNode as HTMLElement;
 
       icon.setAttribute('size', '1rem');
@@ -67,6 +97,7 @@ export class FhiTag extends LitElement {
 
   render() {
     return html`
+      <slot name="icon" @slotchange=${this._handleSlotChangeIcon}></slot>
       <fhi-body size="small">
         <slot
           class="slot-container"
@@ -97,13 +128,20 @@ export class FhiTag extends LitElement {
       .slot-container {
         display: flex;
         align-items: center;
-
-        gap: var(--fhi-spacing-050);
       }
 
       & fhi-body {
         color: inherit;
         text-wrap: nowrap;
+      }
+
+      slot[name='icon'] {
+        justify-content: center;
+        align-self: stretch;
+      }
+
+      ::slotted([slot='icon']) {
+        margin-inline-end: var(--fhi-spacing-050);
       }
     }
 

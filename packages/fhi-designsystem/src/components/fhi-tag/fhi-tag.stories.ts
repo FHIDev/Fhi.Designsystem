@@ -20,7 +20,20 @@ new FhiIconClock();
 const meta: FhiStorybookMeta<FhiTag> = {
   title: 'Komponenter/Tag',
   component: 'fhi-tag',
-  parameters: {},
+  parameters: {
+    eventTypes: [],
+    methodTypes: [],
+    slotTypes: [
+      {
+        description:
+          'Hovedinnholdet i tag-en. Dette er beskjeden eller statusen som skal kommuniseres til brukeren.',
+      },
+      {
+        name: 'icon',
+        description: 'Valgfritt ikon som skal vises i tag-en.',
+      },
+    ],
+  },
   decorators: [],
   render: args =>
     html`<fhi-tag
@@ -56,14 +69,15 @@ export const Icon: Story = {
   render: () =>
     html`<fhi-flex direction="row" gap="small" wrap>
       <fhi-tag color="neutral"
-        ><fhi-icon-download></fhi-icon-download>Fra Folkeregisteret</fhi-tag
+        ><fhi-icon-download slot="icon"></fhi-icon-download>Fra
+        Folkeregisteret</fhi-tag
       >
       <fhi-tag color="accent"
-        ><fhi-icon-refresh></fhi-icon-refresh>Pågår</fhi-tag
+        ><fhi-icon-refresh slot="icon"></fhi-icon-refresh>Pågår</fhi-tag
       >
       <fhi-tag color="success">Publisert</fhi-tag>
       <fhi-tag color="warning"
-        ><fhi-icon-clock></fhi-icon-clock>Utløper snart</fhi-tag
+        ><fhi-icon-clock slot="icon"></fhi-icon-clock>Utløper snart</fhi-tag
       >
       <fhi-tag color="danger">Ugyldig</fhi-tag>
       <fhi-tag color="info">Offisiell statistikk</fhi-tag>
