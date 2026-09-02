@@ -33,6 +33,7 @@ const meta: FhiStorybookMeta<FhiCheckbox> = {
       id=${ifDefined(args.id)}
       status=${ifDefined(args.status)}
       value=${ifDefined(args.value)}
+      help-text=${ifDefined(args.helpText)}
       ?disabled=${args.disabled}
       ?checked=${args.checked}
       @input=${action('input')}
@@ -48,6 +49,12 @@ const meta: FhiStorybookMeta<FhiCheckbox> = {
       control: { type: 'text' },
       description: 'Informerer om hvilket valg avkrysningsboksen tilsvarer.',
       defaultValue: { summary: 'undefined' },
+    },
+    helpText: {
+      name: 'help-text',
+      control: { type: 'text' },
+      description:
+        'Melding som vises under avkrysningsboksen. Kan brukes for å gi tilleggsinformasjon eller tilbakemelding til brukeren.',
     },
     value: {
       control: { type: 'text' },
@@ -89,6 +96,15 @@ export const Label: Story = {
   args: {
     label: 'Agree',
     name: 'newsletter',
+  },
+};
+
+export const HelpText: Story = {
+  tags: [],
+  args: {
+    label: 'Databehandler',
+    name: 'access-role',
+    helpText: 'Kan lese og redigere data og søknader',
   },
 };
 

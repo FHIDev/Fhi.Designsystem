@@ -40,6 +40,15 @@ describe('fhi-checkbox', () => {
       expect(component.label).to.equal('my label');
     });
 
+    it('has an attribute to set help-text', async () => {
+      component = await fixture(
+        html`<fhi-checkbox help-text="my help text"></fhi-checkbox>`,
+      );
+
+      expect(component.getAttribute('help-text')).to.equal('my help text');
+      expect(component.helpText).to.equal('my help text');
+    });
+
     it('has an attribute to set name', async () => {
       component = await fixture(
         html`<fhi-checkbox name="my name"></fhi-checkbox>`,
@@ -77,6 +86,19 @@ describe('fhi-checkbox', () => {
 
       expect(component.hasAttribute('checked')).to.equal(true);
       expect(component.checked).to.equal(true);
+    });
+
+    it('logs error when setting help-text without label', async () => {
+      let errorMessage = null;
+      console.error = message => {
+        errorMessage = message;
+      };
+
+      component = await fixture(
+        html`<fhi-checkbox help-text="my help text"></fhi-checkbox>`,
+      );
+
+      expect(errorMessage).to.not.equal(null);
     });
   });
 

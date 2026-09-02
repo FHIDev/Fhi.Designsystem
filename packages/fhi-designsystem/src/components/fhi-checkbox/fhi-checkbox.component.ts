@@ -1,6 +1,8 @@
-import { html, css, LitElement } from 'lit';
+import { html, css, LitElement, PropertyValues } from 'lit';
 import { customElement, property } from 'lit/decorators.js';
 import { ifDefined } from 'lit/directives/if-defined.js';
+
+import '../typography/fhi-body/fhi-body.component';
 
 export const FhiCheckboxSelector = 'fhi-checkbox';
 
@@ -40,6 +42,13 @@ export class FhiCheckbox extends LitElement {
   @property({ type: String }) value: string = 'on';
 
   /**
+   * The help text shown below the label.
+   * This is used to provide additional information or descriptions to the user.
+   * @type {string}
+   */
+  @property({ type: String, attribute: 'help-text' }) helpText?: string;
+
+  /**
    * Sets the visual status of the checkbox. There is currently only one status available: `error`.
    * The `error` status is used to indicate that there is an issue with the checkbox, such as a required checkbox not being checked.
    * @reflect
@@ -70,6 +79,16 @@ export class FhiCheckbox extends LitElement {
   connectedCallback(): void {
     super.connectedCallback();
     this._updateFormValue();
+  }
+
+  protected updated(_changedProperties: PropertyValues<FhiCheckbox>): void {
+    if (_changedProperties.has('helpText') || _changedProperties.has('label')) {
+      if (!this.label && this.helpText) {
+        console.error(
+          'The "help-text" property is set, but the "label" property is not. It is required to provide a label when using help text.',
+        );
+      }
+    }
   }
 
   private _handleChange(event: Event): void {
@@ -112,9 +131,10 @@ export class FhiCheckbox extends LitElement {
 
   render() {
     return html`
-      <label>
+      <label class="checkbox-wrapper">
         <input
           type="checkbox"
+          id="checkbox-element"
           name="${ifDefined(this.name)}"
           value="${ifDefined(this.value)}"
           ?disabled=${this.disabled}
@@ -133,8 +153,15 @@ export class FhiCheckbox extends LitElement {
             d="M12.043 6.04295C12.4335 5.65243 13.0666 5.65243 13.4571 6.04295C13.8476 6.43348 13.8476 7.06649 13.4571 7.45702L8.95708 11.957C8.56655 12.3475 7.93354 12.3475 7.54302 11.957L5.29302 9.70702C4.90249 9.31649 4.90249 8.68348 5.29302 8.29295C5.65913 7.92684 6.23813 7.90424 6.63091 8.22459L6.70708 8.29295L8.25005 9.83592L12.043 6.04295Z"
           />
         </svg>
-
-        ${this.label}
+        <div class="text-wrapper">
+          ${this.label &&
+          html`<label for="checkbox-element">${this.label}</label>`}
+          ${this.helpText
+            ? html`<fhi-body size="small" class="help-text"
+                >${this.helpText}</fhi-body
+              >`
+            : ''}
+        </div>
       </label>
     `;
   }
@@ -146,21 +173,27 @@ export class FhiCheckbox extends LitElement {
 
     :host {
       display: flex;
-      align-items: center;
       width: max-content;
+      flex-direction: column;
+      color: var(--fhi-checkbox-color);
+
+      .checkbox-wrapper {
+        position: relative;
+        display: flex;
+        align-items: flex-start;
+      }
+
+      .text-wrapper * {
+        padding-left: var(--fhi-spacing-050);
+      }
 
       label {
-        align-items: center;
-        display: flex;
-        position: relative;
-        color: var(--fhi-checkbox-color);
         font-family: var(--fhi-font-family-default);
         -webkit-font-smoothing: antialiased;
         font-size: var(--fhi-typography-body-medium-font-size);
         font-weight: var(--fhi-typography-body-medium-font-weight);
         line-height: var(--fhi-typography-body-medium-line-height);
         letter-spacing: var(--fhi-typography-body-medium-letter-spacing);
-        gap: var(--fhi-spacing-050);
       }
 
       input[type='checkbox'] {
@@ -215,15 +248,21 @@ export class FhiCheckbox extends LitElement {
         transition: opacity var(--fhi-motion-ease-default)
           var(--fhi-motion-duration-quick);
         position: absolute;
+        top: 3px;
+        left: 3px;
         height: 1.125rem;
         width: 1.125rem;
-        margin-left: 3px;
+        pointer-events: none;
+      }
+
+      .help-text {
+        color: var(--fhi-color-neutral-text-subtle);
       }
     }
 
     :host([disabled]) {
       opacity: var(--fhi-opacity-disabled);
-      label,
+      .checkbox-wrapper,
       input {
         cursor: not-allowed;
       }

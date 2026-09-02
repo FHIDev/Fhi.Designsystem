@@ -2,6 +2,8 @@ import { html, css, LitElement } from 'lit';
 import { customElement, property, query } from 'lit/decorators.js';
 import { ifDefined } from 'lit/directives/if-defined.js';
 
+import '../typography/fhi-body/fhi-body.component';
+
 export const FhiRadioSelector = 'fhi-radio';
 
 /**
@@ -60,6 +62,13 @@ export class FhiRadio extends LitElement {
    * @type {string}
    */
   @property({ type: String }) value: string = 'on';
+
+  /**
+   * The help text shown below the label.
+   * This is used to provide additional information or descriptions to the user.
+   * @type {string}
+   */
+  @property({ type: String, attribute: 'help-text' }) helpText?: string;
 
   @query('#input-element')
   private _input!: HTMLInputElement;
@@ -147,6 +156,14 @@ export class FhiRadio extends LitElement {
     if (changedProperties.has('value') || changedProperties.has('name')) {
       if (this._input.checked) {
         this._updateFormValue();
+      }
+    }
+
+    if (changedProperties.has('helpText') || changedProperties.has('label')) {
+      if (!this.label && this.helpText) {
+        console.error(
+          'The "help-text" property is set, but the "label" property is not. It is required to provide a label when using help text.',
+        );
       }
     }
   }
@@ -252,7 +269,7 @@ export class FhiRadio extends LitElement {
 
   render() {
     return html`
-      <label>
+      <label class="radio-wrapper">
         <div class="radio-container">
           <input
             type="radio"
@@ -272,7 +289,15 @@ export class FhiRadio extends LitElement {
             <circle r="6" cx="9" cy="9" />
           </svg>
         </div>
-        ${this.label}
+        <div class="text-wrapper">
+          ${this.label &&
+          html`<label for="input-element">${this.label}</label>`}
+          ${this.helpText
+            ? html`<fhi-body size="small" class="help-text"
+                >${this.helpText}</fhi-body
+              >`
+            : ''}
+        </div>
       </label>
     `;
   }
@@ -284,14 +309,20 @@ export class FhiRadio extends LitElement {
 
     :host {
       display: flex;
-      align-items: center;
       width: max-content;
+      flex-direction: column;
+      color: var(--fhi-radio-color);
+
+      .radio-wrapper {
+        display: flex;
+        align-items: flex-start;
+      }
+
+      .text-wrapper * {
+        padding-left: var(--fhi-spacing-050);
+      }
 
       label {
-        display: flex;
-        position: relative;
-        gap: var(--fhi-spacing-050);
-        color: var(--fhi-radio-color);
         font-family: var(--fhi-font-family-default);
         -webkit-font-smoothing: antialiased;
         font-size: var(--fhi-typography-body-medium-font-size);
@@ -344,11 +375,15 @@ export class FhiRadio extends LitElement {
           opacity: 1;
         }
       }
+
+      .help-text {
+        color: var(--fhi-color-neutral-text-subtle);
+      }
     }
 
     :host([disabled]) {
       opacity: var(--fhi-opacity-disabled);
-      label,
+      .radio-wrapper,
       input {
         cursor: not-allowed;
       }
