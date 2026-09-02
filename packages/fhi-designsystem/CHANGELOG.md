@@ -1,5 +1,11 @@
 # Changelog
 
+## [0.43.5](https://github.com/FHIDev/Fhi.Designsystem/compare/v0.43.4...v0.43.5) (2026-09-02)
+
+### 🛠️ Bug Fixes
+
+* Beskytter focus-visible style på outline ([#499](https://github.com/FHIDev/Fhi.Designsystem/issues/499)) ([fce70a0](https://github.com/FHIDev/Fhi.Designsystem/commit/fce70a00c3120a7c94934e24850482e59e2f209b))
+
 ## [0.43.4](https://github.com/FHIDev/Fhi.Designsystem/compare/v0.43.3...v0.43.4) (2026-09-02)
 
 ### 🛠️ Bug Fixes
