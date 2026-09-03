@@ -191,17 +191,19 @@ export class FhiTextArea extends LitElement {
             <fhi-body class="help-text" size="small">${this.helpText}</fhi-body>
           `
         : ''}
-      <textarea
-        id="textarea-element"
-        name=${ifDefined(this.name)}
-        placeholder=${ifDefined(this.placeholder)}
-        .value=${this.value}
-        ?readonly=${this.readonly}
-        ?disabled=${this.disabled}
-        rows=${ifDefined(this.rows)}
-        @change=${this.handleChange}
-        @input=${this.handleInput}
-      ></textarea>
+      <div class="textarea-container">
+        <textarea
+          id="textarea-element"
+          name=${ifDefined(this.name)}
+          placeholder=${ifDefined(this.placeholder)}
+          .value=${this.value}
+          ?readonly=${this.readonly}
+          ?disabled=${this.disabled}
+          rows=${ifDefined(this.rows)}
+          @change=${this.handleChange}
+          @input=${this.handleInput}
+        ></textarea>
+      </div>
       ${this.message
         ? html`
             <fhi-body size="small" class="message">${this.message}</fhi-body>
@@ -217,31 +219,41 @@ export class FhiTextArea extends LitElement {
       font-family: var(--fhi-font-family-default);
       -webkit-font-smoothing: antialiased;
 
-      textarea {
-        box-sizing: border-box;
-        width: 100%;
-        resize: vertical;
-        min-height: var(--fhi-spacing-500);
+      .textarea-container {
+        overflow: hidden;
         border: var(--fhi-dimension-border-width) solid
           var(--fhi-color-neutral-border-default);
         border-radius: var(--fhi-border-radius-050);
-        padding: var(--fhi-spacing-100) var(--fhi-spacing-150);
-        color: var(--fhi-color-neutral-text-default);
         background-color: var(--fhi-color-neutral-background-default);
-        font-family: var(--fhi-font-family-default);
-        font-weight: var(--fhi-typography-body-medium-font-weight);
-        font-size: var(--fhi-typography-body-medium-font-size);
-        line-height: var(--fhi-typography-body-medium-line-height);
-        letter-spacing: var(--fhi-typography-body-medium-letter-spacing);
 
         &:hover {
           border-color: var(--fhi-color-accent-border-default);
           background-color: var(--fhi-color-accent-background-subtle);
         }
-        &:focus {
+
+        &:focus-within {
           border-color: var(--fhi-color-accent-border-strong);
           background-color: var(--fhi-color-accent-background-default);
         }
+      }
+
+      textarea {
+        box-sizing: border-box;
+        display: block;
+        width: 100%;
+        resize: vertical;
+        min-height: var(--fhi-spacing-500);
+        padding: var(--fhi-spacing-100) var(--fhi-spacing-150);
+        color: var(--fhi-color-neutral-text-default);
+        background-color: transparent;
+        margin: 0;
+        border: none;
+        outline: none;
+        font-family: var(--fhi-font-family-default);
+        font-weight: var(--fhi-typography-body-medium-font-weight);
+        font-size: var(--fhi-typography-body-medium-font-size);
+        line-height: var(--fhi-typography-body-medium-line-height);
+        letter-spacing: var(--fhi-typography-body-medium-letter-spacing);
         &::placeholder {
           color: var(--fhi-color-neutral-base-default);
         }
@@ -249,11 +261,11 @@ export class FhiTextArea extends LitElement {
 
       label {
         color: var(--fhi-color-neutral-text-default);
-        margin: 0 0 var(--fhi-spacing-050) 0;
+        margin: 0;
       }
 
-      label:has(+ .help-text) {
-        margin: 0 0 0 0;
+      label + .textarea-container {
+        margin-top: var(--fhi-spacing-050);
       }
 
       .help-text {
@@ -271,10 +283,11 @@ export class FhiTextArea extends LitElement {
       opacity: var(--fhi-opacity-disabled);
       cursor: not-allowed;
       label,
-      textarea {
+      textarea,
+      .textarea-container {
         cursor: not-allowed;
       }
-      textarea {
+      .textarea-container {
         &:hover {
           border-color: var(--fhi-color-neutral-border-default);
           background-color: var(--fhi-color-neutral-background-default);
@@ -283,7 +296,7 @@ export class FhiTextArea extends LitElement {
     }
 
     :host([readonly]:not([disabled])) {
-      textarea {
+      .textarea-container {
         border: unset;
         border-radius: unset;
         background-color: unset;
@@ -296,9 +309,11 @@ export class FhiTextArea extends LitElement {
       label {
         color: var(--fhi-color-danger-text-default);
       }
-      textarea {
+      .textarea-container {
         border-color: var(--fhi-color-danger-border-strong);
         background-color: var(--fhi-color-danger-background-default);
+      }
+      textarea {
         color: var(--fhi-color-neutral-text-default);
       }
       .message {
