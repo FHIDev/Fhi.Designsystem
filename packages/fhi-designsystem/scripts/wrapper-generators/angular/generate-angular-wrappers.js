@@ -105,39 +105,46 @@ const generateFormAccessor = (
 const isOptionalAttribute = attribute =>
   attribute.type.text.includes('undefined') || attribute.default !== undefined;
 
-const main = ({ manifestPath, outputPath }) => {
+const main = ({ manifestPath, outputPaths }) => {
   const indexTsFile = [];
 
   if (!manifestPath) {
     console.error(
-      'Please provide the --manifest argument with the path to the custom element manifest file.',
+      'Missing manifest path. Please provide a valid path to the manifest file.',
     );
     process.exit(1);
   }
 
-  if (!outputPath) {
+  if (!outputPaths) {
     console.error(
-      'Please provide the --output argument with the path to the output directory.',
+      'Missing output paths. Please provide a valid paths to the output folders as an array.',
     );
     process.exit(1);
   }
 
-  if (!fs.existsSync(outputPath)) {
-    fs.mkdirSync(outputPath, { recursive: true });
+  if (!Array.isArray(outputPaths)) {
+    console.error(
+      'Invalid output paths. Please provide a valid paths to the output folders as an array.',
+    );
+    process.exit(1);
   }
 
-  const folderContent = fs.readdirSync(outputPath);
+  outputPaths.forEach(outputPath => {
+    if (!fs.existsSync(outputPath)) {
+      fs.mkdirSync(outputPath, { recursive: true });
+    }
 
-  if (folderContent.length > 0) {
     const folderContent = fs.readdirSync(outputPath);
 
-    folderContent.forEach(file => {
-      const filePath = path.join(outputPath, file);
-      if (fs.lstatSync(filePath).isFile()) {
-        fs.unlinkSync(filePath);
-      }
-    });
-  }
+    if (folderContent.length > 0) {
+      folderContent.forEach(file => {
+        const filePath = path.join(outputPath, file);
+        if (fs.lstatSync(filePath).isFile()) {
+          fs.unlinkSync(filePath);
+        }
+      });
+    }
+  });
 
   let manifest;
   try {
@@ -218,33 +225,31 @@ const main = ({ manifestPath, outputPath }) => {
       }
     `;
 
-    fs.writeFileSync(
-      `${path.join(outputPath, `${webComponentTagName}.component.ts`)}`,
-      template,
-      'utf8',
-    );
+    outputPaths.forEach(outputPath => {
+      fs.writeFileSync(
+        `${path.join(outputPath, `${webComponentTagName}.component.ts`)}`,
+        template,
+        'utf8',
+      );
+    });
 
     indexTsFile.push(`export * from './${webComponentTagName}.component';`);
   });
 
-  fs.writeFileSync(
-    path.join(outputPath, 'index.ts'),
-    indexTsFile.join('\n'),
-    'utf8',
-  );
+  outputPaths.forEach(outputPath => {
+    fs.writeFileSync(
+      path.join(outputPath, 'index.ts'),
+      indexTsFile.join('\n'),
+      'utf8',
+    );
+  });
 
   console.log(
-    `Successfully generated ${indexTsFile.length} Angular wrappers to ${outputPath}`,
+    `Successfully generated ${indexTsFile.length} Angular wrappers to ${outputPaths}`,
   );
 };
 
 main({
-  manifestPath:
-    process.argv.indexOf('--manifest') !== -1
-      ? process.argv[process.argv.indexOf('--manifest') + 1]
-      : undefined,
-  outputPath:
-    process.argv.indexOf('--output') !== -1
-      ? process.argv[process.argv.indexOf('--output') + 1]
-      : undefined,
+  manifestPath: '.temp/custom-elements.json',
+  outputPaths: ['dist/github/angular-wrappers', 'dist/npm/angular-wrappers'],
 });
