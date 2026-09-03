@@ -22,7 +22,6 @@ export const FhiDataTableCellSelector = 'fhi-data-table-cell';
 export class FhiDataTableCell extends LitElement {
   /**
    * Defines the variant of the table cell, which can be either 'header' or 'body'. This determines the styling and role of the cell within the table.
-   * @type {'header' | 'body'}
    */
   @property({ type: String, reflect: true })
   variant: 'header' | 'body' = 'body';

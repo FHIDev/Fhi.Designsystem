@@ -25,7 +25,6 @@ export class FhiDataTableRow extends LitElement {
   /**
    * Defines the variant of the table row, which can be either 'header' or 'body'. This determines the styling and role of the row within the table.
    * If the variant is set to 'header', all child `<fhi-data-table-cell>` elements will also be set to the 'header' variant to ensure consistent styling.
-   * @type {'header' | 'body'}
    */
   @property({ type: String, reflect: true })
   variant: 'header' | 'body' = 'body';

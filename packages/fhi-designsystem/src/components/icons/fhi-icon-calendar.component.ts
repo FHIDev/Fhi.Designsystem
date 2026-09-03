@@ -21,14 +21,14 @@ export class FhiIconCalendar extends LitElement {
   /**
    * Sets the color for the icon.
    * Should preferably be a color token. See [Color Tokens](https://designsystem.fhi.no/?path=/docs/design-tokens-farger--docs)
-   * @type {string}
+   *  
    */ 
   @property({ type: String }) color: string = "currentcolor";
 
   /**
    * Sets the size of the icon. Can be one of the predefined sizes, a number value, rem or px.
    * Number values are treated as px.
-   * @type { 'xsmall' | 'small' | 'medium' | 'large' | number | string}
+   *  
    */
   @property({ type: String }) size: 'xsmall' | 'small' | 'medium' | 'large' | number | `${number}px` | `${number}rem` = 'medium';
 
