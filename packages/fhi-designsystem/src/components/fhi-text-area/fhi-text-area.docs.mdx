@@ -1,0 +1,32 @@
+import { FhiTextArea } from './fhi-text-area.component.ts';
+import * as FhiTextAreaStories from './fhi-text-area.stories.ts';
+import { Meta, Primary, Canvas, Controls } from '@storybook/addon-docs/blocks';
+import { ApiDefinition } from '../../../.storybook/blocks/api-definition.jsx';
+
+<Meta of={FhiTextAreaStories} />
+
+# Text Area
+
+Text Area lar brukere skrive inn lengre tekster, slik som beskrivelser og søknadstekster.
+
+## Passer til
+
+ - Svar som kan gå over flere linjer.
+
+<Canvas of={FhiTextAreaStories.Preview} />
+<Controls of={FhiTextAreaStories.Preview} />
+
+### Status
+#### `error`
+Uttrykker at noe mangler eller er skrevet feil.
+<Canvas of={FhiTextAreaStories.Error} />
+
+### Form Controls
+#### `readonly`
+Gjør at feltet ikke kan endres. Feltet vil fortsatt kunne fokuseres og vil automatisk bli inkludert i FormData.
+<Canvas of={FhiTextAreaStories.Readonly} />
+#### `disabled`
+Gjør at feltet ikke kan endres, fokuseres eller automatisk inkluderes i FormData. Unngås hvis man kan.
+<Canvas of={FhiTextAreaStories.Disabled} />
+
+<ApiDefinition />
