@@ -230,7 +230,7 @@ export class FhiTooltip extends LitElement {
         @click=${this._handleClick}
       >
         <slot aria-describedby="tooltip"></slot>
-        <section
+        <div
           id="tooltip"
           role="tooltip"
           aria-hidden=${!this._isVisible}
@@ -242,7 +242,7 @@ export class FhiTooltip extends LitElement {
           "
         >
           <span>${this.message}</span>
-        </section>
+        </div>
       </div>
     `;
   }
