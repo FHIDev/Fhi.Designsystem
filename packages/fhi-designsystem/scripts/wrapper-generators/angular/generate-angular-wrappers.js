@@ -19,27 +19,44 @@ const generateFormAccessor = (
 ) => {
   const accessorName = `${snakeToPascal(webComponentTagName)}ValueAccessor`;
 
-  let valueLocation;
+  let stateProperty;
+  let valueProperty;
+
   switch (webComponentTagName) {
     case 'fhi-text-input':
     case 'fhi-date-input':
+    case 'fhi-select':
+      stateProperty = 'value';
+      valueProperty = 'value';
+      break;
     case 'fhi-checkbox':
     case 'fhi-radio':
-    case 'fhi-select':
-      valueLocation = 'value';
+      stateProperty = 'checked';
+      valueProperty = 'value';
       break;
     case 'fhi-button':
-      break;
+      return '';
     default:
       throw new Error(
         `No value location defined for web component ${webComponentTagName}`,
       );
   }
 
-  // We do not need a value accessor if there is no value to control on the form-associated web component. e.g fhi-button.
-  if (!valueLocation) {
-    return '';
-  }
+  const eventValue = `$any($event.target).${valueProperty}`;
+
+  const usesCheckedState =
+    webComponentTagName === 'fhi-checkbox' ||
+    webComponentTagName === 'fhi-radio';
+
+  const onChangeHandler = usesCheckedState
+    ? `onChange($any($event.target).${stateProperty} ? ${eventValue} : null)`
+    : `onChange(${eventValue})`;
+
+  const initialStateValue = usesCheckedState
+    ? '!!this._initialValue'
+    : 'this._initialValue';
+
+  const updatedStateValue = usesCheckedState ? '!!value' : 'value';
 
   return `
     /** @description
@@ -48,7 +65,7 @@ const generateFormAccessor = (
     @Directive({
       selector: '${angularTagName}[formControlName],${angularTagName}[formControl],${angularTagName}[ngModel]',
       standalone: true,
-      host: {'(change)': 'onChange($any($event.target).${valueLocation})', '(blur)': 'onTouched()'},
+      host: {'(change)': '${onChangeHandler}', '(blur)': 'onTouched()'},
       providers: [{ provide: NG_VALUE_ACCESSOR, useExisting: forwardRef(() => ${accessorName}), multi: true }]
     })
     export class ${accessorName} implements ControlValueAccessor, AfterViewInit {
@@ -69,7 +86,7 @@ const generateFormAccessor = (
           return;
         }
 
-        this._webComponent["${valueLocation}"] = this._initialValue;
+        this._webComponent["${stateProperty}"] = ${initialStateValue};
         this._webComponent["disabled"] = this._initialDisabledState;
       }
 
@@ -79,7 +96,7 @@ const generateFormAccessor = (
           return;
         }
 
-        this._webComponent["${valueLocation}"] = value;
+        this._webComponent["${stateProperty}"] = ${updatedStateValue};
       }
 
       setDisabledState(isDisabled: boolean): void {
