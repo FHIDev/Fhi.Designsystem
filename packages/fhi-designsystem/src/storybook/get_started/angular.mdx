@@ -38,57 +38,71 @@ npm install @folkehelseinstituttet/designsystem
 
 Pakkene inneholder komponenter, [Design Tokens](?path=/docs/design-tokens-introduksjon--docs) og [fonter](?path=/docs/design-tokens-typografi--docs#font-family). Utover dette trenger du ikke å gjøre noe mer for å ta alt i bruk.
 
-<div className="callout-warning">
-  **Obs:** FHI Designsystem er fullt kompatibelt med Typescript, men det er ikke enda typesatt. Det betyr at intellisense for importering og bruk, samt typesjekking, er foreløpig begrenset. Se våre *Ofte stilte spørsmål* for [info om intellisense og typesjekking](/docs/ofte-stilte-spørsmål-typesjekking-intellisense--docs).
-</div>
-
 ## Bruk
 
-Angular har innebygd støtte for webkomponenter. Du kan derfor bruke komponentene direkte i Angular-prosjektet ditt.
+For full _Intellisense_ og typestøtte i ditt Angular-prosjekt, anbefaler vi at du bruker Angular-wrappers som ligger i `@folkehelseinstituttet/designsystem/angular-wrappers`.
 
-Her er et eksempel av bruk av `fhi-button`-komponenten i et Angular-prosjekt. Vi tar utgangspunkt i at du har brukt `npm` da du installerte pakken.
+Angular wrappers må kompileres av Angular sin kompilator. Legg derfor til følgende i `tsconfig.app.json`-filen din for å inkludere wrapperne i kompileringen:
 
-Først importerer vi filen med [Design Tokens](?path=/docs/design-tokens-introduksjon--docs). Denne filen må importeres før du tar i bruk komponentbiblioteket, helst via angular.json, der en setter følgende property:
+```json
+{
+  "compilerOptions": {
+    "paths": {
+      "@folkehelseinstituttet/designsystem/angular-wrappers/*": [
+        "./node_modules/@folkehelseinstituttet/designsystem/angular-wrappers/*"
+      ],
+    }
+  },
+  "include": [
+    "./node_modules/@folkehelseinstituttet/designsystem/angular-wrappers/*"
+  ]
+}
+```
+
+Bruker du `@angular/build:application` til å bygge applikasjonen din, må du ekskludere wrapperne fra `prebuild` i `angular.json`-filen din:
+
+```json
+  projects.[your-project].architect.serve.options.prebundle.exclude: ["@folkehelseinstituttet/designsystem/angular-wrappers/*"]
+```
+
+Her er et eksempel av bruk av `fhi-button`-komponenten i et Angular-prosjekt.
+
+Først importerer vi filen med [Design Tokens](?path=/docs/design-tokens-introduksjon--docs). Denne filen må importeres før du tar i bruk komponentbiblioteket, helst via `angular.json`, der en setter følgende property:
 ```json
 projects.[your-project].architect.build.options.styles: ["@folkehelseinstituttet/designsystem/theme/default.css"]
 ```
 
-Så må vi fortelle Angular at vi bruker webkomponenter.
-Vi gjør dette ved å legge til <a href="https://angular.dev/api/core/CUSTOM_ELEMENTS_SCHEMA">CUSTOM_ELEMENTS_SCHEMA</a>
-i Angular-komponent-filen sin komponentdekoratør.
-
+Før du bruker komponenten må du først importere den. I dette tilfellet importerer vi wrapperen til `fhi-button`. Wrapperen vil automatisk importere, registrere og bruke den underleggende web-komponenten:
 ```ts
-import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
+import { FhiButtonAngularWrapper } from "@folkehelseinstituttet/designsystem/angular-wrappers/fhi-button.component";
 
 @Component({
   ...
-  schemas: [CUSTOM_ELEMENTS_SCHEMA],
+  imports: [FhiButtonAngularWrapper],
 })
-
 ```
 
-**Eller**, om du bruker Angular sitt gamle modulsystem, skal du legge til `CUSTOM_ELEMENTS_SCHEMA` i modulen din.
-
-```ts
-import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
-
-@NgModule({
-  ...
-  schemas: [CUSTOM_ELEMENTS_SCHEMA],
-})
-
-```
-Før du bruker komponenten må du først importere den. Importér komponenten i Angular-komponentens Typescript-fil. I dette tilfellet importerer vi `fhi-button`:
-```ts
-import '@folkehelseinstituttet/designsystem/fhi-button';
-```
-
-Nå kan du bruke komponenten som om det var et vanlig HTML-element i din Angular-komponents HTML-fil:
+Du kan nå bruke wrapperen i Angular-komponentens HTML-mal slik:
 
 ```html
 <fhi-button (click)="handleClick($event)">Click me!</fhi-button>
 ```
 _Obs: `handleClick` er brukt her som et eksempel. Du må selv lage en metode i Angular-komponenten som håndterer klikk-eventet._
+
+### Angular Forms
+
+Ønsker du å bruke form-komponentene til FHi Designsystem (e.g fhi-text-input, fhi-checkbox etc..) med Angular Forms må du huske å importere de respektive ValueAccessor-ene.
+Eksempel med `fhi-text-input`:
+
+```ts
+import { FhiTextInputAngularWrapper, FhiTextInputValueAccessor } from "@folkehelseinstituttet/designsystem/angular-wrappers/fhi-text-input.component";
+
+@Component({
+  ...
+  imports: [FhiTextInputAngularWrapper, FhiTextInputValueAccessor],
+})
+
+````
 
 <style>{`
   .sbdocs-content a {
