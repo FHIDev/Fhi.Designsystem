@@ -269,36 +269,31 @@ export class FhiRadio extends LitElement {
 
   render() {
     return html`
-      <label class="radio-wrapper">
-        <div class="radio-container">
-          <input
-            type="radio"
-            id="input-element"
-            name="${ifDefined(this.name)}"
-            value="${this.value}"
-            ?checked=${this.checked}
-            ?disabled=${this.disabled}
-            @change=${this._handleChange}
-            @input=${this._handleInput}
-          />
-          <svg
-            class="radio-dot"
-            viewBox="0 0 18 18"
-            xmlns="http://www.w3.org/2000/svg"
-          >
-            <circle r="6" cx="9" cy="9" />
-          </svg>
-        </div>
-        <div class="text-wrapper">
-          ${this.label &&
-          html`<label for="input-element">${this.label}</label>`}
-          ${this.helpText
-            ? html`<fhi-body size="small" class="help-text"
-                >${this.helpText}</fhi-body
-              >`
-            : ''}
-        </div>
-      </label>
+      <div class="radio-wrapper">
+        <input
+          type="radio"
+          id="input-element"
+          name="${ifDefined(this.name)}"
+          value="${this.value}"
+          ?checked=${this.checked}
+          ?disabled=${this.disabled}
+          @change=${this._handleChange}
+          @input=${this._handleInput}
+        />
+        <svg
+          class="radio-dot"
+          viewBox="0 0 18 18"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <circle r="6" cx="9" cy="9" />
+        </svg>
+      </div>
+      ${this.label && html`<label for="input-element">${this.label}</label>`}
+      ${this.helpText
+        ? html`<fhi-body size="small" class="help-text"
+            >${this.helpText}</fhi-body
+          >`
+        : ''}
     `;
   }
 
@@ -308,18 +303,15 @@ export class FhiRadio extends LitElement {
     }
 
     :host {
-      display: flex;
+      display: grid;
       width: max-content;
-      flex-direction: column;
+      grid-template-columns: auto auto;
       color: var(--fhi-radio-color);
+      padding-left: 0.125rem;
 
       .radio-wrapper {
         display: flex;
-        align-items: flex-start;
-      }
-
-      .text-wrapper * {
-        padding-left: var(--fhi-spacing-050);
+        position: relative;
       }
 
       label {
@@ -331,16 +323,16 @@ export class FhiRadio extends LitElement {
         letter-spacing: var(--fhi-typography-body-medium-letter-spacing);
       }
 
-      .radio-container {
-        display: flex;
-        position: relative;
+      label,
+      fhi-body {
+        grid-column: 2;
+        padding-left: 6px;
       }
 
       input {
+        margin: 0.125rem 0 0.125rem 0;
         appearance: none;
-        margin: 0.125rem;
         width: var(--fhi-spacing-250);
-        height: var(--fhi-spacing-250);
         background-color: var(--fhi-color-neutral-background-default);
         border: var(--fhi-dimension-border-width) solid
           var(--fhi-color-neutral-border-default);
@@ -358,7 +350,6 @@ export class FhiRadio extends LitElement {
         top: 50%;
         left: 50%;
         transform: translate(-50%, -50%);
-        height: 1.125rem;
         width: 1.125rem;
       }
 
@@ -380,8 +371,7 @@ export class FhiRadio extends LitElement {
 
     :host([disabled]) {
       opacity: var(--fhi-opacity-disabled);
-      .radio-wrapper,
-      input {
+      * {
         cursor: not-allowed;
       }
     }

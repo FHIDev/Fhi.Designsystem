@@ -164,6 +164,23 @@ describe('fhi-radio', () => {
   });
 
   describe('events', () => {
+    it('does not check the radio when help text is clicked', async () => {
+      component = await fixture(
+        html`<fhi-radio
+          label="Option"
+          help-text="More information"
+        ></fhi-radio>`,
+      );
+
+      const helpText = component.shadowRoot?.querySelector(
+        '.help-text',
+      ) as HTMLElement;
+
+      helpText.click();
+
+      expect(component.checked).to.equal(false);
+    });
+
     it('dispatches a "change" event when checked by the user', async () => {
       component = await fixture(
         html`<fhi-radio name="test" value="test"></fhi-radio>`,

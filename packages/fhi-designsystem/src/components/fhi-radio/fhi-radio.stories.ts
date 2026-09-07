@@ -56,6 +56,12 @@ const meta: FhiStorybookMeta<FhiRadio> = {
         'Setter label. Dette assosieres med radiofeltet og vises til brukeren.',
       defaultValue: { summary: 'undefined' },
     },
+    helpText: {
+      name: 'help-text',
+      control: { type: 'text' },
+      description:
+        'Melding som vises under radiofeltet. Kan brukes for å gi tilleggsinformasjon til brukeren.',
+    },
     checked: {
       control: 'boolean',
       description:
@@ -79,12 +85,6 @@ const meta: FhiStorybookMeta<FhiRadio> = {
       description:
         'Setter verdien til radiofeltet. Denne verdien sendes til serveren om feltet er valgt når skjemaet sendes inn.',
       defaultValue: { summary: 'on' },
-    },
-    helpText: {
-      name: 'help-text',
-      control: { type: 'text' },
-      description:
-        'Melding som vises under radiofeltet. Kan brukes for å gi tilleggsinformasjon til brukeren.',
     },
   },
 };

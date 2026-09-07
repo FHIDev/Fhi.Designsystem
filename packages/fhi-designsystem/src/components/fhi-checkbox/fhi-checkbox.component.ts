@@ -131,7 +131,7 @@ export class FhiCheckbox extends LitElement {
 
   render() {
     return html`
-      <label class="checkbox-wrapper">
+      <div class="checkbox-wrapper">
         <input
           type="checkbox"
           id="checkbox-element"
@@ -153,16 +153,13 @@ export class FhiCheckbox extends LitElement {
             d="M12.043 6.04295C12.4335 5.65243 13.0666 5.65243 13.4571 6.04295C13.8476 6.43348 13.8476 7.06649 13.4571 7.45702L8.95708 11.957C8.56655 12.3475 7.93354 12.3475 7.54302 11.957L5.29302 9.70702C4.90249 9.31649 4.90249 8.68348 5.29302 8.29295C5.65913 7.92684 6.23813 7.90424 6.63091 8.22459L6.70708 8.29295L8.25005 9.83592L12.043 6.04295Z"
           />
         </svg>
-        <div class="text-wrapper">
-          ${this.label &&
-          html`<label for="checkbox-element">${this.label}</label>`}
-          ${this.helpText
-            ? html`<fhi-body size="small" class="help-text"
-                >${this.helpText}</fhi-body
-              >`
-            : ''}
-        </div>
-      </label>
+      </div>
+      ${this.label && html`<label for="checkbox-element">${this.label}</label>`}
+      ${this.helpText
+        ? html`<fhi-body size="small" class="help-text"
+            >${this.helpText}</fhi-body
+          >`
+        : ''}
     `;
   }
 
@@ -172,19 +169,12 @@ export class FhiCheckbox extends LitElement {
     }
 
     :host {
-      display: flex;
+      display: grid;
       width: max-content;
-      flex-direction: column;
       color: var(--fhi-checkbox-color);
 
       .checkbox-wrapper {
         position: relative;
-        display: flex;
-        align-items: flex-start;
-      }
-
-      .text-wrapper * {
-        padding-left: var(--fhi-spacing-050);
       }
 
       label {
@@ -196,8 +186,14 @@ export class FhiCheckbox extends LitElement {
         letter-spacing: var(--fhi-typography-body-medium-letter-spacing);
       }
 
+      label,
+      fhi-body {
+        grid-column: 2;
+        padding-left: 7px;
+      }
+
       input[type='checkbox'] {
-        margin: 3px;
+        margin: 3px 0 0 3px;
         appearance: none;
         width: 1.125rem;
         height: 1.125rem;
@@ -259,8 +255,7 @@ export class FhiCheckbox extends LitElement {
 
     :host([disabled]) {
       opacity: var(--fhi-opacity-disabled);
-      .checkbox-wrapper,
-      input {
+      * {
         cursor: not-allowed;
       }
 

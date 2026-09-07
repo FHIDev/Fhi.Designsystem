@@ -226,6 +226,23 @@ describe('fhi-checkbox', () => {
   });
 
   describe('events', () => {
+    it('does not check the checkbox when help text is clicked', async () => {
+      component = await fixture(
+        html`<fhi-checkbox
+          label="Agree"
+          help-text="More information"
+        ></fhi-checkbox>`,
+      );
+
+      const helpText = component.shadowRoot?.querySelector(
+        '.help-text',
+      ) as HTMLElement;
+
+      helpText.click();
+
+      expect(component.checked).to.equal(false);
+    });
+
     it('dispatches a "change" event when checked by the user', async () => {
       component = await fixture(html`<fhi-checkbox></fhi-checkbox>`);
 
