@@ -226,14 +226,10 @@ export class FhiTextArea extends LitElement {
         border-radius: var(--fhi-border-radius-050);
         background-color: var(--fhi-color-neutral-background-default);
 
-        &:hover {
-          border-color: var(--fhi-color-accent-border-default);
-          background-color: var(--fhi-color-accent-background-subtle);
-        }
-
         &:focus-within {
           border-color: var(--fhi-color-accent-border-strong);
           background-color: var(--fhi-color-accent-background-default);
+          outline: auto;
         }
       }
 
@@ -248,14 +244,19 @@ export class FhiTextArea extends LitElement {
         background-color: transparent;
         margin: 0;
         border: none;
-        outline: none;
         font-family: var(--fhi-font-family-default);
         font-weight: var(--fhi-typography-body-medium-font-weight);
         font-size: var(--fhi-typography-body-medium-font-size);
         line-height: var(--fhi-typography-body-medium-line-height);
         letter-spacing: var(--fhi-typography-body-medium-letter-spacing);
+
         &::placeholder {
           color: var(--fhi-color-neutral-base-default);
+        }
+
+        &:hover {
+          border-color: var(--fhi-color-accent-border-default);
+          background-color: var(--fhi-color-accent-background-subtle);
         }
       }
 
