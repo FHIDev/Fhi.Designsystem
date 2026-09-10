@@ -1,5 +1,41 @@
 # Changelog
 
+## [0.43.5](https://github.com/FHIDev/Fhi.Designsystem/compare/v0.43.4...v0.43.5) (2026-09-02)
+
+### 🛠️ Bug Fixes
+
+* Beskytter focus-visible style på outline ([#499](https://github.com/FHIDev/Fhi.Designsystem/issues/499)) ([fce70a0](https://github.com/FHIDev/Fhi.Designsystem/commit/fce70a00c3120a7c94934e24850482e59e2f209b))
+
+## [0.43.4](https://github.com/FHIDev/Fhi.Designsystem/compare/v0.43.3...v0.43.4) (2026-09-02)
+
+### 🛠️ Bug Fixes
+
+* Endret fra section til div ([#501](https://github.com/FHIDev/Fhi.Designsystem/issues/501)) ([79281af](https://github.com/FHIDev/Fhi.Designsystem/commit/79281af5985a04dbf6de0dd573c17772d7ad9ab5))
+
+### 📑 Documentation
+
+* 497 update typography token documentation ([#498](https://github.com/FHIDev/Fhi.Designsystem/issues/498)) ([7198701](https://github.com/FHIDev/Fhi.Designsystem/commit/7198701051a6008f2aacf43ab96a950b9e8d78ac))
+
+## [0.43.3](https://github.com/FHIDev/Fhi.Designsystem/compare/v0.43.2...v0.43.3) (2026-08-25)
+
+### 🛠️ Bug Fixes
+
+* Forhåndsvalgt value på fhi-select vises ikke korrekt når value og fhi-select-item barna settes på initial render ([#495](https://github.com/FHIDev/Fhi.Designsystem/issues/495)) ([598b7a0](https://github.com/FHIDev/Fhi.Designsystem/commit/598b7a00a6ae0fc41067f432f6084bf992d3ab15))
+
+### 📑 Documentation
+
+* Sort components alphabetically in Storybook ([#496](https://github.com/FHIDev/Fhi.Designsystem/issues/496)) ([d2aa409](https://github.com/FHIDev/Fhi.Designsystem/commit/d2aa4090a15c8d2a34e436255608bad5b7554c45))
+
+## [0.43.2](https://github.com/FHIDev/Fhi.Designsystem/compare/v0.43.1...v0.43.2) (2026-08-24)
+
+### 🛠️ Bug Fixes
+
+* Make sure the user can programatically change the selected attribute after first render ([#492](https://github.com/FHIDev/Fhi.Designsystem/issues/492)) ([df26ab7](https://github.com/FHIDev/Fhi.Designsystem/commit/df26ab759327ba60f3043cacc30ba83810122052))
+
+### 📑 Documentation
+
+* 483 rewrite and expand color tokens documentation ([#485](https://github.com/FHIDev/Fhi.Designsystem/issues/485)) ([3468230](https://github.com/FHIDev/Fhi.Designsystem/commit/34682303c12800abf337694a08338b4004460e30))
+
 ## [0.43.1](https://github.com/FHIDev/Fhi.Designsystem/compare/v0.43.0...v0.43.1) (2026-08-05)
 
 ### 🛠️ Bug Fixes

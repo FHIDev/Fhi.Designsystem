@@ -14,16 +14,13 @@ const preview: Preview = {
     },
     options: {
       storySort: {
+        method: 'alphabetical',
         order: [
           'Oversikt',
           'Kom i gang',
           'KI-verktøy',
           'Komponenter',
-          [
-            '*',
-            'Typography',
-            ['Docs', 'Body', 'Label', 'Display', 'Headline', 'Title'],
-          ],
+          ['*', ['Docs', 'Body', 'Label', 'Display', 'Headline', 'Title']],
           'Design Tokens',
           ['Introduksjon'],
           'Ofte stilte spørsmål',
