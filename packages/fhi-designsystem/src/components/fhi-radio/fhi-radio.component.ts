@@ -370,7 +370,6 @@ export class FhiRadio extends LitElement {
       }
 
       .help-text {
-        height: fit-content;
         color: var(--fhi-color-neutral-text-subtle);
       }
     }
