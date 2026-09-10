@@ -175,6 +175,7 @@ export class FhiCheckbox extends LitElement {
 
       .checkbox-wrapper {
         position: relative;
+        height: fit-content;
       }
 
       label {

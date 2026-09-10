@@ -312,6 +312,7 @@ export class FhiRadio extends LitElement {
       .radio-wrapper {
         display: flex;
         position: relative;
+        height: fit-content;
       }
 
       label {
@@ -333,6 +334,7 @@ export class FhiRadio extends LitElement {
         margin: 0.125rem 0 0.125rem 0;
         appearance: none;
         width: var(--fhi-spacing-250);
+        height: var(--fhi-spacing-250);
         background-color: var(--fhi-color-neutral-background-default);
         border: var(--fhi-dimension-border-width) solid
           var(--fhi-color-neutral-border-default);
@@ -368,6 +370,7 @@ export class FhiRadio extends LitElement {
       }
 
       .help-text {
+        height: fit-content;
         color: var(--fhi-color-neutral-text-subtle);
       }
     }
