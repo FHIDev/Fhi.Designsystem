@@ -171,6 +171,7 @@ export class FhiCheckbox extends LitElement {
     :host {
       display: grid;
       width: max-content;
+      height: fit-content;
       color: var(--fhi-checkbox-color);
 
       .checkbox-wrapper {

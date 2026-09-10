@@ -305,6 +305,7 @@ export class FhiRadio extends LitElement {
     :host {
       display: grid;
       width: max-content;
+      height: fit-content;
       grid-template-columns: auto auto;
       color: var(--fhi-radio-color);
       padding-left: 0.125rem;
