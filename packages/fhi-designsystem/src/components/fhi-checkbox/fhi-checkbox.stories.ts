@@ -54,7 +54,7 @@ const meta: FhiStorybookMeta<FhiCheckbox> = {
       name: 'help-text',
       control: { type: 'text' },
       description:
-        'Melding som vises under avkrysningsboksen. Kan brukes for å gi tilleggsinformasjon eller tilbakemelding til brukeren.',
+        'Tekst som vises under avkrysningsboksen, som kan brukes til tilleggsinformasjon og utvidede forklaringer.',
     },
     value: {
       control: { type: 'text' },

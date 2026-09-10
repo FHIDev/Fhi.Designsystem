@@ -60,7 +60,7 @@ const meta: FhiStorybookMeta<FhiRadio> = {
       name: 'help-text',
       control: { type: 'text' },
       description:
-        'Melding som vises under radiofeltet. Kan brukes for å gi tilleggsinformasjon til brukeren.',
+        'Tekst som vises under radioknappen, som kan brukes til tilleggsinformasjon og utvidede forklaringer.',
     },
     checked: {
       control: 'boolean',
