@@ -225,11 +225,17 @@ export class FhiTextArea extends LitElement {
           var(--fhi-color-neutral-border-default);
         border-radius: var(--fhi-border-radius-050);
         background-color: var(--fhi-color-neutral-background-default);
+        transition: border-color var(--fhi-motion-ease-default) var(--fhi-motion-duration-quick);
+        
+        &:hover {
+          border-color: var(--fhi-color-accent-border-default);
+        }
 
         &:focus-within {
           border-color: var(--fhi-color-accent-border-strong);
           background-color: var(--fhi-color-accent-background-default);
           outline: auto;
+          outline-color: -webkit-focus-ring-color;
         }
       }
 
@@ -249,6 +255,7 @@ export class FhiTextArea extends LitElement {
         font-size: var(--fhi-typography-body-medium-font-size);
         line-height: var(--fhi-typography-body-medium-line-height);
         letter-spacing: var(--fhi-typography-body-medium-letter-spacing);
+        transition: background-color var(--fhi-motion-ease-default) var(--fhi-motion-duration-quick);
 
         &::placeholder {
           color: var(--fhi-color-neutral-base-default);
@@ -257,6 +264,10 @@ export class FhiTextArea extends LitElement {
         &:hover {
           border-color: var(--fhi-color-accent-border-default);
           background-color: var(--fhi-color-accent-background-subtle);
+        }
+        
+        &:focus {
+          background-color: var(--fhi-color-accent-background-default);
         }
       }
 
