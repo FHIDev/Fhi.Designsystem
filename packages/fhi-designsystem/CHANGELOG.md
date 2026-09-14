@@ -1,5 +1,11 @@
 # Changelog
 
+## [0.45.0](https://github.com/FHIDev/Fhi.Designsystem/compare/v0.44.0...v0.45.0) (2026-09-14)
+
+### 🚀 Features
+
+* implement first iteration of text area ([#438](https://github.com/FHIDev/Fhi.Designsystem/issues/438)) ([3e7e730](https://github.com/FHIDev/Fhi.Designsystem/commit/3e7e730ba0e76ce52589c4cf29fab372f4ed36f3))
+
 ## [0.44.0](https://github.com/FHIDev/Fhi.Designsystem/compare/v0.43.5...v0.44.0) (2026-09-14)
 
 ### 🚀 Features
