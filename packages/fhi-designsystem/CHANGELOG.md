@@ -1,5 +1,11 @@
 # Changelog
 
+## [0.44.0](https://github.com/FHIDev/Fhi.Designsystem/compare/v0.43.5...v0.44.0) (2026-09-14)
+
+### 🚀 Features
+
+* Add htlp-text to radio & checkbox ([#482](https://github.com/FHIDev/Fhi.Designsystem/issues/482)) ([37a8843](https://github.com/FHIDev/Fhi.Designsystem/commit/37a88439ef8b8864b0cfbdf28cd84d37c89725b2))
+
 ## [0.43.5](https://github.com/FHIDev/Fhi.Designsystem/compare/v0.43.4...v0.43.5) (2026-09-02)
 
 ### 🛠️ Bug Fixes
