@@ -254,7 +254,7 @@ export class FhiTextArea extends LitElement {
           color: var(--fhi-color-neutral-base-default);
         }
 
-        &:hover {
+        &:hover:not(:disabled):not([readonly]) {
           border-color: var(--fhi-color-accent-border-default);
           background-color: var(--fhi-color-accent-background-subtle);
         }
@@ -316,6 +316,9 @@ export class FhiTextArea extends LitElement {
       }
       textarea {
         color: var(--fhi-color-neutral-text-default);
+        &:hover {
+          background-color: var(--fhi-color-danger-background-default);
+        }
       }
       .message {
         color: var(--fhi-color-danger-text-subtle);
