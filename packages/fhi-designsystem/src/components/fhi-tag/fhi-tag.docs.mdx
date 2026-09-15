@@ -2,6 +2,7 @@ import { FhiTag } from './fhi-tag.component.ts';
 import * as FhiTagStories from './fhi-tag.stories.ts';
 import { Meta, Primary, Canvas, Controls } from '@storybook/addon-docs/blocks';
 
+import '../fhi-callout/fhi-callout.component.ts';
 import { ApiDefinition } from '../../../.storybook/blocks/api-definition.jsx';
 
 <Meta of={FhiTagStories} />
@@ -27,6 +28,11 @@ Tag er tilgjengelig i alle semantiske skalaer. Har man behov for en spesifikk ba
 ## Ikon
 
 Teksten skal være god nok for å forstå informasjonen. Ikoner kan brukes for å støtte teksten, samt skape gjenkjennelighet over tid.
+
+<fhi-callout heading="Breaking change" color="warning">
+    <fhi-icon-triangle-alert slot="icon"></fhi-icon-triangle-alert>
+    <span>Tidligere har det vært mulig å plassere ikoner direkte i taggen. Ikon skal plasseres i en egen slot kalt "icon". Se eksempelet nedenfor.</span>
+</fhi-callout>
 
 <Canvas of={FhiTagStories.Icon} />
 

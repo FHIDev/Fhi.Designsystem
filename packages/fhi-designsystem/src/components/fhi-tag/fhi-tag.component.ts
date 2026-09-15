@@ -15,7 +15,7 @@ export const FhiTagSelector = 'fhi-tag';
  * @element fhi-tag
  *
  * @slot icon - Optional icon to be displayed in the tag.
- * @slot - The content of the tag. This should be pure text.
+ * @slot - The text content of the tag.
  */
 @customElement(FhiTagSelector)
 export class FhiTag extends LitElement {
@@ -60,7 +60,7 @@ export class FhiTag extends LitElement {
       (firstNode as Element).tagName.toLowerCase().startsWith('fhi-icon')
     ) {
       console.warn(
-        "Icon have been moved to the 'icon' slot. The current usage is deprecated and will no longer be supported in a future release.",
+        "Icon have been moved to the 'icon' slot. The current usage is deprecated and will no longer be supported in a future release. See documentation for more information: https://designsystem.fhi.no/?path=/docs/komponenter-tag--docs#ikon",
       );
       const icon = firstNode as HTMLElement;
 
