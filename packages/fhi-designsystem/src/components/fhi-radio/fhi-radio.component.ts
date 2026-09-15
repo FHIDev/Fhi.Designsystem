@@ -60,7 +60,6 @@ export class FhiRadio extends LitElement {
   /**
    * The help text shown below the label.
    * This is used to provide additional information or descriptions to the user.
-   * @type {string}
    */
   @property({ type: String, attribute: 'help-text' }) helpText?: string;
 
