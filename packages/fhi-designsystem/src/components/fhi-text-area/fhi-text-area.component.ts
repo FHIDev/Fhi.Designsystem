@@ -1,4 +1,4 @@
-import { html, css, LitElement } from 'lit';
+import { html, css, LitElement, PropertyValues } from 'lit';
 import { customElement, property, query } from 'lit/decorators.js';
 import { ifDefined } from 'lit/directives/if-defined.js';
 import '../typography/fhi-body/fhi-body.component';
@@ -24,21 +24,18 @@ export class FhiTextArea extends LitElement {
   /**
    * The text that labels the text area.
    * A text area should always have a label to ensure accessibility.
-   * @type {string}
    */
   @property({ type: String }) label?: string = undefined;
 
   /**
    * The message shown beneath the text area.
    * This is often used to provide additional information or feedback to the user.
-   * @type {string}
    */
   @property({ type: String }) message?: string = undefined;
 
   /**
    * The message shown above the text area.
    * This is often used to provide additional information to the user.
-   * @type {string}
    */
   @property({ type: String, attribute: 'help-text' }) helpText?: string =
     undefined;
@@ -46,7 +43,6 @@ export class FhiTextArea extends LitElement {
   /**
    * Sets the placeholder text for the text area.
    * This text is displayed when the text area is empty, providing a hint to the user about the expected input.
-   * @type {string}
    */
   @property({ type: String }) placeholder?: string = undefined;
 
@@ -55,35 +51,29 @@ export class FhiTextArea extends LitElement {
    *
    * The `error` status is used to indicate that there is an issue with the text area, such as invalid or missing data.
    * @reflect
-   * @type {'error'}
    */
   @property({ type: String, reflect: true }) status?: 'error' = undefined;
 
   /**
    * Sets the text area to read-only. A read-only field cannot be modified by the user but may be submitted with the form.
    * @reflect
-   * @type {boolean}
    */
   @property({ type: Boolean, reflect: true }) readonly? = false;
 
   /**
    * Disables the text area.  This changes its appearance and makes it non-interactive.
    * @reflect
-   * @type {boolean}
    */
   @property({ type: Boolean, reflect: true }) disabled? = false;
 
   /**
    * Sets the number of visible text lines for the text area.
    * @reflect
-   * @type {number}
    */
   @property({ type: Number }) rows? = 2;
 
   @query('#textarea-element')
   private _textarea!: HTMLTextAreaElement;
-
-  private _name?: string = undefined;
 
   /**
    * The name of the text area. This is submitted with the form data as a `key`.
@@ -92,20 +82,9 @@ export class FhiTextArea extends LitElement {
    * See: {@link https://developer.mozilla.org/en-US/docs/Web/HTML/Element/textarea#name}
    *
    * @reflect
-   * @type {string}
    */
   @property({ type: String, reflect: true })
-  get name(): string | undefined {
-    return this._name;
-  }
-  set name(newName: string) {
-    const oldName = this._name;
-    this._name = newName;
-    this.requestUpdate('name', oldName);
-    this._internals.setFormValue(this._value);
-  }
-
-  private _value: string = '';
+  name: string = '';
 
   /**
    * The default value of the text area.
@@ -115,25 +94,26 @@ export class FhiTextArea extends LitElement {
    * This attribute conforms with the standard HTML `value` attribute for text areas.
    * See: {@link https://developer.mozilla.org/en-US/docs/Web/API/HTMLTextAreaElement/value}
    *
-   * @type {string}
    */
   @property({ type: String })
-  get value(): string {
-    return this._value;
-  }
-
-  set value(newValue: string) {
-    const oldValue = this._value;
-    this._value = newValue;
-    this.requestUpdate('value', oldValue);
-    this._internals.setFormValue(this._value);
-  }
+  value: string = '';
 
   private _internals: ElementInternals;
 
   constructor() {
     super();
     this._internals = this.attachInternals();
+  }
+
+  public connectedCallback(): void {
+    super.connectedCallback();
+    this._internals.setFormValue(this.value);
+  }
+
+  protected updated(changedProperties: PropertyValues): void {
+    if (changedProperties.has('value') || changedProperties.has('name')) {
+      this._internals.setFormValue(this.value);
+    }
   }
 
   private _dispatchChangeEvent(): void {
@@ -225,8 +205,9 @@ export class FhiTextArea extends LitElement {
           var(--fhi-color-neutral-border-default);
         border-radius: var(--fhi-border-radius-050);
         background-color: var(--fhi-color-neutral-background-default);
-        transition: border-color var(--fhi-motion-ease-default) var(--fhi-motion-duration-quick);
-        
+        transition: border-color var(--fhi-motion-ease-default)
+          var(--fhi-motion-duration-quick);
+
         &:hover {
           border-color: var(--fhi-color-accent-border-default);
         }
@@ -255,7 +236,8 @@ export class FhiTextArea extends LitElement {
         font-size: var(--fhi-typography-body-medium-font-size);
         line-height: var(--fhi-typography-body-medium-line-height);
         letter-spacing: var(--fhi-typography-body-medium-letter-spacing);
-        transition: background-color var(--fhi-motion-ease-default) var(--fhi-motion-duration-quick);
+        transition: background-color var(--fhi-motion-ease-default)
+          var(--fhi-motion-duration-quick);
 
         &::placeholder {
           color: var(--fhi-color-neutral-base-default);
@@ -265,7 +247,7 @@ export class FhiTextArea extends LitElement {
           border-color: var(--fhi-color-accent-border-default);
           background-color: var(--fhi-color-accent-background-subtle);
         }
-        
+
         &:focus {
           background-color: var(--fhi-color-accent-background-default);
         }
