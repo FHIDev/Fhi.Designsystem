@@ -94,6 +94,7 @@ export class FhiCallout extends LitElement {
     :host {
       display: flex;
       align-items: center;
+      height: fit-content;
       padding: calc(var(--fhi-spacing-200) - var(--fhi-dimension-border-width));
       border-radius: var(--fhi-border-radius-100);
       border: var(--fhi-dimension-border-width) solid transparent;
