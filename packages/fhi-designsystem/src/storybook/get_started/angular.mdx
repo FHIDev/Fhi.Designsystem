@@ -42,7 +42,7 @@ Pakkene inneholder komponenter, [Design Tokens](?path=/docs/design-tokens-introd
 
 For full _Intellisense_ og typestøtte i ditt Angular-prosjekt, anbefaler vi at du bruker Angular-wrappers som ligger i `@folkehelseinstituttet/designsystem/angular-wrappers`.
 
-Angular wrappers må kompileres av Angular sin kompilator. Legg derfor til følgende i `tsconfig.app.json`-filen din for å inkludere wrapperne i kompileringen:
+Angular-wrappers må kompileres av Angular sin kompilator. Legg derfor til følgende i `tsconfig.app.json`-filen din for å inkludere wrapperne i kompileringen:
 
 ```json
 {
@@ -72,7 +72,7 @@ Først importerer vi filen med [Design Tokens](?path=/docs/design-tokens-introdu
 projects.[your-project].architect.build.options.styles: ["@folkehelseinstituttet/designsystem/theme/default.css"]
 ```
 
-Før du bruker komponenten må du først importere den. I dette tilfellet importerer vi wrapperen til `fhi-button`. Wrapperen vil automatisk importere, registrere og bruke den underleggende web-komponenten:
+Deretter – før du bruker komponenten – må du importere den. I dette tilfellet importerer vi wrapperen til `fhi-button`. Wrapperen vil automatisk importere, registrere og bruke den underleggende web-komponenten:
 ```ts
 import { FhiButtonAngularWrapper } from "@folkehelseinstituttet/designsystem/angular-wrappers/fhi-button.component";
 
@@ -87,7 +87,7 @@ Du kan nå bruke wrapperen i Angular-komponentens HTML-mal slik:
 ```html
 <fhi-button (click)="handleClick($event)">Click me!</fhi-button>
 ```
-_Obs: `handleClick` er brukt her som et eksempel. Du må selv lage en metode i Angular-komponenten som håndterer klikk-eventet._
+**Obs:** `handleClick` er brukt her som et eksempel. Du må selv lage en metode i Angular-komponenten som håndterer klikk-eventet.
 
 ### Angular Forms
 
