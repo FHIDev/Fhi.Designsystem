@@ -40,20 +40,29 @@ export class FhiTag extends LitElement {
   @property({ type: String, reflect: true })
   variant: 'subtle' | 'bordered' = 'subtle';
 
+  private _getFirstValidNode(slot: HTMLSlotElement): Node | undefined {
+    const validNodes = slot
+      .assignedNodes()
+      .filter(
+        node =>
+          node.nodeType === Node.ELEMENT_NODE ||
+          (node.nodeType === Node.TEXT_NODE && node.textContent?.trim()),
+      );
+
+    return validNodes[0];
+  }
+
+  private _setIconStyles(icon: HTMLElement): void {
+    icon.setAttribute('size', '1rem');
+    icon.style.marginInlineEnd = 'var(--fhi-spacing-050)';
+  }
+
   private _handleSlotChange(event: Event): void {
-    const nodes = (event.target as HTMLSlotElement).assignedNodes();
+    const firstNode = this._getFirstValidNode(event.target as HTMLSlotElement);
 
-    const validNodes = nodes.filter(
-      node =>
-        node.nodeType === Node.ELEMENT_NODE ||
-        (node.nodeType === Node.TEXT_NODE && node.textContent?.trim()),
-    );
-
-    if (validNodes.length === 0) {
+    if (!firstNode) {
       return;
     }
-
-    const firstNode: Node = validNodes[0];
 
     if (
       firstNode.nodeType === Node.ELEMENT_NODE &&
@@ -63,35 +72,23 @@ export class FhiTag extends LitElement {
         "Icon have been moved to the 'icon' slot. The current usage is deprecated and will no longer be supported in a future release. See documentation for more information: https://designsystem.fhi.no/?path=/docs/komponenter-tag--docs#ikon",
       );
       const icon = firstNode as HTMLElement;
-
-      icon.setAttribute('size', '1rem');
-      icon.style.marginLeft = 'calc(-1 * var(--fhi-spacing-050))';
+      this._setIconStyles(icon);
     }
   }
 
   private _handleSlotChangeIcon(event: Event): void {
-    const nodes = (event.target as HTMLSlotElement).assignedNodes();
+    const firstNode = this._getFirstValidNode(event.target as HTMLSlotElement);
 
-    const validNodes = nodes.filter(
-      node =>
-        node.nodeType === Node.ELEMENT_NODE ||
-        (node.nodeType === Node.TEXT_NODE && node.textContent?.trim()),
-    );
-
-    if (validNodes.length === 0) {
+    if (!firstNode) {
       return;
     }
-
-    const firstNode: Node = validNodes[0];
 
     if (
       firstNode.nodeType === Node.ELEMENT_NODE &&
       (firstNode as Element).tagName.toLowerCase().startsWith('fhi-icon')
     ) {
       const icon = firstNode as HTMLElement;
-
-      icon.setAttribute('size', '1rem');
-      icon.style.marginLeft = 'calc(-1 * var(--fhi-spacing-050))';
+      this._setIconStyles(icon);
     }
   }
 
@@ -130,18 +127,9 @@ export class FhiTag extends LitElement {
         align-items: center;
       }
 
-      & fhi-body {
-        color: inherit;
-        text-wrap: nowrap;
-      }
-
       slot[name='icon'] {
         justify-content: center;
         align-self: stretch;
-      }
-
-      ::slotted([slot='icon']) {
-        margin-inline-end: var(--fhi-spacing-050);
       }
     }
 
