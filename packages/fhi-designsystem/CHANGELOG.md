@@ -1,5 +1,33 @@
 # Changelog
 
+## [0.45.0](https://github.com/FHIDev/Fhi.Designsystem/compare/v0.44.0...v0.45.0) (2026-09-14)
+
+### 🚀 Features
+
+* implement first iteration of text area ([#438](https://github.com/FHIDev/Fhi.Designsystem/issues/438)) ([3e7e730](https://github.com/FHIDev/Fhi.Designsystem/commit/3e7e730ba0e76ce52589c4cf29fab372f4ed36f3))
+
+## [0.44.0](https://github.com/FHIDev/Fhi.Designsystem/compare/v0.43.5...v0.44.0) (2026-09-14)
+
+### 🚀 Features
+
+* Add htlp-text to radio & checkbox ([#482](https://github.com/FHIDev/Fhi.Designsystem/issues/482)) ([37a8843](https://github.com/FHIDev/Fhi.Designsystem/commit/37a88439ef8b8864b0cfbdf28cd84d37c89725b2))
+
+## [0.43.5](https://github.com/FHIDev/Fhi.Designsystem/compare/v0.43.4...v0.43.5) (2026-09-02)
+
+### 🛠️ Bug Fixes
+
+* Beskytter focus-visible style på outline ([#499](https://github.com/FHIDev/Fhi.Designsystem/issues/499)) ([fce70a0](https://github.com/FHIDev/Fhi.Designsystem/commit/fce70a00c3120a7c94934e24850482e59e2f209b))
+
+## [0.43.4](https://github.com/FHIDev/Fhi.Designsystem/compare/v0.43.3...v0.43.4) (2026-09-02)
+
+### 🛠️ Bug Fixes
+
+* Endret fra section til div ([#501](https://github.com/FHIDev/Fhi.Designsystem/issues/501)) ([79281af](https://github.com/FHIDev/Fhi.Designsystem/commit/79281af5985a04dbf6de0dd573c17772d7ad9ab5))
+
+### 📑 Documentation
+
+* 497 update typography token documentation ([#498](https://github.com/FHIDev/Fhi.Designsystem/issues/498)) ([7198701](https://github.com/FHIDev/Fhi.Designsystem/commit/7198701051a6008f2aacf43ab96a950b9e8d78ac))
+
 ## [0.43.3](https://github.com/FHIDev/Fhi.Designsystem/compare/v0.43.2...v0.43.3) (2026-08-25)
 
 ### 🛠️ Bug Fixes
