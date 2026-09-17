@@ -76,7 +76,7 @@ export class FhiTag extends LitElement {
     }
   }
 
-  private _handleSlotChangeIcon(event: Event): void {
+  private _handleIconSlotChange(event: Event): void {
     const firstNode = this._getFirstValidNode(event.target as HTMLSlotElement);
 
     if (!firstNode) {
@@ -94,7 +94,7 @@ export class FhiTag extends LitElement {
 
   render() {
     return html`
-      <slot name="icon" @slotchange=${this._handleSlotChangeIcon}></slot>
+      <slot name="icon" @slotchange=${this._handleIconSlotChange}></slot>
       <fhi-body size="small">
         <slot
           class="slot-container"
