@@ -26,11 +26,11 @@ const meta: FhiStorybookMeta<FhiTag> = {
     slotTypes: [
       {
         description:
-          'Hovedinnholdet i tag-en. Dette er beskjeden eller statusen som skal kommuniseres til brukeren.',
+          'Hovedinnholdet i taggen. Dette er beskjeden eller statusen som skal kommuniseres til brukeren.',
       },
       {
         name: 'icon',
-        description: 'Valgfritt ikon som skal vises i tag-en.',
+        description: 'Valgfritt ikon som skal vises i taggen.',
       },
     ],
   },
