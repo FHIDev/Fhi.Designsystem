@@ -225,8 +225,9 @@ export class FhiTextArea extends LitElement {
           var(--fhi-color-neutral-border-default);
         border-radius: var(--fhi-border-radius-050);
         background-color: var(--fhi-color-neutral-background-default);
-        transition: border-color var(--fhi-motion-ease-default) var(--fhi-motion-duration-quick);
-        
+        transition: border-color var(--fhi-motion-ease-default)
+          var(--fhi-motion-duration-quick);
+
         &:hover {
           border-color: var(--fhi-color-accent-border-default);
         }
@@ -255,7 +256,8 @@ export class FhiTextArea extends LitElement {
         font-size: var(--fhi-typography-body-medium-font-size);
         line-height: var(--fhi-typography-body-medium-line-height);
         letter-spacing: var(--fhi-typography-body-medium-letter-spacing);
-        transition: background-color var(--fhi-motion-ease-default) var(--fhi-motion-duration-quick);
+        transition: background-color var(--fhi-motion-ease-default)
+          var(--fhi-motion-duration-quick);
 
         &::placeholder {
           color: var(--fhi-color-neutral-base-default);
@@ -265,7 +267,7 @@ export class FhiTextArea extends LitElement {
           border-color: var(--fhi-color-accent-border-default);
           background-color: var(--fhi-color-accent-background-subtle);
         }
-        
+
         &:focus {
           background-color: var(--fhi-color-accent-background-default);
         }
@@ -273,11 +275,7 @@ export class FhiTextArea extends LitElement {
 
       label {
         color: var(--fhi-color-neutral-text-default);
-        margin: 0;
-      }
-
-      label + .textarea-container {
-        margin-top: var(--fhi-spacing-050);
+        padding: 0 0 var(--fhi-spacing-050) 0;
       }
 
       .help-text {
