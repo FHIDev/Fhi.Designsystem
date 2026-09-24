@@ -1,5 +1,6 @@
 import type { StoryObj } from '@storybook/web-components-vite';
 import { html } from 'lit';
+import { action } from 'storybook/actions';
 
 import { FhiToggleGroup } from './fhi-toggle-group.component';
 import { FhiToggleGroupItem } from '../fhi-toggle-group-item/fhi-toggle-group-item.component';
@@ -50,7 +51,10 @@ export const Preview: Story = {
   tags: [],
   args: { variant: 'strong' },
   render: args => html`
-    <fhi-toggle-group variant="${ifDefined(args.variant)}">
+    <fhi-toggle-group
+      variant="${ifDefined(args.variant)}"
+      @change=${action('change')}
+    >
       <fhi-toggle-group-item>Valg</fhi-toggle-group-item>
       <fhi-toggle-group-item>Valg</fhi-toggle-group-item>
       <fhi-toggle-group-item>Valg</fhi-toggle-group-item>
@@ -62,7 +66,10 @@ export const WithIcon: Story = {
   tags: [],
   args: { variant: 'strong' },
   render: args => html`
-    <fhi-toggle-group variant="${ifDefined(args.variant)}">
+    <fhi-toggle-group
+      variant="${ifDefined(args.variant)}"
+      @change=${action('change')}
+    >
       <fhi-toggle-group-item>
         <fhi-icon-sheet slot="icon"></fhi-icon-sheet>
         Tabell
