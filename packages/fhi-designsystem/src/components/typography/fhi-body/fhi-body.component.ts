@@ -1,6 +1,7 @@
 import { html, css, LitElement } from 'lit';
 import { customElement, property } from 'lit/decorators.js';
 import { ifDefined } from 'lit/directives/if-defined.js';
+import { unsafeHTML } from 'lit/directives/unsafe-html.js';
 
 export const FhiBodySelector = 'fhi-body';
 
@@ -47,32 +48,51 @@ export class FhiBody extends LitElement {
   @property({ type: String }) color?: string;
 
   /**
-   * Sets the text to be bold.
+   * Sets the text to be thick and semantically important.
    *
    * Example:
    * ```html
-   *  <fhi-body bold>
-   *    This text will be bold.
+   *  <fhi-body strong>
+   *    This text will be thick and important.
    *  </fhi-body>
    * ```
    *
    * @type {boolean}
    */
-  @property({ type: Boolean }) bold?: boolean;
+  @property({ type: Boolean }) strong?: boolean;
 
   /**
-   * Sets the text to be italic.
+   * Sets the text to be italic and semantically emphasized.
    *
    * Example:
    * ```html
-   *  <fhi-body italic>
-   *    This text will be italic.
+   *  <fhi-body emphasized>
+   *    This text will be italic and emphasized.
    *  </fhi-body>
    * ```
    *
    * @type {boolean}
    */
-  @property({ type: Boolean }) italic?: boolean;
+  @property({ type: Boolean }) emphasized?: boolean;
+
+  private renderContent() {
+    let tags: string[] = [];
+
+    if (this.strong && this.emphasized) {
+      tags = ['strong', 'em'];
+    } else if (this.strong) {
+      tags = ['strong'];
+    } else if (this.emphasized) {
+      tags = ['em'];
+    }
+
+    return unsafeHTML(
+      tags.reduceRight(
+        (accumulation, tag) => `<${tag}>${accumulation}</${tag}>`,
+        `<slot></slot>`,
+      ),
+    );
+  }
 
   render() {
     return html`
@@ -80,7 +100,7 @@ export class FhiBody extends LitElement {
         class="body"
         style=${ifDefined(this.color ? `color: ${this.color}` : undefined)}
       >
-        <slot></slot>
+        ${this.renderContent()}
       </span>
     `;
   }
@@ -134,14 +154,14 @@ export class FhiBody extends LitElement {
       }
     }
 
-    :host([bold]) {
-      .body {
+    :host([strong]) {
+      .body strong {
         font-weight: var(--fhi-font-weight-bold);
       }
     }
 
-    :host([italic]) {
-      .body {
+    :host([emphasized]) {
+      .body em {
         font-style: italic;
       }
     }
