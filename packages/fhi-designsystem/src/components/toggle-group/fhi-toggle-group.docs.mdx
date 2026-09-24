@@ -1,5 +1,6 @@
 import { FhiToggleGroup } from './fhi-toggle-group/fhi-toggle-group.component.ts';
 import * as FhiToggleGroupStories from './fhi-toggle-group/fhi-toggle-group.stories.ts';
+import * as FhiToggleGroupItemStories from './fhi-toggle-group-item/fhi-toggle-group-item.stories.ts';
 import { Meta, Primary, Canvas, Controls } from '@storybook/addon-docs/blocks';
 
 import { ApiDefinition } from '../../../.storybook/blocks/api-definition.jsx';
@@ -22,13 +23,16 @@ Toggle Group lar brukeren velge ett alternativ fra en liste relaterte valg. Valg
 
 Toggle Group brukes i hovedsak til filtrering eller veksling mellom visninger av innhold. Kun ett alternativ kan være valg om gangen, og endringene vises umiddelbart når valget endrer seg. Toggle Group passer ikke til:
 
-- Å navigere mellom to relaterte sider eller paneler med hvert sitt unike innhold
-- Skjemaer, hvor dataen lagres eller valideres (bruk Radio)
-- Binære “av/på”-valg
+- Å navigere mellom to relaterte sider eller paneler med hvert sitt unike innhold (bruk tabs).
+- Skjemaer, hvor dataen lagres eller valideres (bruk Radio).
+- Binære “av/på”-valg.
 
 # Innhold
 
-Knappene kan ha tekst, ikon til venstre og tekst eller kun ikon.  Hold teksten så kort som mulig, også ved bruk av aria-label - når kun ikon brukes. 
-Vurdér bruk av Label som ledetekst for gruppen og Tooltip for å gi hint på knapper uten synlig tekst.
+Knappene kan ha tekst, eller ikon til venstre og tekst.  Hold teksten så kort som mulig.
+
+<Canvas of={FhiToggleGroupStories.WithIcon} />
+
 
 <ApiDefinition of={FhiToggleGroupStories.Preview} />
+<ApiDefinition of={FhiToggleGroupItemStories.Preview} />
