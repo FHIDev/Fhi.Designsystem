@@ -56,6 +56,7 @@ export class FhiBody extends LitElement {
    *  </fhi-body>
    * ```
    *
+   * @type {boolean}
    */
   @property({ type: Boolean }) bold?: boolean;
 
@@ -69,6 +70,7 @@ export class FhiBody extends LitElement {
    *  </fhi-body>
    * ```
    *
+   * @type {boolean}
    */
   @property({ type: Boolean }) italic?: boolean;
 
