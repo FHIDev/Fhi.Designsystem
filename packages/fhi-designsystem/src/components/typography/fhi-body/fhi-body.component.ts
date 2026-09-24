@@ -122,7 +122,7 @@ export class FhiBody extends LitElement {
         margin: 0;
       }
 
-      ::slotted(*) {
+      ::slotted(fhi-body) {
         display: inline;
       }
     }
