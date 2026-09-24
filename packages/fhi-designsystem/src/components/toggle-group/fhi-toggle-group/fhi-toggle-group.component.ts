@@ -1,30 +1,23 @@
 import { html, css, LitElement } from 'lit';
 import { customElement, property } from 'lit/decorators.js';
+import type { FhiToggleGroupItem } from '../fhi-toggle-group-item/fhi-toggle-group-item.component';
 
 export const FhiToggleGroupSelector = 'fhi-toggle-group';
-
-type ToggleGroupItemElement = HTMLElement & {
-  variant: 'strong' | 'subtle';
-  selected: boolean;
-  setTabbable: (isTabbable: boolean) => void;
-  focus: (options?: FocusOptions) => void;
-};
 
 @customElement(FhiToggleGroupSelector)
 export class FhiToggleGroup extends LitElement {
   @property({ type: String, reflect: true }) variant: 'strong' | 'subtle' =
     'strong';
 
-  private _selectedItem: ToggleGroupItemElement | null = null;
+  private _selectedItem: FhiToggleGroupItem | null = null;
   private _mutationObserver: MutationObserver | null = null;
 
   constructor() {
     super();
     this._mutationObserver = new MutationObserver(mutations => {
       for (const mutation of mutations) {
-        this._setSelectedItem(mutation.target as ToggleGroupItemElement);
+        this._setSelectedItem(mutation.target as FhiToggleGroupItem);
       }
-      //this._handleSlotChange();
     });
   }
 
@@ -48,9 +41,9 @@ export class FhiToggleGroup extends LitElement {
     }
   }
 
-  private _getItems(): ToggleGroupItemElement[] {
+  private _getItems(): FhiToggleGroupItem[] {
     return Array.from(
-      this.querySelectorAll<ToggleGroupItemElement>('fhi-toggle-group-item'),
+      this.querySelectorAll<FhiToggleGroupItem>('fhi-toggle-group-item'),
     );
   }
 
@@ -62,7 +55,7 @@ export class FhiToggleGroup extends LitElement {
     this.dispatchEvent(new Event('change', { bubbles: true, composed: true }));
   }
 
-  private _setSelectedItem(item: ToggleGroupItemElement) {
+  private _setSelectedItem(item: FhiToggleGroupItem) {
     if (!this._selectedItem) {
       item.selected = true;
       this._selectedItem = item;
