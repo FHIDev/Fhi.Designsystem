@@ -59,7 +59,7 @@ export class FhiBody extends LitElement {
    *
    * @type {boolean}
    */
-  @property({ type: Boolean }) strong?: boolean;
+  @property({ type: Boolean, reflect: true }) strong?: boolean;
 
   /**
    * Sets the text to be italic and semantically emphasized.
@@ -73,7 +73,7 @@ export class FhiBody extends LitElement {
    *
    * @type {boolean}
    */
-  @property({ type: Boolean }) emphasized?: boolean;
+  @property({ type: Boolean, reflect: true }) emphasized?: boolean;
 
   private renderContent() {
     const tags: string[] = [];
