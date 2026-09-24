@@ -76,14 +76,14 @@ export class FhiBody extends LitElement {
   @property({ type: Boolean }) emphasized?: boolean;
 
   private renderContent() {
-    let tags: string[] = [];
+    const tags: string[] = [];
 
-    if (this.strong && this.emphasized) {
-      tags = ['strong', 'em'];
-    } else if (this.strong) {
-      tags = ['strong'];
-    } else if (this.emphasized) {
-      tags = ['em'];
+    if (this.strong) {
+      tags.push('strong');
+    }
+
+    if (this.emphasized) {
+      tags.push('em');
     }
 
     return unsafeHTML(
