@@ -46,6 +46,32 @@ export class FhiBody extends LitElement {
    */
   @property({ type: String }) color?: string;
 
+  /**
+   * Sets the text to be bold.
+   *
+   * Example:
+   * ```html
+   *  <fhi-body bold>
+   *    This text will be bold.
+   *  </fhi-body>
+   * ```
+   *
+   */
+  @property({ type: Boolean }) bold?: boolean;
+
+  /**
+   * Sets the text to be italic.
+   *
+   * Example:
+   * ```html
+   *  <fhi-body italic>
+   *    This text will be italic.
+   *  </fhi-body>
+   * ```
+   *
+   */
+  @property({ type: Boolean }) italic?: boolean;
+
   render() {
     return html`
       <span
@@ -73,6 +99,10 @@ export class FhiBody extends LitElement {
         -webkit-font-smoothing: antialiased;
         margin: 0;
       }
+
+      ::slotted(*) {
+        display: inline;
+      }
     }
 
     :host([size='large']) {
@@ -99,6 +129,18 @@ export class FhiBody extends LitElement {
         font-weight: var(--fhi-typography-body-small-font-weight);
         line-height: var(--fhi-typography-body-small-line-height);
         letter-spacing: var(--fhi-typography-body-small-letter-spacing);
+      }
+    }
+
+    :host([bold]) {
+      .body {
+        font-weight: var(--fhi-font-weight-bold);
+      }
+    }
+
+    :host([italic]) {
+      .body {
+        font-style: italic;
       }
     }
   `;
