@@ -68,18 +68,18 @@ describe('fhi-tag', () => {
   });
 
   describe('icon handling', () => {
-    it('correctly styles an icon that is the first child', async () => {
+    it('correctly styles an icon in the icon slot', async () => {
       component = await fixture(
         html`<fhi-tag color="warning"
-          ><fhi-icon-clock></fhi-icon-clock>Utløper snart</fhi-tag
+          ><fhi-icon-clock slot="icon"></fhi-icon-clock>Utløper snart</fhi-tag
         >`,
       );
 
       const icon: HTMLElement = component.querySelector('fhi-icon-clock')!;
 
       await expect(icon.getAttribute('size')).to.equal('1rem');
-      await expect(icon.style.marginLeft).to.equal(
-        'calc(-1 * var(--fhi-spacing-050))',
+      await expect(icon.style.marginInlineEnd).to.equal(
+        'var(--fhi-spacing-050)',
       );
     });
   });
