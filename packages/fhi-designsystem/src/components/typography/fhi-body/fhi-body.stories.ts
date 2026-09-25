@@ -12,10 +12,16 @@ const meta: Meta<FhiBody> = {
   component: 'fhi-body',
   parameters: {},
   decorators: [],
-  render: args =>
-    html`<fhi-body size=${args.size} color=${ifDefined(args.color)}
-      >Eksempel</fhi-body
-    >`,
+  render: args => html`
+    <fhi-body
+      size=${args.size}
+      color=${ifDefined(args.color)}
+      ?emphasized=${args.emphasized}
+      ?strong=${args.strong}
+    >
+      Eksempel
+    </fhi-body>
+  `,
   argTypes: {
     size: {
       options: ['large', 'medium', 'small'],
@@ -28,6 +34,16 @@ const meta: Meta<FhiBody> = {
       description: 'Tekstfarge.',
       defaultValue: { summary: 'currentcolor' },
     },
+    emphasized: {
+      control: { type: 'boolean' },
+      description: 'Bestemmer om teksten er kursiv og semantisk fremhevet.',
+      defaultValue: { summary: false },
+    },
+    strong: {
+      control: { type: 'boolean' },
+      description: 'Bestemmer om teksten er fet og semantisk viktig.',
+      defaultValue: { summary: false },
+    },
   },
 };
 
@@ -35,7 +51,7 @@ type Story = StoryObj<FhiBody>;
 
 export const Preview: Story = {
   tags: [],
-  args: { size: 'medium' },
+  args: { size: 'medium', emphasized: false, strong: false },
 };
 
 export default meta;

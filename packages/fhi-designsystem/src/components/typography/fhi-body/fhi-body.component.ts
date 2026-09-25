@@ -1,6 +1,7 @@
 import { html, css, LitElement } from 'lit';
 import { customElement, property } from 'lit/decorators.js';
 import { ifDefined } from 'lit/directives/if-defined.js';
+import { unsafeHTML } from 'lit/directives/unsafe-html.js';
 
 export const FhiBodySelector = 'fhi-body';
 
@@ -46,13 +47,60 @@ export class FhiBody extends LitElement {
    */
   @property({ type: String }) color?: string;
 
+  /**
+   * Sets the text to be thick and semantically important.
+   *
+   * Example:
+   * ```html
+   *  <fhi-body strong>
+   *    This text will be thick and important.
+   *  </fhi-body>
+   * ```
+   *
+   * @type {boolean}
+   */
+  @property({ type: Boolean, reflect: true }) strong?: boolean;
+
+  /**
+   * Sets the text to be italic and semantically emphasized.
+   *
+   * Example:
+   * ```html
+   *  <fhi-body emphasized>
+   *    This text will be italic and emphasized.
+   *  </fhi-body>
+   * ```
+   *
+   * @type {boolean}
+   */
+  @property({ type: Boolean, reflect: true }) emphasized?: boolean;
+
+  private renderContent() {
+    const tags: string[] = [];
+
+    if (this.strong) {
+      tags.push('strong');
+    }
+
+    if (this.emphasized) {
+      tags.push('em');
+    }
+
+    return unsafeHTML(
+      tags.reduceRight(
+        (accumulation, tag) => `<${tag}>${accumulation}</${tag}>`,
+        `<slot></slot>`,
+      ),
+    );
+  }
+
   render() {
     return html`
       <span
         class="body"
         style=${ifDefined(this.color ? `color: ${this.color}` : undefined)}
       >
-        <slot></slot>
+        ${this.renderContent()}
       </span>
     `;
   }
@@ -72,6 +120,10 @@ export class FhiBody extends LitElement {
         font-family: var(--fhi-font-family-default);
         -webkit-font-smoothing: antialiased;
         margin: 0;
+      }
+
+      ::slotted(fhi-body) {
+        display: inline;
       }
     }
 
@@ -99,6 +151,18 @@ export class FhiBody extends LitElement {
         font-weight: var(--fhi-typography-body-small-font-weight);
         line-height: var(--fhi-typography-body-small-line-height);
         letter-spacing: var(--fhi-typography-body-small-letter-spacing);
+      }
+    }
+
+    :host([strong]) {
+      .body strong {
+        font-weight: var(--fhi-font-weight-bold);
+      }
+    }
+
+    :host([emphasized]) {
+      .body em {
+        font-style: italic;
       }
     }
   `;
