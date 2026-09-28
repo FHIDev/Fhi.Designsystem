@@ -1,5 +1,17 @@
 # Changelog
 
+## [0.45.2](https://github.com/FHIDev/Fhi.Designsystem/compare/v0.45.1...v0.45.2) (2026-09-25)
+
+### 🛠️ Bug Fixes
+
+* move icon from default slot to seperat icon slot in tag ([#502](https://github.com/FHIDev/Fhi.Designsystem/issues/502)) ([b936229](https://github.com/FHIDev/Fhi.Designsystem/commit/b9362292297057eea56b846d476465970592e123))
+
+## [0.45.1](https://github.com/FHIDev/Fhi.Designsystem/compare/v0.45.0...v0.45.1) (2026-09-22)
+
+### 🛠️ Bug Fixes
+
+* replace the margin between the label and the text field with padding ([#511](https://github.com/FHIDev/Fhi.Designsystem/issues/511)) ([f3d0d0e](https://github.com/FHIDev/Fhi.Designsystem/commit/f3d0d0ea073c9b003e4d1262f2e920ba77c22a70))
+
 ## [0.45.0](https://github.com/FHIDev/Fhi.Designsystem/compare/v0.44.0...v0.45.0) (2026-09-14)
 
 ### 🚀 Features
