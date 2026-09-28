@@ -14,7 +14,8 @@ export const FhiTagSelector = 'fhi-tag';
  * @tag fhi-tag
  * @element fhi-tag
  *
- * @slot - The content of the tag. This should be pure text with, or without, an icon.
+ * @slot icon - Optional icon to be displayed in the tag.
+ * @slot - The text content of the tag.
  */
 @customElement(FhiTagSelector)
 export class FhiTag extends LitElement {
@@ -39,34 +40,61 @@ export class FhiTag extends LitElement {
   @property({ type: String, reflect: true })
   variant: 'subtle' | 'bordered' = 'subtle';
 
+  private _getFirstValidNode(slot: HTMLSlotElement): Node | undefined {
+    const validNodes = slot
+      .assignedNodes()
+      .filter(
+        node =>
+          node.nodeType === Node.ELEMENT_NODE ||
+          (node.nodeType === Node.TEXT_NODE && node.textContent?.trim()),
+      );
+
+    return validNodes[0];
+  }
+
+  private _setIconStyles(icon: HTMLElement): void {
+    icon.setAttribute('size', '1rem');
+    icon.style.marginInlineEnd = 'var(--fhi-spacing-050)';
+  }
+
   private _handleSlotChange(event: Event): void {
-    const nodes = (event.target as HTMLSlotElement).assignedNodes();
+    const firstNode = this._getFirstValidNode(event.target as HTMLSlotElement);
 
-    const validNodes = nodes.filter(
-      node =>
-        node.nodeType === Node.ELEMENT_NODE ||
-        (node.nodeType === Node.TEXT_NODE && node.textContent?.trim()),
-    );
-
-    if (validNodes.length === 0) {
+    if (!firstNode) {
       return;
     }
 
-    const firstNode: Node = validNodes[0];
+    if (
+      firstNode.nodeType === Node.ELEMENT_NODE &&
+      (firstNode as Element).tagName.toLowerCase().startsWith('fhi-icon')
+    ) {
+      console.warn(
+        "Icon have been moved to the 'icon' slot. The current usage is deprecated and will no longer be supported in a future release. See documentation for more information: https://designsystem.fhi.no/?path=/docs/komponenter-tag--docs#ikon",
+      );
+      const icon = firstNode as HTMLElement;
+      this._setIconStyles(icon);
+    }
+  }
+
+  private _handleIconSlotChange(event: Event): void {
+    const firstNode = this._getFirstValidNode(event.target as HTMLSlotElement);
+
+    if (!firstNode) {
+      return;
+    }
 
     if (
       firstNode.nodeType === Node.ELEMENT_NODE &&
       (firstNode as Element).tagName.toLowerCase().startsWith('fhi-icon')
     ) {
       const icon = firstNode as HTMLElement;
-
-      icon.setAttribute('size', '1rem');
-      icon.style.marginLeft = 'calc(-1 * var(--fhi-spacing-050))';
+      this._setIconStyles(icon);
     }
   }
 
   render() {
     return html`
+      <slot name="icon" @slotchange=${this._handleIconSlotChange}></slot>
       <fhi-body size="small">
         <slot
           class="slot-container"
@@ -97,13 +125,11 @@ export class FhiTag extends LitElement {
       .slot-container {
         display: flex;
         align-items: center;
-
-        gap: var(--fhi-spacing-050);
       }
 
-      & fhi-body {
-        color: inherit;
-        text-wrap: nowrap;
+      slot[name='icon'] {
+        justify-content: center;
+        align-self: stretch;
       }
     }
 

@@ -252,7 +252,7 @@ export class FhiDateInput extends LitElement {
         line-height: var(--fhi-typography-label-small-line-height);
         letter-spacing: var(--fhi-typography-label-small-letter-spacing);
         color: var(--fhi-color-neutral-text-default);
-        margin: 0 0 var(--fhi-spacing-050) 0;
+        padding: 0 0 var(--fhi-spacing-050) 0;
       }
       label:has(+ p) {
         margin: 0 0 0 0;

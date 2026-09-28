@@ -35,6 +35,7 @@ const meta: FhiStorybookMeta<FhiRadio> = {
     html`<fhi-radio
       name=${ifDefined(args.name)}
       label=${ifDefined(args.label)}
+      help-text=${ifDefined(args.helpText)}
       ?checked=${args.checked}
       ?disabled=${args.disabled}
       status=${ifDefined(args.status)}
@@ -54,6 +55,12 @@ const meta: FhiStorybookMeta<FhiRadio> = {
       description:
         'Setter label. Dette assosieres med radiofeltet og vises til brukeren.',
       defaultValue: { summary: 'undefined' },
+    },
+    helpText: {
+      name: 'help-text',
+      control: { type: 'text' },
+      description:
+        'Tekst som vises under radioknappen, som kan brukes til tilleggsinformasjon og utvidede forklaringer.',
     },
     checked: {
       control: 'boolean',
@@ -95,6 +102,14 @@ export const Default: Story = {
   tags: [],
   args: {
     label: 'Label',
+  },
+};
+
+export const HelpText: Story = {
+  tags: [],
+  args: {
+    label: 'Ekstern koblingsnøkkel',
+    helpText: 'Nøkkelen skal importeres',
   },
 };
 

@@ -1,5 +1,29 @@
 # Changelog
 
+## [0.45.2](https://github.com/FHIDev/Fhi.Designsystem/compare/v0.45.1...v0.45.2) (2026-09-25)
+
+### 🛠️ Bug Fixes
+
+* move icon from default slot to seperat icon slot in tag ([#502](https://github.com/FHIDev/Fhi.Designsystem/issues/502)) ([b936229](https://github.com/FHIDev/Fhi.Designsystem/commit/b9362292297057eea56b846d476465970592e123))
+
+## [0.45.1](https://github.com/FHIDev/Fhi.Designsystem/compare/v0.45.0...v0.45.1) (2026-09-22)
+
+### 🛠️ Bug Fixes
+
+* replace the margin between the label and the text field with padding ([#511](https://github.com/FHIDev/Fhi.Designsystem/issues/511)) ([f3d0d0e](https://github.com/FHIDev/Fhi.Designsystem/commit/f3d0d0ea073c9b003e4d1262f2e920ba77c22a70))
+
+## [0.45.0](https://github.com/FHIDev/Fhi.Designsystem/compare/v0.44.0...v0.45.0) (2026-09-14)
+
+### 🚀 Features
+
+* implement first iteration of text area ([#438](https://github.com/FHIDev/Fhi.Designsystem/issues/438)) ([3e7e730](https://github.com/FHIDev/Fhi.Designsystem/commit/3e7e730ba0e76ce52589c4cf29fab372f4ed36f3))
+
+## [0.44.0](https://github.com/FHIDev/Fhi.Designsystem/compare/v0.43.5...v0.44.0) (2026-09-14)
+
+### 🚀 Features
+
+* Add htlp-text to radio & checkbox ([#482](https://github.com/FHIDev/Fhi.Designsystem/issues/482)) ([37a8843](https://github.com/FHIDev/Fhi.Designsystem/commit/37a88439ef8b8864b0cfbdf28cd84d37c89725b2))
+
 ## [0.43.5](https://github.com/FHIDev/Fhi.Designsystem/compare/v0.43.4...v0.43.5) (2026-09-02)
 
 ### 🛠️ Bug Fixes
