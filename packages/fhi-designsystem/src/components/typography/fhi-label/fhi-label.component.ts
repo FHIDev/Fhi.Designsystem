@@ -1,6 +1,7 @@
 import { html, css, LitElement } from 'lit';
 import { customElement, property } from 'lit/decorators.js';
 import { ifDefined } from 'lit/directives/if-defined.js';
+import { unsafeHTML } from 'lit/directives/unsafe-html.js';
 
 export const FhiLabelSelector = 'fhi-label';
 
@@ -46,13 +47,42 @@ export class FhiLabel extends LitElement {
    */
   @property({ type: String }) color?: string;
 
+  /**
+   * Sets the text to be italic and semantically emphasized.
+   *
+   * Example:
+   * ```html
+   *  <fhi-label emphasized>
+   *    This text will be italic and emphasized.
+   *  </fhi-label>
+   * ```
+   *
+   * @type {boolean}
+   */
+  @property({ type: Boolean, reflect: true }) emphasized?: boolean;
+
+  private renderContent() {
+    const tags: string[] = [];
+
+    if (this.emphasized) {
+      tags.push('em');
+    }
+
+    return unsafeHTML(
+      tags.reduceRight(
+        (accumulation, tag) => `<${tag}>${accumulation}</${tag}>`,
+        `<slot></slot>`,
+      ),
+    );
+  }
+
   render() {
     return html`
       <span
         class="label"
         style=${ifDefined(this.color ? `color: ${this.color}` : undefined)}
       >
-        <slot></slot>
+        ${this.renderContent()}
       </span>
     `;
   }
@@ -99,6 +129,12 @@ export class FhiLabel extends LitElement {
         font-weight: var(--fhi-typography-label-small-font-weight);
         line-height: var(--fhi-typography-label-small-line-height);
         letter-spacing: var(--fhi-typography-label-small-letter-spacing);
+      }
+    }
+
+    :host([emphasized]) {
+      .label em {
+        font-style: italic;
       }
     }
   `;

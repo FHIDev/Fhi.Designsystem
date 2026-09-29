@@ -13,7 +13,10 @@ const meta: Meta<FhiLabel> = {
   parameters: {},
   decorators: [],
   render: args =>
-    html`<fhi-label size=${args.size} color=${ifDefined(args.color)}
+    html`<fhi-label
+      size=${args.size}
+      color=${ifDefined(args.color)}
+      ?emphasized=${args.emphasized}
       >Eksempel</fhi-label
     >`,
   argTypes: {
@@ -28,6 +31,11 @@ const meta: Meta<FhiLabel> = {
       description: 'Tekstfarge.',
       defaultValue: { summary: 'currentcolor' },
     },
+    emphasized: {
+      control: { type: 'boolean' },
+      description: 'Bestemmer om teksten er kursiv og semantisk fremhevet.',
+      defaultValue: { summary: false },
+    },
   },
 };
 
@@ -35,7 +43,7 @@ type Story = StoryObj<FhiLabel>;
 
 export const Preview: Story = {
   tags: [],
-  args: { size: 'medium' },
+  args: { size: 'medium', emphasized: false },
 };
 
 export default meta;

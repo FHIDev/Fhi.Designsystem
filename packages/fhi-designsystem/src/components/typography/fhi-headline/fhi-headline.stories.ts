@@ -17,6 +17,7 @@ const meta: Meta<FhiHeadline> = {
       level=${args.level}
       size=${args.size}
       color=${ifDefined(args.color)}
+      ?emphasized=${args.emphasized}
       >Eksempel</fhi-headline
     >`,
   argTypes: {
@@ -37,6 +38,11 @@ const meta: Meta<FhiHeadline> = {
       description: 'Tekstfarge.',
       defaultValue: { summary: 'currentcolor' },
     },
+    emphasized: {
+      control: { type: 'boolean' },
+      description: 'Bestemmer om teksten er kursiv og semantisk fremhevet.',
+      defaultValue: { summary: false },
+    },
   },
 };
 
@@ -44,7 +50,7 @@ type Story = StoryObj<FhiHeadline>;
 
 export const Preview: Story = {
   tags: [],
-  args: { size: 'medium', level: 1 },
+  args: { size: 'medium', level: 1, emphasized: false },
 };
 
 export default meta;

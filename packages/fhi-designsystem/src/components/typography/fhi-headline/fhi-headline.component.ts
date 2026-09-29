@@ -60,6 +60,20 @@ export class FhiHeadline extends LitElement {
    */
   @property({ type: Number }) level!: HeadlineLevel;
 
+  /**
+   * Sets the text to be italic and semantically emphasized.
+   *
+   * Example:
+   * ```html
+   *  <fhi-headline emphasized>
+   *    This text will be italic and emphasized.
+   *  </fhi-headline>
+   * ```
+   *
+   * @type {boolean}
+   */
+  @property({ type: Boolean, reflect: true }) emphasized?: boolean;
+
   updated(changedProperties: PropertyValues<this>) {
     super.updated(changedProperties);
 
@@ -75,15 +89,27 @@ export class FhiHeadline extends LitElement {
     }
   }
 
-  render() {
-    const template = `
+  private renderContent() {
+    const tags: string[] = [];
+
+    if (this.emphasized) {
+      tags.push('em');
+    }
+
+    return unsafeHTML(`
       <h${this.level} class="headline">
-        <slot></slot>
+      ${tags.reduceRight(
+        (accumulation, tag) => `<${tag}>${accumulation}</${tag}>`,
+        `<slot></slot>`,
+      )}
       </h${this.level}>
-    `;
+      `);
+  }
+
+  render() {
     return html`
       <div style=${ifDefined(this.color ? `color: ${this.color}` : undefined)}>
-        ${unsafeHTML(template)}
+        ${this.renderContent()}
       </div>
     `;
   }
@@ -130,6 +156,12 @@ export class FhiHeadline extends LitElement {
         font-weight: var(--fhi-typography-headline-small-font-weight);
         line-height: var(--fhi-typography-headline-small-line-height);
         letter-spacing: var(--fhi-typography-headline-small-letter-spacing);
+      }
+    }
+
+    :host([emphasized]) {
+      .headline em {
+        font-style: italic;
       }
     }
   `;
