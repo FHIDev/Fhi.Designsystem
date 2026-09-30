@@ -1,5 +1,11 @@
 # Changelog
 
+## [0.45.3](https://github.com/FHIDev/Fhi.Designsystem/compare/v0.45.2...v0.45.3) (2026-09-28)
+
+### 🛠️ Bug Fixes
+
+* Callout height should not be affected by flex direction  ([#509](https://github.com/FHIDev/Fhi.Designsystem/issues/509)) ([50ac8cd](https://github.com/FHIDev/Fhi.Designsystem/commit/50ac8cd39b74f5a7270438c9cef93c5c0cc2a58d))
+
 ## [0.45.2](https://github.com/FHIDev/Fhi.Designsystem/compare/v0.45.1...v0.45.2) (2026-09-25)
 
 ### 🛠️ Bug Fixes
