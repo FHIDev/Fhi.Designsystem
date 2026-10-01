@@ -24,7 +24,8 @@ const meta: FhiStorybookMeta<FhiToggleGroup> = {
     slotTypes: [
       {
         name: '-',
-        description: '<fhi-toggle-group-item> knapper som vises i gruppen.',
+        description:
+          'Alle knappene i gruppen. Bruk <fhi-toggle-group-item> for å definere knappene.',
       },
     ],
     eventTypes: [
@@ -40,7 +41,7 @@ const meta: FhiStorybookMeta<FhiToggleGroup> = {
       control: { type: 'select' },
       options: ['strong', 'subtle'],
       description:
-        'Bestemmer visuell stil.',
+        'Bestemmer variant og visuell stil. Alle <fhi-toggle-group-item> elementer vil automatisk arve denne.',
     },
   },
 };

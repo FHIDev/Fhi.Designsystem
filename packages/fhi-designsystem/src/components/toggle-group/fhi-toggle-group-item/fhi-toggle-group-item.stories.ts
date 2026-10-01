@@ -26,7 +26,7 @@ const meta: FhiStorybookMeta<FhiToggleGroupItem> = {
         control: { type: 'select' },
         options: ['strong', 'subtle'],
         description:
-          'Variant av Toggle Group Item. Alle <fhi-toggle-group-item> elementer i gruppen arver varianten fra <fhi-toggle-group>.',
+          'Bestemmer varianten til Toggle Group Item. arver automatisk variant fra <fhi-toggle-group>.',
       },
     },
   },
