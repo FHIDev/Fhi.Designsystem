@@ -48,12 +48,10 @@ export class FhiBody extends LitElement {
   @property({ type: String }) color?: string;
 
   /**
-   * Sets the text to be thick and semantically important.
+   * Sets the text to be bold and semantically important.
    *
    * Example:
-   * ```html
-   *  <fhi-body strong>
-   *    This text will be thick and important.
+   * 
    *  </fhi-body>
    * ```
    *
@@ -62,12 +60,10 @@ export class FhiBody extends LitElement {
   @property({ type: Boolean, reflect: true }) strong?: boolean;
 
   /**
-   * Sets the text to be italic and semantically emphasized.
+   * Sets the text to be in italics and semantically emphasized.
    *
    * Example:
-   * ```html
-   *  <fhi-body emphasized>
-   *    This text will be italic and emphasized.
+   * 
    *  </fhi-body>
    * ```
    *

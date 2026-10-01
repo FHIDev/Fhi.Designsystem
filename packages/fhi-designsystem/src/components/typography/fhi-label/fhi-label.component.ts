@@ -48,12 +48,10 @@ export class FhiLabel extends LitElement {
   @property({ type: String }) color?: string;
 
   /**
-   * Sets the text to be italic and semantically emphasized.
+   * Sets the text to be in italics and semantically emphasized.
    *
    * Example:
-   * ```html
-   *  <fhi-label emphasized>
-   *    This text will be italic and emphasized.
+   * 
    *  </fhi-label>
    * ```
    *

@@ -61,12 +61,10 @@ export class FhiHeadline extends LitElement {
   @property({ type: Number }) level!: HeadlineLevel;
 
   /**
-   * Sets the text to be italic and semantically emphasized.
+   * Sets the text to be in italics and semantically emphasized.
    *
    * Example:
-   * ```html
-   *  <fhi-headline emphasized>
-   *    This text will be italic and emphasized.
+   * 
    *  </fhi-headline>
    * ```
    *

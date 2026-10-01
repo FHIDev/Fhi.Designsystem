@@ -61,12 +61,10 @@ export class FhiTitle extends LitElement {
   @property({ type: Number }) level!: TitleLevel;
 
   /**
-   * Sets the text to be italic and semantically emphasized.
+   * Sets the text to be in italics and semantically emphasized.
    *
    * Example:
-   * ```html
-   *  <fhi-title emphasized>
-   *    This text will be italic and emphasized.
+   * 
    *  </fhi-title>
    * ```
    *

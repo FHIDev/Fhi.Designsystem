@@ -40,7 +40,7 @@ const meta: Meta<FhiDisplay> = {
     },
     emphasized: {
       control: { type: 'boolean' },
-      description: 'Bestemmer om teksten er kursiv og semantisk fremhevet.',
+      description: 'Bestemmer om teksten skal settes i kursiv og fremheves semantisk.',
       defaultValue: { summary: false },
     },
   },
