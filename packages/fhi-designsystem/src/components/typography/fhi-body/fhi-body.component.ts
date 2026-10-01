@@ -158,7 +158,8 @@ export class FhiBody extends LitElement {
 
     :host([emphasized]) {
       .body em {
-        font-style: italic;
+        font-style: unset;
+        font-variation-settings: 'slnt' -8;
       }
     }
   `;

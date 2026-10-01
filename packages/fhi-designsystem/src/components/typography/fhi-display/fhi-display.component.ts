@@ -61,12 +61,10 @@ export class FhiDisplay extends LitElement {
   @property({ type: Number }) level!: DisplayLevel;
 
   /**
-   * Sets the text to be italic and semantically emphasized.
+   * Sets the text to be in italics and semantically emphasized.
    *
    * Example:
-   * ```html
-   *  <fhi-display emphasized>
-   *    This text will be italic and emphasized.
+   * 
    *  </fhi-display>
    * ```
    *
