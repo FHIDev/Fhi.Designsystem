@@ -1,0 +1,43 @@
+import { FhiToggleGroup } from './fhi-toggle-group/fhi-toggle-group.component.ts';
+import * as FhiToggleGroupStories from './fhi-toggle-group/fhi-toggle-group.stories.ts';
+import * as FhiToggleGroupItemStories from './fhi-toggle-group-item/fhi-toggle-group-item.stories.ts';
+import { Meta, Primary, Canvas, Controls } from '@storybook/addon-docs/blocks';
+
+import { ApiDefinition } from '../../../.storybook/blocks/api-definition.jsx';
+
+<Meta of={FhiToggleGroupStories} />
+
+# Toggle Group
+
+Toggle Group lar brukeren velge ett alternativ fra en liste relaterte valg. Valget påvirker innhold eller visning innen samme område.
+
+# Passer til
+
+- Filtrering eller endring av presentasjon lokalt, f.eks. «Dag, uke eller måned».
+- Bytting mellom visningstyper, f.eks. «Liste, tabell eller graf».
+
+<Canvas of={FhiToggleGroupStories.Preview} />
+<Controls of={FhiToggleGroupStories.Preview} />
+
+
+Toggle Group brukes i hovedsak til filtrering eller veksling mellom visninger av innhold. Kun ett alternativ kan være valg om gangen, og endringene vises umiddelbart når valget endrer seg. 
+
+Toggle Group passer ikke til:
+
+- Å navigere mellom to relaterte sider eller paneler med hvert sitt unike innhold (bruk Tabs*).
+- Skjemaer, hvor dataen lagres eller valideres (bruk [Radio](?path=/docs/komponenter-radio--docs)).
+- Binære “av/på”-valg (bruk Switch*).
+
+*Komponentene er planlagte, men ikke implementerte ennå.
+
+# Innhold
+
+Teksten på knappene bør være beskrivende, konsise og i samme språklig form. Ikoner kan brukes for å gi brukeren ytterligere visuelle hint. Vi blander ikke innholdet i knappene i samme gruppe: enten har alle knapper ikoner eller så har ingen.
+
+Vurdér å legge til en [Label](?path=/docs/komponenter-typography--docs#label) før Toggle Group som ledetekst. 
+
+<Canvas of={FhiToggleGroupStories.WithIcon} />
+
+
+<ApiDefinition of={FhiToggleGroupStories.Preview} />
+<ApiDefinition of={FhiToggleGroupItemStories.Preview} />
