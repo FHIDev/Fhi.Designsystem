@@ -14,7 +14,7 @@ const meta: FhiStorybookMeta<FhiToggleGroupItem> = {
     slotTypes: [
       {
         name: 'icon',
-        description: 'Valgfritt ikon som plaseres på venstre side av knappen.',
+        description: 'Valgfritt ikon.',
       },
       {
         name: '-',

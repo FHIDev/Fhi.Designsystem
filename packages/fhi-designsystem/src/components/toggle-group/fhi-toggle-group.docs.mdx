@@ -15,21 +15,26 @@ Toggle Group lar brukeren velge ett alternativ fra en liste relaterte valg. Valg
 
 - Filtrering eller endring av presentasjon lokalt, f.eks. «Dag, uke eller måned».
 - Bytting mellom visningstyper, f.eks. «Liste, tabell eller graf».
-- Små sett med nært beslektede valg, helst 2 til 5.
 
 <Canvas of={FhiToggleGroupStories.Preview} />
 <Controls of={FhiToggleGroupStories.Preview} />
 
 
-Toggle Group brukes i hovedsak til filtrering eller veksling mellom visninger av innhold. Kun ett alternativ kan være valg om gangen, og endringene vises umiddelbart når valget endrer seg. Toggle Group passer ikke til:
+Toggle Group brukes i hovedsak til filtrering eller veksling mellom visninger av innhold. Kun ett alternativ kan være valg om gangen, og endringene vises umiddelbart når valget endrer seg. 
 
-- Å navigere mellom to relaterte sider eller paneler med hvert sitt unike innhold (bruk tabs).
-- Skjemaer, hvor dataen lagres eller valideres (bruk Radio).
-- Binære “av/på”-valg.
+Toggle Group passer ikke til:
+
+- Å navigere mellom to relaterte sider eller paneler med hvert sitt unike innhold (bruk Tabs*).
+- Skjemaer, hvor dataen lagres eller valideres (bruk [Radio](?path=/docs/komponenter-radio--docs)).
+- Binære “av/på”-valg (bruk Switch*).
+
+*Komponentene er planlagte, men ikke implementerte ennå.
 
 # Innhold
 
-Knappene kan ha tekst, eller ikon til venstre og tekst.  Hold teksten så kort som mulig.
+Teksten på knappene bør være beskrivende, konsise og i samme språklig form. Ikoner kan brukes for å gi brukeren ytterligere visuelle hint. Vi blander ikke innholdet i knappene i samme gruppe: enten har alle knapper ikoner eller så har ingen.
+
+Vurdér å legge til en [Label](?path=/docs/komponenter-typography--docs#label) før Toggle Group som ledetekst. 
 
 <Canvas of={FhiToggleGroupStories.WithIcon} />
 

@@ -109,7 +109,7 @@ export class FhiToggleGroup extends LitElement {
       align-items: center;
       border-radius: var(--fhi-border-radius-full);
       border: 1px solid;
-      padding: var(--fhi-spacing-050);
+      padding: calc(var(--fhi-spacing-050) - var(--fhi-dimension-border-width);
       gap: var(--fhi-spacing-100);
     }
 

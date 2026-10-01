@@ -31,7 +31,7 @@ const meta: FhiStorybookMeta<FhiToggleGroup> = {
       {
         name: 'change',
         valueLocation: ['event.target.value'],
-        description: 'Blir utløst når en knapp i toggle-gruppen blir valgt.',
+        description: 'Utløses når et alternativ blir valgt.',
       },
     ],
   },
@@ -40,7 +40,7 @@ const meta: FhiStorybookMeta<FhiToggleGroup> = {
       control: { type: 'select' },
       options: ['strong', 'subtle'],
       description:
-        'Variant av Toggle Group. Dette påvirker den visuelle stilen til gruppen.',
+        'Bestemmer visuell stil.',
     },
   },
 };
