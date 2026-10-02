@@ -51,7 +51,7 @@ export class FhiLabel extends LitElement {
    * Sets the text to be in italics and semantically emphasized.
    *
    * Example:
-   * 
+   *
    *  </fhi-label>
    * ```
    *
@@ -100,6 +100,10 @@ export class FhiLabel extends LitElement {
         font-family: var(--fhi-font-family-default);
         -webkit-font-smoothing: antialiased;
         margin: 0;
+      }
+
+      ::slotted(fhi-label) {
+        display: inline;
       }
     }
 

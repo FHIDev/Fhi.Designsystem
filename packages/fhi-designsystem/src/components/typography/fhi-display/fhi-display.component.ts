@@ -64,7 +64,7 @@ export class FhiDisplay extends LitElement {
    * Sets the text to be in italics and semantically emphasized.
    *
    * Example:
-   * 
+   *
    *  </fhi-display>
    * ```
    *
@@ -127,6 +127,10 @@ export class FhiDisplay extends LitElement {
         font-family: var(--fhi-font-family-default);
         -webkit-font-smoothing: antialiased;
         margin: 0;
+      }
+
+      ::slotted(fhi-display) {
+        display: inline;
       }
     }
 
