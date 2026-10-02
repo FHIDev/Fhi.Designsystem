@@ -52,6 +52,16 @@ describe('fhi-title', () => {
       expect(component.size).to.equal('small');
     });
 
+    it('has an attribute to set emphasized', async () => {
+      const component = await fixture<FhiTitle>(
+        html`<fhi-title level="1" emphasized>Test</fhi-title>`,
+      );
+
+      expect(component.getAttribute('emphasized')).to.equal('');
+      expect(component.emphasized).to.equal(true);
+      expect(component.shadowRoot?.querySelector('em')).to.not.equal(null);
+    });
+
     it('renders the correct h level', async () => {
       component = await fixture(html` <fhi-title level="2">Test</fhi-title> `);
 

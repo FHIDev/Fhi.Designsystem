@@ -60,6 +60,18 @@ export class FhiTitle extends LitElement {
    */
   @property({ type: Number }) level!: TitleLevel;
 
+  /**
+   * Sets the text to be in italics and semantically emphasized.
+   *
+   * Example:
+   *
+   *  </fhi-title>
+   * ```
+   *
+   * @type {boolean}
+   */
+  @property({ type: Boolean, reflect: true }) emphasized?: boolean;
+
   updated(changedProperties: PropertyValues<this>) {
     super.updated(changedProperties);
 
@@ -75,15 +87,27 @@ export class FhiTitle extends LitElement {
     }
   }
 
-  render() {
-    const template = `
+  private renderContent() {
+    const tags: string[] = [];
+
+    if (this.emphasized) {
+      tags.push('em');
+    }
+
+    return unsafeHTML(`
       <h${this.level} class="title">
-        <slot></slot>
+      ${tags.reduceRight(
+        (accumulation, tag) => `<${tag}>${accumulation}</${tag}>`,
+        `<slot></slot>`,
+      )}
       </h${this.level}>
-    `;
+      `);
+  }
+
+  render() {
     return html`
       <div style=${ifDefined(this.color ? `color: ${this.color}` : undefined)}>
-        ${unsafeHTML(template)}
+        ${this.renderContent()}
       </div>
     `;
   }
@@ -103,6 +127,10 @@ export class FhiTitle extends LitElement {
         font-family: var(--fhi-font-family-default);
         -webkit-font-smoothing: antialiased;
         margin: 0;
+      }
+
+      ::slotted(fhi-title) {
+        display: inline;
       }
     }
 
@@ -130,6 +158,12 @@ export class FhiTitle extends LitElement {
         font-weight: var(--fhi-typography-title-small-font-weight);
         line-height: var(--fhi-typography-title-small-line-height);
         letter-spacing: var(--fhi-typography-title-small-letter-spacing);
+      }
+    }
+
+    :host([emphasized]) {
+      .title em {
+        font-style: italic;
       }
     }
   `;
