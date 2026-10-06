@@ -55,6 +55,7 @@ export class FhiTag extends LitElement {
   private _setIconStyles(icon: HTMLElement): void {
     icon.setAttribute('size', '1rem');
     icon.style.marginInlineEnd = 'var(--fhi-spacing-050)';
+    icon.style.marginInlineStart = 'calc(-1 * var(--fhi-spacing-050))';
   }
 
   private _handleSlotChange(event: Event): void {
