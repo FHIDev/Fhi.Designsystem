@@ -1,5 +1,29 @@
 # Changelog
 
+## [0.45.4](https://github.com/FHIDev/Fhi.Designsystem/compare/v0.45.3...v0.45.4) (2026-10-06)
+
+### 🛠️ Bug Fixes
+
+* Fix Icon offset in Tag ([#518](https://github.com/FHIDev/Fhi.Designsystem/issues/518)) ([6736c4d](https://github.com/FHIDev/Fhi.Designsystem/commit/6736c4d21afe71b567e8909c3add06bd890178b0))
+
+## [0.45.3](https://github.com/FHIDev/Fhi.Designsystem/compare/v0.45.2...v0.45.3) (2026-09-28)
+
+### 🛠️ Bug Fixes
+
+* Callout height should not be affected by flex direction  ([#509](https://github.com/FHIDev/Fhi.Designsystem/issues/509)) ([50ac8cd](https://github.com/FHIDev/Fhi.Designsystem/commit/50ac8cd39b74f5a7270438c9cef93c5c0cc2a58d))
+
+## [0.45.2](https://github.com/FHIDev/Fhi.Designsystem/compare/v0.45.1...v0.45.2) (2026-09-25)
+
+### 🛠️ Bug Fixes
+
+* move icon from default slot to seperat icon slot in tag ([#502](https://github.com/FHIDev/Fhi.Designsystem/issues/502)) ([b936229](https://github.com/FHIDev/Fhi.Designsystem/commit/b9362292297057eea56b846d476465970592e123))
+
+## [0.45.1](https://github.com/FHIDev/Fhi.Designsystem/compare/v0.45.0...v0.45.1) (2026-09-22)
+
+### 🛠️ Bug Fixes
+
+* replace the margin between the label and the text field with padding ([#511](https://github.com/FHIDev/Fhi.Designsystem/issues/511)) ([f3d0d0e](https://github.com/FHIDev/Fhi.Designsystem/commit/f3d0d0ea073c9b003e4d1262f2e920ba77c22a70))
+
 ## [0.45.0](https://github.com/FHIDev/Fhi.Designsystem/compare/v0.44.0...v0.45.0) (2026-09-14)
 
 ### 🚀 Features

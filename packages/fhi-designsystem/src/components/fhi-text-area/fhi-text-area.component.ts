@@ -255,11 +255,7 @@ export class FhiTextArea extends LitElement {
 
       label {
         color: var(--fhi-color-neutral-text-default);
-        margin: 0;
-      }
-
-      label + .textarea-container {
-        margin-top: var(--fhi-spacing-050);
+        padding: 0 0 var(--fhi-spacing-050) 0;
       }
 
       .help-text {
