@@ -1,5 +1,11 @@
 # Changelog
 
+## [0.45.4](https://github.com/FHIDev/Fhi.Designsystem/compare/v0.45.3...v0.45.4) (2026-10-06)
+
+### 🛠️ Bug Fixes
+
+* Fix Icon offset in Tag ([#518](https://github.com/FHIDev/Fhi.Designsystem/issues/518)) ([6736c4d](https://github.com/FHIDev/Fhi.Designsystem/commit/6736c4d21afe71b567e8909c3add06bd890178b0))
+
 ## [0.45.3](https://github.com/FHIDev/Fhi.Designsystem/compare/v0.45.2...v0.45.3) (2026-09-28)
 
 ### 🛠️ Bug Fixes
