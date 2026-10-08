@@ -42,16 +42,6 @@ describe('fhi-label', () => {
       expect(component.getAttribute('size')).to.equal('small');
       expect(component.size).to.equal('small');
     });
-
-    it('has an attribute to set emphasized', async () => {
-      const component = await fixture<FhiLabel>(
-        html`<fhi-label emphasized>Test</fhi-label>`,
-      );
-
-      expect(component.getAttribute('emphasized')).to.equal('');
-      expect(component.emphasized).to.equal(true);
-      expect(component.shadowRoot?.querySelector('em')).to.not.equal(null);
-    });
   });
 
   describe('Inheritance', () => {
