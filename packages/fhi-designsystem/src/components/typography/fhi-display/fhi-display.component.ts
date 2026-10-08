@@ -60,18 +60,6 @@ export class FhiDisplay extends LitElement {
    */
   @property({ type: Number }) level!: DisplayLevel;
 
-  /**
-   * Sets the text to be in italics and semantically emphasized.
-   *
-   * Example:
-   *
-   *  </fhi-display>
-   * ```
-   *
-   * @type {boolean}
-   */
-  @property({ type: Boolean, reflect: true }) emphasized?: boolean;
-
   updated(changedProperties: PropertyValues<this>) {
     super.updated(changedProperties);
 
@@ -87,27 +75,15 @@ export class FhiDisplay extends LitElement {
     }
   }
 
-  private renderContent() {
-    const tags: string[] = [];
-
-    if (this.emphasized) {
-      tags.push('em');
-    }
-
-    return unsafeHTML(`
-      <h${this.level} class="display">
-      ${tags.reduceRight(
-        (accumulation, tag) => `<${tag}>${accumulation}</${tag}>`,
-        `<slot></slot>`,
-      )}
-      </h${this.level}>
-      `);
-  }
-
   render() {
+    const template = `
+      <h${this.level} class="display">
+        <slot></slot>
+      </h${this.level}>
+    `;
     return html`
       <div style=${ifDefined(this.color ? `color: ${this.color}` : undefined)}>
-        ${this.renderContent()}
+        ${unsafeHTML(template)}
       </div>
     `;
   }
@@ -127,10 +103,6 @@ export class FhiDisplay extends LitElement {
         font-family: var(--fhi-font-family-default);
         -webkit-font-smoothing: antialiased;
         margin: 0;
-      }
-
-      ::slotted(fhi-display) {
-        display: inline;
       }
     }
 
@@ -158,12 +130,6 @@ export class FhiDisplay extends LitElement {
         font-weight: var(--fhi-typography-display-small-font-weight);
         line-height: var(--fhi-typography-display-small-line-height);
         letter-spacing: var(--fhi-typography-display-small-letter-spacing);
-      }
-    }
-
-    :host([emphasized]) {
-      .display em {
-        font-style: italic;
       }
     }
   `;

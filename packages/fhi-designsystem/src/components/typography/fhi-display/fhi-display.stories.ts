@@ -17,7 +17,6 @@ const meta: Meta<FhiDisplay> = {
       level=${args.level}
       size=${args.size}
       color=${ifDefined(args.color)}
-      ?emphasized=${args.emphasized}
       >Eksempel</fhi-display
     >`,
   argTypes: {
@@ -38,11 +37,6 @@ const meta: Meta<FhiDisplay> = {
       description: 'Tekstfarge.',
       defaultValue: { summary: 'currentcolor' },
     },
-    emphasized: {
-      control: { type: 'boolean' },
-      description: 'Bestemmer om teksten skal settes i kursiv og fremheves semantisk.',
-      defaultValue: { summary: false },
-    },
   },
 };
 
@@ -50,7 +44,7 @@ type Story = StoryObj<FhiDisplay>;
 
 export const Preview: Story = {
   tags: [],
-  args: { size: 'medium', level: 1, emphasized: false },
+  args: { size: 'medium', level: 1 },
 };
 
 export default meta;
