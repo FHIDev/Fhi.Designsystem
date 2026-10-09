@@ -1,8 +1,12 @@
 import { html, css, LitElement } from 'lit';
-import { customElement, property } from 'lit/decorators.js';
+import {
+  customElement,
+  property,
+  queryAssignedElements,
+  query,
+} from 'lit/decorators.js';
 
 export const FhiToggleGroupItemSelector = 'fhi-toggle-group-item';
-export const FhiToggleGroupItemSelectEvent = 'fhi-toggle-group-item-select';
 
 @customElement(FhiToggleGroupItemSelector)
 export class FhiToggleGroupItem extends LitElement {
@@ -29,6 +33,27 @@ export class FhiToggleGroupItem extends LitElement {
     this.selected = true;
   }
 
+  @queryAssignedElements({ slot: 'icon' })
+  iconSlotElements!: Array<HTMLElement>;
+
+  @query("slot[class='content']")
+  contentSlot!: HTMLSlotElement;
+
+  private handleSlotChange(): void {
+    const hasContentNodes = this.contentSlot
+      .assignedNodes()
+      .some(
+        node =>
+          node.nodeType !== Node.TEXT_NODE || node.textContent?.trim() !== '',
+      );
+
+    if (!hasContentNodes && this.iconSlotElements.length !== 0) {
+      console.warn(
+        `${FhiToggleGroupItemSelector} cannot have an icon without also having text content.`,
+      );
+    }
+  }
+
   render() {
     return html`
       <button
@@ -36,8 +61,8 @@ export class FhiToggleGroupItem extends LitElement {
         aria-pressed=${this.selected ? 'true' : 'false'}
         @click=${this._handleClick}
       >
-        <slot name="icon"></slot>
-        <slot></slot>
+        <slot name="icon" @slotchange=${this.handleSlotChange}></slot>
+        <slot class="content" @slotchange=${this.handleSlotChange}></slot>
       </button>
     `;
   }
@@ -45,6 +70,7 @@ export class FhiToggleGroupItem extends LitElement {
   static styles = css`
     button {
       display: inline-flex;
+      gap: var(--fhi-spacing-050);
       align-items: center;
       justify-content: center;
       border-radius: var(--fhi-border-radius-full);
@@ -65,12 +91,13 @@ export class FhiToggleGroupItem extends LitElement {
       line-height: var(--fhi-typography-label-medium-line-height);
       letter-spacing: var(--fhi-typography-label-medium-letter-spacing);
       padding: calc(var(--fhi-spacing-100) - var(--fhi-dimension-border-width))
-        calc(var(--fhi-spacing-200) - var(--fhi-dimension-border-width));
+        calc(var(--fhi-spacing-150) - var(--fhi-dimension-border-width));
       color: var(--fhi-color-neutral-text-subtle);
     }
 
-    ::slotted([slot='icon']) {
-      margin-inline-end: var(--fhi-spacing-050);
+    .content {
+      display: inline;
+      margin: 0 var(--fhi-spacing-050);
     }
 
     :host([variant='strong']) button {

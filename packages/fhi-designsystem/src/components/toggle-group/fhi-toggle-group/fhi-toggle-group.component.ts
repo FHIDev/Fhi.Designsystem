@@ -1,6 +1,9 @@
 import { html, css, LitElement } from 'lit';
 import { customElement, property } from 'lit/decorators.js';
-import type { FhiToggleGroupItem } from '../fhi-toggle-group-item/fhi-toggle-group-item.component';
+import {
+  FhiToggleGroupItemSelector,
+  type FhiToggleGroupItem,
+} from '../fhi-toggle-group-item/fhi-toggle-group-item.component';
 
 export const FhiToggleGroupSelector = 'fhi-toggle-group';
 
@@ -10,20 +13,33 @@ export class FhiToggleGroup extends LitElement {
     'strong';
 
   private _selectedItem: FhiToggleGroupItem | null = null;
-  private _mutationObserver: MutationObserver | null = null;
 
-  constructor() {
-    super();
-    this._mutationObserver = new MutationObserver(mutations => {
-      for (const mutation of mutations) {
-        this._setSelectedItem(mutation.target as FhiToggleGroupItem);
+  private readonly _mutationObserver = new MutationObserver(mutations => {
+    for (const mutation of mutations) {
+      if (
+        mutation.target instanceof Element &&
+        mutation.target.matches(FhiToggleGroupItemSelector)
+      ) {
+        const item = mutation.target as FhiToggleGroupItem;
+        if (item.selected) {
+          this._setSelectedItem(item);
+        }
       }
+    }
+  });
+
+  public connectedCallback() {
+    super.connectedCallback();
+    this._mutationObserver.observe(this, {
+      attributes: true,
+      attributeFilter: ['selected'],
+      subtree: true,
     });
   }
 
   public disconnectedCallback() {
     super.disconnectedCallback();
-    this._mutationObserver?.disconnect();
+    this._mutationObserver.disconnect();
   }
 
   public updated(changedProperties: Map<PropertyKey, unknown>) {
@@ -77,21 +93,7 @@ export class FhiToggleGroup extends LitElement {
     });
   }
 
-  private _observeItems() {
-    this._mutationObserver?.disconnect();
-
-    const items = this._getItems();
-
-    for (const item of items) {
-      this._mutationObserver?.observe(item, {
-        attributes: true,
-        attributeFilter: ['selected'],
-      });
-    }
-  }
-
   private _handleSlotChange = () => {
-    this._observeItems();
     this.requestUpdate();
   };
 
@@ -108,14 +110,9 @@ export class FhiToggleGroup extends LitElement {
       display: inline-flex;
       align-items: center;
       border-radius: var(--fhi-border-radius-full);
-      border: 1px solid;
-      padding: calc(var(--fhi-spacing-050) - var(--fhi-dimension-border-width);
+      border: 1px solid var(--fhi-color-neutral-border-subtle);
+      padding: calc(var(--fhi-spacing-050) - var(--fhi-dimension-border-width));
       gap: var(--fhi-spacing-100);
-    }
-
-    :host([variant='strong']) {
-      background-color: var(--fhi-color-neutral-background-default);
-      border-color: var(--fhi-color-neutral-border-subtle);
     }
 
     :host([variant='subtle']) {
