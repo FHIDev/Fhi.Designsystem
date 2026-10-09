@@ -40,6 +40,26 @@ describe('fhi-body', () => {
       expect(component.getAttribute('size')).to.equal('small');
       expect(component.size).to.equal('small');
     });
+
+    it('has an attribute to set strong', async () => {
+      const component = await fixture<FhiBody>(
+        html`<fhi-body strong>Test</fhi-body>`,
+      );
+
+      expect(component.getAttribute('strong')).to.equal('');
+      expect(component.strong).to.equal(true);
+      expect(component.shadowRoot?.querySelector('strong')).to.not.equal(null);
+    });
+
+    it('has an attribute to set emphasized', async () => {
+      const component = await fixture<FhiBody>(
+        html`<fhi-body emphasized>Test</fhi-body>`,
+      );
+
+      expect(component.getAttribute('emphasized')).to.equal('');
+      expect(component.emphasized).to.equal(true);
+      expect(component.shadowRoot?.querySelector('em')).to.not.equal(null);
+    });
   });
 
   describe('Inheritance', () => {
