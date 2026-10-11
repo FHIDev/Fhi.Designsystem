@@ -1,5 +1,11 @@
 # Changelog
 
+## [0.46.0](https://github.com/FHIDev/Fhi.Designsystem/compare/v0.45.4...v0.46.0) (2026-10-09)
+
+### 🚀 Features
+
+* add strong and emphasized options to fhi-body ([#514](https://github.com/FHIDev/Fhi.Designsystem/issues/514)) ([58a55d2](https://github.com/FHIDev/Fhi.Designsystem/commit/58a55d26d82d82d1b7839a289102186693c64a83))
+
 ## [0.45.4](https://github.com/FHIDev/Fhi.Designsystem/compare/v0.45.3...v0.45.4) (2026-10-06)
 
 ### 🛠️ Bug Fixes
