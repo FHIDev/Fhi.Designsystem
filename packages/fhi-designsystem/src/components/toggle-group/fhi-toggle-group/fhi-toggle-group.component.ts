@@ -48,6 +48,11 @@ export class FhiToggleGroup extends LitElement {
     }
     if (!this._selectedItem) {
       const items = this._getItems();
+
+      if (items.length === 0) {
+        return;
+      }
+
       const selectedItem = items.find(item => item.selected);
       if (selectedItem) {
         this._setSelectedItem(selectedItem);
