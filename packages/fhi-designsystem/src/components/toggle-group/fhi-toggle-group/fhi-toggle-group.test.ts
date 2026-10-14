@@ -25,14 +25,6 @@ describe('fhi-toggle-group', () => {
       expect(component.getAttribute('role')).to.equal('group');
     });
 
-    it('is focusable in the normal tab order', () => {
-      expect(component.tabIndex).to.equal(0);
-
-      component.focus();
-
-      expect(document.activeElement).to.equal(component);
-    });
-
     it('preserves an explicitly set tabindex', async () => {
       component = await fixture(html`
         <fhi-toggle-group tabindex="-1"></fhi-toggle-group>

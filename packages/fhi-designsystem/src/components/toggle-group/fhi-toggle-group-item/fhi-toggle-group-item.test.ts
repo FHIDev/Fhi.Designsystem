@@ -87,6 +87,30 @@ describe('fhi-toggle-group-item', () => {
   });
 
   describe('interactions', () => {
+    it('selects the item and dispatches a click event when click() is called', async () => {
+      component = await fixture(
+        html`<fhi-toggle-group-item>My item</fhi-toggle-group-item>`,
+      );
+
+      let clickEventCounter = 0;
+      component.addEventListener('click', () => {
+        clickEventCounter += 1;
+      });
+
+      component.click();
+      await component.updateComplete;
+
+      expect(component.selected).to.equal(true);
+      expect(component.hasAttribute('selected')).to.equal(true);
+      expect(
+        component
+          .shadowRoot!.querySelector('button')!
+          .getAttribute('aria-pressed'),
+      ).to.equal('true');
+
+      expect(clickEventCounter).to.equal(1);
+    });
+
     it('selects the item when clicked', async () => {
       component = await fixture(
         html`<fhi-toggle-group-item>My item</fhi-toggle-group-item>`,

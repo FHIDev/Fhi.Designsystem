@@ -11,13 +11,10 @@ export const FhiToggleGroupItemSelector = 'fhi-toggle-group-item';
 @customElement(FhiToggleGroupItemSelector)
 export class FhiToggleGroupItem extends LitElement {
   /**
-   *
-   * Sets the toggle group button's variant. The variant determines the button's visual style and emphasis.
-   *
-   * See: {@link https://designsystem.fhi.no/?path=/docs/komponenter-button--docs#variant}
+   * Sets the toggle group item's visual style and emphasis.
    *
    * @reflect
-   * @type {'strong' | 'subtle' | 'outlined' | 'text'}
+   * @type {'strong' | 'subtle'}
    */
   @property({ type: String, reflect: true }) variant: 'strong' | 'subtle' =
     'strong';
@@ -30,6 +27,10 @@ export class FhiToggleGroupItem extends LitElement {
 
   @property({ type: String, reflect: true }) value: string | null = null;
 
+  public override click(): void {
+    this.shadowRoot?.querySelector('button')?.click();
+  }
+
   private _handleClick(): void {
     this.selected = true;
   }
@@ -37,7 +38,7 @@ export class FhiToggleGroupItem extends LitElement {
   @queryAssignedElements({ slot: 'icon' })
   iconSlotElements!: Array<HTMLElement>;
 
-  @query("slot[class='content']")
+  @query('slot.content')
   contentSlot!: HTMLSlotElement;
 
   private handleSlotChange(): void {

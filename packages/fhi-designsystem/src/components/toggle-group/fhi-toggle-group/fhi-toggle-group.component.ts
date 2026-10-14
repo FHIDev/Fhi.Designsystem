@@ -37,10 +37,6 @@ export class FhiToggleGroup extends LitElement {
 
     this.role = 'group';
 
-    if (!this.hasAttribute('tabindex')) {
-      this.tabIndex = 0;
-    }
-
     this._mutationObserver.observe(this, {
       attributes: true,
       attributeFilter: ['selected', 'value'],
@@ -49,16 +45,8 @@ export class FhiToggleGroup extends LitElement {
       subtree: true,
     });
 
-    // Sync if the component is reconnected to the DOM after being disconnected.
     if (this.hasUpdated) {
-      void this.updateComplete.then(() => {
-        if (!this.isConnected) {
-          return;
-        }
-
-        this._syncVariant();
-        this._syncSelectionFromItems();
-      });
+      this._syncAfterReconnect();
     }
   }
 
@@ -67,17 +55,15 @@ export class FhiToggleGroup extends LitElement {
     this._mutationObserver.disconnect();
   }
 
-  protected update(_changedProperties: PropertyValues): void {
-    if (_changedProperties.has('variant')) {
-      if (!this.variant) {
-        this.variant = 'strong';
-      }
+  protected update(changedProperties: PropertyValues): void {
+    if (changedProperties.has('variant') && !this.variant) {
+      this.variant = 'strong';
     }
 
-    super.update(_changedProperties);
+    super.update(changedProperties);
   }
 
-  public updated(changedProperties: Map<PropertyKey, unknown>) {
+  public updated(changedProperties: PropertyValues) {
     if (changedProperties.has('variant')) {
       this._syncVariant();
     }
@@ -85,6 +71,17 @@ export class FhiToggleGroup extends LitElement {
     if (changedProperties.has('value')) {
       this._syncSelectionFromValue();
     }
+  }
+
+  private async _syncAfterReconnect(): Promise<void> {
+    await this.updateComplete;
+
+    if (!this.isConnected) {
+      return;
+    }
+
+    this._syncVariant();
+    this._syncSelectionFromItems();
   }
 
   private _syncSelectionFromValue() {
@@ -104,24 +101,29 @@ export class FhiToggleGroup extends LitElement {
   }
 
   private _syncSelectionFromItems() {
+    // wait until all pending updates are completed before syncing.
+    if (this.isUpdatePending) {
+      void this.updateComplete.then(() => {
+        if (this.isConnected) {
+          this._syncSelectionFromItems();
+        }
+      });
+      return;
+    }
+
     const items = this._getItems();
     this._setSelectedItem(this._getSelectedItem(items));
   }
 
   private _getSelectedItem(
     items: FhiToggleGroupItem[],
-  ): typeof this._selectedItem {
+  ): FhiToggleGroupItem | null {
     const newlySelectedItem = items.find(
       item => item.selected && item !== this._selectedItem,
     );
-
-    if (newlySelectedItem) {
-      return newlySelectedItem;
-    }
-
     const selectedItem = items.find(item => item.selected);
 
-    return selectedItem ?? items[0] ?? null;
+    return newlySelectedItem ?? selectedItem ?? items[0] ?? null;
   }
 
   private _getItems(): FhiToggleGroupItem[] {
@@ -158,9 +160,7 @@ export class FhiToggleGroup extends LitElement {
   }
 
   private _syncVariant() {
-    const items = this._getItems();
-
-    items.forEach(item => {
+    this._getItems().forEach(item => {
       item.variant = this.variant;
     });
   }
@@ -170,7 +170,7 @@ export class FhiToggleGroup extends LitElement {
   };
 
   render() {
-    return html` <slot @slotchange=${this._handleSlotChange}></slot> `;
+    return html`<slot @slotchange=${this._handleSlotChange}></slot>`;
   }
 
   static styles = css`
