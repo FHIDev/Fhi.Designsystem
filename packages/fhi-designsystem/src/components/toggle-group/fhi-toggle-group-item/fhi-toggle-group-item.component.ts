@@ -28,8 +28,9 @@ export class FhiToggleGroupItem extends LitElement {
    */
   @property({ type: Boolean, reflect: true }) selected? = false;
 
-  private _handleClick(event: MouseEvent): void {
-    event.stopPropagation();
+  @property({ type: String, reflect: true }) value: string | null = null;
+
+  private _handleClick(): void {
     this.selected = true;
   }
 

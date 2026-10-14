@@ -7,10 +7,15 @@ import { FhiStorybookMeta } from '../../../../.storybook/fhi-meta';
 new FhiToggleGroupItem();
 
 const meta: FhiStorybookMeta<FhiToggleGroupItem> = {
-  title: 'Komponenter/Component',
+  title: 'Komponenter/Toggle Group Item',
   component: 'fhi-toggle-group-item',
   parameters: {
-    eventTypes: [],
+    eventTypes: [
+      {
+        name: 'click',
+        description: 'Blir utløst når valget klikkes på.',
+      },
+    ],
     slotTypes: [
       {
         name: 'icon',
@@ -38,7 +43,7 @@ const meta: FhiStorybookMeta<FhiToggleGroupItem> = {
 type Story = StoryObj<FhiToggleGroupItem>;
 
 export const Preview: Story = {
-  tags: [],
+  tags: ['!dev'],
   args: {},
 };
 

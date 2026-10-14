@@ -1,4 +1,4 @@
-import { html, css, LitElement } from 'lit';
+import { html, css, LitElement, PropertyValues } from 'lit';
 import { customElement, property } from 'lit/decorators.js';
 import {
   FhiToggleGroupItemSelector,
@@ -12,29 +12,54 @@ export class FhiToggleGroup extends LitElement {
   @property({ type: String, reflect: true }) variant: 'strong' | 'subtle' =
     'strong';
 
+  @property({ type: String, reflect: true }) value?: string;
+
   private _selectedItem: FhiToggleGroupItem | null = null;
 
   private readonly _mutationObserver = new MutationObserver(mutations => {
-    for (const mutation of mutations) {
-      if (
-        mutation.target instanceof Element &&
-        mutation.target.matches(FhiToggleGroupItemSelector)
-      ) {
-        const item = mutation.target as FhiToggleGroupItem;
-        if (item.selected) {
-          this._setSelectedItem(item);
-        }
-      }
+    const hasItemChanges = mutations.some(
+      mutation => mutation.type !== 'attributes' || mutation.target !== this,
+    );
+
+    if (!hasItemChanges) {
+      return;
     }
+
+    if (mutations.some(mutation => mutation.type === 'childList')) {
+      this._syncVariant();
+    }
+
+    this._syncSelectionFromItems();
   });
 
   public connectedCallback() {
     super.connectedCallback();
+
+    this.role = 'group';
+
+    if (!this.hasAttribute('tabindex')) {
+      this.tabIndex = 0;
+    }
+
     this._mutationObserver.observe(this, {
       attributes: true,
-      attributeFilter: ['selected'],
+      attributeFilter: ['selected', 'value'],
+      childList: true,
+      characterData: true,
       subtree: true,
     });
+
+    // Sync if the component is reconnected to the DOM after being disconnected.
+    if (this.hasUpdated) {
+      void this.updateComplete.then(() => {
+        if (!this.isConnected) {
+          return;
+        }
+
+        this._syncVariant();
+        this._syncSelectionFromItems();
+      });
+    }
   }
 
   public disconnectedCallback() {
@@ -42,29 +67,66 @@ export class FhiToggleGroup extends LitElement {
     this._mutationObserver.disconnect();
   }
 
+  protected update(_changedProperties: PropertyValues): void {
+    if (_changedProperties.has('variant')) {
+      if (!this.variant) {
+        this.variant = 'strong';
+      }
+    }
+
+    super.update(_changedProperties);
+  }
+
   public updated(changedProperties: Map<PropertyKey, unknown>) {
     if (changedProperties.has('variant')) {
       this._syncVariant();
     }
-    if (!this._selectedItem) {
-      const items = this._getItems();
 
-      if (items.length === 0) {
-        return;
-      }
-
-      const selectedItem = items.find(item => item.selected);
-      if (selectedItem) {
-        this._setSelectedItem(selectedItem);
-      } else {
-        this._setSelectedItem(items[0]);
-      }
+    if (changedProperties.has('value')) {
+      this._syncSelectionFromValue();
     }
+  }
+
+  private _syncSelectionFromValue() {
+    const items = this._getItems();
+    const selectedItem = this._getSelectedItem(items);
+
+    if (selectedItem && this._getItemValue(selectedItem) === this.value) {
+      this._setSelectedItem(selectedItem);
+      return;
+    }
+
+    const valueMatchingItem = items.find(
+      item => this._getItemValue(item) === this.value,
+    );
+
+    this._setSelectedItem(valueMatchingItem ?? selectedItem);
+  }
+
+  private _syncSelectionFromItems() {
+    const items = this._getItems();
+    this._setSelectedItem(this._getSelectedItem(items));
+  }
+
+  private _getSelectedItem(
+    items: FhiToggleGroupItem[],
+  ): typeof this._selectedItem {
+    const newlySelectedItem = items.find(
+      item => item.selected && item !== this._selectedItem,
+    );
+
+    if (newlySelectedItem) {
+      return newlySelectedItem;
+    }
+
+    const selectedItem = items.find(item => item.selected);
+
+    return selectedItem ?? items[0] ?? null;
   }
 
   private _getItems(): FhiToggleGroupItem[] {
     return Array.from(
-      this.querySelectorAll<FhiToggleGroupItem>('fhi-toggle-group-item'),
+      this.querySelectorAll<FhiToggleGroupItem>(FhiToggleGroupItemSelector),
     );
   }
 
@@ -76,16 +138,21 @@ export class FhiToggleGroup extends LitElement {
     this.dispatchEvent(new Event('change', { bubbles: true, composed: true }));
   }
 
-  private _setSelectedItem(item: FhiToggleGroupItem) {
-    if (!this._selectedItem) {
-      item.selected = true;
-      this._selectedItem = item;
-      this._dispatchChangeEvent();
-    }
+  private _getItemValue(item: FhiToggleGroupItem | null): string {
+    return item?.value ?? item?.textContent?.trim() ?? '';
+  }
 
-    if (this._selectedItem && this._selectedItem !== item && item.selected) {
-      this._selectedItem.selected = false;
-      this._selectedItem = item;
+  private _setSelectedItem(item: FhiToggleGroupItem | null) {
+    const selectionChanged = this._selectedItem !== item;
+
+    this._getItems().forEach(groupItem => {
+      groupItem.selected = groupItem === item;
+    });
+
+    this._selectedItem = item;
+    this.value = this._getItemValue(item);
+
+    if (selectionChanged) {
       this._dispatchChangeEvent();
     }
   }
@@ -99,21 +166,18 @@ export class FhiToggleGroup extends LitElement {
   }
 
   private _handleSlotChange = () => {
-    this.requestUpdate();
+    this._syncSelectionFromItems();
   };
 
   render() {
-    return html`
-      <div class="group" role="group">
-        <slot @slotchange=${this._handleSlotChange}></slot>
-      </div>
-    `;
+    return html` <slot @slotchange=${this._handleSlotChange}></slot> `;
   }
 
   static styles = css`
     :host {
       display: inline-flex;
       align-items: center;
+      width: fit-content;
       border-radius: var(--fhi-border-radius-full);
       border: 1px solid var(--fhi-color-neutral-border-subtle);
       padding: calc(var(--fhi-spacing-050) - var(--fhi-dimension-border-width));

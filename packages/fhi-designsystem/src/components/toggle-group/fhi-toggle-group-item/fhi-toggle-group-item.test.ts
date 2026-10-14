@@ -25,6 +25,17 @@ describe('fhi-toggle-group-item', () => {
   });
 
   describe('setting attributes', () => {
+    it('has an attribute to set the value', async () => {
+      component = await fixture(
+        html`<fhi-toggle-group-item value="table"
+          >My item</fhi-toggle-group-item
+        >`,
+      );
+
+      expect(component.getAttribute('value')).to.equal('table');
+      expect(component.value).to.equal('table');
+    });
+
     it('has an attribute to set the variant', async () => {
       component = await fixture(
         html`<fhi-toggle-group-item variant="subtle"
@@ -51,6 +62,13 @@ describe('fhi-toggle-group-item', () => {
       component = await fixture(
         html`<fhi-toggle-group-item>My item</fhi-toggle-group-item>`,
       );
+    });
+
+    it('reflects the value property to an attribute', async () => {
+      component.value = 'table';
+      await component.updateComplete;
+
+      expect(component.getAttribute('value')).to.equal('table');
     });
 
     it('reflects the variant property to an attribute', async () => {

@@ -19,25 +19,44 @@ Toggle Group lar brukeren velge ett alternativ fra en liste relaterte valg. Valg
 <Canvas of={FhiToggleGroupStories.Preview} />
 <Controls of={FhiToggleGroupStories.Preview} />
 
-
-Toggle Group brukes i hovedsak til filtrering eller veksling mellom visninger av innhold. Kun ett alternativ kan være valg om gangen, og endringene vises umiddelbart når valget endrer seg. 
+Toggle Group brukes i hovedsak til filtrering eller veksling mellom visninger av innhold. Kun ett alternativ kan være valg om gangen, og endringene vises umiddelbart når valget endrer seg.
 
 Toggle Group passer ikke til:
 
-- Å navigere mellom to relaterte sider eller paneler med hvert sitt unike innhold (bruk Tabs*).
+- Å navigere mellom to relaterte sider eller paneler med hvert sitt unike innhold (bruk Tabs\*).
 - Skjemaer, hvor dataen lagres eller valideres (bruk [Radio](?path=/docs/komponenter-radio--docs)).
-- Binære “av/på”-valg (bruk Switch*).
+- Binære “av/på”-valg (bruk Switch\*).
 
-*Komponentene er planlagte, men ikke implementerte ennå.
+\*Komponentene er planlagte, men ikke implementerte ennå.
 
-# Innhold
+## Innhold
 
-Teksten på knappene bør være beskrivende, konsise og i samme språklig form. Ikoner kan brukes for å gi brukeren ytterligere visuelle hint. Vi blander ikke innholdet i knappene i samme gruppe: enten har alle knapper ikoner eller så har ingen.
+Teksten på knappene bør være beskrivende, konsise og i samme språklig form. Ikoner kan brukes for å gi brukeren ytterligere visuelle hint.
 
-Vurdér å legge til en [Label](?path=/docs/komponenter-typography--docs#label) før Toggle Group som ledetekst. 
+**Obs: Vi blander ikke innholdet i knappene i samme gruppe: enten har alle knapper ikoner eller så har ingen.**
 
-<Canvas of={FhiToggleGroupStories.WithIcon} />
+Vurdér å legge til en [Label](?path=/docs/komponenter-typography--docs#label) før Toggle Group som ledetekst.
 
+<Canvas of={FhiToggleGroupStories.Example} />
+
+## Eksempler og bruk
+
+Toggle Group består av `<fhi-toggle-group>` og `<fhi-toggle-group-item>`.
+`<fhi-toggle-group>` er selve gruppen, mens `<fhi-toggle-group-item>` er de ulike alternativene i gruppen.
+
+`<fhi-toggle-group-item>`-elementet som er valgt er elementet som er satt som `selected` eller som matcher gruppens `value`-attributt.
+Om `value` på `<fhi-toggle-group-item>` ikke er satt, brukes elementets tekstinnhold som verdi.
+
+Du kan sette `value` på `<fhi-toggle-group-item>` til å være noe annet enn tekstinnholdet.
+<Canvas of={FhiToggleGroupStories.WithItemValue} />
+
+Bruk `selected`-attributten på `<fhi-toggle-group-item>` for å forhåndsvelge et alternativ.
+
+<Canvas of={FhiToggleGroupStories.WithItemSelected} />
+
+Du kan også bruke `value`-attributten på `<fhi-toggle-group>` for å sette et alternativ som valgt.
+
+<Canvas of={FhiToggleGroupStories.WithValue} />
 
 <ApiDefinition of={FhiToggleGroupStories.Preview} />
 <ApiDefinition of={FhiToggleGroupItemStories.Preview} />
