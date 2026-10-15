@@ -181,7 +181,7 @@ export class FhiToggleGroup extends LitElement {
       border-radius: var(--fhi-border-radius-full);
       border: 1px solid var(--fhi-color-neutral-border-subtle);
       padding: calc(var(--fhi-spacing-050) - var(--fhi-dimension-border-width));
-      gap: var(--fhi-spacing-100);
+      gap: var(--fhi-spacing-050);
     }
 
     :host([variant='subtle']) {
