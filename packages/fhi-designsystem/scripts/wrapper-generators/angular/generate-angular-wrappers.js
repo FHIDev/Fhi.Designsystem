@@ -60,35 +60,49 @@ const readManifest = manifestPath => {
   }
 };
 
+const getStateAndValueFormProperties = componentClass => {
+  console.log(componentClass.name);
+  const properties = componentClass.members.filter(
+    member => member.kind === 'field',
+  );
+
+  let stateProperty = 'value',
+    valueProperty;
+
+  properties.forEach(property => {
+    if (property.name === 'checked') {
+      stateProperty = 'checked';
+    }
+    if (property.name === 'value') {
+      valueProperty = 'value';
+    }
+  });
+
+  if (!valueProperty) {
+    return null;
+  }
+
+  return {
+    stateProperty,
+    valueProperty,
+  };
+};
+
 const generateFormAccessor = (
   angularTagName,
   webComponentTagName,
-  componentDescription,
+  componentClass,
 ) => {
   const accessorName = `${snakeToPascal(webComponentTagName)}ValueAccessor`;
 
-  let stateProperty;
-  let valueProperty;
+  const stateAndValueProperties =
+    getStateAndValueFormProperties(componentClass);
 
-  switch (webComponentTagName) {
-    case 'fhi-text-input':
-    case 'fhi-date-input':
-    case 'fhi-select':
-      stateProperty = 'value';
-      valueProperty = 'value';
-      break;
-    case 'fhi-checkbox':
-    case 'fhi-radio':
-      stateProperty = 'checked';
-      valueProperty = 'value';
-      break;
-    case 'fhi-button':
-      return '';
-    default:
-      throw new Error(
-        `No value location defined for web component ${webComponentTagName}`,
-      );
+  if (!stateAndValueProperties) {
+    return '';
   }
+
+  const { stateProperty, valueProperty } = stateAndValueProperties;
 
   const eventValue = `$any($event.target).${valueProperty}`;
 
@@ -109,7 +123,7 @@ const generateFormAccessor = (
   return `
     /** @description
      * A ControlValueAccessor for writing a value and listening to changes on an ${webComponentTagName} element.
-     * ${componentDescription} */
+     * ${componentClass.description} */
     @Directive({
       selector: '${angularTagName}[formControlName],${angularTagName}[formControl],${angularTagName}[ngModel]',
       standalone: true,
@@ -190,7 +204,7 @@ const generateAngularWrapper = componentClass => {
 
       import '../${webComponentTagName}';
 
-      ${isFormAssociated ? generateFormAccessor(webComponentTagName, webComponentTagName, componentDescription) : ''}
+      ${isFormAssociated ? generateFormAccessor(webComponentTagName, webComponentTagName, componentClass) : ''}
 
       /** @description ${componentDescription} */
       @Component({
