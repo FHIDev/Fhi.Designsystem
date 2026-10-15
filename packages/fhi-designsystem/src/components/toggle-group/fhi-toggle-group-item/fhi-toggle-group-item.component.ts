@@ -8,10 +8,24 @@ import {
 
 export const FhiToggleGroupItemSelector = 'fhi-toggle-group-item';
 
+/**
+ * ## FHI Toggle Group Item
+ *
+ * {@link https://designsystem.fhi.no/?path=/docs/komponenter-toggle-group--docs}
+ *
+ * The <fhi-toggle-group-item> component represents an individual choice within a <fhi-toggle-group>. It can display text content with or without an icon.
+ *
+ *
+ * @tag fhi-toggle-group-item
+ * @element fhi-toggle-group-item
+ *
+ * @slot icon - Slot for placing an icon.
+ * @slot - The default slot. Used for placing the text content.
+ */
 @customElement(FhiToggleGroupItemSelector)
 export class FhiToggleGroupItem extends LitElement {
   /**
-   * Sets the toggle group item's visual style and emphasis.
+   * Sets the toggle group item's visual style and emphasis. This is automatically inherited from the parent toggle group.
    *
    * @reflect
    * @type {'strong' | 'subtle'}
@@ -21,10 +35,19 @@ export class FhiToggleGroupItem extends LitElement {
 
   /**
    * Whether the toggle group button is selected or not.
+   *
+   * @reflect
    * @type {boolean}
    */
   @property({ type: Boolean, reflect: true }) selected? = false;
 
+  /**
+   * The value of the toggle group item.
+   * If not specified, the value will be derived from the items text content.
+   *
+   * @reflect
+   * @type {string | null}
+   */
   @property({ type: String, reflect: true }) value: string | null = null;
 
   public override click(): void {

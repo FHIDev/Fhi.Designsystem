@@ -7,11 +7,46 @@ import {
 
 export const FhiToggleGroupSelector = 'fhi-toggle-group';
 
+/**
+ * ## FHI Toggle Group
+ *
+ * {@link https://designsystem.fhi.no/?path=/docs/komponenter-toggle-group--docs}
+ *
+ * The <fhi-toggle-group> component lets the user select one option from a group of related choices. Each choice is defined with a <fhi-toggle-group-item> element.
+ *
+ * The choice should affect the content within the same context.
+ *
+ * Example usage:
+ * ```html
+ * <fhi-toggle-group value="item2">
+ *   <fhi-toggle-group-item value="item1">Item 1</fhi-toggle-group-item>
+ *   <fhi-toggle-group-item value="item2">Item 2</fhi-toggle-group-item>
+ *   <fhi-toggle-group-item value="item3">Item 3</fhi-toggle-group-item>
+ * </fhi-toggle-group>
+ * ```
+ *
+ * @tag fhi-toggle-group
+ * @element fhi-toggle-group
+ *
+ * @slot - The default slot. Used for placing <fhi-toggle-group-item> elements.
+ */
 @customElement(FhiToggleGroupSelector)
 export class FhiToggleGroup extends LitElement {
+  /**
+   * The visual style of the toggle group. This will be applied to all toggle group items within the group.
+   *
+   * @reflect
+   * @type {'strong' | 'subtle'}
+   */
   @property({ type: String, reflect: true }) variant: 'strong' | 'subtle' =
     'strong';
 
+  /**
+   * The currently selected value of the toggle group.
+   *
+   * @reflect
+   * @type {string}
+   */
   @property({ type: String, reflect: true }) value?: string;
 
   private _selectedItem: FhiToggleGroupItem | null = null;

@@ -10,12 +10,6 @@ const meta: FhiStorybookMeta<FhiToggleGroupItem> = {
   title: 'Komponenter/Toggle Group Item',
   component: 'fhi-toggle-group-item',
   parameters: {
-    eventTypes: [
-      {
-        name: 'click',
-        description: 'Blir utløst når valget klikkes på.',
-      },
-    ],
     slotTypes: [
       {
         name: 'icon',
@@ -31,7 +25,7 @@ const meta: FhiStorybookMeta<FhiToggleGroupItem> = {
         control: { type: 'select' },
         options: ['strong', 'subtle'],
         description:
-          'Bestemmer varianten til Toggle Group Item. arver automatisk variant fra <fhi-toggle-group>.',
+          'Bestemmer varianten til Toggle Group Item. Dette arves automatisk fra <fhi-toggle-group>.',
       },
     },
   },
