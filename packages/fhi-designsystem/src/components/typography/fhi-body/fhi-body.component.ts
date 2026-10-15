@@ -48,11 +48,10 @@ export class FhiBody extends LitElement {
    * Sets the text to be bold and semantically important.
    *
    * Example:
-   * 
+   *
    *  </fhi-body>
    * ```
-   *
-   * @type {boolean}
+   * @reflect
    */
   @property({ type: Boolean, reflect: true }) strong?: boolean;
 
@@ -60,11 +59,10 @@ export class FhiBody extends LitElement {
    * Sets the text to be in italics and semantically emphasized.
    *
    * Example:
-   * 
+   *
    *  </fhi-body>
    * ```
-   *
-   * @type {boolean}
+   * @reflect
    */
   @property({ type: Boolean, reflect: true }) emphasized?: boolean;
 
