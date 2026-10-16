@@ -70,7 +70,7 @@ export class FhiToggleGroup extends LitElement {
   public connectedCallback() {
     super.connectedCallback();
 
-    this.setAttribute('role', 'tablist');
+    this.setAttribute('role', 'radiogroup');
 
     this._mutationObserver.observe(this, {
       attributes: true,
@@ -207,7 +207,12 @@ export class FhiToggleGroup extends LitElement {
   };
 
   private _handleKeyDown(event: KeyboardEvent) {
-    if (event.key !== 'ArrowRight' && event.key !== 'ArrowLeft') {
+    if (
+      event.key !== 'ArrowRight' &&
+      event.key !== 'ArrowUp' &&
+      event.key !== 'ArrowLeft' &&
+      event.key !== 'ArrowDown'
+    ) {
       return;
     }
 
@@ -218,12 +223,14 @@ export class FhiToggleGroup extends LitElement {
     );
 
     const nextIndex =
-      event.key === 'ArrowRight'
+      event.key === 'ArrowRight' || event.key === 'ArrowDown'
         ? (currentIndex + 1) % items.length
         : (currentIndex - 1 + items.length) % items.length;
 
     const nextItem = items[nextIndex];
+
     nextItem.shadowRoot?.querySelector('button')?.focus();
+    this._setSelectedItem(nextItem);
 
     event.preventDefault();
   }

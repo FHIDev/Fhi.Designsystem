@@ -105,7 +105,7 @@ describe('fhi-toggle-group-item', () => {
       expect(
         component
           .shadowRoot!.querySelector('button')!
-          .getAttribute('aria-selected'),
+          .getAttribute('aria-checked'),
       ).to.equal('true');
 
       expect(clickEventCounter).to.equal(1);
@@ -121,7 +121,7 @@ describe('fhi-toggle-group-item', () => {
       await component.updateComplete;
 
       expect(component.selected).to.equal(true);
-      expect(button.getAttribute('aria-selected')).to.equal('true');
+      expect(button.getAttribute('aria-checked')).to.equal('true');
     });
   });
 });

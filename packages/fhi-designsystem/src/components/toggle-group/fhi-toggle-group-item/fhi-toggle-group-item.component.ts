@@ -83,10 +83,10 @@ export class FhiToggleGroupItem extends LitElement {
     return html`
       <button
         type="button"
-        aria-selected=${this.selected ? 'true' : 'false'}
+        aria-checked=${this.selected ? 'true' : 'false'}
         tabindex=${this.selected ? '0' : '-1'}
         @click=${this._handleClick}
-        role="tab"
+        role="radio"
       >
         <slot name="icon" @slotchange=${this.handleSlotChange}></slot>
         <slot class="content" @slotchange=${this.handleSlotChange}></slot>
