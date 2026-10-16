@@ -19,8 +19,8 @@ describe('fhi-toggle-group-item', () => {
       component = group.querySelector('fhi-toggle-group-item')!;
     });
 
-    it('is accessible', async () => {
-      await expect(component).to.be.accessible();
+    it('is accessible within a toggle group', async () => {
+      await expect(component.parentElement!).to.be.accessible();
     });
   });
 
@@ -105,7 +105,7 @@ describe('fhi-toggle-group-item', () => {
       expect(
         component
           .shadowRoot!.querySelector('button')!
-          .getAttribute('aria-pressed'),
+          .getAttribute('aria-selected'),
       ).to.equal('true');
 
       expect(clickEventCounter).to.equal(1);
@@ -121,7 +121,7 @@ describe('fhi-toggle-group-item', () => {
       await component.updateComplete;
 
       expect(component.selected).to.equal(true);
-      expect(button.getAttribute('aria-pressed')).to.equal('true');
+      expect(button.getAttribute('aria-selected')).to.equal('true');
     });
   });
 });

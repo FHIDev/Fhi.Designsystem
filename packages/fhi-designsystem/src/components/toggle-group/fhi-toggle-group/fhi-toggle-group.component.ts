@@ -70,7 +70,7 @@ export class FhiToggleGroup extends LitElement {
   public connectedCallback() {
     super.connectedCallback();
 
-    this.role = 'group';
+    this.setAttribute('role', 'tablist');
 
     this._mutationObserver.observe(this, {
       attributes: true,
@@ -143,6 +143,7 @@ export class FhiToggleGroup extends LitElement {
           this._syncSelectionFromItems();
         }
       });
+
       return;
     }
 
@@ -156,6 +157,7 @@ export class FhiToggleGroup extends LitElement {
     const newlySelectedItem = items.find(
       item => item.selected && item !== this._selectedItem,
     );
+
     const selectedItem = items.find(item => item.selected);
 
     return newlySelectedItem ?? selectedItem ?? items[0] ?? null;
@@ -204,8 +206,33 @@ export class FhiToggleGroup extends LitElement {
     this._syncSelectionFromItems();
   };
 
+  private _handleKeyDown(event: KeyboardEvent) {
+    if (event.key !== 'ArrowRight' && event.key !== 'ArrowLeft') {
+      return;
+    }
+
+    const items = this._getItems();
+    const eventTravelPath = event.composedPath();
+    const currentIndex = items.findIndex(item =>
+      eventTravelPath.includes(item),
+    );
+
+    const nextIndex =
+      event.key === 'ArrowRight'
+        ? (currentIndex + 1) % items.length
+        : (currentIndex - 1 + items.length) % items.length;
+
+    const nextItem = items[nextIndex];
+    nextItem.shadowRoot?.querySelector('button')?.focus();
+
+    event.preventDefault();
+  }
+
   render() {
-    return html`<slot @slotchange=${this._handleSlotChange}></slot>`;
+    return html`<slot
+      @slotchange=${this._handleSlotChange}
+      @keydown=${this._handleKeyDown}
+    ></slot>`;
   }
 
   static styles = css`

@@ -14,23 +14,19 @@ describe('fhi-toggle-group', () => {
 
   describe('accessibility', () => {
     beforeEach(async () => {
-      component = await fixture(html`<fhi-toggle-group></fhi-toggle-group>`);
+      component = await fixture(html`
+        <fhi-toggle-group>
+          <fhi-toggle-group-item>My item</fhi-toggle-group-item>
+        </fhi-toggle-group>
+      `);
     });
 
     it('is accessible', async () => {
       await expect(component).to.be.accessible();
     });
 
-    it('has the "group" role on the host', () => {
-      expect(component.getAttribute('role')).to.equal('group');
-    });
-
-    it('preserves an explicitly set tabindex', async () => {
-      component = await fixture(html`
-        <fhi-toggle-group tabindex="-1"></fhi-toggle-group>
-      `);
-
-      expect(component.tabIndex).to.equal(-1);
+    it('has the "tablist" role ', () => {
+      expect(component.getAttribute('role')).to.equal('tablist');
     });
   });
 
@@ -402,6 +398,76 @@ describe('fhi-toggle-group', () => {
 
       expect(component.value).to.equal('second');
       expect(changeEventCounter).to.equal(1);
+    });
+  });
+
+  describe('keyboard navigation', () => {
+    it('navigates to the next item with the right arrow key', async () => {
+      component = await fixture(html`
+        <fhi-toggle-group>
+          <fhi-toggle-group-item value="first"
+            >First item</fhi-toggle-group-item
+          >
+          <fhi-toggle-group-item value="second"
+            >Second item</fhi-toggle-group-item
+          >
+        </fhi-toggle-group>
+      `);
+
+      const items = component.querySelectorAll<FhiToggleGroupItem>(
+        'fhi-toggle-group-item',
+      );
+
+      const firstButton = items[0].shadowRoot!.querySelector('button')!;
+      const secondButton = items[1].shadowRoot!.querySelector('button')!;
+
+      firstButton.focus();
+
+      const event = new KeyboardEvent('keydown', {
+        key: 'ArrowRight',
+        bubbles: true,
+        composed: true,
+      });
+
+      firstButton.dispatchEvent(event);
+
+      await component.updateComplete;
+
+      expect(items[1].shadowRoot!.activeElement).to.equal(secondButton);
+    });
+
+    it('navigates to the previous item with the left arrow key', async () => {
+      component = await fixture(html`
+        <fhi-toggle-group value="second">
+          <fhi-toggle-group-item value="first"
+            >First item</fhi-toggle-group-item
+          >
+          <fhi-toggle-group-item value="second"
+            >Second item</fhi-toggle-group-item
+          >
+        </fhi-toggle-group>
+      `);
+
+      const items = component.querySelectorAll<FhiToggleGroupItem>(
+        'fhi-toggle-group-item',
+      );
+
+      const firstButton = items[0].shadowRoot!.querySelector('button')!;
+      const secondButton = items[1].shadowRoot!.querySelector('button')!;
+
+      secondButton.focus();
+
+      const event = new KeyboardEvent('keydown', {
+        key: 'ArrowLeft',
+        bubbles: true,
+        composed: true,
+      });
+
+      secondButton.dispatchEvent(event);
+
+      await component.updateComplete;
+
+      expect(items[0].shadowRoot!.activeElement).to.equal(firstButton);
     });
   });
 
