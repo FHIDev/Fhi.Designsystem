@@ -1,23 +1,23 @@
 import { fixture, expect, oneEvent, nextFrame } from '@open-wc/testing';
 import { html } from 'lit/static-html.js';
-import { FhiToggleGroup } from './fhi-toggle-group.component';
+import { FhiSegmentedControl } from './fhi-segmented-control.component';
 import {
-  FhiToggleGroupItem,
-  FhiToggleGroupItemSelector,
-} from '../fhi-toggle-group-item/fhi-toggle-group-item.component';
+  FhiSegmentedControlItem,
+  FhiSegmentedControlItemSelector,
+} from '../fhi-segmented-control-item/fhi-segmented-control-item.component';
 
-describe('fhi-toggle-group', () => {
-  new FhiToggleGroup();
-  new FhiToggleGroupItem();
+describe('fhi-segmented-control', () => {
+  new FhiSegmentedControl();
+  new FhiSegmentedControlItem();
 
-  let component: FhiToggleGroup;
+  let component: FhiSegmentedControl;
 
   describe('accessibility', () => {
     beforeEach(async () => {
       component = await fixture(html`
-        <fhi-toggle-group>
-          <fhi-toggle-group-item>My item</fhi-toggle-group-item>
-        </fhi-toggle-group>
+        <fhi-segmented-control>
+          <fhi-segmented-control-item>My item</fhi-segmented-control-item>
+        </fhi-segmented-control>
       `);
     });
 
@@ -33,14 +33,14 @@ describe('fhi-toggle-group', () => {
   describe('setting attributes', () => {
     it('has an attribute to set the value', async () => {
       component = await fixture(html`
-        <fhi-toggle-group value="second">
-          <fhi-toggle-group-item value="first"
-            >First item</fhi-toggle-group-item
+        <fhi-segmented-control value="second">
+          <fhi-segmented-control-item value="first"
+            >First item</fhi-segmented-control-item
           >
-          <fhi-toggle-group-item value="second"
-            >Second item</fhi-toggle-group-item
+          <fhi-segmented-control-item value="second"
+            >Second item</fhi-segmented-control-item
           >
-        </fhi-toggle-group>
+        </fhi-segmented-control>
       `);
 
       expect(component.value).to.equal('second');
@@ -49,7 +49,7 @@ describe('fhi-toggle-group', () => {
 
     it('has an attribute to set the variant', async () => {
       component = await fixture(
-        html`<fhi-toggle-group variant="subtle"></fhi-toggle-group>`,
+        html`<fhi-segmented-control variant="subtle"></fhi-segmented-control>`,
       );
 
       expect(component.getAttribute('variant')).to.equal('subtle');
@@ -60,14 +60,14 @@ describe('fhi-toggle-group', () => {
   describe('value logic', () => {
     beforeEach(async () => {
       component = await fixture(html`
-        <fhi-toggle-group>
-          <fhi-toggle-group-item value="first"
-            >First item</fhi-toggle-group-item
+        <fhi-segmented-control>
+          <fhi-segmented-control-item value="first"
+            >First item</fhi-segmented-control-item
           >
-          <fhi-toggle-group-item value="second"
-            >Second item</fhi-toggle-group-item
+          <fhi-segmented-control-item value="second"
+            >Second item</fhi-segmented-control-item
           >
-        </fhi-toggle-group>
+        </fhi-segmented-control>
       `);
     });
 
@@ -88,8 +88,8 @@ describe('fhi-toggle-group', () => {
     });
 
     it('does not dispatch a change event when the selected item is clicked', async () => {
-      const selectedItem = component.querySelector<FhiToggleGroupItem>(
-        'fhi-toggle-group-item',
+      const selectedItem = component.querySelector<FhiSegmentedControlItem>(
+        'fhi-segmented-control-item',
       )!;
 
       let changeEventCounter = 0;
@@ -112,8 +112,8 @@ describe('fhi-toggle-group', () => {
 
       await component.updateComplete;
 
-      const items = component.querySelectorAll<FhiToggleGroupItem>(
-        FhiToggleGroupItemSelector,
+      const items = component.querySelectorAll<FhiSegmentedControlItem>(
+        FhiSegmentedControlItemSelector,
       );
 
       expect(items[0].selected).to.equal(false);
@@ -124,8 +124,8 @@ describe('fhi-toggle-group', () => {
     });
 
     it('updates the value before dispatching a change event when an item is clicked', async () => {
-      const secondItem = component.querySelectorAll<FhiToggleGroupItem>(
-        FhiToggleGroupItemSelector,
+      const secondItem = component.querySelectorAll<FhiSegmentedControlItem>(
+        FhiSegmentedControlItemSelector,
       )[1];
 
       let eventValue = null;
@@ -158,8 +158,8 @@ describe('fhi-toggle-group', () => {
     });
 
     it('updates the value when the selected item value changes', async () => {
-      const item = component.querySelector<FhiToggleGroupItem>(
-        FhiToggleGroupItemSelector,
+      const item = component.querySelector<FhiSegmentedControlItem>(
+        FhiSegmentedControlItemSelector,
       )!;
 
       item.value = 'updated';
@@ -172,9 +172,9 @@ describe('fhi-toggle-group', () => {
 
     it('uses the item text when no explicit value is provided', async () => {
       component = await fixture(html`
-        <fhi-toggle-group>
-          <fhi-toggle-group-item> First item </fhi-toggle-group-item>
-        </fhi-toggle-group>
+        <fhi-segmented-control>
+          <fhi-segmented-control-item> First item </fhi-segmented-control-item>
+        </fhi-segmented-control>
       `);
 
       expect(component.value).to.equal('First item');
@@ -182,14 +182,14 @@ describe('fhi-toggle-group', () => {
 
     it('selects an item by its text when no explicit value is provided', async () => {
       component = await fixture(html`
-        <fhi-toggle-group value="Second item">
-          <fhi-toggle-group-item>First item</fhi-toggle-group-item>
-          <fhi-toggle-group-item>Second item</fhi-toggle-group-item>
-        </fhi-toggle-group>
+        <fhi-segmented-control value="Second item">
+          <fhi-segmented-control-item>First item</fhi-segmented-control-item>
+          <fhi-segmented-control-item>Second item</fhi-segmented-control-item>
+        </fhi-segmented-control>
       `);
 
-      const items = component.querySelectorAll<FhiToggleGroupItem>(
-        FhiToggleGroupItemSelector,
+      const items = component.querySelectorAll<FhiSegmentedControlItem>(
+        FhiSegmentedControlItemSelector,
       );
 
       expect(items[0].selected).to.equal(false);
@@ -199,8 +199,8 @@ describe('fhi-toggle-group', () => {
     });
 
     it('updates the value when the selected item text changes', async () => {
-      const item = component.querySelector<FhiToggleGroupItem>(
-        FhiToggleGroupItemSelector,
+      const item = component.querySelector<FhiSegmentedControlItem>(
+        FhiSegmentedControlItemSelector,
       )!;
 
       item.value = null;
@@ -218,22 +218,22 @@ describe('fhi-toggle-group', () => {
 
     it('has the value of the explicitly selected item', async () => {
       component = await fixture(html`
-        <fhi-toggle-group>
-          <fhi-toggle-group-item value="first"
-            >First item</fhi-toggle-group-item
+        <fhi-segmented-control>
+          <fhi-segmented-control-item value="first"
+            >First item</fhi-segmented-control-item
           >
-          <fhi-toggle-group-item value="second" selected
-            >Second item</fhi-toggle-group-item
+          <fhi-segmented-control-item value="second" selected
+            >Second item</fhi-segmented-control-item
           >
-        </fhi-toggle-group>
+        </fhi-segmented-control>
       `);
 
       expect(component.value).to.equal('second');
     });
 
     it('updates the value when an item is selected programmatically', async () => {
-      const items = component.querySelectorAll<FhiToggleGroupItem>(
-        'fhi-toggle-group-item',
+      const items = component.querySelectorAll<FhiSegmentedControlItem>(
+        'fhi-segmented-control-item',
       );
 
       items[1].selected = true;
@@ -246,8 +246,8 @@ describe('fhi-toggle-group', () => {
     });
 
     it('selects an item with an explicitly empty value', async () => {
-      const item = component.querySelectorAll<FhiToggleGroupItem>(
-        'fhi-toggle-group-item',
+      const item = component.querySelectorAll<FhiSegmentedControlItem>(
+        'fhi-segmented-control-item',
       )[1];
 
       item.value = '';
@@ -266,7 +266,7 @@ describe('fhi-toggle-group', () => {
         'slotchange',
       );
 
-      component.querySelector('fhi-toggle-group-item')!.remove();
+      component.querySelector('fhi-segmented-control-item')!.remove();
 
       await slotChanged;
       await component.updateComplete;
@@ -275,8 +275,8 @@ describe('fhi-toggle-group', () => {
     });
 
     it('selects another item with the same value when the selected item is removed', async () => {
-      const items = component.querySelectorAll<FhiToggleGroupItem>(
-        'fhi-toggle-group-item',
+      const items = component.querySelectorAll<FhiSegmentedControlItem>(
+        'fhi-segmented-control-item',
       );
 
       items[1].value = 'first';
@@ -312,22 +312,22 @@ describe('fhi-toggle-group', () => {
   describe('reconnection', () => {
     beforeEach(async () => {
       component = await fixture(html`
-        <fhi-toggle-group>
-          <fhi-toggle-group-item value="first"
-            >First item</fhi-toggle-group-item
+        <fhi-segmented-control>
+          <fhi-segmented-control-item value="first"
+            >First item</fhi-segmented-control-item
           >
-          <fhi-toggle-group-item value="second"
-            >Second item</fhi-toggle-group-item
+          <fhi-segmented-control-item value="second"
+            >Second item</fhi-segmented-control-item
           >
-        </fhi-toggle-group>
+        </fhi-segmented-control>
       `);
     });
 
     it('synchronizes a selected item value changed while disconnected', async () => {
       const parent = component.parentElement!;
 
-      const item = component.querySelector<FhiToggleGroupItem>(
-        FhiToggleGroupItemSelector,
+      const item = component.querySelector<FhiSegmentedControlItem>(
+        FhiSegmentedControlItemSelector,
       )!;
 
       component.remove();
@@ -350,8 +350,8 @@ describe('fhi-toggle-group', () => {
     it('preserves a pending group value when reconnected immediately', async () => {
       const parent = component.parentElement!;
 
-      const items = component.querySelectorAll<FhiToggleGroupItem>(
-        FhiToggleGroupItemSelector,
+      const items = component.querySelectorAll<FhiSegmentedControlItem>(
+        FhiSegmentedControlItemSelector,
       );
 
       component.remove();
@@ -373,8 +373,8 @@ describe('fhi-toggle-group', () => {
     it('synchronizes selection changed while disconnected', async () => {
       const parent = component.parentElement!;
 
-      const items = component.querySelectorAll<FhiToggleGroupItem>(
-        FhiToggleGroupItemSelector,
+      const items = component.querySelectorAll<FhiSegmentedControlItem>(
+        FhiSegmentedControlItemSelector,
       );
 
       let changeEventCounter = 0;
@@ -404,18 +404,18 @@ describe('fhi-toggle-group', () => {
   describe('keyboard navigation', () => {
     it('navigates to the next item with the right arrow key', async () => {
       component = await fixture(html`
-        <fhi-toggle-group>
-          <fhi-toggle-group-item value="first"
-            >First item</fhi-toggle-group-item
+        <fhi-segmented-control>
+          <fhi-segmented-control-item value="first"
+            >First item</fhi-segmented-control-item
           >
-          <fhi-toggle-group-item value="second"
-            >Second item</fhi-toggle-group-item
+          <fhi-segmented-control-item value="second"
+            >Second item</fhi-segmented-control-item
           >
-        </fhi-toggle-group>
+        </fhi-segmented-control>
       `);
 
-      const items = component.querySelectorAll<FhiToggleGroupItem>(
-        'fhi-toggle-group-item',
+      const items = component.querySelectorAll<FhiSegmentedControlItem>(
+        'fhi-segmented-control-item',
       );
 
       const firstButton = items[0].shadowRoot!.querySelector('button')!;
@@ -438,18 +438,18 @@ describe('fhi-toggle-group', () => {
 
     it('navigates to the previous item with the left arrow key', async () => {
       component = await fixture(html`
-        <fhi-toggle-group value="second">
-          <fhi-toggle-group-item value="first"
-            >First item</fhi-toggle-group-item
+        <fhi-segmented-control value="second">
+          <fhi-segmented-control-item value="first"
+            >First item</fhi-segmented-control-item
           >
-          <fhi-toggle-group-item value="second"
-            >Second item</fhi-toggle-group-item
+          <fhi-segmented-control-item value="second"
+            >Second item</fhi-segmented-control-item
           >
-        </fhi-toggle-group>
+        </fhi-segmented-control>
       `);
 
-      const items = component.querySelectorAll<FhiToggleGroupItem>(
-        'fhi-toggle-group-item',
+      const items = component.querySelectorAll<FhiSegmentedControlItem>(
+        'fhi-segmented-control-item',
       );
 
       const firstButton = items[0].shadowRoot!.querySelector('button')!;
@@ -474,14 +474,14 @@ describe('fhi-toggle-group', () => {
   describe('property-attribute reflection', () => {
     it('reflects the value property to an attribute', async () => {
       component = await fixture(html`
-        <fhi-toggle-group>
-          <fhi-toggle-group-item value="first"
-            >First item</fhi-toggle-group-item
+        <fhi-segmented-control>
+          <fhi-segmented-control-item value="first"
+            >First item</fhi-segmented-control-item
           >
-          <fhi-toggle-group-item value="second"
-            >Second item</fhi-toggle-group-item
+          <fhi-segmented-control-item value="second"
+            >Second item</fhi-segmented-control-item
           >
-        </fhi-toggle-group>
+        </fhi-segmented-control>
       `);
 
       component.value = 'second';
@@ -494,16 +494,16 @@ describe('fhi-toggle-group', () => {
   describe('variant inheritance', () => {
     it('applies the group variant to dynamically added items', async () => {
       component = await fixture(html`
-        <fhi-toggle-group variant="subtle">
-          <fhi-toggle-group-item value="first"
-            >First item</fhi-toggle-group-item
+        <fhi-segmented-control variant="subtle">
+          <fhi-segmented-control-item value="first"
+            >First item</fhi-segmented-control-item
           >
-        </fhi-toggle-group>
+        </fhi-segmented-control>
       `);
 
       const item = document.createElement(
-        FhiToggleGroupItemSelector,
-      ) as FhiToggleGroupItem;
+        FhiSegmentedControlItemSelector,
+      ) as FhiSegmentedControlItem;
 
       item.value = 'second';
       item.textContent = 'Second item';
@@ -524,14 +524,14 @@ describe('fhi-toggle-group', () => {
   describe('selection', () => {
     it('selects the first item when no item is selected', async () => {
       component = await fixture(html`
-        <fhi-toggle-group>
-          <fhi-toggle-group-item>First item</fhi-toggle-group-item>
-          <fhi-toggle-group-item>Second item</fhi-toggle-group-item>
-        </fhi-toggle-group>
+        <fhi-segmented-control>
+          <fhi-segmented-control-item>First item</fhi-segmented-control-item>
+          <fhi-segmented-control-item>Second item</fhi-segmented-control-item>
+        </fhi-segmented-control>
       `);
 
-      const items = component.querySelectorAll<FhiToggleGroupItem>(
-        'fhi-toggle-group-item',
+      const items = component.querySelectorAll<FhiSegmentedControlItem>(
+        'fhi-segmented-control-item',
       );
 
       expect(items[0].selected).to.equal(true);
@@ -539,11 +539,13 @@ describe('fhi-toggle-group', () => {
     });
 
     it('selects the first item added to an empty group', async () => {
-      component = await fixture(html`<fhi-toggle-group></fhi-toggle-group>`);
+      component = await fixture(
+        html`<fhi-segmented-control></fhi-segmented-control>`,
+      );
 
       const item = document.createElement(
-        FhiToggleGroupItemSelector,
-      ) as FhiToggleGroupItem;
+        FhiSegmentedControlItemSelector,
+      ) as FhiSegmentedControlItem;
 
       component.append(item);
 

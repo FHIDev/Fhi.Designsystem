@@ -6,26 +6,26 @@ import {
   query,
 } from 'lit/decorators.js';
 
-export const FhiToggleGroupItemSelector = 'fhi-toggle-group-item';
+export const FhiSegmentedControlItemSelector = 'fhi-segmented-control-item';
 
 /**
- * ## FHI Toggle Group Item
+ * ## FHI Segmented Control Item
  *
- * {@link https://designsystem.fhi.no/?path=/docs/komponenter-toggle-group--docs}
+ * {@link https://designsystem.fhi.no/?path=/docs/komponenter-segmented-control--docs}
  *
- * The <fhi-toggle-group-item> component represents an individual choice within a <fhi-toggle-group>. It can display text content with or without an icon.
+ * The <fhi-segmented-control-item> component represents an individual choice within a <fhi-segmented-control>. It can display text content with or without an icon.
  *
  *
- * @tag fhi-toggle-group-item
- * @element fhi-toggle-group-item
+ * @tag fhi-segmented-control-item
+ * @element fhi-segmented-control-item
  *
  * @slot icon - Slot for placing an icon.
  * @slot - The default slot. Used for placing the text content.
  */
-@customElement(FhiToggleGroupItemSelector)
-export class FhiToggleGroupItem extends LitElement {
+@customElement(FhiSegmentedControlItemSelector)
+export class FhiSegmentedControlItem extends LitElement {
   /**
-   * Sets the toggle group item's visual style and emphasis. This is automatically inherited from the parent toggle group.
+   * Sets the segmented control item's visual style and emphasis. This is automatically inherited from the parent segmented control.
    *
    * @reflect
    * @type {'strong' | 'subtle'}
@@ -34,7 +34,7 @@ export class FhiToggleGroupItem extends LitElement {
     'strong';
 
   /**
-   * Whether the toggle group button is selected or not.
+   * Whether the segmented control button is selected or not.
    *
    * @reflect
    * @type {boolean}
@@ -42,7 +42,7 @@ export class FhiToggleGroupItem extends LitElement {
   @property({ type: Boolean, reflect: true }) selected? = false;
 
   /**
-   * The value of the toggle group item.
+   * The value of the segmented control item.
    * If not specified, the value will be derived from the items text content.
    *
    * @reflect
@@ -74,7 +74,7 @@ export class FhiToggleGroupItem extends LitElement {
 
     if (!hasContentNodes && this.iconSlotElements.length !== 0) {
       console.warn(
-        `${FhiToggleGroupItemSelector} cannot have an icon without also having text content.`,
+        `${FhiSegmentedControlItemSelector} cannot have an icon without also having text content.`,
       );
     }
   }

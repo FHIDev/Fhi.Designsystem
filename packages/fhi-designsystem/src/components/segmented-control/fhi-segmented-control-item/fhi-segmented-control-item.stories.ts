@@ -1,14 +1,14 @@
 import type { StoryObj } from '@storybook/web-components-vite';
 import { html } from 'lit';
-import { FhiToggleGroupItem } from './fhi-toggle-group-item.component';
+import { FhiSegmentedControlItem } from './fhi-segmented-control-item.component';
 
 import { FhiStorybookMeta } from '../../../../.storybook/fhi-meta';
 
-new FhiToggleGroupItem();
+new FhiSegmentedControlItem();
 
-const meta: FhiStorybookMeta<FhiToggleGroupItem> = {
-  title: 'Komponenter/Toggle Group Item',
-  component: 'fhi-toggle-group-item',
+const meta: FhiStorybookMeta<FhiSegmentedControlItem> = {
+  title: 'Komponenter/Segmented Control Item',
+  component: 'fhi-segmented-control-item',
   parameters: {
     slotTypes: [
       {
@@ -25,16 +25,16 @@ const meta: FhiStorybookMeta<FhiToggleGroupItem> = {
         control: { type: 'select' },
         options: ['strong', 'subtle'],
         description:
-          'Bestemmer varianten til Toggle Group Item. Dette arves automatisk fra <fhi-toggle-group>.',
+          'Bestemmer varianten til Segmented Control Item. Dette arves automatisk fra <fhi-segmented-control>.',
       },
     },
   },
   decorators: [],
-  render: () => html`<fhi-toggle-group-item></fhi-toggle-group-item>`,
+  render: () => html`<fhi-segmented-control-item></fhi-segmented-control-item>`,
   argTypes: {},
 };
 
-type Story = StoryObj<FhiToggleGroupItem>;
+type Story = StoryObj<FhiSegmentedControlItem>;
 
 export const Preview: Story = {
   tags: ['!dev'],

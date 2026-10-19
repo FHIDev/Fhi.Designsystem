@@ -1,39 +1,39 @@
 import { html, css, LitElement, PropertyValues } from 'lit';
 import { customElement, property } from 'lit/decorators.js';
 import {
-  FhiToggleGroupItemSelector,
-  type FhiToggleGroupItem,
-} from '../fhi-toggle-group-item/fhi-toggle-group-item.component';
+  FhiSegmentedControlItemSelector,
+  type FhiSegmentedControlItem,
+} from '../fhi-segmented-control-item/fhi-segmented-control-item.component';
 
-export const FhiToggleGroupSelector = 'fhi-toggle-group';
+export const FhiSegmentedControlSelector = 'fhi-segmented-control';
 
 /**
- * ## FHI Toggle Group
+ * ## FHI Segmented Control
  *
- * {@link https://designsystem.fhi.no/?path=/docs/komponenter-toggle-group--docs}
+ * {@link https://designsystem.fhi.no/?path=/docs/komponenter-segmented-control--docs}
  *
- * The <fhi-toggle-group> component lets the user select one option from a group of related choices. Each choice is defined with a <fhi-toggle-group-item> element.
+ * The <fhi-segmented-control> component lets the user select one option from a group of related choices. Each choice is defined with a <fhi-segmented-control-item> element.
  *
  * The choice should affect the content within the same context.
  *
  * Example usage:
  * ```html
- * <fhi-toggle-group value="item2">
- *   <fhi-toggle-group-item value="item1">Item 1</fhi-toggle-group-item>
- *   <fhi-toggle-group-item value="item2">Item 2</fhi-toggle-group-item>
- *   <fhi-toggle-group-item value="item3">Item 3</fhi-toggle-group-item>
- * </fhi-toggle-group>
+ * <fhi-segmented-control value="item2">
+ *   <fhi-segmented-control-item value="item1">Item 1</fhi-segmented-control-item>
+ *   <fhi-segmented-control-item value="item2">Item 2</fhi-segmented-control-item>
+ *   <fhi-segmented-control-item value="item3">Item 3</fhi-segmented-control-item>
+ * </fhi-segmented-control>
  * ```
  *
- * @tag fhi-toggle-group
- * @element fhi-toggle-group
+ * @tag fhi-segmented-control
+ * @element fhi-segmented-control
  *
- * @slot - The default slot. Used for placing <fhi-toggle-group-item> elements.
+ * @slot - The default slot. Used for placing <fhi-segmented-control-item> elements.
  */
-@customElement(FhiToggleGroupSelector)
-export class FhiToggleGroup extends LitElement {
+@customElement(FhiSegmentedControlSelector)
+export class FhiSegmentedControl extends LitElement {
   /**
-   * The visual style of the toggle group. This will be applied to all toggle group items within the group.
+   * The visual style of the segmented control. This will be applied to all segmented control items within the group.
    *
    * @reflect
    * @type {'strong' | 'subtle'}
@@ -42,14 +42,14 @@ export class FhiToggleGroup extends LitElement {
     'strong';
 
   /**
-   * The currently selected value of the toggle group.
+   * The currently selected value of the segmented control.
    *
    * @reflect
    * @type {string}
    */
   @property({ type: String, reflect: true }) value?: string;
 
-  private _selectedItem: FhiToggleGroupItem | null = null;
+  private _selectedItem: FhiSegmentedControlItem | null = null;
 
   private readonly _mutationObserver = new MutationObserver(mutations => {
     const hasItemChanges = mutations.some(
@@ -152,8 +152,8 @@ export class FhiToggleGroup extends LitElement {
   }
 
   private _getSelectedItem(
-    items: FhiToggleGroupItem[],
-  ): FhiToggleGroupItem | null {
+    items: FhiSegmentedControlItem[],
+  ): FhiSegmentedControlItem | null {
     const newlySelectedItem = items.find(
       item => item.selected && item !== this._selectedItem,
     );
@@ -163,25 +163,27 @@ export class FhiToggleGroup extends LitElement {
     return newlySelectedItem ?? selectedItem ?? items[0] ?? null;
   }
 
-  private _getItems(): FhiToggleGroupItem[] {
+  private _getItems(): FhiSegmentedControlItem[] {
     return Array.from(
-      this.querySelectorAll<FhiToggleGroupItem>(FhiToggleGroupItemSelector),
+      this.querySelectorAll<FhiSegmentedControlItem>(
+        FhiSegmentedControlItemSelector,
+      ),
     );
   }
 
   private _dispatchChangeEvent() {
     /**
      * @type {Event} - Standard DOM event with the type `change`.
-     * This event is dispatched when the selected item of the toggle group changes.
+     * This event is dispatched when the selected item of the segmented control changes.
      */
     this.dispatchEvent(new Event('change', { bubbles: true, composed: true }));
   }
 
-  private _getItemValue(item: FhiToggleGroupItem | null): string {
+  private _getItemValue(item: FhiSegmentedControlItem | null): string {
     return item?.value ?? item?.textContent?.trim() ?? '';
   }
 
-  private _setSelectedItem(item: FhiToggleGroupItem | null) {
+  private _setSelectedItem(item: FhiSegmentedControlItem | null) {
     const selectionChanged = this._selectedItem !== item;
 
     this._getItems().forEach(groupItem => {

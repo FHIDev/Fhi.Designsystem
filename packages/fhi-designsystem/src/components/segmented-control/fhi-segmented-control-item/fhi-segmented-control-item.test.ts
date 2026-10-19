@@ -1,25 +1,25 @@
 import { fixture, expect } from '@open-wc/testing';
 import { html } from 'lit/static-html.js';
-import { FhiToggleGroupItem } from './fhi-toggle-group-item.component';
-import { FhiToggleGroup } from '../fhi-toggle-group/fhi-toggle-group.component';
+import { FhiSegmentedControlItem } from './fhi-segmented-control-item.component';
+import { FhiSegmentedControl } from '../fhi-segmented-control/fhi-segmented-control.component';
 
-describe('fhi-toggle-group-item', () => {
-  new FhiToggleGroupItem();
-  new FhiToggleGroup();
+describe('fhi-segmented-control-item', () => {
+  new FhiSegmentedControlItem();
+  new FhiSegmentedControl();
 
-  let component: FhiToggleGroupItem;
+  let component: FhiSegmentedControlItem;
 
   describe('accessibility', () => {
     beforeEach(async () => {
-      const group = await fixture<FhiToggleGroup>(html`
-        <fhi-toggle-group>
-          <fhi-toggle-group-item>My item</fhi-toggle-group-item>
-        </fhi-toggle-group>
+      const group = await fixture<FhiSegmentedControl>(html`
+        <fhi-segmented-control>
+          <fhi-segmented-control-item>My item</fhi-segmented-control-item>
+        </fhi-segmented-control>
       `);
-      component = group.querySelector('fhi-toggle-group-item')!;
+      component = group.querySelector('fhi-segmented-control-item')!;
     });
 
-    it('is accessible within a toggle group', async () => {
+    it('is accessible within a segmented control', async () => {
       await expect(component.parentElement!).to.be.accessible();
     });
   });
@@ -27,8 +27,8 @@ describe('fhi-toggle-group-item', () => {
   describe('setting attributes', () => {
     it('has an attribute to set the value', async () => {
       component = await fixture(
-        html`<fhi-toggle-group-item value="table"
-          >My item</fhi-toggle-group-item
+        html`<fhi-segmented-control-item value="table"
+          >My item</fhi-segmented-control-item
         >`,
       );
 
@@ -38,8 +38,8 @@ describe('fhi-toggle-group-item', () => {
 
     it('has an attribute to set the variant', async () => {
       component = await fixture(
-        html`<fhi-toggle-group-item variant="subtle"
-          >My item</fhi-toggle-group-item
+        html`<fhi-segmented-control-item variant="subtle"
+          >My item</fhi-segmented-control-item
         >`,
       );
 
@@ -49,7 +49,9 @@ describe('fhi-toggle-group-item', () => {
 
     it('has an attribute to set selected', async () => {
       component = await fixture(
-        html`<fhi-toggle-group-item selected>My item</fhi-toggle-group-item>`,
+        html`<fhi-segmented-control-item selected
+          >My item</fhi-segmented-control-item
+        >`,
       );
 
       expect(component.hasAttribute('selected')).to.equal(true);
@@ -60,7 +62,7 @@ describe('fhi-toggle-group-item', () => {
   describe('property-attribute reflection', () => {
     beforeEach(async () => {
       component = await fixture(
-        html`<fhi-toggle-group-item>My item</fhi-toggle-group-item>`,
+        html`<fhi-segmented-control-item>My item</fhi-segmented-control-item>`,
       );
     });
 
@@ -89,7 +91,7 @@ describe('fhi-toggle-group-item', () => {
   describe('interactions', () => {
     it('selects the item and dispatches a click event when click() is called', async () => {
       component = await fixture(
-        html`<fhi-toggle-group-item>My item</fhi-toggle-group-item>`,
+        html`<fhi-segmented-control-item>My item</fhi-segmented-control-item>`,
       );
 
       let clickEventCounter = 0;
@@ -113,7 +115,7 @@ describe('fhi-toggle-group-item', () => {
 
     it('selects the item when clicked', async () => {
       component = await fixture(
-        html`<fhi-toggle-group-item>My item</fhi-toggle-group-item>`,
+        html`<fhi-segmented-control-item>My item</fhi-segmented-control-item>`,
       );
       const button = component.shadowRoot!.querySelector('button')!;
 
