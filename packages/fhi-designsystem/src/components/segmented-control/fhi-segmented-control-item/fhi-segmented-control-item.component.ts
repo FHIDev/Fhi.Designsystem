@@ -117,6 +117,7 @@ export class FhiSegmentedControlItem extends LitElement {
       font-weight: var(--fhi-typography-label-medium-font-weight);
       line-height: var(--fhi-typography-label-medium-line-height);
       letter-spacing: var(--fhi-typography-label-medium-letter-spacing);
+      text-wrap: nowrap;
       padding: calc(var(--fhi-spacing-100) - var(--fhi-dimension-border-width))
         calc(var(--fhi-spacing-150) - var(--fhi-dimension-border-width));
       color: var(--fhi-color-neutral-text-subtle);
@@ -146,6 +147,7 @@ export class FhiSegmentedControlItem extends LitElement {
     :host([variant='subtle']) button {
       &:hover {
         background-color: var(--fhi-color-neutral-surface-hover);
+        color: var(--fhi-color-neutral-text-default);
       }
 
       &:active {

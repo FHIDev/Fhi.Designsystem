@@ -82,7 +82,7 @@ export const Example: Story = {
   args: { variant: 'subtle' },
   render: args => html`
     <fhi-flex direction="column" gap="small">
-      <fhi-label id="segmented-control-example-label">Velg visning:</fhi-label>
+      <fhi-label id="segmented-control-example-label">Visning</fhi-label>
       <fhi-segmented-control
         aria-labelledby="segmented-control-example-label"
         variant="${ifDefined(args.variant)}"
