@@ -230,7 +230,6 @@ export class FhiToggleGroup extends LitElement {
     const nextItem = items[nextIndex];
 
     nextItem.shadowRoot?.querySelector('button')?.focus();
-    this._setSelectedItem(nextItem);
 
     event.preventDefault();
   }

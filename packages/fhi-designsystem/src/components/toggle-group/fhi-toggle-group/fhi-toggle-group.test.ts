@@ -402,7 +402,7 @@ describe('fhi-toggle-group', () => {
   });
 
   describe('keyboard navigation', () => {
-    it('navigates to, and selects, the next item with the right arrow key', async () => {
+    it('navigates to the next item with the right arrow key', async () => {
       component = await fixture(html`
         <fhi-toggle-group>
           <fhi-toggle-group-item value="first"
@@ -434,10 +434,9 @@ describe('fhi-toggle-group', () => {
       await component.updateComplete;
 
       expect(items[1].shadowRoot!.activeElement).to.equal(secondButton);
-      expect(items[1].selected).to.equal(true);
     });
 
-    it('navigates to, and selects, the previous item with the left arrow key', async () => {
+    it('navigates to the previous item with the left arrow key', async () => {
       component = await fixture(html`
         <fhi-toggle-group value="second">
           <fhi-toggle-group-item value="first"
@@ -469,7 +468,6 @@ describe('fhi-toggle-group', () => {
       await component.updateComplete;
 
       expect(items[0].shadowRoot!.activeElement).to.equal(firstButton);
-      expect(items[0].selected).to.equal(true);
     });
   });
 
