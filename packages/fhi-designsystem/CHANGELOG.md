@@ -1,5 +1,11 @@
 # Changelog
 
+## [0.47.0](https://github.com/FHIDev/Fhi.Designsystem/compare/v0.46.0...v0.47.0) (2026-10-19)
+
+### 🚀 Features
+
+* New Component - Segmented Control ([#515](https://github.com/FHIDev/Fhi.Designsystem/issues/515)) ([95fe64f](https://github.com/FHIDev/Fhi.Designsystem/commit/95fe64f9c677d6435665f5ad83688067484e322f))
+
 ## [0.46.0](https://github.com/FHIDev/Fhi.Designsystem/compare/v0.45.4...v0.46.0) (2026-10-09)
 
 ### 🚀 Features
