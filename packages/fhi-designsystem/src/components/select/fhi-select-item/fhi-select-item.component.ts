@@ -20,21 +20,18 @@ export const FhiSelectItemSelector = 'fhi-select-item';
 export class FhiSelectItem extends LitElement {
   /**
    * The label attribute of the select item. This property is used to provide a descriptive label for the select item. If not provided, the content of the `value` attribute will be used instead.
-   * @type {string | null}
    */
   @property({ type: String, reflect: true })
   label: string | null = null;
 
   /**
    * The selected attribute of the select item. This property is used to indicate whether the select item is selected or not.
-   * @type {boolean}
    */
   @property({ type: Boolean, reflect: true })
   selected = false;
 
   /**
    * The value attribute of the select item. This property is used to identify the select item when submitting a form. If not provided, the text content will be used instead.
-   * @type {string | null}
    */
   @property({ type: String, reflect: true })
   value: string | null = null;

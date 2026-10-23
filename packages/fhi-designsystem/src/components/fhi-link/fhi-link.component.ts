@@ -26,7 +26,6 @@ export class FhiLink extends LitElement {
    * It follows the same behavior as the standard HTML `<a>` element's href attribute.
    *
    * For more information, see: {@link https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/a#href}
-   * @type {string}
    */
   @property({ type: String })
   href?: string;
