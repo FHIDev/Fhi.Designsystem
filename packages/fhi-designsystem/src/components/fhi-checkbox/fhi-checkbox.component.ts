@@ -39,7 +39,7 @@ export class FhiCheckbox extends LitElement {
    * The value of the checkbox. This is submitted with the form data as a `value` when the checkbox is checked.
    * @type {string}
    */
-  @property({ type: String }) value: string = 'on';
+  @property({ type: String, useDefault: true }) value: string = 'on';
 
   /**
    * The help text shown below the label.

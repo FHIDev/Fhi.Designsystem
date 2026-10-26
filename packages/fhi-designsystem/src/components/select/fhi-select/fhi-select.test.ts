@@ -182,6 +182,23 @@ describe('fhi-select', () => {
       expect(form.get('mySelect')).to.equal('Option 2');
     });
 
+    it('restores the default value when the value attribute is removed', async () => {
+      component = await fixture(
+        html`<fhi-select name="mySelect" value="Option 2">
+          <fhi-select-item selected>Option 1</fhi-select-item>
+          <fhi-select-item>Option 2</fhi-select-item>
+        </fhi-select>`,
+        { parentNode: document.createElement('form') },
+      );
+
+      await component.updateComplete;
+
+      component.removeAttribute('value');
+      await component.updateComplete;
+
+      expect(component.value).to.equal('');
+    });
+
     it('updates its associated form when its name changes', async () => {
       const formElement = document.createElement('form');
 

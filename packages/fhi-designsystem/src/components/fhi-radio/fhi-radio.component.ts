@@ -61,7 +61,7 @@ export class FhiRadio extends LitElement {
    * The value of the radio. This is submitted with the form data as a `value` when the radio is checked.
    * @type {string}
    */
-  @property({ type: String }) value: string = 'on';
+  @property({ type: String, useDefault: true }) value: string = 'on';
 
   /**
    * The help text shown below the label.

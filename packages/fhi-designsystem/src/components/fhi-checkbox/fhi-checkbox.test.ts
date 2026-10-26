@@ -199,6 +199,31 @@ describe('fhi-checkbox', () => {
       expect(form.get('myCheckbox')).to.equal('on');
     });
 
+    it('restores the default value when the value attribute is removed', async () => {
+      component = await fixture(
+        html`<fhi-checkbox name="myCheckbox" value="hello"></fhi-checkbox>`,
+        { parentNode: document.createElement('form') },
+      );
+
+      component.removeAttribute('value');
+      await component.updateComplete;
+
+      expect(component.value).to.equal('on');
+
+      const input = component.shadowRoot?.querySelector(
+        'input[type="checkbox"]',
+      ) as HTMLInputElement;
+
+      input.click();
+      await component.updateComplete;
+
+      const form = new FormData(
+        document.querySelector('form') as HTMLFormElement,
+      );
+
+      expect(form.get('myCheckbox')).to.equal('on');
+    });
+
     it('is included in the associated forms formData when previously disabled, but now enabled', async () => {
       component = await fixture(
         html`<fhi-checkbox

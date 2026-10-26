@@ -108,7 +108,7 @@ export class FhiTextInput extends LitElement {
    *
    * @type {string}
    */
-  @property({ type: String })
+  @property({ type: String, useDefault: true })
   get value(): string {
     return this._value;
   }

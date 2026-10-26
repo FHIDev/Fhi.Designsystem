@@ -121,7 +121,7 @@ export class FhiDateInput extends LitElement {
    *
    * @type {string}
    */
-  @property({ type: String })
+  @property({ type: String, useDefault: true })
   get value(): FhiDateValue {
     return this._value as FhiDateValue;
   }
