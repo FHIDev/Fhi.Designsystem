@@ -231,6 +231,7 @@ describe('fhi-checkbox', () => {
 
       input.click();
       await component.updateComplete;
+
       expect(component.checked).to.equal(false);
       expect(input.checked).to.equal(false);
 

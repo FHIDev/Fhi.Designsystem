@@ -494,6 +494,7 @@ describe('fhi-radio', () => {
       const [radio1, radio2] = Array.from(
         form.querySelectorAll<FhiRadio>('fhi-radio'),
       );
+
       const input1 = radio1.shadowRoot!.querySelector(
         'input',
       ) as HTMLInputElement;
@@ -502,17 +503,20 @@ describe('fhi-radio', () => {
       ) as HTMLInputElement;
 
       input2.click();
+
       await radio2.updateComplete;
 
       expect(radio1.checked).to.equal(false);
       expect(radio2.checked).to.equal(true);
 
       form.reset();
+
       await radio1.updateComplete;
       await radio2.updateComplete;
 
       expect(radio1.checked).to.equal(true);
       expect(input1.checked).to.equal(true);
+
       expect(radio2.checked).to.equal(false);
       expect(input2.checked).to.equal(false);
     });
