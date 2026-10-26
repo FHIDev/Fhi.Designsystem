@@ -195,22 +195,30 @@ describe('fhi-text-input', () => {
       expect(form.get('myInput')).to.equal('world');
     });
 
-    it('resets the value to an empty string when the value attribute is removed', async () => {
+    it('restores the default value when the value attribute is removed', async () => {
       component = await fixture(
-        html`<fhi-text-input name="myInput" value="hello"></fhi-text-input>`,
+        html`<fhi-text-input name="myInput"></fhi-text-input>`,
         { parentNode: document.createElement('form') },
       );
+
+      const defaultValue = component.value;
+
+      component.setAttribute('value', 'hello');
+      await component.updateComplete;
+
+      expect(component.value).to.equal('hello');
 
       component.removeAttribute('value');
       await component.updateComplete;
 
-      expect(component.value).to.equal('');
+      expect(component.value).to.equal(defaultValue);
+      expect(component.value).not.to.equal(null);
 
       const form = new FormData(
         document.querySelector('form') as HTMLFormElement,
       );
 
-      expect(form.get('myInput')).to.equal('');
+      expect(form.get('myInput')).to.equal(defaultValue);
     });
 
     it('updates its associated form when its name changes', async () => {
