@@ -21,19 +21,20 @@ export const FhiChipSelector = 'fhi-chip';
  */
 @customElement(FhiChipSelector)
 export class FhiChip extends LitElement {
-  private dispatchClickEvent() {
+  private _dispatchClickEvent() {
     /**
      * @type {Event} - Standard DOM event with the type `click`.
      * This event is dispatched when the chip is clicked.
      */
-    this.dispatchEvent(new Event('click', { bubbles: true, composed: true }));
+    this.dispatchEvent(
+      new MouseEvent('click', { bubbles: true, composed: true }),
+    );
   }
 
   private _handleClick(event: MouseEvent) {
-    event?.preventDefault();
-    event?.stopPropagation();
+    event.stopPropagation();
 
-    this.dispatchClickEvent();
+    this._dispatchClickEvent();
   }
 
   render() {
@@ -75,14 +76,14 @@ export class FhiChip extends LitElement {
 
       transition: background-color var(--fhi-motion-ease-default)
         var(--fhi-motion-duration-quick);
-    }
 
-    button:hover {
-      background-color: var(--fhi-color-accent-surface-hover);
-    }
+      &:hover {
+        background-color: var(--fhi-color-accent-surface-hover);
+      }
 
-    button:active {
-      background-color: var(--fhi-color-accent-surface-active);
+      &:active {
+        background-color: var(--fhi-color-accent-surface-active);
+      }
     }
   `;
 }
