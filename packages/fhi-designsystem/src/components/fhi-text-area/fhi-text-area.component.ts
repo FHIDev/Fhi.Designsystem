@@ -117,14 +117,14 @@ export class FhiTextArea extends LitElement {
    *
    * @type {string}
    */
-  @property({ type: String, useDefault: true })
+  @property({ type: String })
   get value(): string {
     return this._value;
   }
 
   set value(newValue: string) {
     const oldValue = this._value;
-    this._value = newValue;
+    this._value = newValue ?? '';
     this.requestUpdate('value', oldValue);
     this._internals.setFormValue(this._value);
   }

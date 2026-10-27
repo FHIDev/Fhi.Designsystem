@@ -39,7 +39,7 @@ export class FhiCheckbox extends LitElement {
    * The value of the checkbox. This is submitted with the form data as a `value` when the checkbox is checked.
    * @type {string}
    */
-  @property({ type: String, useDefault: true }) value: string = 'on';
+  @property({ type: String }) value: string = 'on';
 
   /**
    * The help text shown below the label.
@@ -79,6 +79,14 @@ export class FhiCheckbox extends LitElement {
   connectedCallback(): void {
     super.connectedCallback();
     this._updateFormValue();
+  }
+
+  public update(changedProperties: Map<string, unknown>) {
+    if (changedProperties.has('value')) {
+      this.value = this.value ?? 'on';
+    }
+
+    super.update(changedProperties);
   }
 
   protected updated(_changedProperties: PropertyValues<FhiCheckbox>): void {

@@ -58,7 +58,7 @@ export class FhiSelect extends LitElement {
    * The value attribute of the select element. This property is used to identify the selected option when submitting a form.
    * @type {string}
    */
-  @property({ type: String, reflect: true, useDefault: true })
+  @property({ type: String, reflect: true })
   value: string = '';
 
   /**

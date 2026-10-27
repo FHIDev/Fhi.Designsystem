@@ -61,7 +61,7 @@ export class FhiRadio extends LitElement {
    * The value of the radio. This is submitted with the form data as a `value` when the radio is checked.
    * @type {string}
    */
-  @property({ type: String, useDefault: true }) value: string = 'on';
+  @property({ type: String }) value: string = 'on';
 
   /**
    * The help text shown below the label.
@@ -137,6 +137,14 @@ export class FhiRadio extends LitElement {
     if (!radios.some(radio => radio.checked) && radios.length > 0) {
       radios[0].tabIndex = 0;
     }
+  }
+
+  public update(changedProperties: Map<string, unknown>) {
+    if (changedProperties.has('value')) {
+      this.value = this.value ?? 'on';
+    }
+
+    super.update(changedProperties);
   }
 
   public updated(changedProperties: Map<string, unknown>) {
