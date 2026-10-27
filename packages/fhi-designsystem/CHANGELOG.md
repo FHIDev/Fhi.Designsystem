@@ -1,5 +1,15 @@
 # Changelog
 
+## [0.47.1](https://github.com/FHIDev/Fhi.Designsystem/compare/v0.47.0...v0.47.1) (2026-10-27)
+
+### 🛠️ Bug Fixes
+
+* Checkbox and Radio will now reset on form reset call ([#521](https://github.com/FHIDev/Fhi.Designsystem/issues/521)) ([69fe72b](https://github.com/FHIDev/Fhi.Designsystem/commit/69fe72b8ceb4f9b142fdfe618e2b4fbd12bf1565))
+
+### 📑 Documentation
+
+* Wire missing actions to component events ([#522](https://github.com/FHIDev/Fhi.Designsystem/issues/522)) ([f70e919](https://github.com/FHIDev/Fhi.Designsystem/commit/f70e919efdf0e00d3650b7e7dbccbe33f120f41f))
+
 ## [0.47.0](https://github.com/FHIDev/Fhi.Designsystem/compare/v0.46.0...v0.47.0) (2026-10-19)
 
 ### 🚀 Features
