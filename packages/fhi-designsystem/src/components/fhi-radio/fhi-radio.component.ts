@@ -1,6 +1,7 @@
 import { html, css, LitElement } from 'lit';
 import { customElement, property, query } from 'lit/decorators.js';
 import { ifDefined } from 'lit/directives/if-defined.js';
+import { live } from 'lit/directives/live.js';
 
 import '../typography/fhi-body/fhi-body.component';
 
@@ -73,19 +74,23 @@ export class FhiRadio extends LitElement {
   @query('#input-element')
   private _input!: HTMLInputElement;
 
-  private _groupRoot: Document | HTMLFormElement;
   private _internals: ElementInternals;
 
   /**
    * Indicates if the radio button is part of a form.
    * @internal
    */
-  public isFormElement = false;
+  public get isFormElement(): boolean {
+    return !!this._internals.form;
+  }
+
+  private get _groupRoot(): Document | HTMLFormElement {
+    return this._internals.form ?? document;
+  }
 
   constructor() {
     super();
     this._internals = this.attachInternals();
-    this._groupRoot = document;
   }
 
   public connectedCallback(): void {
@@ -93,12 +98,7 @@ export class FhiRadio extends LitElement {
 
     this.addEventListener('focus', this._setFocusOnInput);
 
-    this.isFormElement = !!this._internals.form;
-
-    if (this.isFormElement) {
-      this._updateFormValue();
-      this._groupRoot = this._internals.form!;
-    }
+    this._updateFormValue();
 
     // If the radio has a name then it is part of a group and needs keyboard navigation
     if (this.name) {
@@ -142,9 +142,7 @@ export class FhiRadio extends LitElement {
   public updated(changedProperties: Map<string, unknown>) {
     super.updated(changedProperties);
 
-    // make sure the radio input can be programmatically toggeled. e.g by a form reset
     if (changedProperties.has('checked')) {
-      this._input.checked = !!this.checked;
       this._updateFormValue();
 
       if (this.checked) {
@@ -173,9 +171,7 @@ export class FhiRadio extends LitElement {
       radio => typeof radio.getAttribute('checked') === 'string',
     );
 
-    if (radiosCheckedByDefault.pop() === this) {
-      this.checked = true;
-    }
+    this.checked = radiosCheckedByDefault.pop() === this;
 
     this._updateFormValue();
   }
@@ -275,7 +271,7 @@ export class FhiRadio extends LitElement {
           id="input-element"
           name="${ifDefined(this.name)}"
           value="${this.value}"
-          ?checked=${this.checked}
+          .checked=${live(this.checked ?? false)}
           ?disabled=${this.disabled}
           @change=${this._handleChange}
           @input=${this._handleInput}

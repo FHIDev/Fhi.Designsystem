@@ -1,6 +1,7 @@
 import { html, css, LitElement, PropertyValues } from 'lit';
 import { customElement, property } from 'lit/decorators.js';
 import { ifDefined } from 'lit/directives/if-defined.js';
+import { live } from 'lit/directives/live.js';
 
 import '../typography/fhi-body/fhi-body.component';
 
@@ -125,7 +126,7 @@ export class FhiCheckbox extends LitElement {
   }
 
   public formResetCallback() {
-    this.checked = false;
+    this.checked = typeof this.getAttribute('checked') === 'string';
     this._updateFormValue();
   }
 
@@ -138,7 +139,7 @@ export class FhiCheckbox extends LitElement {
           name="${ifDefined(this.name)}"
           value="${ifDefined(this.value)}"
           ?disabled=${this.disabled}
-          ?checked=${this.checked}
+          .checked=${live(this.checked ?? false)}
           @change=${this._handleChange}
           @input=${this._handleInput}
         />
