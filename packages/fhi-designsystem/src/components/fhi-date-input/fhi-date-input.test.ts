@@ -201,6 +201,32 @@ describe('fhi-date-input', () => {
       expect(form.get('date')).to.equal('2025-09-27');
     });
 
+    it('restores the default value when the value attribute is removed', async () => {
+      component = await fixture(
+        html`<fhi-date-input name="date"></fhi-date-input>`,
+        { parentNode: document.createElement('form') },
+      );
+
+      const defaultValue = component.value;
+
+      component.setAttribute('value', '2025-09-26');
+      await component.updateComplete;
+
+      expect(component.value).to.equal('2025-09-26');
+
+      component.removeAttribute('value');
+      await component.updateComplete;
+
+      expect(component.value).to.equal(defaultValue);
+      expect(component.value).not.to.equal(null);
+
+      const form = new FormData(
+        document.querySelector('form') as HTMLFormElement,
+      );
+
+      expect(form.get('date')).to.equal(defaultValue);
+    });
+
     it("updates it's associated form when it's name changes", async () => {
       component = await fixture(
         html`<fhi-date-input name="date" value="2025-09-26"></fhi-date-input>`,

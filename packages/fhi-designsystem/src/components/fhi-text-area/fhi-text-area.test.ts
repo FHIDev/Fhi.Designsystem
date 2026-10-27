@@ -171,6 +171,7 @@ describe('fhi-text-area', () => {
       );
 
       expect(form.get('myText')).to.equal('hello');
+      expect(component.value).not.to.equal(null);
 
       component.value = 'world';
       await component.updateComplete;
@@ -178,6 +179,32 @@ describe('fhi-text-area', () => {
       form = new FormData(document.querySelector('form') as HTMLFormElement);
 
       expect(form.get('myText')).to.equal('world');
+    });
+
+    it('restores the default value when the value attribute is removed', async () => {
+      component = await fixture(
+        html`<fhi-text-area name="myText"></fhi-text-area>`,
+        { parentNode: document.createElement('form') },
+      );
+
+      const defaultValue = component.value;
+
+      component.setAttribute('value', 'hello');
+      await component.updateComplete;
+
+      expect(component.value).to.equal('hello');
+
+      component.removeAttribute('value');
+      await component.updateComplete;
+
+      expect(component.value).to.equal(defaultValue);
+      expect(component.value).not.to.equal(null);
+
+      const form = new FormData(
+        document.querySelector('form') as HTMLFormElement,
+      );
+
+      expect(form.get('myText')).to.equal(defaultValue);
     });
 
     it('updates its associated form when its name changes', async () => {

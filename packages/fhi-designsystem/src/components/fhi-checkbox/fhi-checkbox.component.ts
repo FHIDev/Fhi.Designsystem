@@ -82,6 +82,12 @@ export class FhiCheckbox extends LitElement {
     this._updateFormValue();
   }
 
+  protected willUpdate(changedProperties: Map<string, unknown>) {
+    if (changedProperties.has('value')) {
+      this.value = this.value ?? 'on';
+    }
+  }
+
   protected updated(_changedProperties: PropertyValues<FhiCheckbox>): void {
     if (_changedProperties.has('helpText') || _changedProperties.has('label')) {
       if (!this.label && this.helpText) {
