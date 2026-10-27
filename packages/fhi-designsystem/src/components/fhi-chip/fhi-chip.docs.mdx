@@ -1,0 +1,29 @@
+import { FhiChip } from './fhi-chip.component.ts';
+import * as FhiChipStories from './fhi-chip.stories.ts';
+import { Meta, Canvas, Controls } from '@storybook/addon-docs/blocks';
+
+import { ApiDefinition } from '../../../.storybook/blocks/api-definition.jsx';
+
+<Meta of={FhiChipStories} />
+
+# Chip
+
+Chip viser en valgt verdi som brukeren kan klikke på for å fjerne, for eksempel ved filtrering.
+
+## Passer til
+
+- Å vise aktive filtre eller valg brukeren kan fjerne
+- Å la brukeren raskt fjerne én og én valgt verdi fra en gruppe
+- Å kommunisere hvilke kriterier som er aktive i en filtrert visning
+
+<Canvas of={FhiChipStories.Preview} />
+
+<Controls of={FhiChipStories.Preview} />
+
+## Flere chip-er
+
+Når brukeren har flere aktive valg, kan chip-er vises sammen i en gruppe.
+
+<Canvas of={FhiChipStories.Multiple} />
+
+<ApiDefinition />
