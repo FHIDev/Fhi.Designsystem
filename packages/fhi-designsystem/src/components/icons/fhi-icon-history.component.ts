@@ -56,7 +56,7 @@ export class FhiIconHistory extends LitElement {
 
   render() {
     return html`
-      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="${this._size}" height="${this._size}" fill="${this.color}"><path d="M12 2.25A9.751 9.751 0 1 1 2.25 12a.75.75 0 0 1 1.5 0 8.25 8.25 0 1 0 8.251-8.25 9 9 0 0 0-6.22 2.53l-.97.97H8a.75.75 0 0 1 0 1.5H3A.75.75 0 0 1 2.25 8V3a.75.75 0 0 1 1.5 0v3.19l.988-.989a10.5 10.5 0 0 1 7.26-2.951zm0 4a.75.75 0 0 1 .75.75v4.536l3.585 1.793a.75.75 0 0 1-.67 1.342l-4-2A.75.75 0 0 1 11.25 12V7a.75.75 0 0 1 .75-.75"/></svg>
+      <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" viewBox="0 0 24 24" width="${this._size}" height="${this._size}" fill="${this.color}"><path d="M12 2.25A9.751 9.751 0 1 1 2.25 12a.75.75 0 0 1 1.5 0 8.25 8.25 0 1 0 8.251-8.25 9 9 0 0 0-6.22 2.53l-.97.97H8a.75.75 0 0 1 0 1.5H3A.75.75 0 0 1 2.25 8V3a.75.75 0 0 1 1.5 0v3.19l.988-.989a10.5 10.5 0 0 1 7.26-2.951zm0 4a.75.75 0 0 1 .75.75v4.536l3.585 1.793a.75.75 0 0 1-.67 1.342l-4-2A.75.75 0 0 1 11.25 12V7a.75.75 0 0 1 .75-.75"/></svg>
     `;
   }
       

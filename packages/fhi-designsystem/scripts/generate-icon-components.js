@@ -39,11 +39,6 @@ const optimizeSvg = svgString => {
     plugins: [
       {
         name: 'preset-default',
-        params: {
-          overrides: {
-            removeViewBox: false,
-          },
-        },
       },
       {
         name: 'removeAttributesBySelector',
@@ -60,6 +55,7 @@ const optimizeSvg = svgString => {
               width: '${this._size}',
               height: '${this._size}',
               fill: '${this.color}',
+              'aria-hidden': 'true',
             },
           ],
         },
