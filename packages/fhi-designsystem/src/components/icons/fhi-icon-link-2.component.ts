@@ -56,7 +56,7 @@ export class FhiIconLink2 extends LitElement {
 
   render() {
     return html`
-      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="${this._size}" height="${this._size}" fill="${this.color}"><path d="M9 6.25a.75.75 0 0 1 0 1.5H7a4.25 4.25 0 0 0 0 8.5h2a.75.75 0 0 1 0 1.5H7a5.75 5.75 0 0 1 0-11.5zm8 0a5.75 5.75 0 0 1 .285 11.493L17 17.75h-2a.75.75 0 0 1 0-1.5h2a4.25 4.25 0 0 0 .21-8.495L17 7.75h-2a.75.75 0 0 1 0-1.5zm-1 5a.75.75 0 0 1 0 1.5H8a.75.75 0 0 1 0-1.5z"/></svg>
+      <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" viewBox="0 0 24 24" width="${this._size}" height="${this._size}" fill="${this.color}"><path d="M9 6.25a.75.75 0 0 1 0 1.5H7a4.25 4.25 0 0 0 0 8.5h2a.75.75 0 0 1 0 1.5H7a5.75 5.75 0 0 1 0-11.5zm8 0a5.75 5.75 0 0 1 .285 11.493L17 17.75h-2a.75.75 0 0 1 0-1.5h2a4.25 4.25 0 0 0 .21-8.495L17 7.75h-2a.75.75 0 0 1 0-1.5zm-1 5a.75.75 0 0 1 0 1.5H8a.75.75 0 0 1 0-1.5z"/></svg>
     `;
   }
       

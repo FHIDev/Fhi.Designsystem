@@ -56,7 +56,7 @@ export class FhiIconChartLine extends LitElement {
 
   render() {
     return html`
-      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="${this._size}" height="${this._size}" fill="${this.color}"><path d="M3 2.25a.75.75 0 0 1 .75.75v16A1.25 1.25 0 0 0 5 20.25h16a.75.75 0 0 1 0 1.5H5A2.75 2.75 0 0 1 2.25 19V3A.75.75 0 0 1 3 2.25m15.47 6.22a.75.75 0 1 1 1.06 1.06l-5 5a.75.75 0 0 1-1.06 0L10 11.06l-2.47 2.47a.75.75 0 1 1-1.06-1.06l3-3 .056-.052a.75.75 0 0 1 1.004.052L14 12.94z"/></svg>
+      <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" viewBox="0 0 24 24" width="${this._size}" height="${this._size}" fill="${this.color}"><path d="M3 2.25a.75.75 0 0 1 .75.75v16A1.25 1.25 0 0 0 5 20.25h16a.75.75 0 0 1 0 1.5H5A2.75 2.75 0 0 1 2.25 19V3A.75.75 0 0 1 3 2.25m15.47 6.22a.75.75 0 1 1 1.06 1.06l-5 5a.75.75 0 0 1-1.06 0L10 11.06l-2.47 2.47a.75.75 0 1 1-1.06-1.06l3-3 .056-.052a.75.75 0 0 1 1.004.052L14 12.94z"/></svg>
     `;
   }
       
