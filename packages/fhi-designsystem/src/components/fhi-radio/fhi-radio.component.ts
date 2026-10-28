@@ -273,6 +273,9 @@ export class FhiRadio extends LitElement {
           value="${this.value}"
           .checked=${live(this.checked ?? false)}
           ?disabled=${this.disabled}
+          aria-invalid=${ifDefined(
+            this.status === 'error' ? 'true' : undefined,
+          )}
           @change=${this._handleChange}
           @input=${this._handleInput}
         />
