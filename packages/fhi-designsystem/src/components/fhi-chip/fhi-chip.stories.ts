@@ -42,11 +42,9 @@ export const Preview: Story = {
 export const Multiple: Story = {
   tags: ['!dev'],
   render: () =>
-    html`<fhi-flex gap="small" wrap>
-      <fhi-chip>Kategori</fhi-chip>
-      <fhi-chip>Publisert</fhi-chip>
-      <fhi-chip>2024</fhi-chip>
-    </fhi-flex>`,
+    html`<fhi-chip>Zoonoser</fhi-chip>
+      <fhi-chip>Influensa</fhi-chip>
+      <fhi-chip>Koronavirus</fhi-chip>`,
 };
 
 export default meta;
