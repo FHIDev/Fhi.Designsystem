@@ -28,6 +28,7 @@ describe('fhi-chip', () => {
 
   describe('events', () => {
     it('dispatches a click event when clicked', async () => {
+      // Replace this with true mouse test when we have click-testing utilities.
       component = await fixture(html`<fhi-chip>Test Chip</fhi-chip>`);
 
       let clicked = false;
@@ -39,6 +40,58 @@ describe('fhi-chip', () => {
       button?.click();
 
       expect(clicked).to.equal(true);
+    });
+
+    it('dispatches a click event when activated via keyboard (Enter)', () => {
+      // Replace this with true keyboard test when we have click-testing utilities.
+      let clicked = false;
+      component.addEventListener('click', () => {
+        clicked = true;
+      });
+
+      const button = component.shadowRoot?.querySelector('button');
+      button?.focus();
+      button?.click();
+
+      expect(clicked).to.equal(true);
+    });
+
+    it('dispatches a click event when activated via keyboard (Space)', () => {
+      // Replace this with true keyboard test when we have click-testing utilities.
+      let clicked = false;
+      component.addEventListener('click', () => {
+        clicked = true;
+      });
+
+      const button = component.shadowRoot?.querySelector('button');
+      button?.click();
+
+      expect(clicked).to.equal(true);
+    });
+  });
+
+  describe('button configuration', () => {
+    beforeEach(async () => {
+      component = await fixture(html`<fhi-chip>Test Chip</fhi-chip>`);
+    });
+
+    it('button is focusable', () => {
+      const button = component.shadowRoot?.querySelector('button');
+      button?.focus();
+
+      expect(component.shadowRoot?.activeElement).to.equal(button);
+    });
+
+    it('button is in the natural tab order', () => {
+      const button = component.shadowRoot?.querySelector('button');
+
+      expect(button?.hasAttribute('tabindex')).to.equal(false);
+    });
+
+    it('button has type="button" so Enter key does not submit a parent form', () => {
+      const button = component.shadowRoot?.querySelector('button');
+
+      expect(button?.getAttribute('type')).to.equal('button');
     });
   });
 });
