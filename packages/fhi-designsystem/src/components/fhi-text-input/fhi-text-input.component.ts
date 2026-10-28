@@ -227,6 +227,9 @@ export class FhiTextInput extends LitElement {
           .value=${this.value}
           ?readonly=${this.readonly}
           ?disabled=${this.disabled}
+          aria-invalid=${ifDefined(
+            this.status === 'error' ? 'true' : undefined,
+          )}
           @change=${this.handleChange}
           @input=${this.handleInput}
           @keydown=${this.handleKeyDown}

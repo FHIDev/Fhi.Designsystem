@@ -202,6 +202,9 @@ export class FhiTextArea extends LitElement {
           rows=${ifDefined(this.rows)}
           @change=${this.handleChange}
           @input=${this.handleInput}
+          aria-invalid=${ifDefined(
+            this.status === 'error' ? 'true' : undefined,
+          )}
         ></textarea>
       </div>
       ${this.message

@@ -219,6 +219,9 @@ export class FhiDateInput extends LitElement {
           .value=${this.value ?? ''}
           ?readonly=${this.readonly}
           ?disabled=${this.disabled}
+          aria-invalid=${ifDefined(
+            this.status === 'error' ? 'true' : undefined,
+          )}
           @change=${this._handleChange}
           @input=${this._handleInput}
           @keydown=${this._handleKeyDown}
