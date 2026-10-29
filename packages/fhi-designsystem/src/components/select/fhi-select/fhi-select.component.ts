@@ -252,14 +252,13 @@ export class FhiSelect extends LitElement {
 
   static styles = css`
     :host {
-      display: flex;
+      display: inline-flex;
       flex-direction: column;
       color: var(--fhi-color-neutral-text-default);
       -webkit-font-smoothing: antialiased;
 
       .label {
         color: inherit;
-        width: fit-content;
         padding-bottom: var(--fhi-spacing-050);
       }
 
@@ -271,13 +270,11 @@ export class FhiSelect extends LitElement {
 
       .help-text {
         color: var(--fhi-color-neutral-text-subtle);
-        width: fit-content;
         padding-bottom: var(--fhi-spacing-050);
       }
 
       .message {
         color: inherit;
-        width: fit-content;
         padding-top: var(--fhi-spacing-050);
       }
 

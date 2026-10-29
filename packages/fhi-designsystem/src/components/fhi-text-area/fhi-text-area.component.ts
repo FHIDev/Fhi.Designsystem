@@ -214,7 +214,7 @@ export class FhiTextArea extends LitElement {
 
   static styles = css`
     :host {
-      display: flex;
+      display: inline-flex;
       flex-direction: column;
       font-family: var(--fhi-font-family-default);
       -webkit-font-smoothing: antialiased;
