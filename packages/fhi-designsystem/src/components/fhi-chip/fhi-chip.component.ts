@@ -71,6 +71,7 @@ export class FhiChip extends LitElement {
 
       font-family: var(--fhi-font-family-default);
       -webkit-font-smoothing: antialiased;
+      text-wrap: nowrap;
 
       cursor: pointer;
 
