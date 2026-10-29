@@ -20,12 +20,12 @@ const meta: FhiStorybookMeta<FhiChip> = {
     eventTypes: [
       {
         name: 'click',
-        description: 'Utløses når chip-en klikkes.',
+        description: 'Utløses når chipen klikkes.',
       },
     ],
     slotTypes: [
       {
-        description: 'Tekstinnholdet som vises i chip-en.',
+        description: 'Tekstinnholdet som vises i chipen.',
       },
     ],
   },
