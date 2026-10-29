@@ -244,7 +244,7 @@ export class FhiTextInput extends LitElement {
     }
 
     :host {
-      display: flex;
+      display: inline-flex;
       flex-direction: column;
       font-family: var(--fhi-font-family-default);
       -webkit-font-smoothing: antialiased;

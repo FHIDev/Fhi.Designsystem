@@ -240,11 +240,10 @@ export class FhiDateInput extends LitElement {
 
   static styles = css`
     :host {
-      display: flex;
+      display: inline-flex;
       flex-direction: column;
       font-family: var(--fhi-font-family-default);
       -webkit-font-smoothing: antialiased;
-      width: calc(var(--fhi-spacing-1000) * 2);
 
       label {
         font-weight: var(--fhi-typography-label-small-font-weight);

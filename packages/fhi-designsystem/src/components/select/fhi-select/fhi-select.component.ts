@@ -252,7 +252,7 @@ export class FhiSelect extends LitElement {
 
   static styles = css`
     :host {
-      display: flex;
+      display: inline-flex;
       flex-direction: column;
       color: var(--fhi-color-neutral-text-default);
       -webkit-font-smoothing: antialiased;
