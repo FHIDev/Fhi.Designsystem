@@ -259,7 +259,6 @@ export class FhiSelect extends LitElement {
 
       .label {
         color: inherit;
-        width: fit-content;
         padding-bottom: var(--fhi-spacing-050);
       }
 
@@ -271,13 +270,11 @@ export class FhiSelect extends LitElement {
 
       .help-text {
         color: var(--fhi-color-neutral-text-subtle);
-        width: fit-content;
         padding-bottom: var(--fhi-spacing-050);
       }
 
       .message {
         color: inherit;
-        width: fit-content;
         padding-top: var(--fhi-spacing-050);
       }
 
