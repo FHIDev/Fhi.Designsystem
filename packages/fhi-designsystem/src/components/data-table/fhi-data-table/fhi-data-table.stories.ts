@@ -248,6 +248,91 @@ export const ComplexData: Story = {
   `,
 };
 
+export const MultiColumnCell: Story = {
+  tags: ['!dev'],
+  args: {
+    caption: 'Kilde: SSB',
+  },
+  render: args => html`
+    <fhi-data-table
+      caption="${ifDefined(args.caption)}"
+      ?striped="${args.striped}"
+    >
+      <fhi-data-table-row variant="header">
+        <fhi-data-table-cell column-span="4">
+          Arbeidsledighet
+        </fhi-data-table-cell>
+      </fhi-data-table-row>
+      <fhi-data-table-row variant="header">
+        <fhi-data-table-cell> Måned </fhi-data-table-cell>
+        <fhi-data-table-cell
+          column-span="3"
+          style="--fhi-data-table-cell-justify-content: end"
+        >
+          Arbeidsledige i prosent av arbeidsstyrken
+        </fhi-data-table-cell>
+      </fhi-data-table-row>
+      <fhi-data-table-row>
+        <fhi-data-table-cell> September 2009 </fhi-data-table-cell>
+        <fhi-data-table-cell
+          column-span="3"
+          style="--fhi-data-table-cell-justify-content: end"
+        >
+          3.5
+        </fhi-data-table-cell>
+      </fhi-data-table-row>
+      <fhi-data-table-row>
+        <fhi-data-table-cell> Oktober 2009 </fhi-data-table-cell>
+        <fhi-data-table-cell
+          column-span="3"
+          style="--fhi-data-table-cell-justify-content: end"
+        >
+          3.6
+        </fhi-data-table-cell>
+      </fhi-data-table-row>
+      <fhi-data-table-row>
+        <fhi-data-table-cell> November 2009 </fhi-data-table-cell>
+        <fhi-data-table-cell
+          column-span="3"
+          style="--fhi-data-table-cell-justify-content: end"
+        >
+          3.7
+        </fhi-data-table-cell>
+      </fhi-data-table-row>
+    </fhi-data-table>
+  `,
+};
+
+export const FullWidthCell: Story = {
+  tags: ['!dev'],
+  render: args => html`
+    <fhi-data-table
+      caption="${ifDefined(args.caption)}"
+      ?striped="${args.striped}"
+    >
+      <fhi-data-table-row variant="header">
+        <fhi-data-table-cell column-span="2"> Pris </fhi-data-table-cell>
+      </fhi-data-table-row>
+      <fhi-data-table-row variant="header">
+        <fhi-data-table-cell> Beløp </fhi-data-table-cell>
+        <fhi-data-table-cell> valuta </fhi-data-table-cell>
+      </fhi-data-table-row>
+      <fhi-data-table-row>
+        <fhi-data-table-cell> 200 </fhi-data-table-cell>
+        <fhi-data-table-cell> NOK </fhi-data-table-cell>
+      </fhi-data-table-row>
+      <fhi-data-table-row>
+        <fhi-data-table-cell> 300 </fhi-data-table-cell>
+        <fhi-data-table-cell> EUR </fhi-data-table-cell>
+      </fhi-data-table-row>
+      <fhi-data-table-row>
+        <fhi-data-table-cell> 400 </fhi-data-table-cell>
+        <fhi-data-table-cell> USD </fhi-data-table-cell>
+      </fhi-data-table-row>
+    </fhi-data-table>
+  `,
+};
+
 export const WithCheckboxes: Story = {
   tags: ['!dev'],
   args: {

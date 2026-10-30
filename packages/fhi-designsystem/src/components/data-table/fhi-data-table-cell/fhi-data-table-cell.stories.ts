@@ -21,7 +21,10 @@ const meta: FhiStorybookMeta<FhiDataTableCell> = {
   },
   decorators: [],
   render: args =>
-    html`<fhi-data-table-cell variant="${ifDefined(args.variant)}">
+    html`<fhi-data-table-cell
+      variant="${ifDefined(args.variant)}"
+      column-span="${ifDefined(args.columnSpan)}"
+    >
       374 964
     </fhi-data-table-cell>`,
   argTypes: {
@@ -31,6 +34,12 @@ const meta: FhiStorybookMeta<FhiDataTableCell> = {
       description:
         'Definerer om cellen er en header eller body celle. Når <fhi-data-table-cell> brukes i en header <fhi-data-table-row>, vil variant automatisk bli satt til header.',
       defaultValue: { summary: 'body' },
+    },
+    columnSpan: {
+      control: 'number',
+      description:
+        'Antall kolonner cellen skal spenne over (`column-span`), på samme måte som native `colspan` på `<td>`. Sett lik antall kolonner i tabellen for å la cellen ta opp hele raden.',
+      defaultValue: { summary: undefined },
     },
   },
 };

@@ -1,8 +1,10 @@
 import { html, css, LitElement, PropertyValues } from 'lit';
-import { customElement, property } from 'lit/decorators.js';
+import { customElement, property, state } from 'lit/decorators.js';
 
 import '../../fhi-grid/fhi-grid.component';
 import '../../typography/fhi-body/fhi-body.component';
+
+import type { FhiDataTableCell } from '../fhi-data-table-cell/fhi-data-table-cell.component';
 
 export const FhiDataTableSelector = 'fhi-data-table';
 
@@ -13,8 +15,6 @@ export const FhiDataTableSelector = 'fhi-data-table';
  *
  * The `<fhi-data-table>` component is an implementation of a table according to the FHI Design System guidelines.
  * It allows users to display tabular data in a structured format using `<fhi-data-table-row>` and `<fhi-data-table-cell>` components.
- *
- * The `<fhi-data-table>` component does not use the native HTML `<table>` element. Instead, it relies on CSS `display: table` to achieve the desired layout and styling.
  *
  * Example usage:
  * ```html
@@ -54,14 +54,36 @@ export class FhiDataTable extends LitElement {
   @property({ type: Boolean, reflect: true })
   striped?: boolean;
 
+  @state()
+  private _columnCount = 1;
+
+  private _mutationObserver = new MutationObserver(() =>
+    this._updateColumnCount(),
+  );
+
   connectedCallback(): void {
     super.connectedCallback();
 
     this.role = 'table';
+
+    this._mutationObserver.observe(this, {
+      childList: true,
+      subtree: true,
+      attributes: true,
+      attributeFilter: ['column-span'],
+    });
   }
 
-  protected update(changedProperties: PropertyValues): void {
-    super.update(changedProperties);
+  disconnectedCallback(): void {
+    super.disconnectedCallback();
+
+    this._mutationObserver.disconnect();
+  }
+
+  protected willUpdate(changedProperties: PropertyValues): void {
+    this._updateColumnCount();
+
+    super.willUpdate(changedProperties);
   }
 
   protected updated(changedProperties: PropertyValues): void {
@@ -76,9 +98,29 @@ export class FhiDataTable extends LitElement {
     }
   }
 
+  private _updateColumnCount(): void {
+    const rows = this.querySelectorAll(':scope > fhi-data-table-row');
+
+    this._columnCount = Array.from(rows).reduce((highestRowSpan, row) => {
+      const cells = row.querySelectorAll<FhiDataTableCell>(
+        'fhi-data-table-cell',
+      );
+
+      const rowSpan = Array.from(cells).reduce(
+        (sum, cell) => sum + (cell.columnSpan || 1),
+        0,
+      );
+
+      return Math.max(highestRowSpan, rowSpan);
+    }, 1);
+  }
+
   render() {
     return html`
-      <div class="table-content">
+      <div
+        class="table-content"
+        style="grid-template-columns: repeat(${this._columnCount}, auto);"
+      >
         <slot></slot>
       </div>
       ${this.caption
@@ -109,9 +151,10 @@ export class FhiDataTable extends LitElement {
       }
 
       .table-content {
-        display: table;
+        display: grid;
         width: 100%;
-        overflow: hidden;
+        overflow-x: auto;
+        overflow-y: hidden;
         border: var(--fhi-dimension-border-width) solid
           var(--fhi-data-table-border-color);
         border-radius: var(--fhi-data-table-border-radius);
