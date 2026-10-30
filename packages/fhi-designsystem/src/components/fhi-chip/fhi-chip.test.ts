@@ -24,74 +24,58 @@ describe('fhi-chip', () => {
       const icon = component.shadowRoot?.querySelector('fhi-icon-x');
       expect(icon).to.not.equal(null);
     });
+
+    it('is focusable', () => {
+      component.focus();
+
+      expect(document.activeElement).to.equal(component);
+    });
+
+    it('is in the tab order', () => {
+      expect(component.tabIndex).to.equal(0);
+    });
   });
 
   describe('events', () => {
-    it('dispatches a click event when clicked', async () => {
-      // Replace this with true mouse test when we have click-testing utilities.
+    beforeEach(async () => {
       component = await fixture(html`<fhi-chip>Test Chip</fhi-chip>`);
+    });
 
+    it('dispatches a click event when clicked', () => {
       let clicked = false;
       component.addEventListener('click', () => {
         clicked = true;
       });
 
-      const button = component.shadowRoot?.querySelector('button');
-      button?.click();
+      component.click();
 
       expect(clicked).to.equal(true);
     });
 
     it('dispatches a click event when activated via keyboard (Enter)', () => {
-      // Replace this with true keyboard test when we have click-testing utilities.
       let clicked = false;
       component.addEventListener('click', () => {
         clicked = true;
       });
 
-      const button = component.shadowRoot?.querySelector('button');
-      button?.focus();
-      button?.click();
+      component.dispatchEvent(
+        new KeyboardEvent('keydown', { key: 'Enter', bubbles: true }),
+      );
 
       expect(clicked).to.equal(true);
     });
 
     it('dispatches a click event when activated via keyboard (Space)', () => {
-      // Replace this with true keyboard test when we have click-testing utilities.
       let clicked = false;
       component.addEventListener('click', () => {
         clicked = true;
       });
 
-      const button = component.shadowRoot?.querySelector('button');
-      button?.click();
+      component.dispatchEvent(
+        new KeyboardEvent('keyup', { key: ' ', bubbles: true }),
+      );
 
       expect(clicked).to.equal(true);
-    });
-  });
-
-  describe('button configuration', () => {
-    beforeEach(async () => {
-      component = await fixture(html`<fhi-chip>Test Chip</fhi-chip>`);
-    });
-
-    it('button is focusable', () => {
-      const button = component.shadowRoot?.querySelector('button');
-      button?.focus();
-
-      expect(component.shadowRoot?.activeElement).to.equal(button);
-    });
-
-    it('button is in the natural tab order', () => {
-      const button = component.shadowRoot?.querySelector('button');
-
-      expect(button?.hasAttribute('tabindex')).to.equal(false);
-    });
-
-    it('button has type="button" so Enter key does not submit a parent form', () => {
-      const button = component.shadowRoot?.querySelector('button');
-
-      expect(button?.getAttribute('type')).to.equal('button');
     });
   });
 });

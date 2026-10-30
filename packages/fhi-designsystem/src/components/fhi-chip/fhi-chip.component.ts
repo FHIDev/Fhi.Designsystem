@@ -21,45 +21,71 @@ export const FhiChipSelector = 'fhi-chip';
  */
 @customElement(FhiChipSelector)
 export class FhiChip extends LitElement {
+  private _internals: ElementInternals;
+
+  constructor() {
+    super();
+
+    this._internals = this.attachInternals();
+
+    this._internals.role = 'button';
+  }
+
+  connectedCallback(): void {
+    super.connectedCallback();
+
+    if (!this.hasAttribute('tabindex')) {
+      this.tabIndex = 0;
+    }
+
+    this.onkeydown = this._handleKeydown.bind(this);
+    this.onkeyup = this._handleKeyup.bind(this);
+  }
+
+  private _handleKeydown(event: KeyboardEvent): void {
+    if (event.key === 'Enter') {
+      this._dispatchClickEvent();
+    }
+
+    // Don't scroll the page when the spacebar is pressed.
+    if (event.key === ' ' || event.key === 'Spacebar') {
+      event.preventDefault();
+    }
+  }
+
+  private _handleKeyup(event: KeyboardEvent): void {
+    if (event.key === ' ' || event.key === 'Spacebar') {
+      this._dispatchClickEvent();
+    }
+  }
+
   private _dispatchClickEvent() {
     /**
      * @type {Event} - Standard DOM event with the type `click`.
-     * This event is dispatched when the chip is clicked.
+     * This event is dispatched when the chip is clicked or activated with the keyboard.
      */
     this.dispatchEvent(
       new MouseEvent('click', { bubbles: true, composed: true }),
     );
   }
 
-  private _handleClick(event: MouseEvent) {
-    event.stopPropagation();
-
-    this._dispatchClickEvent();
-  }
-
   render() {
     return html`
-      <button type="button" @click="${this._handleClick}">
-        <fhi-label size="small">
-          <slot></slot>
-        </fhi-label>
-        <fhi-icon-x size="xsmall"></fhi-icon-x>
-      </button>
+      <fhi-label role="presentation" size="small">
+        <slot></slot>
+      </fhi-label>
+      <fhi-icon-x size="xsmall"></fhi-icon-x>
     `;
   }
 
   static styles = css`
     :host {
-      display: inline-block;
-      width: fit-content;
-      height: fit-content;
-    }
-
-    button {
-      display: flex;
+      display: inline-flex;
       align-items: center;
       gap: var(--fhi-spacing-050);
 
+      box-sizing: border-box;
+      width: fit-content;
       height: var(--fhi-spacing-400);
       padding: 0 var(--fhi-spacing-100) 0 var(--fhi-spacing-150);
 
@@ -72,19 +98,20 @@ export class FhiChip extends LitElement {
       font-family: var(--fhi-font-family-default);
       -webkit-font-smoothing: antialiased;
       text-wrap: nowrap;
+      user-select: none;
 
       cursor: pointer;
 
       transition: background-color var(--fhi-motion-ease-default)
         var(--fhi-motion-duration-quick);
+    }
 
-      &:hover {
-        background-color: var(--fhi-color-accent-surface-hover);
-      }
+    :host(:hover) {
+      background-color: var(--fhi-color-accent-surface-hover);
+    }
 
-      &:active {
-        background-color: var(--fhi-color-accent-surface-active);
-      }
+    :host(:active) {
+      background-color: var(--fhi-color-accent-surface-active);
     }
   `;
 }
