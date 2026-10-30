@@ -11,8 +11,6 @@ export const FhiDataTableCellSelector = 'fhi-data-table-cell';
  * The `<fhi-data-table-cell>` component is an implementation of a table cell according to the FHI Design System guidelines.
  * It allows users to properly display data within a `<fhi-data-table-row>`.
  *
- * The `<fhi-data-table-cell>` component does not use the native HTML `<td>` or `<th>` elements. Instead, it relies on CSS `display: table-cell` to achieve the desired layout and styling.
- *
  * @tag fhi-data-table-cell
  * @element fhi-data-table-cell
  *
@@ -27,9 +25,27 @@ export class FhiDataTableCell extends LitElement {
   @property({ type: String, reflect: true })
   variant: 'header' | 'body' = 'body';
 
+  /**
+   * The number of columns the cell should span, similar to the native `colspan` attribute on `<td>` elements.
+   * Set it equal to the number of columns in the table to make the cell take up the entire row.
+   * @type {number}
+   */
+  @property({ type: Number, reflect: true, attribute: 'column-span' })
+  columnSpan?: number;
+
   protected update(changedProperties: PropertyValues): void {
     if (changedProperties.has('variant')) {
       this.role = this.variant === 'header' ? 'columnheader' : 'cell';
+    }
+
+    if (changedProperties.has('columnSpan')) {
+      this.style.gridColumn = this.columnSpan ? `span ${this.columnSpan}` : '';
+
+      if (this.columnSpan && this.columnSpan > 1) {
+        this.setAttribute('aria-colspan', String(this.columnSpan));
+      } else {
+        this.removeAttribute('aria-colspan');
+      }
     }
 
     super.update(changedProperties);
@@ -57,8 +73,9 @@ export class FhiDataTableCell extends LitElement {
       --fhi-data-table-cell-justify-content: start;
       --fhi-data-table-cell-align-items: center;
 
-      display: table-cell;
-      vertical-align: middle;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
 
       padding: var(--fhi-spacing-150);
       color: var(--fhi-color-neutral-text-default);
