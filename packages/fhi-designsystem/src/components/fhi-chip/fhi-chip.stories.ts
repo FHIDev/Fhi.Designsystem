@@ -75,7 +75,11 @@ export const Multiple: Story = {
             <fhi-flex gap="small" wrap>
               ${currentChips.map(chip => {
                 return html`
-                  <fhi-chip @click=${() => removeChip(chip)}>${chip}</fhi-chip>
+                  <fhi-chip
+                    aria-label="fjern: ${chip}"
+                    @click=${() => removeChip(chip)}
+                    >${chip}</fhi-chip
+                  >
                 `;
               })}
             </fhi-flex>
