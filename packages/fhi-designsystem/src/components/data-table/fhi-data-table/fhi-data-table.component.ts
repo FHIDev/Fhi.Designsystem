@@ -55,7 +55,7 @@ export class FhiDataTable extends LitElement {
   striped?: boolean;
 
   @state()
-  private _columnCount = 1;
+  private _numberOfColumns = 1;
 
   private _mutationObserver = new MutationObserver(() =>
     this._updateColumnCount(),
@@ -101,7 +101,7 @@ export class FhiDataTable extends LitElement {
   private _updateColumnCount(): void {
     const rows = this.querySelectorAll(':scope > fhi-data-table-row');
 
-    this._columnCount = Array.from(rows).reduce((highestRowSpan, row) => {
+    this._numberOfColumns = Array.from(rows).reduce((highestRowSpan, row) => {
       const cells = row.querySelectorAll<FhiDataTableCell>(
         'fhi-data-table-cell',
       );
@@ -119,7 +119,7 @@ export class FhiDataTable extends LitElement {
     return html`
       <div
         class="table-content"
-        style="grid-template-columns: repeat(${this._columnCount}, auto);"
+        style="grid-template-columns: repeat(${this._numberOfColumns}, auto);"
       >
         <slot></slot>
       </div>
@@ -153,8 +153,7 @@ export class FhiDataTable extends LitElement {
       .table-content {
         display: grid;
         width: 100%;
-        overflow-x: auto;
-        overflow-y: hidden;
+        overflow: scroll;
         border: var(--fhi-dimension-border-width) solid
           var(--fhi-data-table-border-color);
         border-radius: var(--fhi-data-table-border-radius);
