@@ -38,7 +38,7 @@ const meta: FhiStorybookMeta<FhiDataTableCell> = {
     columnSpan: {
       control: 'number',
       description:
-        'Antall kolonner cellen skal spenne over (`column-span`), på samme måte som native `colspan` på `<td>`. Sett lik antall kolonner i tabellen for å la cellen ta opp hele raden.',
+        'Antall kolonner cellen skal fylle. Ligner på `colspan` i en vanlig HTML-tabell.',
       defaultValue: { summary: undefined },
     },
   },
