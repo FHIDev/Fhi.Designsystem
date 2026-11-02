@@ -1,0 +1,55 @@
+import { FhiTimeInput } from './fhi-time-input.component';
+import * as FhiTimeInputStories from './fhi-time-input.stories.ts';
+import {
+    Meta,
+    Title,
+    Primary,
+    Canvas,
+    Story,
+    Controls,
+} from '@storybook/addon-docs/blocks';
+
+import { ApiDefinition } from '../../../.storybook/blocks/api-definition.jsx';
+
+<Meta of={FhiTimeInputStories} />
+
+# Time input
+
+Time Input er et felt som lar brukere skrive et tidspunkt.
+Enkelte nettlesere tilbyr Time Picker, et vindu ment til å hjelpe brukeren å velge. 
+
+## Passer til
+
+- Å velge spesifikke tidspunkt.
+
+<Canvas of={FhiTimeInputStories.Preview} />
+<Controls of={FhiTimeInputStories.Preview} />
+
+### Status
+
+#### `error`
+Uttrykker at noe mangler eller er skrevet feil.
+
+<Canvas of={FhiTimeInputStories.Error} />
+
+### Form Controls
+
+#### `min` og `max`
+
+Setter henholdsvis tidligste og seneste tidspunkt som kan velges. Tidspunktene må være i formatet `HH:MM`.
+
+<Canvas of={FhiTimeInputStories.MinMax} />
+
+#### `readonly`
+
+Gjør at feltet ikke kan endres. Feltet vil fortsatt kunne fokuseres og vil automatisk bli inkludert i FormData.
+
+<Canvas of={FhiTimeInputStories.Readonly} />
+
+#### `disabled`
+
+Gjør at feltet ikke kan endres, fokuseres eller automatisk inkluderes i FormData. Unngås hvis man kan.
+
+<Canvas of={FhiTimeInputStories.Disabled} />
+
+<ApiDefinition />
