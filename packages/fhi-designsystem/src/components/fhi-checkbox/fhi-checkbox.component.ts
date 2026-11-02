@@ -145,6 +145,9 @@ export class FhiCheckbox extends LitElement {
           name="${ifDefined(this.name)}"
           value="${ifDefined(this.value)}"
           ?disabled=${this.disabled}
+          aria-invalid=${ifDefined(
+            this.status === 'error' ? 'true' : undefined,
+          )}
           .checked=${live(this.checked ?? false)}
           @change=${this._handleChange}
           @input=${this._handleInput}
