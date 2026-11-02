@@ -139,6 +139,12 @@ export class FhiRadio extends LitElement {
     }
   }
 
+  protected willUpdate(changedProperties: Map<string, unknown>) {
+    if (changedProperties.has('value')) {
+      this.value = this.value ?? 'on';
+    }
+  }
+
   public updated(changedProperties: Map<string, unknown>) {
     super.updated(changedProperties);
 

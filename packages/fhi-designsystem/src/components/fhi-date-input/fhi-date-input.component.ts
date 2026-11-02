@@ -128,7 +128,7 @@ export class FhiDateInput extends LitElement {
 
   set value(newValue: FhiDateValue) {
     const oldValue = this._value;
-    this._value = newValue;
+    this._value = newValue ?? '';
     this.requestUpdate('value', oldValue);
     this._internals.setFormValue(this._value ?? null);
   }

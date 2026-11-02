@@ -283,6 +283,34 @@ describe('fhi-radio', () => {
       expect(form.get('myRadio')).to.equal('on');
     });
 
+    it('restores the default value when the value attribute is removed', async () => {
+      component = await fixture(
+        html`<fhi-radio name="myRadio" checked></fhi-radio>`,
+        {
+          parentNode: document.createElement('form'),
+        },
+      );
+
+      const defaultValue = component.value;
+
+      component.setAttribute('value', 'newValue');
+      await component.updateComplete;
+
+      expect(component.value).to.equal('newValue');
+
+      component.removeAttribute('value');
+      await component.updateComplete;
+
+      expect(component.value).to.equal(defaultValue);
+      expect(component.value).not.to.equal(null);
+
+      const form = new FormData(
+        document.querySelector('form') as HTMLFormElement,
+      );
+
+      expect(form.get('myRadio')).to.equal(defaultValue);
+    });
+
     it('updates its checked state when changed by the associated form', async () => {
       component = await fixture(
         html`<fhi-radio name="myRadio" value="myRadio" checked></fhi-radio>`,
