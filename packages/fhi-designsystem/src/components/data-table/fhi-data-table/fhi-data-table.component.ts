@@ -153,7 +153,7 @@ export class FhiDataTable extends LitElement {
       .table-content {
         display: grid;
         width: 100%;
-        overflow: scroll;
+        overflow: auto;
         border: var(--fhi-dimension-border-width) solid
           var(--fhi-data-table-border-color);
         border-radius: var(--fhi-data-table-border-radius);
