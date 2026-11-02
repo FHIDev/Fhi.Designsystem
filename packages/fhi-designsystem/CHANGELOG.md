@@ -1,5 +1,17 @@
 # Changelog
 
+## [0.47.3](https://github.com/FHIDev/Fhi.Designsystem/compare/v0.47.2...v0.47.3) (2026-11-02)
+
+### 🛠️ Bug Fixes
+
+* Set aria-invalid when component status is error ([#531](https://github.com/FHIDev/Fhi.Designsystem/issues/531)) ([9727522](https://github.com/FHIDev/Fhi.Designsystem/commit/9727522a0f8b6a306a7f58bb40094e7cc4d407cd))
+
+## [0.47.2](https://github.com/FHIDev/Fhi.Designsystem/compare/v0.47.1...v0.47.2) (2026-11-02)
+
+### 🛠️ Bug Fixes
+
+* 507 Prevent setting form values to null ([#523](https://github.com/FHIDev/Fhi.Designsystem/issues/523)) ([f15b6a8](https://github.com/FHIDev/Fhi.Designsystem/commit/f15b6a85a7f81c9b257860689a29811b94ec1ce6))
+
 ## [0.47.1](https://github.com/FHIDev/Fhi.Designsystem/compare/v0.47.0...v0.47.1) (2026-10-27)
 
 ### 🛠️ Bug Fixes

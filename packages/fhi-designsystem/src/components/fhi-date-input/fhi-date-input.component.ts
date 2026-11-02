@@ -128,7 +128,7 @@ export class FhiDateInput extends LitElement {
 
   set value(newValue: FhiDateValue) {
     const oldValue = this._value;
-    this._value = newValue;
+    this._value = newValue ?? '';
     this.requestUpdate('value', oldValue);
     this._internals.setFormValue(this._value ?? null);
   }
@@ -219,6 +219,9 @@ export class FhiDateInput extends LitElement {
           .value=${this.value ?? ''}
           ?readonly=${this.readonly}
           ?disabled=${this.disabled}
+          aria-invalid=${ifDefined(
+            this.status === 'error' ? 'true' : undefined,
+          )}
           @change=${this._handleChange}
           @input=${this._handleInput}
           @keydown=${this._handleKeyDown}

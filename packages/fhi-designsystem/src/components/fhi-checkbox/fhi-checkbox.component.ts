@@ -82,6 +82,12 @@ export class FhiCheckbox extends LitElement {
     this._updateFormValue();
   }
 
+  protected willUpdate(changedProperties: Map<string, unknown>) {
+    if (changedProperties.has('value')) {
+      this.value = this.value ?? 'on';
+    }
+  }
+
   protected updated(_changedProperties: PropertyValues<FhiCheckbox>): void {
     if (_changedProperties.has('helpText') || _changedProperties.has('label')) {
       if (!this.label && this.helpText) {
@@ -139,6 +145,9 @@ export class FhiCheckbox extends LitElement {
           name="${ifDefined(this.name)}"
           value="${ifDefined(this.value)}"
           ?disabled=${this.disabled}
+          aria-invalid=${ifDefined(
+            this.status === 'error' ? 'true' : undefined,
+          )}
           .checked=${live(this.checked ?? false)}
           @change=${this._handleChange}
           @input=${this._handleInput}
