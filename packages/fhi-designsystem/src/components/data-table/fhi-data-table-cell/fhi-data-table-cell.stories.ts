@@ -36,6 +36,7 @@ const meta: FhiStorybookMeta<FhiDataTableCell> = {
       defaultValue: { summary: 'body' },
     },
     columnSpan: {
+      name: 'column-span',
       control: 'number',
       description:
         'Antall kolonner cellen skal fylle. Ligner på `colspan` i en vanlig HTML-tabell.',

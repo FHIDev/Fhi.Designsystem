@@ -315,7 +315,7 @@ export const FullWidthCell: Story = {
       </fhi-data-table-row>
       <fhi-data-table-row variant="header">
         <fhi-data-table-cell> Beløp </fhi-data-table-cell>
-        <fhi-data-table-cell> valuta </fhi-data-table-cell>
+        <fhi-data-table-cell> Valuta </fhi-data-table-cell>
       </fhi-data-table-row>
       <fhi-data-table-row>
         <fhi-data-table-cell> 200 </fhi-data-table-cell>
