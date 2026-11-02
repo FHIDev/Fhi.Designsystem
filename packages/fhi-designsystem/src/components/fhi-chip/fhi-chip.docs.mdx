@@ -1,0 +1,29 @@
+import { FhiChip } from './fhi-chip.component.ts';
+import * as FhiChipStories from './fhi-chip.stories.ts';
+import { Meta, Canvas, Controls } from '@storybook/addon-docs/blocks';
+
+import { ApiDefinition } from '../../../.storybook/blocks/api-definition.jsx';
+
+<Meta of={FhiChipStories} />
+
+# Chip
+
+Chip viser en valgt verdi som brukeren kan klikke på for å fjerne, for eksempel ved filtrering.
+
+## Passer til
+
+- Å vise hvilke filtre som er aktive
+
+<Canvas of={FhiChipStories.Preview} />
+
+<Controls of={FhiChipStories.Preview} />
+
+## Eksempler og bruk
+
+Chip fungerer bra til å vise hvilke filtre som er aktive og lar brukeren enkelt fjerne dem.
+
+Skal du merke innhold med kategori som ikke er interaktiv, bruk heller [Tag](https://designsystem.fhi.no/?path=/docs/komponenter-tag--docs).
+
+<Canvas of={FhiChipStories.Multiple} />
+
+<ApiDefinition />
