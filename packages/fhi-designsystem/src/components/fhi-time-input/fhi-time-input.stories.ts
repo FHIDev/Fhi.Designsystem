@@ -54,13 +54,11 @@ const meta: FhiStorybookMeta<FhiTimeInput> = {
       control: { type: 'text' },
       description:
         'Setter navn på inputfeltet. Dette brukes typisk av assosierte form-elementer for å identifisere feltet i FormData.',
-      defaultValue: { summary: 'undefined' },
     },
     value: {
       control: { type: 'text' },
       description:
         'Setter verdi på inputfeltet. Dette vil være synlig i feltet og automatisk bli med i FormData. Format `HH:MM`',
-      defaultValue: { summary: '' },
     },
     min: {
       control: { type: 'text' },
@@ -69,7 +67,6 @@ const meta: FhiStorybookMeta<FhiTimeInput> = {
       table: {
         type: { summary: 'number:number' },
       },
-      defaultValue: { summary: 'undefined' },
     },
     max: {
       control: { type: 'text' },
@@ -78,26 +75,22 @@ const meta: FhiStorybookMeta<FhiTimeInput> = {
       table: {
         type: { summary: 'number:number' },
       },
-      defaultValue: { summary: 'undefined' },
     },
     label: {
       control: { type: 'text' },
       description:
         'Setter label, som assosieres med inputfeltet og vises over. Om dette er satt trenger du ikke å deklarere eget label-element.',
-      defaultValue: { summary: 'undefined' },
     },
     message: {
       control: { type: 'text' },
       description:
         'Vises under inputfeltet. Brukes til å gi veiledning til brukeren. Brukes blant annet ved Error for å forklare hva som mangler eller må justeres.',
-      defaultValue: { summary: 'undefined' },
     },
     helpText: {
       name: 'help-text',
       control: { type: 'text' },
       description:
         'Vises over inputfeltet. Brukes til å gi utvidede forklaringer eller hjelpsomme hint til utfylling.',
-      defaultValue: { summary: 'undefined' },
     },
     readonly: {
       control: { type: 'boolean' },
@@ -113,8 +106,7 @@ const meta: FhiStorybookMeta<FhiTimeInput> = {
       control: { type: 'select' },
       description:
         'Bestemmer om feltet har en status. Dette vil endre utseende på feltet.',
-      defaultValue: { summary: 'undefined' },
-      options: [undefined, 'error'],
+      options: ['error'],
     },
   },
 };
