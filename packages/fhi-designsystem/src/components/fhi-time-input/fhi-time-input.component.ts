@@ -1,6 +1,7 @@
 import { html, css, LitElement, type PropertyValues } from 'lit';
 import { customElement, property, query } from 'lit/decorators.js';
 import { ifDefined } from 'lit/directives/if-defined.js';
+
 import '../icons/fhi-icon-clock.component.js';
 import '../typography/fhi-body/fhi-body.component';
 import '../typography/fhi-label/fhi-label.component';
@@ -9,7 +10,7 @@ import { isSafari } from '../../utils/browser';
 
 export const FhiTimeInputSelector = 'fhi-time-input';
 
-export type FhiTimeValue = `${number}:${number}` | undefined; // HH:MM
+export type FhiTimeValue = `${number}:${number}`; // HH:MM
 
 /**
  * ## FHI Time input
@@ -33,14 +34,14 @@ export class FhiTimeInput extends LitElement {
    * An input field should always have a label to ensure accessibility.
    * @type {string}
    */
-  @property({ type: String }) label?: string = undefined;
+  @property({ type: String }) label?: string;
 
   /**
    * The message shown beneath the input field.
    * This is often used to provide additional information or feedback to the user.
    * @type {string}
    */
-  @property({ type: String }) message?: string = undefined;
+  @property({ type: String }) message?: string;
 
   /**
    * The help-text shown above the input field.
@@ -54,13 +55,13 @@ export class FhiTimeInput extends LitElement {
    * Sets minimum time available for selection in the input field. Format `HH:MM`.
    * @type {string}
    */
-  @property({ type: String }) min?: FhiTimeValue = undefined;
+  @property({ type: String }) min?: FhiTimeValue;
 
   /**
    * Sets maximum time available for selection in the input field. Format `HH:MM`.
    * @type {string}
    */
-  @property({ type: String }) max?: FhiTimeValue = undefined;
+  @property({ type: String }) max?: FhiTimeValue;
 
   /**
    * Sets the visual status of the input. There is currently only one status available: `error`.
@@ -69,7 +70,7 @@ export class FhiTimeInput extends LitElement {
    * @reflect
    * @type {'error'}
    */
-  @property({ type: String, reflect: true }) status?: 'error' = undefined;
+  @property({ type: String, reflect: true }) status?: 'error';
 
   /**
    * Sets the input to read-only. A read-only field cannot be modified by the user but may be submitted with the form.
@@ -94,7 +95,7 @@ export class FhiTimeInput extends LitElement {
    * @reflect
    * @type {string}
    */
-  @property({ type: String, reflect: true }) name?: string = undefined;
+  @property({ type: String, reflect: true }) name?: string;
 
   /**
    * The default value of the input field, formatted as `HH:MM`.
@@ -106,9 +107,9 @@ export class FhiTimeInput extends LitElement {
    *
    * @type {string}
    */
-  @property({ type: String }) value: FhiTimeValue = '' as FhiTimeValue;
+  @property({ type: String }) value?: FhiTimeValue = '' as FhiTimeValue;
 
-  @query('#input-element')
+  @query('#input')
   private _input!: HTMLInputElement;
 
   private _internals: ElementInternals;
@@ -172,7 +173,7 @@ export class FhiTimeInput extends LitElement {
 
   private _handleKeyDown(event: KeyboardEvent): void {
     if (event.key === 'Enter' && this._internals.form) {
-      this._internals.form!.requestSubmit();
+      this._internals.form.requestSubmit();
     }
   }
 
@@ -181,21 +182,21 @@ export class FhiTimeInput extends LitElement {
     this._internals.setFormValue(this.value ?? null);
   }
 
-  private _showTime(event?: KeyboardEvent) {
-    if (
-      this.disabled ||
-      (event &&
-        event.type == 'keydown' &&
-        event.key !== 'Enter' &&
-        event.code !== 'Space')
-    ) {
+  private _handleIconClick(): void {
+    this._input.showPicker?.();
+  }
+
+  private _handleIconKeyDown(event: KeyboardEvent): void {
+    if (this.disabled) {
       return;
     }
 
-    try {
-      this._input.showPicker();
-    } catch {
-      // safari does not have a picker
+    if (event.type !== 'keydown') {
+      return;
+    }
+
+    if (event.key == 'Enter' || event.code == 'Space') {
+      this._input.showPicker?.();
     }
   }
 
@@ -207,26 +208,21 @@ export class FhiTimeInput extends LitElement {
 
   render() {
     const describedBy =
-      [this.helpText && 'help-text-element', this.message && 'message-element']
+      [this.helpText && 'help-text-element', this.message && 'message']
         .filter(Boolean)
         .join(' ') || undefined;
 
     return html`
       ${this.label &&
-      html`<label for="input-element"
-        ><fhi-label size="small">${this.label}</fhi-label></label
-      >`}
-      ${this.helpText
-        ? html`
-            <fhi-body id="help-text-element" class="help-text" size="small"
-              >${this.helpText}</fhi-body
-            >
-          `
-        : ''}
+      html`<label for="input">
+        <fhi-label size="small">${this.label}</fhi-label>
+      </label>`}
+      ${this.helpText &&
+      html` <fhi-body id="help-text" size="small">${this.helpText}</fhi-body> `}
       <div class="input-container">
         <input
           type="time"
-          id="input-element"
+          id="input"
           aria-describedby=${ifDefined(describedBy)}
           name=${ifDefined(this.name)}
           min=${ifDefined(this.min)}
@@ -238,26 +234,20 @@ export class FhiTimeInput extends LitElement {
           @input=${this._handleInput}
           @keydown=${this._handleKeyDown}
         />
-        <span
+        <fhi-icon-clock
           class="time-icon"
           role="button"
-          @click=${this._showTime}
-          @keydown=${this._showTime}
+          @click=${this._handleIconClick}
+          @keydown=${this._handleIconKeyDown}
           @mousedown=${this._handleIconMouseDown}
           tabindex=${isSafari() || this.disabled ? '-1' : '0'}
           aria-hidden=${String(isSafari())}
           aria-label="Vis tidvelger"
           aria-haspopup="dialog"
-          ><fhi-icon-clock></fhi-icon-clock
-        ></span>
+        ></fhi-icon-clock>
       </div>
-      ${this.message
-        ? html`
-            <fhi-body id="message-element" class="message" size="small"
-              >${this.message}</fhi-body
-            >
-          `
-        : ''}
+      ${this.message &&
+      html` <fhi-body id="message" size="small">${this.message}</fhi-body> `}
     `;
   }
 
@@ -277,7 +267,7 @@ export class FhiTimeInput extends LitElement {
         }
       }
 
-      input[type='time'] {
+      input {
         font-family: var(--fhi-font-family-default);
         font-weight: var(--fhi-typography-body-medium-font-weight);
         font-size: var(--fhi-typography-body-medium-font-size);
@@ -285,59 +275,56 @@ export class FhiTimeInput extends LitElement {
         letter-spacing: var(--fhi-typography-body-medium-letter-spacing);
 
         box-sizing: border-box;
+        appearance: none;
 
-        height: var(--fhi-spacing-500);
-        width: calc(var(--fhi-spacing-600) * 2 + var(--fhi-spacing-150));
+        height: 100%;
+        width: 100%;
 
         border: var(--fhi-dimension-border-width) solid
           var(--fhi-color-neutral-border-default);
         border-radius: var(--fhi-border-radius-050);
-        padding: 0 var(--fhi-spacing-150) 0 var(--fhi-spacing-150);
+        padding: var(--fhi-spacing-100);
 
-        color: inherit;
         background-color: var(--fhi-color-neutral-background-default);
         transition: all var(--fhi-motion-ease-default)
           var(--fhi-motion-duration-quick);
-        appearance: none;
+
         &:hover:not(:disabled) {
           border-color: var(--fhi-color-accent-border-default);
           background-color: var(--fhi-color-accent-background-subtle);
         }
+
         &:focus:not(:disabled) {
           border-color: var(--fhi-color-accent-border-strong);
           background-color: var(--fhi-color-accent-background-default);
         }
       }
-      .message {
+      #message {
         margin: var(--fhi-spacing-050) 0 0 0;
       }
 
-      .help-text {
+      #help-text {
         color: var(--fhi-color-neutral-text-subtle);
         margin: 0 0 var(--fhi-spacing-050) 0;
       }
 
-      [type='time']::-webkit-inner-spin-button,
       [type='time']::-webkit-calendar-picker-indicator {
         display: none;
       }
 
       .input-container {
         height: var(--fhi-spacing-500);
+        width: calc(var(--fhi-spacing-600) * 2);
         position: relative;
       }
 
       .time-icon {
         position: absolute;
-        left: 76px;
+        right: var(--fhi-spacing-100);
         top: 50%;
         transform: translateY(-50%);
-        margin-right: var(--fhi-spacing-100);
-        height: fit-content;
         color: var(--fhi-color-neutral-text-subtle);
-        transition: all var(--fhi-motion-ease-default)
-          var(--fhi-motion-duration-quick);
-        border-radius: var(--fhi-border-radius-050);
+
         &:focus {
           outline: solid var(--fhi-color-accent-border-default);
         }
@@ -346,12 +333,8 @@ export class FhiTimeInput extends LitElement {
 
     :host([disabled]) {
       opacity: var(--fhi-opacity-disabled);
-      cursor: not-allowed;
       * {
         cursor: not-allowed;
-      }
-      .time-icon:focus {
-        outline: none;
       }
     }
 
@@ -363,29 +346,25 @@ export class FhiTimeInput extends LitElement {
         border-left: var(--fhi-dimension-border-width) solid
           var(--fhi-color-neutral-border-default);
       }
+
       .time-icon {
         display: none;
       }
     }
 
     :host([status='error']:not([disabled]):not([readonly])) {
-      label {
-        color: var(--fhi-color-danger-text-default);
-      }
+      color: var(--fhi-color-danger-text-default);
       input[type='time'] {
         border-color: var(--fhi-color-danger-border-strong);
         background-color: var(--fhi-color-danger-background-default);
-        color: var(--fhi-color-danger-text-default);
       }
-      .message {
-        color: var(--fhi-color-danger-text-subtle);
+
+      #help-text {
+        color: inherit;
       }
-      .help-text {
-        color: var(--fhi-color-danger-text-default);
-      }
+
       .time-icon {
         background-color: var(--fhi-color-danger-background-default);
-        color: var(--fhi-color-danger-text-default);
       }
     }
 

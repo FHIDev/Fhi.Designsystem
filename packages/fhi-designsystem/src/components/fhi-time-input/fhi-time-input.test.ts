@@ -369,7 +369,7 @@ describe('fhi-time-input', () => {
         html`<fhi-time-input message="message text"></fhi-time-input>`,
       );
 
-      const message = component.shadowRoot!.querySelector('.message');
+      const message = component.shadowRoot!.querySelector('#message');
 
       expect(message).to.not.equal(null);
       expect(message?.textContent).to.equal('message text');
@@ -380,7 +380,7 @@ describe('fhi-time-input', () => {
         html`<fhi-time-input help-text="help text"></fhi-time-input>`,
       );
 
-      const helpText = component.shadowRoot!.querySelector('.help-text');
+      const helpText = component.shadowRoot!.querySelector('#help-text');
 
       expect(helpText).to.not.equal(null);
       expect(helpText?.textContent).to.equal('help text');
