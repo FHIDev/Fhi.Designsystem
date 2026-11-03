@@ -106,8 +106,11 @@ export class FhiDataTable extends LitElement {
         'fhi-data-table-cell',
       );
 
+      // The cell's column span, either from the property (if upgraded) or the attribute (if not yet upgraded)
       const rowSpan = Array.from(cells).reduce(
-        (sum, cell) => sum + (cell.columnSpan || 1),
+        (sum, cell) =>
+          sum +
+          (cell.columnSpan || Number(cell.getAttribute('column-span')) || 1),
         0,
       );
 
