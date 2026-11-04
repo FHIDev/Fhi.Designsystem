@@ -209,7 +209,7 @@ export class FhiTimeInput extends LitElement {
 
     return html`
       ${this.label &&
-      html`<label for="input">
+      html`<label id="label" for="input">
         <fhi-label size="small">${this.label}</fhi-label>
       </label>`}
       ${this.helpText &&
@@ -237,6 +237,7 @@ export class FhiTimeInput extends LitElement {
           @keydown=${this._handleIconKeyDown}
           @mousedown=${this._handleIconMouseDown}
           tabindex=${this._isSafari || this.disabled ? '-1' : '0'}
+          aria-labelledby="label"
           aria-hidden=${String(this._isSafari)}
           aria-haspopup="dialog"
         ></fhi-icon-clock>

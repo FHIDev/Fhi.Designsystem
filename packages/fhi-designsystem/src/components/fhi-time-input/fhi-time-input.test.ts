@@ -358,7 +358,7 @@ describe('fhi-time-input', () => {
         html`<fhi-time-input label="label text"></fhi-time-input>`,
       );
 
-      const label = component.shadowRoot!.querySelector('label');
+      const label = component.shadowRoot!.querySelector('label > fhi-label');
 
       expect(label).to.not.equal(null);
       expect(label?.textContent).to.equal('label text');
