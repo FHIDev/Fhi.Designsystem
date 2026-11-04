@@ -117,7 +117,7 @@ export const Preview: Story = {
   tags: ['!dev'],
   args: {
     label: 'Tid',
-    helpText: 'Tid skrives i formatet tt:mm, slik som 04:56',
+    helpText: 'Skrives i formatet tt:mm. For eksempel 04:56',
   },
 };
 
@@ -138,8 +138,7 @@ export const MinMax: Story = {
 export const Error: Story = {
   args: {
     label: 'Tid',
-    helpText: 'Må fylles ut',
-    message: 'Tid må fylles ut',
+    message: 'Må fylles ut',
     status: 'error',
   },
 };

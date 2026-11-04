@@ -114,6 +114,8 @@ export class FhiTimeInput extends LitElement {
 
   private _internals: ElementInternals;
 
+  private _isSafari = isSafari();
+
   constructor() {
     super();
     this._internals = this.attachInternals();
@@ -187,15 +189,8 @@ export class FhiTimeInput extends LitElement {
   }
 
   private _handleIconKeyDown(event: KeyboardEvent): void {
-    if (this.disabled) {
-      return;
-    }
-
-    if (event.type !== 'keydown') {
-      return;
-    }
-
-    if (event.key == 'Enter' || event.code == 'Space') {
+    if (event.key === 'Enter' || event.code === 'Space') {
+      event.preventDefault();
       this._input.showPicker?.();
     }
   }
@@ -208,7 +203,7 @@ export class FhiTimeInput extends LitElement {
 
   render() {
     const describedBy =
-      [this.helpText && 'help-text-element', this.message && 'message']
+      [this.helpText && 'help-text', this.message && 'message']
         .filter(Boolean)
         .join(' ') || undefined;
 
@@ -224,6 +219,7 @@ export class FhiTimeInput extends LitElement {
           type="time"
           id="input"
           aria-describedby=${ifDefined(describedBy)}
+          aria-invalid=${this.status === 'error' ? 'true' : 'false'}
           name=${ifDefined(this.name)}
           min=${ifDefined(this.min)}
           max=${ifDefined(this.max)}
@@ -240,9 +236,8 @@ export class FhiTimeInput extends LitElement {
           @click=${this._handleIconClick}
           @keydown=${this._handleIconKeyDown}
           @mousedown=${this._handleIconMouseDown}
-          tabindex=${isSafari() || this.disabled ? '-1' : '0'}
-          aria-hidden=${String(isSafari())}
-          aria-label="Vis tidvelger"
+          tabindex=${this._isSafari || this.disabled ? '-1' : '0'}
+          aria-hidden=${String(this._isSafari)}
           aria-haspopup="dialog"
         ></fhi-icon-clock>
       </div>
@@ -261,6 +256,7 @@ export class FhiTimeInput extends LitElement {
       color: var(--fhi-color-neutral-text-default);
 
       label {
+        width: fit-content;
         padding: 0 0 var(--fhi-spacing-050) 0;
         &:has(+ .help-text) {
           padding-bottom: 0;
@@ -308,14 +304,14 @@ export class FhiTimeInput extends LitElement {
         margin: 0 0 var(--fhi-spacing-050) 0;
       }
 
-      [type='time']::-webkit-calendar-picker-indicator {
+      ::-webkit-calendar-picker-indicator {
         display: none;
       }
 
       .input-container {
+        position: relative;
         height: var(--fhi-spacing-500);
         width: calc(var(--fhi-spacing-600) * 2);
-        position: relative;
       }
 
       .time-icon {
@@ -339,7 +335,7 @@ export class FhiTimeInput extends LitElement {
     }
 
     :host([readonly]:not([disabled])) {
-      input[type='time'] {
+      input {
         border: unset;
         border-radius: unset;
         background-color: unset;
@@ -354,7 +350,7 @@ export class FhiTimeInput extends LitElement {
 
     :host([status='error']:not([disabled]):not([readonly])) {
       color: var(--fhi-color-danger-text-default);
-      input[type='time'] {
+      input {
         border-color: var(--fhi-color-danger-border-strong);
         background-color: var(--fhi-color-danger-background-default);
       }
@@ -371,7 +367,6 @@ export class FhiTimeInput extends LitElement {
     @-moz-document url-prefix() {
       :host .time-icon {
         display: none;
-        visibility: hidden;
       }
     }
   `;
