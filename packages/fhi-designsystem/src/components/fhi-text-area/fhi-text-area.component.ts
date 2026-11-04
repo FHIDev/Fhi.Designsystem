@@ -124,7 +124,7 @@ export class FhiTextArea extends LitElement {
 
   set value(newValue: string) {
     const oldValue = this._value;
-    this._value = newValue;
+    this._value = newValue ?? '';
     this.requestUpdate('value', oldValue);
     this._internals.setFormValue(this._value);
   }
@@ -202,6 +202,9 @@ export class FhiTextArea extends LitElement {
           rows=${ifDefined(this.rows)}
           @change=${this.handleChange}
           @input=${this.handleInput}
+          aria-invalid=${ifDefined(
+            this.status === 'error' ? 'true' : undefined,
+          )}
         ></textarea>
       </div>
       ${this.message
