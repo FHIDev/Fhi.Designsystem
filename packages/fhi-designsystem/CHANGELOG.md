@@ -1,5 +1,23 @@
 # Changelog
 
+## [0.48.0](https://github.com/FHIDev/Fhi.Designsystem/compare/v0.47.3...v0.48.0) (2026-11-02)
+
+### 🚀 Features
+
+* New Component - Chip ([#527](https://github.com/FHIDev/Fhi.Designsystem/issues/527)) ([edc2c2e](https://github.com/FHIDev/Fhi.Designsystem/commit/edc2c2e5558cb3127481fc03026629ab809b7588))
+
+## [0.47.3](https://github.com/FHIDev/Fhi.Designsystem/compare/v0.47.2...v0.47.3) (2026-11-02)
+
+### 🛠️ Bug Fixes
+
+* Set aria-invalid when component status is error ([#531](https://github.com/FHIDev/Fhi.Designsystem/issues/531)) ([9727522](https://github.com/FHIDev/Fhi.Designsystem/commit/9727522a0f8b6a306a7f58bb40094e7cc4d407cd))
+
+## [0.47.2](https://github.com/FHIDev/Fhi.Designsystem/compare/v0.47.1...v0.47.2) (2026-11-02)
+
+### 🛠️ Bug Fixes
+
+* 507 Prevent setting form values to null ([#523](https://github.com/FHIDev/Fhi.Designsystem/issues/523)) ([f15b6a8](https://github.com/FHIDev/Fhi.Designsystem/commit/f15b6a85a7f81c9b257860689a29811b94ec1ce6))
+
 ## [0.47.1](https://github.com/FHIDev/Fhi.Designsystem/compare/v0.47.0...v0.47.1) (2026-10-27)
 
 ### 🛠️ Bug Fixes
