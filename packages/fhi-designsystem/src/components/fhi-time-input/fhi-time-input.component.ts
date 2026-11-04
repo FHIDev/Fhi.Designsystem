@@ -1,4 +1,4 @@
-import { html, css, LitElement, type PropertyValues } from 'lit';
+import { html, css, LitElement } from 'lit';
 import { customElement, property, query } from 'lit/decorators.js';
 import { ifDefined } from 'lit/directives/if-defined.js';
 
@@ -86,6 +86,8 @@ export class FhiTimeInput extends LitElement {
    */
   @property({ type: Boolean, reflect: true }) disabled? = false;
 
+  private _name?: string;
+
   /**
    * The name of the input. This is submitted with the form data as a `key`.
    *
@@ -95,7 +97,19 @@ export class FhiTimeInput extends LitElement {
    * @reflect
    * @type {string}
    */
-  @property({ type: String, reflect: true }) name?: string;
+  @property({ type: String, reflect: true })
+  get name(): string | undefined {
+    return this._name;
+  }
+
+  set name(newName: string | undefined) {
+    const oldName = this._name;
+    this._name = newName;
+    this.requestUpdate('name', oldName);
+    this._internals.setFormValue(this.value ?? null);
+  }
+
+  private _value: FhiTimeValue = '' as FhiTimeValue;
 
   /**
    * The default value of the input field, formatted as `HH:MM`.
@@ -106,8 +120,19 @@ export class FhiTimeInput extends LitElement {
    * See: {@link https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input#value}
    *
    * @type {string}
+   * @default ''
    */
-  @property({ type: String }) value?: FhiTimeValue = '' as FhiTimeValue;
+  @property({ type: String })
+  get value(): FhiTimeValue {
+    return this._value;
+  }
+
+  set value(newValue: FhiTimeValue) {
+    const oldValue = this._value;
+    this._value = newValue;
+    this.requestUpdate('value', oldValue);
+    this._internals.setFormValue(this._value ?? null);
+  }
 
   @query('#input')
   private _input!: HTMLInputElement;
@@ -127,14 +152,12 @@ export class FhiTimeInput extends LitElement {
     this._internals.setFormValue(this.value ?? null);
   }
 
-  protected willUpdate(changedProperties: PropertyValues<this>): void {
-    if (changedProperties.has('value') || changedProperties.has('name')) {
-      this._internals.setFormValue(this.value ?? null);
-    }
-  }
-
   private _handleChange(event: Event): void {
     event.stopPropagation();
+
+    this.value = this._input.value as FhiTimeValue;
+    this._internals.setFormValue(this.value ?? null);
+
     this._dispatchChangeEvent();
   }
 
@@ -180,23 +203,30 @@ export class FhiTimeInput extends LitElement {
   }
 
   public formResetCallback(): void {
-    this.value = this.getAttribute('value') as FhiTimeValue;
+    this.value = (this.getAttribute('value') || '') as FhiTimeValue;
     this._internals.setFormValue(this.value ?? null);
   }
 
   private _handleIconClick(): void {
-    this._input.showPicker?.();
+    this._showTimePicker();
   }
 
   private _handleIconKeyDown(event: KeyboardEvent): void {
     if (event.key === 'Enter' || event.code === 'Space') {
       event.preventDefault();
-      this._input.showPicker?.();
+      this._showTimePicker();
     }
   }
 
+  private _showTimePicker(): void {
+    if (this.disabled || this.readonly) {
+      return;
+    }
+    this._input.showPicker?.();
+  }
+
   private _handleIconMouseDown(event: MouseEvent): void {
-    if (isSafari()) {
+    if (this._isSafari) {
       event.preventDefault();
     }
   }
@@ -220,7 +250,6 @@ export class FhiTimeInput extends LitElement {
           id="input"
           aria-describedby=${ifDefined(describedBy)}
           aria-invalid=${this.status === 'error' ? 'true' : 'false'}
-          name=${ifDefined(this.name)}
           min=${ifDefined(this.min)}
           max=${ifDefined(this.max)}
           .value=${this.value ?? ''}
@@ -232,14 +261,13 @@ export class FhiTimeInput extends LitElement {
         />
         <fhi-icon-clock
           class="time-icon"
-          role="button"
+          role=${ifDefined(this._isSafari ? 'img' : 'button')}
           @click=${this._handleIconClick}
           @keydown=${this._handleIconKeyDown}
           @mousedown=${this._handleIconMouseDown}
           tabindex=${this._isSafari || this.disabled ? '-1' : '0'}
-          aria-labelledby="label"
-          aria-hidden=${String(this._isSafari)}
-          aria-haspopup="dialog"
+          aria-labelledby=${ifDefined(this.label ? 'label' : undefined)}
+          aria-haspopup=${ifDefined(this._isSafari ? undefined : 'dialog')}
         ></fhi-icon-clock>
       </div>
       ${this.message &&
@@ -259,7 +287,7 @@ export class FhiTimeInput extends LitElement {
       label {
         width: fit-content;
         padding: 0 0 var(--fhi-spacing-050) 0;
-        &:has(+ .help-text) {
+        &:has(+ #help-text) {
           padding-bottom: 0;
         }
       }
@@ -332,6 +360,9 @@ export class FhiTimeInput extends LitElement {
       opacity: var(--fhi-opacity-disabled);
       * {
         cursor: not-allowed;
+      }
+      .time-icon:focus {
+        outline: none;
       }
     }
 
