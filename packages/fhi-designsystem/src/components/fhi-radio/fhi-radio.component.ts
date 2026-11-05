@@ -139,6 +139,12 @@ export class FhiRadio extends LitElement {
     }
   }
 
+  protected willUpdate(changedProperties: Map<string, unknown>) {
+    if (changedProperties.has('value')) {
+      this.value = this.value ?? 'on';
+    }
+  }
+
   public updated(changedProperties: Map<string, unknown>) {
     super.updated(changedProperties);
 
@@ -273,6 +279,9 @@ export class FhiRadio extends LitElement {
           value="${this.value}"
           .checked=${live(this.checked ?? false)}
           ?disabled=${this.disabled}
+          aria-invalid=${ifDefined(
+            this.status === 'error' ? 'true' : undefined,
+          )}
           @change=${this._handleChange}
           @input=${this._handleInput}
         />
