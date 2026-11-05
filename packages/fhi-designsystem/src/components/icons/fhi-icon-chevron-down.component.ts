@@ -56,7 +56,7 @@ export class FhiIconChevronDown extends LitElement {
 
   render() {
     return html`
-      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="${this._size}" height="${this._size}" fill="${this.color}"><path d="M17.47 8.47a.75.75 0 1 1 1.06 1.06l-6 6a.75.75 0 0 1-1.003.052l-.057-.052-6-6-.052-.056a.75.75 0 0 1 1.056-1.056l.056.052L12 13.94z"/></svg>
+      <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" viewBox="0 0 24 24" width="${this._size}" height="${this._size}" fill="${this.color}"><path d="M17.47 8.47a.75.75 0 1 1 1.06 1.06l-6 6a.75.75 0 0 1-1.003.052l-.057-.052-6-6-.052-.056a.75.75 0 0 1 1.056-1.056l.056.052L12 13.94z"/></svg>
     `;
   }
       

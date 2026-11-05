@@ -56,7 +56,7 @@ export class FhiIconGripVertical extends LitElement {
 
   render() {
     return html`
-      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="${this._size}" height="${this._size}" fill="${this.color}"><path fill-rule="evenodd" d="M9 6.75a1.75 1.75 0 1 0 0-3.5 1.75 1.75 0 0 0 0 3.5m0 7a1.75 1.75 0 1 0 0-3.5 1.75 1.75 0 0 0 0 3.5m0 7a1.75 1.75 0 1 0 0-3.5 1.75 1.75 0 0 0 0 3.5m6-14a1.75 1.75 0 1 0 0-3.5 1.75 1.75 0 0 0 0 3.5m0 7a1.75 1.75 0 1 0 0-3.5 1.75 1.75 0 0 0 0 3.5m0 7a1.75 1.75 0 1 0 0-3.5 1.75 1.75 0 0 0 0 3.5" clip-rule="evenodd"/></svg>
+      <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" viewBox="0 0 24 24" width="${this._size}" height="${this._size}" fill="${this.color}"><path fill-rule="evenodd" d="M9 6.75a1.75 1.75 0 1 0 0-3.5 1.75 1.75 0 0 0 0 3.5m0 7a1.75 1.75 0 1 0 0-3.5 1.75 1.75 0 0 0 0 3.5m0 7a1.75 1.75 0 1 0 0-3.5 1.75 1.75 0 0 0 0 3.5m6-14a1.75 1.75 0 1 0 0-3.5 1.75 1.75 0 0 0 0 3.5m0 7a1.75 1.75 0 1 0 0-3.5 1.75 1.75 0 0 0 0 3.5m0 7a1.75 1.75 0 1 0 0-3.5 1.75 1.75 0 0 0 0 3.5" clip-rule="evenodd"/></svg>
     `;
   }
       
