@@ -56,7 +56,7 @@ export class FhiIconChartBar extends LitElement {
 
   render() {
     return html`
-      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="${this._size}" height="${this._size}" fill="${this.color}"><path d="M3 2.25a.75.75 0 0 1 .75.75v16A1.25 1.25 0 0 0 5 20.25h16a.75.75 0 0 1 0 1.5H5A2.75 2.75 0 0 1 2.25 19V3A.75.75 0 0 1 3 2.25m12 13a.75.75 0 0 1 0 1.5H7a.75.75 0 0 1 0-1.5zm4-5a.75.75 0 0 1 0 1.5H7a.75.75 0 0 1 0-1.5zm-9-5a.75.75 0 0 1 0 1.5H7a.75.75 0 0 1 0-1.5z"/></svg>
+      <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" viewBox="0 0 24 24" width="${this._size}" height="${this._size}" fill="${this.color}"><path d="M3 2.25a.75.75 0 0 1 .75.75v16A1.25 1.25 0 0 0 5 20.25h16a.75.75 0 0 1 0 1.5H5A2.75 2.75 0 0 1 2.25 19V3A.75.75 0 0 1 3 2.25m12 13a.75.75 0 0 1 0 1.5H7a.75.75 0 0 1 0-1.5zm4-5a.75.75 0 0 1 0 1.5H7a.75.75 0 0 1 0-1.5zm-9-5a.75.75 0 0 1 0 1.5H7a.75.75 0 0 1 0-1.5z"/></svg>
     `;
   }
       

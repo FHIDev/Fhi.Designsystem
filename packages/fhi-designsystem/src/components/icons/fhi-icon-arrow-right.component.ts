@@ -56,7 +56,7 @@ export class FhiIconArrowRight extends LitElement {
 
   render() {
     return html`
-      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="${this._size}" height="${this._size}" fill="${this.color}"><path d="M11.47 4.47a.75.75 0 0 1 1.004-.052l.056.052 7 7 .052.056a.75.75 0 0 1 0 .948l-.052.056-7 7a.75.75 0 1 1-1.06-1.06l5.72-5.72H5a.75.75 0 0 1 0-1.5h12.19l-5.72-5.72-.052-.056a.75.75 0 0 1 .052-1.004"/></svg>
+      <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" viewBox="0 0 24 24" width="${this._size}" height="${this._size}" fill="${this.color}"><path d="M11.47 4.47a.75.75 0 0 1 1.004-.052l.056.052 7 7 .052.056a.75.75 0 0 1 0 .948l-.052.056-7 7a.75.75 0 1 1-1.06-1.06l5.72-5.72H5a.75.75 0 0 1 0-1.5h12.19l-5.72-5.72-.052-.056a.75.75 0 0 1 .052-1.004"/></svg>
     `;
   }
       

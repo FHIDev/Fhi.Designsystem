@@ -1,5 +1,17 @@
 # Changelog
 
+## [0.48.1](https://github.com/FHIDev/Fhi.Designsystem/compare/v0.48.0...v0.48.1) (2026-11-05)
+
+### 🛠️ Bug Fixes
+
+* Hide icons from screen reader by default ([#529](https://github.com/FHIDev/Fhi.Designsystem/issues/529)) ([d770c79](https://github.com/FHIDev/Fhi.Designsystem/commit/d770c7964be9889e1ab72e7804c61dda2211f9e7))
+
+## [0.48.0](https://github.com/FHIDev/Fhi.Designsystem/compare/v0.47.3...v0.48.0) (2026-11-02)
+
+### 🚀 Features
+
+* New Component - Chip ([#527](https://github.com/FHIDev/Fhi.Designsystem/issues/527)) ([edc2c2e](https://github.com/FHIDev/Fhi.Designsystem/commit/edc2c2e5558cb3127481fc03026629ab809b7588))
+
 ## [0.47.3](https://github.com/FHIDev/Fhi.Designsystem/compare/v0.47.2...v0.47.3) (2026-11-02)
 
 ### 🛠️ Bug Fixes
