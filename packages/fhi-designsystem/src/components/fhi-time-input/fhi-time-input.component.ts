@@ -10,7 +10,7 @@ import { isSafari } from '../../utils/browser';
 
 export const FhiTimeInputSelector = 'fhi-time-input';
 
-export type FhiTimeValue = `${number}:${number}`; // HH:MM
+export type FhiTimeValue = `${number}:${number}` | ''; // HH:MM
 
 /**
  * ## FHI Time input
@@ -218,7 +218,10 @@ export class FhiTimeInput extends LitElement {
     if (this.disabled || this.readonly) {
       return;
     }
-    this._input.showPicker?.();
+
+    try {
+      this._input.showPicker();
+    } catch {}
   }
 
   private _handleIconMouseDown(event: MouseEvent): void {
@@ -257,13 +260,13 @@ export class FhiTimeInput extends LitElement {
         />
         <fhi-icon-clock
           class="time-icon"
-          role=${ifDefined(this._isSafari ? 'img' : 'button')}
+          role=${ifDefined(this._isSafari ? 'presentation' : 'button')}
           @click=${this._handleIconClick}
           @keydown=${this._handleIconKeyDown}
           @mousedown=${this._handleIconMouseDown}
           tabindex=${this._isSafari || this.disabled ? '-1' : '0'}
-          aria-labelledby=${ifDefined(this.label ? 'label' : undefined)}
-          aria-haspopup=${ifDefined(this._isSafari ? undefined : 'dialog')}
+          aria-label=${ifDefined(this._isSafari ? undefined : 'Velg tidspunkt')}
+          aria-haspopup=${ifDefined(this._isSafari ? undefined : 'true')}
         ></fhi-icon-clock>
       </div>
       ${this.message &&
@@ -392,6 +395,10 @@ export class FhiTimeInput extends LitElement {
 
       .time-icon {
         background-color: var(--fhi-color-danger-background-default);
+      }
+
+      #message {
+        color: var(--fhi-color-danger-text-subtle);
       }
     }
 
