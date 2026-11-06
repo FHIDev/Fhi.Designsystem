@@ -1,13 +1,5 @@
-import { FhiTimeInput } from './fhi-time-input.component';
 import * as FhiTimeInputStories from './fhi-time-input.stories.ts';
-import {
-    Meta,
-    Title,
-    Primary,
-    Canvas,
-    Story,
-    Controls,
-} from '@storybook/addon-docs/blocks';
+import { Meta, Canvas, Controls } from '@storybook/addon-docs/blocks';
 
 import { ApiDefinition } from '../../../.storybook/blocks/api-definition.jsx';
 
@@ -17,6 +9,15 @@ import { ApiDefinition } from '../../../.storybook/blocks/api-definition.jsx';
 
 Time Input er et felt som lar brukere skrive et tidspunkt.
 Enkelte nettlesere tilbyr Time Picker, et vindu ment til å hjelpe brukeren å velge. 
+
+Time Input er basert på HTML-elementet `input` med typen `time`. Dette betyr at funksjonaliteten og utseendet kan variere mellom ulike nettlesere og operativsystemer.
+[Les mer om HTML sin `<input type="time">` her](https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/input/time).
+
+### Forskjeller mellom nettlesere
+
+- **Chrome og Edge:** Klokkeikonet er en knapp som åpner nettleserens tidsvelger. Knappen kan nås med tastatur og aktiveres med `Enter` eller `Mellomrom`.
+- **Safari:** Safari på desktop har ingen tidsvelger. Klokkeikonet vises, men er kun dekorativt og kan ikke fokuseres. På iOS åpnes systemets tidsvelger når brukeren trykker i feltet.
+- **Firefox:** firefox har eget klokkeikon som åpner tidsvelger.
 
 ## Passer til
 

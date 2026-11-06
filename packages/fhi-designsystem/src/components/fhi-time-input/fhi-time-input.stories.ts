@@ -65,7 +65,7 @@ const meta: FhiStorybookMeta<FhiTimeInput> = {
       description:
         'Setter minimumstidspunkt (gitt som `HH:MM`), som hindrer brukeren å velge et tidspunkt tidligere enn dette. Dersom feltet ikke er satt til dette formatet vil verdien ignoreres.',
       table: {
-        type: { summary: 'number:number' },
+        type: { summary: 'HH:MM' },
       },
     },
     max: {
@@ -73,7 +73,7 @@ const meta: FhiStorybookMeta<FhiTimeInput> = {
       description:
         'Setter maksimumstidspunkt (gitt som `HH:MM`). Dette vil hindre at brukeren kan velge et tidspunkt senere enn dette. Dersom feltet ikke er satt til dette formatet eller verdien ikke er et tidspunkt senere enn min vil verdien ignoreres.',
       table: {
-        type: { summary: 'number:number' },
+        type: { summary: 'HH:MM' },
       },
     },
     label: {
