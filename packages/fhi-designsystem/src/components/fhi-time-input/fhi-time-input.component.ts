@@ -106,7 +106,6 @@ export class FhiTimeInput extends LitElement {
     const oldName = this._name;
     this._name = newName;
     this.requestUpdate('name', oldName);
-    this._internals.setFormValue(this.value ?? null);
   }
 
   private _value: FhiTimeValue = '' as FhiTimeValue;
@@ -156,7 +155,6 @@ export class FhiTimeInput extends LitElement {
     event.stopPropagation();
 
     this.value = this._input.value as FhiTimeValue;
-    this._internals.setFormValue(this.value ?? null);
 
     this._dispatchChangeEvent();
   }
@@ -178,7 +176,6 @@ export class FhiTimeInput extends LitElement {
     event.stopPropagation();
 
     this.value = this._input.value as FhiTimeValue;
-    this._internals.setFormValue(this.value ?? null);
 
     this._dispatchInputEvent();
   }
@@ -204,7 +201,6 @@ export class FhiTimeInput extends LitElement {
 
   public formResetCallback(): void {
     this.value = (this.getAttribute('value') || '') as FhiTimeValue;
-    this._internals.setFormValue(this.value ?? null);
   }
 
   private _handleIconClick(): void {
@@ -303,12 +299,14 @@ export class FhiTimeInput extends LitElement {
         appearance: none;
 
         height: 100%;
-        width: 100%;
 
         border: var(--fhi-dimension-border-width) solid
           var(--fhi-color-neutral-border-default);
         border-radius: var(--fhi-border-radius-050);
         padding: var(--fhi-spacing-100);
+        padding-right: calc(
+          var(--fhi-spacing-100) * 2 + var(--fhi-spacing-300)
+        );
 
         background-color: var(--fhi-color-neutral-background-default);
         transition: all var(--fhi-motion-ease-default)
@@ -340,7 +338,7 @@ export class FhiTimeInput extends LitElement {
       .input-container {
         position: relative;
         height: var(--fhi-spacing-500);
-        width: calc(var(--fhi-spacing-600) * 2);
+        width: fit-content;
       }
 
       .time-icon {
@@ -373,6 +371,7 @@ export class FhiTimeInput extends LitElement {
         background-color: unset;
         border-left: var(--fhi-dimension-border-width) solid
           var(--fhi-color-neutral-border-default);
+        padding-right: var(--fhi-spacing-100);
       }
 
       .time-icon {
@@ -397,8 +396,14 @@ export class FhiTimeInput extends LitElement {
     }
 
     @-moz-document url-prefix() {
-      :host .time-icon {
-        display: none;
+      :host {
+        .time-icon {
+          display: none;
+        }
+
+        input {
+          padding-right: var(--fhi-spacing-050);
+        }
       }
     }
   `;
