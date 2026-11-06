@@ -297,6 +297,7 @@ export class FhiTimeInput extends LitElement {
         font-size: var(--fhi-typography-body-medium-font-size);
         line-height: var(--fhi-typography-body-medium-line-height);
         letter-spacing: var(--fhi-typography-body-medium-letter-spacing);
+        color: var(--fhi-color-neutral-text-default);
 
         box-sizing: border-box;
         appearance: none;
