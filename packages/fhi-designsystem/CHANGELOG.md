@@ -1,5 +1,11 @@
 # Changelog
 
+## [0.49.0](https://github.com/FHIDev/Fhi.Designsystem/compare/v0.48.1...v0.49.0) (2026-11-09)
+
+### 🚀 Features
+
+* Allow a cell to occupy more than one column in a table ([#533](https://github.com/FHIDev/Fhi.Designsystem/issues/533)) ([9ddd713](https://github.com/FHIDev/Fhi.Designsystem/commit/9ddd7130b45e74a15a2264e072ac4e122ddc8c9d))
+
 ## [0.48.1](https://github.com/FHIDev/Fhi.Designsystem/compare/v0.48.0...v0.48.1) (2026-11-05)
 
 ### 🛠️ Bug Fixes
