@@ -12,6 +12,10 @@ Det er mange måter å bidra på, og vi har mange ulike behov som skal ivaretas.
 - [Hvordan opprette en "pull request"](#hvordan-opprette-en-pull-request)
 - [Kodestandard](#kodestandard)
   - [Navngivning](#navngivning)
+  - [Designtokens](#designtokens)
+  - [Offentlig API](#offentlig-api)
+  - [Komponentdokumentasjon](#komponentdokumentasjon)
+  - [Genererte filer](#genererte-filer)
 - [Testdekning](#testdekning)
 - [Hvordan utvikle en ny komponent](#hvordan-utvikle-en-ny-komponent)
   - [Før du setter i gang](#før-du-setter-i-gang)
@@ -44,13 +48,16 @@ Når et issue opprettes vil det få taggen "Status: Unconfirmed". Denne blir byt
 
 Hvis du ønsker å bidra med kode, eller bare er nysgjerrig; vår ["Kom i gang"](./packages/fhi-designsystem/README.md#kom-i-gang)-guide er uansett stedet å begynne.
 
+Repoet er et pnpm-monorepo, og all kildekode ligger i `./packages/`. Kommandoer som `pnpm lint`, `pnpm test` og `pnpm build` kjøres fra pakkemappen (f.eks. `./packages/fhi-designsystem`), ikke fra rotmappen.
+
 ## Hvordan opprette en "pull request"
 
 1. Før du oppretter en PR, sørg for at det finnes et issue som omhandler det du skal jobbe med.
 2. I høyrekolonnen på issuet, under _Development_, klikk på lenken _Create a branch_. På denne måten vil vår branch-navnestandard automatisk bli fulgt.
 3. Følg vår [kodestandard](#kodestandard), og våre krav til [testdekning](#testdekning)
-4. Opprett PR med en god beskrivelse av koden du ønsker å få med i `main`
-5. Be om review fra [Designsystem-team-developers](https://github.com/orgs/FHIDev/teams/designsystem-team-developers)
+4. Sørg for at `pnpm lint` og `pnpm test` kjører uten feil
+5. Opprett PR med en god beskrivelse av koden du ønsker å få med i `main`
+6. Be om review fra [Designsystem-team-developers](https://github.com/orgs/FHIDev/teams/designsystem-team-developers)
 
 ## Kodestandard
 
@@ -67,11 +74,37 @@ Linting og prettier tar hånd om det meste, men en ting er viktig å merke seg: 
 - Bruk `fhi-[component-name].test.ts` for testfiler.
   - Disse blir automatisk plukket opp av testverktøyene og kjørt under testing.
 
+### Designtokens
+
+Designtokens er navngitte CSS-variabler (custom properties) som definerer de visuelle verdiene i designsystemet, som farger, typografi, avstander og kanter. De er definert i [`default.css`](./packages/fhi-designsystem/src/theme/default.css), og sørger for at komponentene ser like ut og at visuelle endringer kan gjøres ett sted. Primitive tokens er de rå verdiene (f.eks. en bestemt blåfarge), mens semantiske tokens beskriver hva verdien brukes til (f.eks. bakgrunnsfarge for en aksent-flate) og peker på primitive tokens.
+
+Bruk semantiske tokens fremfor primitive tokens, f.eks. `--fhi-color-*` fremfor `--fhi-blue-*`, og `--fhi-typography-*` fremfor `--fhi-font-size-*`. Tokens som bare finnes i ett lag, som `--fhi-spacing-*`, brukes direkte. Unngå hardkodede verdier for farger, avstander, typografi og kanter når det finnes et passende token.
+
+### Offentlig API
+
+Det offentlige API-et til en komponent er alt som konsumentene av designsystemet bruker direkte: tag-navn, attributter, properties, metoder, events, slots og CSS-variabler. Applikasjoner som bruker designsystemet er avhengige av at dette fungerer likt fra versjon til versjon, så endringer her kan føre til feil hos konsumentene.
+
+Ikke gjør endringer som bryter komponentenes eksisterende offentlige API. Om en "breaking change" virker nødvendig, avklar det med designsystemteamet først.
+
+### Komponentdokumentasjon
+
+Komponentdokumentasjonen er det konsumentene av designsystemet leser for å forstå hva en komponent er, når den skal brukes og hvordan. Den publiseres i Storybook på [designsystem.fhi.no](https://designsystem.fhi.no), og består av stories (`.stories.ts`) med interaktive eksempler og en dokumentasjonsside (`.docs.mdx`) med beskrivelse og retningslinjer for bruk.
+
+Oppdater stories og dokumentasjon når en komponents offentlige oppførsel eller bruk endres. Brukerrettet dokumentasjon skrives på norsk.
+
+### Genererte filer
+
+Ikke rediger disse filene manuelt:
+
+- Ikon-komponenter i `./packages/fhi-designsystem/src/components/icons/`. Disse genereres med `pnpm generate:icons` (se [Legg til nytt ikon og ikon-komponent](#legg-til-nytt-ikon-og-ikon-komponent)).
+- `CHANGELOG.md` og versjonsnummer i `./packages/fhi-designsystem/package.json`. Disse oppdateres automatisk ved release.
+
 ## Testdekning
 
 Alle komponenter skal ha enhetstester.
 
 Dette skal testes:
+
 - Alle attributter kan settes og den underliggende _property_ blir også satt.
 - Om en attributt er reflektert skal det bekreftes at refleksjonen fungerer.
 - Feilhåndtering. Om komponeneten skal respondere på feil bruk eller tekniske feil, så bekreft dette.
@@ -96,6 +129,7 @@ For å få opprettet PR og godkjent en ny komponent må den basere seg på en fe
 1. Opprett en ny mappe under `./packages/fhi-designsystem/src/components/`, med navn `fhi-[new-component]`.
 2. Opprett følgende filer i den nye mappen:
    - `fhi-[new-component].stories.ts`
+   - `fhi-[new-component].docs.mdx`
    - `fhi-[new-component].test.ts`
    - `fhi-[new-component].component.ts`
 3. Bruk en eksisterende kompononent som eksempel for å få på plass boilerplate i de ulike filene.
@@ -111,7 +145,7 @@ For å få opprettet PR og godkjent en ny komponent må den basere seg på en fe
 
 1. Implementer komponenten i kode i `fhi-[new-component].component.ts` etter design og spesifikasjoner fra UX. Denne implementeringen bør alltid bruke designtokens, og være helt i tråd med retningslinjer for tilgjengelighet og nettstandarden. Ikke avvik fra nettstandarden med mindre det er nødvendig. Følg også vår [kodestandard](#kodestandard).
 2. Legg til automatiserte tester i `fhi-[new-component].test.ts`. Se våre krav til [testdekning](#testdekning).
-3. Legg til skriftlig dokumentasjon i `fhi-[new-component].stories.ts`, inkludert komponentenes formål og eksempler på brukstilfeller.
+3. Legg til eksempler i `fhi-[new-component].stories.ts` og skriftlig dokumentasjon i `fhi-[new-component].docs.mdx`, inkludert komponentens formål og eksempler på brukstilfeller. Se [komponentdokumentasjon](#komponentdokumentasjon).
 4. Sørg for at alle tester går i grønt, og test også komponenten manuelt.
 
 ### Legg til nytt ikon og ikon-komponent
