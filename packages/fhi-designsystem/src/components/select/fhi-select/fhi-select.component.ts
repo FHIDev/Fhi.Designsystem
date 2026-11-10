@@ -5,6 +5,7 @@ import {
   queryAssignedElements,
   query,
 } from 'lit/decorators.js';
+import { ifDefined } from 'lit/directives/if-defined.js';
 
 import { FhiSelectItem } from '../fhi-select-item/fhi-select-item.component';
 
@@ -227,6 +228,9 @@ export class FhiSelect extends LitElement {
           @change="${this._handleSelectChange}"
           @input="${this._handleSelectInput}"
           ?disabled="${this.disabled}"
+          aria-invalid=${ifDefined(
+            this.status === 'error' ? 'true' : undefined,
+          )}
         >
           ${this._renderOptionElements()}
         </select>

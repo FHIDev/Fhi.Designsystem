@@ -229,6 +229,8 @@ export const WithIcon: Story = {
       status=${ifDefined(args.status)}
       ?disabled=${args.disabled}
       ?readonly=${args.readonly}
+      @input=${action('input')}
+      @change=${action('change')}
       ><fhi-icon-user slot="start"></fhi-icon-user
     ></fhi-text-input>
     <fhi-text-input
@@ -236,6 +238,8 @@ export const WithIcon: Story = {
       status=${ifDefined(args.status)}
       ?disabled=${args.disabled}
       ?readonly=${args.readonly}
+      @input=${action('input')}
+      @change=${action('change')}
       ><fhi-icon-search slot="end"></fhi-icon-search
     ></fhi-text-input>
   `,

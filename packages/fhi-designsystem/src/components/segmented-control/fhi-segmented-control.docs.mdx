@@ -1,0 +1,66 @@
+import { FhiSegmentedControl } from './fhi-segmented-control/fhi-segmented-control.component.ts';
+import * as FhiSegmentedControlStories from './fhi-segmented-control/fhi-segmented-control.stories.ts';
+import * as FhiSegmentedControlItemStories from './fhi-segmented-control-item/fhi-segmented-control-item.stories.ts';
+import { Meta, Primary, Canvas, Controls } from '@storybook/addon-docs/blocks';
+
+import { ApiDefinition } from '../../../.storybook/blocks/api-definition.jsx';
+
+<Meta of={FhiSegmentedControlStories} />
+
+# Segmented Control
+
+Segmented Control lar brukeren velge ett alternativ fra en liste relaterte valg. Valget påvirker innhold eller visning innen samme område.
+
+# Passer til
+
+- Filtrering eller endring av presentasjon lokalt, f.eks. «Dag, uke eller måned».
+- Bytting mellom visningstyper, f.eks. «Liste, tabell eller graf».
+
+<Canvas of={FhiSegmentedControlStories.Preview} />
+<Controls of={FhiSegmentedControlStories.Preview} />
+
+Segmented Control brukes i hovedsak til filtrering eller veksling mellom visninger av innhold. Kun ett alternativ kan være valg om gangen, og endringene vises umiddelbart når valget endrer seg.
+
+Segmented Control passer ikke til:
+
+- Å navigere mellom to relaterte sider eller paneler med hvert sitt unike innhold (bruk Tabs\*).
+- Skjemaer, hvor dataen lagres eller valideres (bruk [Radio](?path=/docs/komponenter-radio--docs)).
+- Binære “av/på”-valg (bruk Switch\*).
+
+\*Komponentene er planlagte, men ikke implementerte ennå.
+
+## Innhold
+
+Teksten på knappene bør være beskrivende, konsise og i samme språklig form. Ikoner kan brukes for å gi brukeren ytterligere visuelle hint.
+
+**Obs:** Vi blander ikke innholdet i knappene i samme gruppe: enten har alle knapper ikoner eller så har ingen.
+
+Vurdér å legge til en [Label](?path=/docs/komponenter-typography--docs#label) før Segmented Control som ledetekst.
+
+<Canvas of={FhiSegmentedControlStories.Example} />
+
+Om du ikke ønsker å bruke en synlig ledetekst, kan du bruke `aria-label` for å gi Segmented Control en beskrivende etikett.
+
+<Canvas of={FhiSegmentedControlStories.WithContent} />
+
+## Eksempler og bruk
+
+Segmented Control består av `<fhi-segmented-control>` og `<fhi-segmented-control-item>`.
+`<fhi-segmented-control>` er selve gruppen, mens `<fhi-segmented-control-item>` er de ulike alternativene i gruppen.
+
+`<fhi-segmented-control-item>`-elementet som er valgt er elementet som er satt som `selected` eller som matcher gruppens `value`-attributt.
+Om `value` på `<fhi-segmented-control-item>` ikke er satt, brukes elementets tekstinnhold som verdi.
+
+Du kan sette `value` på `<fhi-segmented-control-item>` til å være noe annet enn tekstinnholdet.
+<Canvas of={FhiSegmentedControlStories.WithItemValue} />
+
+Bruk `selected`-attributten på `<fhi-segmented-control-item>` for å forhåndsvelge et alternativ.
+
+<Canvas of={FhiSegmentedControlStories.WithItemSelected} />
+
+Du kan også bruke `value`-attributten på `<fhi-segmented-control>` for å sette et alternativ som valgt.
+
+<Canvas of={FhiSegmentedControlStories.WithValue} />
+
+<ApiDefinition of={FhiSegmentedControlStories.Preview} />
+<ApiDefinition of={FhiSegmentedControlItemStories.Preview} />

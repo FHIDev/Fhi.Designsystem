@@ -1,5 +1,6 @@
 import type { StoryObj } from '@storybook/web-components-vite';
 import { html } from 'lit';
+import { action } from 'storybook/actions';
 import { FhiSelect } from './fhi-select.component';
 import { FhiSelectItem } from '../fhi-select-item/fhi-select-item.component';
 
@@ -49,6 +50,8 @@ const meta: FhiStorybookMeta<FhiSelect> = {
       help-text=${ifDefined(args.helpText)}
       ?disabled=${args.disabled}
       value=${ifDefined(args.value)}
+      @change=${action('change')}
+      @input=${action('input')}
     >
       <fhi-select-item>Velg alternativ</fhi-select-item>
       <fhi-select-item>Norge</fhi-select-item>

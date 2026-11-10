@@ -283,6 +283,34 @@ describe('fhi-radio', () => {
       expect(form.get('myRadio')).to.equal('on');
     });
 
+    it('restores the default value when the value attribute is removed', async () => {
+      component = await fixture(
+        html`<fhi-radio name="myRadio" checked></fhi-radio>`,
+        {
+          parentNode: document.createElement('form'),
+        },
+      );
+
+      const defaultValue = component.value;
+
+      component.setAttribute('value', 'newValue');
+      await component.updateComplete;
+
+      expect(component.value).to.equal('newValue');
+
+      component.removeAttribute('value');
+      await component.updateComplete;
+
+      expect(component.value).to.equal(defaultValue);
+      expect(component.value).not.to.equal(null);
+
+      const form = new FormData(
+        document.querySelector('form') as HTMLFormElement,
+      );
+
+      expect(form.get('myRadio')).to.equal(defaultValue);
+    });
+
     it('updates its checked state when changed by the associated form', async () => {
       component = await fixture(
         html`<fhi-radio name="myRadio" value="myRadio" checked></fhi-radio>`,
@@ -481,6 +509,44 @@ describe('fhi-radio', () => {
       // when multiple radios in a group have the checked attribute, the last one should remain checked after the reset
       expect(radio1.checked).to.equal(false);
       expect(radio2.checked).to.equal(true);
+    });
+
+    it('restores its default checked state when the form is reset after user interaction', async () => {
+      const form = (await fixture(
+        html`<form>
+          <fhi-radio name="myGroup" value="radio1" checked></fhi-radio>
+          <fhi-radio name="myGroup" value="radio2"></fhi-radio>
+        </form>`,
+      )) as HTMLFormElement;
+
+      const [radio1, radio2] = Array.from(
+        form.querySelectorAll<FhiRadio>('fhi-radio'),
+      );
+
+      const input1 = radio1.shadowRoot!.querySelector(
+        'input',
+      ) as HTMLInputElement;
+      const input2 = radio2.shadowRoot!.querySelector(
+        'input',
+      ) as HTMLInputElement;
+
+      input2.click();
+
+      await radio2.updateComplete;
+
+      expect(radio1.checked).to.equal(false);
+      expect(radio2.checked).to.equal(true);
+
+      form.reset();
+
+      await radio1.updateComplete;
+      await radio2.updateComplete;
+
+      expect(radio1.checked).to.equal(true);
+      expect(input1.checked).to.equal(true);
+
+      expect(radio2.checked).to.equal(false);
+      expect(input2.checked).to.equal(false);
     });
 
     it('is included in the associated forms formData when previously disabled, but now enabled', async () => {

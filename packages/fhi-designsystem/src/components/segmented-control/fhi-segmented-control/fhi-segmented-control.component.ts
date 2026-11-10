@@ -1,0 +1,262 @@
+import { html, css, LitElement, PropertyValues } from 'lit';
+import { customElement, property } from 'lit/decorators.js';
+import {
+  FhiSegmentedControlItemSelector,
+  type FhiSegmentedControlItem,
+} from '../fhi-segmented-control-item/fhi-segmented-control-item.component';
+
+export const FhiSegmentedControlSelector = 'fhi-segmented-control';
+
+/**
+ * ## FHI Segmented Control
+ *
+ * {@link https://designsystem.fhi.no/?path=/docs/komponenter-segmented-control--docs}
+ *
+ * The <fhi-segmented-control> component lets the user select one option from a group of related choices. Each choice is defined with a <fhi-segmented-control-item> element.
+ *
+ * The choice should affect the content within the same context.
+ *
+ * Example usage:
+ * ```html
+ * <fhi-segmented-control value="item2">
+ *   <fhi-segmented-control-item value="item1">Item 1</fhi-segmented-control-item>
+ *   <fhi-segmented-control-item value="item2">Item 2</fhi-segmented-control-item>
+ *   <fhi-segmented-control-item value="item3">Item 3</fhi-segmented-control-item>
+ * </fhi-segmented-control>
+ * ```
+ *
+ * @tag fhi-segmented-control
+ * @element fhi-segmented-control
+ *
+ * @slot - The default slot. Used for placing <fhi-segmented-control-item> elements.
+ */
+@customElement(FhiSegmentedControlSelector)
+export class FhiSegmentedControl extends LitElement {
+  /**
+   * The visual style of the segmented control. This will be applied to all segmented control items within the group.
+   *
+   * @reflect
+   * @type {'strong' | 'subtle'}
+   */
+  @property({ type: String, reflect: true }) variant: 'strong' | 'subtle' =
+    'strong';
+
+  /**
+   * The currently selected value of the segmented control.
+   *
+   * @reflect
+   * @type {string}
+   */
+  @property({ type: String, reflect: true }) value?: string;
+
+  private _selectedItem: FhiSegmentedControlItem | null = null;
+
+  private readonly _mutationObserver = new MutationObserver(mutations => {
+    const hasItemChanges = mutations.some(
+      mutation => mutation.type !== 'attributes' || mutation.target !== this,
+    );
+
+    if (!hasItemChanges) {
+      return;
+    }
+
+    if (mutations.some(mutation => mutation.type === 'childList')) {
+      this._syncVariant();
+    }
+
+    this._syncSelectionFromItems();
+  });
+
+  public connectedCallback() {
+    super.connectedCallback();
+
+    this.setAttribute('role', 'radiogroup');
+
+    this._mutationObserver.observe(this, {
+      attributes: true,
+      attributeFilter: ['selected', 'value'],
+      childList: true,
+      characterData: true,
+      subtree: true,
+    });
+
+    if (this.hasUpdated) {
+      this._syncAfterReconnect();
+    }
+  }
+
+  public disconnectedCallback() {
+    super.disconnectedCallback();
+    this._mutationObserver.disconnect();
+  }
+
+  protected update(changedProperties: PropertyValues): void {
+    if (changedProperties.has('variant') && !this.variant) {
+      this.variant = 'strong';
+    }
+
+    super.update(changedProperties);
+  }
+
+  public updated(changedProperties: PropertyValues) {
+    if (changedProperties.has('variant')) {
+      this._syncVariant();
+    }
+
+    if (changedProperties.has('value')) {
+      this._syncSelectionFromValue();
+    }
+  }
+
+  private async _syncAfterReconnect(): Promise<void> {
+    await this.updateComplete;
+
+    if (!this.isConnected) {
+      return;
+    }
+
+    this._syncVariant();
+    this._syncSelectionFromItems();
+  }
+
+  private _syncSelectionFromValue() {
+    const items = this._getItems();
+    const selectedItem = this._getSelectedItem(items);
+
+    if (selectedItem && this._getItemValue(selectedItem) === this.value) {
+      this._setSelectedItem(selectedItem);
+      return;
+    }
+
+    const valueMatchingItem = items.find(
+      item => this._getItemValue(item) === this.value,
+    );
+
+    this._setSelectedItem(valueMatchingItem ?? selectedItem);
+  }
+
+  private _syncSelectionFromItems() {
+    // wait until all pending updates are completed before syncing.
+    if (this.isUpdatePending) {
+      void this.updateComplete.then(() => {
+        if (this.isConnected) {
+          this._syncSelectionFromItems();
+        }
+      });
+
+      return;
+    }
+
+    const items = this._getItems();
+    this._setSelectedItem(this._getSelectedItem(items));
+  }
+
+  private _getSelectedItem(
+    items: FhiSegmentedControlItem[],
+  ): FhiSegmentedControlItem | null {
+    const newlySelectedItem = items.find(
+      item => item.selected && item !== this._selectedItem,
+    );
+
+    const selectedItem = items.find(item => item.selected);
+
+    return newlySelectedItem ?? selectedItem ?? items[0] ?? null;
+  }
+
+  private _getItems(): FhiSegmentedControlItem[] {
+    return Array.from(
+      this.querySelectorAll<FhiSegmentedControlItem>(
+        FhiSegmentedControlItemSelector,
+      ),
+    );
+  }
+
+  private _dispatchChangeEvent() {
+    /**
+     * @type {Event} - Standard DOM event with the type `change`.
+     * This event is dispatched when the selected item of the segmented control changes.
+     */
+    this.dispatchEvent(new Event('change', { bubbles: true, composed: true }));
+  }
+
+  private _getItemValue(item: FhiSegmentedControlItem | null): string {
+    return item?.value ?? item?.textContent?.trim() ?? '';
+  }
+
+  private _setSelectedItem(item: FhiSegmentedControlItem | null) {
+    const selectionChanged = this._selectedItem !== item;
+
+    this._getItems().forEach(groupItem => {
+      groupItem.selected = groupItem === item;
+    });
+
+    this._selectedItem = item;
+    this.value = this._getItemValue(item);
+
+    if (selectionChanged) {
+      this._dispatchChangeEvent();
+    }
+  }
+
+  private _syncVariant() {
+    this._getItems().forEach(item => {
+      item.variant = this.variant;
+    });
+  }
+
+  private _handleSlotChange = () => {
+    this._syncSelectionFromItems();
+  };
+
+  private _handleKeyDown(event: KeyboardEvent) {
+    if (
+      event.key !== 'ArrowRight' &&
+      event.key !== 'ArrowUp' &&
+      event.key !== 'ArrowLeft' &&
+      event.key !== 'ArrowDown'
+    ) {
+      return;
+    }
+
+    const items = this._getItems();
+    const eventTravelPath = event.composedPath();
+    const currentIndex = items.findIndex(item =>
+      eventTravelPath.includes(item),
+    );
+
+    const nextIndex =
+      event.key === 'ArrowRight' || event.key === 'ArrowDown'
+        ? (currentIndex + 1) % items.length
+        : (currentIndex - 1 + items.length) % items.length;
+
+    const nextItem = items[nextIndex];
+
+    nextItem.shadowRoot?.querySelector('button')?.focus();
+
+    event.preventDefault();
+  }
+
+  render() {
+    return html`<slot
+      @slotchange=${this._handleSlotChange}
+      @keydown=${this._handleKeyDown}
+    ></slot>`;
+  }
+
+  static styles = css`
+    :host {
+      display: inline-flex;
+      align-items: center;
+      width: fit-content;
+      border-radius: var(--fhi-border-radius-full);
+      border: 1px solid var(--fhi-color-neutral-border-subtle);
+      padding: calc(var(--fhi-spacing-050) - var(--fhi-dimension-border-width));
+      gap: var(--fhi-spacing-050);
+    }
+
+    :host([variant='subtle']) {
+      background-color: var(--fhi-color-neutral-surface-default);
+      border-color: var(--fhi-color-neutral-surface-default);
+    }
+  `;
+}

@@ -56,7 +56,7 @@ export class FhiIconChartColumn extends LitElement {
 
   render() {
     return html`
-      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="${this._size}" height="${this._size}" fill="${this.color}"><path d="M3 2.25a.75.75 0 0 1 .75.75v16A1.25 1.25 0 0 0 5 20.25h16a.75.75 0 0 1 0 1.5H5A2.75 2.75 0 0 1 2.25 19V3A.75.75 0 0 1 3 2.25m5 11a.75.75 0 0 1 .75.75v3a.75.75 0 0 1-1.5 0v-3a.75.75 0 0 1 .75-.75m5-9a.75.75 0 0 1 .75.75v12a.75.75 0 0 1-1.5 0V5a.75.75 0 0 1 .75-.75m5 4a.75.75 0 0 1 .75.75v8a.75.75 0 0 1-1.5 0V9a.75.75 0 0 1 .75-.75"/></svg>
+      <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" viewBox="0 0 24 24" width="${this._size}" height="${this._size}" fill="${this.color}"><path d="M3 2.25a.75.75 0 0 1 .75.75v16A1.25 1.25 0 0 0 5 20.25h16a.75.75 0 0 1 0 1.5H5A2.75 2.75 0 0 1 2.25 19V3A.75.75 0 0 1 3 2.25m5 11a.75.75 0 0 1 .75.75v3a.75.75 0 0 1-1.5 0v-3a.75.75 0 0 1 .75-.75m5-9a.75.75 0 0 1 .75.75v12a.75.75 0 0 1-1.5 0V5a.75.75 0 0 1 .75-.75m5 4a.75.75 0 0 1 .75.75v8a.75.75 0 0 1-1.5 0V9a.75.75 0 0 1 .75-.75"/></svg>
     `;
   }
       

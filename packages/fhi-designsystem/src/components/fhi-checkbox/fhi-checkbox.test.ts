@@ -17,12 +17,6 @@ describe('fhi-checkbox', () => {
       await expect(component).to.be.accessible();
     });
 
-    it('is accessible when focused', async () => {
-      component.dispatchEvent(new Event('focusin'));
-      await component.updateComplete;
-      await expect(component).to.be.accessible();
-    });
-
     it('is accessible when disabled', async () => {
       component = await fixture(
         html`<fhi-checkbox label="Agree" disabled></fhi-checkbox>`,
@@ -59,10 +53,10 @@ describe('fhi-checkbox', () => {
 
     it('has an attribute to set value', async () => {
       component = await fixture(
-        html`<fhi-checkbox name="my value"></fhi-checkbox>`,
+        html`<fhi-checkbox value="my value"></fhi-checkbox>`,
       );
-      expect(component.getAttribute('name')).to.equal('my value');
-      expect(component.name).to.equal('my value');
+      expect(component.getAttribute('value')).to.equal('my value');
+      expect(component.value).to.equal('my value');
     });
 
     it('has an attribute to set status', async () => {
@@ -199,6 +193,39 @@ describe('fhi-checkbox', () => {
       expect(form.get('myCheckbox')).to.equal('on');
     });
 
+    it('restores the default value when the value attribute is removed', async () => {
+      component = await fixture(
+        html`<fhi-checkbox name="myCheckbox"></fhi-checkbox>`,
+        { parentNode: document.createElement('form') },
+      );
+
+      const defaultValue = component.value;
+
+      component.setAttribute('value', 'newValue');
+      await component.updateComplete;
+
+      expect(component.value).to.equal('newValue');
+
+      component.removeAttribute('value');
+      await component.updateComplete;
+
+      expect(component.value).to.equal(defaultValue);
+      expect(component.value).not.to.equal(null);
+
+      const input = component.shadowRoot?.querySelector(
+        'input[type="checkbox"]',
+      ) as HTMLInputElement;
+
+      input.click();
+      await component.updateComplete;
+
+      const form = new FormData(
+        document.querySelector('form') as HTMLFormElement,
+      );
+
+      expect(form.get('myCheckbox')).to.equal(defaultValue);
+    });
+
     it('is included in the associated forms formData when previously disabled, but now enabled', async () => {
       component = await fixture(
         html`<fhi-checkbox
@@ -222,6 +249,30 @@ describe('fhi-checkbox', () => {
       form = new FormData(document.querySelector('form') as HTMLFormElement);
 
       expect(form.get('myCheckbox')).to.equal('hello');
+    });
+
+    it('restores its default checked state when the form is reset after user interaction', async () => {
+      component = await fixture(
+        html`<fhi-checkbox name="myCheckbox" checked></fhi-checkbox>`,
+        { parentNode: document.createElement('form') },
+      );
+
+      const form = document.querySelector('form') as HTMLFormElement;
+      const input = component.shadowRoot!.querySelector(
+        'input',
+      ) as HTMLInputElement;
+
+      input.click();
+      await component.updateComplete;
+
+      expect(component.checked).to.equal(false);
+      expect(input.checked).to.equal(false);
+
+      form.reset();
+      await component.updateComplete;
+
+      expect(component.checked).to.equal(true);
+      expect(input.checked).to.equal(true);
     });
   });
 

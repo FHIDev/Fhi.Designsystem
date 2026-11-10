@@ -1,5 +1,51 @@
 # Changelog
 
+## [0.49.0](https://github.com/FHIDev/Fhi.Designsystem/compare/v0.48.1...v0.49.0) (2026-11-09)
+
+### 🚀 Features
+
+* Allow a cell to occupy more than one column in a table ([#533](https://github.com/FHIDev/Fhi.Designsystem/issues/533)) ([9ddd713](https://github.com/FHIDev/Fhi.Designsystem/commit/9ddd7130b45e74a15a2264e072ac4e122ddc8c9d))
+
+## [0.48.1](https://github.com/FHIDev/Fhi.Designsystem/compare/v0.48.0...v0.48.1) (2026-11-05)
+
+### 🛠️ Bug Fixes
+
+* Hide icons from screen reader by default ([#529](https://github.com/FHIDev/Fhi.Designsystem/issues/529)) ([d770c79](https://github.com/FHIDev/Fhi.Designsystem/commit/d770c7964be9889e1ab72e7804c61dda2211f9e7))
+
+## [0.48.0](https://github.com/FHIDev/Fhi.Designsystem/compare/v0.47.3...v0.48.0) (2026-11-02)
+
+### 🚀 Features
+
+* New Component - Chip ([#527](https://github.com/FHIDev/Fhi.Designsystem/issues/527)) ([edc2c2e](https://github.com/FHIDev/Fhi.Designsystem/commit/edc2c2e5558cb3127481fc03026629ab809b7588))
+
+## [0.47.3](https://github.com/FHIDev/Fhi.Designsystem/compare/v0.47.2...v0.47.3) (2026-11-02)
+
+### 🛠️ Bug Fixes
+
+* Set aria-invalid when component status is error ([#531](https://github.com/FHIDev/Fhi.Designsystem/issues/531)) ([9727522](https://github.com/FHIDev/Fhi.Designsystem/commit/9727522a0f8b6a306a7f58bb40094e7cc4d407cd))
+
+## [0.47.2](https://github.com/FHIDev/Fhi.Designsystem/compare/v0.47.1...v0.47.2) (2026-11-02)
+
+### 🛠️ Bug Fixes
+
+* 507 Prevent setting form values to null ([#523](https://github.com/FHIDev/Fhi.Designsystem/issues/523)) ([f15b6a8](https://github.com/FHIDev/Fhi.Designsystem/commit/f15b6a85a7f81c9b257860689a29811b94ec1ce6))
+
+## [0.47.1](https://github.com/FHIDev/Fhi.Designsystem/compare/v0.47.0...v0.47.1) (2026-10-27)
+
+### 🛠️ Bug Fixes
+
+* Checkbox and Radio will now reset on form reset call ([#521](https://github.com/FHIDev/Fhi.Designsystem/issues/521)) ([69fe72b](https://github.com/FHIDev/Fhi.Designsystem/commit/69fe72b8ceb4f9b142fdfe618e2b4fbd12bf1565))
+
+### 📑 Documentation
+
+* Wire missing actions to component events ([#522](https://github.com/FHIDev/Fhi.Designsystem/issues/522)) ([f70e919](https://github.com/FHIDev/Fhi.Designsystem/commit/f70e919efdf0e00d3650b7e7dbccbe33f120f41f))
+
+## [0.47.0](https://github.com/FHIDev/Fhi.Designsystem/compare/v0.46.0...v0.47.0) (2026-10-19)
+
+### 🚀 Features
+
+* New Component - Segmented Control ([#515](https://github.com/FHIDev/Fhi.Designsystem/issues/515)) ([95fe64f](https://github.com/FHIDev/Fhi.Designsystem/commit/95fe64f9c677d6435665f5ad83688067484e322f))
+
 ## [0.46.0](https://github.com/FHIDev/Fhi.Designsystem/compare/v0.45.4...v0.46.0) (2026-10-09)
 
 ### 🚀 Features
