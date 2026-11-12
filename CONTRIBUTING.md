@@ -74,7 +74,7 @@ Linting og prettier tar hånd om det meste, men en ting er viktig å merke seg: 
 - Bruk `fhi-[component-name].test.ts` for testfiler.
   - Disse blir automatisk plukket opp av testverktøyene og kjørt under testing.
 
-### Designtokens
+### Design Tokens
 
 Designtokens er navngitte CSS-variabler (custom properties) som definerer de visuelle verdiene i designsystemet, som farger, typografi, avstander og kanter. De er definert i [`default.css`](./packages/fhi-designsystem/src/theme/default.css), og sørger for at komponentene ser like ut og at visuelle endringer kan gjøres ett sted. Primitive tokens er de rå verdiene (f.eks. en bestemt blåfarge), mens semantiske tokens beskriver hva verdien brukes til (f.eks. bakgrunnsfarge for en aksent-flate) og peker på primitive tokens.
 
@@ -88,13 +88,13 @@ Ikke gjør endringer som bryter komponentenes eksisterende offentlige API. Om en
 
 ### Komponentdokumentasjon
 
-Komponentdokumentasjonen er det konsumentene av designsystemet leser for å forstå hva en komponent er, når den skal brukes og hvordan. Den publiseres i Storybook på [designsystem.fhi.no](https://designsystem.fhi.no), og består av stories (`.stories.ts`) med interaktive eksempler og en dokumentasjonsside (`.docs.mdx`) med beskrivelse og retningslinjer for bruk.
+Komponentdokumentasjonen er det konsumentene av designsystemet leser for å forstå hva en komponent er og når og hvordan den skal brukes. Den publiseres i Storybook på [designsystem.fhi.no](https://designsystem.fhi.no), og består av stories (`.stories.ts`) med interaktive eksempler og en dokumentasjonsside (`.docs.mdx`) med beskrivelse og retningslinjer for bruk.
 
-Oppdater stories og dokumentasjon når en komponents offentlige oppførsel eller bruk endres. Brukerrettet dokumentasjon skrives på norsk.
+Oppdatér stories og dokumentasjon når en komponents oppførsel eller bruk endres, sett fra konsumentens side. Brukerrettet dokumentasjon skrives på norsk.
 
 ### Genererte filer
 
-Ikke rediger disse filene manuelt:
+Ikke redigér disse filene manuelt:
 
 - Ikon-komponenter i `./packages/fhi-designsystem/src/components/icons/`. Disse genereres med `pnpm generate:icons` (se [Legg til nytt ikon og ikon-komponent](#legg-til-nytt-ikon-og-ikon-komponent)).
 - `CHANGELOG.md` og versjonsnummer i `./packages/fhi-designsystem/package.json`. Disse oppdateres automatisk ved release.
@@ -145,7 +145,7 @@ For å få opprettet PR og godkjent en ny komponent må den basere seg på en fe
 
 1. Implementer komponenten i kode i `fhi-[new-component].component.ts` etter design og spesifikasjoner fra UX. Denne implementeringen bør alltid bruke designtokens, og være helt i tråd med retningslinjer for tilgjengelighet og nettstandarden. Ikke avvik fra nettstandarden med mindre det er nødvendig. Følg også vår [kodestandard](#kodestandard).
 2. Legg til automatiserte tester i `fhi-[new-component].test.ts`. Se våre krav til [testdekning](#testdekning).
-3. Legg til eksempler i `fhi-[new-component].stories.ts` og skriftlig dokumentasjon i `fhi-[new-component].docs.mdx`, inkludert komponentens formål og eksempler på brukstilfeller. Se [komponentdokumentasjon](#komponentdokumentasjon).
+3. Legg til eksempler i `fhi-[new-component].stories.ts` og skriftlig dokumentasjon i `fhi-[new-component].docs.mdx`, inkludert komponentens formål og brukseksempler. Se [komponentdokumentasjon](#komponentdokumentasjon).
 4. Sørg for at alle tester går i grønt, og test også komponenten manuelt.
 
 ### Legg til nytt ikon og ikon-komponent
