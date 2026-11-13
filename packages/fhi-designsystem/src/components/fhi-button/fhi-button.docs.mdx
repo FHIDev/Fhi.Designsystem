@@ -10,6 +10,7 @@ import {
 } from '@storybook/addon-docs/blocks';
 
 import { ApiDefinition } from '../../../.storybook/blocks/api-definition.jsx';
+import { FhiCallout } from '../fhi-callout/fhi-callout.component.ts';
 
 <Meta of={FhiButtonStories} />
 
@@ -70,9 +71,9 @@ Ikon settes som oftest til venstre for teksten. Vi setter ikon til høyre når d
 
 #### Knapp med _kun_ ikon
 
-<div className="callout-warning">
-  **Obs:** `icon-only`-attributten er nå **avviklet** og vil bli fjernet i fremtiden. Knappen oppdager nå om den kun inneholder et ikon selv og får riktig styling automatisk.
-</div>
+<fhi-callout color="warning">
+  <span>**Obs:** `icon-only`-attributten er nå **avviklet** og vil bli fjernet i fremtiden. Knappen oppdager nå om den kun inneholder et ikon selv og får riktig styling automatisk.</span>
+</fhi-callout>
 
 Knapper med kun ikon brukes når ikonet er godt nok kjent, uten umiddelbar forklaring. Husk å legge til [en tilgjengelig, alternativ tittel](?path=/docs/universell-utforming--docs). Du kan også vurdere [å legge knappen i en Tooltip](?path=/docs/komponenter-tooltip--docs).
 
