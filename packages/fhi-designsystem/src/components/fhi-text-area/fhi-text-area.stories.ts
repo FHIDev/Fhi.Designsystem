@@ -124,6 +124,13 @@ export const Preview: Story = {
   },
 };
 
+export const Default: Story = {
+  tags: [],
+  args: {
+    label: 'Label',
+  },
+};
+
 export const Error: Story = {
   tags: [],
   args: {
