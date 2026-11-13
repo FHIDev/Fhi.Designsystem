@@ -36,17 +36,18 @@ npm install @folkehelseinstituttet/designsystem
 
 Pakkene inneholder komponenter, [Design Tokens](?path=/docs/design-tokens-introduksjon--docs) og [fonter](?path=/docs/design-tokens-typografi--docs#font-family). Utover dette trenger du ikke å gjøre noe mer for å ta alt i bruk.
 
-<fhi-callout color="warning">
-  <span>**Obs:** FHI Designsystem er fullt kompatibelt med Typescript, men det er ikke enda typesatt. Det betyr at intellisense for importering og bruk, samt typesjekking, er foreløpig begrenset. Se våre *Ofte stilte spørsmål* for [info om intellisense og typesjekking](/docs/ofte-stilte-spørsmål-typesjekking-intellisense--docs).</span>
-</fhi-callout>
-
 ## Bruk
 
 <div className="callout-info">
-  Angular-wrappers blir vedlikeholdt av FHI Statistikk teamet.
+  Angular-wrappers blir vedlikeholdt av FHI Statistikk teamet, men du kan fortsatt bruke designsystemets vanlige kontaktpunkter for å komme med tilbakemeldinger eller spørsmål.
 </div>
 
-For full _Intellisense_ og typestøtte i ditt Angular-prosjekt, anbefaler vi at du bruker Angular-wrappers som ligger i `@folkehelseinstituttet/designsystem/angular-wrappers`.
+Vi tilbyr **Angular-wrappers** som ligger i `@folkehelseinstituttet/designsystem/angular-wrappers`.
+
+Du kan bruke web-komponentene direkte om du vil, men for full _Intellisense_ og typestøtte i ditt Angular-prosjekt, anbefaler vi at du bruker Angular-wrappers.
+
+Dette er wrapper-komponenter rundt web-komponentene til FHI Designsystem med èn-til-èn korrespondanse av API-et.
+Dokumentasjonen for web-komponentene gjelder derfor også for wrapperne.
 
 Angular-wrappers må kompileres av Angular sin kompilator. Legg derfor til følgende i `tsconfig.app.json`-filen din for å inkludere wrapperne i kompileringen:
 
