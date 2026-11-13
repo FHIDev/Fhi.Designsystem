@@ -17,6 +17,7 @@ Det er mange måter å bidra på, og vi har mange ulike behov som skal ivaretas.
   - [Før du setter i gang](#før-du-setter-i-gang)
   - [Opprette ny komponent](#opprette-ny-komponent)
   - [Utvikle en ny komponent](#utvikle-en-ny-komponent)
+    - [Ta hensyn til Angular-wrappers](#ta-hensyn-til-angular-wrappers)
   - [Legg til nytt ikon og ikon-komponent](#legg-til-nytt-ikon-og-ikon-komponent)
   - [Når du er ferdig](#når-du-er-ferdig)
 - [Etiske retningslinjer](#etiske-retningslinjer)
@@ -72,6 +73,7 @@ Linting og prettier tar hånd om det meste, men en ting er viktig å merke seg: 
 Alle komponenter skal ha enhetstester.
 
 Dette skal testes:
+
 - Alle attributter kan settes og den underliggende _property_ blir også satt.
 - Om en attributt er reflektert skal det bekreftes at refleksjonen fungerer.
 - Feilhåndtering. Om komponeneten skal respondere på feil bruk eller tekniske feil, så bekreft dette.
@@ -113,6 +115,15 @@ For å få opprettet PR og godkjent en ny komponent må den basere seg på en fe
 2. Legg til automatiserte tester i `fhi-[new-component].test.ts`. Se våre krav til [testdekning](#testdekning).
 3. Legg til skriftlig dokumentasjon i `fhi-[new-component].stories.ts`, inkludert komponentenes formål og eksempler på brukstilfeller.
 4. Sørg for at alle tester går i grønt, og test også komponenten manuelt.
+
+#### Ta hensyn til Angular-wrappers
+
+Vi genererer Angular-wrappers for alle våre web-komponenter. Dette gjør det mulig å bruke komponentene med full typestøtte og Intellisense i Angular-prosjekter. Wrappers blir automatisk generert basert custom-element-manifest som igjen bruker Lit-komponentene og deres JSDoc-kommentarer som kilde.
+
+- Pass på og i definere alle properties, slots, og events in JSDoc
+  - Bruk da JSDoc taggene @tag, @element, @slot, @event og @reflect der det passer seg. De vil alle bli automatisk plukket opp av manifestgeneratoren.
+  - Om du bruker set/get mønster for properties, må du sørge for å dokumentere default verdien i JSDoc. Bruk JSDoc taggen @default.
+- Om en property er obligatorisk, men ikke har en default-verdi, må du definere dette i kode med `!`. e.g `@property({ type: Number }) level!: HeadlineLevel`
 
 ### Legg til nytt ikon og ikon-komponent
 

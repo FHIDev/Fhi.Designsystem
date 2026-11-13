@@ -51,11 +51,24 @@ export class FhiSelect extends LitElement {
   @property({ type: String, attribute: 'help-text' })
   helpText?: string;
 
+  private _value: string = '';
+
   /**
    * The value attribute of the select element. This property is used to identify the selected option when submitting a form.
+   *
+   * @default ''
    */
   @property({ type: String, reflect: true })
-  value: string = '';
+  get value(): string {
+    return this._value;
+  }
+
+  set value(newValue: string) {
+    const oldValue = this._value;
+    this._value = newValue ?? '';
+    this.requestUpdate('value', oldValue);
+    this._internals.setFormValue(this._value);
+  }
 
   /**
    * The disabled attribute of the select element. This property is used to disable the select element.
@@ -98,11 +111,7 @@ export class FhiSelect extends LitElement {
     this._mutationObserver?.disconnect();
   }
 
-  public updated(changedProperties: Map<string, unknown>) {
-    if (changedProperties.has('name')) {
-      this._internals.setFormValue(this.value);
-    }
-
+  public updated() {
     if (!this._initialSelectedElement) {
       this._setInitialSelectedElement();
     }

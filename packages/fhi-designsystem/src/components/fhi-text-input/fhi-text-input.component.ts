@@ -1,4 +1,4 @@
-import { html, css, LitElement, PropertyValues } from 'lit';
+import { html, css, LitElement } from 'lit';
 import { customElement, property, query } from 'lit/decorators.js';
 import { ifDefined } from 'lit/directives/if-defined.js';
 
@@ -78,6 +78,8 @@ export class FhiTextInput extends LitElement {
   @property({ type: String, reflect: true })
   name: string = '';
 
+  private _value: string = '';
+
   /**
    * The default value of the input field.
    *
@@ -85,9 +87,20 @@ export class FhiTextInput extends LitElement {
    *
    * This attribute conforms with the standard HTML `value` attribute for input fields.
    * See: {@link https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input#value}
+   *
+   * @default ''
    */
   @property({ type: String })
-  value: string = '';
+  get value(): string {
+    return this._value;
+  }
+
+  set value(newValue: string) {
+    const oldValue = this._value;
+    this._value = newValue ?? '';
+    this.requestUpdate('value', oldValue);
+    this._internals.setFormValue(this._value);
+  }
 
   @query('#input-element')
   private _input!: HTMLInputElement;
@@ -102,12 +115,6 @@ export class FhiTextInput extends LitElement {
   public connectedCallback(): void {
     super.connectedCallback();
     this._internals.setFormValue(this.value);
-  }
-
-  protected updated(changedProperties: PropertyValues): void {
-    if (changedProperties.has('value') || changedProperties.has('name')) {
-      this._internals.setFormValue(this.value);
-    }
   }
 
   private _dispatchChangeEvent(): void {
