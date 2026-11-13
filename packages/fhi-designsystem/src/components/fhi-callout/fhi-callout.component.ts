@@ -27,7 +27,6 @@ export class FhiCallout extends LitElement {
    * The heading of the callout. This is optional and can be used to provide a title for the callout message.
    *
    * @reflect
-   * @type {string}
    */
   @property({ type: String, reflect: true })
   heading?: string;
@@ -36,7 +35,6 @@ export class FhiCallout extends LitElement {
    * The color of the callout, which indicates the type of message being conveyed.
    *
    * @reflect
-   * @type {string}
    */
   @property({ type: String, reflect: true })
   color: 'neutral' | 'success' | 'warning' | 'danger' = 'neutral';
@@ -45,7 +43,6 @@ export class FhiCallout extends LitElement {
    * The variant of the callout, which determines the visual style of the callout.
    *
    * @reflect
-   * @type {string}
    */
   @property({ type: String, reflect: true })
   variant: 'subtle' | 'bordered' = 'subtle';

@@ -42,14 +42,12 @@ export const FhiDataTableSelector = 'fhi-data-table';
 export class FhiDataTable extends LitElement {
   /**
    * The caption of the table. This should provide a brief description of the table's content.
-   * @type {string}
    */
   @property({ type: String, reflect: true })
   caption?: string;
 
   /**
    * If set to true, the table will have alternating row colors (striped effect) for better readability.
-   * @type {boolean}
    */
   @property({ type: Boolean, reflect: true })
   striped?: boolean;
