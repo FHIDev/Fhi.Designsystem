@@ -1,4 +1,5 @@
 import { Meta, Subtitle } from '@storybook/addon-docs/blocks';
+import '../../components/fhi-callout/fhi-callout.component.ts';
 
 <Meta title="Kom i gang/Angular" />
 
@@ -29,14 +30,15 @@ npm install @folkehelseinstituttet/designsystem
 </script>
 ```
 
-<div className="callout-danger">
-  Vi anbefaler ikke å bruke CDN i produksjon.
-  Det krever at klienten laster ned hele biblioteket, uavhengig av hvilke komponenter som faktisk brukes. Dette påvirker ytelsen og båndbreddebruken negativt.
-
-  Bruk bare CDN hvis `npm` ikke er et alternativ.
-</div>
+<fhi-callout color="danger">
+  <span>Vi anbefaler ikke å bruke CDN i produksjon. Det krever at klienten laster ned hele biblioteket, uavhengig av hvilke komponenter som faktisk brukes. Dette påvirker ytelsen og båndbreddebruken negativt. Bruk bare CDN hvis `npm` ikke er et alternativ.</span>
+</fhi-callout>
 
 Pakkene inneholder komponenter, [Design Tokens](?path=/docs/design-tokens-introduksjon--docs) og [fonter](?path=/docs/design-tokens-typografi--docs#font-family). Utover dette trenger du ikke å gjøre noe mer for å ta alt i bruk.
+
+<fhi-callout color="warning">
+  <span>**Obs:** FHI Designsystem er fullt kompatibelt med Typescript, men det er ikke enda typesatt. Det betyr at intellisense for importering og bruk, samt typesjekking, er foreløpig begrenset. Se våre *Ofte stilte spørsmål* for [info om intellisense og typesjekking](/docs/ofte-stilte-spørsmål-typesjekking-intellisense--docs).</span>
+</fhi-callout>
 
 ## Bruk
 
@@ -115,29 +117,5 @@ import { FhiTextInputAngularWrapper, FhiTextInputValueAccessor } from "@folkehel
     &:hover {
       color: var(--fhi-color-neutral-text-default);
     }
-  }
-
-  .callout-danger {
-    border-radius: 2px;
-    padding: .25rem 1rem;
-    margin-bottom: 2rem;
-    background-color: #FEE9E6;
-    border-bottom: 4px solid #EC7C73;
-  }
-
-  .callout-warning {
-    border-radius: 2px;
-    padding: .25rem 1rem;
-    margin-bottom: 2rem;
-    background-color: #FFE7BA;
-    border-bottom: 4px solid #F1A541;
-  }
-
-  .callout-info {
-    border-radius: 2px;
-    padding: .25rem 1rem;
-    margin-bottom: 2rem;
-    background-color: #D3E3F5;
-    border-bottom: 4px solid #3283CE;
   }
 `}</style>
