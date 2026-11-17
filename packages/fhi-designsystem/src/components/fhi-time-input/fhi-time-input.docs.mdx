@@ -1,0 +1,56 @@
+import * as FhiTimeInputStories from './fhi-time-input.stories.ts';
+import { Meta, Canvas, Controls } from '@storybook/addon-docs/blocks';
+
+import { ApiDefinition } from '../../../.storybook/blocks/api-definition.jsx';
+
+<Meta of={FhiTimeInputStories} />
+
+# Time input
+
+Time Input er et felt som lar brukere skrive et tidspunkt.
+Enkelte nettlesere tilbyr Time Picker, et vindu ment til å hjelpe brukeren å velge. 
+
+Time Input er basert på HTML-elementet `input` med typen `time`. Dette betyr at funksjonaliteten og utseendet kan variere mellom ulike nettlesere og operativsystemer.
+[Les mer om HTML sin `<input type="time">` her](https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/input/time).
+
+### Forskjeller mellom nettlesere
+
+- **Chrome og Edge:** Klokkeikonet er en knapp som åpner nettleserens tidsvelger. Knappen kan nås med tastatur og aktiveres med `Enter` eller `Mellomrom`.
+- **Safari:** Safari på desktop har ingen tidsvelger. Klokkeikonet vises, men er kun dekorativt og kan ikke fokuseres. På iOS åpnes systemets tidsvelger når brukeren trykker i feltet.
+- **Firefox:** firefox har eget klokkeikon som åpner tidsvelger.
+
+## Passer til
+
+- Å velge spesifikke tidspunkt.
+
+<Canvas of={FhiTimeInputStories.Preview} />
+<Controls of={FhiTimeInputStories.Preview} />
+
+### Status
+
+#### `error`
+Uttrykker at noe mangler eller er skrevet feil.
+
+<Canvas of={FhiTimeInputStories.Error} />
+
+### Form Controls
+
+#### `min` og `max`
+
+Setter henholdsvis tidligste og seneste tidspunkt som kan velges. Tidspunktene må være i formatet `HH:MM`.
+
+<Canvas of={FhiTimeInputStories.MinMax} />
+
+#### `readonly`
+
+Gjør at feltet ikke kan endres. Feltet vil fortsatt kunne fokuseres og vil automatisk bli inkludert i FormData.
+
+<Canvas of={FhiTimeInputStories.Readonly} />
+
+#### `disabled`
+
+Gjør at feltet ikke kan endres, fokuseres eller automatisk inkluderes i FormData. Unngås hvis man kan.
+
+<Canvas of={FhiTimeInputStories.Disabled} />
+
+<ApiDefinition />
