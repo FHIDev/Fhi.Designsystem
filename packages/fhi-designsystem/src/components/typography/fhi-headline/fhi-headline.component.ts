@@ -10,7 +10,7 @@ export type HeadlineLevel = 1 | 2 | 3 | 4 | 5 | 6;
 /**
  * ## FHI Headline
  *
- * {@link https://designsystem.fhi.no/?path=/story/komponenter-typography-headline--preview}
+ * {@link https://designsystem.fhi.no/?path=/docs/komponenter-typography--docs#headline}
  *
  * The `<fhi-headline>` component is used to display standard headline text in accordance with the FHI Design System guidelines.
  *
@@ -30,7 +30,6 @@ export class FhiHeadline extends LitElement {
   /**
    * Sets the size of the text styles.
    * @reflect
-   * @type {'large' | 'medium' | 'small'}
    */
   @property({ type: String, reflect: true }) size:
     | 'large'
@@ -49,14 +48,11 @@ export class FhiHeadline extends LitElement {
    *    This text will be in the primary text color.
    *  </fhi-headline>
    * ```
-   *
-   * @type {string}
    */
   @property({ type: String }) color?: string;
 
   /**
    * Sets the heading level for the text, corresponding to HTML heading elements `<h1>` to `<h6>`.
-   * @type {1 | 2 | 3 | 4 | 5 | 6}
    */
   @property({ type: Number }) level!: HeadlineLevel;
 

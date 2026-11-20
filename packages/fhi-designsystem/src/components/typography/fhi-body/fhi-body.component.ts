@@ -8,7 +8,7 @@ export const FhiBodySelector = 'fhi-body';
 /**
  * ## FHI Body
  *
- * {@link https://designsystem.fhi.no/?path=/story/komponenter-typography-body--preview}
+ * {@link https://designsystem.fhi.no/?path=/docs/komponenter-typography--docs#body}
  *
  * The `<fhi-body>` component is used to display body text in accordance with the FHI Design System guidelines.
  * Use this component instead of the standard HTML paragraph element, `<p>`, to ensure consistent styling across your application.
@@ -23,9 +23,8 @@ export class FhiBody extends LitElement {
   /**
    * Sets the font size of the given text.
    * @reflect
-   * @type {'large' | 'medium' | 'small'}
    */
-  @property({ type: String, reflect: true }) size:
+  @property({ type: String, reflect: true }) size?:
     | 'large'
     | 'medium'
     | 'small' = 'medium';
@@ -42,8 +41,6 @@ export class FhiBody extends LitElement {
    *    This text will be in the primary text color.
    *  </fhi-body>
    * ```
-   *
-   * @type {string}
    */
   @property({ type: String }) color?: string;
 
@@ -51,11 +48,10 @@ export class FhiBody extends LitElement {
    * Sets the text to be bold and semantically important.
    *
    * Example:
-   * 
+   *
    *  </fhi-body>
    * ```
-   *
-   * @type {boolean}
+   * @reflect
    */
   @property({ type: Boolean, reflect: true }) strong?: boolean;
 
@@ -63,11 +59,10 @@ export class FhiBody extends LitElement {
    * Sets the text to be in italics and semantically emphasized.
    *
    * Example:
-   * 
+   *
    *  </fhi-body>
    * ```
-   *
-   * @type {boolean}
+   * @reflect
    */
   @property({ type: Boolean, reflect: true }) emphasized?: boolean;
 

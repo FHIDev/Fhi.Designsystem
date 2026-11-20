@@ -98,10 +98,15 @@ export default defineConfig(({ command, mode }) => {
     packageJson.exports['./theme/default.css'] = {
       default: './theme/default.css',
       style: './theme/default.css',
+      default: './theme/default.css',
     };
 
     packageJson.exports['./custom-elements.json'] = {
       default: './custom-elements.json',
+    };
+
+    packageJson.exports['./angular-wrappers'] = {
+      default: './angular-wrappers/index.ts',
     };
 
     return packageJson;
@@ -246,12 +251,7 @@ export default defineConfig(({ command, mode }) => {
                 dest: './',
               },
               {
-                src: '.temp/custom-elements.json',
-                rename: { stripBase: 1 },
-                dest: './',
-              },
-              {
-                src: '.temp/web-types.json',
+                src: '.temp/*',
                 rename: { stripBase: 1 },
                 dest: './',
               },
