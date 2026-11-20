@@ -10,7 +10,7 @@ export type TitleLevel = 1 | 2 | 3 | 4 | 5 | 6;
 /**
  * ## FHI Title
  *
- * {@link https://designsystem.fhi.no/?path=/story/komponenter-typography-title--preview}
+ * {@link https://designsystem.fhi.no/?path=/docs/komponenter-typography--docs#title}
  *
  * The `<fhi-title>` component is used to display smaller, less prominent title text in accordance with the FHI Design System guidelines.
  *

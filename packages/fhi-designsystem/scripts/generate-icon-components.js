@@ -90,7 +90,7 @@ export const ${webComponentName}Selector = "${customElementSelector}";
 /**
  * ## ${webComponentName}
  * 
- * {@link https://designsystem.fhi.no/?path=/docs/ikoner--docs}
+ * {@link https://designsystem.fhi.no/?path=/docs/komponenter-ikoner--docs}
  * 
  * @tag ${customElementSelector}
  * @element ${customElementSelector}

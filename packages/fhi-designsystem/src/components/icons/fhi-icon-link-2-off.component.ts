@@ -10,7 +10,7 @@ export const FhiIconLink2OffSelector = "fhi-icon-link-2-off";
 /**
  * ## FhiIconLink2Off
  * 
- * {@link https://designsystem.fhi.no/?path=/docs/ikoner--docs}
+ * {@link https://designsystem.fhi.no/?path=/docs/komponenter-ikoner--docs}
  * 
  * @tag fhi-icon-link-2-off
  * @element fhi-icon-link-2-off
@@ -21,16 +21,14 @@ export class FhiIconLink2Off extends LitElement {
   /**
    * Sets the color for the icon.
    * Should preferably be a color token. See [Color Tokens](https://designsystem.fhi.no/?path=/docs/design-tokens-farger--docs)
-   *  
    */ 
-  @property({ type: String }) color: string = "currentcolor";
+  @property({ type: String }) color?: string = "currentcolor";
 
   /**
    * Sets the size of the icon. Can be one of the predefined sizes, a number value, rem or px.
    * Number values are treated as px.
-   *  
    */
-  @property({ type: String }) size: 'xsmall' | 'small' | 'medium' | 'large' | number | `${number}px` | `${number}rem` = 'medium';
+  @property({ type: String }) size?: 'xsmall' | 'small' | 'medium' | 'large' | number | `${number}px` | `${number}rem` = 'medium';
 
   private get _size(): string {
     switch (this.size) {

@@ -10,7 +10,7 @@ export type HeadlineLevel = 1 | 2 | 3 | 4 | 5 | 6;
 /**
  * ## FHI Headline
  *
- * {@link https://designsystem.fhi.no/?path=/story/komponenter-typography-headline--preview}
+ * {@link https://designsystem.fhi.no/?path=/docs/komponenter-typography--docs#headline}
  *
  * The `<fhi-headline>` component is used to display standard headline text in accordance with the FHI Design System guidelines.
  *

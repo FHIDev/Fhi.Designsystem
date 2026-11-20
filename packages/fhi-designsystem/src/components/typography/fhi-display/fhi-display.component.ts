@@ -10,7 +10,7 @@ export type DisplayLevel = 1 | 2 | 3 | 4 | 5 | 6;
 /**
  * ## FHI Display
  *
- * {@link https://designsystem.fhi.no/?path=/story/komponenter-typography-display--preview}
+ * {@link https://designsystem.fhi.no/?path=/docs/komponenter-typography--docs#display}
  *
  * The `<fhi-display>` component is used to display large, eye-catching headline text in accordance with the FHI Design System guidelines.
  *

@@ -89,7 +89,7 @@ export class FhiDateInput extends LitElement {
   @property({ type: String, reflect: true })
   name?: string = '';
 
-  private _value?: string = '';
+  private _value?: FhiDateValue;
 
   /**
    * The default value of the input field, formatted as `YYYY-MM-DD`.
@@ -99,7 +99,7 @@ export class FhiDateInput extends LitElement {
    * This attribute conforms with the standard HTML `value` attribute for input fields.
    * See: {@link https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input#value}
    *
-   * @default ''
+   * @default undefined
    */
   @property({ type: String })
   get value(): FhiDateValue {
@@ -108,7 +108,7 @@ export class FhiDateInput extends LitElement {
 
   set value(newValue: FhiDateValue) {
     const oldValue = this._value;
-    this._value = newValue ?? '';
+    this._value = newValue ?? undefined;
     this.requestUpdate('value', oldValue);
     this._internals.setFormValue(this._value ?? null);
   }
