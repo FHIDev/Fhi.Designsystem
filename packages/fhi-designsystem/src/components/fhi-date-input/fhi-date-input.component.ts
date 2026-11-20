@@ -7,7 +7,7 @@ import { isSafari } from '../../utils/browser';
 
 export const FhiDateInputSelector = 'fhi-date-input';
 
-export type FhiDateValue = `${number}-${number}-${number}` | undefined; // YYYY-MM-DD
+export type FhiDateValue = `${number}-${number}-${number}` | undefined | ''; // YYYY-MM-DD
 
 /**
  * ## FHI Date input
@@ -89,7 +89,7 @@ export class FhiDateInput extends LitElement {
   @property({ type: String, reflect: true })
   name?: string = '';
 
-  private _value?: FhiDateValue;
+  private _value?: FhiDateValue = '';
 
   /**
    * The default value of the input field, formatted as `YYYY-MM-DD`.
@@ -108,7 +108,7 @@ export class FhiDateInput extends LitElement {
 
   set value(newValue: FhiDateValue) {
     const oldValue = this._value;
-    this._value = newValue ?? undefined;
+    this._value = newValue ?? '';
     this.requestUpdate('value', oldValue);
     this._internals.setFormValue(this._value ?? null);
   }
