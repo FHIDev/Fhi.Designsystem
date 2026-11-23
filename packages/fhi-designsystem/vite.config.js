@@ -104,6 +104,16 @@ export default defineConfig(({ command, mode }) => {
       default: './custom-elements.json',
     };
 
+    packageJson.exports['./angular-wrappers'] = {
+      default: './angular-wrappers/index.ts',
+      types: './angular-wrappers/index.ts',
+    };
+
+    packageJson.exports['./angular-wrappers/*'] = {
+      default: './angular-wrappers/*.ts',
+      types: './angular-wrappers/*.ts',
+    };
+
     return packageJson;
   })();
 
@@ -246,12 +256,7 @@ export default defineConfig(({ command, mode }) => {
                 dest: './',
               },
               {
-                src: '.temp/custom-elements.json',
-                rename: { stripBase: 1 },
-                dest: './',
-              },
-              {
-                src: '.temp/web-types.json',
+                src: '.temp/*',
                 rename: { stripBase: 1 },
                 dest: './',
               },
