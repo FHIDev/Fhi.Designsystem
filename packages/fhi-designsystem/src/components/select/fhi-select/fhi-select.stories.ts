@@ -110,6 +110,14 @@ export const Preview: Story = {
   },
 };
 
+export const Default: Story = {
+  tags: [],
+  args: {
+    name: 'my-select',
+    label: 'Land',
+  },
+};
+
 export const Error: Story = {
   tags: [],
   args: {

@@ -13,8 +13,6 @@ export const FhiDataTableRowSelector = 'fhi-data-table-row';
  * The `<fhi-data-table-row>` component is an implementation of a table row according to the FHI Design System guidelines.
  * It allows users to properly display data within a `<fhi-data-table>` using `<fhi-data-table-cell>` components.
  *
- * For various reasons, the `<fhi-data-table-row>` component does not use the native HTML `<tr>` element. Instead, it relies on CSS `display: table-row` to achieve the desired layout and styling.
- *
  * @tag fhi-data-table-row
  * @element fhi-data-table-row
  *
@@ -25,7 +23,6 @@ export class FhiDataTableRow extends LitElement {
   /**
    * Defines the variant of the table row, which can be either 'header' or 'body'. This determines the styling and role of the row within the table.
    * If the variant is set to 'header', all child `<fhi-data-table-cell>` elements will also be set to the 'header' variant to ensure consistent styling.
-   * @type {'header' | 'body'}
    */
   @property({ type: String, reflect: true })
   variant: 'header' | 'body' = 'body';
@@ -86,7 +83,10 @@ export class FhiDataTableRow extends LitElement {
     }
 
     :host {
-      display: table-row;
+      display: grid;
+      grid-template-columns: subgrid;
+      grid-column: 1 / -1;
+
       background: var(--fhi-data-table-row-background);
 
       --fhi-data-table-row-border-style: none none solid none;
