@@ -410,6 +410,7 @@ export class FhiTimeInput extends LitElement {
         }
 
         input {
+          min-width: 5.9375rem;
           padding-right: var(--fhi-spacing-050);
         }
       }
