@@ -7,8 +7,7 @@ export const FhiLabelSelector = 'fhi-label';
 /**
  * ## FHI Label
  *
- * {@link https://designsystem.fhi.no/?path=/story/komponenter-typography-label--preview}
- *
+ * {@link https://designsystem.fhi.no/?path=/docs/komponenter-typography--docs#label}
  * The `<fhi-label>` component is used to display label text in accordance with the FHI Design System guidelines.
  * Use this component instead of the standard HTML `<label>` element to ensure consistent styling across your application.
  *
@@ -22,7 +21,6 @@ export class FhiLabel extends LitElement {
   /**
    * Sets the font size of the given text.
    * @reflect
-   * @type {'large' | 'medium' | 'small'}
    */
   @property({ type: String, reflect: true }) size:
     | 'large'
@@ -41,8 +39,6 @@ export class FhiLabel extends LitElement {
    *    This text will be in the primary text color.
    *  </fhi-label>
    * ```
-   *
-   * @type {string}
    */
   @property({ type: String }) color?: string;
 

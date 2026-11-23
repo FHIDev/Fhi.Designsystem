@@ -10,7 +10,7 @@ export type DisplayLevel = 1 | 2 | 3 | 4 | 5 | 6;
 /**
  * ## FHI Display
  *
- * {@link https://designsystem.fhi.no/?path=/story/komponenter-typography-display--preview}
+ * {@link https://designsystem.fhi.no/?path=/docs/komponenter-typography--docs#display}
  *
  * The `<fhi-display>` component is used to display large, eye-catching headline text in accordance with the FHI Design System guidelines.
  *
@@ -30,9 +30,8 @@ export class FhiDisplay extends LitElement {
   /**
    * Sets the font size of the given text.
    * @reflect
-   * @type {'large' | 'medium' | 'small'}
    */
-  @property({ type: String, reflect: true }) size:
+  @property({ type: String, reflect: true }) size?:
     | 'large'
     | 'medium'
     | 'small' = 'medium';
@@ -49,14 +48,11 @@ export class FhiDisplay extends LitElement {
    *    This text will be in the primary text color.
    *  </fhi-display>
    * ```
-   *
-   * @type {string}
    */
   @property({ type: String }) color?: string;
 
   /**
    * Sets the heading level for the text, corresponding to HTML heading elements `<h1>` to `<h6>`.
-   * @type {1 | 2 | 3 | 4 | 5 | 6}
    */
   @property({ type: Number }) level!: DisplayLevel;
 
