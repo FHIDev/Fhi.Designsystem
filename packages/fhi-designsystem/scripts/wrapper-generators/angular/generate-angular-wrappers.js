@@ -214,7 +214,8 @@ const generateAngularWrapper = componentClass => {
         host: {
           ${attributes
             .map(
-              attribute => `"[${attribute.name}]": "${attribute.fieldName}()",`,
+              attribute =>
+                `"[${attribute.fieldName}]": "${attribute.fieldName}()",`,
             )
             .join('\n')}
         },
