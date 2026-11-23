@@ -61,7 +61,6 @@ const readManifest = manifestPath => {
 };
 
 const getStateAndValueFormProperties = componentClass => {
-  console.log(componentClass.name);
   const properties = componentClass.members.filter(
     member => member.kind === 'field',
   );
@@ -106,9 +105,7 @@ const generateFormAccessor = (
 
   const eventValue = `$any($event.target).${valueProperty}`;
 
-  const usesCheckedState =
-    webComponentTagName === 'fhi-checkbox' ||
-    webComponentTagName === 'fhi-radio';
+  const usesCheckedState = stateProperty === 'checked';
 
   const onChangeHandler = usesCheckedState
     ? `onChange($any($event.target).${stateProperty} ? ${eventValue} : null)`
