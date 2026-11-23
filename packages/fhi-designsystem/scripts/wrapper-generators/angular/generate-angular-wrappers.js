@@ -114,6 +114,10 @@ const generateFormAccessor = (
     ? `onChange($any($event.target).${stateProperty} ? ${eventValue} : null)`
     : `onChange(${eventValue})`;
 
+  const mutationListeners = usesCheckedState
+    ? `'(change)': '${onChangeHandler}'`
+    : `'(change)': '${onChangeHandler}', '(input)': '${onChangeHandler}'`;
+
   const initialStateValue = usesCheckedState
     ? '!!this._initialValue'
     : 'this._initialValue';
@@ -127,7 +131,7 @@ const generateFormAccessor = (
     @Directive({
       selector: '${angularTagName}[formControlName],${angularTagName}[formControl],${angularTagName}[ngModel]',
       standalone: true,
-      host: {'(change)': '${onChangeHandler}', '(blur)': 'onTouched()'},
+      host: {${mutationListeners}, '(blur)': 'onTouched()'},
       providers: [{ provide: NG_VALUE_ACCESSOR, useExisting: forwardRef(() => ${accessorName}), multi: true }]
     })
     export class ${accessorName} implements ControlValueAccessor, AfterViewInit {
