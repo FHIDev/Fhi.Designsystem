@@ -12,7 +12,7 @@ Det er mange måter å bidra på, og vi har mange ulike behov som skal ivaretas.
 - [Hvordan opprette en "pull request"](#hvordan-opprette-en-pull-request)
 - [Kodestandard](#kodestandard)
   - [Navngivning](#navngivning)
-  - [Designtokens](#designtokens)
+  - [Design Tokens](#design-tokens)
   - [Offentlig API](#offentlig-api)
   - [Komponentdokumentasjon](#komponentdokumentasjon)
   - [Genererte filer](#genererte-filer)
@@ -154,8 +154,9 @@ For å få opprettet PR og godkjent en ny komponent må den basere seg på en fe
 Vi genererer Angular-wrappers for alle våre web-komponenter. Dette gjør det mulig å bruke komponentene med full typestøtte og Intellisense i Angular-prosjekter. Wrappers blir automatisk generert basert custom-element-manifest som igjen bruker Lit-komponentene og deres JSDoc-kommentarer som kilde.
 
 - Pass på og i definere alle properties, slots, og events in JSDoc
-  - Bruk da JSDoc taggene @tag, @element, @slot, @event og @reflect der det passer seg. De vil alle bli automatisk plukket opp av manifestgeneratoren.
-  - Om du bruker set/get mønster for properties, må du sørge for å dokumentere default verdien i JSDoc. Bruk JSDoc taggen @default.
+  - Bruk da JSDoc taggene `@tag`, `@element`, `@slot`, `@event` og `@reflect` der det passer seg. De vil alle bli automatisk plukket opp av manifestgeneratoren.
+  - Ikke bruk `@type` i JSDoc. Typen blir automatisk hentet fra TypeScript-definisjonen.
+  - Om du bruker set/get mønster for properties, må du sørge for å dokumentere default verdien i JSDoc. Bruk JSDoc taggen `@default`for dette.
 - Om en property er obligatorisk, men ikke har en default-verdi, må du definere dette i kode med `!`. e.g `@property({ type: Number }) level!: HeadlineLevel`
 
 ### Legg til nytt ikon og ikon-komponent
