@@ -1,4 +1,4 @@
-import { html, css, LitElement } from 'lit';
+import { html, css, LitElement, PropertyValues } from 'lit';
 import {
   customElement,
   property,
@@ -78,6 +78,8 @@ export class FhiSelect extends LitElement {
 
   /**
    * The status attribute of the select element. This property is used to indicate the validation status of the select element.
+   * When set to `error`, the component notifies its associated form that it is invalid.
+   * @reflect
    */
   @property({ type: String, reflect: true })
   status?: 'error';
@@ -109,6 +111,20 @@ export class FhiSelect extends LitElement {
   public disconnectedCallback() {
     super.disconnectedCallback();
     this._mutationObserver?.disconnect();
+  }
+
+  protected willUpdate(changedProperties: PropertyValues<this>): void {
+    if (changedProperties.has('status')) {
+      this._updateValidity();
+    }
+  }
+
+  private _updateValidity(): void {
+    if (this.status === 'error') {
+      this._internals.setValidity({ customError: true }, 'error');
+    } else {
+      this._internals.setValidity({});
+    }
   }
 
   public updated() {

@@ -1,4 +1,4 @@
-import { html, css, LitElement } from 'lit';
+import { html, css, LitElement, PropertyValues } from 'lit';
 import { customElement, property, query } from 'lit/decorators.js';
 import { ifDefined } from 'lit/directives/if-defined.js';
 import '../typography/fhi-body/fhi-body.component';
@@ -50,6 +50,7 @@ export class FhiTextArea extends LitElement {
    * Sets the visual status of the text area. There is currently only one status available: `error`.
    *
    * The `error` status is used to indicate that there is an issue with the text area, such as invalid or missing data.
+   * When set to `error`, the component notifies its associated form that it is invalid.
    * @reflect
    */
   @property({ type: String, reflect: true }) status?: 'error' = undefined;
@@ -120,6 +121,20 @@ export class FhiTextArea extends LitElement {
   public connectedCallback(): void {
     super.connectedCallback();
     this._internals.setFormValue(this.value);
+  }
+
+  protected willUpdate(changedProperties: PropertyValues<this>): void {
+    if (changedProperties.has('status')) {
+      this._updateValidity();
+    }
+  }
+
+  private _updateValidity(): void {
+    if (this.status === 'error') {
+      this._internals.setValidity({ customError: true }, 'error');
+    } else {
+      this._internals.setValidity({});
+    }
   }
 
   private _dispatchChangeEvent(): void {

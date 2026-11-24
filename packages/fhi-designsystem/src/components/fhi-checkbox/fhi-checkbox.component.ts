@@ -47,8 +47,8 @@ export class FhiCheckbox extends LitElement {
   /**
    * Sets the visual status of the checkbox. There is currently only one status available: `error`.
    * The `error` status is used to indicate that there is an issue with the checkbox, such as a required checkbox not being checked.
+   * When set to `error`, the component notifies its associated form that it is invalid.
    * @reflect
-   *
    */
   @property({ type: String, reflect: true }) status?: 'error';
 
@@ -78,6 +78,18 @@ export class FhiCheckbox extends LitElement {
   protected willUpdate(changedProperties: Map<string, unknown>) {
     if (changedProperties.has('value')) {
       this.value = this.value ?? 'on';
+    }
+
+    if (changedProperties.has('status')) {
+      this._updateValidity();
+    }
+  }
+
+  private _updateValidity(): void {
+    if (this.status === 'error') {
+      this._internals.setValidity({ customError: true }, 'error');
+    } else {
+      this._internals.setValidity({});
     }
   }
 

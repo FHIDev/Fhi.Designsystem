@@ -138,6 +138,38 @@ describe('fhi-select', () => {
   });
 
   describe('form association', () => {
+    it('notifies its associated form that it is invalid when status is "error"', async () => {
+      component = await fixture(
+        html`<fhi-select name="mySelect" status="error"></fhi-select>`,
+        { parentNode: document.createElement('form') },
+      );
+
+      const form = document.querySelector('form') as HTMLFormElement;
+
+      expect(form.checkValidity()).to.equal(false);
+    });
+
+    it('updates the validity of its associated form when the status property changes', async () => {
+      component = await fixture(
+        html`<fhi-select name="mySelect"></fhi-select>`,
+        { parentNode: document.createElement('form') },
+      );
+
+      const form = document.querySelector('form') as HTMLFormElement;
+
+      expect(form.checkValidity()).to.equal(true);
+
+      component.status = 'error';
+      await component.updateComplete;
+
+      expect(form.checkValidity()).to.equal(false);
+
+      component.status = undefined;
+      await component.updateComplete;
+
+      expect(form.checkValidity()).to.equal(true);
+    });
+
     it('is associated to its parent form', async () => {
       component = await fixture(
         html`<fhi-select name="mySelect">
