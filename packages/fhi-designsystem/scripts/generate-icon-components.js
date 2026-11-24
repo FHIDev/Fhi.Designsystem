@@ -90,7 +90,7 @@ export const ${webComponentName}Selector = "${customElementSelector}";
 /**
  * ## ${webComponentName}
  * 
- * {@link https://designsystem.fhi.no/?path=/docs/ikoner--docs}
+ * {@link https://designsystem.fhi.no/?path=/docs/komponenter-ikoner--docs}
  * 
  * @tag ${customElementSelector}
  * @element ${customElementSelector}
@@ -101,16 +101,14 @@ export class ${webComponentName} extends LitElement {
   /**
    * Sets the color for the icon.
    * Should preferably be a color token. See [Color Tokens](https://designsystem.fhi.no/?path=/docs/design-tokens-farger--docs)
-   * @type {string}
    */ 
-  @property({ type: String }) color: string = "currentcolor";
+  @property({ type: String }) color?: string = "currentcolor";
 
   /**
    * Sets the size of the icon. Can be one of the predefined sizes, a number value, rem or px.
    * Number values are treated as px.
-   * @type { 'xsmall' | 'small' | 'medium' | 'large' | number | string}
    */
-  @property({ type: String }) size: 'xsmall' | 'small' | 'medium' | 'large' | number | \`\${number}px\` | \`\${number}rem\` = 'medium';
+  @property({ type: String }) size?: 'xsmall' | 'small' | 'medium' | 'large' | number | \`\${number}px\` | \`\${number}rem\` = 'medium';
 
   private get _size(): string {
     switch (this.size) {
@@ -154,6 +152,7 @@ const generateIconDocs = iconSelectors => `
 [//]: # "${warning}"
 
 import { Meta, IconGallery, IconItem, Controls, Canvas } from '@storybook/addon-docs/blocks';
+import '../fhi-callout/fhi-callout.component.ts';
 
 import * as FhiIconStories from './fhi-icon.stories';
 
@@ -182,11 +181,10 @@ Hvert ikon er en web-komponent som kan brukes i HTML-koden din på denne måten:
 
 ## Alle Ikoner
 
-<div style={{padding: ".25rem 1rem", background: "#D3E3F5", borderRadius: "2px", borderBottom: "4px solid #3283CE", marginBottom: "2rem"}}>
-Savner du et ikon, eller mener et kan forbedres, kan du <a href="https://github.com/FHIDev/Fhi.Designsystem/issues" target="_blank" rel="noopener" style={{ color: "#222", textDecoration: "underline" }}>åpne en sak i Github</a>. Alternativt kan du gi beskjed på <a href="https://teams.microsoft.com/l/channel/19%3Aa0d23e5a6954497d9e378d3367e7f458%40thread.skype/General?groupId=571dd359-777d-4c02-85ea-d56854d03ef7&tenantId=54475f80-1baa-4ea9-9185-c0de5cc603fe" target="_blank" rel="noopener" style={{ color: "#222", textDecoration: "underline" }}>Designsystem-kanalen på Teams</a> eller kommentere i <a href="https://www.figma.com/design/XPDnpuIUU1ckXvxCnO1ksA/Ikoner-%E2%80%A2-FHI-Designsystem?node-id=0-1&p=f&t=atKKOv95HMlv2AzU-11" target="_blank" rel="noopener" style={{ color: "#222", textDecoration: "underline" }}>Figma-filen for ikoner</a>.
-
-Ikonene i FHI Designsystem er basert på <a href="https://lucide.dev/icons/" target="_blank" rel="noopener" style={{ color: "#222", textDecoration: "underline" }}>Lucide Icons</a>. Finn og foreslå gjerne eksempler derfra, sammen med en beskrivelse og kontekst for behovet du har.
-</div>
+<fhi-callout color="neutral" style={{ margin: "0 0 2rem 0" }}>
+<span>Savner du et ikon, eller mener et kan forbedres, kan du <a href="https://github.com/FHIDev/Fhi.Designsystem/issues" target="_blank" rel="noopener" style={{ color: "#222", textDecoration: "underline" }}>åpne en sak i Github</a>. Alternativt kan du gi beskjed på <a href="https://teams.microsoft.com/l/channel/19%3Aa0d23e5a6954497d9e378d3367e7f458%40thread.skype/General?groupId=571dd359-777d-4c02-85ea-d56854d03ef7&tenantId=54475f80-1baa-4ea9-9185-c0de5cc603fe" target="_blank" rel="noopener" style={{ color: "#222", textDecoration: "underline" }}>Designsystem-kanalen på Teams</a> eller kommentere i <a href="https://www.figma.com/design/XPDnpuIUU1ckXvxCnO1ksA/Ikoner-%E2%80%A2-FHI-Designsystem?node-id=0-1&p=f&t=atKKOv95HMlv2AzU-11" target="_blank" rel="noopener" style={{ color: "#222", textDecoration: "underline" }}>Figma-filen for ikoner</a>.
+    Ikonene i FHI Designsystem er basert på <a href="https://lucide.dev/icons/" target="_blank" rel="noopener" style={{ color: "#222", textDecoration: "underline" }}>Lucide Icons</a>. Finn og foreslå gjerne eksempler derfra, sammen med en beskrivelse og kontekst for behovet du har.</span>
+</fhi-callout>
 
 <IconGallery>
 ${iconSelectors

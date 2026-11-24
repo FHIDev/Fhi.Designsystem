@@ -5,6 +5,7 @@ const config: StorybookConfig = {
   addons: ['@storybook/addon-docs', 'storybook-design-token'],
   features: { interactions: false },
   framework: '@storybook/web-components-vite',
+  staticDirs: ['./static'],
 };
 
 export default config;
