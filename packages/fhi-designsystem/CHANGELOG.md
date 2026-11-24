@@ -1,5 +1,27 @@
 # Changelog
 
+## [0.51.0](https://github.com/FHIDev/Fhi.Designsystem/compare/v0.50.0...v0.51.0) (2026-11-24)
+
+### 🚀 Features
+
+* Nytt ikon Home ([#553](https://github.com/FHIDev/Fhi.Designsystem/issues/553)) ([8d29989](https://github.com/FHIDev/Fhi.Designsystem/commit/8d29989f72ea175b376db1792a2da60b0cd68810))
+
+## [0.50.0](https://github.com/FHIDev/Fhi.Designsystem/compare/v0.49.0...v0.50.0) (2026-11-23)
+
+### 🚀 Features
+
+* Add Angular Wrappers ([#355](https://github.com/FHIDev/Fhi.Designsystem/issues/355)) ([ec5f362](https://github.com/FHIDev/Fhi.Designsystem/commit/ec5f362647be1e424753396790d1184cfbda91bc))
+
+### 📑 Documentation
+
+* Byttet ut alerts med fhi-callout ([#543](https://github.com/FHIDev/Fhi.Designsystem/issues/543)) ([0cc358f](https://github.com/FHIDev/Fhi.Designsystem/commit/0cc358f2b8704ba5f3240d33fe31ad515295dd58))
+* Callout igenereres nå fra skript også med litt luft under ([#552](https://github.com/FHIDev/Fhi.Designsystem/issues/552)) ([5643b7c](https://github.com/FHIDev/Fhi.Designsystem/commit/5643b7c014fc4e891a38727c267d08d12f0d3aa2))
+* La til default stories på text-area og select ([#545](https://github.com/FHIDev/Fhi.Designsystem/issues/545)) ([03dec48](https://github.com/FHIDev/Fhi.Designsystem/commit/03dec483c0565ddf55f4ea932963335999e090fe))
+
+### Other
+
+* Add AGENTS.md ([#542](https://github.com/FHIDev/Fhi.Designsystem/issues/542)) ([8d70eec](https://github.com/FHIDev/Fhi.Designsystem/commit/8d70eec74cd42bd75a366877fcb64a04320192d9))
+
 ## [0.49.0](https://github.com/FHIDev/Fhi.Designsystem/compare/v0.48.1...v0.49.0) (2026-11-09)
 
 ### 🚀 Features
