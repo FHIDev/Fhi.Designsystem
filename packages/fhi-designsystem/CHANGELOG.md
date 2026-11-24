@@ -1,5 +1,11 @@
 # Changelog
 
+## [0.51.0](https://github.com/FHIDev/Fhi.Designsystem/compare/v0.50.0...v0.51.0) (2026-11-24)
+
+### 🚀 Features
+
+* Nytt ikon Home ([#553](https://github.com/FHIDev/Fhi.Designsystem/issues/553)) ([8d29989](https://github.com/FHIDev/Fhi.Designsystem/commit/8d29989f72ea175b376db1792a2da60b0cd68810))
+
 ## [0.50.0](https://github.com/FHIDev/Fhi.Designsystem/compare/v0.49.0...v0.50.0) (2026-11-23)
 
 ### 🚀 Features
