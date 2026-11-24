@@ -39,6 +39,7 @@ export class FhiRadio extends LitElement {
    * Sets the visual status of the radio. There is currently only one status available: `error`.
    * The `error` status is used to indicate that there is an issue with the radio, such as a required radio not being checked.
    * When set to `error`, the component notifies its associated form that it is invalid.
+   * Conversely, when the associated form reports the component as invalid, `status` is set to `error`.
    * @reflect
    */
   @property({ type: String, reflect: true }) status?: 'error' = undefined;
@@ -91,6 +92,7 @@ export class FhiRadio extends LitElement {
     super.connectedCallback();
 
     this.addEventListener('focus', this._setFocusOnInput);
+    this.addEventListener('invalid', this._handleInvalid);
 
     this._updateFormValue();
 
@@ -105,6 +107,7 @@ export class FhiRadio extends LitElement {
     super.disconnectedCallback();
     this.removeEventListener('keydown', this._handleKeyDown);
     this.removeEventListener('focus', this._setFocusOnInput);
+    this.removeEventListener('invalid', this._handleInvalid);
   }
 
   private _setFocusOnInput() {
@@ -149,6 +152,10 @@ export class FhiRadio extends LitElement {
     } else {
       this._internals.setValidity({});
     }
+  }
+
+  private _handleInvalid(): void {
+    this.status = 'error';
   }
 
   public updated(changedProperties: Map<string, unknown>) {

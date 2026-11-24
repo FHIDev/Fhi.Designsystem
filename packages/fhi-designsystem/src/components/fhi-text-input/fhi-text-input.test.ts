@@ -193,6 +193,21 @@ describe('fhi-text-input', () => {
       expect(form.checkValidity()).to.equal(true);
     });
 
+    it('sets status to "error" when its associated form reports it as invalid', async () => {
+      component = await fixture(
+        html`<fhi-text-input name="myInput"></fhi-text-input>`,
+        { parentNode: document.createElement('form') },
+      );
+
+      expect(component.status).to.equal(undefined);
+
+      component.dispatchEvent(new Event('invalid'));
+      await component.updateComplete;
+
+      expect(component.status).to.equal('error');
+      expect(component.getAttribute('status')).to.equal('error');
+    });
+
     it('is associated to its parent form', async () => {
       component = await fixture(
         html`<fhi-text-input name="myInput"></fhi-text-input>`,

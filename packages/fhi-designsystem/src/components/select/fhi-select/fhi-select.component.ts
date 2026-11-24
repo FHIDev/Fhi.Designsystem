@@ -79,6 +79,7 @@ export class FhiSelect extends LitElement {
   /**
    * The status attribute of the select element. This property is used to indicate the validation status of the select element.
    * When set to `error`, the component notifies its associated form that it is invalid.
+   * Conversely, when the associated form reports the component as invalid, `status` is set to `error`.
    * @reflect
    */
   @property({ type: String, reflect: true })
@@ -108,8 +109,14 @@ export class FhiSelect extends LitElement {
     );
   }
 
+  public connectedCallback() {
+    super.connectedCallback();
+    this.addEventListener('invalid', this._handleInvalid);
+  }
+
   public disconnectedCallback() {
     super.disconnectedCallback();
+    this.removeEventListener('invalid', this._handleInvalid);
     this._mutationObserver?.disconnect();
   }
 
@@ -125,6 +132,10 @@ export class FhiSelect extends LitElement {
     } else {
       this._internals.setValidity({});
     }
+  }
+
+  private _handleInvalid(): void {
+    this.status = 'error';
   }
 
   public updated() {

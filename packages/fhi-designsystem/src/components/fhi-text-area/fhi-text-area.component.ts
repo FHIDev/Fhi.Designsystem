@@ -51,6 +51,7 @@ export class FhiTextArea extends LitElement {
    *
    * The `error` status is used to indicate that there is an issue with the text area, such as invalid or missing data.
    * When set to `error`, the component notifies its associated form that it is invalid.
+   * Conversely, when the associated form reports the component as invalid, `status` is set to `error`.
    * @reflect
    */
   @property({ type: String, reflect: true }) status?: 'error' = undefined;
@@ -121,6 +122,12 @@ export class FhiTextArea extends LitElement {
   public connectedCallback(): void {
     super.connectedCallback();
     this._internals.setFormValue(this.value);
+    this.addEventListener('invalid', this._handleInvalid);
+  }
+
+  public disconnectedCallback(): void {
+    super.disconnectedCallback();
+    this.removeEventListener('invalid', this._handleInvalid);
   }
 
   protected willUpdate(changedProperties: PropertyValues<this>): void {
@@ -135,6 +142,10 @@ export class FhiTextArea extends LitElement {
     } else {
       this._internals.setValidity({});
     }
+  }
+
+  private _handleInvalid(): void {
+    this.status = 'error';
   }
 
   private _dispatchChangeEvent(): void {

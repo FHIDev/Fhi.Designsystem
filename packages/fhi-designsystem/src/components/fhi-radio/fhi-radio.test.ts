@@ -283,6 +283,20 @@ describe('fhi-radio', () => {
       expect(form.checkValidity()).to.equal(true);
     });
 
+    it('sets status to "error" when its associated form reports it as invalid', async () => {
+      component = await fixture(html`<fhi-radio name="myRadio"></fhi-radio>`, {
+        parentNode: document.createElement('form'),
+      });
+
+      expect(component.status).to.equal(undefined);
+
+      component.dispatchEvent(new Event('invalid'));
+      await component.updateComplete;
+
+      expect(component.status).to.equal('error');
+      expect(component.getAttribute('status')).to.equal('error');
+    });
+
     it('is associated to its parent form', async () => {
       component = await fixture(
         html`<fhi-radio name="myRadio" value="myRadio" checked></fhi-radio>`,
