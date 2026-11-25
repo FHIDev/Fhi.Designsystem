@@ -32,6 +32,12 @@ export const FhiSelectSelector = 'fhi-select';
 export class FhiSelect extends LitElement {
   static readonly formAssociated = true;
 
+  /** @internal */
+  static shadowRootOptions: ShadowRootInit = {
+    ...LitElement.shadowRootOptions,
+    delegatesFocus: true,
+  };
+
   /**
    * The name attribute of the select element. This property is used to identify the select element when submitting a form.
    */

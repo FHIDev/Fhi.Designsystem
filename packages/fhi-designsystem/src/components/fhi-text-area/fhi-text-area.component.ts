@@ -21,6 +21,12 @@ export const FhiTextAreaSelector = 'fhi-text-area';
 export class FhiTextArea extends LitElement {
   static readonly formAssociated = true;
 
+  /** @internal */
+  static shadowRootOptions: ShadowRootInit = {
+    ...LitElement.shadowRootOptions,
+    delegatesFocus: true,
+  };
+
   /**
    * The text that labels the text area.
    * A text area should always have a label to ensure accessibility.

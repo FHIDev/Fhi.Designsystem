@@ -22,6 +22,12 @@ export const FhiCheckboxSelector = 'fhi-checkbox';
 export class FhiCheckbox extends LitElement {
   static readonly formAssociated = true;
 
+  /** @internal */
+  static shadowRootOptions: ShadowRootInit = {
+    ...LitElement.shadowRootOptions,
+    delegatesFocus: true,
+  };
+
   /**
    * The text label assigned to and displayed next to the checkbox.
    * You should always provide a label.

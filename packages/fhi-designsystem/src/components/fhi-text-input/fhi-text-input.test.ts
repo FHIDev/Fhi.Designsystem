@@ -193,6 +193,24 @@ describe('fhi-text-input', () => {
       expect(form.checkValidity()).to.equal(true);
     });
 
+    it('moves focus to its inner form control when its associated form reports it as invalid', async () => {
+      component = await fixture(
+        html`<fhi-text-input status="error"></fhi-text-input>`,
+        {
+          parentNode: document.createElement('form'),
+        },
+      );
+
+      const form = document.querySelector('form') as HTMLFormElement;
+      const innerControl = component.shadowRoot!.querySelector(
+        'input, select, textarea',
+      );
+
+      form.reportValidity();
+
+      expect(component.shadowRoot!.activeElement).to.equal(innerControl);
+    });
+
     it('sets status to "error" when its associated form reports it as invalid', async () => {
       component = await fixture(
         html`<fhi-text-input name="myInput"></fhi-text-input>`,

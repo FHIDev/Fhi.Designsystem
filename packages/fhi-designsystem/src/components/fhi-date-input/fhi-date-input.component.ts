@@ -25,6 +25,12 @@ export type FhiDateValue = `${number}-${number}-${number}` | undefined | ''; // 
 export class FhiDateInput extends LitElement {
   static readonly formAssociated = true;
 
+  /** @internal */
+  static shadowRootOptions: ShadowRootInit = {
+    ...LitElement.shadowRootOptions,
+    delegatesFocus: true,
+  };
+
   /**
    * The text that labels the input field.
    * An input field should always have a label to ensure accessibility.
