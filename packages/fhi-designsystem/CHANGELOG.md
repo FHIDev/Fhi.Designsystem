@@ -1,5 +1,11 @@
 # Changelog
 
+## [0.52.0](https://github.com/FHIDev/Fhi.Designsystem/compare/v0.51.0...v0.52.0) (2026-11-26)
+
+### 🚀 Features
+
+* FIx issue with clicking label while other text is marked in chrome ([#554](https://github.com/FHIDev/Fhi.Designsystem/issues/554)) ([8862c64](https://github.com/FHIDev/Fhi.Designsystem/commit/8862c642c31abfc28a4ef1fc0845f50fb175345a))
+
 ## [0.51.0](https://github.com/FHIDev/Fhi.Designsystem/compare/v0.50.0...v0.51.0) (2026-11-24)
 
 ### 🚀 Features
