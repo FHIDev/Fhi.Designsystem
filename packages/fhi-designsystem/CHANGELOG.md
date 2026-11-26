@@ -1,5 +1,11 @@
 # Changelog
 
+## [0.52.1](https://github.com/FHIDev/Fhi.Designsystem/compare/v0.52.0...v0.52.1) (2026-11-26)
+
+### 🛠️ Bug Fixes
+
+* Correct icon color in date input ([#558](https://github.com/FHIDev/Fhi.Designsystem/issues/558)) ([3e6f494](https://github.com/FHIDev/Fhi.Designsystem/commit/3e6f494d96d995943506391ac2207b5c3c0c08e8))
+
 ## [0.52.0](https://github.com/FHIDev/Fhi.Designsystem/compare/v0.51.0...v0.52.0) (2026-11-26)
 
 ### 🚀 Features
