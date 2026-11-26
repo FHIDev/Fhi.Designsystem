@@ -42,8 +42,6 @@ const meta: FhiStorybookMeta<FhiTimeInput> = {
       status=${ifDefined(args.status)}
       name=${ifDefined(args.name)}
       value=${ifDefined(args.value)}
-      min=${ifDefined(args.min)}
-      max=${ifDefined(args.max)}
       ?readonly=${args.readonly}
       ?disabled=${args.disabled}
       @input=${action('input')}
@@ -59,22 +57,6 @@ const meta: FhiStorybookMeta<FhiTimeInput> = {
       control: { type: 'text' },
       description:
         'Setter verdi på inputfeltet. Dette vil være synlig i feltet og automatisk bli med i FormData. Format `HH:MM`',
-    },
-    min: {
-      control: { type: 'text' },
-      description:
-        'Setter minimumstidspunkt (gitt som `HH:MM`), som hindrer brukeren å velge et tidspunkt tidligere enn dette. Dersom feltet ikke er satt til dette formatet vil verdien ignoreres.',
-      table: {
-        type: { summary: 'HH:MM' },
-      },
-    },
-    max: {
-      control: { type: 'text' },
-      description:
-        'Setter maksimumstidspunkt (gitt som `HH:MM`). Dette vil hindre at brukeren kan velge et tidspunkt senere enn dette. Dersom feltet ikke er satt til dette formatet eller verdien ikke er et tidspunkt senere enn min vil verdien ignoreres.',
-      table: {
-        type: { summary: 'HH:MM' },
-      },
     },
     label: {
       control: { type: 'text' },
@@ -124,15 +106,6 @@ export const Preview: Story = {
 export const WithNoAttributes: Story = {
   name: 'Default',
   args: {},
-};
-
-export const MinMax: Story = {
-  name: 'Min og Max',
-  args: {
-    label: 'Tid',
-    min: '08:00',
-    max: '16:00',
-  },
 };
 
 export const Error: Story = {

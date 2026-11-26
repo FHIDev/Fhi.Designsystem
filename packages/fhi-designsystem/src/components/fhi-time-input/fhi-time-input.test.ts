@@ -68,24 +68,6 @@ describe('fhi-time-input', () => {
       expect(component.value).to.equal('08:30');
     });
 
-    it('has an attribute to set min', async () => {
-      component = await fixture(
-        html`<fhi-time-input min="08:00"></fhi-time-input>`,
-      );
-
-      expect(component.getAttribute('min')).to.equal('08:00');
-      expect(component.min).to.equal('08:00');
-    });
-
-    it('has an attribute to set max', async () => {
-      component = await fixture(
-        html`<fhi-time-input max="16:00"></fhi-time-input>`,
-      );
-
-      expect(component.getAttribute('max')).to.equal('16:00');
-      expect(component.max).to.equal('16:00');
-    });
-
     it('has an attribute to set name', async () => {
       component = await fixture(
         html`<fhi-time-input name="Time"></fhi-time-input>`,

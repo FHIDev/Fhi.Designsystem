@@ -52,18 +52,6 @@ export class FhiTimeInput extends LitElement {
     undefined;
 
   /**
-   * Sets minimum time available for selection in the input field. Format `HH:MM`.
-   * @type {string}
-   */
-  @property({ type: String }) min?: FhiTimeValue;
-
-  /**
-   * Sets maximum time available for selection in the input field. Format `HH:MM`.
-   * @type {string}
-   */
-  @property({ type: String }) max?: FhiTimeValue;
-
-  /**
    * Sets the visual status of the input. There is currently only one status available: `error`.
    *
    * The `error` status is used to indicate that there is an issue with the input, such as invalid or missing data.
@@ -249,8 +237,6 @@ export class FhiTimeInput extends LitElement {
           id="input"
           aria-describedby=${ifDefined(describedBy)}
           aria-invalid=${this.status === 'error' ? 'true' : 'false'}
-          min=${ifDefined(this.min)}
-          max=${ifDefined(this.max)}
           .value=${this.value ?? ''}
           ?readonly=${this.readonly}
           ?disabled=${this.disabled}
