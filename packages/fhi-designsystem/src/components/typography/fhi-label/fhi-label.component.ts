@@ -1,5 +1,6 @@
 import { html, css, LitElement } from 'lit';
 import { customElement, property } from 'lit/decorators.js';
+import { ifDefined } from 'lit/directives/if-defined.js';
 
 export const FhiLabelSelector = 'fhi-label';
 
@@ -41,14 +42,15 @@ export class FhiLabel extends LitElement {
    */
   @property({ type: String }) color?: string;
 
-  willUpdate(changedProperties: Map<string, unknown>) {
-    if (changedProperties.has('color')) {
-      this.style.setProperty('--fhi-label-color', this.color ?? 'currentcolor');
-    }
-  }
-
   render() {
-    return html` <slot></slot> `;
+    return html`
+      <span
+        class="label"
+        style=${ifDefined(this.color ? `color: ${this.color}` : undefined)}
+      >
+        <slot></slot>
+      </span>
+    `;
   }
 
   static styles = css`
@@ -62,29 +64,38 @@ export class FhiLabel extends LitElement {
       display: block;
       contain: layout;
       color: var(--fhi-label-color);
-      font-family: var(--fhi-font-family-default);
-      -webkit-font-smoothing: antialiased;
+      .label {
+        font-family: var(--fhi-font-family-default);
+        -webkit-font-smoothing: antialiased;
+        margin: 0;
+      }
     }
 
     :host([size='large']) {
-      font-size: var(--fhi-typography-label-large-font-size);
-      font-weight: var(--fhi-typography-label-large-font-weight);
-      line-height: var(--fhi-typography-label-large-line-height);
-      letter-spacing: var(--fhi-typography-label-large-letter-spacing);
+      .label {
+        font-size: var(--fhi-typography-label-large-font-size);
+        font-weight: var(--fhi-typography-label-large-font-weight);
+        line-height: var(--fhi-typography-label-large-line-height);
+        letter-spacing: var(--fhi-typography-label-large-letter-spacing);
+      }
     }
 
     :host([size='medium']) {
-      font-size: var(--fhi-typography-label-medium-font-size);
-      font-weight: var(--fhi-typography-label-medium-font-weight);
-      line-height: var(--fhi-typography-label-medium-line-height);
-      letter-spacing: var(--fhi-typography-label-medium-letter-spacing);
+      .label {
+        font-size: var(--fhi-typography-label-medium-font-size);
+        font-weight: var(--fhi-typography-label-medium-font-weight);
+        line-height: var(--fhi-typography-label-medium-line-height);
+        letter-spacing: var(--fhi-typography-label-medium-letter-spacing);
+      }
     }
 
     :host([size='small']) {
-      font-size: var(--fhi-typography-label-small-font-size);
-      font-weight: var(--fhi-typography-label-small-font-weight);
-      line-height: var(--fhi-typography-label-small-line-height);
-      letter-spacing: var(--fhi-typography-label-small-letter-spacing);
+      .label {
+        font-size: var(--fhi-typography-label-small-font-size);
+        font-weight: var(--fhi-typography-label-small-font-weight);
+        line-height: var(--fhi-typography-label-small-line-height);
+        letter-spacing: var(--fhi-typography-label-small-letter-spacing);
+      }
     }
   `;
 }
