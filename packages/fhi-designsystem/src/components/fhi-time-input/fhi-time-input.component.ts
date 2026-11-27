@@ -270,7 +270,6 @@ export class FhiTimeInput extends LitElement {
       color: var(--fhi-color-neutral-text-default);
 
       label {
-        width: fit-content;
         padding: 0 0 var(--fhi-spacing-050) 0;
         &:has(+ #help-text) {
           padding-bottom: 0;
@@ -287,8 +286,7 @@ export class FhiTimeInput extends LitElement {
 
         box-sizing: border-box;
         appearance: none;
-
-        height: 100%;
+        height: var(--fhi-spacing-500);
 
         border: var(--fhi-dimension-border-width) solid
           var(--fhi-color-neutral-border-default);
@@ -327,7 +325,6 @@ export class FhiTimeInput extends LitElement {
 
       .input-container {
         position: relative;
-        height: var(--fhi-spacing-500);
         width: fit-content;
       }
 
@@ -378,10 +375,6 @@ export class FhiTimeInput extends LitElement {
 
       #help-text {
         color: inherit;
-      }
-
-      .time-icon {
-        background-color: var(--fhi-color-danger-background-default);
       }
 
       #message {
