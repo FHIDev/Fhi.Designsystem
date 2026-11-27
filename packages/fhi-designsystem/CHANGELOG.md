@@ -1,5 +1,23 @@
 # Changelog
 
+## [0.52.1](https://github.com/FHIDev/Fhi.Designsystem/compare/v0.52.0...v0.52.1) (2026-11-26)
+
+### 🛠️ Bug Fixes
+
+* Correct icon color in date input ([#558](https://github.com/FHIDev/Fhi.Designsystem/issues/558)) ([3e6f494](https://github.com/FHIDev/Fhi.Designsystem/commit/3e6f494d96d995943506391ac2207b5c3c0c08e8))
+
+## [0.52.0](https://github.com/FHIDev/Fhi.Designsystem/compare/v0.51.0...v0.52.0) (2026-11-26)
+
+### 🚀 Features
+
+* FIx issue with clicking label while other text is marked in chrome ([#554](https://github.com/FHIDev/Fhi.Designsystem/issues/554)) ([8862c64](https://github.com/FHIDev/Fhi.Designsystem/commit/8862c642c31abfc28a4ef1fc0845f50fb175345a))
+
+## [0.51.0](https://github.com/FHIDev/Fhi.Designsystem/compare/v0.50.0...v0.51.0) (2026-11-24)
+
+### 🚀 Features
+
+* Nytt ikon Home ([#553](https://github.com/FHIDev/Fhi.Designsystem/issues/553)) ([8d29989](https://github.com/FHIDev/Fhi.Designsystem/commit/8d29989f72ea175b376db1792a2da60b0cd68810))
+
 ## [0.50.0](https://github.com/FHIDev/Fhi.Designsystem/compare/v0.49.0...v0.50.0) (2026-11-23)
 
 ### 🚀 Features

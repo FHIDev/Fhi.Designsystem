@@ -309,6 +309,7 @@ export class FhiDateInput extends LitElement {
         right: 0;
         top: 50%;
         transform: translateY(-50%);
+        color: var(--fhi-color-neutral-text-subtle);
         margin-right: var(--fhi-spacing-100);
         height: fit-content;
         transition: all var(--fhi-motion-ease-default)

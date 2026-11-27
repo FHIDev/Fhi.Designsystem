@@ -22,6 +22,11 @@ export const FhiRadioSelector = 'fhi-radio';
 export class FhiRadio extends LitElement {
   static readonly formAssociated = true;
 
+  static shadowRootOptions = {
+    ...LitElement.shadowRootOptions,
+    delegatesFocus: true,
+  };
+
   /**
    * The text label assigned to and displayed next to the radio.
    * You should always provide a label.
