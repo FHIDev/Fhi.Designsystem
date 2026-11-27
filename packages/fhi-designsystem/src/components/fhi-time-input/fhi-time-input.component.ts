@@ -291,10 +291,9 @@ export class FhiTimeInput extends LitElement {
         border: var(--fhi-dimension-border-width) solid
           var(--fhi-color-neutral-border-default);
         border-radius: var(--fhi-border-radius-050);
-        padding: var(--fhi-spacing-100);
-        padding-right: calc(
-          var(--fhi-spacing-100) * 2 + var(--fhi-spacing-300)
-        );
+        padding: var(--fhi-spacing-100)
+          calc(var(--fhi-spacing-100) * 2 + var(--fhi-spacing-300))
+          var(--fhi-spacing-100) var(--fhi-spacing-150);
 
         background-color: var(--fhi-color-neutral-background-default);
         transition: all var(--fhi-motion-ease-default)
